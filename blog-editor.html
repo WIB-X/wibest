@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIB — Blog Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{--navy:#0F172A;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--green:#16A34A;--green-100:#DCFCE7;--red:#DC2626;--red-100:#FEE2E2;--white:#FFF;--radius:10px;}
+        *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--slate-50);line-height:1.5;-webkit-font-smoothing:antialiased;}
+        .header{background:var(--navy);padding:16px 28px;color:var(--white);display:flex;align-items:center;justify-content:space-between;}.header h1{font-size:16px;font-weight:700;}.header a{color:var(--slate-400);text-decoration:none;font-size:13px;}
+        .container{max-width:900px;margin:0 auto;padding:28px;}
+        .panel{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+        .panel h2{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;}
+        .form-group{margin-bottom:14px;}.form-group label{display:block;font-size:11px;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;border:1.5px solid var(--slate-200);border-radius:8px;font-family:inherit;font-size:13px;color:var(--navy);}
+        .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,0.1);}
+        .form-group select{appearance:none;cursor:pointer;background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;padding-right:28px;}
+        .form-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+        textarea.content-editor{min-height:300px;font-family:monospace;font-size:13px;line-height:1.7;resize:vertical;}
+        .help-text{font-size:11px;color:var(--slate-400);margin-top:4px;}
+        .btn{padding:10px 24px;border:none;border-radius:8px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;margin-right:8px;}
+        .btn-save{background:var(--navy);color:var(--white);}.btn-save:hover{background:var(--slate-600);}
+        .btn-publish{background:var(--green);color:var(--white);}.btn-publish:hover{background:#15803D;}
+        .btn-draft{background:var(--slate-100);color:var(--slate-600);}
+        .btn-delete{background:var(--red-100);color:var(--red);font-size:12px;padding:6px 14px;}
+        .btn-new{background:var(--blue);color:var(--white);}
+        .msg{padding:12px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:12px;display:none;}
+        .msg-success{background:var(--green-100);color:var(--green);}
+        .msg-error{background:var(--red-100);color:var(--red);}
+
+        table{width:100%;border-collapse:collapse;font-size:13px;}
+        th{text-align:left;padding:10px 12px;font-size:11px;font-weight:600;color:var(--slate-400);text-transform:uppercase;letter-spacing:0.04em;border-bottom:1px solid var(--slate-200);background:var(--slate-50);}
+        td{padding:10px 12px;border-bottom:1px solid var(--slate-100);color:var(--slate-600);}
+        tr:hover td{background:var(--slate-50);}
+        .td-title{font-weight:600;color:var(--navy);cursor:pointer;}.td-title:hover{color:var(--blue);}
+        .badge-sm{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;text-transform:uppercase;}
+        .badge-published{background:var(--green-100);color:var(--green);}
+        .badge-draft{background:var(--slate-100);color:var(--slate-500);}
+
+        .login-page{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--navy);}
+        .login-box{background:var(--white);border-radius:16px;padding:40px;width:360px;text-align:center;}
+        .login-box h1{font-size:20px;font-weight:800;margin-bottom:6px;}.login-box p{font-size:13px;color:var(--slate-500);margin-bottom:20px;}
+        .login-box input{width:100%;padding:10px 12px;border:1.5px solid var(--slate-200);border-radius:8px;font-family:inherit;font-size:14px;margin-bottom:10px;}
+        .login-box .btn{width:100%;}
+        .login-error{color:var(--red);font-size:12px;margin-bottom:10px;display:none;}
+
+        .app{display:none;}
+        @media(max-width:768px){.container{padding:16px;}.form-row{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <div class="login-page" id="loginPage">
+        <div class="login-box"><h1>Blog Editor</h1><p>Sign in to manage articles</p><div class="login-error" id="loginError"></div><input type="email" id="loginEmail" placeholder="Admin email"><input type="password" id="loginPassword" placeholder="Password"><button class="btn btn-save" id="loginBtn">Sign In</button></div>
+    </div>
+
+    <div class="app" id="app">
+        <div class="header"><h1>WIB Blog Editor</h1><div><a href="blog.html" style="margin-right:16px;">View Blog</a><a href="admin-dashboard.html">Dashboard</a></div></div>
+        <div class="container">
+            <div class="msg msg-success" id="successMsg"></div>
+            <div class="msg msg-error" id="errorMsg"></div>
+
+            <!-- Post List -->
+            <div id="listView">
+                <div class="panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                        <h2>All Articles</h2>
+                        <button class="btn btn-new" onclick="newPost()">New Article</button>
+                    </div>
+                    <div id="postsTable"></div>
+                </div>
+            </div>
+
+            <!-- Editor -->
+            <div id="editorView" style="display:none;">
+                <div class="panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                        <h2 id="editorTitle">New Article</h2>
+                        <button class="btn btn-draft" onclick="showList()">Back to List</button>
+                    </div>
+
+                    <div class="form-group"><label>Title</label><input type="text" id="postTitle" placeholder="Article title"></div>
+                    <div class="form-group"><label>Excerpt</label><input type="text" id="postExcerpt" placeholder="Short description (shown in blog listing)"></div>
+
+                    <div class="form-row">
+                        <div class="form-group"><label>Category</label><select id="postCategory"><option value="schools">Schools</option><option value="colleges">Colleges</option><option value="electronics">Electronics</option><option value="general">General</option></select></div>
+                        <div class="form-group"><label>Author</label><input type="text" id="postAuthor" placeholder="WIB Team" value="WIB Team"></div>
+                        <div class="form-group"><label>Read Time (min)</label><input type="number" id="postReadTime" placeholder="5" value="5"></div>
+                    </div>
+
+                    <div class="form-group"><label>Cover Image URL</label><input type="text" id="postCover" placeholder="https://..."><div class="help-text">Paste an image URL for the article cover</div></div>
+
+                    <div class="form-group">
+                        <label>Content (HTML)</label>
+                        <textarea class="content-editor" id="postContent" placeholder="Write your article content here. You can use HTML tags like <h2>, <p>, <ul>, <li>, <strong>, <blockquote>, <a href=''>, <img src=''>"></textarea>
+                        <div class="help-text">Use HTML for formatting: &lt;h2&gt; for headings, &lt;p&gt; for paragraphs, &lt;strong&gt; for bold, &lt;ul&gt;&lt;li&gt; for lists, &lt;blockquote&gt; for quotes, &lt;a href="url"&gt; for links</div>
+                    </div>
+
+                    <div style="display:flex;gap:8px;">
+                        <button class="btn btn-publish" id="publishBtn">Publish</button>
+                        <button class="btn btn-draft" id="draftBtn">Save as Draft</button>
+                        <button class="btn btn-delete" id="deleteBtn" style="margin-left:auto;display:none;">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const fc={apiKey:"AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",authDomain:"wibest-449fe.firebaseapp.com",projectId:"wibest-449fe",storageBucket:"wibest-449fe.firebasestorage.app",messagingSenderId:"438027122345",appId:"1:438027122345:web:70b5427de9bf0a74f51bb8"};
+        const app=initializeApp(fc);const auth=getAuth(app);const db=getFirestore(app);
+        let allPosts=[],currentPostId=null;
+
+        onAuthStateChanged(auth,u=>{if(u){document.getElementById('loginPage').style.display='none';document.getElementById('app').style.display='block';loadPosts();}else{document.getElementById('loginPage').style.display='flex';document.getElementById('app').style.display='none';}});
+        document.getElementById('loginBtn').addEventListener('click',async()=>{try{await signInWithEmailAndPassword(auth,document.getElementById('loginEmail').value.trim(),document.getElementById('loginPassword').value);}catch(e){const el=document.getElementById('loginError');el.textContent='Invalid credentials.';el.style.display='block';}});
+        document.getElementById('loginPassword').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('loginBtn').click();});
+
+        async function loadPosts(){
+            const snap=await getDocs(collection(db,"blog_posts"));
+            allPosts=[];snap.forEach(d=>allPosts.push({id:d.id,...d.data()}));
+            allPosts.sort((a,b)=>(b.created_at?.seconds||0)-(a.created_at?.seconds||0));
+            renderList();
+        }
+
+        function renderList(){
+            if(!allPosts.length){document.getElementById('postsTable').innerHTML='<p style="color:var(--slate-400);padding:20px 0;text-align:center;">No articles yet. Click "New Article" to create one.</p>';return;}
+            document.getElementById('postsTable').innerHTML=`<table><thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead><tbody>${allPosts.map(p=>`<tr><td class="td-title" onclick="editPost('${p.id}')">${p.title}</td><td>${p.category||'general'}</td><td><span class="badge-sm ${p.status==='published'?'badge-published':'badge-draft'}">${p.status||'draft'}</span></td><td><button class="btn btn-delete" onclick="deletePost('${p.id}','${p.title.replace(/'/g,"\\'")}')">Delete</button></td></tr>`).join('')}</tbody></table>`;
+        }
+
+        function showList(){document.getElementById('listView').style.display='block';document.getElementById('editorView').style.display='none';currentPostId=null;}
+        window.showList=showList;
+
+        window.newPost=function(){
+            currentPostId=null;
+            document.getElementById('editorTitle').textContent='New Article';
+            document.getElementById('postTitle').value='';
+            document.getElementById('postExcerpt').value='';
+            document.getElementById('postCategory').value='schools';
+            document.getElementById('postAuthor').value='WIB Team';
+            document.getElementById('postReadTime').value='5';
+            document.getElementById('postCover').value='';
+            document.getElementById('postContent').value='';
+            document.getElementById('deleteBtn').style.display='none';
+            document.getElementById('listView').style.display='none';
+            document.getElementById('editorView').style.display='block';
+        };
+
+        window.editPost=function(id){
+            const post=allPosts.find(p=>p.id===id);
+            if(!post)return;
+            currentPostId=id;
+            document.getElementById('editorTitle').textContent='Edit: '+post.title;
+            document.getElementById('postTitle').value=post.title||'';
+            document.getElementById('postExcerpt').value=post.excerpt||'';
+            document.getElementById('postCategory').value=post.category||'general';
+            document.getElementById('postAuthor').value=post.author||'WIB Team';
+            document.getElementById('postReadTime').value=post.read_time||5;
+            document.getElementById('postCover').value=post.cover_image||'';
+            document.getElementById('postContent').value=post.content||'';
+            document.getElementById('deleteBtn').style.display='inline-block';
+            document.getElementById('listView').style.display='none';
+            document.getElementById('editorView').style.display='block';
+        };
+
+        async function savePost(status){
+            const title=document.getElementById('postTitle').value.trim();
+            if(!title){alert('Please enter a title.');return;}
+            const slug=title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+            const data={
+                title:title,
+                slug:slug,
+                excerpt:document.getElementById('postExcerpt').value.trim(),
+                category:document.getElementById('postCategory').value,
+                author:document.getElementById('postAuthor').value.trim()||'WIB Team',
+                read_time:parseInt(document.getElementById('postReadTime').value)||5,
+                cover_image:document.getElementById('postCover').value.trim(),
+                content:document.getElementById('postContent').value,
+                status:status,
+                updated_at:serverTimestamp()
+            };
+            if(status==='published'&&!currentPostId)data.published_at=serverTimestamp();
+            if(!currentPostId){data.created_at=serverTimestamp();data.published_at=data.published_at||serverTimestamp();}
+
+            try{
+                const id=currentPostId||slug;
+                if(currentPostId){await updateDoc(doc(db,"blog_posts",id),data);}
+                else{await setDoc(doc(db,"blog_posts",id),data);}
+                const el=document.getElementById('successMsg');
+                el.textContent=`Article ${status==='published'?'published':'saved as draft'} successfully.`;
+                el.style.display='block';
+                setTimeout(()=>el.style.display='none',3000);
+                await loadPosts();
+                showList();
+            }catch(e){
+                const el=document.getElementById('errorMsg');
+                el.textContent='Error: '+e.message;
+                el.style.display='block';
+            }
+        }
+
+        document.getElementById('publishBtn').addEventListener('click',()=>savePost('published'));
+        document.getElementById('draftBtn').addEventListener('click',()=>savePost('draft'));
+
+        window.deletePost=async function(id,title){
+            if(!confirm(`Delete "${title}"?`))return;
+            try{await deleteDoc(doc(db,"blog_posts",id));await loadPosts();
+            const el=document.getElementById('successMsg');el.textContent='Article deleted.';el.style.display='block';setTimeout(()=>el.style.display='none',3000);}catch(e){alert('Error: '+e.message);}
+        };
+    </script>
+</body>
+</html>

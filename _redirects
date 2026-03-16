@@ -4,6 +4,9 @@
 /contact    /contact.html   200
 /connect    /connect.html   200
 /compare    /compare.html   200
+/blog       /blog.html      200
+/blog-post  /blog-post.html 200
+/blog-editor /blog-editor.html 200
 /school-detail  /school-detail.html  200
 /college-detail /college-detail.html 200
 /admin-dashboard /admin-dashboard.html 200
