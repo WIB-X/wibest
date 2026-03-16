@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — WIB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{--navy:#0F172A;--navy-light:#1E293B;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-300:#CBD5E1;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--white:#FFF;--radius-lg:14px;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+        .nav-top{display:flex;align-items:center;justify-content:space-between;padding:12px 48px;background:var(--white);border-bottom:1px solid var(--slate-200);position:sticky;top:0;z-index:100;}
+        .logo{text-decoration:none;display:flex;align-items:center;}.logo-img{height:68px;width:auto;}
+        .nav-links{display:flex;gap:28px;align-items:center;}.nav-links a{text-decoration:none;color:var(--slate-600);font-weight:500;font-size:14px;}.nav-links a:hover{color:var(--navy);}
+        .btn-nav{background:var(--navy);color:var(--white);padding:9px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;}
+
+        .bc{padding:12px 48px;font-size:12px;color:var(--slate-400);border-bottom:1px solid var(--slate-100);}.bc a{color:var(--blue);text-decoration:none;font-weight:500;}.bc span{margin:0 6px;}
+
+        .article-header{max-width:740px;margin:0 auto;padding:48px 24px 32px;text-align:center;}
+        .article-meta{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:16px;}
+        .article-tag{padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;background:var(--blue-50);color:var(--blue-dark);}
+        .article-date{font-size:12px;color:var(--slate-400);font-weight:500;}
+        .article-header h1{font-size:36px;font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-0.02em;margin-bottom:14px;}
+        .article-header .excerpt{font-size:17px;color:var(--slate-500);line-height:1.7;}
+        .article-author{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:20px;}
+        .author-avatar{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px;font-weight:700;}
+        .author-name{font-size:13px;font-weight:600;color:var(--navy);}
+        .author-role{font-size:11px;color:var(--slate-400);}
+
+        .article-cover{max-width:900px;margin:0 auto;padding:0 24px;}
+        .article-cover img{width:100%;border-radius:var(--radius-lg);object-fit:cover;max-height:440px;}
+
+        .article-body{max-width:740px;margin:0 auto;padding:40px 24px 64px;}
+        .article-content{font-size:16px;color:var(--slate-700);line-height:1.85;}
+        .article-content h2{font-size:24px;font-weight:800;color:var(--navy);margin:36px 0 14px;letter-spacing:-0.02em;}
+        .article-content h3{font-size:19px;font-weight:700;color:var(--navy);margin:28px 0 10px;}
+        .article-content p{margin-bottom:18px;}
+        .article-content ul,.article-content ol{margin:0 0 18px 24px;}
+        .article-content li{margin-bottom:8px;}
+        .article-content blockquote{border-left:3px solid var(--blue);padding:12px 20px;margin:20px 0;background:var(--slate-50);border-radius:0 8px 8px 0;font-style:italic;color:var(--slate-600);}
+        .article-content a{color:var(--blue);text-decoration:none;font-weight:500;}.article-content a:hover{text-decoration:underline;}
+        .article-content strong{color:var(--navy);font-weight:700;}
+        .article-content img{width:100%;border-radius:10px;margin:20px 0;}
+        .article-content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+        .article-content th,.article-content td{padding:10px 14px;border:1px solid var(--slate-200);text-align:left;}
+        .article-content th{background:var(--slate-50);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:var(--slate-500);}
+
+        .article-footer{max-width:740px;margin:0 auto;padding:0 24px 48px;}
+        .share-section{border-top:1px solid var(--slate-200);padding-top:24px;display:flex;align-items:center;justify-content:space-between;}
+        .share-label{font-size:13px;font-weight:600;color:var(--slate-500);}
+        .share-links{display:flex;gap:10px;}
+        .share-btn{padding:8px 16px;border:1px solid var(--slate-200);border-radius:8px;font-size:12px;font-weight:600;color:var(--slate-600);text-decoration:none;transition:all 0.15s;}
+        .share-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-50);}
+
+        .related-section{max-width:740px;margin:0 auto;padding:0 24px 64px;}
+        .related-section h2{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:16px;}
+        .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        .related-card{background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;padding:18px;text-decoration:none;color:inherit;transition:all 0.15s;}
+        .related-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+        .related-card .r-tag{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+        .related-card .r-title{font-size:15px;font-weight:700;color:var(--navy);line-height:1.3;}
+
+        .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:24px;}
+        .back-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+
+        .loading-container{text-align:center;padding:100px;}.spinner{width:32px;height:32px;border:2.5px solid var(--slate-200);border-top-color:var(--blue);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 14px;}@keyframes spin{to{transform:rotate(360deg);}}
+        .footer{background:var(--navy);color:var(--slate-500);text-align:center;padding:28px;font-size:13px;}
+
+        .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}.hamburger svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2;}.mobile-menu{display:none;position:fixed;inset:0;background:var(--white);z-index:200;padding:20px;flex-direction:column;}.mobile-menu.open{display:flex;}.mobile-menu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}.mobile-menu-close{background:none;border:none;cursor:pointer;padding:4px;}.mobile-menu-close svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2;}.mobile-menu a{display:block;padding:14px 0;font-size:18px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--slate-100);}.mobile-menu a:hover{color:var(--blue);}@media(max-width:768px){.hamburger{display:block;}.logo-img{height:48px;}.btn-nav{padding:7px 14px;font-size:12px;}.nav-cat{padding:8px 10px;font-size:12px;}.nav-top{padding:10px 20px;}.nav-links{display:none;}.bc{padding:10px 20px;}.article-header{padding:32px 16px 24px;}.article-header h1{font-size:26px;}.article-body{padding:28px 16px 48px;}.related-grid{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <nav class="nav-top"><a href="index.html" class="logo"><img src="logo.png" alt="WIB" class="logo-img"></a><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div><button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="compare.html" class="btn-nav">Compare</a></nav>
+    <div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-top"><a href="index.html" class="logo"><img src="logo.png" alt="WIB" class="logo-img" style="height:48px;"></a><button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html">Home</a><a href="schools.html">Schools</a><a href="colleges.html">Colleges</a><a href="compare.html">Compare</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="connect.html">Connect</a></div>
+
+    <div id="pageContent"><div class="loading-container"><div class="spinner"></div><p style="color:var(--slate-400);font-size:14px;">Loading article...</p></div></div>
+
+    <footer class="footer">WIB &mdash; Independent. Data-driven.</footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, getDoc, collection, getDocs, query, where, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        const fc={apiKey:"AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",authDomain:"wibest-449fe.firebaseapp.com",projectId:"wibest-449fe",storageBucket:"wibest-449fe.firebasestorage.app",messagingSenderId:"438027122345",appId:"1:438027122345:web:70b5427de9bf0a74f51bb8"};
+        const db=getFirestore(initializeApp(fc));
+
+        function formatDate(ts){if(!ts)return'';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});}
+
+        function render(post){
+            document.title=`${post.title} — WIB Blog`;
+
+            // Add JSON-LD
+            const ld=document.createElement('script');
+            ld.type='application/ld+json';
+            ld.textContent=JSON.stringify({
+                "@context":"https://schema.org","@type":"Article",
+                "headline":post.title,
+                "description":post.excerpt||'',
+                "author":{"@type":"Person","name":post.author||'WIB Team'},
+                "publisher":{"@type":"Organization","name":"WIB","url":"https://wibest.in"},
+                "datePublished":post.published_at?new Date(post.published_at.seconds*1000).toISOString():'',
+                "url":`https://wibest.in/blog-post?id=${post.id}`
+            });
+            document.head.appendChild(ld);
+
+            // Add meta
+            const metaDesc=document.createElement('meta');
+            metaDesc.name='description';metaDesc.content=post.excerpt||post.title;
+            document.head.appendChild(metaDesc);
+
+            const shareUrl=encodeURIComponent(`https://wibest.in/blog-post?id=${post.id}`);
+            const shareTitle=encodeURIComponent(post.title);
+
+            document.getElementById('pageContent').innerHTML=`
+                <div class="bc"><a href="index.html">Home</a><span>/</span><a href="blog.html">Blog</a><span>/</span>${post.title}</div>
+
+                <div class="article-header">
+                    <div class="article-meta">
+                        <span class="article-tag">${post.category||'General'}</span>
+                        <span class="article-date">${formatDate(post.published_at||post.created_at)}</span>
+                        ${post.read_time?`<span class="article-date">${post.read_time} min read</span>`:''}
+                    </div>
+                    <h1>${post.title}</h1>
+                    ${post.excerpt?`<p class="excerpt">${post.excerpt}</p>`:''}
+                    <div class="article-author">
+                        <div class="author-avatar">${(post.author||'W')[0].toUpperCase()}</div>
+                        <div><div class="author-name">${post.author||'WIB Team'}</div><div class="author-role">WIB Editorial</div></div>
+                    </div>
+                </div>
+
+                ${post.cover_image?`<div class="article-cover"><img src="${post.cover_image}" alt="${post.title}"></div>`:''}
+
+                <div class="article-body">
+                    <div class="article-content">${post.content||'<p>Article content not available.</p>'}</div>
+                </div>
+
+                <div class="article-footer">
+                    <div class="share-section">
+                        <span class="share-label">Share this article</span>
+                        <div class="share-links">
+                            <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}" target="_blank" class="share-btn">Twitter</a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}" target="_blank" class="share-btn">LinkedIn</a>
+                            <a href="https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}" target="_blank" class="share-btn">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="related-section">
+                    <h2>More from WIB</h2>
+                    <div class="related-grid" id="relatedGrid"></div>
+                    <div style="text-align:center;margin-top:20px;"><a href="blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>All articles</a></div>
+                </div>
+            `;
+
+            loadRelated(post.id, post.category);
+        }
+
+        async function loadRelated(currentId, category){
+            try{
+                const snap=await getDocs(collection(db,"blog_posts"));
+                const posts=[];snap.forEach(d=>{if(d.id!==currentId)posts.push({id:d.id,...d.data()});});
+                const related=posts.filter(p=>p.status==='published').slice(0,2);
+                const grid=document.getElementById('relatedGrid');
+                if(!related.length){grid.innerHTML='<p style="color:var(--slate-400);font-size:13px;">No related articles yet.</p>';return;}
+                grid.innerHTML=related.map(p=>`<a href="blog-post.html?id=${p.id}" class="related-card"><div class="r-tag">${p.category||'General'}</div><div class="r-title">${p.title}</div></a>`).join('');
+            }catch(e){console.error(e);}
+        }
+
+        (async()=>{
+            const id=new URLSearchParams(window.location.search).get('id');
+            if(!id){document.getElementById('pageContent').innerHTML='<div class="loading-container"><p style="color:var(--slate-400);">No article selected. <a href="blog.html" style="color:var(--blue);">Browse all articles</a></p></div>';return;}
+            try{
+                const snap=await getDoc(doc(db,"blog_posts",id));
+                if(snap.exists())render({id:snap.id,...snap.data()});
+                else document.getElementById('pageContent').innerHTML='<div class="loading-container"><p style="color:var(--slate-400);">Article not found. <a href="blog.html" style="color:var(--blue);">Browse all articles</a></p></div>';
+            }catch(e){document.getElementById('pageContent').innerHTML=`<div class="loading-container"><p style="color:var(--slate-400);">${e.message}</p></div>`;}
+        })();
+    </script>
+</body>
+</html>

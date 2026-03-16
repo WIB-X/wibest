@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — WIB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{--navy:#0F172A;--navy-light:#1E293B;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-300:#CBD5E1;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--green:#16A34A;--green-50:#F0FDF4;--white:#FFF;--radius-lg:14px;}
+        *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;}
+        .nav-top{display:flex;align-items:center;justify-content:space-between;padding:12px 48px;background:var(--white);border-bottom:1px solid var(--slate-200);position:sticky;top:0;z-index:100;}.logo{text-decoration:none;display:flex;align-items:center;}.logo-img{height:68px;width:auto;}.nav-links{display:flex;gap:28px;align-items:center;}.nav-links a{text-decoration:none;color:var(--slate-600);font-weight:500;font-size:14px;}.nav-links a:hover,.nav-links a.active{color:var(--navy);}.btn-nav{background:var(--navy);color:var(--white);padding:9px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;}
+        .nav-categories{display:flex;gap:0;padding:0 48px;background:var(--slate-50);border-bottom:1px solid var(--slate-200);overflow-x:auto;scrollbar-width:none;}.nav-categories::-webkit-scrollbar{display:none;}.nav-cat{text-decoration:none;color:var(--slate-500);font-weight:500;font-size:13px;padding:10px 16px;white-space:nowrap;border-bottom:2px solid transparent;}.nav-cat:hover{color:var(--navy);}.nav-cat-soon{font-size:10px;font-weight:700;color:var(--slate-400);background:var(--slate-200);padding:1px 6px;border-radius:4px;margin-left:6px;}
+        .hero{background:var(--navy);padding:56px 48px;text-align:center;color:var(--white);}.hero h1{font-size:34px;font-weight:800;margin-bottom:10px;letter-spacing:-0.02em;}.hero p{font-size:16px;color:var(--slate-400);max-width:500px;margin:0 auto;}
+        .content{max-width:820px;margin:0 auto;padding:48px;}
+        .section{margin-bottom:48px;}.section h2{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:14px;letter-spacing:-0.02em;}.section p{font-size:15px;color:var(--slate-600);line-height:1.8;margin-bottom:14px;}
+        .values-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px;}.value-card{background:var(--slate-50);border:1px solid var(--slate-200);border-radius:var(--radius-lg);padding:24px;}.value-card svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:1.8;margin-bottom:12px;}.value-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;}.value-card p{font-size:13px;color:var(--slate-500);margin-bottom:0;line-height:1.6;}
+        .cat-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}.cat-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--slate-50);border-radius:8px;font-size:14px;font-weight:600;color:var(--navy);}.cat-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;}.cat-live{background:var(--green-50);color:var(--green);}.cat-soon{background:var(--slate-100);color:var(--slate-400);}
+        .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}.promise-item{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid var(--slate-200);border-radius:8px;}.promise-item svg{width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px;}.promise-item strong{display:block;font-size:14px;color:var(--navy);margin-bottom:2px;}.promise-item span{font-size:12px;color:var(--slate-500);}
+        .cta-box{text-align:center;margin-top:48px;}.cta-box a{display:inline-block;padding:12px 28px;background:var(--navy);color:var(--white);border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;}
+        .footer{background:var(--navy);color:var(--slate-500);text-align:center;padding:28px;font-size:13px;}
+        .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}.hamburger svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2;}.mobile-menu{display:none;position:fixed;inset:0;background:var(--white);z-index:200;padding:20px;flex-direction:column;}.mobile-menu.open{display:flex;}.mobile-menu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}.mobile-menu-close{background:none;border:none;cursor:pointer;padding:4px;}.mobile-menu-close svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2;}.mobile-menu a{display:block;padding:14px 0;font-size:18px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--slate-100);}.mobile-menu a:hover{color:var(--blue);}@media(max-width:768px){.hamburger{display:block;}.logo-img{height:48px;}.btn-nav{padding:7px 14px;font-size:12px;}.nav-cat{padding:8px 10px;font-size:12px;}.nav-top{padding:10px 20px;}.nav-links{display:none;}.hero{padding:36px 20px;}.hero h1{font-size:26px;}.content{padding:32px 20px;}.values-grid,.cat-list,.promise-grid{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <nav class="nav-top"><a href="index.html" class="logo"><img src="logo.png" alt="WIB" class="logo-img"></a><div class="nav-links"><a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="contact.html">Contact</a><a href="connect.html">Connect</a></div><button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a href="compare.html" class="btn-nav">Explore</a></nav>
+    <div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-top"><a href="index.html" class="logo"><img src="logo.png" alt="WIB" class="logo-img" style="height:48px;"></a><button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html">Home</a><a href="schools.html">Schools</a><a href="colleges.html">Colleges</a><a href="compare.html">Compare</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="connect.html">Connect</a></div>
+    <div class="nav-categories"><a href="schools.html" class="nav-cat">Schools</a><a href="colleges.html" class="nav-cat">Colleges</a><a href="#" class="nav-cat">Electronics<span class="nav-cat-soon">SOON</span></a><a href="#" class="nav-cat">Cars & Bikes<span class="nav-cat-soon">SOON</span></a><a href="#" class="nav-cat">Places<span class="nav-cat-soon">SOON</span></a><a href="#" class="nav-cat">Travel<span class="nav-cat-soon">SOON</span></a><a href="#" class="nav-cat">Restaurants<span class="nav-cat-soon">SOON</span></a></div>
+    <section class="hero"><h1>About WIB</h1><p>India's unified comparison platform. One destination for every comparison you need.</p></section>
+    <div class="content">
+        <div class="section"><h2>Our mission</h2><p>WIB was built to solve a simple problem: there is no single place in India where you can compare everything that matters — schools, colleges, electronics, cars, places to live — with consistent, verified data.</p><p>We are building that platform. Data-driven. Independent.</p></div>
+        <div class="section"><h2>What sets us apart</h2>
+            <div class="values-grid">
+                <div class="value-card"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><h3>Data-driven</h3><p>Every comparison backed by verified data, expert scores, and community reviews.</p></div>
+                <div class="value-card"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg><h3>Zero ads</h3><p>No sponsored results. No paid placements. Rankings determined by data alone.</p></div>
+                <div class="value-card"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3>Built for India</h3><p>Designed for Indian context — boards, budgets, cities, and choices that matter here.</p></div>
+            </div>
+        </div>
+        <div class="section"><h2>Categories</h2><p>We are building WIB one category at a time, ensuring data quality before expanding.</p>
+            <div class="cat-list">
+                <div class="cat-item">Schools<span class="cat-badge cat-live">LIVE</span></div>
+                <div class="cat-item">Colleges<span class="cat-badge cat-live">LIVE</span></div>
+                <div class="cat-item">Electronics<span class="cat-badge cat-soon">SOON</span></div>
+                <div class="cat-item">Cars & Bikes<span class="cat-badge cat-soon">SOON</span></div>
+                <div class="cat-item">Places to Live<span class="cat-badge cat-soon">SOON</span></div>
+                <div class="cat-item">Travel & Hotels<span class="cat-badge cat-soon">SOON</span></div>
+                <div class="cat-item">Restaurants<span class="cat-badge cat-soon">SOON</span></div>
+                <div class="cat-item">Healthcare<span class="cat-badge cat-soon">SOON</span></div>
+            </div>
+        </div>
+        <div class="section"><h2>Our promise</h2>
+            <div class="promise-grid">
+                <div class="promise-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Verified data</strong><span>Every piece of information verified before publishing.</span></div></div>
+                <div class="promise-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>No sponsored content</strong><span>Listings never influenced by money or partnerships.</span></div></div>
+                <div class="promise-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Community-driven</strong><span>Real reviews from people with first-hand experience.</span></div></div>
+                <div class="promise-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Always improving</strong><span>New categories, better data, more features — constantly.</span></div></div>
+            </div>
+        </div>
+        <div class="cta-box"><a href="schools.html">Explore Schools</a></div>
+    </div>
+    <footer class="footer">WIB &mdash; Independent. Data-driven.</footer>
+</body>
+</html>
