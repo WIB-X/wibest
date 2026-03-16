@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://wibest.in/sitemap.xml
