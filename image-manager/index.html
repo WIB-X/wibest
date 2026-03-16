@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIB — School Image Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{--navy:#0F172A;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-300:#CBD5E1;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--green:#16A34A;--green-100:#DCFCE7;--red:#DC2626;--red-100:#FEE2E2;--white:#FFF;--radius:10px;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--slate-50);line-height:1.6;-webkit-font-smoothing:antialiased;}
+        .header{background:var(--navy);padding:20px 32px;color:var(--white);display:flex;align-items:center;justify-content:space-between;}
+        .header h1{font-size:18px;font-weight:700;letter-spacing:-0.01em;}
+        .header a{color:var(--slate-400);text-decoration:none;font-size:13px;}
+        .container{max-width:900px;margin:0 auto;padding:32px;}
+
+        .step{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+        .step-label{font-size:11px;font-weight:700;color:var(--slate-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
+        .step h2{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px;}
+        .step p{font-size:13px;color:var(--slate-500);margin-bottom:14px;line-height:1.6;}
+
+        select,input,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--slate-200);border-radius:8px;font-family:inherit;font-size:13px;color:var(--navy);margin-bottom:10px;}
+        select:focus,input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,0.1);}
+        select{appearance:none;cursor:pointer;background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px;}
+
+        .btn{padding:10px 20px;border:none;border-radius:8px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;transition:all 0.2s;}
+        .btn-primary{background:var(--navy);color:var(--white);}.btn-primary:hover{background:var(--slate-600);}
+        .btn-blue{background:var(--blue);color:var(--white);}.btn-blue:hover{background:var(--blue-dark);}
+        .btn-red{background:var(--red);color:var(--white);font-size:11px;padding:6px 12px;}
+        .btn:disabled{opacity:0.5;cursor:not-allowed;}
+
+        .images-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+        .img-card{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:var(--slate-100);border:1px solid var(--slate-200);}
+        .img-card img{width:100%;height:100%;object-fit:cover;}
+        .img-card .remove-btn{position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:6px;background:rgba(0,0,0,0.6);color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;}
+        .img-card .remove-btn:hover{background:var(--red);}
+
+        .add-url-row{display:flex;gap:8px;margin-bottom:12px;}
+        .add-url-row input{margin-bottom:0;flex:1;}
+
+        .msg{padding:12px 16px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:12px;display:none;}
+        .msg-success{background:var(--green-100);color:var(--green);}
+        .msg-error{background:var(--red-100);color:var(--red);}
+
+        .current-images{margin-bottom:16px;}
+        .current-label{font-size:12px;font-weight:600;color:var(--slate-500);margin-bottom:8px;}
+
+        .instructions{background:var(--blue-50);border:1px solid var(--blue);border-radius:var(--radius);padding:18px;margin-bottom:20px;}
+        .instructions h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+        .instructions ol{font-size:13px;color:var(--slate-600);padding-left:18px;line-height:1.8;}
+
+        .school-count{font-size:12px;color:var(--slate-400);margin-top:4px;}
+        .preview-img{max-width:200px;max-height:150px;border-radius:8px;margin-top:8px;display:none;border:1px solid var(--slate-200);}
+
+        .loading{text-align:center;padding:40px;color:var(--slate-400);font-size:14px;}
+        .spinner{width:28px;height:28px;border:2.5px solid var(--slate-200);border-top-color:var(--blue);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 10px;}
+        @keyframes spin{to{transform:rotate(360deg);}}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>School Image Manager</h1>
+        <a href="/">Back to WIB</a>
+    </div>
+
+    <div class="container">
+        <div class="instructions">
+            <h3>How to add school photos</h3>
+            <ol>
+                <li>Select a school from the dropdown below</li>
+                <li>Open Google Images in another tab and search for the school name</li>
+                <li>Right-click on a good image and select <strong>"Copy image address"</strong></li>
+                <li>Paste the URL in the box below and click "Add Image"</li>
+                <li>Repeat for 2-3 images per school</li>
+                <li>Click "Save Images" to update the school page</li>
+            </ol>
+        </div>
+
+        <!-- Step 1: Select School -->
+        <div class="step">
+            <div class="step-label">Step 1</div>
+            <h2>Select a school</h2>
+            <select id="schoolSelect">
+                <option value="">Loading schools...</option>
+            </select>
+            <div class="school-count" id="schoolCount"></div>
+        </div>
+
+        <!-- Step 2: Manage Images -->
+        <div class="step" id="imageManager" style="display:none;">
+            <div class="step-label">Step 2</div>
+            <h2>Manage images for: <span id="selectedSchoolName"></span></h2>
+
+            <!-- Current images -->
+            <div class="current-images" id="currentImagesSection">
+                <div class="current-label">Current images</div>
+                <div class="images-grid" id="currentImages"></div>
+            </div>
+
+            <!-- Add new image -->
+            <div class="current-label">Add new image</div>
+            <div class="add-url-row">
+                <input type="text" id="imageUrl" placeholder="Paste image URL here (e.g., https://example.com/school-photo.jpg)">
+                <button class="btn btn-blue" id="addBtn" onclick="addImage()">Add</button>
+            </div>
+            <img class="preview-img" id="previewImg">
+
+            <div class="msg msg-success" id="successMsg"></div>
+            <div class="msg msg-error" id="errorMsg"></div>
+
+            <button class="btn btn-primary" id="saveBtn" onclick="saveImages()">Save Images</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loadingState">
+            <div class="spinner"></div>
+            Loading schools from database...
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, getDocs, doc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const fc = { apiKey: "AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo", authDomain: "wibest-449fe.firebaseapp.com", projectId: "wibest-449fe", storageBucket: "wibest-449fe.firebasestorage.app", messagingSenderId: "438027122345", appId: "1:438027122345:web:70b5427de9bf0a74f51bb8" };
+        const db = getFirestore(initializeApp(fc));
+
+        let allSchools = [];
+        let currentSchool = null;
+        let currentImages = [];
+
+        // Load all schools
+        async function loadSchools() {
+            try {
+                const q = query(collection(db, "items"), where("category", "==", "schools"));
+                const snap = await getDocs(q);
+                allSchools = [];
+                snap.forEach(d => allSchools.push({ id: d.id, ...d.data() }));
+                allSchools.sort((a, b) => a.name.localeCompare(b.name));
+
+                const select = document.getElementById('schoolSelect');
+                select.innerHTML = '<option value="">-- Select a school --</option>';
+                allSchools.forEach(s => {
+                    const imgCount = (s.gallery_images || s.images || []).length;
+                    const badge = imgCount > 0 ? ` (${imgCount} images)` : ' (no images)';
+                    select.innerHTML += `<option value="${s.id}">${s.name} — ${(s.city || '').charAt(0).toUpperCase() + (s.city || '').slice(1)}${badge}</option>`;
+                });
+
+                document.getElementById('schoolCount').textContent = `${allSchools.length} schools loaded`;
+                document.getElementById('loadingState').style.display = 'none';
+            } catch (e) {
+                document.getElementById('loadingState').innerHTML = `<p style="color:var(--red);">Error: ${e.message}</p>`;
+            }
+        }
+
+        // School selection change
+        document.getElementById('schoolSelect').addEventListener('change', function () {
+            const id = this.value;
+            if (!id) {
+                document.getElementById('imageManager').style.display = 'none';
+                return;
+            }
+
+            currentSchool = allSchools.find(s => s.id === id);
+            currentImages = [...(currentSchool.gallery_images || currentSchool.images || [])];
+
+            document.getElementById('selectedSchoolName').textContent = currentSchool.name;
+            document.getElementById('imageManager').style.display = 'block';
+            document.getElementById('successMsg').style.display = 'none';
+            document.getElementById('errorMsg').style.display = 'none';
+
+            renderCurrentImages();
+        });
+
+        // Render current images
+        window.renderCurrentImages = function () {
+            const container = document.getElementById('currentImages');
+            if (currentImages.length === 0) {
+                container.innerHTML = '<p style="font-size:13px;color:var(--slate-400);padding:16px 0;">No images added yet.</p>';
+                return;
+            }
+            container.innerHTML = currentImages.map((url, i) => `
+                <div class="img-card">
+                    <img src="${url}" alt="School photo ${i + 1}" onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--red);font-size:12px;padding:8px;text-align:center;\\'>Broken image URL</div>'">
+                    <button class="remove-btn" onclick="removeImage(${i})" title="Remove image">&times;</button>
+                </div>
+            `).join('');
+        };
+
+        // Add image
+        window.addImage = function () {
+            const urlInput = document.getElementById('imageUrl');
+            const url = urlInput.value.trim();
+
+            if (!url) { showError('Please paste an image URL.'); return; }
+            if (!url.startsWith('http')) { showError('URL must start with http:// or https://'); return; }
+            if (currentImages.includes(url)) { showError('This image is already added.'); return; }
+            if (currentImages.length >= 6) { showError('Maximum 6 images per school.'); return; }
+
+            currentImages.push(url);
+            urlInput.value = '';
+            document.getElementById('previewImg').style.display = 'none';
+            renderCurrentImages();
+            showSuccess('Image added. Click "Save Images" to update the school page.');
+        };
+
+        // Remove image
+        window.removeImage = function (index) {
+            currentImages.splice(index, 1);
+            renderCurrentImages();
+            showSuccess('Image removed. Click "Save Images" to update.');
+        };
+
+        // Save images to Firestore
+        window.saveImages = async function () {
+            if (!currentSchool) return;
+
+            const btn = document.getElementById('saveBtn');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+
+            try {
+                await updateDoc(doc(db, "items", currentSchool.id), {
+                    gallery_images: currentImages,
+                    images: currentImages,
+                    updated_at: new Date()
+                });
+
+                // Update local data
+                currentSchool.gallery_images = [...currentImages];
+                currentSchool.images = [...currentImages];
+
+                // Update dropdown label
+                const select = document.getElementById('schoolSelect');
+                const option = select.querySelector(`option[value="${currentSchool.id}"]`);
+                if (option) {
+                    const badge = currentImages.length > 0 ? ` (${currentImages.length} images)` : ' (no images)';
+                    option.textContent = `${currentSchool.name} — ${(currentSchool.city || '').charAt(0).toUpperCase() + (currentSchool.city || '').slice(1)}${badge}`;
+                }
+
+                showSuccess(`Saved ${currentImages.length} images for ${currentSchool.name}. Changes are live on the website.`);
+            } catch (e) {
+                showError('Error saving: ' + e.message);
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Save Images';
+        };
+
+        // Preview on paste
+        document.getElementById('imageUrl').addEventListener('input', function () {
+            const url = this.value.trim();
+            const preview = document.getElementById('previewImg');
+            if (url && url.startsWith('http')) {
+                preview.src = url;
+                preview.style.display = 'block';
+                preview.onerror = () => { preview.style.display = 'none'; };
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        function showSuccess(msg) {
+            const el = document.getElementById('successMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            document.getElementById('errorMsg').style.display = 'none';
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            document.getElementById('successMsg').style.display = 'none';
+        }
+
+        loadSchools();
+    </script>
+</body>
+</html>
