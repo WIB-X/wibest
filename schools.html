@@ -400,7 +400,7 @@
     <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",
@@ -553,7 +553,8 @@
         // Load schools from Firestore
         async function loadSchools() {
             try {
-                const querySnapshot = await getDocs(collection(db, "schools"));
+                const q = query(collection(db, "items"), where("category", "==", "schools"));
+                const querySnapshot = await getDocs(q);
                 allSchools = [];
                 querySnapshot.forEach(doc => {
                     allSchools.push({ id: doc.id, ...doc.data() });
