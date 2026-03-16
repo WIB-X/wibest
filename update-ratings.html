@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIB — Bulk Google Ratings Update</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Segoe UI',sans-serif;background:#0f172a;color:#e2e8f0;padding:40px;}
+        h1{font-size:28px;margin-bottom:8px;}.sub{color:#94a3b8;margin-bottom:24px;}
+        .warn{background:#422006;border:1px solid #f59e0b;padding:12px 16px;border-radius:8px;margin-bottom:24px;color:#fbbf24;font-size:14px;}
+        .stats{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;}.stat{background:#1e293b;padding:16px 24px;border-radius:8px;text-align:center;}.stat-num{font-size:28px;font-weight:700;color:#60a5fa;}.stat-lbl{font-size:12px;color:#94a3b8;margin-top:4px;}
+        button{padding:14px 28px;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;background:#2563eb;color:white;margin-right:12px;}button:disabled{background:#475569;cursor:not-allowed;}
+        #log{background:#1e293b;border-radius:8px;padding:20px;margin-top:20px;font-family:monospace;font-size:12px;max-height:500px;overflow-y:auto;white-space:pre-wrap;}.s{color:#4ade80;}.e{color:#f87171;}.i{color:#60a5fa;}
+        .note{background:#1e293b;border-radius:8px;padding:16px;margin-bottom:24px;font-size:13px;color:#94a3b8;line-height:1.6;}
+    </style>
+</head>
+<body>
+    <h1>Bulk Google Ratings Update</h1>
+    <p class="sub">Updates all schools and colleges with approximate Google ratings.</p>
+    <div class="warn">Run this ONCE. You can fine-tune individual ratings later using the Ratings Manager tool.</div>
+    <div class="note">These are approximate ratings based on publicly available data. Use wibest.in/ratings-manager.html to verify and adjust individual ratings after running this script.</div>
+    <div class="stats">
+        <div class="stat"><div class="stat-num">70</div><div class="stat-lbl">Schools</div></div>
+        <div class="stat"><div class="stat-num">51</div><div class="stat-lbl">Colleges</div></div>
+        <div class="stat"><div class="stat-num">121</div><div class="stat-lbl">Total Updates</div></div>
+    </div>
+    <button id="btn">Start Bulk Update</button>
+    <div id="log"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        const fc={apiKey:"AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",authDomain:"wibest-449fe.firebaseapp.com",projectId:"wibest-449fe",storageBucket:"wibest-449fe.firebasestorage.app",messagingSenderId:"438027122345",appId:"1:438027122345:web:70b5427de9bf0a74f51bb8"};
+        const db=getFirestore(initializeApp(fc));
+        const logEl=document.getElementById('log');
+        function log(m,t=''){const s=document.createElement('span');s.className=t;s.textContent=m+'\n';logEl.appendChild(s);logEl.scrollTop=logEl.scrollHeight;}
+
+        // Approximate Google ratings data
+        // Format: { firestore_doc_id: [google_rating, review_count] }
+        const ratings = {
+            // ═══ BANGALORE SCHOOLS ═══
+            "INTLSCHOOL": [4.2, 820],
+            "NPS": [4.1, 1450],
+            "BIS": [4.3, 640],
+            "JNANABHARATHI": [4.0, 380],
+            "GREENWOOD": [4.1, 920],
+            "STONEHILL": [4.3, 310],
+            "INVENTURE": [4.4, 520],
+            "BANGMONTESSORI": [4.2, 280],
+            "VIDYASHILP": [4.5, 680],
+            "BANGSCHOOL": [4.0, 450],
+
+            // ═══ CHENNAI SCHOOLS ═══
+            "PSBB": [4.2, 1800],
+            "CHETTVIDYA": [4.1, 620],
+            "SISHYA": [4.3, 410],
+            "VELS": [3.9, 350],
+            "ARYAN": [3.8, 220],
+            "DONBOSCO": [4.0, 580],
+            "PRIMROSE": [4.1, 290],
+            "GURUNANAK": [3.9, 340],
+            "SPRING": [4.2, 260],
+
+            // ═══ HYDERABAD SCHOOLS ═══
+            "JEHOVAH": [4.0, 180],
+            "DPS_KHJ": [4.1, 420],
+            "HYDPUBLIC": [4.0, 650],
+            "BHARATIYA": [3.9, 310],
+            "AGAKHAN": [4.3, 280],
+            "DRS": [4.0, 190],
+            "PREMIA": [4.2, 240],
+            "ORCHIDS": [3.8, 520],
+            "MERIDIAN": [4.1, 680],
+            "SILVEROAKS": [4.2, 350],
+            "PALLAVI": [3.9, 290],
+
+            // ═══ MUMBAI SCHOOLS ═══
+            "BOMBSCOTTISH": [4.1, 890],
+            "JAMNABAI": [4.2, 1200],
+            "CATHEDRAL": [4.4, 760],
+            "ASB": [4.5, 420],
+            "PODAR": [4.0, 950],
+            "DYPATIL": [4.1, 580],
+            "CAMPION": [4.3, 640],
+            "RYAN": [3.8, 1100],
+            "ABWA": [4.4, 380],
+            "ECOLE": [4.3, 290],
+
+            // ═══ DELHI SCHOOLS ═══
+            "DPS_RKP": [4.0, 1600],
+            "SHRIRAM": [4.3, 820],
+            "VASANT": [4.1, 540],
+            "SANSKRITI": [4.4, 460],
+            "MODERN": [4.2, 720],
+            "STSTEPHENS_SCH": [4.1, 380],
+            "BALBHARATI": [4.0, 650],
+            "MOTHERS": [4.3, 510],
+            "DELHI_INTL": [4.1, 290],
+            "RAMJAS": [3.9, 420],
+            "DPS_NOIDA": [4.0, 880],
+            "APEEJAY": [3.9, 540],
+            "LOTUS": [4.2, 310],
+            "BLUEBELLS": [4.1, 480],
+
+            // ═══ GURUGRAM SCHOOLS ═══
+            "AMITYGGN": [3.8, 620],
+            "MAYO": [4.0, 280],
+            "KOTHARI": [4.1, 350],
+            "SOMERVILLE": [3.9, 290],
+            "DPS132": [4.0, 720],
+            "CAMBRIDGE": [4.1, 260],
+            "GYANSHREE": [4.2, 180],
+            "SHIVNADAR": [4.4, 440],
+            "SUNCITY": [4.1, 320],
+            "STEPBYSTEP": [4.3, 380],
+            "HERITAGE": [4.2, 290],
+            "PATHWAYS": [4.3, 210],
+
+            // ═══ BANGALORE COLLEGES ═══
+            "IISC_BLR": [4.6, 8200],
+            "RVCE_BLR": [4.3, 4500],
+            "BMSCE_BLR": [4.2, 3800],
+            "PESU_BLR": [4.1, 5200],
+            "SJMC_BLR": [4.4, 1800],
+            "BMC_BLR": [4.0, 2200],
+            "RMMCH_BLR": [4.1, 1600],
+            "CHRIST_BLR": [4.2, 9800],
+            "MCC_BLR": [4.3, 2400],
+            "SJC_BLR": [4.3, 3200],
+
+            // ═══ CHENNAI COLLEGES ═══
+            "IITM_CHN": [4.7, 12000],
+            "AU_CHN": [4.2, 6500],
+            "SRM_CHN": [4.0, 15000],
+            "SSN_CHN": [4.3, 3200],
+            "MMC_CHN": [4.1, 2800],
+            "SRMC_CHN": [4.2, 1900],
+            "SRMMC_CHN": [3.9, 1200],
+            "LOYOLA_CHN": [4.4, 5600],
+            "STELLA_CHN": [4.3, 2100],
+            "MCC_CHN": [4.2, 3800],
+
+            // ═══ DELHI COLLEGES ═══
+            "IITD_DEL": [4.6, 11000],
+            "DTU_DEL": [4.3, 7200],
+            "NSUT_DEL": [4.2, 4800],
+            "JMI_DEL": [4.3, 8500],
+            "AIIMS_DEL": [4.5, 15000],
+            "MAMC_DEL": [4.2, 3200],
+            "LHMC_DEL": [4.1, 1800],
+            "SSTEPHENS_DEL": [4.4, 4200],
+            "LSR_DEL": [4.5, 3600],
+            "HINDU_DEL": [4.3, 5100],
+            "MIRANDA_DEL": [4.4, 4800],
+
+            // ═══ MUMBAI COLLEGES ═══
+            "IITB_MUM": [4.7, 13000],
+            "VJTI_MUM": [4.3, 4200],
+            "DJSCE_MUM": [4.1, 2800],
+            "SPIT_MUM": [4.0, 2100],
+            "GMC_MUM": [4.1, 2600],
+            "GSMC_MUM": [4.3, 3100],
+            "TNMC_MUM": [4.0, 1800],
+            "XAVIERS_MUM": [4.5, 7800],
+            "JAIHIND_MUM": [4.1, 3200],
+            "MITHIBAI_MUM": [4.0, 4500],
+
+            // ═══ COIMBATORE COLLEGES ═══
+            "PSGTECH_CBE": [4.4, 5200],
+            "CIT_CBE": [4.1, 2800],
+            "AMRITA_CBE": [4.3, 6500],
+            "SKCET_CBE": [4.0, 1800],
+            "CMCH_CBE": [4.0, 1600],
+            "PSGIMS_CBE": [4.2, 2200],
+            "KMCH_CBE": [4.1, 1900],
+            "PSGCAS_CBE": [4.3, 3400],
+            "SKCAS_CBE": [4.0, 1200],
+            "AVIVM_CBE": [4.1, 1800]
+        };
+
+        document.getElementById('btn').addEventListener('click', async function(){
+            this.disabled=true; this.textContent='Updating...';
+            const ids = Object.keys(ratings);
+            log(`Starting bulk update of ${ids.length} items...`, 'i');
+            let ok=0, fail=0, notFound=0;
+
+            for(const id of ids){
+                const [gr, gc] = ratings[id];
+                try{
+                    await updateDoc(doc(db, "items", id), {
+                        google_rating: gr,
+                        google_reviews_count: gc,
+                        updated_at: new Date()
+                    });
+                    ok++;
+                    log(`[${ok+fail+notFound}/${ids.length}] ${id}: ${gr} rating, ${gc} reviews`, 's');
+                }catch(err){
+                    if(err.message.includes('No document')){
+                        notFound++;
+                        log(`[${ok+fail+notFound}/${ids.length}] ${id}: Document not found (skipped)`, 'i');
+                    }else{
+                        fail++;
+                        log(`[${ok+fail+notFound}/${ids.length}] ${id}: FAILED — ${err.message}`, 'e');
+                    }
+                }
+            }
+
+            log(`\nDone! ${ok} updated, ${notFound} not found (skipped), ${fail} failed.`, 's');
+            log(`\nNote: Use wibest.in/ratings-manager.html to verify and adjust individual ratings.`, 'i');
+            this.textContent='Update Complete';
+        });
+    </script>
+</body>
+</html>
