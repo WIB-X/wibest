@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Schools in India — WIBest</title>
+    <meta name="description" content="Compare and find the best schools across India. Filter by city, board, type and more. Real reviews, real data.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #dbeafe;
+            --blue-50: #eff6ff;
+            --ink: #0f172a;
+            --ink-light: #475569;
+            --ink-muted: #94a3b8;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 32px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 48px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .logo span { color: var(--blue); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-light);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+        /* ── Hero Section ── */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-50) 0%, var(--white) 50%, var(--blue-50) 100%);
+            padding: 48px 48px 40px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 em {
+            color: var(--blue);
+            font-style: normal;
+        }
+        .hero p {
+            color: var(--ink-light);
+            font-size: 17px;
+            max-width: 560px;
+            margin: 0 auto 28px;
+        }
+
+        /* ── Filters ── */
+        .filters-bar {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .filter-select {
+            padding: 10px 16px;
+            border: 1.5px solid var(--gray-300);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--white);
+            cursor: pointer;
+            min-width: 160px;
+            transition: border-color 0.2s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .search-input {
+            padding: 10px 16px;
+            border: 1.5px solid var(--gray-300);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--white);
+            min-width: 240px;
+            transition: border-color 0.2s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .search-input::placeholder { color: var(--ink-muted); }
+
+        .results-count {
+            text-align: center;
+            color: var(--ink-muted);
+            font-size: 14px;
+            padding: 12px 0 0;
+        }
+        .results-count strong { color: var(--ink); }
+
+        /* ── School Cards Grid ── */
+        .schools-section {
+            padding: 32px 48px 64px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .school-card {
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+            cursor: pointer;
+        }
+        .school-card:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            padding: 20px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-header::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .card-header h3 {
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .card-header .city-tag {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .card-body { padding: 20px 24px; }
+
+        .card-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        .badge-board {
+            background: var(--blue-light);
+            color: var(--blue-dark);
+        }
+        .badge-type {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+        .badge-gender {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .detail-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--ink-muted);
+            flex-shrink: 0;
+        }
+        .detail-text {
+            font-size: 13px;
+            color: var(--ink-light);
+        }
+        .detail-text strong { color: var(--ink); }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+        .fee-text {
+            font-size: 13px;
+            color: var(--ink-muted);
+        }
+        .fee-text strong {
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .card-link {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.2s;
+        }
+        .card-link:hover { gap: 8px; }
+
+        /* ── Loading ── */
+        .loading-container {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text {
+            color: var(--ink-muted);
+            font-size: 15px;
+        }
+
+        /* ── Empty State ── */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .empty-state .emoji { font-size: 48px; margin-bottom: 16px; }
+        .empty-state h3 { color: var(--ink); margin-bottom: 8px; }
+        .empty-state p { color: var(--ink-muted); }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 32px;
+            font-size: 14px;
+        }
+        .footer strong { color: white; }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 32px 20px; }
+            .hero h1 { font-size: 28px; }
+            .filters-bar { flex-direction: column; align-items: stretch; }
+            .filter-select, .search-input { min-width: 100%; }
+            .schools-section { padding: 24px 20px 48px; }
+            .schools-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><span>WI</span>Best</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="schools.html" class="active">Schools</a>
+            <a href="colleges.html">Colleges</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="schools.html" class="btn-primary">Explore Now →</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Find the <em>best school</em> for your child</h1>
+        <p>Compare schools across India by board, fees, facilities, and parent reviews. Data-driven. Independent. Ad-free.</p>
+
+        <div class="filters-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search school name...">
+            <select class="filter-select" id="cityFilter">
+                <option value="">All Cities</option>
+            </select>
+            <select class="filter-select" id="boardFilter">
+                <option value="">All Boards</option>
+            </select>
+            <select class="filter-select" id="typeFilter">
+                <option value="">All Types</option>
+            </select>
+        </div>
+        <div class="results-count" id="resultsCount"></div>
+    </section>
+
+    <!-- Schools Grid -->
+    <section class="schools-section">
+        <div id="schoolsContainer">
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p class="loading-text">Loading schools from database...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 <strong>WIBest</strong> — India's Comparison Platform. Independent. Ad-free. Always.</p>
+    </footer>
+
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",
+            authDomain: "wibest-449fe.firebaseapp.com",
+            projectId: "wibest-449fe",
+            storageBucket: "wibest-449fe.firebasestorage.app",
+            messagingSenderId: "438027122345",
+            appId: "1:438027122345:web:70b5427de9bf0a74f51bb8",
+            measurementId: "G-BFR8V7605K"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let allSchools = [];
+
+        // Format currency
+        function formatFee(amount) {
+            if (!amount || amount === 'N/A') return 'Contact School';
+            const num = parseInt(amount);
+            if (isNaN(num)) return amount;
+            if (num >= 100000) return '₹' + (num / 100000).toFixed(1) + 'L/yr';
+            if (num >= 1000) return '₹' + (num / 1000).toFixed(0) + 'K/yr';
+            return '₹' + num + '/yr';
+        }
+
+        // Create a school card
+        function createCard(school) {
+            const board = school.board || 'N/A';
+            const type = school.school_type || school.type || 'Day School';
+            const gender = school.gender_type || school.gender || 'Co-ed';
+            const city = school.city || '';
+            const fee = school.fee_tuition || school.fees || school.price || '';
+            const grades = school.grades_offered || school.grades || '';
+            const ratio = school.student_teacher_ratio || '';
+            const established = school.established_year || school.established || '';
+            const transport = school.has_transport ? 'Yes' : 'No';
+
+            return `
+                <div class="school-card">
+                    <div class="card-header">
+                        <h3>${school.name}</h3>
+                        <span class="city-tag">📍 ${city}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-badges">
+                            ${board !== 'N/A' ? `<span class="badge badge-board">${board}</span>` : ''}
+                            <span class="badge badge-type">${type}</span>
+                            <span class="badge badge-gender">${gender}</span>
+                        </div>
+                        <div class="card-details">
+                            ${established ? `
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                <span class="detail-text">Est. <strong>${established}</strong></span>
+                            </div>` : ''}
+                            ${grades ? `
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                <span class="detail-text">Grades: <strong>${Array.isArray(grades) ? grades.join(', ') : grades}</strong></span>
+                            </div>` : ''}
+                            ${ratio ? `
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                <span class="detail-text">Ratio: <strong>${ratio}</strong></span>
+                            </div>` : ''}
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="23 7 16 12 16 2 23 7"/></svg>
+                                <span class="detail-text">Transport: <strong>${transport}</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="fee-text">
+                                ${fee ? `Fees from <strong>${formatFee(fee)}</strong>` : '<span style="color:var(--ink-muted)">Fees: Contact School</span>'}
+                            </div>
+                            <a href="school-detail.html?id=${school.id}" class="card-link">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render schools
+        function renderSchools(schools) {
+            const container = document.getElementById('schoolsContainer');
+            const countEl = document.getElementById('resultsCount');
+
+            if (schools.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="emoji">🔍</div>
+                        <h3>No schools found</h3>
+                        <p>Try changing your filters or search term</p>
+                    </div>
+                `;
+                countEl.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = `<div class="schools-grid">${schools.map(createCard).join('')}</div>`;
+            countEl.innerHTML = `Showing <strong>${schools.length}</strong> school${schools.length !== 1 ? 's' : ''}`;
+        }
+
+        // Populate filter dropdowns
+        function populateFilters(schools) {
+            const cities = [...new Set(schools.map(s => s.city).filter(Boolean))].sort();
+            const boards = [...new Set(schools.map(s => s.board).filter(Boolean))].sort();
+            const types = [...new Set(schools.map(s => s.school_type || s.type).filter(Boolean))].sort();
+
+            const cityFilter = document.getElementById('cityFilter');
+            const boardFilter = document.getElementById('boardFilter');
+            const typeFilter = document.getElementById('typeFilter');
+
+            cities.forEach(c => cityFilter.innerHTML += `<option value="${c}">${c}</option>`);
+            boards.forEach(b => boardFilter.innerHTML += `<option value="${b}">${b}</option>`);
+            types.forEach(t => typeFilter.innerHTML += `<option value="${t}">${t}</option>`);
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+            const city = document.getElementById('cityFilter').value;
+            const board = document.getElementById('boardFilter').value;
+            const type = document.getElementById('typeFilter').value;
+
+            let filtered = allSchools;
+
+            if (search) {
+                filtered = filtered.filter(s => s.name.toLowerCase().includes(search));
+            }
+            if (city) {
+                filtered = filtered.filter(s => s.city === city);
+            }
+            if (board) {
+                filtered = filtered.filter(s => s.board === board);
+            }
+            if (type) {
+                filtered = filtered.filter(s => (s.school_type || s.type) === type);
+            }
+
+            renderSchools(filtered);
+        }
+
+        // Attach filter listeners
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('cityFilter').addEventListener('change', applyFilters);
+        document.getElementById('boardFilter').addEventListener('change', applyFilters);
+        document.getElementById('typeFilter').addEventListener('change', applyFilters);
+
+        // Load schools from Firestore
+        async function loadSchools() {
+            try {
+                const q = query(collection(db, "items"), where("category", "==", "schools"));
+                const querySnapshot = await getDocs(q);
+                allSchools = [];
+                querySnapshot.forEach(doc => {
+                    allSchools.push({ id: doc.id, ...doc.data() });
+                });
+
+                // Sort alphabetically
+                allSchools.sort((a, b) => a.name.localeCompare(b.name));
+
+                populateFilters(allSchools);
+                renderSchools(allSchools);
+            } catch (error) {
+                console.error("Error loading schools:", error);
+                document.getElementById('schoolsContainer').innerHTML = `
+                    <div class="empty-state">
+                        <div class="emoji">⚠️</div>
+                        <h3>Could not load schools</h3>
+                        <p>Error: ${error.message}. Please try refreshing the page.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Start
+        loadSchools();
+    </script>
+
+</body>
+</html>
