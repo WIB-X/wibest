@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIBest — India's Comparison Platform | Find the Best of Everything</title>
+    <meta name="description" content="WIBest is India's first unified comparison platform. Compare schools, colleges, phones, cars, places and more. Independent. Ad-free. Always.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #dbeafe;
+            --blue-50: #eff6ff;
+            --ink: #0f172a;
+            --ink-light: #475569;
+            --ink-muted: #94a3b8;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 32px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        /* ── Navbar ── */
+        .navbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 48px; background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; align-items: center; }
+        .logo-img { height: 52px; width: auto; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--ink-light); font-weight: 500;
+            font-size: 15px; transition: color 0.2s; padding: 4px 8px; border-radius: 6px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+        .btn-primary {
+            background: var(--blue); color: white; padding: 10px 24px; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 14px;
+            transition: background 0.2s, transform 0.1s; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 72px 48px 64px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+            max-width: 1280px; margin: 0 auto;
+            position: relative;
+        }
+        .hero-text .tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--blue-50); color: var(--blue); padding: 6px 16px;
+            border-radius: 24px; font-size: 13px; font-weight: 600;
+            margin-bottom: 24px; border: 1px solid var(--blue-light);
+        }
+        .hero-text .tag::before { content: '●'; font-size: 8px; }
+        .hero-text h1 {
+            font-size: 52px; font-weight: 800; line-height: 1.1;
+            color: var(--ink); margin-bottom: 20px; letter-spacing: -1px;
+        }
+        .hero-text h1 em { color: var(--blue); font-style: normal; }
+        .hero-text p {
+            font-size: 18px; color: var(--ink-light); max-width: 480px;
+            margin-bottom: 32px; line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 16px; align-items: center; }
+        .btn-secondary {
+            padding: 12px 28px; border: 1.5px solid var(--gray-300); border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 15px; color: var(--ink);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--blue); background: var(--blue-50); color: var(--blue); }
+        .btn-hero {
+            padding: 14px 32px; font-size: 16px; border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+        }
+
+        /* ── Search Card ── */
+        .search-card {
+            background: var(--white); border: 1.5px solid var(--gray-200);
+            border-radius: 16px; padding: 32px; box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .search-card-header {
+            background: var(--blue); color: white; padding: 16px 24px;
+            border-radius: 12px; margin: -32px -32px 24px; font-weight: 700; font-size: 18px;
+        }
+        .search-card-header p { font-size: 13px; opacity: 0.85; font-weight: 400; margin-top: 4px; }
+        .search-bar {
+            display: flex; gap: 10px; margin-bottom: 20px;
+        }
+        .search-bar input {
+            flex: 1; padding: 12px 16px; border: 1.5px solid var(--gray-300);
+            border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--ink);
+        }
+        .search-bar input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .search-bar input::placeholder { color: var(--ink-muted); }
+        .search-bar button {
+            padding: 12px 24px; background: var(--blue); color: white; border: none;
+            border-radius: 8px; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
+        }
+        .search-bar button:hover { background: var(--blue-dark); }
+
+        .category-label {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--ink-muted); margin-bottom: 12px;
+        }
+        .category-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px; border: 1.5px solid var(--gray-200); border-radius: 8px;
+            font-size: 13px; font-weight: 600; color: var(--ink); background: var(--white);
+            text-decoration: none; transition: all 0.2s; cursor: pointer;
+        }
+        .chip:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-50); }
+        .chip .emoji { font-size: 14px; }
+        .chip-soon {
+            font-size: 10px; background: var(--gray-100); color: var(--ink-muted);
+            padding: 2px 6px; border-radius: 4px; font-weight: 700;
+        }
+
+        /* ── Stats Bar ── */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--ink) 0%, #1e293b 100%);
+            padding: 32px 48px; display: flex; justify-content: center; gap: 64px;
+            position: relative; overflow: hidden;
+        }
+        .stats-bar::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .stat-item { text-align: center; position: relative; z-index: 1; }
+        .stat-number { font-size: 32px; font-weight: 800; color: white; }
+        .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500; margin-top: 4px; }
+
+        /* ── Featured Section ── */
+        .featured-section {
+            padding: 64px 48px; max-width: 1280px; margin: 0 auto;
+        }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: 32px; font-weight: 800; color: var(--ink); margin-bottom: 12px; }
+        .section-header p { font-size: 16px; color: var(--ink-light); max-width: 500px; margin: 0 auto; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card {
+            background: var(--gray-50); border: 1px solid var(--gray-200);
+            border-radius: var(--radius); padding: 32px; text-align: center;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .feature-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+        .feature-card .emoji { font-size: 40px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: var(--ink-light); line-height: 1.6; }
+
+        /* ── CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            padding: 64px 48px; text-align: center; color: white;
+            position: relative; overflow: hidden;
+        }
+        .cta-section::after { content: ''; position: absolute; top: -80px; right: -80px; width: 250px; height: 250px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+        .cta-section h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; position: relative; z-index: 1; }
+        .cta-section p { font-size: 17px; opacity: 0.9; max-width: 500px; margin: 0 auto 28px; position: relative; z-index: 1; }
+        .btn-white {
+            display: inline-block; padding: 14px 32px; background: white; color: var(--blue);
+            border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px;
+            transition: transform 0.2s; position: relative; z-index: 1;
+        }
+        .btn-white:hover { transform: translateY(-2px); }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--ink); padding: 48px; color: rgba(255,255,255,0.5);
+        }
+        .footer-content {
+            max-width: 1280px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+        }
+        .footer-brand .footer-logo { height: 44px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); }
+        .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 280px; }
+        .footer-col h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+        .footer-col a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1280px; margin: 32px auto 0; padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center; font-size: 13px;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .hero { grid-template-columns: 1fr; padding: 40px 20px; }
+            .hero-text h1 { font-size: 36px; }
+            .search-card { margin-top: 0; }
+            .stats-bar { gap: 32px; padding: 24px 20px; flex-wrap: wrap; }
+            .featured-section { padding: 40px 20px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 40px 20px; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="logo.png" alt="WIBest" class="logo-img"></a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="schools.html">Schools</a>
+            <a href="colleges.html">Colleges</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="schools.html" class="btn-primary">Explore Now →</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <span class="tag">INDIA'S COMPARISON PLATFORM</span>
+            <h1>Find the <em>best</em><br>of <em>everything</em><br>in India.</h1>
+            <p>WIBest is your one destination for every "which is best?" question — schools, colleges, phones, cars, places, and everything in between. Independent. Ad-free. Always.</p>
+            <div class="hero-actions">
+                <a href="schools.html" class="btn-primary btn-hero">Explore Schools →</a>
+                <a href="about.html" class="btn-secondary">All Categories</a>
+            </div>
+        </div>
+        <div class="search-card">
+            <div class="search-card-header">
+                🔍 What are you comparing?
+                <p>Search across schools, phones, cars, places & more</p>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search schools, phones, cities..." id="heroSearch">
+                <button onclick="window.location.href='schools.html'">Search</button>
+            </div>
+            <div class="category-label">BROWSE BY CATEGORY</div>
+            <div class="category-chips">
+                <a href="schools.html" class="chip"><span class="emoji">🎓</span> Schools</a>
+                <a href="colleges.html" class="chip"><span class="emoji">🏛️</span> Colleges</a>
+                <span class="chip"><span class="emoji">📱</span> Phones <span class="chip-soon">SOON</span></span>
+                <span class="chip"><span class="emoji">🚗</span> Cars <span class="chip-soon">SOON</span></span>
+                <span class="chip"><span class="emoji">🏠</span> Places <span class="chip-soon">SOON</span></span>
+                <span class="chip"><span class="emoji">✈️</span> Travel <span class="chip-soon">SOON</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number" id="schoolCount">70+</div>
+            <div class="stat-label">Verified Schools</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Cities Covered</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Categories Planned</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Ads. Ever.</div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="featured-section">
+        <div class="section-header">
+            <h2>Why people trust WIBest</h2>
+            <p>We're building the comparison platform India deserves</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="emoji">📊</div>
+                <h3>Data-Driven</h3>
+                <p>Every school, college, and product is evaluated with real data — fees, facilities, reviews, and expert scores.</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🚫</div>
+                <h3>Zero Ads</h3>
+                <p>No sponsored listings. No paid placements. What you see is what the data says — nothing more, nothing less.</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🔄</div>
+                <h3>Real-Time Updates</h3>
+                <p>Our database is updated in real time. Fees change? Reviews come in? You see it instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">⚖️</div>
+                <h3>Side-by-Side Compare</h3>
+                <p>Pick any two schools, phones, or cars and compare them feature by feature on one screen.</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">⭐</div>
+                <h3>Community Reviews</h3>
+                <p>Real reviews from real parents, students, and users who've been there and done that.</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🇮🇳</div>
+                <h3>Made for India</h3>
+                <p>Built specifically for Indian context — boards, budgets, cities, and the choices that matter here.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to find the best?</h2>
+        <p>Start with schools — our most complete category with 70+ schools across 7 cities.</p>
+        <a href="schools.html" class="btn-white">Explore Schools →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="logo.png" alt="WIBest" class="footer-logo">
+                <p>India's first unified comparison platform. One destination for every "which is best?" question.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <a href="schools.html">Schools</a>
+                <a href="colleges.html">Colleges</a>
+                <a href="#">Phones (Soon)</a>
+                <a href="#">Cars (Soon)</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 <strong style="color:white;">WIBest</strong> — Independent. Ad-free. Always.
+        </div>
+    </footer>
+
+</body>
+</html>
