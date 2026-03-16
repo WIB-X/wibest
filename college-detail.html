@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Details — WIBest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #2563eb; --blue-dark: #1d4ed8; --blue-light: #dbeafe; --blue-50: #eff6ff;
+            --purple: #7c3aed; --purple-dark: #5b21b6;
+            --ink: #0f172a; --ink-light: #475569; --ink-muted: #94a3b8;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
+            --green: #16a34a; --green-light: #f0fdf4;
+            --radius: 12px; --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink); background: var(--gray-50); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .logo { text-decoration: none; display: flex; align-items: center; }
+        .logo-img { height: 36px; width: auto; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--ink-light); font-weight: 500; font-size: 15px; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--blue); }
+        .btn-primary { background: var(--blue); color: white; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+
+        .breadcrumb { padding: 16px 48px; font-size: 14px; color: var(--ink-muted); background: var(--white); border-bottom: 1px solid var(--gray-100); }
+        .breadcrumb a { color: var(--blue); text-decoration: none; }
+
+        .college-hero {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            padding: 48px; color: white; position: relative; overflow: hidden;
+        }
+        .college-hero::after { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: rgba(255,255,255,0.06); border-radius: 50%; }
+        .college-hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; position: relative; z-index: 1; }
+        .hero-city { font-size: 18px; opacity: 0.9; margin-bottom: 20px; position: relative; z-index: 1; }
+        .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
+        .hero-badge { padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; background: rgba(255,255,255,0.15); color: white; }
+
+        .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 32px 48px 64px; display: grid; grid-template-columns: 1fr 360px; gap: 32px; }
+        .main-content { display: flex; flex-direction: column; gap: 24px; }
+
+        .info-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 28px; }
+        .info-card:hover { box-shadow: var(--shadow-md); }
+        .info-card h2 { font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #f3e8ff; display: flex; align-items: center; gap: 10px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .info-item { display: flex; flex-direction: column; gap: 2px; }
+        .info-label { font-size: 12px; font-weight: 600; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-value { font-size: 15px; font-weight: 600; color: var(--ink); }
+
+        .description-text { font-size: 15px; line-height: 1.8; color: var(--ink-light); }
+
+        .sidebar { display: flex; flex-direction: column; gap: 24px; }
+        .sidebar-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 24px; }
+        .sidebar-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--ink); }
+        .fee-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; }
+        .fee-row:last-child { border-bottom: none; }
+        .fee-label { color: var(--ink-light); }
+        .fee-value { font-weight: 700; color: var(--ink); }
+        .contact-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; color: var(--ink-light); }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-item a { color: var(--blue); text-decoration: none; }
+
+        .btn-back { display: inline-flex; align-items: center; gap: 6px; padding: 12px 24px; background: var(--gray-100); color: var(--ink); border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .btn-back:hover { background: var(--gray-200); }
+
+        .loading-container { text-align: center; padding: 120px 20px; grid-column: 1 / -1; }
+        .spinner { width: 40px; height: 40px; border: 3px solid var(--gray-200); border-top-color: var(--purple); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: var(--ink-muted); font-size: 15px; }
+
+        .footer { background: var(--ink); color: rgba(255,255,255,0.6); text-align: center; padding: 32px; font-size: 14px; }
+        .footer strong { color: white; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .breadcrumb { padding: 12px 20px; }
+            .college-hero { padding: 32px 20px; }
+            .college-hero h1 { font-size: 26px; }
+            .content-wrapper { grid-template-columns: 1fr; padding: 20px; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="logo.png" alt="WIBest" class="logo-img"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="schools.html">Schools</a>
+            <a href="colleges.html">Colleges</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="colleges.html" class="btn-primary">Explore Now →</a>
+    </nav>
+
+    <div id="pageContent">
+        <div class="loading-container">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading college details...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 <strong>WIBest</strong> — India's Comparison Platform. Independent. Ad-free. Always.</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",
+            authDomain: "wibest-449fe.firebaseapp.com",
+            projectId: "wibest-449fe",
+            storageBucket: "wibest-449fe.firebasestorage.app",
+            messagingSenderId: "438027122345",
+            appId: "1:438027122345:web:70b5427de9bf0a74f51bb8",
+            measurementId: "G-BFR8V7605K"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        function formatFee(amount) {
+            if (!amount || amount === 'N/A') return 'Contact College';
+            const num = parseInt(amount);
+            if (isNaN(num)) return amount;
+            return '₹' + num.toLocaleString('en-IN');
+        }
+
+        function renderCollege(c) {
+            const type = c.subcategory || c.college_type || c.type || 'University';
+            const city = c.city || '';
+            const state = c.state || '';
+            const established = c.established_year || c.established || '';
+            const stream = c.stream || c.department || '';
+            const accreditation = c.accreditation || '';
+            const placement = c.placement_percentage || c.placements || '';
+            const description = c.long_description || c.description || '';
+            const website = c.website || '';
+            const phone = c.phone || c.contact || '';
+            const email = c.email || '';
+            const address = c.address || '';
+            const feeTuition = c.fee_tuition || c.fees || c.price || '';
+
+            document.title = `${c.name} — WIBest`;
+
+            document.getElementById('pageContent').innerHTML = `
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> → <a href="colleges.html">Colleges</a> → ${c.name}
+                </div>
+
+                <div class="college-hero">
+                    <h1>${c.name}</h1>
+                    <div class="hero-city">📍 ${city}${state ? ', ' + state : ''}, India</div>
+                    <div class="hero-badges">
+                        <span class="hero-badge">${type}</span>
+                        ${stream ? `<span class="hero-badge">${stream}</span>` : ''}
+                        ${established ? `<span class="hero-badge">Est. ${established}</span>` : ''}
+                        ${accreditation ? `<span class="hero-badge">${Array.isArray(accreditation) ? accreditation.join(', ') : accreditation}</span>` : ''}
+                    </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="main-content">
+                        ${description ? `
+                        <div class="info-card">
+                            <h2>📋 About This College</h2>
+                            <p class="description-text">${description}</p>
+                        </div>` : ''}
+
+                        <div class="info-card">
+                            <h2>🎓 Academic Details</h2>
+                            <div class="info-grid">
+                                <div class="info-item"><span class="info-label">Type</span><span class="info-value">${type}</span></div>
+                                ${stream ? `<div class="info-item"><span class="info-label">Stream</span><span class="info-value">${stream}</span></div>` : ''}
+                                ${established ? `<div class="info-item"><span class="info-label">Established</span><span class="info-value">${established}</span></div>` : ''}
+                                ${accreditation ? `<div class="info-item"><span class="info-label">Accreditation</span><span class="info-value">${Array.isArray(accreditation) ? accreditation.join(', ') : accreditation}</span></div>` : ''}
+                                ${placement ? `<div class="info-item"><span class="info-label">Placements</span><span class="info-value">${placement}</span></div>` : ''}
+                            </div>
+                        </div>
+
+                        <a href="colleges.html" class="btn-back">← Back to All Colleges</a>
+                    </div>
+
+                    <div class="sidebar">
+                        <div class="sidebar-card">
+                            <h3>💰 Fee Structure</h3>
+                            <div class="fee-row">
+                                <span class="fee-label">Tuition (Annual)</span>
+                                <span class="fee-value">${feeTuition ? formatFee(feeTuition) : 'Contact College'}</span>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-card">
+                            <h3>📞 Contact Information</h3>
+                            ${address ? `<div class="contact-item"><span>📍</span><span>${address}</span></div>` : ''}
+                            ${phone ? `<div class="contact-item"><span>📱</span><span>${phone}</span></div>` : ''}
+                            ${email ? `<div class="contact-item"><span>✉️</span><a href="mailto:${email}">${email}</a></div>` : ''}
+                            ${website ? `<div class="contact-item"><span>🌐</span><a href="${website}" target="_blank">${website.replace('https://', '').replace('http://', '')}</a></div>` : ''}
+                            ${!address && !phone && !email && !website ? '<p style="color:var(--ink-muted);font-size:14px;">Contact info not yet available</p>' : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function loadCollege() {
+            const params = new URLSearchParams(window.location.search);
+            const collegeId = params.get('id');
+            if (!collegeId) {
+                document.getElementById('pageContent').innerHTML = `<div class="loading-container"><p style="font-size:48px;margin-bottom:16px;">⚠️</p><p class="loading-text">No college selected. <a href="colleges.html" style="color:var(--blue);">Browse all colleges →</a></p></div>`;
+                return;
+            }
+            try {
+                const docRef = doc(db, "items", collegeId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    renderCollege({ id: docSnap.id, ...docSnap.data() });
+                } else {
+                    document.getElementById('pageContent').innerHTML = `<div class="loading-container"><p style="font-size:48px;margin-bottom:16px;">🔍</p><p class="loading-text">College not found. <a href="colleges.html" style="color:var(--blue);">Browse all colleges →</a></p></div>`;
+                }
+            } catch (error) {
+                document.getElementById('pageContent').innerHTML = `<div class="loading-container"><p style="font-size:48px;margin-bottom:16px;">⚠️</p><p class="loading-text">Error: ${error.message}</p></div>`;
+            }
+        }
+
+        loadCollege();
+    </script>
+</body>
+</html>
