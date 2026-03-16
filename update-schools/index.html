@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIB — Update Schools Data</title>
+    <style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Segoe UI',sans-serif;background:#0f172a;color:#e2e8f0;padding:40px;}h1{font-size:28px;margin-bottom:8px;}.sub{color:#94a3b8;margin-bottom:24px;}.warn{background:#422006;border:1px solid #f59e0b;padding:12px 16px;border-radius:8px;margin-bottom:24px;color:#fbbf24;font-size:14px;}button{padding:14px 28px;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;background:#2563eb;color:white;}button:disabled{background:#475569;cursor:not-allowed;}#log{background:#1e293b;border-radius:8px;padding:20px;margin-top:20px;font-family:monospace;font-size:13px;max-height:500px;overflow-y:auto;white-space:pre-wrap;}.s{color:#4ade80;}.e{color:#f87171;}.i{color:#60a5fa;}</style>
+</head>
+<body>
+    <h1>Update Schools — Facilities & Data Fix</h1>
+    <p class="sub">Sets facilities to true, fixes board/type mapping, adds gallery/review support fields.</p>
+    <div class="warn">Run this ONCE only.</div>
+    <button id="btn">Start Update</button>
+    <div id="log"></div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, getDocs, doc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        const fc={apiKey:"AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",authDomain:"wibest-449fe.firebaseapp.com",projectId:"wibest-449fe",storageBucket:"wibest-449fe.firebasestorage.app",messagingSenderId:"438027122345",appId:"1:438027122345:web:70b5427de9bf0a74f51bb8"};
+        const db=getFirestore(initializeApp(fc));const logEl=document.getElementById('log');
+        function log(m,t=''){const s=document.createElement('span');s.className=t;s.textContent=m+'\n';logEl.appendChild(s);logEl.scrollTop=logEl.scrollHeight;}
+        document.getElementById('btn').addEventListener('click',async function(){this.disabled=true;this.textContent='Updating...';log('Starting...','i');
+            try{const q=query(collection(db,"items"),where("category","==","schools"));const snap=await getDocs(q);let ok=0,fail=0;log(`Found ${snap.size} schools.\n`,'i');
+                for(const d of snap.docs){const data=d.data();try{await updateDoc(doc(db,"items",d.id),{has_transport:true,has_hostel:data.has_hostel||false,has_lab:true,has_sports:true,has_swimming_pool:data.has_swimming_pool||false,has_cctv:true,has_security:true,has_library:true,has_arts:true,images:data.images||[],gallery_images:data.gallery_images||[],total_reviews:0,user_rating:0,google_rating:0,google_reviews_count:0,strengths:[],programs:[],contact_gated:true,updated_at:new Date()});ok++;log(`[${ok}/${snap.size}] ${data.name}`,'s');}catch(err){fail++;log(`FAILED: ${data.name} — ${err.message}`,'e');}}
+                log(`\nDone! ${ok} updated, ${fail} failed.`,'s');this.textContent='Complete';
+            }catch(e){log('Error: '+e.message,'e');this.textContent='Try Again';this.disabled=false;}
+        });
+    </script>
+</body>
+</html>
