@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — WIB</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.error-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center}
+.error-code{font-family:'Outfit',sans-serif;font-size:120px;font-weight:800;color:var(--border);line-height:1;margin-bottom:16px}
+.error-title{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px}
+.error-desc{color:var(--text-secondary);font-size:15px;margin-bottom:32px;max-width:400px}
+.error-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+</style>
+</head>
+<body>
+<div class="error-page">
+  <div class="error-code">404</div>
+  <div class="error-title">Page not found</div>
+  <p class="error-desc">The page you are looking for does not exist or may have been moved.</p>
+  <div class="error-links">
+    <a href="/" class="btn-primary">Go Home</a>
+    <a href="/schools" class="btn-secondary">Browse Schools</a>
+    <a href="/colleges" class="btn-secondary">Browse Colleges</a>
+  </div>
+</div>
+<script src="/config.js"></script>
+</body>
+</html>
