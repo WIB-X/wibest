@@ -25,13 +25,15 @@ a{color:inherit;text-decoration:none}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:var(--nav-height);display:flex;align-items:center;justify-content:space-between}
 /* LOGO — tight, compact like WSJ masthead */
 .nav-logo{
-  font-family:'Outfit',sans-serif;
-  font-size:18px;
-  font-weight:800;
-  letter-spacing:-0.08em;
-  color:var(--text-primary);
-  transition:color .3s;
-  line-height:1;
+font-family: 'Playfair Display', serif; /* Or your chosen serif font */
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.08em; /* Extra tight like WSJ */
+    line-height: 1;
+    display: inline-block;
+    max-width: 180px; /* Limits the "stretch" you were seeing */
+    transition: all 0.3s ease;
 }
 .nav-links{display:flex;gap:24px}
 .nav-links a{font-size:13px;font-weight:500;color:var(--text-secondary);transition:color .2s;letter-spacing:.01em}
