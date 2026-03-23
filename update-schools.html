@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB — Update Schools Data</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#000;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px}
+h1{font-size:24px;margin-bottom:8px}
+p.sub{color:#999;margin-bottom:32px;font-size:14px}
+.card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:32px;max-width:600px;width:100%}
+.login-section{margin-bottom:24px}
+.login-section label{display:block;font-size:13px;color:#999;margin-bottom:6px}
+.login-section input{width:100%;padding:10px 14px;background:#111;border:1px solid #2a2a2a;border-radius:8px;color:#fff;font-size:14px;margin-bottom:12px}
+.login-section input:focus{outline:none;border-color:#3b82f6}
+.btn{width:100%;padding:14px;border-radius:8px;background:#2563eb;color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
+.btn:hover{background:#1d4ed8}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.log{margin-top:20px;max-height:400px;overflow-y:auto;background:#111;border-radius:8px;padding:16px;font-size:12px;font-family:monospace;line-height:1.8}
+.log .ok{color:#4ade80}
+.log .err{color:#f87171}
+.log .info{color:#60a5fa}
+.progress{width:100%;height:6px;background:#2a2a2a;border-radius:3px;margin-top:16px;overflow:hidden}
+.progress-bar{height:100%;background:#3b82f6;border-radius:3px;transition:width .3s;width:0}
+</style>
+</head>
+<body>
+<h1>Update Schools Data</h1>
+<p class="sub">Sets all facilities to YES and resets fake review counts for all schools</p>
+
+<div class="card">
+  <div class="login-section">
+    <label>Admin Email</label>
+    <input type="email" id="email" placeholder="your-email@gmail.com">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Firebase auth password">
+  </div>
+  <button class="btn" id="startBtn" onclick="startUpdate()">Login & Start Update</button>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="log" id="log" style="display:none"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="/config.js"></script>
+<script>
+const db = initFirebase();
+const auth = firebase.auth();
+const logEl = document.getElementById('log');
+
+function log(text, cls='') {
+  logEl.innerHTML += `<div class="${cls}">${text}</div>`;
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+async function startUpdate() {
+  const email = document.getElementById('email').value;
+  const pass = document.getElementById('password').value;
+  const btn = document.getElementById('startBtn');
+  if (!email || !pass) { alert('Enter email and password'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Logging in...';
+  logEl.style.display = 'block';
+  log('Logging in...', 'info');
+
+  try {
+    await auth.signInWithEmailAndPassword(email, pass);
+    log('Logged in successfully', 'ok');
+  } catch(e) {
+    log('Login failed: ' + e.message, 'err');
+    btn.disabled = false;
+    btn.textContent = 'Login & Start Update';
+    return;
+  }
+
+  btn.textContent = 'Updating...';
+  log('Fetching all schools from items collection...', 'info');
+
+  try {
+    const snapshot = await db.collection('items').get();
+    const schools = [];
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      // Skip colleges
+      if (data.category === 'college' || data.stream) return;
+      schools.push({ id: doc.id, ...data });
+    });
+
+    log(`Found ${schools.length} schools. Starting update...`, 'info');
+    const bar = document.getElementById('progressBar');
+    let ok = 0, fail = 0;
+
+    for (let i = 0; i < schools.length; i++) {
+      const s = schools[i];
+      try {
+        await db.collection('items').doc(s.id).update({
+          // Set all facilities to true
+          'facilities.transport': true,
+          'facilities.sports': true,
+          'facilities.library': true,
+          'facilities.science_lab': true,
+          'facilities.lab': true,
+          'facilities.cctv': true,
+          'facilities.security': true,
+          'facilities.arts': true,
+          'facilities.arts_music': true,
+          'facilities.pool': false,
+          'facilities.swimming_pool': false,
+          'facilities.hostel': false,
+          // Also set top-level fields (some schools use flat structure)
+          'transport': true,
+          'sports': true,
+          'library': true,
+          'science_lab': true,
+          'lab': true,
+          'cctv': true,
+          'security': true,
+          'arts': true,
+          'arts_music': true,
+          // Reset fake review data
+          'total_reviews': 0,
+          'user_rating': 0,
+          // Add google_rating field if missing
+          'google_rating': s.google_rating || s.rating || 0
+        });
+        ok++;
+        log(`[${i+1}/${schools.length}] ${s.name} — Updated`, 'ok');
+      } catch(e) {
+        fail++;
+        log(`[${i+1}/${schools.length}] ${s.name} — FAILED: ${e.message}`, 'err');
+      }
+      bar.style.width = ((i+1) / schools.length * 100) + '%';
+    }
+
+    log(`\nUpdate complete: ${ok} updated, ${fail} failed`, 'info');
+    btn.textContent = `Done — ${ok} schools updated`;
+
+  } catch(e) {
+    log('Error: ' + e.message, 'err');
+    btn.disabled = false;
+    btn.textContent = 'Login & Start Update';
+  }
+}
+</script>
+</body>
+</html>
