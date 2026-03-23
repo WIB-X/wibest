@@ -62,7 +62,6 @@
 <div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div>
 
 <section class="hero-section"><h1>Colleges in India</h1><p>Compare colleges by stream, fees, placements, and ratings across major cities.</p></section>
-<div class="notice"><div class="notice-bar">Currently featuring the top 10 colleges per stream per city. The complete list will be added soon.</div></div>
 <div class="filters-wrap"><div class="filters">
   <div class="filter-group"><select id="cityFilter" onchange="applyFilters()"><option value="">All Cities</option></select></div>
   <div class="filter-group"><select id="streamFilter" onchange="applyFilters()"><option value="">All Streams</option></select></div>
@@ -72,7 +71,8 @@
   <button class="btn-reset" onclick="resetFilters()">Reset</button>
 </div><div class="results-count" id="resultsCount"></div></div>
 <div class="grid-wrap"><div class="college-grid" id="collegeGrid"><div class="loading"><div class="spinner"></div><p>Loading colleges...</p></div></div><div class="no-results" id="noResults" style="display:none">No colleges match your filters.</div></div>
-<footer class="footer-simple">WIB — Independent. Data-driven.</footer>
+<div class="notice-bottom"><div class="notice-small">Currently featuring the top 10 schools per city. The complete list will be added soon.</div></div>
+  <footer class="footer-simple">WIB — Independent. Data-driven.</footer>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
