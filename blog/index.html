@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — WIB</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.page{max-width:900px;margin:calc(var(--nav-height)+var(--cat-height)+48px) auto 60px;padding:0 24px}
+.page h1{font-family:'Outfit',sans-serif;font-size:36px;font-weight:700;margin-bottom:8px}
+.page p.intro{color:var(--text-secondary);font-size:15px;margin-bottom:32px}
+.blog-grid{display:grid;gap:20px}
+.blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .25s;cursor:pointer}
+.blog-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md)}
+.blog-card .category{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.blog-card h2{font-family:'Outfit',sans-serif;font-size:20px;font-weight:600;margin-bottom:8px;line-height:1.3}
+.blog-card p{font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
+.blog-card .meta{font-size:12px;color:var(--text-muted)}
+.loading{text-align:center;padding:60px;color:var(--text-muted)}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/compare">Compare</a><a href="/blog" class="active">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="#" class="cat-link">Cars & Bikes <span class="soon">Soon</span></a><a href="#" class="cat-link">Places <span class="soon">Soon</span></a><a href="#" class="cat-link">Travel <span class="soon">Soon</span></a><a href="#" class="cat-link">Restaurants <span class="soon">Soon</span></a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div>
+
+<div class="page">
+  <h1>Blog</h1>
+  <p class="intro">Guides, comparisons, and insights to help you make better decisions.</p>
+  <div class="blog-grid" id="blogGrid"><div class="loading"><div class="spinner"></div><p>Loading articles...</p></div></div>
+</div>
+<footer class="footer-simple">WIB — Independent. Data-driven.</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script>
+const db=initFirebase();
+async function loadBlog(){
+  try{
+    // Try published first, fallback to all posts
+    let snap;
+    try { snap=await db.collection('blog_posts').where('status','==','published').get(); }
+    catch(e) { snap=await db.collection('blog_posts').get(); }
+    const grid=document.getElementById('blogGrid');
+    if(snap.empty){grid.innerHTML='<div class="loading">No articles yet. Check back soon.</div>';return}
+    let posts=[];
+    snap.forEach(doc=>{posts.push({id:doc.id,...doc.data()})});
+    posts.sort((a,b)=>{const at=a.createdAt?.toMillis?a.createdAt.toMillis():0;const bt=b.createdAt?.toMillis?b.createdAt.toMillis():0;return bt-at});
+    let html='';
+    posts.forEach(p=>{
+      html+=`<div class="blog-card" onclick="window.location.href='/blog-post.html?id=${p.id}'">
+        <div class="category">${p.category||'General'}</div>
+        <h2>${p.title||'Untitled'}</h2>
+        <p>${(p.excerpt||p.content||'').substring(0,200)}...</p>
+        <div class="meta">${p.readTime||'5'} min read</div>
+      </div>`;
+    });
+    grid.innerHTML=html;
+  }catch(err){
+    console.error(err);
+    document.getElementById('blogGrid').innerHTML='<div class="loading">Unable to load articles.</div>';
+  }
+}
+loadBlog();
+</script>
+</body>
+</html>
