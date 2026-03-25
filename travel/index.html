@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Places to Visit in India by Month — WIB</title>
+<meta name="description" content="Find the best travel destinations in India month by month. Distances to stations, best hotels, and booking links.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.hero-section{margin-top:calc(var(--nav-height)+var(--cat-height));padding:48px 24px 32px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border);transition:background .3s}
+.hero-section h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.hero-section p{color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto}
+.month-strip{max-width:1200px;margin:0 auto;padding:20px 24px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.month-strip::-webkit-scrollbar{display:none}
+.month-btn{padding:10px 18px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;transition:all .2s;white-space:nowrap}
+.month-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.month-btn:hover:not(.active){background:var(--tag-bg)}
+.month-btn.current{box-shadow:0 0 0 2px var(--accent)}
+.dest-grid{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.dest-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .25s}
+.dest-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.dest-header{padding:24px 24px 16px;border-bottom:1px solid var(--border)}
+.dest-name{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;margin-bottom:4px}
+.dest-state{font-size:13px;color:var(--text-muted)}
+.dest-why{padding:16px 24px;font-size:13px;color:var(--text-secondary);line-height:1.6;border-bottom:1px solid var(--border)}
+.dest-distances{padding:16px 24px;border-bottom:1px solid var(--border)}
+.dist-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px}
+.dist-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
+.dist-row .label{color:var(--text-secondary)}
+.dist-row .value{font-weight:600;color:var(--text-primary)}
+.dest-stay{padding:16px 24px;border-bottom:1px solid var(--border)}
+.stay-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:8px}
+.stay-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
+.stay-name{color:var(--text-primary);font-weight:500}
+.stay-why{color:var(--text-muted);font-size:12px}
+.stay-price{color:var(--green);font-weight:600}
+.dest-actions{padding:16px 24px;display:flex;gap:10px;flex-wrap:wrap}
+.dest-actions a{flex:1;min-width:120px;padding:10px;border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;text-align:center;transition:all .2s;display:inline-block}
+.btn-book{background:var(--accent);color:#fff;border:none}
+.btn-book:hover{background:var(--accent-hover)}
+.btn-ext{background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)}
+.btn-ext:hover{background:var(--tag-bg)}
+.weather-tag{display:inline-block;padding:4px 10px;border-radius:5px;font-size:11px;font-weight:600;margin-top:8px}
+.weather-good{background:var(--green-bg);color:var(--green)}
+.weather-ok{background:#fff7ed;color:#d97706}
+.weather-bad{background:#fef2f2;color:var(--red)}
+.attractions{padding:16px 24px;border-bottom:1px solid var(--border)}
+.attr-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:8px}
+.attr-list{display:flex;flex-wrap:wrap;gap:6px}
+.attr-tag{padding:5px 10px;border-radius:5px;font-size:12px;background:var(--tag-bg);color:var(--tag-text)}
+@media(max-width:768px){.hero-section h1{font-size:24px}.dest-grid{grid-template-columns:1fr;padding:16px}.dest-actions{flex-direction:column}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel" class="active">Travel</a><a href="/accessories">Accessories</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link">Hospitals</a><a href="/travel" class="cat-link active">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+
+<section class="hero-section">
+  <h1>Best Places to Visit in India</h1>
+  <p>Discover the perfect destination for every month — with distances to stations, best places to stay, and instant booking links.</p>
+</section>
+
+<div class="month-strip" id="monthStrip"></div>
+<div class="dest-grid" id="destGrid"><div class="loading"><div class="spinner"></div>Loading destinations...</div></div>
+
+<div class="notice-bottom"><div class="notice-small">Distances are approximate. Hotel prices are indicative and may vary by season. Booking links go to MakeMyTrip, Goibibo, and Booking.com — we may earn a commission at no extra cost to you.</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-brand"><div class="brand-name">WIB</div><p>India's unified comparison platform.</p></div>
+  <div class="footer-col"><h4>Categories</h4><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a></div>
+  <div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/contact">Contact</a><a href="/blog">Blog</a></div>
+  <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+</div><div class="footer-bottom">WIB — Independent. Data-driven.</div></footer>
+
+<script src="/config.js"></script>
+<script>
+const DESTINATIONS = {
+  "January": [
+    {name:"Goa",state:"Goa",why:"Perfect beach weather with no rain. Peak season for nightlife, water sports, and seafood festivals. Christmas/New Year vibe still lingers.",weather:"good",temp:"22-32°C",
+     distances:{railway:"Madgaon Junction (within city)",bus:"Kadamba Bus Stand (2 km)",airport:"Dabolim/Manohar International (30 km)",fuel:"Every 5 km on NH66"},
+     stay:[{name:"Taj Holiday Village",why:"Beachfront luxury, Sinquerim beach",price:"₹8,000/night"},{name:"Zostel Goa",why:"Best budget hostel, Anjuna",price:"₹600/night"},{name:"Acron Waterfront Resort",why:"Mid-range, Baga creek views",price:"₹3,500/night"}],
+     attractions:["Baga Beach","Fort Aguada","Dudhsagar Falls","Old Goa Churches","Anjuna Flea Market","Spice Plantations"],
+     booking_city:"goa"},
+    {name:"Jaipur",state:"Rajasthan",why:"Pleasant winter weather (15-25°C) ideal for exploring forts and palaces. Jaipur Literature Festival happens in January. No humidity.",weather:"good",temp:"8-22°C",
+     distances:{railway:"Jaipur Junction (city center)",bus:"Sindhi Camp Bus Stand (3 km)",airport:"Jaipur International (13 km)",fuel:"Every 3 km on NH48"},
+     stay:[{name:"Rambagh Palace",why:"Heritage luxury, former royal residence",price:"₹18,000/night"},{name:"Zostel Jaipur",why:"Budget, rooftop views of Nahargarh",price:"₹500/night"},{name:"Hotel Pearl Palace",why:"Best mid-range, Hawa Mahal area",price:"₹2,200/night"}],
+     attractions:["Amber Fort","Hawa Mahal","City Palace","Nahargarh Fort","Jantar Mantar","Albert Hall Museum"],
+     booking_city:"jaipur"},
+    {name:"Rann of Kutch",state:"Gujarat",why:"Rann Utsav festival (Nov-Feb). The white salt desert under moonlight is surreal. Cultural performances and handicraft shopping.",weather:"good",temp:"10-25°C",
+     distances:{railway:"Bhuj Junction (80 km)",bus:"Bhuj Bus Stand (80 km)",airport:"Bhuj Airport (80 km)",fuel:"Limited — fill up at Bhuj"},
+     stay:[{name:"Rann Utsav Tent City",why:"Official festival tents, full experience",price:"₹5,000/night"},{name:"Gateway to Rann Resort",why:"Near Dhordo, modern amenities",price:"₹3,000/night"},{name:"Shaam-e-Sarhad",why:"Village homestay, authentic Kutchi food",price:"₹1,500/night"}],
+     attractions:["White Rann Desert","Kala Dungar","Aina Mahal","Kutch Museum","Mandvi Beach","Banni Grasslands"],
+     booking_city:"kutch"}
+  ],
+  "February": [
+    {name:"Agra",state:"Uttar Pradesh",why:"Best time to visit Taj Mahal — cool weather, clear skies, no monsoon haze. Taj Mahotsav festival (Feb 18-27) with crafts and food.",weather:"good",temp:"10-26°C",
+     distances:{railway:"Agra Cantt (4 km from Taj)",bus:"ISBT Agra (3 km)",airport:"Agra Airport (12 km, limited flights)",fuel:"Every 3 km on NH19"},
+     stay:[{name:"The Oberoi Amarvilas",why:"Direct Taj Mahal view from every room",price:"₹28,000/night"},{name:"Hotel Kamal",why:"Budget, rooftop Taj view, near South Gate",price:"₹800/night"},{name:"Crystal Sarovar Premiere",why:"Mid-range, walking distance to Taj",price:"₹3,500/night"}],
+     attractions:["Taj Mahal","Agra Fort","Fatehpur Sikri","Mehtab Bagh","Itimad-ud-Daulah","Akbar's Tomb"],
+     booking_city:"agra"},
+    {name:"Udaipur",state:"Rajasthan",why:"Lake city at its best — cool dry weather. Romantic sunsets over Lake Pichola. Perfect for heritage walks and palace visits.",weather:"good",temp:"10-28°C",
+     distances:{railway:"Udaipur City Station (3 km from Lake Pichola)",bus:"Udaipur Bus Stand (2 km)",airport:"Maharana Pratap Airport (22 km)",fuel:"Every 4 km in city"},
+     stay:[{name:"Taj Lake Palace",why:"Iconic floating palace on Lake Pichola",price:"₹25,000/night"},{name:"Bunkyard Hostel",why:"Budget, Lal Ghat, lake views",price:"₹500/night"},{name:"Amet Haveli",why:"Heritage mid-range, lakeside",price:"₹4,000/night"}],
+     attractions:["City Palace","Lake Pichola","Jag Mandir","Saheliyon ki Bari","Monsoon Palace","Haldighati"],
+     booking_city:"udaipur"},
+    {name:"Hampi",state:"Karnataka",why:"Cool weather perfect for exploring ancient ruins. UNESCO World Heritage site. Boulder landscape is stunning for photography.",weather:"good",temp:"18-33°C",
+     distances:{railway:"Hospet Junction (13 km)",bus:"Hospet Bus Stand (13 km)",airport:"Hubli Airport (143 km)",fuel:"Hospet has fuel stations (13 km)"},
+     stay:[{name:"Evolve Back Hampi",why:"Luxury resort, Tungabhadra views",price:"₹15,000/night"},{name:"Goan Corner Guesthouse",why:"Budget classic, hippie island side",price:"₹600/night"},{name:"Heritage Resort Hampi",why:"Mid-range, near Virupaksha Temple",price:"₹2,500/night"}],
+     attractions:["Virupaksha Temple","Vittala Temple","Elephant Stables","Hemakuta Hill","Matanga Hill Sunrise","Coracle Ride"],
+     booking_city:"hampi"}
+  ],
+  "March": [
+    {name:"Varanasi",state:"Uttar Pradesh",why:"Holi in Varanasi is legendary. Pleasant weather before summer heat. Evening Ganga Aarti is magical. Street food at its best.",weather:"good",temp:"16-33°C",
+     distances:{railway:"Varanasi Junction (2 km from ghats)",bus:"Varanasi Bus Stand (1 km)",airport:"Lal Bahadur Shastri Airport (26 km)",fuel:"Every 3 km"},
+     stay:[{name:"Taj Nadesar Palace",why:"Heritage luxury, private gardens",price:"₹20,000/night"},{name:"Stops Hostel Varanasi",why:"Budget, rooftop ghat view",price:"₹500/night"},{name:"BrijRama Palace",why:"Heritage boutique on Darbhanga Ghat",price:"₹8,000/night"}],
+     attractions:["Dashashwamedh Ghat Aarti","Kashi Vishwanath Temple","Sarnath","Manikarnika Ghat","Assi Ghat","Ramnagar Fort"],
+     booking_city:"varanasi"},
+    {name:"Pondicherry",state:"Tamil Nadu",why:"Beach weather starts getting warm but still pleasant. French Quarter is beautiful. Surfing season begins. Holi celebrations on the beach.",weather:"ok",temp:"24-34°C",
+     distances:{railway:"Pondicherry Station (city center)",bus:"Pondicherry Bus Stand (1 km)",airport:"Chennai Airport (135 km)",fuel:"Every 4 km on ECR"},
+     stay:[{name:"Palais de Mahe",why:"Boutique French heritage, sea view",price:"₹7,000/night"},{name:"Gratitude Heritage",why:"Budget, White Town location",price:"₹1,200/night"},{name:"La Villa",why:"Mid-range French villa, pool",price:"₹4,500/night"}],
+     attractions:["Promenade Beach","Auroville","French Quarter","Paradise Beach","Aurobindo Ashram","Serenity Beach"],
+     booking_city:"pondicherry"}
+  ],
+  "April": [
+    {name:"Munnar",state:"Kerala",why:"Escape the plains heat in the cool tea gardens (15-25°C). Neelakurinji blooms expected. Less crowded than Ooty or Kodaikanal.",weather:"good",temp:"15-25°C",
+     distances:{railway:"Aluva/Ernakulam (130 km)",bus:"Munnar Bus Stand (town center)",airport:"Cochin International (110 km)",fuel:"Limited — fill up at Adimali (25 km)"},
+     stay:[{name:"Windermere Estate",why:"Plantation bungalow, coffee estate",price:"₹6,000/night"},{name:"Rose Gardens Homestay",why:"Budget, town center, clean",price:"₹1,200/night"},{name:"Spice Tree Munnar",why:"Treehouse rooms, cliff edge",price:"₹9,000/night"}],
+     attractions:["Tea Museum","Eravikulam National Park","Top Station","Mattupetty Dam","Echo Point","Anamudi Peak"],
+     booking_city:"munnar"}
+  ],
+  "May": [
+    {name:"Ladakh",state:"Ladakh",why:"Season opens in May. Roads clear after winter. Pangong Tse lake, Nubra Valley accessible. Clear skies, dramatic landscapes.",weather:"good",temp:"3-20°C",
+     distances:{railway:"Jammu Tawi (700 km)",bus:"Leh Bus Stand (city center)",airport:"Kushok Bakula Airport (4 km)",fuel:"Fill up at Leh — sparse on highways"},
+     stay:[{name:"The Grand Dragon",why:"Best luxury in Leh, heated rooms",price:"₹8,000/night"},{name:"Zostel Leh",why:"Budget, views, common room",price:"₹600/night"},{name:"Lchang Nang Retreat",why:"Heritage Ladakhi home, garden",price:"₹3,500/night"}],
+     attractions:["Pangong Lake","Nubra Valley","Khardung La","Thiksey Monastery","Magnetic Hill","Shanti Stupa"],
+     booking_city:"leh+ladakh"}
+  ],
+  "June": [
+    {name:"Coorg",state:"Karnataka",why:"Monsoon arrives — waterfalls come alive, coffee estates turn lush green. Misty mornings. Best season for nature lovers.",weather:"ok",temp:"15-28°C",
+     distances:{railway:"Mysore (120 km)",bus:"Madikeri Bus Stand (town center)",airport:"Mysore Airport (140 km) / Mangalore (150 km)",fuel:"Available in Madikeri"},
+     stay:[{name:"Tamara Coorg",why:"Luxury eco-resort, 180-acre estate",price:"₹15,000/night"},{name:"Coorg Homestay by Vinod",why:"Budget, authentic Kodava family",price:"₹1,500/night"},{name:"Ibnii Coorg",why:"Boutique resort, sustainable luxury",price:"₹8,000/night"}],
+     attractions:["Abbey Falls","Raja's Seat","Talacauvery","Namdroling Monastery","Dubare Elephant Camp","Iruppu Falls"],
+     booking_city:"coorg"}
+  ],
+  "July": [
+    {name:"Meghalaya",state:"Meghalaya",why:"Wettest place on earth is magical in monsoon. Living root bridges shine when wet. Waterfalls at full force. Cloud forests.",weather:"ok",temp:"18-25°C",
+     distances:{railway:"Guwahati (100 km)",bus:"Shillong Bus Stand (city center)",airport:"Shillong Airport (30 km) / Guwahati (125 km)",fuel:"Available in Shillong, sparse outside"},
+     stay:[{name:"Ri Kynjai",why:"Lakeside luxury, Umiam views",price:"₹9,000/night"},{name:"Café Shillong Bed & Breakfast",why:"Budget, central, local vibe",price:"₹1,200/night"},{name:"Polo Orchid Resort",why:"Mid-range, near Ward's Lake",price:"₹3,500/night"}],
+     attractions:["Living Root Bridges","Dawki River","Nohkalikai Falls","Mawsmai Cave","Elephant Falls","Umiam Lake"],
+     booking_city:"shillong"},
+    {name:"Spiti Valley",state:"Himachal Pradesh",why:"High-altitude desert barely touched by monsoon. Buddhist monasteries, stark landscapes. Best time: July-September.",weather:"good",temp:"5-20°C",
+     distances:{railway:"Shimla (412 km)",bus:"Kaza Bus Stand (center)",airport:"Kullu Airport (200 km)",fuel:"Kaza has the world's highest petrol pump"},
+     stay:[{name:"Spiti Sarai",why:"Boutique, Kaza, mountain views",price:"₹4,000/night"},{name:"Zostel Spiti",why:"Budget, Kaza, community vibe",price:"₹600/night"},{name:"Deyzor Hotel",why:"Heritage, Kaza market, warm rooms",price:"₹2,000/night"}],
+     attractions:["Key Monastery","Chandratal Lake","Dhankar Monastery","Pin Valley","Tabo Monastery","Kunzum Pass"],
+     booking_city:"spiti"}
+  ],
+  "August": [
+    {name:"Kerala Backwaters",state:"Kerala",why:"Off-season rates! 50% cheaper houseboats. Lush green landscape after monsoon. Onam festival (Aug-Sep). Snake boat races.",weather:"ok",temp:"24-30°C",
+     distances:{railway:"Alleppey/Alappuzha (town center)",bus:"KSRTC Alleppey (1 km)",airport:"Cochin International (75 km)",fuel:"Available in Alleppey"},
+     stay:[{name:"Premium Houseboat",why:"Luxury houseboat, private chef",price:"₹6,000/night"},{name:"Artpackers Life Hostel",why:"Budget, near backwaters",price:"₹500/night"},{name:"Raheem Residency",why:"Heritage boutique, Alleppey beach",price:"₹4,500/night"}],
+     attractions:["Alleppey Backwaters","Kumarakom Bird Sanctuary","Marari Beach","Vembanad Lake","Pathiramanal Island","Kuttanad Paddy Fields"],
+     booking_city:"alleppey"}
+  ],
+  "September": [
+    {name:"Andaman Islands",state:"Andaman & Nicobar",why:"Season reopens. Crystal clear waters. Less crowded than Dec-Jan. Scuba diving visibility is excellent. Radhanagar Beach.",weather:"ok",temp:"24-30°C",
+     distances:{railway:"No railway — fly from Chennai/Kolkata",bus:"Port Blair Bus Stand (city)",airport:"Veer Savarkar Airport (3 km from Port Blair)",fuel:"Available in Port Blair, sparse on Havelock"},
+     stay:[{name:"Taj Exotica",why:"Luxury beachfront, Havelock Island",price:"₹16,000/night"},{name:"TSG Blue Resort",why:"Budget, close to beach",price:"₹2,500/night"},{name:"SeaShell Havelock",why:"Mid-range, Radhanagar Beach road",price:"₹5,000/night"}],
+     attractions:["Radhanagar Beach","Scuba at Havelock","Cellular Jail","Ross Island","Elephant Beach","Baratang Mangroves"],
+     booking_city:"andaman"}
+  ],
+  "October": [
+    {name:"Darjeeling",state:"West Bengal",why:"Post-monsoon clarity — best Kanchenjunga views of the year. Tea estates in full harvest. Pleasant 10-20°C. Durga Puja energy.",weather:"good",temp:"8-18°C",
+     distances:{railway:"New Jalpaiguri (75 km)",bus:"Darjeeling Bus Stand (Mall Road)",airport:"Bagdogra Airport (67 km)",fuel:"Available in town"},
+     stay:[{name:"Mayfair Darjeeling",why:"Heritage luxury, Mall Road",price:"₹8,000/night"},{name:"Andy's Guesthouse",why:"Budget legend, trekker favorite",price:"₹600/night"},{name:"Windamere Hotel",why:"Colonial charm, since 1880s",price:"₹5,000/night"}],
+     attractions:["Tiger Hill Sunrise","Batasia Loop","Peace Pagoda","Tea Gardens","Himalayan Mountaineering Institute","Rock Garden"],
+     booking_city:"darjeeling"}
+  ],
+  "November": [
+    {name:"Rajasthan Circuit",state:"Rajasthan",why:"Perfect weather starts. Golden light for photography. Desert camping in Jaisalmer. Pushkar Camel Fair (Nov). No crowds yet.",weather:"good",temp:"12-28°C",
+     distances:{railway:"Jodhpur Junction / Jaisalmer Station",bus:"Well connected on RSRTC",airport:"Jodhpur Airport (5 km)",fuel:"Every 5 km on NH"},
+     stay:[{name:"Suryagarh Jaisalmer",why:"Desert luxury, fort views",price:"₹12,000/night"},{name:"Desert Camp Jaisalmer",why:"Swiss tent in Sam dunes",price:"₹2,500/night"},{name:"Raas Jodhpur",why:"Boutique, Mehrangarh Fort base",price:"₹7,000/night"}],
+     attractions:["Mehrangarh Fort","Jaisalmer Fort","Sam Sand Dunes","Pushkar Lake","Thar Desert Safari","Kuldhara Ghost Village"],
+     booking_city:"jaisalmer"}
+  ],
+  "December": [
+    {name:"Goa",state:"Goa",why:"Peak season. Christmas and New Year celebrations. Perfect beach weather. Sunburn festival. Water sports season in full swing.",weather:"good",temp:"22-32°C",
+     distances:{railway:"Madgaon Junction (within city)",bus:"Kadamba Bus Stand (2 km)",airport:"Manohar International (30 km)",fuel:"Every 5 km on NH66"},
+     stay:[{name:"W Goa",why:"Luxury beachfront, Vagator",price:"₹15,000/night"},{name:"Papachelo Hostel",why:"Budget party hostel, Anjuna",price:"₹700/night"},{name:"Caravela Beach Resort",why:"Mid-range, Varca Beach, quiet south",price:"₹5,000/night"}],
+     attractions:["Calangute Beach","Baga Night Market","Chapora Fort","Old Goa Churches","Casino Pride","Dudhsagar Falls"],
+     booking_city:"goa"},
+    {name:"Jaisalmer",state:"Rajasthan",why:"Cool desert nights, warm sunny days. Desert festival preparations begin. Perfect for camel safaris and star-gazing. Golden city glows at sunset.",weather:"good",temp:"5-24°C",
+     distances:{railway:"Jaisalmer Station (city center)",bus:"RSRTC Bus Stand (1 km)",airport:"Jaisalmer Airport (17 km, limited flights)",fuel:"Fill up in city — sparse in desert"},
+     stay:[{name:"Suryagarh",why:"Luxury desert palace, infinity pool",price:"₹12,000/night"},{name:"Desert Haveli Guest House",why:"Budget, fort area, rooftop view",price:"₹800/night"},{name:"Mystic Jaisalmer",why:"Boutique, panoramic fort views",price:"₹4,000/night"}],
+     attractions:["Jaisalmer Fort","Sam Sand Dunes","Patwon Ki Haveli","Gadsisar Lake","Desert National Park","Bada Bagh"],
+     booking_city:"jaisalmer"}
+  ]
+};
+
+const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const currentMonth=months[new Date().getMonth()];
+
+function init(){
+  const strip=document.getElementById('monthStrip');
+  months.forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-btn'+(m===currentMonth?' current active':'');
+    btn.textContent=m.substring(0,3);
+    btn.title=m;
+    btn.onclick=()=>selectMonth(m);
+    strip.appendChild(btn);
+  });
+  selectMonth(currentMonth);
+  // scroll to current month
+  setTimeout(()=>{
+    const active=strip.querySelector('.active');
+    if(active)active.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  },100);
+}
+
+function selectMonth(month){
+  document.querySelectorAll('.month-btn').forEach(b=>{
+    b.classList.toggle('active',b.title===month);
+  });
+  renderDestinations(month);
+}
+
+function renderDestinations(month){
+  const grid=document.getElementById('destGrid');
+  const dests=DESTINATIONS[month]||[];
+  if(!dests.length){grid.innerHTML='<div class="no-results">No destinations listed for '+month+' yet. Check back soon!</div>';return;}
+  grid.innerHTML=dests.map(d=>`
+    <div class="dest-card">
+      <div class="dest-header">
+        <div class="dest-name">${d.name}</div>
+        <div class="dest-state">${d.state}</div>
+        <span class="weather-tag weather-${d.weather}">${d.temp} — ${d.weather==='good'?'Perfect weather':d.weather==='ok'?'Good enough':'Not ideal'}</span>
+      </div>
+      <div class="dest-why">${d.why}</div>
+      <div class="attractions">
+        <div class="attr-title">Top attractions</div>
+        <div class="attr-list">${d.attractions.map(a=>`<span class="attr-tag">${a}</span>`).join('')}</div>
+      </div>
+      <div class="dest-distances">
+        <div class="dist-title">Distances & connectivity</div>
+        <div class="dist-row"><span class="label">🚂 Railway Station</span><span class="value">${d.distances.railway}</span></div>
+        <div class="dist-row"><span class="label">🚌 Bus Stand</span><span class="value">${d.distances.bus}</span></div>
+        <div class="dist-row"><span class="label">✈️ Airport</span><span class="value">${d.distances.airport}</span></div>
+        <div class="dist-row"><span class="label">⛽ Fuel Station</span><span class="value">${d.distances.fuel}</span></div>
+      </div>
+      <div class="dest-stay">
+        <div class="stay-title">Best places to stay</div>
+        ${d.stay.map(s=>`<div class="stay-item"><div><div class="stay-name">${s.name}</div><div class="stay-why">${s.why}</div></div><div class="stay-price">${s.price}</div></div>`).join('')}
+      </div>
+      <div class="dest-actions">
+        <a href="https://www.makemytrip.com/hotels/hotel-listing/?city=${d.booking_city}" target="_blank" rel="noopener" class="btn-book">Book on MakeMyTrip</a>
+        <a href="https://www.goibibo.com/hotels/hotels-in-${d.booking_city}/" target="_blank" rel="noopener" class="btn-ext">Goibibo Hotels</a>
+        <a href="https://www.booking.com/searchresults.html?ss=${encodeURIComponent(d.name+', India')}" target="_blank" rel="noopener" class="btn-ext">Booking.com</a>
+        <a href="https://www.irctc.co.in" target="_blank" rel="noopener" class="btn-ext">Book Train (IRCTC)</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+init();
+</script>
+</body>
+</html>
