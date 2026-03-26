@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><link rel="canonical" href="https://wibest.in/about/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — WIB</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.page{max-width:800px;margin:calc(var(--nav-height)+var(--cat-height)+48px) auto 60px;padding:0 24px}
+.page h1{font-family:'Outfit',sans-serif;font-size:36px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
+.page h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;margin-top:40px;margin-bottom:12px}
+.page p{color:var(--text-secondary);font-size:15px;line-height:1.8;margin-bottom:16px}
+.values{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:24px}
+.value-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:background .3s}
+.value-card h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;margin-bottom:8px}
+.value-card p{font-size:13px;margin-bottom:0}
+.roadmap{margin-top:24px}
+.roadmap-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.roadmap-status{width:80px;flex-shrink:0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.roadmap-status.live{color:var(--green)}.roadmap-status.soon{color:var(--accent)}.roadmap-status.planned{color:var(--text-muted)}
+.roadmap-text{font-size:14px}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about" class="active">About</a><a href="/contact">Contact</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div>
+
+<div class="page">
+  <h1>About WIB</h1>
+  <p>WIB is India's unified comparison platform. We help people make better decisions across every major life choice — from schools and colleges to electronics, cars, and places to live.</p>
+  <p>We believe comparison data should be free, transparent, and independent. No sponsored listings, no paid placements, no hidden agendas.</p>
+
+  <h2>Our Values</h2>
+  <div class="values">
+    <div class="value-card"><h3>Independence</h3><p>No school, college, or brand pays us to rank them higher. Data determines rankings.</p></div>
+    <div class="value-card"><h3>Transparency</h3><p>Every data point is sourced from public information or community reviews. Nothing is hidden.</p></div>
+    <div class="value-card"><h3>Accessibility</h3><p>Free for everyone. No paywalls, no premium tiers for basic comparison data.</p></div>
+    <div class="value-card"><h3>Community</h3><p>Reviews from real parents, students, and users. No fake reviews, no paid testimonials.</p></div>
+  </div>
+
+  <h2>Category Roadmap</h2>
+  <div class="roadmap">
+    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Schools — 70+ schools across 7 cities</div></div>
+    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Colleges — 150+ colleges across 5 cities (Engineering, Medical, Arts)</div></div>
+    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Electronics — Phones and laptops compared</div></div>
+    <div class="roadmap-item"><div class="roadmap-status soon">Soon</div><div class="roadmap-text">Cars & Bikes — Compare across brands and budgets</div></div>
+    <div class="roadmap-item"><div class="roadmap-status soon">Soon</div><div class="roadmap-text">Places to Live — Neighbourhoods and cities compared</div></div>
+    <div class="roadmap-item"><div class="roadmap-status planned">Planned</div><div class="roadmap-text">Travel — Destinations and hotels</div></div>
+    <div class="roadmap-item"><div class="roadmap-status planned">Planned</div><div class="roadmap-text">Restaurants — Dining options across cities</div></div>
+  </div>
+
+  <h2>Contact</h2>
+  <p>Have feedback, a correction, or a partnership inquiry? Reach us at <a href="mailto:hello@wibest.in" style="color:var(--accent)">hello@wibest.in</a> or visit our <a href="/contact" style="color:var(--accent)">contact page</a>.</p>
+</div>
+<footer class="footer-simple">WIB — Independent. Data-driven.</footer>
+<script src="/config.js"></script>
+</body>
+</html>
