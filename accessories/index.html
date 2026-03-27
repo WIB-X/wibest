@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Accessories for Your Device — WIB</title>
+<meta name="description" content="Find the best charger, case, screen guard, earbuds, and backpack for your specific phone or laptop. Compared and ranked with buy links.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.hero-section{margin-top:calc(var(--nav-height)+var(--cat-height));padding:48px 24px 32px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border);transition:background .3s}
+.hero-section h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.hero-section p{color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto}
+.device-picker{max-width:700px;margin:24px auto 0;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.device-picker select,.device-picker input{appearance:none;padding:12px 16px;border:1px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:14px;min-width:180px;transition:all .2s}
+.device-picker select:focus,.device-picker input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.cat-tabs{display:flex;gap:8px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.cat-tab{padding:10px 20px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;transition:all .2s}
+.cat-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cat-tab:hover:not(.active){background:var(--tag-bg)}
+.acc-grid{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.acc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;position:relative}
+.acc-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.acc-card.best-pick{border-color:var(--green);border-width:2px}
+.best-badge{position:absolute;top:-1px;right:16px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:0 0 6px 6px;letter-spacing:.05em}
+.acc-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;margin-bottom:4px;padding-right:80px}
+.acc-brand{font-size:12px;color:var(--text-muted);margin-bottom:12px}
+.acc-price{font-size:18px;font-weight:700;color:var(--accent);margin-bottom:12px}
+.acc-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.spec-box{padding:8px 10px;background:var(--bg-secondary);border-radius:6px}
+.spec-box .label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+.spec-box .val{font-size:13px;font-weight:600;margin-top:1px}
+.acc-why{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px;padding:12px;background:var(--bg-secondary);border-radius:8px;border-left:3px solid var(--accent)}
+.acc-compat{font-size:12px;color:var(--text-muted);margin-bottom:14px}
+.acc-actions{display:flex;gap:10px}
+.acc-actions a{flex:1;padding:10px;border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;text-align:center;transition:all .2s;display:block}
+.amazon-btn{background:#ff9900;color:#111;border:none}
+.amazon-btn:hover{background:#e88b00}
+.flipkart-btn{background:#2874f0;color:#fff;border:none}
+.flipkart-btn:hover{background:#1a5dc7}
+.section-title{max-width:1200px;margin:0 auto;padding:32px 24px 0;font-family:'Outfit',sans-serif;font-size:22px;font-weight:700}
+.section-sub{max-width:1200px;margin:0 auto;padding:4px 24px 0;font-size:14px;color:var(--text-secondary)}
+.no-results{text-align:center;padding:60px 24px;color:var(--text-muted);font-size:15px;grid-column:1/-1}
+@media(max-width:768px){.hero-section h1{font-size:24px}.acc-grid{grid-template-columns:1fr}.device-picker{flex-direction:column;align-items:center}.device-picker select,.device-picker input{width:100%;max-width:300px}.acc-specs{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<link rel="canonical" href="https://wibest.in/accessories/">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories" class="active">Accessories</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link active">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+
+<section class="hero-section">
+  <h1>Best Accessories</h1>
+  <p>Find the perfect charger, case, screen guard, earbuds, or backpack — compared and ranked for your specific device.</p>
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="switchCat('chargers')">Chargers</button>
+    <button class="cat-tab" onclick="switchCat('cases')">Phone Cases</button>
+    <button class="cat-tab" onclick="switchCat('guards')">Screen Guards</button>
+    <button class="cat-tab" onclick="switchCat('earbuds')">Earbuds</button>
+    <button class="cat-tab" onclick="switchCat('backpacks')">Backpacks</button>
+    <button class="cat-tab" onclick="switchCat('all')">All</button>
+  </div>
+</section>
+
+<div id="sectionTitle" class="section-title"></div>
+<div id="sectionSub" class="section-sub"></div>
+<div class="acc-grid" id="accGrid"></div>
+
+<div class="notice-bottom"><div class="notice-small">Prices are indicative and may change. Amazon and Flipkart links are affiliate — we may earn a small commission at no extra cost to you. This helps keep WIB free and independent.</div></div>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-brand"><div class="brand-name">WIB</div><p>India's unified comparison platform.</p></div>
+  <div class="footer-col"><h4>Categories</h4><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a></div>
+  <div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/contact">Contact</a><a href="/blog">Blog</a></div>
+  <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+</div><div class="footer-bottom">WIB — Independent. Data-driven.</div></footer>
+
+<script src="/config.js"></script>
+<script>
+const ACCESSORIES={
+  chargers:[
+    {name:"Anker 735 Nano II 65W",brand:"Anker",price:"₹3,499",best:true,category:"chargers",
+     specs:{wattage:"65W",ports:"2 USB-C + 1 USB-A",tech:"GaN II",weight:"112g"},
+     why:"Best all-rounder GaN charger. Charges MacBook Air + iPhone simultaneously. Compact enough for travel. Anker's build quality is unmatched at this price.",
+     compatible:"iPhone 12-16, Samsung S22-S25, MacBook Air/Pro, iPad, Pixel",
+     amazon:"https://www.amazon.in/s?k=anker+735+65w+charger",flipkart:"https://www.flipkart.com/search?q=anker+65w+charger"},
+    {name:"Samsung 25W PD Charger",brand:"Samsung",price:"₹1,299",best:false,category:"chargers",
+     specs:{wattage:"25W",ports:"1 USB-C",tech:"PD 3.0",weight:"58g"},
+     why:"Official Samsung charger. Perfectly tuned for Samsung phones — won't overheat or degrade battery. Super compact single-port design.",
+     compatible:"Samsung S21-S25, Galaxy A54/A55, Galaxy Tab S9",
+     amazon:"https://www.amazon.in/s?k=samsung+25w+charger+original",flipkart:"https://www.flipkart.com/search?q=samsung+25w+charger"},
+    {name:"Apple 20W USB-C Power Adapter",brand:"Apple",price:"₹1,749",best:false,category:"chargers",
+     specs:{wattage:"20W",ports:"1 USB-C",tech:"PD",weight:"60g"},
+     why:"Official Apple charger — guaranteed safe for your iPhone battery. MagSafe compatible. No third-party risks. Apple's warranty covers charging damage with this.",
+     compatible:"iPhone 12-16, iPad (10th gen), AirPods Pro",
+     amazon:"https://www.amazon.in/s?k=apple+20w+charger+original",flipkart:"https://www.flipkart.com/search?q=apple+20w+charger"},
+    {name:"Portronics Adapto 20W",brand:"Portronics",price:"₹599",best:false,category:"chargers",
+     specs:{wattage:"20W",ports:"1 USB-C",tech:"PD 3.0",weight:"45g"},
+     why:"Best budget charger. BIS certified, safe for all phones. Perfect if you just need a reliable fast charger without spending much.",
+     compatible:"All USB-C phones, iPhone (with USB-C cable)",
+     amazon:"https://www.amazon.in/s?k=portronics+adapto+20w",flipkart:"https://www.flipkart.com/search?q=portronics+20w+charger"},
+    {name:"Stuffcool Napoleon 140W GaN",brand:"Stuffcool",price:"₹5,999",best:false,category:"chargers",
+     specs:{wattage:"140W",ports:"3 USB-C + 1 USB-A",tech:"GaN 5",weight:"240g"},
+     why:"The power station. Charges a MacBook Pro 16\" at full speed + phone + tablet simultaneously. Indian brand with great after-sales.",
+     compatible:"MacBook Pro 16\", Dell XPS, ThinkPad, all phones and tablets",
+     amazon:"https://www.amazon.in/s?k=stuffcool+napoleon+140w",flipkart:"https://www.flipkart.com/search?q=stuffcool+140w+charger"}
+  ],
+  cases:[
+    {name:"Spigen Tough Armor (iPhone 16)",brand:"Spigen",price:"₹1,499",best:true,category:"cases",
+     specs:{protection:"Military Grade",material:"TPU + Polycarbonate",feature:"Built-in Kickstand",weight:"52g"},
+     why:"Gold standard for phone protection. Dual-layer design absorbs drops from 1.2m. Kickstand is genuinely useful for video calls. Precise button cutouts.",
+     compatible:"iPhone 16 / 16 Pro / 16 Pro Max (select variant)",
+     amazon:"https://www.amazon.in/s?k=spigen+tough+armor+iphone+16",flipkart:"https://www.flipkart.com/search?q=spigen+tough+armor+iphone+16"},
+    {name:"Ringke Fusion (Samsung S25)",brand:"Ringke",price:"₹999",best:false,category:"cases",
+     specs:{protection:"Mil-STD 810G",material:"Clear TPU + Hard Back",feature:"Anti-yellowing",weight:"28g"},
+     why:"Best clear case — shows off your phone design while protecting it. Won't yellow for 12+ months. Raised bezels protect camera and screen.",
+     compatible:"Samsung Galaxy S25 / S25+ / S25 Ultra",
+     amazon:"https://www.amazon.in/s?k=ringke+fusion+samsung+s25",flipkart:"https://www.flipkart.com/search?q=ringke+fusion+samsung+s25"},
+    {name:"Caseology Nano Pop",brand:"Caseology",price:"₹799",best:false,category:"cases",
+     specs:{protection:"Drop tested",material:"Silicone",feature:"Color accent stripe",weight:"32g"},
+     why:"Most stylish case at any price. The two-tone color stripe is a head-turner. Silicone grip prevents drops in the first place.",
+     compatible:"iPhone 15/16, Pixel 8/9, Samsung S24/S25",
+     amazon:"https://www.amazon.in/s?k=caseology+nano+pop",flipkart:"https://www.flipkart.com/search?q=caseology+nano+pop"}
+  ],
+  guards:[
+    {name:"Whitestone Dome Glass (UV)",brand:"Whitestone",price:"₹2,499",best:true,category:"guards",
+     specs:{type:"UV Tempered Glass",hardness:"9H+",feature:"Full adhesive (no bubbles)",touch:"100% sensitivity"},
+     why:"The best screen protector money can buy. UV liquid adhesive means zero bubbles and edge-to-edge adhesion. Feels like no protector at all. Fingerprint scanner works perfectly.",
+     compatible:"Samsung S24 Ultra / S25 Ultra / Pixel 9 Pro",
+     amazon:"https://www.amazon.in/s?k=whitestone+dome+glass",flipkart:"https://www.flipkart.com/search?q=whitestone+dome+glass"},
+    {name:"ESR Armorite Screen Protector",brand:"ESR",price:"₹899",best:false,category:"guards",
+     specs:{type:"Tempered Glass",hardness:"9H",feature:"Easy alignment frame",touch:"99% sensitivity"},
+     why:"Best value screen protector. Comes with an alignment frame that makes installation foolproof. 3-pack means you have spares.",
+     compatible:"iPhone 14/15/16 series",
+     amazon:"https://www.amazon.in/s?k=esr+armorite+screen+protector",flipkart:"https://www.flipkart.com/search?q=esr+screen+protector"}
+  ],
+  earbuds:[
+    {name:"Samsung Galaxy Buds FE",brand:"Samsung",price:"₹4,999",best:true,category:"earbuds",
+     specs:{anc:"Active Noise Cancelling",battery:"6h + 21h (case)",driver:"12mm",codec:"SBC, AAC, Scalable"},
+     why:"Best earbuds under ₹5K. Samsung's ANC is genuinely effective. IPX2 water resistant. Seamless pairing with Samsung phones. Comfortable for 4+ hours.",
+     compatible:"All Bluetooth devices (best with Samsung Galaxy phones)",
+     amazon:"https://www.amazon.in/s?k=samsung+galaxy+buds+fe",flipkart:"https://www.flipkart.com/search?q=samsung+galaxy+buds+fe"},
+    {name:"boAt Airdopes 141",brand:"boAt",price:"₹999",best:false,category:"earbuds",
+     specs:{anc:"No (ENx noise cancel on calls)",battery:"6h + 42h (case)",driver:"8mm",codec:"SBC"},
+     why:"India's most popular budget earbuds. 42-hour total battery is insane. IPX4 water resistant. Bass-heavy tuning works well for Bollywood and hip-hop.",
+     compatible:"All Bluetooth 5.1 devices",
+     amazon:"https://www.amazon.in/s?k=boat+airdopes+141",flipkart:"https://www.flipkart.com/search?q=boat+airdopes+141"},
+    {name:"Apple AirPods Pro 2 (USB-C)",brand:"Apple",price:"₹20,900",best:false,category:"earbuds",
+     specs:{anc:"Adaptive ANC + Transparency",battery:"6h + 30h (case)",driver:"Custom Apple H2",codec:"AAC, LC3"},
+     why:"The benchmark. Adaptive transparency is magical. Conversation awareness auto-pauses music. Spatial Audio for movies. Best-in-class if you're in the Apple ecosystem.",
+     compatible:"iPhone, iPad, Mac (works with Android but limited features)",
+     amazon:"https://www.amazon.in/s?k=airpods+pro+2+usb+c",flipkart:"https://www.flipkart.com/search?q=airpods+pro+2"}
+  ],
+  backpacks:[
+    {name:"American Tourister Valex 28L",brand:"American Tourister",price:"₹1,199",best:true,category:"backpacks",
+     specs:{capacity:"28L",laptop:"Up to 15.6\"",material:"Polyester",feature:"Rain cover included"},
+     why:"Best backpack under ₹1,500 for daily use. Rain cover is a lifesaver in Indian monsoons. Padded laptop compartment. Multiple organizer pockets. Weighs just 550g.",
+     compatible:"Up to 15.6\" laptop",
+     amazon:"https://www.amazon.in/s?k=american+tourister+valex+28l",flipkart:"https://www.flipkart.com/search?q=american+tourister+valex"},
+    {name:"Wildcraft Blaze 45L",brand:"Wildcraft",price:"₹2,499",best:false,category:"backpacks",
+     specs:{capacity:"45L",laptop:"Up to 17\"",material:"Nylon Ripstop",feature:"Chest & waist straps"},
+     why:"Best for travel. 45L fits a weekend's clothes plus a laptop. Indian-made with India-proof durability. Chest and waist straps distribute weight for long walks.",
+     compatible:"Up to 17\" laptop, weekend travel",
+     amazon:"https://www.amazon.in/s?k=wildcraft+blaze+45l",flipkart:"https://www.flipkart.com/search?q=wildcraft+blaze+45l"}
+  ]
+};
+
+const catInfo={
+  chargers:{title:"Best Chargers in India (2026)",sub:"GaN chargers, fast chargers, and budget picks — compared and ranked."},
+  cases:{title:"Best Phone Cases",sub:"Protection meets style. Military-grade drops tested cases for every phone."},
+  guards:{title:"Best Screen Guards",sub:"Tempered glass, UV adhesive, privacy guards — ranked by protection and feel."},
+  earbuds:{title:"Best Earbuds & TWS",sub:"ANC, battery life, sound quality — from ₹999 to premium picks."},
+  backpacks:{title:"Best Backpacks for Laptops & Travel",sub:"Daily carry, travel, rain-proof — every backpack tested and ranked."},
+  all:{title:"All Accessories",sub:"Every category in one view."}
+};
+
+let currentCat='chargers';
+
+function switchCat(cat){
+  currentCat=cat;
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(cat)||(cat==='all'&&b.textContent==='All')));
+  render();
+}
+
+function render(){
+  const info=catInfo[currentCat]||catInfo.all;
+  document.getElementById('sectionTitle').textContent=info.title;
+  document.getElementById('sectionSub').textContent=info.sub;
+  let items=[];
+  if(currentCat==='all'){Object.values(ACCESSORIES).forEach(arr=>items.push(...arr));}
+  else{items=ACCESSORIES[currentCat]||[];}
+  const grid=document.getElementById('accGrid');
+  if(!items.length){grid.innerHTML='<div class="no-results">No accessories in this category yet.</div>';return;}
+  grid.innerHTML=items.map(a=>`
+    <div class="acc-card${a.best?' best-pick':''}">
+      ${a.best?'<div class="best-badge">BEST PICK</div>':''}
+      <div class="acc-name">${a.name}</div>
+      <div class="acc-brand">${a.brand} · ${a.category==='chargers'?'Charger':a.category==='cases'?'Phone Case':a.category==='guards'?'Screen Guard':a.category==='earbuds'?'Earbuds':'Backpack'}</div>
+      <div class="acc-price">${a.price}</div>
+      <div class="acc-specs">
+        ${Object.entries(a.specs).map(([k,v])=>`<div class="spec-box"><div class="label">${k}</div><div class="val">${v}</div></div>`).join('')}
+      </div>
+      <div class="acc-why">${a.why}</div>
+      <div class="acc-compat">Works with: ${a.compatible}</div>
+      <div class="acc-actions">
+        <a href="${a.amazon}" target="_blank" rel="noopener" class="amazon-btn">Buy on Amazon</a>
+        <a href="${a.flipkart}" target="_blank" rel="noopener" class="flipkart-btn">Buy on Flipkart</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+switchCat('chargers');
+</script>
+</body>
+</html>

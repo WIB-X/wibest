@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Hospitals in India - Compare & Book - WIB</title>
+<meta name="description" content="Compare 100+ hospitals across Delhi, Mumbai, Chennai, Bangalore, Kolkata by speciality, ratings, insurance, and beds. Book via Practo.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.hero-section{margin-top:calc(var(--nav-height)+var(--cat-height));padding:48px 24px 32px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border)}
+.hero-section h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.hero-section p{color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto}
+.filters-wrap{max-width:1200px;margin:0 auto;padding:24px 24px 0}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.filter-group{position:relative}
+.filter-group select{appearance:none;padding:10px 36px 10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:14px;cursor:pointer;transition:all .2s;min-width:160px}
+.filter-group::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--text-muted);pointer-events:none}
+.filter-group select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.search-group{flex:1;min-width:200px;position:relative}
+.search-group::after{display:none}
+.search-input{width:100%;padding:10px 14px 10px 38px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:14px}
+.search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:2}
+.btn-reset{padding:10px 16px;border-radius:8px;background:var(--tag-bg);color:var(--text-secondary);font-family:inherit;font-size:13px;font-weight:500;border:1px solid var(--border);cursor:pointer}
+.btn-reset:hover{background:var(--border)}
+.results-count{font-size:13px;color:var(--text-muted);max-width:1200px;margin:0 auto;padding:12px 24px 0}
+.hosp-grid{max-width:1200px;margin:0 auto;padding:20px 24px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.hcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s}
+.hcard:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.hcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.hcard-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;line-height:1.3;flex:1;padding-right:12px}
+.hcard-rating{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;background:var(--green-bg);color:var(--green);font-size:13px;font-weight:700;white-space:nowrap}
+.hcard-city{font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.hcard-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.spec-tag{padding:4px 10px;border-radius:5px;font-size:11px;font-weight:500;background:var(--accent-light);color:var(--accent)}
+.hcard-details{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.detail-item{padding:8px 10px;background:var(--bg-secondary);border-radius:6px}
+.detail-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+.detail-val{font-size:13px;font-weight:600;margin-top:1px}
+.hcard-actions{display:flex;gap:10px}
+.hcard-actions a{flex:1;padding:10px;border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;text-align:center;transition:all .2s;display:block}
+.no-results{text-align:center;padding:60px 24px;color:var(--text-muted);font-size:15px;grid-column:1/-1}
+@media(max-width:768px){.hero-section h1{font-size:24px}.hosp-grid{grid-template-columns:1fr}.filters{flex-direction:column}.filter-group select,.search-input{width:100%}.search-group{width:100%}.hcard-details{grid-template-columns:1fr}}
+</style>
+<link rel="canonical" href="https://wibest.in/hospitals/">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals" class="active">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link active">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+
+<section class="hero-section">
+  <h1>Hospitals in India</h1>
+  <p>Compare 100+ hospitals across 5 major cities by speciality, ratings, beds, and insurance. Book appointments via Practo.</p>
+</section>
+
+<div class="filters-wrap"><div class="filters">
+  <div class="filter-group"><select id="cityFilter" onchange="applyFilters()"><option value="">All Cities</option></select></div>
+  <div class="filter-group"><select id="specFilter" onchange="applyFilters()"><option value="">All Specialities</option></select></div>
+  <div class="filter-group"><select id="typeFilter" onchange="applyFilters()"><option value="">All Types</option><option value="Government">Government</option><option value="Private">Private</option><option value="Trust">Trust / Non-profit</option></select></div>
+  <div class="filter-group"><select id="sortSelect" onchange="applyFilters()"><option value="">Sort</option><option value="rating-high">Rating: Best First</option><option value="beds-high">Most Beds</option><option value="name-az">Name A-Z</option><option value="est-old">Oldest First</option></select></div>
+  <div class="search-group"><svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input class="search-input" type="text" id="searchInput" placeholder="Search hospitals..." oninput="applyFilters()"></div>
+  <button class="btn-reset" onclick="resetFilters()">Reset</button>
+</div></div>
+<div class="results-count" id="resultsCount"></div>
+<div class="hosp-grid" id="hospGrid"></div>
+
+<div class="notice-bottom"><div class="notice-small">Hospital data is for informational purposes. Verify details directly with the hospital. Practo links open their search page for the hospital. We may earn a commission at no extra cost to you.</div></div>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="brand-name">WIB</div><p>India's unified comparison platform.</p></div><div class="footer-col"><h4>Categories</h4><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a></div><div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/contact">Contact</a><a href="/blog">Blog</a></div><div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div><div class="footer-bottom">WIB - Independent. Data-driven.</div></footer>
+
+<script src="/config.js"></script>
+<script>
+const H=[
+// DELHI NCR (20)
+{n:"AIIMS Delhi",c:"Delhi",t:"Government",r:4.8,b:2478,e:1956,s:["Cardiology","Neurology","Oncology","Orthopedics","Transplant"],i:["CGHS","ECHS","Ayushman Bharat"],a:"NABH, NABL",er:1,w:"https://www.aiims.edu"},
+{n:"Sir Ganga Ram Hospital",c:"Delhi",t:"Private",r:4.6,b:675,e:1921,s:["Gastroenterology","Nephrology","Cardiology","Oncology"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.sgrh.com"},
+{n:"Max Super Speciality Saket",c:"Delhi",t:"Private",r:4.5,b:500,e:2006,s:["Cardiac Sciences","Neurosciences","Oncology","Orthopedics"],i:["Most TPA","CGHS","Star Health"],a:"NABH, JCI",er:1,w:"https://www.maxhealthcare.in"},
+{n:"Fortis Escorts Heart Institute",c:"Delhi",t:"Private",r:4.6,b:310,e:1988,s:["Cardiac Surgery","Cardiology","Vascular Surgery"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.fortisescorts.in"},
+{n:"BLK-Max Super Speciality",c:"Delhi",t:"Private",r:4.4,b:700,e:1959,s:["Bone Marrow Transplant","Oncology","Liver Transplant","Cardiology"],i:["Most TPA","CGHS"],a:"NABH, NABL",er:1,w:"https://www.blkmaxhospital.com"},
+{n:"Safdarjung Hospital",c:"Delhi",t:"Government",r:4.2,b:1600,e:1942,s:["General Medicine","Surgery","Orthopedics","Burns"],i:["CGHS","ECHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.vmmc-sjh.nic.in"},
+{n:"Indraprastha Apollo",c:"Delhi",t:"Private",r:4.5,b:710,e:1996,s:["Cardiology","Oncology","Transplant","Robotic Surgery"],i:["Most TPA","CGHS","Star Health"],a:"NABH, JCI",er:1,w:"https://www.apollohospitals.com"},
+{n:"RML Hospital",c:"Delhi",t:"Government",r:4.1,b:1531,e:1932,s:["General Medicine","Surgery","Paediatrics","Psychiatry"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://rmlh.nic.in"},
+{n:"Lok Nayak Hospital",c:"Delhi",t:"Government",r:4.0,b:2000,e:1932,s:["General Medicine","Surgery","Burns","Trauma"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://lnjp.delhi.gov.in"},
+{n:"Moolchand Hospital",c:"Delhi",t:"Private",r:4.3,b:250,e:1962,s:["Gynaecology","IVF","Orthopedics","Cardiology"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.moolchandhealthcare.com"},
+{n:"Rajiv Gandhi Cancer Institute",c:"Delhi",t:"Trust",r:4.6,b:302,e:1996,s:["Oncology","Surgical Oncology","Radiation Oncology"],i:["CGHS","Most TPA"],a:"NABH, NABL",er:1,w:"https://www.rgcirc.org"},
+{n:"Dharamshila Narayana",c:"Delhi",t:"Private",r:4.4,b:300,e:1994,s:["Oncology","Bone Marrow Transplant","Radiation Oncology"],i:["Most TPA","CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.narayanahealth.org"},
+{n:"Primus Super Speciality",c:"Delhi",t:"Private",r:4.3,b:150,e:2006,s:["Bariatric Surgery","Orthopedics","Spine","Urology"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.primushospital.com"},
+{n:"Venkateshwar Hospital",c:"Delhi",t:"Private",r:4.3,b:350,e:2012,s:["Cardiac","Neurology","Joint Replacement","IVF"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.venkateshwarhospitals.com"},
+{n:"LHMC & Sucheta Kriplani",c:"Delhi",t:"Government",r:4.2,b:800,e:1916,s:["Gynaecology","Paediatrics","General Medicine"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://lhmc-hosp.gov.in"},
+{n:"GTB Hospital",c:"Delhi",t:"Government",r:4.0,b:1800,e:1955,s:["General Medicine","Surgery","Trauma","Burns"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://health.delhigovt.nic.in"},
+{n:"Medanta Gurugram",c:"Gurugram",t:"Private",r:4.5,b:1500,e:2009,s:["Cardiac Surgery","Liver Transplant","Neuroscience","Oncology","Robotics"],i:["Most TPA","Star Health","CGHS"],a:"NABH, JCI",er:1,w:"https://www.medanta.org"},
+{n:"Fortis Memorial Gurugram",c:"Gurugram",t:"Private",r:4.4,b:1000,e:2013,s:["Oncology","Neurosciences","Orthopedics","Renal Sciences"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.fortishealthcare.com"},
+{n:"Artemis Hospital Gurugram",c:"Gurugram",t:"Private",r:4.3,b:400,e:2007,s:["Cardiac","Neurology","Oncology","Gastro","Kidney Transplant"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.artemishospitals.com"},
+{n:"Amrita Hospital Faridabad",c:"Faridabad",t:"Trust",r:4.3,b:2600,e:2022,s:["Cardiology","Oncology","Neurology","Transplant","Robotics"],i:["Most TPA","CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.amritahospital.org"},
+
+// MUMBAI (20)
+{n:"Tata Memorial Hospital",c:"Mumbai",t:"Government",r:4.7,b:629,e:1941,s:["Oncology","Surgical Oncology","Radiation Oncology"],i:["CGHS","ECHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://tmc.gov.in"},
+{n:"Kokilaben Dhirubhai Ambani",c:"Mumbai",t:"Private",r:4.5,b:750,e:2009,s:["Cardiac","Neuroscience","Oncology","BMT","Robotics"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://www.kokilabenhospital.com"},
+{n:"Lilavati Hospital",c:"Mumbai",t:"Trust",r:4.5,b:314,e:1978,s:["Cardiology","Oncology","Neurology","Gastro","Orthopedics"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.lilavatihospital.com"},
+{n:"Jaslok Hospital",c:"Mumbai",t:"Trust",r:4.4,b:364,e:1973,s:["Cardiology","Oncology","Nephrology","Neurology","Transplant"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.jaslokhospital.net"},
+{n:"Hinduja Hospital Mahim",c:"Mumbai",t:"Trust",r:4.5,b:351,e:1951,s:["Cardiology","Gastro","Nephrology","Neurology","Oncology"],i:["Most TPA","CGHS"],a:"NABH, NABL",er:1,w:"https://www.hindujahospital.com"},
+{n:"KEM Hospital",c:"Mumbai",t:"Government",r:4.3,b:1800,e:1926,s:["General Medicine","Surgery","Trauma","Burns","Paediatrics"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.kem.edu"},
+{n:"Nanavati Max Hospital",c:"Mumbai",t:"Private",r:4.4,b:450,e:1950,s:["Cardiac","Neurology","Oncology","Gastro","Joint Replacement"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.maxhealthcare.in"},
+{n:"Bombay Hospital",c:"Mumbai",t:"Trust",r:4.3,b:750,e:1950,s:["Cardiology","Gastro","Neurology","Oncology","Orthopedics"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.bombayhospital.com"},
+{n:"HN Reliance Foundation",c:"Mumbai",t:"Trust",r:4.5,b:345,e:2014,s:["Oncology","Transplant","Cardiac","Neurology","IVF"],i:["Most TPA"],a:"NABH, JCI",er:1,w:"https://www.rfhospital.org"},
+{n:"Breach Candy Hospital",c:"Mumbai",t:"Trust",r:4.4,b:190,e:1950,s:["Cardiology","Orthopedics","General Surgery","Internal Medicine"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.breachcandyhospital.org"},
+{n:"Wockhardt Hospital",c:"Mumbai",t:"Private",r:4.2,b:350,e:1998,s:["Cardiac","Neurology","Spine","Minimal Invasive Surgery"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.wockhardthospitals.com"},
+{n:"Hiranandani Hospital Powai",c:"Mumbai",t:"Private",r:4.3,b:240,e:2004,s:["Orthopedics","Cardiac","Gastro","Urology","Gynaecology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.hiranandanihospital.org"},
+{n:"Saifee Hospital",c:"Mumbai",t:"Trust",r:4.3,b:210,e:1954,s:["Bariatric Surgery","Orthopedics","Cardiac","General"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.saifeehospital.com"},
+{n:"Jupiter Hospital Thane",c:"Mumbai",t:"Private",r:4.3,b:300,e:2007,s:["Cardiac","Neurology","Oncology","Transplant","Joint Replacement"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.jupiterhospital.com"},
+{n:"Apollo Navi Mumbai",c:"Mumbai",t:"Private",r:4.4,b:260,e:2011,s:["Cardiac","Neurology","Oncology","Orthopedics","Transplant"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.apollohospitals.com"},
+{n:"Fortis Mulund",c:"Mumbai",t:"Private",r:4.3,b:300,e:2005,s:["Cardiac","Neurology","Gastro","Orthopedics","Oncology"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.fortishealthcare.com"},
+{n:"Global Hospital Mumbai",c:"Mumbai",t:"Private",r:4.2,b:300,e:2010,s:["Liver Transplant","Kidney Transplant","Gastro","Hepatology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.globalhospitals.com"},
+{n:"Seven Hills Hospital",c:"Mumbai",t:"Private",r:4.1,b:350,e:2004,s:["Cardiac","Neurology","Orthopedics","Gastro","General"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.7hillshospital.com"},
+{n:"Holy Spirit Hospital",c:"Mumbai",t:"Trust",r:4.2,b:220,e:1973,s:["General Medicine","Orthopedics","Gynaecology","Paediatrics"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.holyspirithosp.com"},
+{n:"SL Raheja Mahim",c:"Mumbai",t:"Private",r:4.1,b:200,e:1984,s:["Diabetology","Cardiac","Neurology","Orthopedics"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.rahejahospital.com"},
+
+// CHENNAI (20)
+{n:"Apollo Greams Road",c:"Chennai",t:"Private",r:4.6,b:710,e:1983,s:["Cardiology","Oncology","Transplant","Orthopedics","Neurology"],i:["Most TPA","Star Health","CGHS"],a:"NABH, JCI",er:1,w:"https://www.apollohospitals.com"},
+{n:"CMC Vellore",c:"Vellore",t:"Trust",r:4.7,b:2700,e:1900,s:["General Medicine","Oncology","Haematology","Nephrology","Neurology"],i:["CGHS","Most TPA","Ayushman Bharat"],a:"NABH, NABL",er:1,w:"https://www.cmch-vellore.edu"},
+{n:"Sankara Nethralaya",c:"Chennai",t:"Trust",r:4.8,b:400,e:1978,s:["Ophthalmology","Retina","Glaucoma","Cornea"],i:["Most TPA","CGHS"],a:"NABH",er:0,w:"https://www.sankaranethralaya.org"},
+{n:"MIOT International",c:"Chennai",t:"Private",r:4.5,b:600,e:1999,s:["Orthopedics","Joint Replacement","Spine","Sports Medicine","Cardiac"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://www.miothospitals.com"},
+{n:"Fortis Malar Hospital",c:"Chennai",t:"Private",r:4.3,b:180,e:1992,s:["Cardiac","Neurology","Gastro","Kidney Transplant"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.fortismalar.com"},
+{n:"Madras Medical Mission",c:"Chennai",t:"Trust",r:4.5,b:350,e:1990,s:["Cardiac Surgery","Cardiology","Paediatric Cardiac"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.mmm.org.in"},
+{n:"Stanley Medical College Hospital",c:"Chennai",t:"Government",r:4.2,b:1650,e:1938,s:["General Medicine","Surgery","Orthopedics","Trauma"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.smc.tn.gov.in"},
+{n:"Rajiv Gandhi GGH",c:"Chennai",t:"Government",r:4.1,b:2400,e:1664,s:["General Medicine","Surgery","Trauma","Burns","Paediatrics"],i:["Ayushman Bharat"],a:"NABH",er:1,w:"https://rfrgggh.tn.nic.in"},
+{n:"Sri Ramachandra Hospital",c:"Chennai",t:"Private",r:4.4,b:800,e:1985,s:["Cardiac","Neurology","Gastro","Oncology","Transplant"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.sriramachandra.edu.in"},
+{n:"Kauvery Hospital",c:"Chennai",t:"Private",r:4.4,b:350,e:1999,s:["Cardiac","Neurology","Gastro","Orthopedics","Oncology"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.kauveryhospital.com"},
+{n:"MGM Healthcare",c:"Chennai",t:"Private",r:4.3,b:400,e:2019,s:["Cardiac","Neurology","Transplant","Oncology","Robotics"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://mgmhealthcare.in"},
+{n:"Gleneagles Global Chennai",c:"Chennai",t:"Private",r:4.4,b:1000,e:1999,s:["Transplant","Cardiac","Neurology","Oncology","Robotic Surgery"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://www.gleneagleshealth.in"},
+{n:"Global Hospital Chennai",c:"Chennai",t:"Private",r:4.3,b:350,e:2009,s:["Liver Transplant","Gastro","Hepatology","Kidney Transplant"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.globalhospitalsindia.com"},
+{n:"Apollo Children's Hospital",c:"Chennai",t:"Private",r:4.6,b:180,e:1997,s:["Paediatrics","Paediatric Surgery","Neonatology","PICU"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.apollochildrenshospitals.com"},
+{n:"Billroth Hospitals",c:"Chennai",t:"Private",r:4.2,b:300,e:1990,s:["Cardiac","Neurology","Orthopedics","Gastro","IVF"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.billrothhospitals.com"},
+{n:"Vijaya Hospital",c:"Chennai",t:"Private",r:4.2,b:300,e:1972,s:["Cardiac","Neurology","Orthopedics","Gastro","General"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.vijayahospital.com"},
+{n:"Dr. Mehta's Hospitals",c:"Chennai",t:"Private",r:4.2,b:250,e:1933,s:["Orthopedics","Joint Replacement","Spine","Sports Medicine"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.mehtahospital.com"},
+{n:"Prashanth Hospitals",c:"Chennai",t:"Private",r:4.2,b:250,e:1989,s:["Gastro","Hepatology","Liver Transplant","Renal"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.prashanthhospitals.com"},
+{n:"Chettinad Hospital",c:"Chennai",t:"Private",r:4.1,b:400,e:2006,s:["General Medicine","Surgery","Orthopedics","Cardiac","Neurology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.chettinadhealthcity.com"},
+{n:"Aravind Eye Hospital",c:"Madurai",t:"Trust",r:4.7,b:500,e:1976,s:["Ophthalmology","Cataract","Retina","Glaucoma","Cornea"],i:["Most TPA","CGHS"],a:"NABH",er:0,w:"https://www.aravind.org"},
+
+// BANGALORE (20)
+{n:"Narayana Health City",c:"Bangalore",t:"Private",r:4.5,b:3200,e:2001,s:["Cardiology","Cardiac Surgery","Oncology","Nephrology","Transplant"],i:["Most TPA","Star Health","Ayushman Bharat"],a:"NABH, JCI",er:1,w:"https://www.narayanahealth.org"},
+{n:"NIMHANS",c:"Bangalore",t:"Government",r:4.6,b:897,e:1925,s:["Psychiatry","Neurology","Neurosurgery","Clinical Psychology"],i:["CGHS","ECHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://nimhans.ac.in"},
+{n:"Manipal Hospital Old Airport Rd",c:"Bangalore",t:"Private",r:4.4,b:650,e:1991,s:["Transplant","Oncology","Cardiology","Neurology","Gastro"],i:["Most TPA","Star Health","CGHS"],a:"NABH",er:1,w:"https://www.manipalhospitals.com"},
+{n:"Aster CMI Hospital",c:"Bangalore",t:"Private",r:4.4,b:500,e:2014,s:["Cardiac","Neurology","Oncology","Gastro","Transplant"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.asterbangalore.com"},
+{n:"Fortis Bannerghatta",c:"Bangalore",t:"Private",r:4.3,b:400,e:2007,s:["Cardiac","Neurology","Oncology","Orthopedics","Transplant"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.fortishealthcare.com"},
+{n:"Apollo Bannerghatta",c:"Bangalore",t:"Private",r:4.4,b:300,e:2007,s:["Cardiac","Neurology","Oncology","Transplant","Robotics"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://www.apollohospitals.com"},
+{n:"Sakra World Hospital",c:"Bangalore",t:"Private",r:4.3,b:300,e:2014,s:["Orthopedics","Cardiac","Neurology","Oncology","Gastro"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://www.sakraworldhospital.com"},
+{n:"Jayadeva Institute",c:"Bangalore",t:"Government",r:4.5,b:700,e:1992,s:["Cardiology","Cardiac Surgery","Paediatric Cardiac"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.jayadevacardiology.com"},
+{n:"Kidwai Memorial Hospital",c:"Bangalore",t:"Government",r:4.2,b:650,e:1973,s:["Oncology","Surgical Oncology","Radiation Oncology"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://kidwai.karnataka.gov.in"},
+{n:"St. Johns Medical College",c:"Bangalore",t:"Trust",r:4.4,b:1250,e:1963,s:["General Medicine","Surgery","Paediatrics","Cardiac","Oncology"],i:["CGHS","Most TPA"],a:"NABH",er:1,w:"https://www.stjohns.in"},
+{n:"HCG Cancer Centre",c:"Bangalore",t:"Private",r:4.5,b:200,e:1989,s:["Oncology","Radiation","BMT","Surgical Oncology"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.hcgoncology.com"},
+{n:"BGS Gleneagles",c:"Bangalore",t:"Private",r:4.3,b:500,e:2011,s:["Cardiac","Neurology","Orthopedics","Oncology","Gastro"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.bgsgleneagles.com"},
+{n:"MS Ramaiah Memorial",c:"Bangalore",t:"Private",r:4.3,b:800,e:1979,s:["General Medicine","Surgery","Cardiac","Neurology","Oncology"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.msrmh.com"},
+{n:"Mazumdar Shaw Medical Centre",c:"Bangalore",t:"Trust",r:4.5,b:1400,e:2001,s:["Oncology","BMT","Cardiac","Neurology","Transplant"],i:["Most TPA","Ayushman Bharat"],a:"NABH, JCI",er:1,w:"https://www.narayanahealth.org"},
+{n:"Sparsh Hospital",c:"Bangalore",t:"Private",r:4.3,b:200,e:2004,s:["Orthopedics","Joint Replacement","Spine","Sports Medicine","Trauma"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.sparshhospital.com"},
+{n:"Columbia Asia Whitefield",c:"Bangalore",t:"Private",r:4.2,b:150,e:2008,s:["General","Orthopedics","Gastro","Gynaecology","Paediatrics"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.columbiaasia.com"},
+{n:"Vikram Hospital",c:"Bangalore",t:"Private",r:4.2,b:200,e:2001,s:["Cardiac","Neurology","Orthopedics","Gastro","Renal"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.vikramhospital.com"},
+{n:"Sagar Hospitals",c:"Bangalore",t:"Private",r:4.2,b:250,e:2004,s:["Cardiac","Neurology","Orthopedics","Gastro","Oncology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.sagarhospitals.in"},
+{n:"Bangalore Baptist Hospital",c:"Bangalore",t:"Trust",r:4.3,b:400,e:1973,s:["General Medicine","Surgery","Orthopedics","Gynaecology","Paediatrics"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.bbh.org.in"},
+{n:"Ramaiah Narayana Heart Centre",c:"Bangalore",t:"Private",r:4.4,b:250,e:2012,s:["Cardiac Surgery","Cardiology","Vascular Surgery"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.narayanahealth.org"},
+
+// KOLKATA (20)
+{n:"AMRI Hospital Salt Lake",c:"Kolkata",t:"Private",r:4.4,b:450,e:1996,s:["Cardiac","Neurology","Oncology","Orthopedics","Gastro"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.amrihospitals.in"},
+{n:"Fortis Anandapur",c:"Kolkata",t:"Private",r:4.3,b:400,e:2008,s:["Cardiac","Neurology","Oncology","Renal","Transplant"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://www.fortishealthcare.com"},
+{n:"Apollo Gleneagles Kolkata",c:"Kolkata",t:"Private",r:4.4,b:510,e:2003,s:["Cardiac","Neurology","Oncology","Transplant","Gastro"],i:["Most TPA","Star Health"],a:"NABH, JCI",er:1,w:"https://kolkata.apollohospitals.com"},
+{n:"Medica Superspecialty",c:"Kolkata",t:"Private",r:4.3,b:400,e:2010,s:["Cardiac","Neurology","Transplant","Oncology","Orthopedics"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.medicasynergie.in"},
+{n:"Tata Medical Center",c:"Kolkata",t:"Trust",r:4.6,b:460,e:2011,s:["Oncology","BMT","Surgical Oncology","Paediatric Oncology"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.tatamedicalbr.com"},
+{n:"BM Birla Heart Research",c:"Kolkata",t:"Private",r:4.5,b:200,e:1989,s:["Cardiology","Cardiac Surgery","Vascular","Paediatric Cardiac"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.bmbirlaheart.com"},
+{n:"Peerless Hospital",c:"Kolkata",t:"Private",r:4.2,b:350,e:1988,s:["Cardiac","Neurology","Gastro","Orthopedics","Renal"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.peerlesshospital.com"},
+{n:"Woodlands Hospital",c:"Kolkata",t:"Private",r:4.2,b:350,e:1988,s:["Cardiac","Neurology","Gastro","General","Gynaecology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.woodlandshospital.in"},
+{n:"SSKM Hospital",c:"Kolkata",t:"Government",r:4.2,b:2000,e:1945,s:["General Medicine","Surgery","Trauma","Burns","Paediatrics"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.sskm.org"},
+{n:"RN Tagore International",c:"Kolkata",t:"Private",r:4.3,b:300,e:2002,s:["Cardiac","Neurology","Orthopedics","Gastro","Oncology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.rfrntihkolkata.com"},
+{n:"Belle Vue Clinic",c:"Kolkata",t:"Private",r:4.3,b:180,e:1979,s:["General Medicine","Cardiac","Neurology","Gastro","Gynaecology"],i:["Most TPA"],a:"NABH",er:1,w:"https://bellevueclinic.com"},
+{n:"Ruby General Hospital",c:"Kolkata",t:"Private",r:4.2,b:350,e:2002,s:["Cardiac","Neurology","Orthopedics","Oncology","Gastro"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.rubyhospital.com"},
+{n:"Narayana Multispeciality Howrah",c:"Kolkata",t:"Private",r:4.3,b:300,e:2013,s:["Cardiac","Neurology","Orthopedics","Gastro","Paediatrics"],i:["Most TPA","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.narayanahealth.org"},
+{n:"CMRI Kolkata",c:"Kolkata",t:"Private",r:4.2,b:300,e:1969,s:["Cardiac","Neurology","Gastro","Orthopedics","Urology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.cmaborneandcmri.com"},
+{n:"Chittaranjan Cancer Institute",c:"Kolkata",t:"Government",r:4.3,b:350,e:1950,s:["Oncology","Surgical Oncology","Radiation","Gynae Oncology"],i:["CGHS","Ayushman Bharat"],a:"NABH",er:1,w:"https://www.cnci.ac.in"},
+{n:"NRS Medical College",c:"Kolkata",t:"Government",r:4.0,b:1600,e:1873,s:["General Medicine","Surgery","Trauma","Paediatrics"],i:["Ayushman Bharat"],a:"NABH",er:1,w:"https://nrsmc.edu.in"},
+{n:"ILS Hospital Dumdum",c:"Kolkata",t:"Private",r:4.1,b:250,e:2005,s:["Cardiac","Neurology","Gastro","Orthopedics","General"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.ilshospitals.com"},
+{n:"Desun Hospital",c:"Kolkata",t:"Private",r:4.2,b:200,e:2004,s:["Cardiac","Neurology","Orthopedics","Gastro","Critical Care"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.desunhospital.com"},
+{n:"Manipal Hospital Kolkata",c:"Kolkata",t:"Private",r:4.3,b:350,e:2016,s:["Cardiac","Neurology","Oncology","Transplant","Gastro"],i:["Most TPA","Star Health"],a:"NABH",er:1,w:"https://www.manipalhospitals.com"},
+{n:"EKO Superspeciality",c:"Kolkata",t:"Private",r:4.1,b:200,e:2006,s:["Cardiac","Neurology","Gastro","Orthopedics","Urology"],i:["Most TPA"],a:"NABH",er:1,w:"https://www.ekosuperspeciality.com"}
+];
+
+let filtered=[...H];
+function init(){
+  const cities=[...new Set(H.map(h=>h.c))].sort();
+  const specs=[...new Set(H.flatMap(h=>h.s))].sort();
+  const cf=document.getElementById('cityFilter');
+  cities.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cf.appendChild(o)});
+  const sf=document.getElementById('specFilter');
+  specs.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sf.appendChild(o)});
+  applyFilters();
+}
+function applyFilters(){
+  const city=document.getElementById('cityFilter').value;
+  const spec=document.getElementById('specFilter').value;
+  const type=document.getElementById('typeFilter').value;
+  const sort=document.getElementById('sortSelect').value;
+  const search=document.getElementById('searchInput').value.toLowerCase().trim();
+  filtered=H.filter(h=>{
+    if(city&&h.c!==city)return false;
+    if(spec&&!h.s.includes(spec))return false;
+    if(type&&h.t!==type)return false;
+    if(search&&!h.n.toLowerCase().includes(search)&&!h.c.toLowerCase().includes(search)&&!h.s.join(' ').toLowerCase().includes(search))return false;
+    return true;
+  });
+  if(sort==='rating-high')filtered.sort((a,b)=>b.r-a.r);
+  else if(sort==='beds-high')filtered.sort((a,b)=>b.b-a.b);
+  else if(sort==='name-az')filtered.sort((a,b)=>a.n.localeCompare(b.n));
+  else if(sort==='est-old')filtered.sort((a,b)=>a.e-b.e);
+  render();
+}
+function resetFilters(){document.getElementById('cityFilter').value='';document.getElementById('specFilter').value='';document.getElementById('typeFilter').value='';document.getElementById('sortSelect').value='';document.getElementById('searchInput').value='';applyFilters();}
+function render(){
+  document.getElementById('resultsCount').textContent='Showing '+filtered.length+' of '+H.length+' hospitals';
+  const grid=document.getElementById('hospGrid');
+  if(!filtered.length){grid.innerHTML='<div class="no-results">No hospitals match your filters. Try changing your selection.</div>';return;}
+  grid.innerHTML=filtered.map(h=>{
+    const citySlug=h.c.toLowerCase().replace(/ /g,'-');
+    const practoUrl='https://www.practo.com/'+citySlug+'/search?q='+encodeURIComponent(h.n)+'&type=hospital';
+    return '<div class="hcard"><div class="hcard-top"><div class="hcard-name">'+h.n+'</div><div class="hcard-rating">'+h.r+'</div></div><div class="hcard-city">'+h.c+' | '+h.t+' | Est. '+h.e+'</div><div class="hcard-tags">'+h.s.slice(0,4).map(function(s){return '<span class="spec-tag">'+s+'</span>'}).join('')+(h.s.length>4?'<span class="spec-tag">+' +(h.s.length-4)+' more</span>':'')+'</div><div class="hcard-details"><div class="detail-item"><div class="detail-label">Beds</div><div class="detail-val">'+h.b.toLocaleString()+'</div></div><div class="detail-item"><div class="detail-label">Emergency</div><div class="detail-val">'+(h.er?'24/7 Available':'No')+'</div></div><div class="detail-item"><div class="detail-label">Accreditation</div><div class="detail-val">'+h.a+'</div></div><div class="detail-item"><div class="detail-label">Insurance</div><div class="detail-val">'+h.i.slice(0,2).join(', ')+'</div></div></div><div class="hcard-actions"><a href="'+practoUrl+'" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px">Book on Practo</a><a href="'+h.w+'" target="_blank" rel="noopener" class="btn-secondary" style="font-size:12px;padding:10px">Official Website</a></div></div>';
+  }).join('');
+}
+init();
+</script>
+</body>
+</html>

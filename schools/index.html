@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schools in India — WIB</title>
+<meta name="description" content="Compare top schools across India. Filter by board, city, fees, and ratings.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.hero-section{margin-top:calc(var(--nav-height)+var(--cat-height));padding:48px 24px 32px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border);transition:background .3s}
+.hero-section h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.hero-section p{color:var(--text-secondary);font-size:15px;max-width:560px;margin:0 auto}
+.filters-wrap{max-width:1200px;margin:0 auto;padding:24px 24px 0}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.filter-group{position:relative}
+.filter-group select,.search-input{appearance:none;padding:10px 36px 10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:14px;cursor:pointer;transition:all .2s;min-width:160px}
+.filter-group select:hover,.search-input:hover{border-color:var(--border-hover)}
+.filter-group select:focus,.search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.filter-group::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--text-muted);pointer-events:none}
+.search-group{flex:1;min-width:200px;position:relative}
+.search-group::after{display:none}
+.search-input{width:100%;padding-left:38px;padding-right:14px}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:2}
+.btn-reset{padding:10px 16px;border-radius:8px;background:var(--tag-bg);color:var(--text-secondary);font-family:inherit;font-size:13px;font-weight:500;border:1px solid var(--border);cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-reset:hover{background:var(--border);color:var(--text-primary)}
+.results-count{font-size:13px;color:var(--text-muted);padding:12px 0 0}
+.grid-wrap{max-width:1200px;margin:0 auto;padding:20px 24px 60px}
+.school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;cursor:pointer}
+.card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.card-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;line-height:1.3;flex:1;padding-right:12px}
+.card-rating{flex-shrink:0;display:flex;align-items:center;gap:4px;background:var(--green-bg);color:var(--green);padding:4px 10px;border-radius:6px;font-size:13px;font-weight:600}
+.card-rating svg{width:13px;height:13px;fill:var(--green)}
+.card-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.meta-tag{padding:4px 10px;border-radius:5px;font-size:12px;font-weight:500;background:var(--tag-bg);color:var(--tag-text)}
+.meta-tag.board{background:var(--accent-light);color:var(--accent)}
+.card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px}
+.stat{background:var(--bg-card);padding:10px 12px;text-align:center}
+.stat-val{font-size:15px;font-weight:600}
+.stat-label{font-size:11px;color:var(--text-muted);margin-top:2px}
+.card-facilities{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.facility-chip{display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:500;background:var(--green-bg);color:var(--green)}
+.facility-chip svg{width:11px;height:11px;fill:currentColor}
+.card-actions{display:flex;gap:10px}
+.btn-details{flex:1;padding:10px;border-radius:8px;background:var(--accent);color:#fff;font-family:inherit;font-size:13px;font-weight:600;border:none;cursor:pointer;text-align:center;transition:background .2s}
+.btn-details:hover{background:var(--accent-hover)}
+.btn-enquiry{padding:10px 16px;border-radius:8px;background:transparent;color:var(--accent);font-family:inherit;font-size:13px;font-weight:600;border:1px solid var(--accent);cursor:pointer;transition:all .2s}
+.btn-enquiry:hover{background:var(--accent-light)}
+.loading{text-align:center;padding:60px 24px;color:var(--text-muted)}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.no-results{text-align:center;padding:60px 24px;color:var(--text-muted);font-size:15px}
+/* Review prompt */
+.review-prompt{max-width:1200px;margin:0 auto;padding:0 24px 40px}
+.review-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:background .3s}
+.review-card h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;margin-bottom:8px}
+.review-card p{color:var(--text-secondary);font-size:14px;margin-bottom:16px}
+@media(max-width:768px){.hero-section h1{font-size:24px}.school-grid{grid-template-columns:1fr}.filters{flex-direction:column}.filter-group select,.search-input{width:100%}.search-group{width:100%}.hero-section{padding:32px 16px 24px}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<link rel="canonical" href="https://wibest.in/schools/">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="/" class="nav-logo">WIB</a>
+  <div class="nav-links"><a href="/">Home</a><a href="/schools" class="active">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/blog">Blog</a></div>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+      <svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link active">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div>
+
+<section class="hero-section">
+  <h1>Schools in India</h1>
+  <p>Compare schools by board, fees, facilities, and parent reviews across major cities.</p>
+</section>
+
+<div class="filters-wrap">
+  <div class="filters">
+    <div class="filter-group"><select id="cityFilter" onchange="applyFilters()"><option value="">All Cities</option></select></div>
+    <div class="filter-group"><select id="boardFilter" onchange="applyFilters()"><option value="">All Boards</option></select></div>
+    <div class="filter-group"><select id="sortSelect" onchange="applyFilters()"><option value="">Sort</option><option value="name-az">Name A-Z</option><option value="name-za">Name Z-A</option><option value="fees-low">Fees: Low to High</option><option value="fees-high">Fees: High to Low</option><option value="rating-high">Rating: High to Low</option><option value="city-az">City A-Z</option></select></div>
+    <div class="search-group">
+      <svg class="search-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search schools..." oninput="applyFilters()">
+    </div>
+    <button class="btn-reset" onclick="resetFilters()">Reset</button>
+  </div>
+  <div class="results-count" id="resultsCount"></div>
+</div>
+
+<div class="grid-wrap">
+  <div class="school-grid" id="schoolGrid"><div class="loading"><div class="spinner"></div><p>Loading schools...</p></div></div>
+  <div class="no-results" id="noResults" style="display:none">No schools match your filters. Try adjusting your search.</div>
+</div>
+
+<div class="review-prompt">
+  <div class="review-card">
+    <h3>Have experience with a school listed here?</h3>
+    <p>Share your review to help other parents and students make better decisions. Click on any school and scroll to the review section.</p>
+    <a href="/schools" class="btn-primary" style="padding:10px 24px;font-size:13px">Browse Schools to Review</a>
+  </div>
+</div>
+
+<footer class="footer-simple">WIB — Independent. Data-driven.</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script>
+const db = initFirebase();
+let allSchools = [];
+const BOARD_NAMES = ['CBSE','ICSE','IB','IGCSE','Cambridge','State Board','NIOS'];
+
+function getBoard(s){
+  for(const f of['board','type','board_type','curriculum']){
+    if(s[f]){const v=s[f].toUpperCase();for(const b of BOARD_NAMES){if(v.includes(b.toUpperCase()))return b}}
+  }
+  return s.board||'N/A';
+}
+function getSchoolType(s){
+  const types=['Co-ed','Boys','Girls','Day School','Boarding'];
+  for(const f of['gender','school_type']){if(s[f]){for(const t of types){if(s[f].toLowerCase().includes(t.toLowerCase()))return t}}}
+  if(s.type){const v=s.type.toUpperCase();let isBoard=false;for(const b of BOARD_NAMES){if(v.includes(b.toUpperCase())){isBoard=true;break}}if(!isBoard){for(const t of types){if(s.type.toLowerCase().includes(t.toLowerCase()))return t}}}
+  return 'Co-ed';
+}
+function getFees(s){if(s.fees&&typeof s.fees==='object')return s.fees.tuition||s.fees.annual||0;if(typeof s.fees==='number')return s.fees;return s.annual_fees||s.tuition_fees||0}
+function getRating(s){return s.google_rating||s.rating||s.user_rating||0}
+function formatFees(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1)+'L';if(a>=1000)return(a/1000).toFixed(0)+'K';return a.toString()}
+
+async function loadSchools(){
+  try{
+    const snap=await db.collection('items').get();
+    allSchools=[];
+    snap.forEach(doc=>{const d=doc.data();if(d.category==='college'||d.stream)return;allSchools.push({id:doc.id,...d})});
+    const cities=[...new Set(allSchools.map(s=>s.city).filter(Boolean))].sort();
+    const cityEl=document.getElementById('cityFilter');
+    cities.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cityEl.appendChild(o)});
+    const boards=[...new Set(allSchools.map(s=>getBoard(s)).filter(b=>b&&b!=='N/A'))].sort();
+    const boardEl=document.getElementById('boardFilter');
+    boards.forEach(b=>{const o=document.createElement('option');o.value=b;o.textContent=b;boardEl.appendChild(o)});
+    applyFilters();
+  }catch(err){
+    console.error('Error loading schools:',err);
+    document.getElementById('schoolGrid').innerHTML='<div class="no-results">Unable to load schools. Please try refreshing.</div>';
+  }
+}
+function resetFilters(){
+  document.getElementById('cityFilter').value='';
+  document.getElementById('boardFilter').value='';
+  document.getElementById('sortSelect').value='';
+  document.getElementById('searchInput').value='';
+  applyFilters();
+}
+function applyFilters(){
+  const city=document.getElementById('cityFilter').value;
+  const board=document.getElementById('boardFilter').value;
+  const sort=document.getElementById('sortSelect').value;
+  const search=document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered=allSchools.filter(s=>{
+    if(city&&s.city!==city)return false;
+    if(board&&getBoard(s)!==board)return false;
+    if(search){const n=(s.name||'').toLowerCase();const c=(s.city||'').toLowerCase();if(!n.includes(search)&&!c.includes(search))return false}
+    return true;
+  });
+  if(sort==='name-az')filtered.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
+  else if(sort==='name-za')filtered.sort((a,b)=>(b.name||'').localeCompare(a.name||''));
+  else if(sort==='fees-low')filtered.sort((a,b)=>getFees(a)-getFees(b));
+  else if(sort==='fees-high')filtered.sort((a,b)=>getFees(b)-getFees(a));
+  else if(sort==='rating-high')filtered.sort((a,b)=>getRating(b)-getRating(a));
+  else if(sort==='city-az')filtered.sort((a,b)=>(a.city||'').localeCompare(b.city||''));
+  renderSchools(filtered);
+  document.getElementById('resultsCount').textContent=filtered.length+' school'+(filtered.length!==1?'s':'')+' found';
+  document.getElementById('noResults').style.display=filtered.length===0?'block':'none';
+}
+function renderSchools(schools){
+  const grid=document.getElementById('schoolGrid');
+  if(!schools.length){grid.innerHTML='';return}
+  const chk='<svg viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>';
+  const star='<svg viewBox="0 0 16 16"><path d="M8 1.5l2.18 4.42 4.87.71-3.52 3.43.83 4.84L8 12.42l-4.36 2.48.83-4.84L1 6.63l4.87-.71z"/></svg>';
+  grid.innerHTML=schools.map(s=>{
+    const board=getBoard(s),type=getSchoolType(s),fees=getFees(s),rating=getRating(s);
+    const fac=s.facilities||s;
+    const fl=[];
+    if(fac.transport||fac.transportation)fl.push('Transport');
+    if(fac.sports)fl.push('Sports');if(fac.library)fl.push('Library');
+    if(fac.science_lab||fac.lab)fl.push('Lab');if(fac.arts||fac.arts_music)fl.push('Arts');
+    if(fac.cctv||fac.security)fl.push('Security');
+    return `<div class="card" onclick="viewSchool('${s.id}')">
+      <div class="card-top"><div class="card-name">${s.name||'School'}</div>${rating>0?`<div class="card-rating">${star} ${rating.toFixed(1)}</div>`:''}</div>
+      <div class="card-meta">${board!=='N/A'?`<span class="meta-tag board">${board}</span>`:''}<span class="meta-tag">${s.city||''}</span><span class="meta-tag">${type}</span></div>
+      <div class="card-stats"><div class="stat"><div class="stat-val">${fees>0?formatFees(fees):'N/A'}</div><div class="stat-label">Annual Fees</div></div><div class="stat"><div class="stat-val">${s.board_results||s.results||'N/A'}</div><div class="stat-label">Results</div></div><div class="stat"><div class="stat-val">${s.student_teacher_ratio||'N/A'}</div><div class="stat-label">S:T Ratio</div></div></div>
+      ${fl.length?`<div class="card-facilities">${fl.map(f=>`<span class="facility-chip">${chk} ${f}</span>`).join('')}</div>`:''}
+      <div class="card-actions"><button class="btn-details" onclick="event.stopPropagation();viewSchool('${s.id}')">View Details</button><button class="btn-enquiry" onclick="event.stopPropagation();viewSchool('${s.id}','enquire')">Enquire</button></div>
+    </div>`;
+  }).join('');
+}
+function viewSchool(id,action){
+  let url='/school-detail.html?id='+id;
+  if(action==='enquire')url+='&enquire=true';
+  window.location.href=url;
+}
+loadSchools();
+</script>
+</body>
+</html>
