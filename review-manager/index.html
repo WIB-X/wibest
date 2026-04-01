@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Manager - WIB Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#e5e7eb;min-height:100vh}
+.login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-box{background:#111;border:1px solid #222;border-radius:16px;padding:40px;width:100%;max-width:380px;text-align:center}
+.login-box h2{font-family:'Outfit',sans-serif;font-size:24px;margin-bottom:8px}
+.login-box p{font-size:13px;color:#888;margin-bottom:24px}
+.login-box input{width:100%;padding:12px 16px;border:1px solid #333;border-radius:8px;background:#1a1a1a;color:#fff;font-family:inherit;font-size:14px;margin-bottom:12px}
+.login-box button{width:100%;padding:12px;border-radius:8px;background:#2563eb;color:#fff;font-family:inherit;font-size:14px;font-weight:600;border:none;cursor:pointer}
+.login-box button:hover{background:#1d4ed8}
+.dashboard{display:none;padding:24px;max-width:1000px;margin:0 auto}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.dash-header h1{font-family:'Outfit',sans-serif;font-size:24px}
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #333;background:#1a1a1a;color:#aaa;transition:all .2s}
+.tab.active{background:#2563eb;color:#fff;border-color:#2563eb}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px}
+.stat{background:#111;border:1px solid #222;border-radius:12px;padding:16px;text-align:center}
+.stat .num{font-size:28px;font-weight:700}.stat .lbl{font-size:11px;color:#888;text-transform:uppercase;margin-top:4px}
+.review-card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:12px;transition:border-color .2s}
+.review-card:hover{border-color:#444}
+.rc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.rc-name{font-weight:600;font-size:15px}
+.rc-badge{font-size:11px;padding:4px 10px;border-radius:6px;font-weight:600}
+.badge-pending{background:#fef3cd;color:#856404}.badge-approved{background:#d4edda;color:#155724}.badge-rejected{background:#f8d7da;color:#721c24}
+.rc-meta{font-size:12px;color:#888;margin-bottom:8px}
+.rc-entity{font-size:13px;color:#2563eb;font-weight:500;margin-bottom:6px}
+.rc-stars{color:#22c55e;font-size:14px;margin-bottom:6px}
+.rc-text{font-size:14px;color:#ccc;line-height:1.6;margin-bottom:12px}
+.rc-criteria{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;font-size:12px;color:#888}
+.rc-criteria span{background:#1a1a1a;padding:4px 10px;border-radius:4px}
+.rc-actions{display:flex;gap:8px}
+.rc-actions button{padding:8px 20px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all .2s}
+.btn-approve{background:#22c55e;color:#fff}.btn-approve:hover{background:#16a34a}
+.btn-reject{background:#ef4444;color:#fff}.btn-reject:hover{background:#dc2626}
+.btn-delete{background:#333;color:#aaa}.btn-delete:hover{background:#444}
+.empty{text-align:center;padding:40px;color:#666;font-size:14px}
+.logout{padding:8px 16px;border-radius:6px;background:#333;color:#aaa;font-size:12px;font-weight:600;border:none;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="login" id="loginScreen">
+  <div class="login-box">
+    <h2>WIB Review Manager</h2>
+    <p>Admin access to approve, reject, and manage all reviews.</p>
+    <input type="password" id="adminPass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Login</button>
+    <p id="loginErr" style="color:#ef4444;font-size:12px;margin-top:8px;display:none">Incorrect password</p>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <h1>Review Manager</h1>
+    <button class="logout" onclick="doLogout()">Logout</button>
+  </div>
+  
+  <div class="stats" id="statsBar">
+    <div class="stat"><div class="num" id="pendingCount">0</div><div class="lbl">Pending</div></div>
+    <div class="stat"><div class="num" id="approvedCount">0</div><div class="lbl">Approved</div></div>
+    <div class="stat"><div class="num" id="rejectedCount">0</div><div class="lbl">Rejected</div></div>
+    <div class="stat"><div class="num" id="totalCount">0</div><div class="lbl">Total</div></div>
+  </div>
+  
+  <div class="tabs">
+    <div class="tab active" onclick="filterReviews('pending',this)">Pending</div>
+    <div class="tab" onclick="filterReviews('approved',this)">Approved</div>
+    <div class="tab" onclick="filterReviews('rejected',this)">Rejected</div>
+    <div class="tab" onclick="filterReviews('all',this)">All</div>
+    <div class="tab" onclick="filterReviews('school',this)">Schools Only</div>
+    <div class="tab" onclick="filterReviews('hospital',this)">Hospitals Only</div>
+  </div>
+  
+  <div id="reviewsList"></div>
+</div>
+
+<script src="/config.js"></script>
+<script>
+var db=firebase.firestore();
+var allReviews=[];
+var ADMIN_PASS='wibadmin2026'; // CHANGE THIS to your password - keep the quotes // Change this to your preferred password
+
+function doLogin(){
+  var pass=document.getElementById('adminPass').value;
+  if(pass.trim()===ADMIN_PASS.trim()){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    sessionStorage.setItem('wib_admin','1');
+    loadAllReviews();
+  } else {
+    document.getElementById('loginErr').style.display='block';
+  }
+}
+
+function doLogout(){
+  sessionStorage.removeItem('wib_admin');
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('dashboard').style.display='none';
+}
+
+// Auto-login if session exists
+if(sessionStorage.getItem('wib_admin')==='1'){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  setTimeout(loadAllReviews,100);
+}
+
+async function loadAllReviews(){
+  try{
+    var snap=await db.collection('reviews').orderBy('createdAt','desc').get();
+    allReviews=[];
+    snap.forEach(function(doc){
+      var d=doc.data();d.id=doc.id;allReviews.push(d);
+    });
+    updateStats();
+    filterReviews('pending',document.querySelector('.tab.active'));
+  }catch(e){
+    document.getElementById('reviewsList').innerHTML='<div class="empty">Error loading reviews: '+e.message+'</div>';
+  }
+}
+
+function updateStats(){
+  var p=0,a=0,r=0;
+  allReviews.forEach(function(rv){
+    if(rv.status==='pending')p++;
+    else if(rv.status==='approved')a++;
+    else if(rv.status==='rejected')r++;
+  });
+  document.getElementById('pendingCount').textContent=p;
+  document.getElementById('approvedCount').textContent=a;
+  document.getElementById('rejectedCount').textContent=r;
+  document.getElementById('totalCount').textContent=allReviews.length;
+}
+
+function filterReviews(filter,btn){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  if(btn)btn.classList.add('active');
+  
+  var filtered=allReviews;
+  if(filter==='pending')filtered=allReviews.filter(function(r){return r.status==='pending'});
+  else if(filter==='approved')filtered=allReviews.filter(function(r){return r.status==='approved'});
+  else if(filter==='rejected')filtered=allReviews.filter(function(r){return r.status==='rejected'});
+  else if(filter==='school')filtered=allReviews.filter(function(r){return r.category==='school'});
+  else if(filter==='hospital')filtered=allReviews.filter(function(r){return r.category==='hospital'});
+  
+  renderReviews(filtered);
+}
+
+function renderReviews(list){
+  if(!list.length){
+    document.getElementById('reviewsList').innerHTML='<div class="empty">No reviews in this category.</div>';
+    return;
+  }
+  
+  var html='';
+  list.forEach(function(r){
+    var badge='badge-'+r.status;
+    var entity=r.category==='hospital'?(r.hospitalName||'Unknown Hospital'):(r.schoolName||'Unknown School');
+    var loc=r.category==='hospital'?(r.hospitalCity||''):'';
+    var stars='★'.repeat(r.rating||0)+'☆'.repeat(5-(r.rating||0));
+    var date=r.createdAt?new Date(r.createdAt.seconds*1000).toLocaleDateString('en-IN'):'N/A';
+    
+    var criteriaHtml='';
+    if(r.criteria){
+      var c=r.criteria;
+      if(c.doctors)criteriaHtml+='<span>Doctors: '+c.doctors+'/5</span>';
+      if(c.infrastructure)criteriaHtml+='<span>Infra: '+c.infrastructure+'/5</span>';
+      if(c.nursing)criteriaHtml+='<span>Nursing: '+c.nursing+'/5</span>';
+      if(c.cleanliness)criteriaHtml+='<span>Clean: '+c.cleanliness+'/5</span>';
+      if(c.wait_time)criteriaHtml+='<span>Wait: '+c.wait_time+'/5</span>';
+    }
+    
+    html+='<div class="review-card" id="rev-'+r.id+'">';
+    html+='<div class="rc-top"><div><span class="rc-name">'+( r.name||'Anonymous')+'</span> <span style="font-size:12px;color:#888">('+( r.type||'user')+')</span></div><span class="rc-badge '+badge+'">'+r.status+'</span></div>';
+    html+='<div class="rc-entity">'+(r.category==='hospital'?'🏥':'🏫')+' '+entity+(loc?' - '+loc:'')+'</div>';
+    html+='<div class="rc-stars">'+stars+' ('+( r.rating||0)+'/5)</div>';
+    if(criteriaHtml)html+='<div class="rc-criteria">'+criteriaHtml+'</div>';
+    if(r.text)html+='<div class="rc-text">'+r.text+'</div>';
+    html+='<div class="rc-meta">Email: '+(r.email||'N/A')+' | Date: '+date+'</div>';
+    html+='<div class="rc-actions">';
+    if(r.status!=='approved')html+='<button class="btn-approve" onclick="updateStatus(\''+r.id+'\',\'approved\')">Approve</button>';
+    if(r.status!=='rejected')html+='<button class="btn-reject" onclick="updateStatus(\''+r.id+'\',\'rejected\')">Reject</button>';
+    html+='<button class="btn-delete" onclick="deleteReview(\''+r.id+'\')">Delete</button>';
+    html+='</div></div>';
+  });
+  
+  document.getElementById('reviewsList').innerHTML=html;
+}
+
+async function updateStatus(id,status){
+  try{
+    await db.collection('reviews').doc(id).update({status:status});
+    var rv=allReviews.find(function(r){return r.id===id});
+    if(rv)rv.status=status;
+    updateStats();
+    // Re-render current view
+    var activeTab=document.querySelector('.tab.active');
+    if(activeTab)activeTab.click();
+  }catch(e){alert('Error: '+e.message)}
+}
+
+async function deleteReview(id){
+  if(!confirm('Delete this review permanently?'))return;
+  try{
+    await db.collection('reviews').doc(id).delete();
+    allReviews=allReviews.filter(function(r){return r.id!==id});
+    updateStats();
+    var activeTab=document.querySelector('.tab.active');
+    if(activeTab)activeTab.click();
+  }catch(e){alert('Error: '+e.message)}
+}
+</script>
+</body>
+</html>
