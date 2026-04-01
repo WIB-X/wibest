@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Details - WIB</title>
+<meta name="description" content="Hospital details, specialities, ratings, insurance, and patient reviews on WIB.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.detail-wrap{margin-top:calc(var(--nav-height)+var(--cat-height));max-width:900px;margin-left:auto;margin-right:auto;padding:40px 24px 64px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:20px}.bc a{color:var(--accent)}
+.hosp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.hosp-name{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em}
+.hosp-meta{font-size:14px;color:var(--text-secondary);margin-top:4px}
+.hosp-rating{font-size:28px;font-weight:700;color:var(--green);background:var(--green-bg);padding:12px 20px;border-radius:12px;text-align:center;line-height:1}
+.hosp-rating small{display:block;font-size:11px;font-weight:400;color:var(--text-muted);margin-top:4px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
+.info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}
+.info-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.info-val{font-size:18px;font-weight:700}
+.section{margin-bottom:32px}.section-title{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2}
+.spec-tags{display:flex;flex-wrap:wrap;gap:8px}.spec-tag{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;background:var(--accent-light);color:var(--accent)}
+.ins-tags{display:flex;flex-wrap:wrap;gap:8px}.ins-tag{padding:6px 14px;border-radius:6px;font-size:13px;background:var(--bg-secondary);color:var(--text-secondary);border:1px solid var(--border)}
+.action-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.action-btns a{padding:14px 28px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;text-align:center}
+.btn-practo{background:var(--accent);color:#fff}.btn-website{background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)}
+/* Review section */
+.rating-overview{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.rating-box{flex:1;min-width:140px;padding:16px;border-radius:8px;background:var(--bg-secondary);text-align:center}
+.rating-box .score{font-size:28px;font-weight:700}.rating-box .label{font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:4px}
+.review-item{padding:14px;background:var(--bg-secondary);border-radius:8px;margin-bottom:8px}
+.review-header{display:flex;justify-content:space-between;margin-bottom:6px}
+.review-name{font-weight:600;font-size:14px}.review-stars{color:var(--green);font-weight:600;font-size:13px}
+.review-text{font-size:13px;color:var(--text-secondary);line-height:1.6}.review-date{font-size:11px;color:var(--text-muted);margin-top:4px}
+.review-empty{color:var(--text-muted);font-size:14px;padding:16px;text-align:center;background:var(--bg-secondary);border-radius:8px}
+/* Review form */
+.review-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:16px}
+.review-form h4{font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;margin-bottom:4px}
+.review-form p{font-size:13px;color:var(--text-secondary);margin-bottom:16px}
+.rf-type{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.rf-type button{padding:8px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-secondary);font-family:inherit;font-size:13px;cursor:pointer;transition:all .2s}
+.rf-type button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.star-select{display:flex;gap:6px;margin-bottom:16px}
+.star-select button{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--bg-secondary);cursor:pointer;font-size:18px;transition:all .2s;color:var(--text-muted)}
+.star-select button.active{background:var(--green-bg);color:var(--green);border-color:var(--green)}
+.star-select button:hover{border-color:var(--green)}
+.criteria-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.criteria-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px}
+.criteria-item label{color:var(--text-secondary)}
+.criteria-stars{display:flex;gap:2px}
+.criteria-stars button{width:24px;height:24px;border:none;background:none;cursor:pointer;font-size:14px;color:var(--text-muted);padding:0}
+.criteria-stars button.active{color:var(--green)}
+.rf-row{display:flex;gap:12px;margin-bottom:12px}
+.rf-row input,.rf-row textarea{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;font-size:14px}
+.rf-row input:focus,.rf-row textarea:focus{outline:none;border-color:var(--accent)}
+.rf-row textarea{resize:vertical;min-height:80px}
+.form-msg{font-size:13px;text-align:center;padding:10px;border-radius:6px;margin-top:8px}
+.form-msg.success{background:var(--green-bg);color:var(--green)}.form-msg.error{background:#fef2f2;color:var(--red)}
+.loading{text-align:center;padding:100px 24px;color:var(--text-muted)}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:768px){.hosp-name{font-size:22px}.info-grid{grid-template-columns:1fr 1fr}.criteria-grid{grid-template-columns:1fr}.rf-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals" class="active">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/blog">Blog</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link active">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+
+<div class="detail-wrap" id="content">
+  <div class="loading"><div class="spinner"></div>Loading hospital details...</div>
+</div>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="brand-name">WIB</div><p>India's unified comparison platform.</p></div><div class="footer-col"><h4>Categories</h4><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a></div><div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/contact">Contact</a><a href="/blog">Blog</a></div><div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div><div class="footer-bottom">WIB - Independent. Data-driven.</div></footer>
+
+<script src="/config.js"></script>
+<script>
+var db=firebase.firestore();
+var selectedRating=0;
+var selectedType='patient';
+var criteriaRatings={doctors:0,infrastructure:0,nursing:0,cleanliness:0,wait_time:0};
+
+var params=new URLSearchParams(window.location.search);
+var hospName=params.get('name')||'';
+var hospCity=params.get('city')||'';
+
+if(!hospName){
+  document.getElementById('content').innerHTML='<div class="bc"><a href="/">Home</a> / <a href="/hospitals/">Hospitals</a></div><h2>Hospital not found</h2><p>Please select a hospital from the <a href="/hospitals/">hospitals listing</a>.</p>';
+} else {
+  document.title=hospName+' - Hospital Details - WIB';
+  var h={n:decodeURIComponent(hospName),c:decodeURIComponent(hospCity)};
+  // Try to get extra details from URL params
+  var hType=params.get('type')||'';
+  var hRating=parseFloat(params.get('r'))||0;
+  var hBeds=parseInt(params.get('b'))||0;
+  var hEst=parseInt(params.get('e'))||0;
+  var hSpecs=(params.get('s')||'').split(',').filter(Boolean);
+  var hIns=(params.get('i')||'').split(',').filter(Boolean);
+  var hAccr=params.get('a')||'';
+  var hEr=params.get('er')==='1';
+  var hWeb=params.get('w')||'';
+  
+  var citySlug=h.c.toLowerCase().replace(/\s+/g,'-');
+  var practoUrl='https://www.practo.com/'+citySlug;
+  
+  var safeName=h.n.replace(/'/g,"\\'");
+  
+  document.getElementById('content').innerHTML=`
+  <div class="bc"><a href="/">Home</a> / <a href="/hospitals/">Hospitals</a> / ${h.n}</div>
+  <div class="hosp-header">
+    <div>
+      <div class="hosp-name">${h.n}</div>
+      <div class="hosp-meta">${h.c} | ${hType} | Est. ${hEst||'N/A'} | ${hBeds?hBeds+' beds':''}${hAccr?' | '+hAccr:''}</div>
+    </div>
+    ${hRating?`<div class="hosp-rating">${hRating.toFixed(1)}<small>Rating</small></div>`:''}
+  </div>
+  
+  <div class="info-grid">
+    <div class="info-card"><div class="info-label">Type</div><div class="info-val">${hType||'Hospital'}</div></div>
+    <div class="info-card"><div class="info-label">Beds</div><div class="info-val">${hBeds?hBeds.toLocaleString():'N/A'}</div></div>
+    <div class="info-card"><div class="info-label">Emergency</div><div class="info-val" style="color:${hEr?'var(--green)':'var(--text-muted)'}">${hEr?'24/7 Available':'Not Available'}</div></div>
+    <div class="info-card"><div class="info-label">Established</div><div class="info-val">${hEst||'N/A'}</div></div>
+  </div>
+
+  <div class="action-btns">
+    <a href="${practoUrl}" target="_blank" rel="noopener" class="btn-practo">Find on Practo</a>
+    ${hWeb?`<a href="${hWeb}" target="_blank" rel="noopener" class="btn-website">Official Website</a>`:''}
+    <a href="/compare?type=hospitals" class="btn-website">Compare Hospitals</a>
+  </div>
+
+  ${hSpecs.length?`<div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Specialities</div><div class="spec-tags">${hSpecs.map(s=>`<span class="spec-tag">${s}</span>`).join('')}</div></div>`:''}
+
+  ${hIns.length?`<div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/></svg> Insurance Accepted</div><div class="ins-tags">${hIns.map(i=>`<span class="ins-tag">${i}</span>`).join('')}</div></div>`:''}
+
+  <div class="section">
+    <div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Patient Reviews</div>
+    <div class="rating-overview">
+      <div class="rating-box"><div class="score" id="overallScore">-</div><div class="label">Overall Rating</div></div>
+      <div class="rating-box"><div class="score" id="doctorScore">-</div><div class="label">Doctors</div></div>
+      <div class="rating-box"><div class="score" id="infraScore">-</div><div class="label">Infrastructure</div></div>
+      <div class="rating-box"><div class="score" id="cleanScore">-</div><div class="label">Cleanliness</div></div>
+    </div>
+    <div id="reviewsList"><div class="review-empty">No reviews yet. Be the first to review this hospital.</div></div>
+  </div>
+
+  <div class="review-form">
+    <h4>Write a Review for ${h.n}</h4>
+    <p>No login required. Your review will appear after admin approval.</p>
+    <div class="rf-type">
+      <button class="active" onclick="selectType(this,'patient')">Patient</button>
+      <button onclick="selectType(this,'visitor')">Visitor</button>
+      <button onclick="selectType(this,'staff')">Staff</button>
+    </div>
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px">Overall rating</div>
+    <div class="star-select" id="starSelect">
+      <button onclick="selectStar(1)" id="star1">&#9733;</button>
+      <button onclick="selectStar(2)" id="star2">&#9733;</button>
+      <button onclick="selectStar(3)" id="star3">&#9733;</button>
+      <button onclick="selectStar(4)" id="star4">&#9733;</button>
+      <button onclick="selectStar(5)" id="star5">&#9733;</button>
+    </div>
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Rate specific areas (optional)</div>
+    <div class="criteria-grid">
+      <div class="criteria-item"><label>Doctors</label><div class="criteria-stars" id="crit-doctors">${[1,2,3,4,5].map(i=>`<button onclick="setCriteria('doctors',${i})" id="cd${i}">&#9733;</button>`).join('')}</div></div>
+      <div class="criteria-item"><label>Infrastructure</label><div class="criteria-stars" id="crit-infrastructure">${[1,2,3,4,5].map(i=>`<button onclick="setCriteria('infrastructure',${i})" id="ci${i}">&#9733;</button>`).join('')}</div></div>
+      <div class="criteria-item"><label>Nursing Staff</label><div class="criteria-stars" id="crit-nursing">${[1,2,3,4,5].map(i=>`<button onclick="setCriteria('nursing',${i})" id="cn${i}">&#9733;</button>`).join('')}</div></div>
+      <div class="criteria-item"><label>Cleanliness</label><div class="criteria-stars" id="crit-cleanliness">${[1,2,3,4,5].map(i=>`<button onclick="setCriteria('cleanliness',${i})" id="cc${i}">&#9733;</button>`).join('')}</div></div>
+      <div class="criteria-item"><label>Wait Time</label><div class="criteria-stars" id="crit-wait_time">${[1,2,3,4,5].map(i=>`<button onclick="setCriteria('wait_time',${i})" id="cw${i}">&#9733;</button>`).join('')}</div></div>
+    </div>
+    <div class="rf-row"><input type="text" id="revName" placeholder="Your name"><input type="email" id="revEmail" placeholder="Your email"></div>
+    <div class="rf-row"><textarea id="revText" placeholder="Share your experience - treatment quality, staff behaviour, facilities, billing transparency..."></textarea></div>
+    <button class="btn-primary" style="width:100%;padding:14px;font-size:14px" onclick="submitReview()">Submit Review</button>
+    <div id="reviewMsg" style="display:none"></div>
+  </div>`;
+
+  loadReviews();
+}
+
+function selectType(btn,type){
+  document.querySelectorAll('.rf-type button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedType=type;
+}
+
+function selectStar(n){
+  selectedRating=n;
+  for(var i=1;i<=5;i++){document.getElementById('star'+i).classList.toggle('active',i<=n)}
+}
+
+function setCriteria(key,val){
+  criteriaRatings[key]=val;
+  var prefix={doctors:'cd',infrastructure:'ci',nursing:'cn',cleanliness:'cc',wait_time:'cw'}[key];
+  for(var i=1;i<=5;i++){document.getElementById(prefix+i).classList.toggle('active',i<=val)}
+}
+
+async function submitReview(){
+  var name=document.getElementById('revName').value.trim();
+  var email=document.getElementById('revEmail').value.trim();
+  var text=document.getElementById('revText').value.trim();
+  var msg=document.getElementById('reviewMsg');
+  
+  if(!name||!email||!selectedRating){
+    msg.className='form-msg error';msg.textContent='Please enter your name, email, and overall rating.';msg.style.display='block';return;
+  }
+  
+  try{
+    await db.collection('reviews').add({
+      hospitalName:hospName,
+      hospitalCity:hospCity,
+      name:name,
+      email:email,
+      text:text,
+      rating:selectedRating,
+      type:selectedType,
+      category:'hospital',
+      criteria:criteriaRatings,
+      status:'pending',
+      createdAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    msg.className='form-msg success';
+    msg.textContent='Thank you! Your review has been submitted and will appear after admin approval.';
+    msg.style.display='block';
+    document.getElementById('revName').value='';
+    document.getElementById('revEmail').value='';
+    document.getElementById('revText').value='';
+    selectedRating=0;
+    criteriaRatings={doctors:0,infrastructure:0,nursing:0,cleanliness:0,wait_time:0};
+    document.querySelectorAll('.star-select button, .criteria-stars button').forEach(b=>b.classList.remove('active'));
+  }catch(e){
+    msg.className='form-msg error';msg.textContent='Failed to submit. Please try again.';msg.style.display='block';
+  }
+}
+
+async function loadReviews(){
+  try{
+    var snap=await db.collection('reviews').where('hospitalName','==',hospName).where('status','==','approved').orderBy('createdAt','desc').get();
+    var html='',totalR=0,count=0,docT=0,docC=0,infT=0,infC=0,clnT=0,clnC=0;
+    snap.forEach(function(doc){
+      var r=doc.data();count++;totalR+=r.rating||0;
+      if(r.criteria){
+        if(r.criteria.doctors){docT+=r.criteria.doctors;docC++}
+        if(r.criteria.infrastructure){infT+=r.criteria.infrastructure;infC++}
+        if(r.criteria.cleanliness){clnT+=r.criteria.cleanliness;clnC++}
+      }
+      var stars='★'.repeat(r.rating||0)+'☆'.repeat(5-(r.rating||0));
+      html+='<div class="review-item"><div class="review-header"><span class="review-name">'+
+        (r.name||'Anonymous')+' <span style="font-size:11px;color:var(--text-muted);font-weight:400">('+
+        (r.type||'patient')+')</span></span><span class="review-stars">'+stars+'</span></div>'+
+        (r.text?'<div class="review-text">'+r.text+'</div>':'')+
+        '</div>';
+    });
+    if(html)document.getElementById('reviewsList').innerHTML=html;
+    if(count>0)document.getElementById('overallScore').textContent=(totalR/count).toFixed(1);
+    if(docC>0)document.getElementById('doctorScore').textContent=(docT/docC).toFixed(1);
+    if(infC>0)document.getElementById('infraScore').textContent=(infT/infC).toFixed(1);
+    if(clnC>0)document.getElementById('cleanScore').textContent=(clnT/clnC).toFixed(1);
+  }catch(e){console.error('Reviews error:',e)}
+}
+</script>
+<script src="/chat-widget.js"></script>
+</body>
+</html>
