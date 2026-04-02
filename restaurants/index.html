@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Restaurants in India - Compare by City, Cuisine & Budget - WIB</title>
+<meta name="description" content="Discover the best restaurants across Delhi, Mumbai, Chennai, Bangalore, Kolkata, and Hyderabad. Filter by cuisine, budget, and ratings. Order on Zomato and Swiggy.">
+<link rel="canonical" href="https://wibest.in/restaurants/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.hero{margin-top:calc(var(--nav-height)+var(--cat-height));padding:48px 24px 32px;text-align:center}
+.hero h1{font-family:'Outfit',sans-serif;font-size:36px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.hero p{color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto}
+.filters{max-width:1200px;margin:0 auto;padding:0 24px 16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.filters select,.filters input{padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:13px}
+.filters input{flex:1;min-width:200px}
+.filters select{min-width:140px}
+.results{max-width:1200px;margin:0 auto;padding:0 24px 16px;font-size:13px;color:var(--text-muted)}
+.grid{max-width:1200px;margin:0 auto;padding:0 24px 48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.rc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .2s}
+.rc:hover{border-color:var(--accent);box-shadow:var(--shadow-md)}
+.rc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.rc-name{font-family:'Outfit',sans-serif;font-size:16px;font-weight:600}
+.rc-rat{background:var(--green-bg);color:var(--green);padding:4px 10px;border-radius:6px;font-size:13px;font-weight:700;white-space:nowrap}
+.rc-meta{font-size:13px;color:var(--text-secondary);margin-bottom:6px}
+.rc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.rc-tag{padding:4px 10px;border-radius:6px;font-size:11px;background:var(--accent-light);color:var(--accent);font-weight:500}
+.rc-budget{font-size:12px;color:var(--text-muted);margin-bottom:12px}
+.rc-acts{display:flex;gap:8px}
+.rc-acts a{flex:1;padding:10px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;text-decoration:none}
+.btn-zomato{background:#e23744;color:#fff}.btn-swiggy{background:#fc8019;color:#fff}.btn-gmap{background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)}
+.no-res{text-align:center;padding:40px;color:var(--text-muted);grid-column:1/-1}
+@media(max-width:768px){.hero h1{font-size:26px}.grid{grid-template-columns:1fr}.filters{flex-direction:column}.filters select,.filters input{width:100%}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/blog">Blog</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/restaurants">Restaurants</a><a href="/real-estate">Real Estate</a><a href="/jobs">Jobs</a><a href="/price-finder">Price Finder</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+
+<section class="hero">
+  <h1>Best Restaurants in India</h1>
+  <p>Discover top-rated restaurants across 6 major cities. Filter by cuisine, budget, and city. Order on Zomato or Swiggy.</p>
+</section>
+
+<div class="filters">
+  <select id="cityF" onchange="af()"><option value="">All Cities</option><option>Delhi</option><option>Mumbai</option><option>Chennai</option><option>Bangalore</option><option>Kolkata</option><option>Hyderabad</option></select>
+  <select id="cuisineF" onchange="af()"><option value="">All Cuisines</option><option>North Indian</option><option>South Indian</option><option>Chinese</option><option>Italian</option><option>Biryani</option><option>Seafood</option><option>Street Food</option><option>Cafe</option><option>Fine Dining</option><option>Continental</option><option>Japanese</option><option>Thai</option><option>Mughlai</option><option>Bengali</option><option>Chettinad</option><option>Vegetarian</option></select>
+  <select id="budgetF" onchange="af()"><option value="">All Budgets</option><option value="1">Under ₹500 per person</option><option value="2">₹500 - ₹1,500</option><option value="3">₹1,500+</option></select>
+  <input type="text" id="searchF" placeholder="Search restaurants..." oninput="af()">
+  <button onclick="resetF()" style="padding:10px 16px;border-radius:8px;background:var(--bg-secondary);color:var(--text-muted);border:1px solid var(--border);font-family:inherit;font-size:13px;cursor:pointer">Reset</button>
+</div>
+<div class="results" id="results"></div>
+<div class="grid" id="grid"></div>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="brand-name">WIB</div><p>India's unified comparison platform.</p></div><div class="footer-col"><h4>Categories</h4><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/restaurants">Restaurants</a><a href="/accessories">Accessories</a></div><div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/contact">Contact</a><a href="/blog">Blog</a></div><div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div><div class="footer-bottom">WIB - Independent. Data-driven.</div></footer>
+
+<script src="/config.js"></script>
+<script>
+var R=[
+// Delhi
+{n:"Bukhara",c:"Delhi",cu:["North Indian","Mughlai","Fine Dining"],r:4.7,b:3,a:"ITC Maurya, Sardar Patel Marg",v:1,z:"bukhara-itc-maurya-chanakyapuri-new-delhi"},
+{n:"Indian Accent",c:"Delhi",cu:["Modern Indian","Fine Dining"],r:4.8,b:3,a:"The Lodhi, Lodhi Road",v:1,z:"indian-accent-the-lodhi-new-delhi"},
+{n:"Karim's",c:"Delhi",cu:["Mughlai","North Indian","Street Food"],r:4.5,b:1,a:"Jama Masjid, Old Delhi",v:1,z:"karims-jama-masjid-old-delhi"},
+{n:"Paranthe Wali Gali",c:"Delhi",cu:["North Indian","Street Food","Vegetarian"],r:4.2,b:1,a:"Chandni Chowk, Old Delhi",v:0,z:"paranthe-wali-gali-chandni-chowk"},
+{n:"Saravana Bhavan",c:"Delhi",cu:["South Indian","Vegetarian"],r:4.4,b:1,a:"Connaught Place, New Delhi",v:1,z:"saravana-bhavan-connaught-place"},
+{n:"SodaBottleOpenerWala",c:"Delhi",cu:["Parsi","Cafe","Continental"],r:4.3,b:2,a:"Khan Market, New Delhi",v:1,z:"sodabottleopenerwala-khan-market"},
+{n:"Moti Mahal",c:"Delhi",cu:["North Indian","Mughlai"],r:4.3,b:2,a:"Daryaganj, Old Delhi",v:1,z:"moti-mahal-delux-daryaganj"},
+{n:"Farzi Cafe",c:"Delhi",cu:["Modern Indian","Continental","Cafe"],r:4.4,b:2,a:"Connaught Place",v:1,z:"farzi-cafe-connaught-place"},
+// Mumbai
+{n:"Trishna",c:"Mumbai",cu:["Seafood","South Indian","Crab"],r:4.6,b:2,a:"Kala Ghoda, Fort",v:1,z:"trishna-kala-ghoda-fort"},
+{n:"Leopold Cafe",c:"Mumbai",cu:["Continental","Cafe","North Indian"],r:4.3,b:2,a:"Colaba Causeway",v:1,z:"leopold-cafe-colaba"},
+{n:"Bademiya",c:"Mumbai",cu:["Mughlai","Street Food","Kebabs"],r:4.4,b:1,a:"Tulloch Road, Colaba",v:0,z:"bademiya-colaba"},
+{n:"The Bombay Canteen",c:"Mumbai",cu:["Modern Indian","Continental"],r:4.6,b:3,a:"Kamala Mills, Lower Parel",v:1,z:"the-bombay-canteen-lower-parel"},
+{n:"Britannia & Co",c:"Mumbai",cu:["Parsi","Iranian","Cafe"],r:4.5,b:1,a:"Ballard Estate, Fort",v:1,z:"britannia-and-co-ballard-estate"},
+{n:"Swati Snacks",c:"Mumbai",cu:["Street Food","Vegetarian","Gujarati"],r:4.5,b:1,a:"Tardeo, Mumbai",v:1,z:"swati-snacks-tardeo"},
+{n:"Peshawri",c:"Mumbai",cu:["North Indian","Mughlai","Fine Dining"],r:4.6,b:3,a:"ITC Maratha, Andheri",v:1,z:"peshawri-itc-maratha-andheri"},
+{n:"Bastian",c:"Mumbai",cu:["Seafood","Continental","Fine Dining"],r:4.5,b:3,a:"Bandra West",v:1,z:"bastian-bandra-west"},
+// Chennai
+{n:"Murugan Idli Shop",c:"Chennai",cu:["South Indian","Vegetarian"],r:4.5,b:1,a:"T Nagar, Chennai",v:1,z:"murugan-idli-shop-t-nagar"},
+{n:"Saravana Bhavan",c:"Chennai",cu:["South Indian","Vegetarian"],r:4.5,b:1,a:"Cathedral Road, Chennai",v:1,z:"saravana-bhavan-cathedral-road-chennai"},
+{n:"Ponnusamy Hotel",c:"Chennai",cu:["Chettinad","South Indian","Non-Veg"],r:4.4,b:2,a:"Egmore, Chennai",v:1,z:"ponnusamy-hotel-egmore"},
+{n:"Dakshin",c:"Chennai",cu:["South Indian","Fine Dining","Chettinad"],r:4.6,b:3,a:"ITC Grand Chola, Guindy",v:1,z:"dakshin-itc-grand-chola-guindy"},
+{n:"Dhaba Express",c:"Chennai",cu:["North Indian","Punjabi"],r:4.2,b:1,a:"Anna Nagar, Chennai",v:1,z:"dhaba-express-anna-nagar"},
+{n:"Junior Kuppanna",c:"Chennai",cu:["South Indian","Biryani","Chettinad"],r:4.3,b:2,a:"Egmore, Chennai",v:1,z:"junior-kuppanna-egmore"},
+{n:"Benjarong",c:"Chennai",cu:["Thai","Fine Dining"],r:4.5,b:3,a:"Dakshin Hotel, TTK Road",v:1,z:"benjarong-ttk-road-chennai"},
+{n:"Anjappar",c:"Chennai",cu:["Chettinad","South Indian"],r:4.3,b:2,a:"Multiple outlets, Chennai",v:1,z:"anjappar-chettinad-restaurant-chennai"},
+// Bangalore
+{n:"MTR (Mavalli Tiffin Rooms)",c:"Bangalore",cu:["South Indian","Vegetarian"],r:4.6,b:1,a:"Lalbagh Road, Bangalore",v:1,z:"mavalli-tiffin-rooms-basavanagudi"},
+{n:"Vidyarthi Bhavan",c:"Bangalore",cu:["South Indian","Vegetarian"],r:4.5,b:1,a:"Gandhi Bazaar, Basavanagudi",v:1,z:"vidyarthi-bhavan-gandhi-bazaar"},
+{n:"Karavalli",c:"Bangalore",cu:["Coastal","Seafood","Fine Dining"],r:4.6,b:3,a:"The Gateway Hotel, Residency Road",v:1,z:"karavalli-gateway-hotel-residency-road"},
+{n:"Meghana Foods",c:"Bangalore",cu:["Biryani","Andhra","South Indian"],r:4.4,b:1,a:"Multiple outlets, Bangalore",v:1,z:"meghana-foods-koramangala"},
+{n:"Truffles",c:"Bangalore",cu:["Continental","Cafe","Burgers"],r:4.4,b:2,a:"St. Marks Road, Bangalore",v:1,z:"truffles-st-marks-road"},
+{n:"Empire Restaurant",c:"Bangalore",cu:["Biryani","North Indian","Kebabs"],r:4.3,b:1,a:"Church Street, Bangalore",v:1,z:"empire-restaurant-church-street"},
+{n:"The Only Place",c:"Bangalore",cu:["Continental","Steaks"],r:4.4,b:2,a:"Museum Road, Bangalore",v:1,z:"the-only-place-museum-road"},
+{n:"Toit Brewpub",c:"Bangalore",cu:["Continental","Cafe","Brewery"],r:4.4,b:2,a:"100 Feet Road, Indiranagar",v:1,z:"toit-indiranagar"},
+// Kolkata
+{n:"Peter Cat",c:"Kolkata",cu:["Continental","North Indian"],r:4.5,b:2,a:"Park Street, Kolkata",v:1,z:"peter-cat-park-street"},
+{n:"6 Ballygunge Place",c:"Kolkata",cu:["Bengali","Fine Dining"],r:4.5,b:2,a:"Ballygunge, Kolkata",v:1,z:"6-ballygunge-place"},
+{n:"Arsalan",c:"Kolkata",cu:["Biryani","Mughlai"],r:4.5,b:1,a:"Park Circus, Kolkata",v:1,z:"arsalan-park-circus"},
+{n:"Oh! Calcutta",c:"Kolkata",cu:["Bengali","Fine Dining"],r:4.4,b:3,a:"Forum Mall, Elgin Road",v:1,z:"oh-calcutta-elgin-road"},
+{n:"Kewpie's",c:"Kolkata",cu:["Bengali","Home-style"],r:4.6,b:2,a:"Elgin Lane, Kolkata",v:1,z:"kewpies-kitchen-elgin-lane"},
+{n:"Flurys",c:"Kolkata",cu:["Cafe","Bakery","Continental"],r:4.4,b:2,a:"Park Street, Kolkata",v:1,z:"flurys-park-street"},
+// Hyderabad
+{n:"Paradise Biryani",c:"Hyderabad",cu:["Biryani","Mughlai"],r:4.5,b:1,a:"MG Road, Secunderabad",v:1,z:"paradise-biryani-secunderabad"},
+{n:"Bawarchi",c:"Hyderabad",cu:["Biryani","North Indian"],r:4.3,b:1,a:"RTC X Roads, Hyderabad",v:1,z:"bawarchi-rtc-x-roads"},
+{n:"Shah Ghouse",c:"Hyderabad",cu:["Biryani","Mughlai","Haleem"],r:4.4,b:1,a:"Tolichowki, Hyderabad",v:1,z:"shah-ghouse-tolichowki"},
+{n:"Chutneys",c:"Hyderabad",cu:["South Indian","Vegetarian"],r:4.4,b:1,a:"Banjara Hills, Hyderabad",v:1,z:"chutneys-banjara-hills"},
+{n:"Ohri's Jiva Imperia",c:"Hyderabad",cu:["Fine Dining","Continental","North Indian"],r:4.3,b:3,a:"Banjara Hills, Hyderabad",v:1,z:"ohris-jiva-imperia-banjara-hills"},
+{n:"Absolute Barbecues",c:"Hyderabad",cu:["BBQ","Continental","North Indian"],r:4.4,b:2,a:"Jubilee Hills, Hyderabad",v:1,z:"absolute-barbecues-jubilee-hills"},
+{n:"Kritunga",c:"Hyderabad",cu:["Andhra","South Indian"],r:4.3,b:1,a:"Kukatpally, Hyderabad",v:1,z:"kritunga-kukatpally"},
+{n:"Pista House",c:"Hyderabad",cu:["Biryani","Haleem","Mughlai"],r:4.3,b:1,a:"Nampally, Hyderabad",v:1,z:"pista-house-nampally"}
+];
+
+var filtered=R.slice();
+function af(){
+  var city=document.getElementById('cityF').value;
+  var cuisine=document.getElementById('cuisineF').value;
+  var budget=document.getElementById('budgetF').value;
+  var q=(document.getElementById('searchF').value||'').toLowerCase();
+  filtered=R.filter(function(r){
+    if(city&&r.c!==city)return false;
+    if(cuisine&&!r.cu.includes(cuisine))return false;
+    if(budget&&r.b!==parseInt(budget))return false;
+    if(q&&!r.n.toLowerCase().includes(q)&&!r.cu.join(' ').toLowerCase().includes(q)&&!r.a.toLowerCase().includes(q))return false;
+    return true;
+  });
+  filtered.sort(function(a,b){return b.r-a.r});
+  render();
+}
+function resetF(){document.getElementById('cityF').value='';document.getElementById('cuisineF').value='';document.getElementById('budgetF').value='';document.getElementById('searchF').value='';af()}
+function render(){
+  document.getElementById('results').textContent='Showing '+filtered.length+' of '+R.length+' restaurants';
+  var g=document.getElementById('grid');
+  if(!filtered.length){g.innerHTML='<div class="no-res">No restaurants match your filters. Try adjusting your search.</div>';return}
+  var budgetLabel={1:'Under ₹500/person',2:'₹500 - ₹1,500/person',3:'₹1,500+/person'};
+  g.innerHTML=filtered.map(function(r){
+    var cs=r.c.toLowerCase().replace(/\s+/g,'-');
+    var zUrl='https://www.zomato.com/'+cs+'/'+r.z;
+    var sUrl='https://www.swiggy.com/search?query='+encodeURIComponent(r.n);
+    var gUrl='https://www.google.com/maps/search/'+encodeURIComponent(r.n+' '+r.a);
+    return '<div class="rc"><div class="rc-top"><div class="rc-name">'+r.n+'</div><div class="rc-rat">★ '+r.r.toFixed(1)+'</div></div><div class="rc-meta">'+r.c+' · '+r.a+'</div><div class="rc-tags">'+r.cu.map(function(c){return'<span class="rc-tag">'+c+'</span>'}).join('')+'</div><div class="rc-budget">'+budgetLabel[r.b]+(r.v?' · Veg options available':'')+'</div><div class="rc-acts"><a href="'+zUrl+'" target="_blank" rel="noopener" class="btn-zomato">Zomato</a><a href="'+sUrl+'" target="_blank" rel="noopener" class="btn-swiggy">Swiggy</a><a href="'+gUrl+'" target="_blank" rel="noopener" class="btn-gmap">Map</a></div></div>';
+  }).join('');
+}
+af();
+</script>
+<script src="/chat-widget.js"></script>
+</body>
+</html>
