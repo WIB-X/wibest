@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Data Seeder - Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e7eb;min-height:100vh;padding:24px}
+h1{font-size:24px;margin-bottom:8px}p.sub{color:#888;font-size:14px;margin-bottom:24px}
+.card{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:16px}
+.card h2{font-size:18px;margin-bottom:4px}.card .count{font-size:13px;color:#888;margin-bottom:12px}
+.btn{padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;margin-right:8px;margin-bottom:8px}
+.btn-blue{background:#2563eb;color:#fff}.btn-blue:hover{background:#1d4ed8}
+.btn-green{background:#22c55e;color:#fff}.btn-green:hover{background:#16a34a}
+.btn-red{background:#ef4444;color:#fff}.btn-red:hover{background:#dc2626}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.log{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:16px;font-family:monospace;font-size:12px;max-height:300px;overflow-y:auto;margin-top:12px;white-space:pre-wrap}
+.log .ok{color:#22c55e}.log .err{color:#ef4444}.log .info{color:#60a5fa}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:16px}
+.stat{background:#1a1a1a;padding:12px;border-radius:8px;text-align:center}
+.stat .num{font-size:24px;font-weight:700;color:#2563eb}.stat .lbl{font-size:11px;color:#888}
+</style>
+</head>
+<body>
+<h1>WIB Data Seeder</h1>
+<p class="sub">Add new schools, colleges, and electronics to Firestore. Each button adds a batch of new entries.</p>
+
+<div class="stats" id="currentStats">
+  <div class="stat"><div class="num" id="schoolCount">-</div><div class="lbl">Schools</div></div>
+  <div class="stat"><div class="num" id="collegeCount">-</div><div class="lbl">Colleges</div></div>
+  <div class="stat"><div class="num" id="electronicsCount">-</div><div class="lbl">Electronics</div></div>
+</div>
+
+<div class="card">
+  <h2>Schools</h2>
+  <div class="count">Adds 50 new schools: Hyderabad (10), Pune (10), Ahmedabad (10), + 20 more in existing cities</div>
+  <button class="btn btn-blue" onclick="seedSchools()" id="btnSchools">Add 50 Schools</button>
+  <div class="log" id="logSchools"></div>
+</div>
+
+<div class="card">
+  <h2>Colleges</h2>
+  <div class="count">Adds 40 new colleges: Engineering, Medical, Arts, Commerce, Law across 7 cities</div>
+  <button class="btn btn-blue" onclick="seedColleges()" id="btnColleges">Add 40 Colleges</button>
+  <div class="log" id="logColleges"></div>
+</div>
+
+<div class="card">
+  <h2>Electronics</h2>
+  <div class="count">Adds 30 new products: Latest 2026 phones (budget to flagship) + laptops</div>
+  <button class="btn btn-blue" onclick="seedElectronics()" id="btnElectronics">Add 30 Electronics</button>
+  <div class="log" id="logElectronics"></div>
+</div>
+
+<div class="card">
+  <h2>Danger Zone</h2>
+  <div class="count">Check current data counts from Firestore</div>
+  <button class="btn btn-green" onclick="checkCounts()">Refresh Counts</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script>
+var db=initFirebase();
+
+async function checkCounts(){
+  try{
+    var s1=await db.collection('items').get();
+    var schools=0,cols=0;
+    s1.forEach(function(d){var data=d.data();if(data.category==='college')cols++;else schools++});
+    document.getElementById('schoolCount').textContent=schools;
+    
+    var s2=await db.collection('colleges').get();
+    document.getElementById('collegeCount').textContent=s2.size+cols;
+    
+    var s3=await db.collection('electronics').get();
+    document.getElementById('electronicsCount').textContent=s3.size;
+  }catch(e){console.error(e)}
+}
+checkCounts();
+
+function log(id,msg,type){
+  var el=document.getElementById(id);
+  el.innerHTML+='<span class="'+(type||'info')+'">'+msg+'</span>\n';
+  el.scrollTop=el.scrollHeight;
+}
+
+// ========== SCHOOLS DATA ==========
+var NEW_SCHOOLS=[
+// Hyderabad (10)
+{name:"Delhi Public School Hyderabad",city:"Hyderabad",board:"CBSE",annual_fees:125000,google_rating:4.3,facilities:["Smart Classes","Swimming Pool","Sports Complex","Science Labs","Library"],website:"https://www.dpshyderabad.com",type:"Private",established:1998},
+{name:"Chirec International School",city:"Hyderabad",board:"CBSE/IB",annual_fees:250000,google_rating:4.5,facilities:["IB Curriculum","Swimming Pool","Robotics Lab","Performing Arts","Sports Academy"],website:"https://www.chirec.ac.in",type:"Private",established:1989},
+{name:"Oakridge International School",city:"Hyderabad",board:"CBSE/IB",annual_fees:280000,google_rating:4.4,facilities:["IB Programme","Swimming Pool","Horse Riding","Innovation Lab","Eco Campus"],website:"https://www.oakridge.in",type:"Private",established:2003},
+{name:"Glendale Academy",city:"Hyderabad",board:"CBSE",annual_fees:130000,google_rating:4.3,facilities:["Smart Classes","Robotics","Sports Complex","Music Room","Science Labs"],website:"https://www.glendaleacademy.com",type:"Private",established:2002},
+{name:"Meridian School",city:"Hyderabad",board:"CBSE",annual_fees:110000,google_rating:4.2,facilities:["Smart Classes","Sports","Library","Science Labs","Computer Lab"],website:"https://www.meridianschool.com",type:"Private",established:1993},
+{name:"Hyderabad Public School Begumpet",city:"Hyderabad",board:"CBSE/ISC",annual_fees:95000,google_rating:4.5,facilities:["Heritage Campus","Swimming Pool","Sports Complex","NCC","Scouts"],website:"https://www.hpsbegumpet.org.in",type:"Private",established:1923},
+{name:"Johnson Grammar School",city:"Hyderabad",board:"ICSE",annual_fees:85000,google_rating:4.1,facilities:["Smart Classes","Sports","Library","Computer Lab","Music"],website:"https://www.johnsongrammar.com",type:"Private",established:1979},
+{name:"Slate School",city:"Hyderabad",board:"CBSE",annual_fees:180000,google_rating:4.4,facilities:["Project-Based Learning","Maker Space","Sports","Dance Studio","Art Studio"],website:"https://www.slateschool.in",type:"Private",established:2016},
+{name:"Gitanjali Devshala",city:"Hyderabad",board:"CBSE",annual_fees:120000,google_rating:4.3,facilities:["Smart Classes","Swimming Pool","Auditorium","Sports Ground","Labs"],website:"https://www.gitanjaligroup.com",type:"Private",established:1992},
+{name:"Kendriya Vidyalaya Picket",city:"Hyderabad",board:"CBSE",annual_fees:12000,google_rating:4.0,facilities:["Sports Ground","Library","Science Labs","Computer Lab","NCC"],website:"https://www.kvsangathan.nic.in",type:"Government",established:1965},
+// Pune (10)
+{name:"Symbiosis International School",city:"Pune",board:"IB",annual_fees:350000,google_rating:4.5,facilities:["IB Curriculum","Swimming Pool","Sports Academy","Innovation Hub","Performing Arts"],website:"https://www.symbiosis.ac.in",type:"Private",established:2005},
+{name:"The Bishop's School Pune",city:"Pune",board:"ICSE",annual_fees:75000,google_rating:4.6,facilities:["Heritage Campus","Swimming Pool","Sports Complex","Chapel","Music Academy"],website:"https://www.thebishopsschool.org",type:"Private",established:1864},
+{name:"Vibgyor High Pune",city:"Pune",board:"CBSE/ICSE",annual_fees:140000,google_rating:4.2,facilities:["Smart Classes","Swimming Pool","Robotics","Sports Academy","Dance"],website:"https://www.vibgyorhigh.com",type:"Private",established:2004},
+{name:"DPS Pune",city:"Pune",board:"CBSE",annual_fees:120000,google_rating:4.3,facilities:["Smart Classes","Swimming Pool","Science Labs","Sports Complex","Library"],website:"https://www.dpspune.com",type:"Private",established:1996},
+{name:"SSPM's Sri Sri Ravishankar Vidya Mandir",city:"Pune",board:"CBSE",annual_fees:65000,google_rating:4.1,facilities:["Yoga","Sports","Computer Lab","Library","Science Labs"],website:"https://www.ssrvm.org",type:"Private",established:2001},
+{name:"MIT Vishwashanti Gurukul",city:"Pune",board:"CBSE",annual_fees:160000,google_rating:4.3,facilities:["MIT Campus","Sports Academy","Swimming","Science Labs","Hostel"],website:"https://www.gurukul.edu.in",type:"Private",established:2003},
+{name:"Pawar Public School Pune",city:"Pune",board:"CBSE",annual_fees:110000,google_rating:4.2,facilities:["Smart Classes","Sports","Library","Labs","Music Room"],website:"https://www.ppspune.com",type:"Private",established:2008},
+{name:"The Orchid School",city:"Pune",board:"CBSE",annual_fees:130000,google_rating:4.4,facilities:["Activity-Based Learning","Sports","Art Studio","Music","Labs"],website:"https://www.theorchidschool.com",type:"Private",established:2003},
+{name:"Loyola High School Pune",city:"Pune",board:"SSC",annual_fees:25000,google_rating:4.3,facilities:["Sports Ground","Library","Computer Lab","Science Labs","Auditorium"],website:"https://www.loyolahighschoolpune.com",type:"Private",established:1953},
+{name:"Kendriya Vidyalaya Pune",city:"Pune",board:"CBSE",annual_fees:12000,google_rating:4.0,facilities:["Sports Ground","Library","Labs","Computer Lab","NCC"],website:"https://www.kvsangathan.nic.in",type:"Government",established:1970},
+// Ahmedabad (10)
+{name:"Delhi Public School Ahmedabad",city:"Ahmedabad",board:"CBSE",annual_fees:110000,google_rating:4.2,facilities:["Smart Classes","Swimming Pool","Sports Complex","Science Labs","Robotics"],website:"https://www.dpsahmedabad.com",type:"Private",established:2005},
+{name:"Zebar School for Children",city:"Ahmedabad",board:"CBSE",annual_fees:95000,google_rating:4.4,facilities:["Activity Rooms","Sports","Swimming Pool","Music","Dance"],website:"https://www.zebarschool.com",type:"Private",established:2006},
+{name:"Anand Niketan School",city:"Ahmedabad",board:"CBSE",annual_fees:85000,google_rating:4.1,facilities:["Smart Classes","Sports Ground","Library","Labs","Computer Lab"],website:"https://www.anandniketan.org",type:"Private",established:1998},
+{name:"Udgam School for Children",city:"Ahmedabad",board:"CBSE",annual_fees:90000,google_rating:4.3,facilities:["Smart Classes","Sports","Swimming Pool","Art Studio","Music Room"],website:"https://www.udgamschool.com",type:"Private",established:2001},
+{name:"St. Kabir School",city:"Ahmedabad",board:"ICSE",annual_fees:65000,google_rating:4.2,facilities:["Sports Ground","Library","Labs","Computer Lab","Music"],website:"https://www.stkabir.com",type:"Private",established:1966},
+{name:"Eklavya School",city:"Ahmedabad",board:"CBSE",annual_fees:75000,google_rating:4.1,facilities:["Smart Classes","Sports","Library","Science Labs","Computer Lab"],website:"https://www.eklavyaschool.com",type:"Private",established:1998},
+{name:"Calorx Olive International",city:"Ahmedabad",board:"CBSE/IB",annual_fees:200000,google_rating:4.3,facilities:["IB Programme","Swimming Pool","Horse Riding","Robotics","Sports Academy"],website:"https://www.calorx.org",type:"Private",established:2010},
+{name:"NR Primary School",city:"Ahmedabad",board:"GSEB",annual_fees:15000,google_rating:4.0,facilities:["Sports Ground","Library","Computer Lab","Science Lab"],website:"#",type:"Trust",established:1952},
+{name:"Mount Carmel School",city:"Ahmedabad",board:"CBSE",annual_fees:55000,google_rating:4.1,facilities:["Sports","Library","Labs","Computer Lab","Music Room"],website:"https://www.mountcarmelahmedabad.com",type:"Private",established:1969},
+{name:"Kendriya Vidyalaya Ahmedabad",city:"Ahmedabad",board:"CBSE",annual_fees:12000,google_rating:4.0,facilities:["Sports Ground","Library","Labs","Computer Lab","NCC"],website:"https://www.kvsangathan.nic.in",type:"Government",established:1968},
+// More in existing cities (20)
+{name:"Army Public School Delhi",city:"Delhi",board:"CBSE",annual_fees:35000,google_rating:4.2,facilities:["Sports Ground","NCC","Library","Science Labs","Computer Lab"],website:"https://www.apsdhaula.com",type:"Government",established:1953},
+{name:"Kendriya Vidyalaya Andrews Ganj",city:"Delhi",board:"CBSE",annual_fees:12000,google_rating:4.1,facilities:["Sports Ground","Library","Labs","Computer Lab","NCC"],website:"https://www.kvsangathan.nic.in",type:"Government",established:1972},
+{name:"Springdales School Pusa Road",city:"Delhi",board:"CBSE",annual_fees:140000,google_rating:4.4,facilities:["Smart Classes","Swimming Pool","Sports Complex","Music Academy","Art Studio"],website:"https://www.springdales.com",type:"Private",established:1955},
+{name:"The Heritage School Kolkata",city:"Kolkata",board:"CBSE",annual_fees:160000,google_rating:4.5,facilities:["Smart Classes","Swimming Pool","Sports Academy","Robotics Lab","Performing Arts"],website:"https://www.theheritageschool.org",type:"Private",established:2001},
+{name:"Birla High School Kolkata",city:"Kolkata",board:"ICSE",annual_fees:85000,google_rating:4.4,facilities:["Heritage Campus","Sports Ground","Library","Science Labs","Music"],website:"https://www.birlahighschool.com",type:"Private",established:1940},
+{name:"Future Kids School Kolkata",city:"Kolkata",board:"CBSE",annual_fees:70000,google_rating:4.1,facilities:["Smart Classes","Sports","Library","Computer Lab","Labs"],website:"https://www.futurekids.in",type:"Private",established:2005},
+{name:"National Public School Indiranagar",city:"Bangalore",board:"CBSE",annual_fees:130000,google_rating:4.4,facilities:["Smart Classes","Swimming Pool","Sports Academy","Robotics","Music"],website:"https://www.npsinr.com",type:"Private",established:1982},
+{name:"Inventure Academy",city:"Bangalore",board:"IGCSE/IB",annual_fees:350000,google_rating:4.5,facilities:["IB/IGCSE","Swimming Pool","Design Lab","Sports Complex","Performing Arts"],website:"https://www.inventureacademy.com",type:"Private",established:2005},
+{name:"Greenwood High",city:"Bangalore",board:"ICSE",annual_fees:180000,google_rating:4.3,facilities:["Smart Classes","Swimming Pool","Sports Academy","Robotics","Hostel"],website:"https://www.greenwoodhigh.edu.in",type:"Private",established:2004},
+{name:"Padma Seshadri Bala Bhavan KK Nagar",city:"Chennai",board:"CBSE",annual_fees:55000,google_rating:4.5,facilities:["Sports Complex","Science Labs","Music Academy","NCC","Library"],website:"https://www.psbb.ac.in",type:"Private",established:1958},
+{name:"Chettinad Vidyashram",city:"Chennai",board:"CBSE",annual_fees:95000,google_rating:4.3,facilities:["Smart Classes","Swimming Pool","Sports Complex","Music","Dance"],website:"https://www.chettinadvidyashram.com",type:"Private",established:1985},
+{name:"Sishya School",city:"Chennai",board:"ICSE",annual_fees:100000,google_rating:4.4,facilities:["Smart Classes","Sports","Swimming Pool","Art Studio","Music Room"],website:"https://www.sishyaschool.com",type:"Private",established:1972},
+{name:"Bombay Scottish School",city:"Mumbai",board:"ICSE",annual_fees:90000,google_rating:4.4,facilities:["Heritage Campus","Swimming Pool","Sports Ground","Music Academy","Drama"],website:"https://www.bombayscottish.org",type:"Private",established:1847},
+{name:"Jamnabai Narsee School",city:"Mumbai",board:"ICSE",annual_fees:120000,google_rating:4.3,facilities:["Smart Classes","Swimming Pool","Sports Complex","Music","Dance"],website:"https://www.jfrschool.org",type:"Private",established:1971},
+{name:"St. Mary's School ICSE Mumbai",city:"Mumbai",board:"ICSE",annual_fees:75000,google_rating:4.2,facilities:["Sports Ground","Library","Science Labs","Computer Lab","Chapel"],website:"https://www.stmarysice.com",type:"Private",established:1960},
+{name:"Podar International School",city:"Mumbai",board:"CBSE/IB",annual_fees:200000,google_rating:4.3,facilities:["IB Programme","Smart Classes","Sports Academy","Robotics","Swimming Pool"],website:"https://www.podarinternationalschool.com",type:"Private",established:1927},
+{name:"Vidyashilp Academy",city:"Bangalore",board:"CBSE",annual_fees:170000,google_rating:4.5,facilities:["Project-Based Learning","Sports Complex","Innovation Lab","Swimming Pool","Music"],website:"https://www.vidyashilp.com",type:"Private",established:2001},
+{name:"Nasr School",city:"Hyderabad",board:"ICSE",annual_fees:70000,google_rating:4.2,facilities:["Sports Ground","Library","Labs","Computer Lab","Music Room"],website:"https://www.nasrschool.com",type:"Private",established:1959},
+{name:"St. Ann's High School",city:"Hyderabad",board:"ICSE",annual_fees:55000,google_rating:4.1,facilities:["Sports Ground","Library","Science Labs","Computer Lab","Chapel"],website:"https://www.stannshyderabad.com",type:"Private",established:1975},
+{name:"Bharatiya Vidya Bhavan Jubilee Hills",city:"Hyderabad",board:"CBSE",annual_fees:65000,google_rating:4.2,facilities:["Sports Ground","Library","Labs","Computer Lab","Cultural Activities"],website:"https://www.bvbjh.com",type:"Private",established:1980}
+];
+
+// ========== COLLEGES DATA ==========
+var NEW_COLLEGES=[
+{name:"IIIT Hyderabad",city:"Hyderabad",stream:"Engineering",type:"Government",fees:250000,google_rating:4.6,accreditation:"NAAC A++",courses:["B.Tech CS","B.Tech ECE","M.Tech","PhD"],avg_package:2000000,placement_percent:95},
+{name:"BITS Pilani Hyderabad",city:"Hyderabad",stream:"Engineering",type:"Private",fees:500000,google_rating:4.5,accreditation:"NAAC A",courses:["B.E CS","B.E ECE","B.E Mech","M.E"],avg_package:1600000,placement_percent:92},
+{name:"Symbiosis Institute of Technology Pune",city:"Pune",stream:"Engineering",type:"Private",fees:380000,google_rating:4.3,accreditation:"NAAC A++",courses:["B.Tech CS","B.Tech IT","B.Tech AI","M.Tech"],avg_package:900000,placement_percent:88},
+{name:"College of Engineering Pune (COEP)",city:"Pune",stream:"Engineering",type:"Government",fees:120000,google_rating:4.5,accreditation:"NAAC A",courses:["B.Tech CS","B.Tech Mech","B.Tech Civil","M.Tech"],avg_package:1200000,placement_percent:90},
+{name:"NLU Hyderabad",city:"Hyderabad",stream:"Law",type:"Government",fees:250000,google_rating:4.5,accreditation:"NAAC A",courses:["BA LLB","BBA LLB","LLM"],avg_package:1200000,placement_percent:85},
+{name:"Fergusson College Pune",city:"Pune",stream:"Arts & Science",type:"Government",fees:15000,google_rating:4.3,accreditation:"NAAC A+",courses:["BA","BSc","MA","MSc"],avg_package:400000,placement_percent:60},
+{name:"IIM Ahmedabad",city:"Ahmedabad",stream:"Management",type:"Government",fees:2300000,google_rating:4.9,accreditation:"AACSB, EQUIS",courses:["MBA","PhD","Executive MBA"],avg_package:3200000,placement_percent:100},
+{name:"Gujarat National Law University",city:"Ahmedabad",stream:"Law",type:"Government",fees:200000,google_rating:4.4,accreditation:"NAAC A",courses:["BA LLB","LLM","PhD"],avg_package:1000000,placement_percent:82},
+{name:"DAIICT Gandhinagar",city:"Ahmedabad",stream:"Engineering",type:"Private",fees:300000,google_rating:4.3,accreditation:"NAAC A",courses:["B.Tech ICT","B.Tech CS","M.Tech"],avg_package:1100000,placement_percent:88},
+{name:"NID Ahmedabad",city:"Ahmedabad",stream:"Design",type:"Government",fees:400000,google_rating:4.7,accreditation:"Institute of National Importance",courses:["B.Des","M.Des","PhD"],avg_package:1200000,placement_percent:92},
+{name:"Osmania University",city:"Hyderabad",stream:"Multi-discipline",type:"Government",fees:25000,google_rating:4.1,accreditation:"NAAC A",courses:["BA","BSc","B.Com","B.Tech","MBA","LLB"],avg_package:500000,placement_percent:65},
+{name:"Savitribai Phule Pune University",city:"Pune",stream:"Multi-discipline",type:"Government",fees:20000,google_rating:4.2,accreditation:"NAAC A++",courses:["BA","BSc","B.Com","M.Tech","MBA","PhD"],avg_package:500000,placement_percent:65},
+{name:"FLAME University Pune",city:"Pune",stream:"Liberal Arts",type:"Private",fees:800000,google_rating:4.3,accreditation:"NAAC A",courses:["BA Liberal Arts","BBA","MA","MBA"],avg_package:700000,placement_percent:80},
+{name:"Symbiosis Law School Pune",city:"Pune",stream:"Law",type:"Private",fees:350000,google_rating:4.4,accreditation:"NAAC A++",courses:["BA LLB","BBA LLB","LLM"],avg_package:900000,placement_percent:85},
+{name:"Armed Forces Medical College Pune",city:"Pune",stream:"Medical",type:"Government",fees:50000,google_rating:4.7,accreditation:"MCI",courses:["MBBS","MD","MS","Nursing"],avg_package:1200000,placement_percent:100},
+{name:"St. Xavier's College Mumbai",city:"Mumbai",stream:"Arts & Science",type:"Private",fees:35000,google_rating:4.5,accreditation:"NAAC A++",courses:["BA","BSc","B.Com","BMM","MA"],avg_package:600000,placement_percent:75},
+{name:"NMIMS Mumbai",city:"Mumbai",stream:"Management",type:"Private",fees:1800000,google_rating:4.4,accreditation:"NAAC A+",courses:["MBA","BBA","B.Tech","B.Pharm"],avg_package:2100000,placement_percent:95},
+{name:"Presidency University Kolkata",city:"Kolkata",stream:"Arts & Science",type:"Government",fees:10000,google_rating:4.4,accreditation:"NAAC A",courses:["BA","BSc","MA","MSc","PhD"],avg_package:400000,placement_percent:55},
+{name:"Jadavpur University",city:"Kolkata",stream:"Engineering",type:"Government",fees:15000,google_rating:4.6,accreditation:"NAAC A",courses:["B.Tech","BA","BSc","M.Tech","PhD"],avg_package:1000000,placement_percent:88},
+{name:"IIT Hyderabad",city:"Hyderabad",stream:"Engineering",type:"Government",fees:200000,google_rating:4.7,accreditation:"Institute of National Importance",courses:["B.Tech","M.Tech","PhD","MSc"],avg_package:1800000,placement_percent:95},
+{name:"Narsee Monjee College of Commerce Mumbai",city:"Mumbai",stream:"Commerce",type:"Private",fees:30000,google_rating:4.3,accreditation:"NAAC A+",courses:["B.Com","BMS","BAF","BBI","M.Com"],avg_package:500000,placement_percent:70},
+{name:"Loyola College Chennai",city:"Chennai",stream:"Arts & Science",type:"Private",fees:25000,google_rating:4.5,accreditation:"NAAC A++",courses:["BA","BSc","B.Com","MA","MSc","MBA"],avg_package:500000,placement_percent:72},
+{name:"SRM Institute of Science and Technology",city:"Chennai",stream:"Engineering",type:"Private",fees:250000,google_rating:4.2,accreditation:"NAAC A++",courses:["B.Tech","M.Tech","MBA","PhD"],avg_package:600000,placement_percent:82},
+{name:"VIT Chennai",city:"Chennai",stream:"Engineering",type:"Private",fees:200000,google_rating:4.3,accreditation:"NAAC A++",courses:["B.Tech","M.Tech","MBA"],avg_package:700000,placement_percent:85},
+{name:"Christ University Bangalore",city:"Bangalore",stream:"Multi-discipline",type:"Private",fees:150000,google_rating:4.3,accreditation:"NAAC A++",courses:["BA","BBA","B.Com","B.Tech","MBA","LLB"],avg_package:600000,placement_percent:78},
+{name:"PES University Bangalore",city:"Bangalore",stream:"Engineering",type:"Private",fees:350000,google_rating:4.3,accreditation:"NAAC A",courses:["B.Tech","M.Tech","MBA","MCA"],avg_package:1000000,placement_percent:88},
+{name:"St. Stephen's College Delhi",city:"Delhi",stream:"Arts & Science",type:"Government",fees:20000,google_rating:4.6,accreditation:"NAAC A",courses:["BA","BSc","MA","MSc"],avg_package:500000,placement_percent:65},
+{name:"Lady Shri Ram College Delhi",city:"Delhi",stream:"Arts & Commerce",type:"Government",fees:15000,google_rating:4.5,accreditation:"NAAC A++",courses:["BA","B.Com","MA","M.Com"],avg_package:600000,placement_percent:70},
+{name:"Hansraj College Delhi",city:"Delhi",stream:"Arts & Science",type:"Government",fees:15000,google_rating:4.3,accreditation:"NAAC A+",courses:["BA","BSc","B.Com","MA","MSc"],avg_package:450000,placement_percent:62},
+{name:"SRCC Delhi",city:"Delhi",stream:"Commerce",type:"Government",fees:20000,google_rating:4.7,accreditation:"NAAC A",courses:["B.Com Hons","BA Economics","MBA"],avg_package:1200000,placement_percent:90},
+// More Hyderabad
+{name:"ISB Hyderabad",city:"Hyderabad",stream:"Management",type:"Private",fees:4200000,google_rating:4.8,accreditation:"AACSB, EQUIS",courses:["PGP MBA","MFAB","Certificate Programs"],avg_package:3400000,placement_percent:98},
+{name:"NALSAR University of Law",city:"Hyderabad",stream:"Law",type:"Government",fees:200000,google_rating:4.5,accreditation:"NAAC A+",courses:["BA LLB","LLM","PhD"],avg_package:1500000,placement_percent:88},
+// Pune additions
+{name:"MIT-WPU Pune",city:"Pune",stream:"Engineering",type:"Private",fees:300000,google_rating:4.2,accreditation:"NAAC A++",courses:["B.Tech","M.Tech","MBA","B.Des"],avg_package:700000,placement_percent:82},
+{name:"Symbiosis Centre for Management Pune",city:"Pune",stream:"Management",type:"Private",fees:1800000,google_rating:4.5,accreditation:"NAAC A++, AACSB",courses:["MBA","Executive MBA","PhD"],avg_package:2200000,placement_percent:96},
+// Ahmedabad additions
+{name:"CEPT University Ahmedabad",city:"Ahmedabad",stream:"Architecture",type:"Government",fees:150000,google_rating:4.4,accreditation:"NAAC A",courses:["B.Arch","B.Plan","M.Arch","M.Plan","PhD"],avg_package:600000,placement_percent:80},
+{name:"LD College of Engineering Ahmedabad",city:"Ahmedabad",stream:"Engineering",type:"Government",fees:50000,google_rating:4.2,accreditation:"NAAC A",courses:["B.Tech","M.Tech"],avg_package:600000,placement_percent:78},
+// Bangalore
+{name:"IISc Bangalore",city:"Bangalore",stream:"Science & Engineering",type:"Government",fees:35000,google_rating:4.9,accreditation:"Institute of National Importance",courses:["BSc Research","M.Tech","PhD","MSc"],avg_package:1500000,placement_percent:92},
+{name:"NIFT Bangalore",city:"Bangalore",stream:"Design & Fashion",type:"Government",fees:250000,google_rating:4.4,accreditation:"NAAC A",courses:["B.Des","B.FTech","M.Des","M.FTech"],avg_package:600000,placement_percent:82},
+// Mumbai
+{name:"Tata Institute of Social Sciences Mumbai",city:"Mumbai",stream:"Social Sciences",type:"Government",fees:80000,google_rating:4.6,accreditation:"NAAC A+",courses:["BA Social Work","MA","PhD","MHA"],avg_package:900000,placement_percent:85},
+{name:"JBIMS Mumbai",city:"Mumbai",stream:"Management",type:"Government",fees:500000,google_rating:4.6,accreditation:"NAAC A+",courses:["MMS MBA"],avg_package:2800000,placement_percent:98}
+];
+
+// ========== ELECTRONICS DATA ==========
+var NEW_ELECTRONICS=[
+// Phones - Budget
+{name:"Redmi 14C 5G",brand:"Redmi",subcategory:"phone",price:8999,display:"6.67 inch HD+ 90Hz",processor:"Dimensity 6300",ram:"4GB",storage:"128GB",camera:"50MP AI",battery:"5160mAh",rating:4.1,reviews_count:2500,year:2026},
+{name:"Realme Narzo 70x 5G",brand:"Realme",subcategory:"phone",price:11999,display:"6.72 inch IPS 120Hz",processor:"Dimensity 6100+",ram:"6GB",storage:"128GB",camera:"50MP AI",battery:"6000mAh",rating:4.2,reviews_count:3200,year:2026},
+{name:"Samsung Galaxy M15 5G",brand:"Samsung",subcategory:"phone",price:10499,display:"6.5 inch AMOLED 90Hz",processor:"Dimensity 6100",ram:"4GB",storage:"128GB",camera:"50MP",battery:"6000mAh",rating:4.1,reviews_count:4500,year:2026},
+// Phones - Mid range
+{name:"Nothing Phone 2a Plus",brand:"Nothing",subcategory:"phone",price:24999,display:"6.7 inch AMOLED 120Hz",processor:"Dimensity 7350 Pro",ram:"8GB",storage:"256GB",camera:"50MP OIS",battery:"5000mAh",rating:4.4,reviews_count:3800,year:2026},
+{name:"OnePlus Nord 4",brand:"OnePlus",subcategory:"phone",price:27999,display:"6.74 inch AMOLED 120Hz",processor:"Snapdragon 7+ Gen 3",ram:"8GB",storage:"256GB",camera:"50MP Sony LYT-600 OIS",battery:"5500mAh",rating:4.5,reviews_count:5200,year:2026},
+{name:"iQOO Neo 9 Pro",brand:"iQOO",subcategory:"phone",price:29999,display:"6.78 inch AMOLED 144Hz",processor:"Dimensity 9200+",ram:"8GB",storage:"256GB",camera:"50MP Sony IMX920 OIS",battery:"5160mAh",rating:4.4,reviews_count:4100,year:2026},
+{name:"Motorola Edge 50 Pro",brand:"Motorola",subcategory:"phone",price:31999,display:"6.7 inch pOLED 144Hz",processor:"Snapdragon 7 Gen 3",ram:"8GB",storage:"256GB",camera:"50MP OIS",battery:"4500mAh",rating:4.3,reviews_count:2800,year:2026},
+// Phones - Flagship
+{name:"Samsung Galaxy S25",brand:"Samsung",subcategory:"phone",price:79999,display:"6.2 inch AMOLED 120Hz",processor:"Snapdragon 8 Elite",ram:"12GB",storage:"256GB",camera:"50MP + 10MP + 12MP",battery:"4000mAh",rating:4.6,reviews_count:8200,year:2026},
+{name:"Samsung Galaxy S25 Ultra",brand:"Samsung",subcategory:"phone",price:134999,display:"6.9 inch AMOLED 120Hz",processor:"Snapdragon 8 Elite",ram:"12GB",storage:"256GB",camera:"200MP + 50MP + 10MP + 12MP",battery:"5000mAh",rating:4.7,reviews_count:12000,year:2026},
+{name:"iPhone 16",brand:"Apple",subcategory:"phone",price:79900,display:"6.1 inch OLED 60Hz",processor:"A18",ram:"8GB",storage:"128GB",camera:"48MP + 12MP",battery:"3561mAh",rating:4.6,reviews_count:15000,year:2026},
+{name:"iPhone 16 Pro",brand:"Apple",subcategory:"phone",price:119900,display:"6.3 inch OLED 120Hz ProMotion",processor:"A18 Pro",ram:"8GB",storage:"256GB",camera:"48MP + 48MP + 12MP",battery:"3582mAh",rating:4.7,reviews_count:18000,year:2026},
+{name:"iPhone 16 Pro Max",brand:"Apple",subcategory:"phone",price:144900,display:"6.9 inch OLED 120Hz ProMotion",processor:"A18 Pro",ram:"8GB",storage:"256GB",camera:"48MP + 48MP + 12MP 5x Zoom",battery:"4685mAh",rating:4.8,reviews_count:20000,year:2026},
+{name:"OnePlus 13",brand:"OnePlus",subcategory:"phone",price:69999,display:"6.82 inch AMOLED 120Hz",processor:"Snapdragon 8 Elite",ram:"12GB",storage:"256GB",camera:"50MP + 50MP + 50MP Hasselblad",battery:"6000mAh",rating:4.6,reviews_count:7500,year:2026},
+{name:"Google Pixel 9 Pro",brand:"Google",subcategory:"phone",price:109999,display:"6.3 inch OLED 120Hz",processor:"Tensor G4",ram:"16GB",storage:"256GB",camera:"50MP + 48MP + 48MP",battery:"4700mAh",rating:4.5,reviews_count:5000,year:2026},
+{name:"Vivo X200 Pro",brand:"Vivo",subcategory:"phone",price:94999,display:"6.78 inch AMOLED 120Hz",processor:"Dimensity 9400",ram:"16GB",storage:"512GB",camera:"200MP Zeiss + 50MP + 50MP",battery:"6000mAh",rating:4.5,reviews_count:4200,year:2026},
+// Laptops
+{name:"MacBook Air M4 13-inch",brand:"Apple",subcategory:"laptop",price:114900,display:"13.6 inch Liquid Retina",processor:"Apple M4",ram:"16GB",storage:"256GB SSD",camera:"1080p FaceTime HD",battery:"18 hours",graphics:"10-core GPU",rating:4.8,reviews_count:8000,year:2026},
+{name:"MacBook Air M4 15-inch",brand:"Apple",subcategory:"laptop",price:139900,display:"15.3 inch Liquid Retina",processor:"Apple M4",ram:"16GB",storage:"256GB SSD",camera:"1080p FaceTime HD",battery:"18 hours",graphics:"10-core GPU",rating:4.8,reviews_count:5500,year:2026},
+{name:"MacBook Pro M4 14-inch",brand:"Apple",subcategory:"laptop",price:169900,display:"14.2 inch Liquid Retina XDR",processor:"Apple M4 Pro",ram:"24GB",storage:"512GB SSD",camera:"1080p FaceTime HD",battery:"22 hours",graphics:"16-core GPU",rating:4.9,reviews_count:6000,year:2026},
+{name:"Dell XPS 14 2026",brand:"Dell",subcategory:"laptop",price:139990,display:"14.5 inch 3.2K OLED",processor:"Intel Core Ultra 7 155H",ram:"16GB",storage:"512GB SSD",camera:"1080p",battery:"13 hours",graphics:"Intel Arc",rating:4.5,reviews_count:3500,year:2026},
+{name:"Lenovo Yoga Slim 7 2026",brand:"Lenovo",subcategory:"laptop",price:89990,display:"14 inch 2.8K OLED",processor:"AMD Ryzen 7 8845HS",ram:"16GB",storage:"512GB SSD",camera:"1080p IR",battery:"14 hours",graphics:"Radeon 780M",rating:4.4,reviews_count:3200,year:2026},
+{name:"ASUS Zenbook S 14 2026",brand:"ASUS",subcategory:"laptop",price:109990,display:"14 inch 3K OLED",processor:"Intel Core Ultra 7 258V",ram:"32GB",storage:"1TB SSD",camera:"1080p",battery:"15 hours",graphics:"Intel Arc 140V",rating:4.5,reviews_count:2800,year:2026},
+{name:"HP Pavilion x360 14 2026",brand:"HP",subcategory:"laptop",price:62990,display:"14 inch FHD IPS Touch",processor:"Intel Core i5-1335U",ram:"16GB",storage:"512GB SSD",camera:"720p",battery:"10 hours",graphics:"Intel Iris Xe",rating:4.2,reviews_count:4500,year:2026},
+{name:"Acer Nitro V 15 2026",brand:"Acer",subcategory:"laptop",price:72990,display:"15.6 inch FHD 144Hz",processor:"Intel Core i5-13420H",ram:"16GB",storage:"512GB SSD",camera:"720p",battery:"6 hours",graphics:"NVIDIA RTX 4050",rating:4.3,reviews_count:5500,year:2026},
+{name:"Lenovo IdeaPad Slim 5 2026",brand:"Lenovo",subcategory:"laptop",price:54990,display:"14 inch FHD IPS",processor:"AMD Ryzen 5 7535HS",ram:"16GB",storage:"512GB SSD",camera:"1080p",battery:"12 hours",graphics:"Radeon 660M",rating:4.3,reviews_count:4000,year:2026},
+{name:"ASUS TUF Gaming A15 2026",brand:"ASUS",subcategory:"laptop",price:82990,display:"15.6 inch FHD 144Hz",processor:"AMD Ryzen 7 7735HS",ram:"16GB",storage:"512GB SSD",camera:"720p",battery:"8 hours",graphics:"NVIDIA RTX 4060",rating:4.4,reviews_count:6200,year:2026},
+{name:"Samsung Galaxy Book4 Pro",brand:"Samsung",subcategory:"laptop",price:124990,display:"14 inch 3K AMOLED",processor:"Intel Core Ultra 7 155H",ram:"16GB",storage:"512GB SSD",camera:"1080p",battery:"17 hours",graphics:"Intel Arc",rating:4.4,reviews_count:3000,year:2026},
+{name:"Microsoft Surface Laptop 7",brand:"Microsoft",subcategory:"laptop",price:109990,display:"13.8 inch PixelSense 120Hz",processor:"Snapdragon X Plus",ram:"16GB",storage:"512GB SSD",camera:"1080p",battery:"17 hours",graphics:"Qualcomm Adreno",rating:4.4,reviews_count:2500,year:2026},
+{name:"Infinix Zero Book Ultra 2026",brand:"Infinix",subcategory:"laptop",price:39990,display:"15.6 inch FHD IPS",processor:"Intel Core i7-1355U",ram:"16GB",storage:"512GB SSD",camera:"720p",battery:"10 hours",graphics:"Intel Iris Xe",rating:4.1,reviews_count:3500,year:2026}
+];
+
+async function seedSchools(){
+  var btn=document.getElementById('btnSchools');btn.disabled=true;btn.textContent='Adding...';
+  var added=0;
+  for(var i=0;i<NEW_SCHOOLS.length;i++){
+    try{
+      // Check if already exists
+      var existing=await db.collection('items').where('name','==',NEW_SCHOOLS[i].name).get();
+      if(!existing.empty){log('logSchools','SKIP (exists): '+NEW_SCHOOLS[i].name,'info');continue}
+      await db.collection('items').add(NEW_SCHOOLS[i]);
+      added++;
+      log('logSchools','Added: '+NEW_SCHOOLS[i].name+' ('+NEW_SCHOOLS[i].city+')','ok');
+    }catch(e){log('logSchools','ERROR: '+NEW_SCHOOLS[i].name+' - '+e.message,'err')}
+  }
+  log('logSchools','\nDone! Added '+added+' new schools.','ok');
+  btn.textContent='Done ('+added+' added)';
+  checkCounts();
+}
+
+async function seedColleges(){
+  var btn=document.getElementById('btnColleges');btn.disabled=true;btn.textContent='Adding...';
+  var added=0;
+  for(var i=0;i<NEW_COLLEGES.length;i++){
+    try{
+      var existing=await db.collection('colleges').where('name','==',NEW_COLLEGES[i].name).get();
+      if(!existing.empty){log('logColleges','SKIP (exists): '+NEW_COLLEGES[i].name,'info');continue}
+      await db.collection('colleges').add(NEW_COLLEGES[i]);
+      added++;
+      log('logColleges','Added: '+NEW_COLLEGES[i].name+' ('+NEW_COLLEGES[i].city+', '+NEW_COLLEGES[i].stream+')','ok');
+    }catch(e){log('logColleges','ERROR: '+NEW_COLLEGES[i].name+' - '+e.message,'err')}
+  }
+  log('logColleges','\nDone! Added '+added+' new colleges.','ok');
+  btn.textContent='Done ('+added+' added)';
+  checkCounts();
+}
+
+async function seedElectronics(){
+  var btn=document.getElementById('btnElectronics');btn.disabled=true;btn.textContent='Adding...';
+  var added=0;
+  for(var i=0;i<NEW_ELECTRONICS.length;i++){
+    try{
+      var existing=await db.collection('electronics').where('name','==',NEW_ELECTRONICS[i].name).get();
+      if(!existing.empty){log('logElectronics','SKIP (exists): '+NEW_ELECTRONICS[i].name,'info');continue}
+      await db.collection('electronics').add(NEW_ELECTRONICS[i]);
+      added++;
+      log('logElectronics','Added: '+NEW_ELECTRONICS[i].name+' ('+NEW_ELECTRONICS[i].brand+', Rs '+NEW_ELECTRONICS[i].price+')','ok');
+    }catch(e){log('logElectronics','ERROR: '+NEW_ELECTRONICS[i].name+' - '+e.message,'err')}
+  }
+  log('logElectronics','\nDone! Added '+added+' new electronics.','ok');
+  btn.textContent='Done ('+added+' added)';
+  checkCounts();
+}
+</script>
+</body>
+</html>
