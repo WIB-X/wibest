@@ -48,3 +48,5 @@ document.addEventListener('click', function(e) {
     if (!el.contains(e.target)) el.classList.remove('open');
   });
 });
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107402273519770"
+     crossorigin="anonymous"></script>
