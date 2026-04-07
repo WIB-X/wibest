@@ -43,3 +43,8 @@ function initFirebase() {
 }
 
 initTheme();
+document.addEventListener('click', function(e) {
+  document.querySelectorAll('.nav-more.open').forEach(function(el) {
+    if (!el.contains(e.target)) el.classList.remove('open');
+  });
+});
