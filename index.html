@@ -111,7 +111,7 @@
   <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
 </div><div class="footer-bottom">WIB - Independent. Data-driven.</div></footer>
 
-<script>
+<script><a href="/blog">Blog</a><div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle('open')">More ▾</button><div class="nav-dropdown"><a href="/restaurants">Restaurants</a><a href="/real-estate">Real Estate</a><a href="/jobs">Jobs</a><a href="/price-finder">Price Finder</a><a href="/compare">Compare</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div></div></div>
 function toggleChat(){var c=document.getElementById('wib-chat');c.style.display=c.style.display==='none'?'flex':'none';}
 function quickChat(msg){document.getElementById('chatInput').value=msg;sendChat();}
 function sendChat(){var input=document.getElementById('chatInput');var msg=input.value.trim();if(!msg)return;var box=document.getElementById('chatMessages');box.innerHTML+='<div style="background:var(--accent);color:#fff;border-radius:12px 12px 4px 12px;padding:12px 16px;font-size:13px;max-width:80%;margin-left:auto;margin-bottom:12px">'+msg+'</div>';input.value='';box.innerHTML+='<div id="typing" style="color:var(--text-muted);font-size:12px;margin-bottom:12px">Thinking...</div>';box.scrollTop=box.scrollHeight;setTimeout(function(){var r=getResponse(msg);var t=document.getElementById('typing');if(t)t.remove();box.innerHTML+='<div style="background:var(--accent-light);border-radius:12px 12px 12px 4px;padding:12px 16px;font-size:13px;line-height:1.6;color:var(--text-primary);max-width:90%;margin-bottom:12px">'+r+'</div>';box.scrollTop=box.scrollHeight;},800);}
