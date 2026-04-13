@@ -19,11 +19,11 @@
     { href: '/cars',        label: 'Cars & Bikes' },
     { href: '/hospitals',   label: 'Hospitals' },
     { href: '/travel',      label: 'Travel' },
-    { href: '/accessories', label: 'Accessories' },
     { href: '/blog',        label: 'Blog' },
   ];
 
   var MORE_LINKS = [
+    { href: '/accessories',  label: 'Accessories' },
     { href: '/restaurants',  label: 'Restaurants' },
     { href: '/real-estate',  label: 'Real Estate' },
     { href: '/jobs',         label: 'Jobs' },
@@ -41,7 +41,6 @@
     { href: '/cars',        label: 'Cars & Bikes' },
     { href: '/hospitals',   label: 'Hospitals' },
     { href: '/travel',      label: 'Travel' },
-    { href: '/accessories', label: 'Accessories' },
   ];
 
   var MOBILE_LINKS = NAV_LINKS.concat(MORE_LINKS.slice(0, 6));
