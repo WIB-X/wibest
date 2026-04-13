@@ -61,11 +61,18 @@
 .review-card h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;margin-bottom:8px}
 .review-card p{color:var(--text-secondary);font-size:14px;margin-bottom:16px}
 @media(max-width:768px){.hero-section h1{font-size:24px}.school-grid{grid-template-columns:1fr}.filters{flex-direction:column}.filter-group select,.search-input{width:100%}.search-group{width:100%}.hero-section{padding:32px 16px 24px}}
+/* Pagination */
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;padding:32px 24px 0;flex-wrap:wrap}
+.pg-btn{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
+.pg-btn:hover{border-color:var(--accent);color:var(--accent)}
+.pg-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pg-btn:disabled{opacity:.4;cursor:not-allowed}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
 <link rel="canonical" href="https://wibest.in/schools/">
+<link rel="manifest" href="/manifest.json">
 </head>
 <body>
 
@@ -106,6 +113,7 @@
   <div class="school-grid" id="schoolGrid"><div class="loading"><div class="spinner"></div><p>Loading schools...</p></div></div>
   <div class="no-results" id="noResults" style="display:none">No schools match your filters. Try adjusting your search.</div>
 </div>
+<div class="pagination" id="pagination"></div>
 
 <div class="review-prompt">
   <div class="review-card">
@@ -122,7 +130,10 @@
 <script src="/config.js"></script>
 <script>
 const db = initFirebase();
-let allSchools = [];
+let allSchools = [], currentPage = 1;
+const PAGE_SIZE = 18;
+const CACHE_KEY = 'wib_schools_cache';
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const BOARD_NAMES = ['CBSE','ICSE','IB','IGCSE','Cambridge','State Board','NIOS'];
 
 function getBoard(s){
@@ -141,11 +152,32 @@ function getFees(s){if(s.fees&&typeof s.fees==='object')return s.fees.tuition||s
 function getRating(s){return s.google_rating||s.rating||s.user_rating||0}
 function formatFees(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1)+'L';if(a>=1000)return(a/1000).toFixed(0)+'K';return a.toString()}
 
+// ── Firestore query caching (sessionStorage, 5 min TTL) ──────────────────────
+function getCached(){
+  try{
+    const raw=sessionStorage.getItem(CACHE_KEY);
+    if(!raw)return null;
+    const {data,ts}=JSON.parse(raw);
+    if(Date.now()-ts>CACHE_TTL){sessionStorage.removeItem(CACHE_KEY);return null}
+    return data;
+  }catch(e){return null}
+}
+function setCache(data){
+  try{sessionStorage.setItem(CACHE_KEY,JSON.stringify({data,ts:Date.now()}))}catch(e){}
+}
+
 async function loadSchools(){
   try{
-    const snap=await db.collection('items').get();
-    allSchools=[];
-    snap.forEach(doc=>{const d=doc.data();if(d.category==='college'||d.stream)return;allSchools.push({id:doc.id,...d})});
+    // Try cache first
+    const cached=getCached();
+    if(cached){
+      allSchools=cached;
+    }else{
+      const snap=await db.collection('items').get();
+      allSchools=[];
+      snap.forEach(doc=>{const d=doc.data();if(d.category==='college'||d.stream)return;allSchools.push({id:doc.id,...d})});
+      setCache(allSchools);
+    }
     const cities=[...new Set(allSchools.map(s=>s.city).filter(Boolean))].sort();
     const cityEl=document.getElementById('cityFilter');
     cities.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cityEl.appendChild(o)});
@@ -163,6 +195,7 @@ function resetFilters(){
   document.getElementById('boardFilter').value='';
   document.getElementById('sortSelect').value='';
   document.getElementById('searchInput').value='';
+  currentPage=1;
   applyFilters();
 }
 function applyFilters(){
@@ -182,9 +215,29 @@ function applyFilters(){
   else if(sort==='fees-high')filtered.sort((a,b)=>getFees(b)-getFees(a));
   else if(sort==='rating-high')filtered.sort((a,b)=>getRating(b)-getRating(a));
   else if(sort==='city-az')filtered.sort((a,b)=>(a.city||'').localeCompare(b.city||''));
-  renderSchools(filtered);
-  document.getElementById('resultsCount').textContent=filtered.length+' school'+(filtered.length!==1?'s':'')+' found';
-  document.getElementById('noResults').style.display=filtered.length===0?'block':'none';
+  const total=filtered.length;
+  const totalPages=Math.max(1,Math.ceil(total/PAGE_SIZE));
+  if(currentPage>totalPages)currentPage=1;
+  const start=(currentPage-1)*PAGE_SIZE;
+  const page=filtered.slice(start,start+PAGE_SIZE);
+  renderSchools(page);
+  renderPagination(currentPage,totalPages,()=>{applyFilters();window.scrollTo({top:0,behavior:'smooth'})});
+  document.getElementById('resultsCount').textContent=total+' school'+(total!==1?'s':'')+' found'+(total>PAGE_SIZE?' (page '+currentPage+' of '+totalPages+')':'');
+  document.getElementById('noResults').style.display=total===0?'block':'none';
+}
+function renderPagination(page,total,onChange){
+  const el=document.getElementById('pagination');
+  if(total<=1){el.innerHTML='';return}
+  let html='';
+  html+=`<button class="pg-btn" ${page===1?'disabled':''} onclick="currentPage--;(${onChange.toString()})()">← Prev</button>`;
+  const startPg=Math.max(1,page-2),endPg=Math.min(total,page+2);
+  if(startPg>1)html+=`<button class="pg-btn" onclick="currentPage=1;(${onChange.toString()})()">1</button>`;
+  if(startPg>2)html+=`<span style="padding:8px;color:var(--text-muted)">…</span>`;
+  for(let i=startPg;i<=endPg;i++)html+=`<button class="pg-btn${i===page?' active':''}" onclick="currentPage=${i};(${onChange.toString()})()">  ${i}</button>`;
+  if(endPg<total-1)html+=`<span style="padding:8px;color:var(--text-muted)">…</span>`;
+  if(endPg<total)html+=`<button class="pg-btn" onclick="currentPage=${total};(${onChange.toString()})()">  ${total}</button>`;
+  html+=`<button class="pg-btn" ${page===total?'disabled':''} onclick="currentPage++;(${onChange.toString()})()">Next →</button>`;
+  el.innerHTML=html;
 }
 function renderSchools(schools){
   const grid=document.getElementById('schoolGrid');

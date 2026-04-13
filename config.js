@@ -48,3 +48,19 @@ document.addEventListener('click', function(e) {
     if (!el.contains(e.target)) el.classList.remove('open');
   });
 });
+
+// Apply lazy loading to all images that don't already have the attribute
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('img:not([loading])').forEach(function(img) {
+    img.setAttribute('loading', 'lazy');
+  });
+});
+
+// Register service worker for PWA / offline support
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function(err) {
+      console.warn('SW registration failed:', err);
+    });
+  });
+}

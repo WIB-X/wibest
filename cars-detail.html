@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vehicle Details — WIB</title>
+<meta name="description" content="Compare specs, price, mileage, and reviews for this vehicle on WIB — India's comparison platform.">
+<meta property="og:site_name" content="WIB">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="canonical" href="https://wibest.in/cars-detail.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -66,6 +73,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="/config.js"></script>
+<script src="/sanitize.js"></script>
 <script>
 const db=initFirebase();let selectedRating=0;
 function formatPrice(p){if(!p)return'N/A';if(p>=10000000)return'₹'+(p/10000000).toFixed(2)+' Cr';if(p>=100000)return'₹'+(p/100000).toFixed(1)+' L';return'₹'+p.toLocaleString('en-IN')}
@@ -76,7 +84,18 @@ async function load(){
   try{
     const doc=await db.collection('vehicles').doc(id).get();
     if(!doc.exists){document.getElementById('pageContent').innerHTML='<div class="loading">Vehicle not found. <a href="/cars" style="color:var(--accent)">Browse all cars & bikes</a></div>';return}
-    const v=doc.data();document.title=v.name+' — WIB';render(id,v);
+    const v=doc.data();
+    const name=v.name||'Vehicle Details';
+    document.title=name+' — WIB';
+    document.querySelector('meta[name="description"]').setAttribute('content','Compare specs, price, and reviews for '+name+' on WIB.');
+    const canonicalUrl='https://wibest.in/cars-detail.html?id='+id;
+    document.querySelector('link[rel="canonical"]').setAttribute('href',canonicalUrl);
+    // JSON-LD Product schema
+    const jsonLd={'@context':'https://schema.org','@type':'Product','name':name,'description':v.description||name,'brand':{'@type':'Brand','name':v.brand||''}};
+    if(v.price) jsonLd['offers']={'@type':'Offer','price':v.price,'priceCurrency':'INR','availability':'https://schema.org/InStock'};
+    if(v.rating) jsonLd['aggregateRating']={'@type':'AggregateRating','ratingValue':v.rating,'bestRating':5,'ratingCount':v.reviews_count||1};
+    const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
+    render(id,v);
   }catch(err){console.error(err);document.getElementById('pageContent').innerHTML='<div class="loading">Error loading. Please refresh.</div>'}
 }
 
@@ -133,17 +152,17 @@ function render(id,v){
 }
 function selectStar(n){selectedRating=n;for(let i=1;i<=5;i++){document.getElementById('star'+i).classList.toggle('active',i<=n)}}
 async function submitReview(vId,vName){
-  const name=document.getElementById('revName').value.trim(),email=document.getElementById('revEmail').value.trim(),text=document.getElementById('revText').value.trim();
   const msg=document.getElementById('reviewMsg');
-  if(!name||!email||!selectedRating){msg.className='form-msg error';msg.textContent='Please enter name, email, and rating.';msg.style.display='block';return}
-  try{await db.collection('reviews').add({schoolId:vId,schoolName:vName,name,email,text,rating:selectedRating,type:'user',status:'pending',category:'vehicle',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+  const v=validateReview(document.getElementById('revName').value,document.getElementById('revEmail').value,document.getElementById('revText').value,selectedRating);
+  if(!v.ok){msg.className='form-msg error';msg.textContent=v.error;msg.style.display='block';return}
+  try{await db.collection('reviews').add({schoolId:vId,schoolName:vName,name:v.name,email:v.email,text:v.text,rating:v.rating,type:'user',status:'pending',category:'vehicle',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     msg.className='form-msg success';msg.textContent='Review submitted. It will appear after admin approval.';msg.style.display='block';
     document.getElementById('revName').value='';document.getElementById('revEmail').value='';document.getElementById('revText').value='';selectedRating=0;document.querySelectorAll('.star-select button').forEach(b=>b.classList.remove('active'));
   }catch(e){msg.className='form-msg error';msg.textContent='Failed. Try again.';msg.style.display='block'}
 }
 async function loadReviews(vId){
   try{const snap=await db.collection('reviews').where('schoolId','==',vId).where('status','==','approved').get();
-    let html='';snap.forEach(doc=>{const r=doc.data();html+=`<div class="review-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;font-size:14px">${r.name||'Anonymous'}</span><span style="color:var(--green);font-weight:600;font-size:13px">${'★'.repeat(r.rating||0)}${'☆'.repeat(5-(r.rating||0))}</span></div><div style="font-size:13px;color:var(--text-secondary)">${r.text||''}</div></div>`});
+    let html='';snap.forEach(doc=>{const r=doc.data();html+=`<div class="review-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;font-size:14px">${escapeHtml(r.name||'Anonymous')}</span><span style="color:var(--green);font-weight:600;font-size:13px">${'★'.repeat(r.rating||0)}${'☆'.repeat(5-(r.rating||0))}</span></div><div style="font-size:13px;color:var(--text-secondary)">${escapeHtml(r.text||'')}</div></div>`});
     if(html)document.getElementById('reviewsList').innerHTML=html;
   }catch(e){console.error(e)}
 }
