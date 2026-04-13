@@ -6,7 +6,7 @@
 <meta name="description" content="Hospital details, specialities, ratings, insurance, and patient reviews on WIB.">
 <meta property="og:site_name" content="WIB">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://wibest.in/og-default.svg">
+<meta property="og:image" content="https://wibest.in/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <link rel="canonical" href="https://wibest.in/hospital-detail.html">
@@ -74,18 +74,17 @@
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">WIB</a><div class="nav-links"><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals" class="active">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/blog">Blog</a></div><div class="nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"><svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button></div></div></nav>
-<div class="cat-strip"><div class="cat-inner"><a href="/schools" class="cat-link">Schools</a><a href="/colleges" class="cat-link">Colleges</a><a href="/electronics" class="cat-link">Electronics</a><a href="/cars" class="cat-link">Cars & Bikes</a><a href="/hospitals" class="cat-link active">Hospitals</a><a href="/travel" class="cat-link">Travel</a><a href="/accessories" class="cat-link">Accessories</a></div></div>
-<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="toggleMobile()">&#x2715;</button><a href="/">Home</a><a href="/schools">Schools</a><a href="/colleges">Colleges</a><a href="/electronics">Electronics</a><a href="/cars">Cars & Bikes</a><a href="/hospitals">Hospitals</a><a href="/travel">Travel</a><a href="/accessories">Accessories</a><a href="/compare">Compare</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+<div id="wib-nav-placeholder"></div>
 
 <div class="detail-wrap" id="content">
   <div class="loading"><div class="spinner"></div>Loading hospital details...</div>
 </div>
 
-<footer class="footer-simple">WIB — Independent. Data-driven.</footer>
+<div id="wib-footer-placeholder"></div>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="/config.js"></script>
+<script src="/components.js"></script>
 <script src="/sanitize.js"></script>
 <script>
 var db=initFirebase();
@@ -102,6 +101,8 @@ if(!hospName){
 } else {
   document.title=hospName+' - Hospital Details - WIB';
   var h={n:decodeURIComponent(hospName),c:decodeURIComponent(hospCity)};
+  var _hospUrl='https://wibest.in/hospital-detail.html?name='+encodeURIComponent(hospName);
+  var _bcScript=document.createElement('script');_bcScript.type='application/ld+json';_bcScript.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://wibest.in'},{'@type':'ListItem','position':2,'name':'Hospitals','item':'https://wibest.in/hospitals/'},{'@type':'ListItem','position':3,'name':decodeURIComponent(hospName),'item':_hospUrl}]});document.head.appendChild(_bcScript);
   // Try to get extra details from URL params
   var hType=params.get('type')||'';
   var hRating=parseFloat(params.get('r'))||0;
@@ -208,6 +209,7 @@ function setCriteria(key,val){
 
 async function submitReview(){
   var msg=document.getElementById('reviewMsg');
+  if(!checkRateLimit('review',30000)){msg.className='form-msg error';msg.textContent='Please wait before submitting another review.';msg.style.display='block';return;}
   var v=validateReview(document.getElementById('revName').value,document.getElementById('revEmail').value,document.getElementById('revText').value,selectedRating);
   if(!v.ok){msg.className='form-msg error';msg.textContent=v.error;msg.style.display='block';return;}
 
