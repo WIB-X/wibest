@@ -4,6 +4,7 @@
   "description": "India's unified comparison platform. Compare schools, colleges, electronics, cars, hospitals, and more.",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
   "orientation": "portrait-primary",
@@ -14,7 +15,21 @@
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-default.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "WIB — Compare the Best of Everything in India"
     }
   ],
   "shortcuts": [
@@ -37,7 +52,18 @@
       "name": "Cars & Bikes",
       "url": "/cars",
       "description": "Compare vehicles"
+    },
+    {
+      "name": "Hospitals",
+      "url": "/hospitals",
+      "description": "Compare hospitals in India"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "description": "Read WIB guides and comparisons"
     }
   ],
-  "categories": ["education", "shopping", "utilities"]
+  "categories": ["education", "shopping", "utilities"],
+  "prefer_related_applications": false
 }

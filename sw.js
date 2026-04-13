@@ -6,7 +6,7 @@
  *  - Firebase/external APIs: Network-only (never cache auth/DB requests)
  */
 
-const CACHE_NAME = 'wib-v1';
+const CACHE_NAME = 'wib-v2';
 const CACHE_TIMEOUT_MS = 3000; // Network timeout before using cache
 
 // Core assets to pre-cache on install
@@ -14,10 +14,20 @@ const PRECACHE_URLS = [
   '/',
   '/styles.css',
   '/config.js',
+  '/components.js',
   '/sanitize.js',
   '/chat-widget.js',
   '/favicon.svg',
+  '/og-default.png',
+  '/manifest.json',
   '/404.html',
+  '/schools/',
+  '/colleges/',
+  '/electronics/',
+  '/cars/',
+  '/hospitals/',
+  '/travel/',
+  '/blog/',
 ];
 
 // ── Install: pre-cache core assets ───────────────────────────────────────────

@@ -76,3 +76,39 @@ function validateEnquiry(parentName, parentEmail, parentPhone) {
 
   return { ok: true, parentName: parentName, parentEmail: parentEmail, parentPhone: parentPhone };
 }
+
+/**
+ * Honeypot check — bots fill hidden fields, humans don't.
+ * Returns true if the submission looks human (field is empty).
+ */
+function checkHoneypot(fieldValue) {
+  return !fieldValue || String(fieldValue).trim() === '';
+}
+
+/**
+ * Client-side rate limiting using localStorage.
+ * @param {string} key     - unique key per form (e.g. 'review', 'enquiry', 'contact')
+ * @param {number} limitMs - minimum milliseconds between allowed submissions (default 30s)
+ * Returns true if submission is allowed, false if rate-limited.
+ */
+function checkRateLimit(key, limitMs) {
+  limitMs = limitMs || 30000;
+  try {
+    var last = parseInt(localStorage.getItem('wib-rl-' + key) || '0', 10);
+    if (Date.now() - last < limitMs) return false;
+    localStorage.setItem('wib-rl-' + key, String(Date.now()));
+    return true;
+  } catch (e) {
+    return true; // localStorage not available — allow submission
+  }
+}
+
+/**
+ * Timing check — submissions faster than minMs are likely bots.
+ * @param {number} formLoadTime - timestamp (Date.now()) when the form was loaded
+ * @param {number} minMs        - minimum milliseconds (default 2500)
+ */
+function checkTiming(formLoadTime, minMs) {
+  minMs = minMs || 2500;
+  return (Date.now() - formLoadTime) >= minMs;
+}

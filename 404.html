@@ -4,30 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page Not Found — WIB</title>
+<meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.error-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center}
-.error-code{font-family:'Outfit',sans-serif;font-size:120px;font-weight:800;color:var(--border);line-height:1;margin-bottom:16px}
-.error-title{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px}
-.error-desc{color:var(--text-secondary);font-size:15px;margin-bottom:32px;max-width:400px}
-.error-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.error-wrap{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center}
+.error-code{font-family:'Outfit',sans-serif;font-size:120px;font-weight:800;color:var(--border);line-height:1;margin-bottom:8px;letter-spacing:-4px}
+.error-title{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;margin-bottom:10px}
+.error-desc{color:var(--text-secondary);font-size:15px;margin-bottom:36px;max-width:420px;line-height:1.6}
+.error-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
+.error-categories{width:100%;max-width:640px}
+.error-categories h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary);margin-bottom:16px}
+.cat-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.cat-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1.5px solid var(--border);border-radius:100px;font-size:14px;font-weight:500;color:var(--text-primary);text-decoration:none;transition:border-color .15s,background .15s}
+.cat-chip:hover{border-color:var(--blue);background:var(--blue-50,#eff6ff);color:var(--blue)}
 </style>
 </head>
 <body>
-<div class="error-page">
+<div id="wib-nav-placeholder"></div>
+
+<div class="error-wrap">
   <div class="error-code">404</div>
   <div class="error-title">Page not found</div>
-  <p class="error-desc">The page you are looking for does not exist or may have been moved.</p>
-  <div class="error-links">
+  <p class="error-desc">The page you're looking for doesn't exist or may have been moved. Try one of the links below.</p>
+
+  <div class="error-actions">
     <a href="/" class="btn-primary">Go Home</a>
-    <a href="/schools" class="btn-secondary">Browse Schools</a>
-    <a href="/colleges" class="btn-secondary">Browse Colleges</a>
+    <a href="/blog" class="btn-secondary">Read the Blog</a>
+  </div>
+
+  <div class="error-categories">
+    <h3>Browse by Category</h3>
+    <div class="cat-grid">
+      <a href="/schools" class="cat-chip">🏫 Schools</a>
+      <a href="/colleges" class="cat-chip">🎓 Colleges</a>
+      <a href="/electronics" class="cat-chip">📱 Electronics</a>
+      <a href="/cars" class="cat-chip">🚗 Cars &amp; Bikes</a>
+      <a href="/hospitals" class="cat-chip">🏥 Hospitals</a>
+      <a href="/travel" class="cat-chip">✈️ Travel</a>
+      <a href="/accessories" class="cat-chip">🎧 Accessories</a>
+      <a href="/restaurants" class="cat-chip">🍽️ Restaurants</a>
+      <a href="/real-estate" class="cat-chip">🏠 Real Estate</a>
+      <a href="/jobs" class="cat-chip">💼 Jobs</a>
+    </div>
   </div>
 </div>
+
+<div id="wib-footer-placeholder"></div>
 <script src="/config.js"></script>
+<script src="/components.js"></script>
 </body>
 </html>

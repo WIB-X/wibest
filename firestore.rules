@@ -3,8 +3,11 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ── Helpers ─────────────────────────────────────────────────────────────
+    // Admin = authenticated + email verified (or custom admin claim set via Admin SDK)
     function isAdmin() {
-      return request.auth != null;
+      return request.auth != null
+          && (request.auth.token.email_verified == true
+              || request.auth.token.admin == true);
     }
 
     function validReview() {
@@ -27,7 +30,15 @@ service cloud.firestore {
     function validMessage() {
       let d = request.resource.data;
       return d.name is string && d.name.size() >= 1 && d.name.size() <= 100
-          && d.message is string && d.message.size() <= 5000;
+          && d.message is string && d.message.size() >= 1 && d.message.size() <= 2000;
+    }
+
+    function validContactMessage() {
+      let d = request.resource.data;
+      return d.name    is string && d.name.size()    >= 1  && d.name.size()    <= 100
+          && d.email   is string && d.email.size()   >= 5  && d.email.size()   <= 200
+          && d.subject is string && d.subject.size() >= 1  && d.subject.size() <= 100
+          && d.message is string && d.message.size() >= 1  && d.message.size() <= 2000;
     }
 
     // ── Public content (read-only for public, write requires auth) ──────────
@@ -92,6 +103,12 @@ service cloud.firestore {
     // ── General contact messages ─────────────────────────────────────────────
     match /messages/{doc} {
       allow create: if validMessage();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Contact form submissions (contact/index.html) ────────────────────────
+    match /contact_messages/{doc} {
+      allow create: if validContactMessage();
       allow read, update, delete: if isAdmin();
     }
 
