@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>College Details — WIB</title>
+<meta name="description" content="Compare fees, courses, placements, and reviews for this college on WIB — India's comparison platform.">
+<meta property="og:site_name" content="WIB">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="canonical" href="https://wibest.in/college-detail.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -72,6 +79,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="/config.js"></script>
+<script src="/sanitize.js"></script>
 <script>
 const db=initFirebase();
 let selectedRating=0,selectedType='student';
@@ -84,7 +92,16 @@ async function load(){
     let doc=await db.collection('colleges').doc(id).get();
     if(!doc.exists)doc=await db.collection('items').doc(id).get();
     if(!doc.exists){document.getElementById('pageContent').innerHTML='<div class="loading">College not found. <a href="/colleges" style="color:var(--accent)">Browse all colleges</a></div>';return}
-    const c=doc.data();document.title=c.name+' — WIB';
+    const c=doc.data();
+    const name=c.name||'College Details';
+    document.title=name+' — WIB';
+    document.querySelector('meta[name="description"]').setAttribute('content','Compare fees, courses, placements and reviews for '+name+' on WIB.');
+    const canonicalUrl='https://wibest.in/college-detail.html?id='+id;
+    document.querySelector('link[rel="canonical"]').setAttribute('href',canonicalUrl);
+    // JSON-LD EducationalOrganization schema
+    const jsonLd={'@context':'https://schema.org','@type':'CollegeOrUniversity','name':name,'description':c.description||('College in '+(c.city||'India')),'url':canonicalUrl,'address':{'@type':'PostalAddress','addressLocality':c.city||'','addressCountry':'IN'}};
+    if(c.google_rating||c.rating) jsonLd['aggregateRating']={'@type':'AggregateRating','ratingValue':c.google_rating||c.rating,'bestRating':5,'ratingCount':c.reviews_count||1};
+    const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
     render(id,c,autoEnquire);
   }catch(err){console.error(err);document.getElementById('pageContent').innerHTML='<div class="loading">Error loading. Please refresh.</div>'}
 }
@@ -156,11 +173,11 @@ function selectStar(n){selectedRating=n;for(let i=1;i<=5;i++){document.getElemen
 function selectType(btn,t){selectedType=t;document.querySelectorAll('.rf-type button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
 
 async function submitReview(cId,cName){
-  const name=document.getElementById('revName').value.trim(),email=document.getElementById('revEmail').value.trim(),text=document.getElementById('revText').value.trim();
   const msg=document.getElementById('reviewMsg');
-  if(!name||!email||!selectedRating){msg.className='form-msg error';msg.textContent='Please enter name, email, and rating.';msg.style.display='block';return}
+  const v=validateReview(document.getElementById('revName').value,document.getElementById('revEmail').value,document.getElementById('revText').value,selectedRating);
+  if(!v.ok){msg.className='form-msg error';msg.textContent=v.error;msg.style.display='block';return}
   try{
-    await db.collection('reviews').add({schoolId:cId,schoolName:cName,name,email,text,rating:selectedRating,type:selectedType,status:'pending',category:'college',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    await db.collection('reviews').add({schoolId:cId,schoolName:cName,name:v.name,email:v.email,text:v.text,rating:v.rating,type:selectedType,status:'pending',category:'college',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     msg.className='form-msg success';msg.textContent='Review submitted. It will appear after admin approval.';msg.style.display='block';
     document.getElementById('revName').value='';document.getElementById('revEmail').value='';document.getElementById('revText').value='';selectedRating=0;document.querySelectorAll('.star-select button').forEach(b=>b.classList.remove('active'));
   }catch(e){msg.className='form-msg error';msg.textContent='Failed to submit. Try again.';msg.style.display='block'}
@@ -168,9 +185,12 @@ async function submitReview(cId,cName){
 
 async function submitEnquiry(e,cId,cName){
   e.preventDefault();const btn=document.getElementById('enquiryBtn');const msg=document.getElementById('enquiryMsg');
-  btn.disabled=true;btn.textContent='Sending...';const f=e.target;
+  const f=e.target;
+  const v=validateEnquiry(f.pName.value,f.pEmail.value,f.pPhone.value);
+  if(!v.ok){msg.className='form-msg error';msg.textContent=v.error;msg.style.display='block';return}
+  btn.disabled=true;btn.textContent='Sending...';
   try{
-    await db.collection('contact_requests').add({schoolId:cId,schoolName:cName,parentName:f.pName.value,parentEmail:f.pEmail.value,parentPhone:f.pPhone.value,message:f.message.value,status:'pending',category:'college',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    await db.collection('contact_requests').add({schoolId:cId,schoolName:cName,parentName:v.parentName,parentEmail:v.parentEmail,parentPhone:v.parentPhone,message:sanitizeText(f.message.value,1000),status:'pending',category:'college',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     msg.className='form-msg success';msg.textContent='Enquiry sent successfully.';msg.style.display='block';f.reset();
   }catch(err){msg.className='form-msg error';msg.textContent='Failed. Try again.';msg.style.display='block'}
   btn.disabled=false;btn.textContent='Send Enquiry';
@@ -180,7 +200,7 @@ async function loadReviews(cId){
   try{
     const snap=await db.collection('reviews').where('schoolId','==',cId).where('status','==','approved').get();
     let html='';
-    snap.forEach(doc=>{const r=doc.data();html+=`<div class="review-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;font-size:14px">${r.name||'Anonymous'} <span style="font-size:11px;color:var(--text-muted);font-weight:400">(${r.type||'student'})</span></span><span style="color:var(--green);font-weight:600;font-size:13px">${'★'.repeat(r.rating||0)}${'☆'.repeat(5-(r.rating||0))}</span></div><div style="font-size:13px;color:var(--text-secondary)">${r.text||''}</div></div>`});
+    snap.forEach(doc=>{const r=doc.data();html+=`<div class="review-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;font-size:14px">${escapeHtml(r.name||'Anonymous')} <span style="font-size:11px;color:var(--text-muted);font-weight:400">(${escapeHtml(r.type||'student')})</span></span><span style="color:var(--green);font-weight:600;font-size:13px">${'★'.repeat(r.rating||0)}${'☆'.repeat(5-(r.rating||0))}</span></div><div style="font-size:13px;color:var(--text-secondary)">${escapeHtml(r.text||'')}</div></div>`});
     if(html)document.getElementById('reviewsList').innerHTML=html;
   }catch(e){console.error(e)}
 }

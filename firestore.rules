@@ -1,0 +1,103 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helpers ─────────────────────────────────────────────────────────────
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    function validReview() {
+      let d = request.resource.data;
+      return d.status == 'pending'
+          && d.name is string   && d.name.size()  >= 1 && d.name.size()  <= 100
+          && d.email is string  && d.email.size() >= 3 && d.email.size() <= 200
+          && d.text is string   && d.text.size()  <= 2000
+          && d.rating is number && d.rating >= 1  && d.rating <= 5
+          && d.category is string;
+    }
+
+    function validContactRequest() {
+      let d = request.resource.data;
+      return d.parentName  is string && d.parentName.size()  >= 1 && d.parentName.size()  <= 100
+          && d.parentEmail is string && d.parentEmail.size() >= 3 && d.parentEmail.size() <= 200
+          && d.status == 'pending';
+    }
+
+    function validMessage() {
+      let d = request.resource.data;
+      return d.name is string && d.name.size() >= 1 && d.name.size() <= 100
+          && d.message is string && d.message.size() <= 5000;
+    }
+
+    // ── Public content (read-only for public, write requires auth) ──────────
+    match /items/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /colleges/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /electronics/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /vehicles/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /hospitals/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /blog_posts/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /restaurants/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /real_estate/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /jobs/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /travel/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /accessories/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Reviews: public can create (pending only), admin manages ────────────
+    match /reviews/{doc} {
+      allow read: if true;   // client already filters status == 'approved'
+      allow create: if validReview();
+      allow update, delete: if isAdmin();
+    }
+
+    // ── Contact/enquiry requests: public can create, admin manages ──────────
+    match /contact_requests/{doc} {
+      allow create: if validContactRequest();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── General contact messages ─────────────────────────────────────────────
+    match /messages/{doc} {
+      allow create: if validMessage();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Deny everything else by default ─────────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

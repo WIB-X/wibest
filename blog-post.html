@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Article — WIB</title>
+<meta name="description" content="Read this guide on WIB — India's comparison platform.">
+<meta property="og:site_name" content="WIB">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -43,6 +49,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="/config.js"></script>
+<script src="/sanitize.js"></script>
 <script>
 const db=initFirebase();
 async function load(){
@@ -52,16 +59,28 @@ async function load(){
     const doc=await db.collection('blog_posts').doc(id).get();
     if(!doc.exists){document.getElementById('articleContent').innerHTML='<div class="loading">Article not found. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';return}
     const p=doc.data();
-    document.title=p.title+' — WIB Blog';
+    const title=p.title||'Untitled';
+    document.title=title+' — WIB Blog';
+    // Update OG + meta tags dynamically
+    document.querySelector('meta[name="description"]').setAttribute('content',p.excerpt||p.description||title);
+    document.querySelector('meta[property="og:type"]').setAttribute('content','article');
+    if(p.cover_image){document.querySelector('meta[property="og:image"]').setAttribute('content',p.cover_image);}
+    const canonicalUrl='https://wibest.in/blog-post.html?id='+id;
+    // JSON-LD Article schema
+    const jsonLd={'@context':'https://schema.org','@type':'Article','headline':title,'description':p.excerpt||title,'author':{'@type':'Person','name':p.author||'WIB Team'},'publisher':{'@type':'Organization','name':'WIB','url':'https://wibest.in'},'url':canonicalUrl};
+    if(p.cover_image)jsonLd['image']=p.cover_image;
+    const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
+
     const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'}):'';
     document.getElementById('articleContent').innerHTML=`
-      <div class="breadcrumb"><a href="/blog">Blog</a> / ${p.title}</div>
-      <div class="article-category">${p.category||'General'}</div>
-      <h1>${p.title||'Untitled'}</h1>
+      <div class="breadcrumb"><a href="/blog">Blog</a> / ${escapeHtml(title)}</div>
+      ${p.cover_image?`<img src="${escapeHtml(p.cover_image)}" alt="${escapeHtml(title)}" loading="lazy" style="width:100%;height:320px;object-fit:cover;border-radius:12px;margin-bottom:24px">`:''}
+      <div class="article-category">${escapeHtml(p.category||'General')}</div>
+      <h1>${escapeHtml(title)}</h1>
       <div class="article-meta">
-        <span>${p.readTime||'5'} min read</span>
-        ${date?`<span>${date}</span>`:''}
-        ${p.author?`<span>By ${p.author}</span>`:''}
+        <span>${escapeHtml(String(p.read_time||p.readTime||'5'))} min read</span>
+        ${date?`<span>${escapeHtml(date)}</span>`:''}
+        ${p.author?`<span>By ${escapeHtml(p.author)}</span>`:''}
       </div>
       <div class="article-body">${p.content||p.body||'<p>Content not available.</p>'}</div>
       <div class="article-footer">

@@ -4,6 +4,12 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hospital Details - WIB</title>
 <meta name="description" content="Hospital details, specialities, ratings, insurance, and patient reviews on WIB.">
+<meta property="og:site_name" content="WIB">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="canonical" href="https://wibest.in/hospital-detail.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
@@ -80,6 +86,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="/config.js"></script>
+<script src="/sanitize.js"></script>
 <script>
 var db=initFirebase();
 var selectedRating=0;
@@ -200,23 +207,18 @@ function setCriteria(key,val){
 }
 
 async function submitReview(){
-  var name=document.getElementById('revName').value.trim();
-  var email=document.getElementById('revEmail').value.trim();
-  var text=document.getElementById('revText').value.trim();
   var msg=document.getElementById('reviewMsg');
-  
-  if(!name||!email||!selectedRating){
-    msg.className='form-msg error';msg.textContent='Please enter your name, email, and overall rating.';msg.style.display='block';return;
-  }
-  
+  var v=validateReview(document.getElementById('revName').value,document.getElementById('revEmail').value,document.getElementById('revText').value,selectedRating);
+  if(!v.ok){msg.className='form-msg error';msg.textContent=v.error;msg.style.display='block';return;}
+
   try{
     await db.collection('reviews').add({
       hospitalName:hospName,
       hospitalCity:hospCity,
-      name:name,
-      email:email,
-      text:text,
-      rating:selectedRating,
+      name:v.name,
+      email:v.email,
+      text:v.text,
+      rating:v.rating,
       type:selectedType,
       category:'hospital',
       criteria:criteriaRatings,
@@ -250,9 +252,9 @@ async function loadReviews(){
       }
       var stars='★'.repeat(r.rating||0)+'☆'.repeat(5-(r.rating||0));
       html+='<div class="review-item"><div class="review-header"><span class="review-name">'+
-        (r.name||'Anonymous')+' <span style="font-size:11px;color:var(--text-muted);font-weight:400">('+
-        (r.type||'patient')+')</span></span><span class="review-stars">'+stars+'</span></div>'+
-        (r.text?'<div class="review-text">'+r.text+'</div>':'')+
+        escapeHtml(r.name||'Anonymous')+' <span style="font-size:11px;color:var(--text-muted);font-weight:400">('+
+        escapeHtml(r.type||'patient')+')</span></span><span class="review-stars">'+stars+'</span></div>'+
+        (r.text?'<div class="review-text">'+escapeHtml(r.text)+'</div>':'')+
         '</div>';
     });
     if(html)document.getElementById('reviewsList').innerHTML=html;
