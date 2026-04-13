@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
     <title>WIB — Update Schools Data</title>
     <style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Segoe UI',sans-serif;background:#0f172a;color:#e2e8f0;padding:40px;}h1{font-size:28px;margin-bottom:8px;}.sub{color:#94a3b8;margin-bottom:24px;}.warn{background:#422006;border:1px solid #f59e0b;padding:12px 16px;border-radius:8px;margin-bottom:24px;color:#fbbf24;font-size:14px;}button{padding:14px 28px;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;background:#2563eb;color:white;}button:disabled{background:#475569;cursor:not-allowed;}#log{background:#1e293b;border-radius:8px;padding:20px;margin-top:20px;font-family:monospace;font-size:13px;max-height:500px;overflow-y:auto;white-space:pre-wrap;}.s{color:#4ade80;}.e{color:#f87171;}.i{color:#60a5fa;}</style>
 </head>
@@ -9,13 +10,41 @@
     <h1>Update Schools — Facilities & Data Fix</h1>
     <p class="sub">Sets facilities to true, fixes board/type mapping, adds gallery/review support fields.</p>
     <div class="warn">Run this ONCE only.</div>
+    <!-- Auth gate overlay -->
+    <div id="wib-gate" style="position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#0f172a;">
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:16px;padding:40px;width:360px;text-align:center;font-family:system-ui,sans-serif;">
+        <h2 style="color:#f1f5f9;font-size:22px;font-weight:700;margin-bottom:4px;">WIB Admin</h2>
+        <p style="color:#94a3b8;font-size:13px;margin-bottom:24px;">Sign in to access this tool</p>
+        <input id="wib-gate-email" type="email" placeholder="Admin email" autocomplete="email" style="display:block;width:100%;padding:10px 14px;margin-bottom:12px;border:1.5px solid #334155;border-radius:8px;background:#0f172a;color:#f1f5f9;font-size:14px;font-family:inherit;box-sizing:border-box;">
+        <input id="wib-gate-pass" type="password" placeholder="Password" autocomplete="current-password" style="display:block;width:100%;padding:10px 14px;margin-bottom:12px;border:1.5px solid #334155;border-radius:8px;background:#0f172a;color:#f1f5f9;font-size:14px;font-family:inherit;box-sizing:border-box;">
+        <button id="wib-gate-btn" style="width:100%;padding:11px;background:#3b82f6;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;">Sign In</button>
+        <div id="wib-gate-err" style="color:#f87171;font-size:12px;margin-top:10px;min-height:16px;"></div>
+      </div>
+    </div>
+
     <button id="btn">Start Update</button>
     <div id="log"></div>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, collection, getDocs, doc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         const fc={apiKey:"AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",authDomain:"wibest-449fe.firebaseapp.com",projectId:"wibest-449fe",storageBucket:"wibest-449fe.firebasestorage.app",messagingSenderId:"438027122345",appId:"1:438027122345:web:70b5427de9bf0a74f51bb8"};
-        const db=getFirestore(initializeApp(fc));const logEl=document.getElementById('log');
+        const app=initializeApp(fc);
+        const db=getFirestore(app);
+        const auth=getAuth(app);
+        const gateEl=document.getElementById('wib-gate');
+        const gateBtn=document.getElementById('wib-gate-btn');
+        const gateErr=document.getElementById('wib-gate-err');
+        gateBtn.addEventListener('click',async()=>{
+          const e=document.getElementById('wib-gate-email').value.trim();
+          const p=document.getElementById('wib-gate-pass').value;
+          if(!e||!p){gateErr.textContent='Enter email and password.';return;}
+          gateBtn.disabled=true;gateBtn.textContent='Signing in…';gateErr.textContent='';
+          try{await signInWithEmailAndPassword(auth,e,p);}
+          catch(err){gateErr.textContent='Incorrect email or password.';gateBtn.disabled=false;gateBtn.textContent='Sign In';}
+        });
+        document.getElementById('wib-gate-pass').addEventListener('keydown',e=>{if(e.key==='Enter')gateBtn.click();});
+        await new Promise(resolve=>onAuthStateChanged(auth,user=>{if(user){if(gateEl)gateEl.remove();resolve();}}));const logEl=document.getElementById('log');
         function log(m,t=''){const s=document.createElement('span');s.className=t;s.textContent=m+'\n';logEl.appendChild(s);logEl.scrollTop=logEl.scrollHeight;}
         document.getElementById('btn').addEventListener('click',async function(){this.disabled=true;this.textContent='Updating...';log('Starting...','i');
             try{const q=query(collection(db,"items"),where("category","==","schools"));const snap=await getDocs(q);let ok=0,fail=0;log(`Found ${snap.size} schools.\n`,'i');

@@ -6,14 +6,15 @@ Disallow: /admin-dashboard/
 Disallow: /image-manager/
 Disallow: /ratings-manager/
 Disallow: /review-manager/
+Disallow: /blog-editor/
 Disallow: /migrate-colleges/
 Disallow: /seed-blog/
+Disallow: /seed-data/
+Disallow: /seed-vehicles/
 Disallow: /update-ratings/
 Disallow: /update-schools/
 Disallow: /migrate-cars.html
 Disallow: /migrate-electronics.html
 Disallow: /update-schools.html
-Disallow: /school-detail.html
-Disallow: /college-detail.html
 
 Sitemap: https://wibest.in/sitemap.xml
