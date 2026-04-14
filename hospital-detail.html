@@ -70,6 +70,8 @@
 .loading{text-align:center;padding:100px 24px;color:var(--text-muted)}
 .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
+.share-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.share-row span{font-size:13px;font-weight:600;color:var(--text-muted)}
 @media(max-width:768px){.hosp-name{font-size:22px}.info-grid{grid-template-columns:1fr 1fr}.criteria-grid{grid-template-columns:1fr}.rf-row{flex-direction:column}}
 </style>
 </head>
@@ -142,6 +144,13 @@ if(!hospName){
     <a href="/compare?type=hospitals" class="btn-website">Compare Hospitals</a>
   </div>
 
+  <div class="share-row">
+    <span>Share:</span>
+    <a id="shareWA" href="#" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:#25D366;color:#fff;text-decoration:none">WhatsApp</a>
+    <a id="shareTW" href="#" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:#1DA1F2;color:#fff;text-decoration:none">Twitter</a>
+    <button onclick="copyPageLink()" id="copyBtn" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--bg-secondary);border:1px solid var(--border);cursor:pointer;font-family:inherit">Copy Link</button>
+  </div>
+
   ${hSpecs.length?`<div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Specialities</div><div class="spec-tags">${hSpecs.map(s=>`<span class="spec-tag">${s}</span>`).join('')}</div></div>`:''}
 
   ${hIns.length?`<div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/></svg> Insurance Accepted</div><div class="ins-tags">${hIns.map(i=>`<span class="ins-tag">${i}</span>`).join('')}</div></div>`:''}
@@ -186,6 +195,18 @@ if(!hospName){
     <button class="btn-primary" style="width:100%;padding:14px;font-size:14px" onclick="submitReview()">Submit Review</button>
     <div id="reviewMsg" style="display:none"></div>
   </div>`;
+
+  // Share links
+  var _cu=encodeURIComponent('https://wibest.in/hospital-detail.html?name='+encodeURIComponent(hospName)+(hospCity?'&city='+encodeURIComponent(hospCity):''));
+  var _ct=encodeURIComponent(h.n+' — WIB');
+  document.getElementById('shareWA').href='https://wa.me/?text='+_ct+'%20'+_cu;
+  document.getElementById('shareTW').href='https://twitter.com/intent/tweet?text='+_ct+'&url='+_cu+'&via=wibest_in';
+
+  // AggregateRating JSON-LD
+  var _jld={'@context':'https://schema.org','@type':'Hospital','name':h.n,'description':'Hospital in '+h.c+', India','url':'https://wibest.in/hospital-detail.html?name='+encodeURIComponent(hospName),'address':{'@type':'PostalAddress','addressLocality':h.c,'addressCountry':'IN'}};
+  if(hRating>0) _jld['aggregateRating']={'@type':'AggregateRating','ratingValue':hRating,'bestRating':5,'ratingCount':10};
+  if(hSpecs.length) _jld['medicalSpecialty']=hSpecs[0];
+  var _ls=document.createElement('script');_ls.type='application/ld+json';_ls.text=JSON.stringify(_jld);document.head.appendChild(_ls);
 
   loadReviews();
 }
@@ -240,6 +261,8 @@ async function submitReview(){
     msg.className='form-msg error';msg.textContent='Failed to submit. Please try again.';msg.style.display='block';
   }
 }
+
+function copyPageLink(){var b=document.getElementById('copyBtn');navigator.clipboard.writeText(window.location.href).then(function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link';},2000);});}
 
 async function loadReviews(){
   try{

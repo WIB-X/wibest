@@ -155,6 +155,11 @@
                     Messages
                 </div>
 
+                <div class="nav-item" data-page="subscribers">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Newsletter
+                </div>
+
                 <div class="nav-section">Tools</div>
                 <div class="nav-item" data-page="tools">
                     <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
@@ -213,6 +218,14 @@
                     </div></div>
                 </div>
 
+                <!-- Newsletter Subscribers -->
+                <div class="page" id="page-subscribers">
+                    <div class="panel"><div class="panel-head"><h2>Newsletter Subscribers</h2><span id="subscriberCount" style="font-size:13px;color:var(--slate-400)"></span></div><div class="panel-body">
+                        <div class="search-bar"><input type="text" id="subscriberSearch" placeholder="Search by email..."></div>
+                        <div id="subscribersTable"><div class="empty-state">Loading...</div></div>
+                    </div></div>
+                </div>
+
                 <!-- Tools -->
                 <div class="page" id="page-tools">
                     <div class="panel"><div class="panel-head"><h2>Quick Tools</h2></div><div class="panel-body">
@@ -251,7 +264,7 @@
         const auth=getAuth(app);
         const db=getFirestore(app);
 
-        let allSchools=[],allColleges=[],allReviews=[],allRequests=[],allMessages=[];
+        let allSchools=[],allColleges=[],allReviews=[],allRequests=[],allMessages=[],allSubscribers=[];
         function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):'';}
 
         // Auth
@@ -305,12 +318,17 @@
                 const mq=await getDocs(collection(db,"contact_messages"));
                 allMessages=[];mq.forEach(d=>allMessages.push({id:d.id,...d.data()}));
 
+                // Newsletter subscribers
+                const nq=await getDocs(query(collection(db,"newsletter_subscribers"),orderBy("subscribedAt","desc")));
+                allSubscribers=[];nq.forEach(d=>allSubscribers.push({id:d.id,...d.data()}));
+
                 updateStats();
                 renderSchools();
                 renderColleges();
                 renderReviews();
                 renderRequests();
                 renderMessages();
+                renderSubscribers();
                 renderActivity();
                 populateFilters();
             }catch(e){console.error(e);}
@@ -321,6 +339,17 @@
             document.getElementById('statColleges').textContent=allColleges.length;
             document.getElementById('statReviews').textContent=allReviews.filter(r=>r.status==='pending').length;
             document.getElementById('statRequests').textContent=allRequests.filter(r=>r.status==='pending').length;
+        }
+
+        function renderSubscribers(filter=''){
+            let items=allSubscribers;
+            if(filter)items=items.filter(s=>(s.email||'').toLowerCase().includes(filter.toLowerCase()));
+            document.getElementById('subscriberCount').textContent=allSubscribers.length+' total';
+            if(!items.length){document.getElementById('subscribersTable').innerHTML='<div class="empty-state">No subscribers yet</div>';return;}
+            document.getElementById('subscribersTable').innerHTML=`<table><thead><tr><th>Email</th><th>Source</th><th>Date</th><th>Actions</th></tr></thead><tbody>${items.map(s=>{
+                const date=s.subscribedAt?.toDate?s.subscribedAt.toDate().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'—';
+                return`<tr><td class="td-name">${s.email||'—'}</td><td>${s.source||'homepage'}</td><td>${date}</td><td><button class="btn-sm btn-delete" onclick="deleteSubscriber('${s.id}','${(s.email||'').replace(/'/g,'\\\'')}')" >Remove</button></td></tr>`;
+            }).join('')}</tbody></table>`;
         }
 
         function renderActivity(){
@@ -405,6 +434,7 @@
         document.getElementById('collegeCityFilter').addEventListener('change',e=>renderColleges(document.getElementById('collegeSearch').value,e.target.value));
         document.getElementById('reviewFilter').addEventListener('change',e=>renderReviews(e.target.value));
         document.getElementById('requestFilter').addEventListener('change',e=>renderRequests(e.target.value));
+        document.getElementById('subscriberSearch').addEventListener('input',e=>renderSubscribers(e.target.value));
 
         // Edit item
         window.editItem=function(id,category){
@@ -489,6 +519,11 @@
 
         window.approveRequest=async function(id){
             try{await updateDoc(doc(db,"contact_requests",id),{status:'approved'});const r=allRequests.find(r=>r.id===id);if(r)r.status='approved';renderRequests(document.getElementById('requestFilter').value);updateStats();alert('Request approved.');}catch(e){alert('Error: '+e.message);}
+        };
+
+        window.deleteSubscriber=async function(id,email){
+            if(!confirm(`Remove subscriber "${email}"?`))return;
+            try{await deleteDoc(doc(db,"newsletter_subscribers",id));allSubscribers=allSubscribers.filter(s=>s.id!==id);renderSubscribers(document.getElementById('subscriberSearch').value);document.getElementById('subscriberCount').textContent=allSubscribers.length+' total';}catch(e){alert('Error: '+e.message);}
         };
 
         window.rejectRequest=async function(id){
