@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# Block search URLs and query params from indexing
+Disallow: /search
+Disallow: /*?q=
+
 # Block admin and migration tools from indexing
 Disallow: /admin-dashboard/
 Disallow: /image-manager/
