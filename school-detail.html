@@ -178,6 +178,7 @@ function renderDetail(id,s,autoEnquire){
     <div class="hero-card"><h1 class="school-name">${s.name}</h1>
       <div class="school-badges">${board!=='N/A'?`<span class="badge board">${board}</span>`:''}<span class="badge">${s.city||''}</span><span class="badge">${type}</span>${rating>0?`<span class="badge rating">&#9733; ${rating.toFixed(1)}</span>`:''}</div>
       ${s.description?`<p class="school-desc">${s.description}</p>`:''}
+      ${(s.updatedAt?.toDate||s.createdAt?.toDate)?`<p style="font-size:12px;color:var(--text-muted);margin-top:8px">Last updated: ${(s.updatedAt?.toDate?s.updatedAt.toDate():s.createdAt.toDate()).toLocaleDateString('en-IN',{year:'numeric',month:'long'})}</p>`:''}
     </div>
     <div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Academic Details</div>
       <div class="info-grid">
@@ -245,10 +246,24 @@ function renderDetail(id,s,autoEnquire){
         <a href="/schools" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Back to all schools</a>
       </div>
     </div>
+    <div class="sidebar-card"><div class="sidebar-title">Share</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a id="shareWA" href="#" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:#25D366;color:#fff;text-decoration:none">WhatsApp</a>
+        <a id="shareTW" href="#" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:#1DA1F2;color:#fff;text-decoration:none">Twitter</a>
+        <button onclick="copyPageLink()" id="copyBtn" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--bg-secondary);border:1px solid var(--border);cursor:pointer">Copy Link</button>
+      </div>
+    </div>
   </div></div>`;
   if(autoEnquire){setTimeout(()=>{document.getElementById('enquiryCard').scrollIntoView({behavior:'smooth',block:'center'});document.querySelector('.enquiry-form input[name="parentName"]').focus()},500)}
+  // Share links
+  const _cu=encodeURIComponent('https://wibest.in/school-detail.html?id='+id);
+  const _ct=encodeURIComponent((s.name||'School')+' — WIB');
+  document.getElementById('shareWA').href='https://wa.me/?text='+_ct+'%20'+_cu;
+  document.getElementById('shareTW').href='https://twitter.com/intent/tweet?text='+_ct+'&url='+_cu+'&via=wibest_in';
   loadReviews(id);
 }
+
+function copyPageLink(){var b=document.getElementById('copyBtn');navigator.clipboard.writeText(window.location.href).then(function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link';},2000);});}
 
 function selectStar(n){selectedRating=n;for(let i=1;i<=5;i++){document.getElementById('star'+i).classList.toggle('active',i<=n)}}
 function selectType(btn,t){selectedType=t;document.querySelectorAll('.rf-type button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}

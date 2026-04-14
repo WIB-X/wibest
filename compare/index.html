@@ -53,6 +53,8 @@
     <button class="tab-btn active" onclick="switchTab('schools',this)">Schools</button>
     <button class="tab-btn" onclick="switchTab('colleges',this)">Colleges</button>
     <button class="tab-btn" onclick="switchTab('electronics',this)">Electronics</button>
+    <button class="tab-btn" onclick="switchTab('cars',this)">Cars & Bikes</button>
+    <button class="tab-btn" onclick="switchTab('hospitals',this)">Hospitals</button>
   </div>
   <div class="selector" id="selector"></div>
   <div id="compareResult"><div class="empty-state">Select items above to compare them side by side.</div></div>
@@ -66,7 +68,7 @@
 <script src="/components.js"></script>
 <script>
 const db=initFirebase();
-let dataCache={schools:[],colleges:[],electronics:[]};
+let dataCache={schools:[],colleges:[],electronics:[],cars:[],hospitals:[]};
 let currentTab='schools';
 
 async function loadData(){
@@ -80,6 +82,10 @@ async function loadData(){
   s3.forEach(doc=>{if(!dataCache.colleges.find(c=>c.id===doc.id))dataCache.colleges.push({id:doc.id,...doc.data()})});
   // Electronics
   try{const s4=await db.collection('electronics').get();s4.forEach(doc=>{dataCache.electronics.push({id:doc.id,...doc.data()})})}catch(e){}
+  // Cars & Bikes
+  try{const s5=await db.collection('vehicles').get();s5.forEach(doc=>{dataCache.cars.push({id:doc.id,...doc.data()})})}catch(e){}
+  // Hospitals
+  try{const s6=await db.collection('hospitals').get();s6.forEach(doc=>{dataCache.hospitals.push({id:doc.id,...doc.data()})})}catch(e){}
   buildSelectors();
 }
 
@@ -112,6 +118,10 @@ function doCompare(){
     rows=[['City','city'],['Board','board'],['Type','type'],['Established','established'],['Annual Fees','fees',v=>typeof v==='object'?(v.tuition||v.annual||0):v,v=>'₹'+(v||0).toLocaleString('en-IN')],['Board Results','board_results'],['S:T Ratio','student_teacher_ratio'],['Google Rating','google_rating',null,v=>v?v.toFixed(1):'N/A'],['Transport','facilities.transport',v=>v?'Yes':'No'],['Sports','facilities.sports',v=>v?'Yes':'No'],['Library','facilities.library',v=>v?'Yes':'No'],['Lab','facilities.science_lab',v=>v?'Yes':'No']];
   }else if(currentTab==='colleges'){
     rows=[['City','city'],['Stream','stream'],['Type','type'],['Accreditation','accreditation'],['Established','established'],['Annual Fees','fees',null,v=>'₹'+(v||0).toLocaleString('en-IN')],['Placement %','placement_percent',null,v=>v?v+'%':'N/A'],['Avg Package','avg_package',null,v=>v?'₹'+(v/100000).toFixed(1)+'L':'N/A'],['Highest Package','highest_package',null,v=>v?'₹'+(v/100000).toFixed(1)+'L':'N/A'],['Google Rating','google_rating',null,v=>v?v.toFixed(1):'N/A'],['Courses','courses',null,v=>Array.isArray(v)?v.join(', '):(v||'N/A')]];
+  }else if(currentTab==='cars'){
+    rows=[['Brand','brand'],['Price','price',null,v=>v?'₹'+(v/100000).toFixed(1)+'L':'N/A'],['Type','vehicle_type'],['Fuel','fuel'],['Engine','engine'],['Power','power'],['Mileage','mileage'],['Transmission','transmission'],['Seating','seating'],['Rating','rating',null,v=>v?v.toFixed(1):'N/A']];
+  }else if(currentTab==='hospitals'){
+    rows=[['City','city'],['Type','type'],['Specialties','specialties',null,v=>Array.isArray(v)?v.slice(0,3).join(', '):(v||'N/A')],['Beds','beds'],['Emergency','emergency_24x7',null,v=>v?'Yes':'No'],['Insurance','insurance',null,v=>v?'Yes':'No'],['NABH','nabh_accredited',null,v=>v?'Yes':'No'],['Rating','google_rating',null,v=>v?v.toFixed(1):'N/A']];
   }else{
     rows=[['Brand','brand'],['Price','price',null,v=>'₹'+(v||0).toLocaleString('en-IN')],['Display','display'],['Processor','processor'],['RAM','ram'],['Storage','storage'],['Camera/Graphics','camera||graphics'],['Battery','battery'],['OS','os'],['Rating','rating',null,v=>v?v.toFixed(1):'N/A'],['Weight','weight']];
   }

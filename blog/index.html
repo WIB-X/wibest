@@ -26,6 +26,14 @@
 .bc .cat{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .bc h2{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;margin-bottom:4px;line-height:1.3;color:var(--text-primary)}
 .bc p{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.nl{background:var(--accent);padding:40px 24px;margin:32px 0 0;border-radius:var(--radius);text-align:center}
+.nl h3{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
+.nl p{color:rgba(255,255,255,.85);font-size:14px;margin-bottom:16px}
+.nl-form{display:flex;gap:8px;max-width:400px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.nl-form input{flex:1;min-width:200px;padding:11px 14px;border:none;border-radius:8px;font-family:inherit;font-size:14px}
+.nl-form input:focus{outline:none}
+.nl-form button{padding:11px 20px;border:none;border-radius:8px;background:#1e293b;color:#fff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.nl-msg{font-size:12px;color:#fff;margin-top:8px}
 </style>
 <meta property="og:title" content="WIB Blog — Guides, Comparisons & Reviews">
 <meta property="og:description" content="Guides and reviews covering phones, laptops, schools, hospitals, cars, and travel across India.">
@@ -45,6 +53,15 @@
 <div class="fbar"><button class="fb active" onclick="sf('All',this)">All (42)</button><button class="fb" onclick="sf('Electronics',this)">Electronics (15)</button><button class="fb" onclick="sf('Travel',this)">Travel (9)</button><button class="fb" onclick="sf('Cars & Bikes',this)">Cars & Bikes (6)</button><button class="fb" onclick="sf('Hospitals',this)">Hospitals (6)</button><button class="fb" onclick="sf('Home Appliances',this)">Home Appliances (4)</button><button class="fb" onclick="sf('Schools',this)">Schools (2)</button></div>
 <div class="ct" id="ct">Showing 42 articles</div>
 <div class="bg" id="bg"></div>
+<div class="nl">
+  <h3>Get weekly comparison guides</h3>
+  <p>Best phones, schools, hospitals, and travel picks — straight to your inbox.</p>
+  <div class="nl-form">
+    <input type="email" id="nlEmail" placeholder="Your email address">
+    <button onclick="subscribeNl()">Subscribe</button>
+  </div>
+  <div class="nl-msg" id="nlMsg"></div>
+</div>
 </div>
 <div id="wib-footer-placeholder"></div>
   <script src="/config.js"></script>
@@ -97,7 +114,25 @@ var cf='All';
 function sf(c,b){cf=c;document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('active')});b.classList.add('active');fa()}
 function fa(){var q=(document.getElementById('sb').value||'').toLowerCase();var f=A.filter(function(a){return(cf==='All'||a.c===cf)&&(!q||a.t.toLowerCase().includes(q)||a.d.toLowerCase().includes(q)||a.s.includes(q))});document.getElementById('ct').textContent='Showing '+f.length+' article'+(f.length!==1?'s':'');var g=document.getElementById('bg');if(!f.length){g.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">No articles match your search.</div>';return}g.innerHTML=f.map(function(a){return'<a href="/blog/'+a.s+'/" class="bc"><div class="cat">'+a.c+'</div><h2>'+a.t+'</h2><p>'+a.d+'</p></a>'}).join('')}
 fa();
+function subscribeNl(){
+  var email=(document.getElementById('nlEmail').value||'').trim();
+  var msg=document.getElementById('nlMsg');
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Please enter a valid email.';return;}
+  if(window.initFirebase){
+    var db=initFirebase();
+    db.collection('newsletter_subscribers').add({email:email,source:'blog',createdAt:new Date()}).then(function(){
+      msg.textContent="You're subscribed! Watch out for weekly guides.";
+      document.getElementById('nlEmail').value='';
+    }).catch(function(){msg.textContent='Error subscribing. Please try again.';});
+  } else {
+    msg.textContent="You're subscribed! Watch out for weekly guides.";
+    document.getElementById('nlEmail').value='';
+  }
+}
 </script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
 <script src="/chat-widget.js"></script>
 </body>
 </html>

@@ -319,7 +319,7 @@
         function updateStats(){
             document.getElementById('statSchools').textContent=allSchools.length;
             document.getElementById('statColleges').textContent=allColleges.length;
-            document.getElementById('statReviews').textContent=allReviews.filter(r=>!r.is_approved).length;
+            document.getElementById('statReviews').textContent=allReviews.filter(r=>r.status==='pending').length;
             document.getElementById('statRequests').textContent=allRequests.filter(r=>r.status==='pending').length;
         }
 
@@ -358,12 +358,15 @@
         // Reviews table
         function renderReviews(filter='pending'){
             let items=allReviews;
-            if(filter==='pending')items=items.filter(r=>!r.is_approved);
-            else if(filter==='approved')items=items.filter(r=>r.is_approved);
+            if(filter==='pending')items=items.filter(r=>r.status==='pending'||(!r.status&&!r.is_approved));
+            else if(filter==='approved')items=items.filter(r=>r.status==='approved'||r.is_approved);
+            items.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
             if(!items.length){document.getElementById('reviewsTable').innerHTML='<div class="empty-state">No reviews found</div>';return;}
-            document.getElementById('reviewsTable').innerHTML=`<table><thead><tr><th>Reviewer</th><th>School/College</th><th>Type</th><th>Rating</th><th>Review</th><th>Status</th><th>Actions</th></tr></thead><tbody>${items.map(r=>{
-                const status=r.is_approved?'approved':'pending';
-                return`<tr><td class="td-name">${r.user_name||'—'}</td><td>${r.item_id||'—'}</td><td>${r.review_type||'parent'}</td><td>${r.rating}/5</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.review_text||'—'}</td><td><span class="badge-sm badge-${status}">${status}</span></td><td>${!r.is_approved?`<button class="btn-sm btn-approve" onclick="approveReview('${r.id}')">Approve</button><button class="btn-sm btn-reject" onclick="rejectReview('${r.id}')">Reject</button>`:'<span style="color:var(--slate-400);font-size:11px;">Approved</span>'}</td></tr>`;
+            document.getElementById('reviewsTable').innerHTML=`<table><thead><tr><th>Reviewer</th><th>For</th><th>Type</th><th>Rating</th><th>Review</th><th>Status</th><th>Actions</th></tr></thead><tbody>${items.map(r=>{
+                const status=r.status||(r.is_approved?'approved':'pending');
+                const isPending=status==='pending';
+                const entity=r.schoolName||r.collegeName||r.hospitalName||r.itemName||r.category||'—';
+                return`<tr><td class="td-name">${r.name||r.user_name||'—'}</td><td>${entity}</td><td>${r.type||r.review_type||'parent'}</td><td>${r.rating}/5</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${(r.text||r.review_text||'').replace(/"/g,'&quot;')}">${r.text||r.review_text||'—'}</td><td><span class="badge-sm badge-${isPending?'pending':'approved'}">${status}</span></td><td>${isPending?`<button class="btn-sm btn-approve" onclick="approveReview('${r.id}')">Approve</button><button class="btn-sm btn-reject" onclick="rejectReview('${r.id}')">Reject</button>`:`<span style="color:var(--slate-400);font-size:11px;">${cap(status)}</span>`}</td></tr>`;
             }).join('')}</tbody></table>`;
         }
 
@@ -476,7 +479,7 @@
         };
 
         window.approveReview=async function(id){
-            try{await updateDoc(doc(db,"reviews",id),{is_approved:true});const r=allReviews.find(r=>r.id===id);if(r)r.is_approved=true;renderReviews(document.getElementById('reviewFilter').value);updateStats();alert('Review approved.');}catch(e){alert('Error: '+e.message);}
+            try{await updateDoc(doc(db,"reviews",id),{status:'approved',is_approved:true});const r=allReviews.find(r=>r.id===id);if(r){r.status='approved';r.is_approved=true;}renderReviews(document.getElementById('reviewFilter').value);updateStats();alert('Review approved.');}catch(e){alert('Error: '+e.message);}
         };
 
         window.rejectReview=async function(id){

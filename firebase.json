@@ -1,0 +1,138 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "functions/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": true,
+    "headers": [
+      {
+        "source": "/sw.js",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+        ]
+      },
+      {
+        "source": "/manifest.json",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400" }
+        ]
+      },
+      {
+        "source": "/**/*.css",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "/**/*.js",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "/**/*.@(png|jpg|jpeg|webp|svg|ico|woff|woff2)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "/sitemap.xml",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400" }
+        ]
+      },
+      {
+        "source": "/**",
+        "headers": [
+          { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+          { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/schools/**",
+        "destination": "/schools/index.html"
+      },
+      {
+        "source": "/colleges/**",
+        "destination": "/colleges/index.html"
+      },
+      {
+        "source": "/electronics/**",
+        "destination": "/electronics/index.html"
+      },
+      {
+        "source": "/cars/**",
+        "destination": "/cars/index.html"
+      },
+      {
+        "source": "/hospitals/**",
+        "destination": "/hospitals/index.html"
+      },
+      {
+        "source": "/travel/**",
+        "destination": "/travel/index.html"
+      },
+      {
+        "source": "/blog/**",
+        "destination": "/blog/index.html"
+      },
+      {
+        "source": "/accessories/**",
+        "destination": "/accessories/index.html"
+      },
+      {
+        "source": "/restaurants/**",
+        "destination": "/restaurants/index.html"
+      },
+      {
+        "source": "/real-estate/**",
+        "destination": "/real-estate/index.html"
+      },
+      {
+        "source": "/jobs/**",
+        "destination": "/jobs/index.html"
+      },
+      {
+        "source": "/compare/**",
+        "destination": "/compare/index.html"
+      },
+      {
+        "source": "/price-finder/**",
+        "destination": "/price-finder/index.html"
+      },
+      {
+        "source": "/about/**",
+        "destination": "/about/index.html"
+      },
+      {
+        "source": "/contact/**",
+        "destination": "/contact/index.html"
+      },
+      {
+        "source": "/connect/**",
+        "destination": "/connect/index.html"
+      },
+      {
+        "source": "/privacy/**",
+        "destination": "/privacy/index.html"
+      },
+      {
+        "source": "/terms/**",
+        "destination": "/terms/index.html"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs18"
+  }
+}

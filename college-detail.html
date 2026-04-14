@@ -163,10 +163,24 @@ function render(id,c,autoEnquire){
         <a href="/colleges" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Back to all colleges</a>
       </div>
     </div>
+    <div class="sidebar-card"><div class="sidebar-title">Share</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a id="shareWA" href="#" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:#25D366;color:#fff;text-decoration:none">WhatsApp</a>
+        <a id="shareTW" href="#" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:#1DA1F2;color:#fff;text-decoration:none">Twitter</a>
+        <button onclick="copyPageLink()" id="copyBtn" style="padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--bg-secondary);border:1px solid var(--border);cursor:pointer">Copy Link</button>
+      </div>
+    </div>
   </div></div>`;
   if(autoEnquire)setTimeout(()=>{document.getElementById('enquiryCard').scrollIntoView({behavior:'smooth',block:'center'})},500);
+  // Share links
+  const _cu=encodeURIComponent('https://wibest.in/college-detail.html?id='+id);
+  const _ct=encodeURIComponent((c.name||'College')+' — WIB');
+  document.getElementById('shareWA').href='https://wa.me/?text='+_ct+'%20'+_cu;
+  document.getElementById('shareTW').href='https://twitter.com/intent/tweet?text='+_ct+'&url='+_cu+'&via=wibest_in';
   loadReviews(id);
 }
+
+function copyPageLink(){var b=document.getElementById('copyBtn');navigator.clipboard.writeText(window.location.href).then(function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link';},2000);});}
 
 function selectStar(n){selectedRating=n;for(let i=1;i<=5;i++){document.getElementById('star'+i).classList.toggle('active',i<=n)}}
 function selectType(btn,t){selectedType=t;document.querySelectorAll('.rf-type button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
