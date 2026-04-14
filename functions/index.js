@@ -7,14 +7,10 @@
  *   3. A new contact form message arrives
  *   4. A new newsletter subscriber signs up
  *
- * One-time setup (run in Google Cloud Shell):
- *   firebase functions:config:set \
- *     email.user="hello@wibest.in" \
- *     email.pass="your-zoho-app-password" \
- *     email.admin="hello@wibest.in"
- *
- * Get Zoho App Password:
- *   Zoho Mail → Settings → Security → App Passwords → Generate
+ * Environment variables (set in functions/.env — never commit this file):
+ *   EMAIL_USER=hello@wibest.in
+ *   EMAIL_PASS=your-zoho-app-password
+ *   EMAIL_ADMIN=hello@wibest.in
  *
  * Deploy (automatic via GitHub Actions on push to main,
  *         or manually): firebase deploy --only functions
@@ -28,26 +24,19 @@ admin.initializeApp();
 
 // ── Zoho SMTP transport ───────────────────────────────────────────────────────
 function createTransport() {
-  const cfg = functions.config().email || {};
   return nodemailer.createTransport({
     host: 'smtp.zoho.in',          // use smtp.zoho.com if your account is .com
     port: 465,
     secure: true,
     auth: {
-      user: cfg.user || process.env.EMAIL_USER,
-      pass: cfg.pass || process.env.EMAIL_PASS,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 }
 
-function adminEmail() {
-  const cfg = functions.config().email || {};
-  return cfg.admin || process.env.EMAIL_ADMIN || cfg.user;
-}
-
-function senderEmail() {
-  return (functions.config().email || {}).user || process.env.EMAIL_USER;
-}
+function adminEmail()  { return process.env.EMAIL_ADMIN || process.env.EMAIL_USER; }
+function senderEmail() { return process.env.EMAIL_USER; }
 
 async function sendMail(subject, html) {
   try {
