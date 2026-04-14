@@ -152,11 +152,34 @@ async function load(){
         <a href="/schools" class="btn-secondary" style="font-size:13px;padding:10px 20px">Browse Schools</a>
         <a href="/colleges" class="btn-secondary" style="font-size:13px;padding:10px 20px">Browse Colleges</a>
       </div>
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+        <div style="font-size:13px;font-weight:600;color:var(--text-muted);margin-bottom:10px">Share this article</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a id="shareWhatsapp" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;background:#25D366;color:#fff;text-decoration:none">WhatsApp</a>
+          <a id="shareTwitter" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;background:#1DA1F2;color:#fff;text-decoration:none">Twitter / X</a>
+          <a id="shareLinkedin" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;background:#0A66C2;color:#fff;text-decoration:none">LinkedIn</a>
+          <button onclick="copyLink()" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border);cursor:pointer" id="copyBtn">Copy Link</button>
+        </div>
+      </div>
     `;
+    // Wire up share links
+    const shareUrl=encodeURIComponent(canonicalUrl);
+    const shareText=encodeURIComponent(title+' — WIB');
+    document.getElementById('shareWhatsapp').href='https://wa.me/?text='+shareText+'%20'+shareUrl;
+    document.getElementById('shareTwitter').href='https://twitter.com/intent/tweet?text='+shareText+'&url='+shareUrl+'&via=wibest_in';
+    document.getElementById('shareLinkedin').href='https://www.linkedin.com/sharing/share-offsite/?url='+shareUrl;
   }catch(err){
     console.error(err);
     document.getElementById('articleContent').innerHTML='<div class="loading">Error loading article. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';
   }
+}
+
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(function(){
+    var btn=document.getElementById('copyBtn');
+    btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent='Copy Link';},2000);
+  });
 }
 load();
 </script>

@@ -51,6 +51,31 @@
 .cta h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px}
 .cta p{color:var(--text-secondary);margin-bottom:24px;font-size:15px}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* Search bar */
+.hero-search{position:relative;max-width:580px;margin:0 auto 40px}
+.hero-search input{width:100%;padding:16px 52px 16px 20px;border:2px solid var(--border);border-radius:12px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:16px;transition:border .2s,box-shadow .2s;box-shadow:var(--shadow-sm)}
+.hero-search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+.hero-search input::placeholder{color:var(--text-muted)}
+.hero-search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--text-muted);fill:none;stroke-width:2;pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-md);z-index:100;max-height:360px;overflow-y:auto;display:none}
+.search-results.open{display:block}
+.sr-item{display:flex;align-items:center;gap:12px;padding:12px 16px;text-decoration:none;transition:background .15s;border-bottom:1px solid var(--border)}
+.sr-item:last-child{border-bottom:none}
+.sr-item:hover{background:var(--bg-secondary)}
+.sr-cat{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;background:var(--accent-light);padding:2px 7px;border-radius:4px;white-space:nowrap}
+.sr-name{font-size:14px;font-weight:600;color:var(--text-primary)}
+.sr-sub{font-size:12px;color:var(--text-muted)}
+.sr-empty{padding:20px;text-align:center;font-size:14px;color:var(--text-muted)}
+/* Newsletter */
+.newsletter{background:var(--accent);padding:56px 24px;text-align:center;margin-top:0}
+.newsletter h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:8px}
+.newsletter p{color:rgba(255,255,255,.85);font-size:15px;margin-bottom:24px}
+.newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.newsletter-form input{flex:1;min-width:220px;padding:13px 16px;border:none;border-radius:8px;font-family:inherit;font-size:14px;background:#fff;color:#1e293b}
+.newsletter-form input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
+.newsletter-form button{padding:13px 24px;border:none;border-radius:8px;background:#1e293b;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s}
+.newsletter-form button:hover{background:#0f172a}
+.newsletter-msg{font-size:13px;color:#fff;margin-top:10px;min-height:18px}
 @media(max-width:768px){.hero{padding:48px 16px 40px}.hero h1{font-size:28px}.stats{gap:24px}.stat-num{font-size:28px}.features{grid-template-columns:1fr}.cat-grid{grid-template-columns:1fr 1fr}}
 </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7107402273519770"
@@ -64,6 +89,11 @@
   <div class="hero-label">India's comparison platform</div>
   <h1>Compare the best of everything in India</h1>
   <p>Schools, cars, hospitals, travel, restaurants, real estate, jobs, and more - all compared independently with real data. Find what's best for you.</p>
+  <div class="hero-search">
+    <input type="search" id="siteSearch" placeholder="Search schools, colleges, phones, cars, hospitals..." autocomplete="off" oninput="doSearch(this.value)">
+    <svg class="hero-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <div class="search-results" id="searchResults"></div>
+  </div>
   <div class="cat-grid">
     <a href="/schools" class="cat-card"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><div class="cat-name">Schools</div><div class="cat-count">70+ listed</div></div></a>
     <a href="/colleges" class="cat-card"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-5 8 5v11"/><path d="M9 21v-6h6v6"/></svg></div><div><div class="cat-name">Colleges</div><div class="cat-count">150+ listed</div></div></a>
@@ -90,6 +120,17 @@
 </div>
 </section>
 
+<section class="newsletter">
+  <h2>Stay updated with WIB</h2>
+  <p>Get weekly comparison guides, new listings, and exclusive India-focused buying advice.</p>
+  <div class="newsletter-form">
+    <input type="email" id="nlEmail" placeholder="Your email address">
+    <button onclick="subscribeNewsletter()">Subscribe</button>
+  </div>
+  <div class="newsletter-msg" id="nlMsg"></div>
+</section>
+
+
 <div id="wib-footer-placeholder"></div>
 
 <script><a href="/blog">Blog</a><div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle('open')">More ▾</button><div class="nav-dropdown"><a href="/restaurants">Restaurants</a><a href="/real-estate">Real Estate</a><a href="/jobs">Jobs</a><a href="/price-finder">Price Finder</a><a href="/compare">Compare</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div></div></div>
@@ -97,6 +138,71 @@ function toggleChat(){var c=document.getElementById('wib-chat');c.style.display=
 function quickChat(msg){document.getElementById('chatInput').value=msg;sendChat();}
 function sendChat(){var input=document.getElementById('chatInput');var msg=input.value.trim();if(!msg)return;var box=document.getElementById('chatMessages');box.innerHTML+='<div style="background:var(--accent);color:#fff;border-radius:12px 12px 4px 12px;padding:12px 16px;font-size:13px;max-width:80%;margin-left:auto;margin-bottom:12px">'+msg+'</div>';input.value='';box.innerHTML+='<div id="typing" style="color:var(--text-muted);font-size:12px;margin-bottom:12px">Thinking...</div>';box.scrollTop=box.scrollHeight;setTimeout(function(){var r=getResponse(msg);var t=document.getElementById('typing');if(t)t.remove();box.innerHTML+='<div style="background:var(--accent-light);border-radius:12px 12px 12px 4px;padding:12px 16px;font-size:13px;line-height:1.6;color:var(--text-primary);max-width:90%;margin-bottom:12px">'+r+'</div>';box.scrollTop=box.scrollHeight;},800);}
 function getResponse(q){var l=q.toLowerCase();if(l.includes('school')&&l.includes('bangalore'))return'For Bangalore, top CBSE schools include Delhi Public School, National Public School, and Bishop Cotton. <a href="/schools" style="color:var(--accent)">Compare all Bangalore schools here</a>';if(l.includes('school'))return'We have 70+ schools across 5 cities. Filter by board (CBSE, ICSE, State), city, and fees. <a href="/schools" style="color:var(--accent)">Explore schools</a>';if(l.includes('phone')&&(l.includes('20k')||l.includes('20000')))return'Under 20K, check out Samsung Galaxy M34 5G, Redmi Note 13 Pro, and Realme Narzo 60. <a href="/electronics" style="color:var(--accent)">Compare phones</a>';if(l.includes('phone')||l.includes('laptop')||l.includes('electronic'))return'We compare phones and laptops with specs, prices, and buy links to Amazon, Flipkart, and official stores. <a href="/electronics" style="color:var(--accent)">Browse electronics</a>';if(l.includes('charger')||l.includes('case')||l.includes('guard')||l.includes('accessor'))return'Find the best charger, case, screen guard, or backpack for your specific device with buy links. <a href="/accessories" style="color:var(--accent)">Browse accessories</a>';if(l.includes('car')||l.includes('bike'))return'Compare cars and bikes by price, mileage, and specs. Links to CarDekho and BikeWale included. <a href="/cars" style="color:var(--accent)">Browse cars & bikes</a>';if(l.includes('hospital')||l.includes('doctor'))return'Find and compare hospitals by speciality, ratings, and insurance. Book appointments via Practo. <a href="/hospitals" style="color:var(--accent)">Browse hospitals</a>';if(l.includes('travel')||l.includes('visit')||l.includes('july')||l.includes('month')||l.includes('ooty')||l.includes('kodai'))return'Discover the best travel destinations month-by-month with hotel recommendations, distances, and travel mode ratings. <a href="/travel" style="color:var(--accent)">Plan your trip</a>';if(l.includes('college'))return'150+ colleges compared across streams. <a href="/colleges" style="color:var(--accent)">Explore colleges</a>';return'I can help you compare schools, colleges, electronics, cars, hospitals, travel destinations, and accessories. Try asking "Best phone under 20K" or "Best school in Bangalore".';}
+
+// ── Global Search ────────────────────────────────────────────────────────────
+var _srTimer=null,_srCache=[];
+function doSearch(q){
+  clearTimeout(_srTimer);
+  var box=document.getElementById('searchResults');
+  q=q.trim();
+  if(q.length<2){box.classList.remove('open');return}
+  _srTimer=setTimeout(function(){runSearch(q)},320);
+}
+function runSearch(q){
+  var box=document.getElementById('searchResults');
+  box.innerHTML='<div class="sr-empty">Searching...</div>';
+  box.classList.add('open');
+  var ql=q.toLowerCase();
+  var results=_srCache.filter(function(r){return r.name&&r.name.toLowerCase().includes(ql)}).slice(0,8);
+  if(results.length){
+    box.innerHTML=results.map(function(r){
+      return'<a href="'+r.url+'" class="sr-item"><span class="sr-cat">'+r.cat+'</span><div><div class="sr-name">'+r.name+'</div>'+(r.sub?'<div class="sr-sub">'+r.sub+'</div>':'')+'</div></a>';
+    }).join('');
+  }else{
+    box.innerHTML='<div class="sr-empty">No results for "'+q+'". Try a different name.</div>';
+  }
+}
+document.addEventListener('click',function(e){if(!e.target.closest('.hero-search'))document.getElementById('searchResults').classList.remove('open');});
+
+// Pre-load search index from Firestore once
+function loadSearchIndex(){
+  if(!window.firebase||!window.initFirebase)return;
+  var db=initFirebase();
+  var CATS=[
+    {col:'items',cat:'School',url:'/school-detail.html?id=',subFn:function(d){return d.board||d.city||''}},
+    {col:'colleges',cat:'College',url:'/college-detail.html?id=',subFn:function(d){return d.stream||d.city||''}},
+    {col:'electronics',cat:'Electronics',url:'/electronics-detail.html?id=',subFn:function(d){return d.brand||''}},
+    {col:'vehicles',cat:'Cars & Bikes',url:'/cars-detail.html?id=',subFn:function(d){return d.brand||''}},
+    {col:'hospitals',cat:'Hospital',url:'/hospital-detail.html?name=',subFn:function(d){return d.city||''},useNameKey:true},
+  ];
+  CATS.forEach(function(c){
+    db.collection(c.col).get().then(function(snap){
+      snap.forEach(function(doc){
+        var d=doc.data();
+        if(d.name)_srCache.push({name:d.name,cat:c.cat,url:c.useNameKey?c.url+encodeURIComponent(d.name):c.url+doc.id,sub:c.subFn(d)});
+      });
+    }).catch(function(){});
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){setTimeout(loadSearchIndex,1000);});
+
+// ── Newsletter ───────────────────────────────────────────────────────────────
+function subscribeNewsletter(){
+  var email=document.getElementById('nlEmail').value.trim();
+  var msg=document.getElementById('nlMsg');
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Please enter a valid email.';return}
+  // Store in Firestore for now (real email service can be connected later)
+  if(window.initFirebase){
+    var db=initFirebase();
+    db.collection('newsletter_subscribers').add({email:email,createdAt:new Date()}).then(function(){
+      msg.textContent='You\'re subscribed! Watch out for weekly guides.';
+      document.getElementById('nlEmail').value='';
+    }).catch(function(){msg.textContent='Error subscribing. Please try again.';});
+  }else{
+    msg.textContent='You\'re subscribed! Watch out for weekly guides.';
+    document.getElementById('nlEmail').value='';
+  }
+}
 </script>
 <script src="/chat-widget.js"></script>
 <script src="/config.js"></script>

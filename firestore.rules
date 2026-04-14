@@ -112,6 +112,15 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    // ── Newsletter subscribers: public can subscribe, admin manages ──────────
+    match /newsletter_subscribers/{doc} {
+      allow create: if request.resource.data.email is string
+          && request.resource.data.email.size() >= 5
+          && request.resource.data.email.size() <= 200;
+      allow read, update, delete: if isAdmin();
+    }
+
+
     // ── Deny everything else by default ─────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
