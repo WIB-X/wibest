@@ -110,6 +110,7 @@
       '</div>',
       '<div class="footer-col"><h4>Legal</h4>',
       '<a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>',
+      '<a href="/affiliate-disclosure">Affiliate Disclosure</a>',
       '</div>',
       '</div>',
       '<div class="footer-bottom">WIB - Independent. Data-driven.</div>',

@@ -13,6 +13,13 @@
 
   <!-- Category listing pages -->
   <url><loc>https://wibest.in/schools/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/schools/jaipur/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/lucknow/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/chandigarh/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/kochi/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/bhopal/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/indore/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/affiliate-disclosure/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://wibest.in/colleges/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/electronics/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/cars/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>

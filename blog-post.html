@@ -106,6 +106,37 @@ async function loadRelated(currentId,category){
   }catch(e){return'';}
 }
 
+function buildExploreLinks(category,title){
+  const cat=(category||'').toLowerCase();const t=(title||'').toLowerCase();
+  const links=[];
+  const cityMatch=t.match(/\b(jaipur|lucknow|chandigarh|kochi|bhopal|indore|coimbatore|nagpur|patna|guwahati|mumbai|delhi|bangalore|bengaluru|chennai|hyderabad|pune|kolkata|ahmedabad)\b/i);
+  const city=cityMatch?cityMatch[1].charAt(0).toUpperCase()+cityMatch[1].slice(1).toLowerCase():'';
+  if(cat.includes('school')||t.includes('school')){
+    links.push({href:'/schools',label:'Compare All Schools on WIB'});
+    if(city)links.push({href:'/schools?city='+encodeURIComponent(city),label:'Best Schools in '+city});
+  }
+  if(cat.includes('college')||t.includes('college')){
+    links.push({href:'/colleges',label:'Compare All Colleges on WIB'});
+  }
+  if(cat.includes('electronic')||t.includes('phone')||t.includes('laptop')){
+    links.push({href:'/electronics',label:'Compare Electronics on WIB'});
+  }
+  if(cat.includes('car')||cat.includes('bike')||t.includes('car')||t.includes('bike')||t.includes('scooter')){
+    links.push({href:'/cars',label:'Compare Cars & Bikes on WIB'});
+  }
+  if(cat.includes('hospital')||t.includes('hospital')){
+    links.push({href:'/hospitals',label:'Compare Hospitals on WIB'});
+  }
+  if(cat.includes('travel')||t.includes('travel')||t.includes('trip')||t.includes('destination')){
+    links.push({href:'/travel',label:'Explore Travel Destinations on WIB'});
+  }
+  if(cat.includes('restaurant')||t.includes('restaurant')||t.includes('food')){
+    links.push({href:'/restaurants',label:'Compare Restaurants on WIB'});
+  }
+  if(!links.length)links.push({href:'/schools',label:'Compare Schools'},{href:'/electronics',label:'Compare Electronics'},{href:'/colleges',label:'Compare Colleges'});
+  return '<div style="margin-top:32px;padding:20px 24px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px"><div style="font-family:Outfit,sans-serif;font-size:15px;font-weight:600;margin-bottom:12px">Explore on WIB</div><div style="display:flex;flex-wrap:wrap;gap:8px">'+links.map(function(l){return '<a href="'+l.href+'" style="display:inline-block;padding:8px 16px;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">'+l.label+'</a>'}).join('')+'</div></div>';
+}
+
 async function load(){
   const id=new URLSearchParams(window.location.search).get('id');
   if(!id){document.getElementById('articleContent').innerHTML='<div class="loading">Article not found. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';return}
@@ -126,7 +157,23 @@ async function load(){
     const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
     const bcScript=document.createElement('script');bcScript.type='application/ld+json';bcScript.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://wibest.in'},{'@type':'ListItem','position':2,'name':'Blog','item':'https://wibest.in/blog/'},{'@type':'ListItem','position':3,'name':title,'item':canonicalUrl}]});document.head.appendChild(bcScript);
 
+    // FAQ schema — extract Q&A from headings containing "?"
     const rawContent=p.content||p.body||'<p>Content not available.</p>';
+    (function injectFAQ(){
+      const tmp=document.createElement('div');tmp.innerHTML=rawContent;
+      const faqs=[];
+      tmp.querySelectorAll('h2,h3').forEach(function(h){
+        if(h.textContent.indexOf('?')===-1)return;
+        var answer='';var el=h.nextElementSibling;
+        while(el&&!/^H[23]$/.test(el.tagName)){answer+=el.textContent.trim()+' ';el=el.nextElementSibling}
+        answer=answer.trim();
+        if(answer.length>10)faqs.push({q:h.textContent.trim(),a:answer});
+      });
+      if(faqs.length>=2){
+        var faqLd={'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqs.map(function(f){return{'@type':'Question','name':f.q,'acceptedAnswer':{'@type':'Answer','text':f.a}}})};
+        var s=document.createElement('script');s.type='application/ld+json';s.text=JSON.stringify(faqLd);document.head.appendChild(s);
+      }
+    })();
     const readTime=p.read_time||p.readTime||calcReadTime(rawContent);
     const{toc,html:processedContent}=buildTOC(rawContent);
     const date=p.createdAt?.toDate?p.createdAt.toDate().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'}):'';
@@ -147,6 +194,7 @@ async function load(){
       ${toc}
       <div class="article-body">${processedContent}</div>
       ${relatedHtml}
+      ${buildExploreLinks(p.category||'',title)}
       <div class="article-footer">
         <a href="/blog" class="btn-secondary" style="font-size:13px;padding:10px 20px">← Back to Blog</a>
         <a href="/schools" class="btn-secondary" style="font-size:13px;padding:10px 20px">Browse Schools</a>
