@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Data Expansion Seeder - Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e7eb;min-height:100vh;padding:24px}
+h1{font-size:24px;margin-bottom:8px}p.sub{color:#888;font-size:14px;margin-bottom:24px}
+.card{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:16px}
+.card h2{font-size:18px;margin-bottom:4px}.card .count{font-size:13px;color:#888;margin-bottom:12px}
+.btn{padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;margin-right:8px;margin-bottom:8px}
+.btn-blue{background:#2563eb;color:#fff}.btn-blue:hover{background:#1d4ed8}
+.btn-green{background:#22c55e;color:#fff}.btn-green:hover{background:#16a34a}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.log{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:16px;font-family:monospace;font-size:12px;max-height:300px;overflow-y:auto;margin-top:12px;white-space:pre-wrap}
+.log .ok{color:#22c55e}.log .err{color:#ef4444}.log .info{color:#60a5fa}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:16px}
+.stat{background:#1a1a1a;padding:12px;border-radius:8px;text-align:center}
+.stat .num{font-size:24px;font-weight:700;color:#2563eb}.stat .lbl{font-size:11px;color:#888}
+</style>
+</head>
+<body>
+<h1>WIB Data Expansion Seeder</h1>
+<p class="sub">Expand data across 10 new cities: Jaipur, Lucknow, Chandigarh, Kochi, Bhopal, Indore, Coimbatore, Nagpur, Patna, Guwahati</p>
+
+<div class="stats" id="currentStats">
+  <div class="stat"><div class="num" id="schoolCount">-</div><div class="lbl">Schools</div></div>
+  <div class="stat"><div class="num" id="collegeCount">-</div><div class="lbl">Colleges</div></div>
+  <div class="stat"><div class="num" id="electronicsCount">-</div><div class="lbl">Electronics</div></div>
+  <div class="stat"><div class="num" id="vehicleCount">-</div><div class="lbl">Vehicles</div></div>
+</div>
+
+<div class="card">
+  <h2>Schools — 10 New Cities</h2>
+  <div class="count">Adds 50 schools: 5 per city across Jaipur, Lucknow, Chandigarh, Kochi, Bhopal, Indore, Coimbatore, Nagpur, Patna, Guwahati</div>
+  <button class="btn btn-blue" onclick="seedSchools()" id="btnSchools">Add 50 Schools</button>
+  <div class="log" id="logSchools"></div>
+</div>
+
+<div class="card">
+  <h2>Colleges — 10 New Cities</h2>
+  <div class="count">Adds 40 colleges: Engineering, Medical, Arts, Law, Management across new cities</div>
+  <button class="btn btn-blue" onclick="seedColleges()" id="btnColleges">Add 40 Colleges</button>
+  <div class="log" id="logColleges"></div>
+</div>
+
+<div class="card">
+  <h2>Electronics — 2026 Models</h2>
+  <div class="count">Adds 20 new phones and laptops (2026 models)</div>
+  <button class="btn btn-blue" onclick="seedElectronics()" id="btnElectronics">Add 20 Electronics</button>
+  <div class="log" id="logElectronics"></div>
+</div>
+
+<div class="card">
+  <h2>Vehicles — More Cars & Bikes</h2>
+  <div class="count">Adds 20 new vehicles (2026 models across segments)</div>
+  <button class="btn btn-blue" onclick="seedVehicles()" id="btnVehicles">Add 20 Vehicles</button>
+  <div class="log" id="logVehicles"></div>
+</div>
+
+<div class="card">
+  <button class="btn btn-green" onclick="checkCounts()">Refresh Counts</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/admin-auth-gate.js"></script>
+<script src="/seed-data/data-schools.js"></script>
+<script src="/seed-data/data-colleges.js"></script>
+<script src="/seed-data/data-electronics.js"></script>
+<script src="/seed-data/data-vehicles.js"></script>
+<script>
+var db=initFirebase();
+
+async function checkCounts(){
+  try{
+    var s1=await db.collection('items').get();
+    var schools=0,cols=0;
+    s1.forEach(function(d){var data=d.data();if(data.category==='college')cols++;else schools++});
+    document.getElementById('schoolCount').textContent=schools;
+    var s2=await db.collection('colleges').get();
+    document.getElementById('collegeCount').textContent=s2.size+cols;
+    var s3=await db.collection('electronics').get();
+    document.getElementById('electronicsCount').textContent=s3.size;
+    var s4=await db.collection('vehicles').get();
+    document.getElementById('vehicleCount').textContent=s4.size;
+  }catch(e){console.error(e)}
+}
+checkCounts();
+
+function log(id,msg,type){
+  var el=document.getElementById(id);
+  el.innerHTML+='<span class="'+(type||'info')+'">'+msg+'</span>\n';
+  el.scrollTop=el.scrollHeight;
+}
+
+async function seedBatch(collection,data,logId,btnId){
+  var btn=document.getElementById(btnId);btn.disabled=true;
+  log(logId,'Starting... '+data.length+' items','info');
+  var ok=0,fail=0;
+  for(var i=0;i<data.length;i++){
+    try{
+      await db.collection(collection).add(data[i]);
+      ok++;log(logId,'✓ Added: '+data[i].name,'ok');
+    }catch(e){
+      fail++;log(logId,'✗ Failed: '+data[i].name+' — '+e.message,'err');
+    }
+  }
+  log(logId,'Done! '+ok+' added, '+fail+' failed','info');
+  checkCounts();
+}
+
+function seedSchools(){seedBatch('items',EXPANSION_SCHOOLS,'logSchools','btnSchools')}
+function seedColleges(){seedBatch('colleges',EXPANSION_COLLEGES,'logColleges','btnColleges')}
+function seedElectronics(){seedBatch('electronics',EXPANSION_ELECTRONICS,'logElectronics','btnElectronics')}
+function seedVehicles(){seedBatch('vehicles',EXPANSION_VEHICLES,'logVehicles','btnVehicles')}
+</script>
+</body>
+</html>
