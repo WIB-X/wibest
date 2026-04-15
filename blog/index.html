@@ -53,6 +53,7 @@
 <div class="fbar"><button class="fb active" onclick="sf('All',this)">All (42)</button><button class="fb" onclick="sf('Electronics',this)">Electronics (15)</button><button class="fb" onclick="sf('Travel',this)">Travel (9)</button><button class="fb" onclick="sf('Cars & Bikes',this)">Cars & Bikes (6)</button><button class="fb" onclick="sf('Hospitals',this)">Hospitals (6)</button><button class="fb" onclick="sf('Home Appliances',this)">Home Appliances (4)</button><button class="fb" onclick="sf('Schools',this)">Schools (2)</button></div>
 <div class="ct" id="ct">Showing 42 articles</div>
 <div class="bg" id="bg"></div>
+<div id="blogPg" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:24px"></div>
 <div class="nl">
   <h3>Get weekly comparison guides</h3>
   <p>Best phones, schools, hospitals, and travel picks — straight to your inbox.</p>
@@ -111,9 +112,10 @@ var A=[
 {s:'maruti-brezza-vs-tata-nexon',t:'Maruti Brezza vs Tata Nexon (2026) - Which SUV to Buy?',d:'Brezza vs Nexon comparison. Safety, mileage, price, and which is better for Indian families.',c:'Cars & Bikes'},
 {s:'samsung-vs-iphone-which-is-better',t:'Samsung vs iPhone - Which is Better in India? (2026)',d:'Samsung Galaxy vs Apple iPhone comparison for India. Camera, price, ecosystem, value compared.',c:'Electronics'},
 {s:'weekend-trips-from-hyderabad',t:'12 Best Weekend Trips from Hyderabad (2026)',d:'Best weekend getaways from Hyderabad. Srisailam, Warangal, Gandikota, Hampi with distance and budget.',c:'Travel'}];
-var cf='All';
-function sf(c,b){cf=c;document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('active')});b.classList.add('active');fa()}
-function fa(){var q=(document.getElementById('sb').value||'').toLowerCase();var f=A.filter(function(a){return(cf==='All'||a.c===cf)&&(!q||a.t.toLowerCase().includes(q)||a.d.toLowerCase().includes(q)||a.s.includes(q))});document.getElementById('ct').textContent='Showing '+f.length+' article'+(f.length!==1?'s':'');var g=document.getElementById('bg');if(!f.length){g.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">No articles match your search.</div>';return}g.innerHTML=f.map(function(a){return'<a href="/blog/'+a.s+'/" class="bc"><div class="cat">'+a.c+'</div><h2>'+a.t+'</h2><p>'+a.d+'</p></a>'}).join('')}
+var cf='All',cp=1,PS=12;
+function sf(c,b){cf=c;cp=1;document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('active')});b.classList.add('active');fa()}
+function fa(){var q=(document.getElementById('sb').value||'').toLowerCase();cp=cp||1;var f=A.filter(function(a){return(cf==='All'||a.c===cf)&&(!q||a.t.toLowerCase().includes(q)||a.d.toLowerCase().includes(q)||a.s.includes(q))});var tp=Math.max(1,Math.ceil(f.length/PS));if(cp>tp)cp=1;var start=(cp-1)*PS;var page=f.slice(start,start+PS);document.getElementById('ct').textContent='Showing '+f.length+' article'+(f.length!==1?'s':'')+(f.length>PS?' — page '+cp+' of '+tp:'');var g=document.getElementById('bg');if(!page.length){g.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">No articles match your search.</div>';rp(0,0);return}g.innerHTML=page.map(function(a){var rt=a.r||'5';return'<a href="/blog/'+a.s+'/" class="bc"><div class="cat">'+a.c+'</div><h2>'+a.t+'</h2><p>'+a.d+'</p><div style="font-size:12px;color:var(--text-muted);margin-top:6px">'+rt+' min read</div></a>'}).join('');rp(cp,tp)}
+function rp(pg,tp){var el=document.getElementById('blogPg');if(!el)return;if(tp<=1){el.innerHTML='';return}var h='';h+='<button class="fb" '+(pg<=1?'disabled':'')+' onclick="cp--;fa();window.scrollTo(0,0)" style="cursor:pointer">\u2190 Prev</button>';for(var i=1;i<=tp;i++)h+='<button class="fb'+(i===pg?' active':'')+'" onclick="cp='+i+';fa();window.scrollTo(0,0)">'+i+'</button>';h+='<button class="fb" '+(pg>=tp?'disabled':'')+' onclick="cp++;fa();window.scrollTo(0,0)" style="cursor:pointer">Next \u2192</button>';el.innerHTML=h}
 fa();
 function subscribeNl(){
   var email=(document.getElementById('nlEmail').value||'').trim();

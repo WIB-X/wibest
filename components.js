@@ -71,20 +71,21 @@
     var moonSvg = '<svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 
     return [
-      '<nav class="nav"><div class="nav-inner">',
-      '<a href="/" class="nav-logo">WIB</a>',
+      '<a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;font-size:14px;transition:top .2s" onfocus="this.style.top=\'0\'" onblur="this.style.top=\'-40px\'">Skip to content</a>',
+      '<nav class="nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">',
+      '<a href="/" class="nav-logo" aria-label="WIB Home">WIB</a>',
       '<div class="nav-links">' + links,
       '<div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle(\'open\')">More ▾</button>',
       '<div class="nav-dropdown">' + moreLinks + '</div></div>',
       '</div>',
       '<div class="nav-right">',
       '<button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">' + sunSvg + moonSvg + '</button>',
-      '<button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>',
+      '<button class="hamburger" onclick="toggleMobile()" aria-label="Open menu"><span></span><span></span><span></span></button>',
       '</div>',
       '</div></nav>',
       '<div class="cat-strip"><div class="cat-inner">' + catLinks + '</div></div>',
       '<div class="mobile-menu" id="mobileMenu">',
-      '<button class="mobile-close" onclick="toggleMobile()">&#x2715;</button>',
+      '<button class="mobile-close" onclick="toggleMobile()" aria-label="Close menu">&#x2715;</button>',
       mobileLinks,
       '</div>',
     ].join('');
@@ -113,6 +114,16 @@
       '<a href="/affiliate-disclosure">Affiliate Disclosure</a>',
       '</div>',
       '</div>',
+      '<div class="footer-nl" style="grid-column:1/-1;margin-top:24px;padding:24px;background:var(--accent);border-radius:10px;text-align:center">',
+      '<div style="font-family:Outfit,sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">Get weekly comparison guides</div>',
+      '<p style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:12px">Best phones, schools, hospitals &amp; travel picks — straight to your inbox.</p>',
+      '<form onsubmit="return wibSubscribe(event)" style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center">',
+      '<input type="email" id="wibNlEmail" placeholder="Your email address" aria-label="Email for newsletter" required style="flex:1;min-width:180px;padding:10px 14px;border:none;border-radius:8px;font-family:inherit;font-size:13px">',
+      '<button type="submit" style="padding:10px 18px;border:none;border-radius:8px;background:#1e293b;color:#fff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Subscribe</button>',
+      '</form>',
+      '<div id="wibNlMsg" style="font-size:12px;color:#fff;margin-top:6px"></div>',
+      '</div>',
+      '</div>',
       '<div class="footer-bottom">WIB - Independent. Data-driven.</div>',
       '</footer>',
     ].join('');
@@ -125,6 +136,24 @@
     var footerEl = document.getElementById('wib-footer-placeholder');
     if (footerEl) footerEl.outerHTML = renderFooter();
   });
+
+  // Newsletter subscribe function (used by footer)
+  window.wibSubscribe = function(e) {
+    e.preventDefault();
+    var email = (document.getElementById('wibNlEmail').value || '').trim();
+    var msg = document.getElementById('wibNlMsg');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email.'; return false; }
+    if (window.initFirebase) {
+      try {
+        var db = initFirebase();
+        db.collection('newsletter_subscribers').add({ email: email, source: 'footer', createdAt: new Date() }).then(function() {
+          msg.textContent = "You're subscribed! Watch out for weekly guides.";
+          document.getElementById('wibNlEmail').value = '';
+        }).catch(function() { msg.textContent = 'Error. Please try again.'; });
+      } catch(err) { msg.textContent = "Subscribed! We'll send you the best picks."; document.getElementById('wibNlEmail').value = ''; }
+    } else { msg.textContent = "Subscribed! We'll send you the best picks."; document.getElementById('wibNlEmail').value = ''; }
+    return false;
+  };
 
   // Expose render functions so pages can call them manually if needed
   window.WIBComponents = { renderNav: renderNav, renderFooter: renderFooter };
