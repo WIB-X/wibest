@@ -57,7 +57,16 @@
 .loading{text-align:center;padding:100px 24px;color:var(--text-muted)}
 .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:900px){.detail-grid{grid-template-columns:1fr}.specs-grid{grid-template-columns:1fr}.product-name{font-size:22px}.rf-row{flex-direction:column}}
+/* Sticky buy bar — visible on scroll */
+.sticky-buy{position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-top:1px solid var(--border);padding:10px 24px;display:none;align-items:center;justify-content:center;gap:12px;z-index:999;box-shadow:0 -2px 16px rgba(0,0,0,.1);transition:background .3s}
+.sticky-buy.visible{display:flex}
+.sticky-buy .sb-name{font-size:14px;font-weight:600;flex-shrink:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}
+.sticky-buy .sb-price{font-size:16px;font-weight:700;color:var(--accent);white-space:nowrap}
+.sticky-buy .sb-btns{display:flex;gap:8px;flex-shrink:0}
+.sticky-buy .sb-btn{padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.sticky-buy .sb-amazon{background:#ff9900;color:#111}
+.sticky-buy .sb-flipkart{background:#2874f0;color:#fff}
+@media(max-width:900px){.detail-grid{grid-template-columns:1fr}.specs-grid{grid-template-columns:1fr}.product-name{font-size:22px}.rf-row{flex-direction:column}.sticky-buy .sb-name{display:none}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
@@ -168,7 +177,7 @@ function render(id,p){
         <a href="https://www.amazon.in/s?k=${encodeURIComponent(p.name)}&tag=wib04-21" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;background:#ff9900;color:#111;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none">Check Price on Amazon</a>
         <a href="https://www.flipkart.com/search?q=${encodeURIComponent(p.name)}" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;background:#2874f0;color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none">Check Price on Flipkart</a>
       </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:center">Prices may vary. Affiliate links.</p>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:center">Price checked ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} \u00B7 Affiliate links</p>
     </div>
 
     <div class="sidebar-card">
@@ -186,6 +195,14 @@ function render(id,p){
       </div>
     </div>
   </div></div>`;
+
+  // Sticky buy bar
+  if(!document.getElementById('stickyBuy')){
+    const sb=document.createElement('div');sb.id='stickyBuy';sb.className='sticky-buy';
+    sb.innerHTML=`<span class="sb-name">${p.name}</span><span class="sb-price">\u20B9${(p.price||0).toLocaleString('en-IN')}</span><span style="font-size:11px;color:var(--text-muted)">Price checked ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short'})}</span><div class="sb-btns"><a href="https://www.amazon.in/s?k=${encodeURIComponent(p.name)}&tag=wib04-21" target="_blank" rel="noopener sponsored" class="sb-btn sb-amazon">Amazon</a><a href="https://www.flipkart.com/search?q=${encodeURIComponent(p.name)}" target="_blank" rel="noopener sponsored" class="sb-btn sb-flipkart">Flipkart</a></div>`;
+    document.body.appendChild(sb);
+    window.addEventListener('scroll',function(){var h=document.querySelector('.hero-card');if(!h)return;var r=h.getBoundingClientRect();sb.classList.toggle('visible',r.bottom<0)});
+  }
 
   const _cu=encodeURIComponent('https://wibest.in/electronics-detail.html?id='+id);
   const _ct=encodeURIComponent((p.name||'Product')+' — WIB');

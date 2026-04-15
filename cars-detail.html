@@ -146,6 +146,15 @@ function render(id,v){
       <a href="https://www.cardekho.com/search?q=${encodeURIComponent(v.name)}" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;background:#e8272c;color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none">View on CarDekho</a>
       <a href="https://www.carwale.com/search/?q=${encodeURIComponent(v.name)}" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;background:#00b7ff;color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none">View on CarWale</a>
     </div><p style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:center">Prices are ex-showroom. May vary by city.</p></div>
+    <div class="sidebar-card" style="background:linear-gradient(135deg,#fff3e0,#fff8e1)">
+      <div class="sidebar-title" style="color:#e65100">Shop Accessories on Amazon</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="https://www.amazon.in/s?k=${encodeURIComponent(v.name)}+accessories&tag=wib04-21" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:#ff9900;color:#111;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none">${v.subcategory==='bike'?'Bike':'Car'} Accessories</a>
+        <a href="https://www.amazon.in/s?k=${encodeURIComponent(v.name)}+seat+cover&tag=wib04-21" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:#ff9900;color:#111;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none">${v.subcategory==='bike'?'Riding Gear':'Seat Covers'}</a>
+        <a href="https://www.amazon.in/s?k=car+phone+holder&tag=wib04-21" target="_blank" rel="noopener sponsored" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Phone Holders &amp; Chargers</a>
+      </div>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:center">Affiliate links \u00B7 You pay the same price</p>
+    </div>
     <div class="sidebar-card"><div class="sidebar-title">Quick Actions</div><div style="display:flex;flex-direction:column;gap:8px">
       <a href="/compare?type=cars" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Compare with other vehicles</a>
       <a href="/cars" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Back to all cars & bikes</a>

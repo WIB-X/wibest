@@ -106,6 +106,29 @@ async function loadRelated(currentId,category){
   }catch(e){return'';}
 }
 
+function buildAffiliateCards(category,title){
+  const cat=(category||'').toLowerCase();const t=(title||'').toLowerCase();
+  var cards=[];
+  if(cat.includes('electronic')||t.includes('phone')||t.includes('laptop')||t.includes('earbuds')||t.includes('charger')||t.includes('smartwatch')||t.includes('monitor')||t.includes('tv')||t.includes('power bank')){
+    // Extract product keywords from title
+    var kw=title.replace(/\(.*?\)/g,'').replace(/—.*/,'').replace(/best|in india|under|top|compared|review|guide|vs/gi,'').trim();
+    if(kw.length>5){
+      cards.push({label:'Check Prices on Amazon',url:'https://www.amazon.in/s?k='+encodeURIComponent(kw)+'&tag=wib04-21'});
+      cards.push({label:'Compare on Flipkart',url:'https://www.flipkart.com/search?q='+encodeURIComponent(kw)});
+    }
+  }
+  if(cat.includes('car')||cat.includes('bike')||t.includes('scooter')||t.includes('car')||t.includes('bike')){
+    var vkw=title.replace(/\(.*?\)/g,'').replace(/—.*/,'').replace(/best|in india|which|should|buy|vs|comparison/gi,'').trim();
+    cards.push({label:'Accessories on Amazon',url:'https://www.amazon.in/s?k='+encodeURIComponent(vkw)+'+accessories&tag=wib04-21'});
+  }
+  if(t.includes('air purifier')||t.includes('refrigerator')||t.includes('washing machine')||t.includes('water purifier')){
+    var hkw=title.replace(/\(.*?\)/g,'').replace(/—.*/,'').replace(/best|in india|top|compared|vs/gi,'').trim();
+    cards.push({label:'Check Prices on Amazon',url:'https://www.amazon.in/s?k='+encodeURIComponent(hkw)+'&tag=wib04-21'});
+  }
+  if(!cards.length)return'';
+  return '<div style="margin:24px 0;padding:20px;background:linear-gradient(135deg,#fff8e1,#fff3e0);border:1px solid #ffe0b2;border-radius:10px"><div style="font-family:Outfit,sans-serif;font-size:15px;font-weight:700;color:#e65100;margin-bottom:10px">Shop Products Mentioned</div><div style="display:flex;flex-wrap:wrap;gap:8px">'+cards.map(function(c){var bg=c.url.includes('amazon')?'#ff9900':'#2874f0';var col=c.url.includes('amazon')?'#111':'#fff';return '<a href="'+c.url+'" target="_blank" rel="noopener sponsored" style="display:inline-flex;align-items:center;padding:10px 18px;background:'+bg+';color:'+col+';border-radius:8px;font-size:13px;font-weight:700;text-decoration:none">'+c.label+'</a>'}).join('')+'</div><p style="font-size:11px;color:#999;margin-top:8px">Affiliate links \u00B7 You pay the same price</p></div>';
+}
+
 function buildExploreLinks(category,title){
   const cat=(category||'').toLowerCase();const t=(title||'').toLowerCase();
   const links=[];
@@ -194,6 +217,7 @@ async function load(){
       ${toc}
       <div class="article-body">${processedContent}</div>
       ${relatedHtml}
+      ${buildAffiliateCards(p.category||'',title)}
       ${buildExploreLinks(p.category||'',title)}
       <div class="article-footer">
         <a href="/blog" class="btn-secondary" style="font-size:13px;padding:10px 20px">← Back to Blog</a>

@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
 <style>
 .error-wrap{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center}
 .error-code{font-family:'Outfit',sans-serif;font-size:120px;font-weight:800;color:var(--border);line-height:1;margin-bottom:8px;letter-spacing:-4px}
@@ -30,6 +32,11 @@
   <div class="error-code">404</div>
   <div class="error-title">Page not found</div>
   <p class="error-desc">The page you're looking for doesn't exist or may have been moved. Try one of the links below.</p>
+
+  <div style="width:100%;max-width:480px;margin-bottom:32px;position:relative">
+    <input type="search" id="search404" placeholder="Search schools, phones, colleges, hospitals..." style="width:100%;padding:14px 48px 14px 18px;border:2px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:15px" aria-label="Search WIB" onkeydown="if(event.key==='Enter')window.location.href='/compare?q='+encodeURIComponent(this.value)">
+    <button onclick="window.location.href='/compare?q='+encodeURIComponent(document.getElementById('search404').value)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--accent);border:none;border-radius:8px;padding:8px 14px;color:#fff;font-size:13px;font-weight:600;cursor:pointer">Search</button>
+  </div>
 
   <div class="error-actions">
     <a href="/" class="btn-primary">Go Home</a>
