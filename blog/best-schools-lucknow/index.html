@@ -67,11 +67,13 @@ async function load(){
       '<div class="article-meta"><span>'+(p.readTime||'5')+' min read</span>'+(date?'<span>'+date+'</span>':'')+(p.author?'<span>By '+p.author+'</span>':'')+'</div>'+
       '<div class="article-body">'+(p.content||p.body||'<p>Content not available.</p>')+'</div>'+
       '<div class="article-footer"><a href="/blog" class="btn-secondary" style="font-size:13px;padding:10px 20px">Back to Blog</a><a href="/schools" class="btn-secondary" style="font-size:13px;padding:10px 20px">Browse Schools</a><a href="/electronics" class="btn-secondary" style="font-size:13px;padding:10px 20px">Browse Electronics</a></div>';
+    injectFAQ(p.content||p.body||"");
   }catch(err){
     console.error(err);
     document.getElementById('articleContent').innerHTML='<div class="loading">Error loading article. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';
   }
 }
+function injectFAQ(content){var tmp=document.createElement("div");tmp.innerHTML=content;var faqs=[];tmp.querySelectorAll("h2,h3").forEach(function(h){if(h.textContent.indexOf("?")===-1)return;var answer="";var el=h.nextElementSibling;while(el&&!/^H[23]$/.test(el.tagName)){answer+=el.textContent.trim()+" ";el=el.nextElementSibling}answer=answer.trim();if(answer.length>10)faqs.push({q:h.textContent.trim(),a:answer})});if(faqs.length>=2){var s=document.createElement("script");s.type="application/ld+json";s.text=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqs.map(function(f){return{"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}})});document.head.appendChild(s)}}
 load();
 </script>
 <script src="/chat-widget.js"></script>
