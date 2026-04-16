@@ -12,9 +12,14 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.hero-section{margin-top:calc(var(--nav-height)+var(--cat-height));padding:48px 24px 32px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border)}
-.hero-section h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
-.hero-section p{color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto}
+.hero-section{margin-top:calc(var(--nav-height)+var(--cat-height));padding:56px 24px 36px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border);transition:background .3s;position:relative;overflow:hidden}
+.hero-section::before{content:'';position:absolute;top:-60%;left:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(22,163,74,.06) 0%,transparent 70%);pointer-events:none}
+.hero-section h1{font-family:'Outfit',sans-serif;font-size:36px;font-weight:800;letter-spacing:-0.03em;margin-bottom:10px}
+.hero-section p{color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:32px;margin-top:18px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:var(--green)}
+.hero-stat .lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
 .filters-wrap{max-width:1200px;margin:0 auto;padding:24px 24px 0}
 .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .filter-group{position:relative}
@@ -30,8 +35,12 @@
 .btn-reset:hover{background:var(--border)}
 .results-count{font-size:13px;color:var(--text-muted);max-width:1200px;margin:0 auto;padding:12px 24px 0}
 .hosp-grid{max-width:1200px;margin:0 auto;padding:20px 24px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-.hcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s}
-.hcard:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.hcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.hcard.govt::before{background:linear-gradient(90deg,#16a34a,#4ade80)}
+.hcard.pvt::before{background:linear-gradient(90deg,#2563eb,#60a5fa)}
+.hcard.trust::before{background:linear-gradient(90deg,#9333ea,#c084fc)}
+.hcard:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
 .hcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
 .hcard-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;line-height:1.3;flex:1;padding-right:12px}
 .hcard-rating{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;background:var(--green-bg);color:var(--green);font-size:13px;font-weight:700;white-space:nowrap}
@@ -60,9 +69,14 @@
 <body>
 <div id="wib-nav-placeholder"></div>
 
-<section class="hero-section">
+<section class="hero-section" id="main-content">
   <h1>Hospitals in India</h1>
   <p>Compare 146+ hospitals across 8 major cities by speciality, ratings, beds, and insurance. Book appointments via Practo.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">146+</div><div class="lbl">Hospitals</div></div>
+    <div class="hero-stat"><div class="num">8</div><div class="lbl">Cities</div></div>
+    <div class="hero-stat"><div class="num">30+</div><div class="lbl">Specialities</div></div>
+  </div>
 </section>
 
 <div class="filters-wrap"><div class="filters">
@@ -277,10 +291,11 @@ function render(){
   const grid=document.getElementById('hospGrid');
   if(!filtered.length){grid.innerHTML='<div class="no-results">No hospitals match your filters. Try changing your selection.</div>';return;}
   grid.innerHTML=filtered.map(h=>{
-    
+    const typeClass=h.t==='Government'?'govt':h.t==='Private'?'pvt':'trust';
     const practoUrl='https://www.google.com/search?q='+encodeURIComponent(h.n+' '+h.c+' practo book appointment')+encodeURIComponent(h.n)+'&type=hospital';
-    return '<div class="hcard"><div class="hcard-top"><div class="hcard-name">'+h.n+'</div><div class="hcard-rating">'+h.r+'</div></div><div class="hcard-city">'+h.c+' | '+h.t+' | Est. '+h.e+'</div><div class="hcard-tags">'+h.s.slice(0,4).map(function(s){return '<span class="spec-tag">'+s+'</span>'}).join('')+(h.s.length>4?'<span class="spec-tag">+' +(h.s.length-4)+' more</span>':'')+'</div><div class="hcard-details"><div class="detail-item"><div class="detail-label">Beds</div><div class="detail-val">'+h.b.toLocaleString()+'</div></div><div class="detail-item"><div class="detail-label">Emergency</div><div class="detail-val">'+(h.er?'24/7 Available':'No')+'</div></div><div class="detail-item"><div class="detail-label">Accreditation</div><div class="detail-val">'+h.a+'</div></div><div class="detail-item"><div class="detail-label">Insurance</div><div class="detail-val">'+h.i.slice(0,2).join(', ')+'</div></div></div><div class="hcard-actions"><a href="'+practoUrl+'" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px">Book on Practo</a><a href="'+h.w+'" target="_blank" rel="noopener" class="btn-secondary" style="font-size:12px;padding:10px">Official Website</a></div></div>';
+    return '<div class="hcard '+typeClass+'" onclick="window.location.href=\'/hospital-detail.html?name='+encodeURIComponent(h.n)+'\'"><div class="hcard-top"><div class="hcard-name">'+h.n+'</div><div class="hcard-rating">★ '+h.r+'</div></div><div class="hcard-city">'+h.c+' · '+h.t+' · Est. '+h.e+'</div><div class="hcard-tags">'+h.s.slice(0,4).map(function(s){return '<span class="spec-tag">'+s+'</span>'}).join('')+(h.s.length>4?'<span class="spec-tag">+' +(h.s.length-4)+' more</span>':'')+'</div><div class="hcard-details"><div class="detail-item"><div class="detail-label">Beds</div><div class="detail-val">'+h.b.toLocaleString()+'</div></div><div class="detail-item"><div class="detail-label">Emergency</div><div class="detail-val">'+(h.er?'✓ 24/7':'No')+'</div></div><div class="detail-item"><div class="detail-label">Accreditation</div><div class="detail-val">'+h.a+'</div></div><div class="detail-item"><div class="detail-label">Insurance</div><div class="detail-val">'+h.i.slice(0,2).join(', ')+'</div></div></div><div class="hcard-actions" onclick="event.stopPropagation()"><a href="'+practoUrl+'" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px">Book on Practo</a><a href="'+h.w+'" target="_blank" rel="noopener" class="btn-secondary" style="font-size:12px;padding:10px">Official Website</a></div></div>';
   }).join('');
+  if(window.wibInitReveal)window.wibInitReveal();
 }
 init();
 </script>
