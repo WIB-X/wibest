@@ -68,6 +68,8 @@
 .btn-official{flex:1;padding:11px;border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;font-size:12px;font-weight:600;text-align:center;text-decoration:none;border:1px solid var(--border);transition:all .2s;min-width:0}
 .btn-official:hover{background:var(--tag-bg);border-color:var(--border-hover)}
 .no-results{text-align:center;padding:60px 24px;color:var(--text-muted);font-size:15px}
+.pcard-img img{width:100%;height:100%;object-fit:contain;padding:16px;position:relative;z-index:1;background:rgba(255,255,255,.9)}
+[data-theme="dark"] .pcard-img img{background:rgba(30,30,30,.9)}
 @media(max-width:768px){.hero-section h1{font-size:24px}.product-grid{grid-template-columns:1fr}.filters{flex-direction:column}.filter-group select,.search-input{width:100%}.search-group{width:100%}.pcard-specs{grid-template-columns:1fr}.pcard-img{height:140px}.pcard-actions{gap:6px}.btn-view,.btn-amazon,.btn-flipkart,.btn-official{padding:9px 6px;font-size:11px}}
 </style>
 <!-- Google tag (gtag.js) -->
@@ -200,6 +202,7 @@ function renderProducts(products){
     const isPhone=p.subcategory==='phone';
     const gradient=brandGradients[p.brand]||'linear-gradient(135deg,#2563eb,#7c3aed)';
     const initial=(p.brand||'W').charAt(0);
+    const imageUrl=p.image||p.img||p.imageUrl||p.photo||'';
     const specs=isPhone?[
       {l:'Display',v:p.display||'N/A'},{l:'Processor',v:p.processor||'N/A'},
       {l:'RAM',v:p.ram||'N/A'},{l:'Storage',v:p.storage||'N/A'},
@@ -211,7 +214,8 @@ function renderProducts(products){
     ];
     return `<div class="pcard" onclick="window.location.href='/electronics-detail.html?id=${p.id}'">
       <div class="pcard-img" style="background:${gradient}">
-        <div class="brand-initial">${initial}</div>
+        ${imageUrl?`<img src="${imageUrl}" alt="${p.name||'Product'}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}
+        <div class="brand-initial" style="${imageUrl?'display:none':''}">${initial}</div>
         <span class="type-badge">${isPhone?'📱 Phone':'💻 Laptop'}</span>
         <span class="price-badge">${formatPrice(p.price)}</span>
       </div>
