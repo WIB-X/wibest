@@ -213,7 +213,7 @@ function renderDests(month){
     var bannerBg=d.img?'linear-gradient(to bottom,rgba(0,0,0,.1),rgba(0,0,0,.5)),url('+d.img+') center/cover':grad;
     var weColor=d.we==="good"?"background:rgba(22,163,74,.3);color:#bbf7d0":"background:rgba(234,179,8,.3);color:#fef08a";
     return '<div class="dest-card">'+
-      '<div class="dest-banner" style="background:'+bannerBg+'"><div class="dest-initial">'+d.n.charAt(0)+'</div><span class="weather-float" style="'+weColor+'">'+d.te+'</span></div>'+
+      '<div class="dest-banner" style="background:'+bannerBg+'"><div class="dest-initial">'+(d.img?'':d.n.charAt(0))+'</div><span class="weather-float" style="'+weColor+'">'+d.te+'</span></div>'+
       '<div class="dest-header"><div class="dest-name">'+d.n+(d.wk?'<span class="weekend-tag">Weekend Getaway</span>':'')+'</div><div class="dest-state">'+d.st+'</div>'+
       '<span class="weather-tag weather-'+d.we+'">'+(d.we==="good"?"✓ Perfect weather":"○ Good enough")+'</span></div>'+
       '<div class="dest-why">'+d.w+'</div>'+
