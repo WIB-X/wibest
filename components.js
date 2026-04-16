@@ -124,7 +124,7 @@
       '<div id="wibNlMsg" style="font-size:12px;color:#fff;margin-top:6px"></div>',
       '</div>',
       '</div>',
-      '<div class="footer-bottom">WIB - Independent. Data-driven.</div>',
+      '<div class="footer-bottom">© ' + new Date().getFullYear() + ' WIB — Independent. Data-driven. Updated daily.</div>',
       '</footer>',
     ].join('');
   }
