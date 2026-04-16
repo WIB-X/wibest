@@ -155,6 +155,28 @@
     return false;
   };
 
+  // Scroll reveal animation
+  function initReveal() {
+    var els = document.querySelectorAll('.card,.bc,.cat-card,.sidebar-card,.section,.review-card,.hero-card,.stat-item');
+    if (!els.length) return;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('reveal','visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el) {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  }
+  // Run after content loads (delayed to catch dynamically rendered cards)
+  setTimeout(initReveal, 800);
+  // Re-run after Firestore data loads
+  window.wibInitReveal = initReveal;
+
   // Expose render functions so pages can call them manually if needed
   window.WIBComponents = { renderNav: renderNav, renderFooter: renderFooter };
 })();
