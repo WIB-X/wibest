@@ -24,7 +24,7 @@
     opts = opts || {};
     var title = opts.title || document.title;
     var desc  = opts.description || '';
-    var image = opts.image || 'https://wibest.in/og-default.png';
+    var image = opts.image || 'https://wibest.in/og-default.jpg';
     var url   = opts.url   || location.href;
     var type  = opts.type  || 'website';
     if(opts.title) document.title = title;

@@ -18,7 +18,7 @@ const PRECACHE_URLS = [
   '/sanitize.js',
   '/chat-widget.js',
   '/favicon.svg',
-  '/og-default.png',
+  '/og-default.jpg',
   '/manifest.json',
   '/404.html',
   '/schools/',

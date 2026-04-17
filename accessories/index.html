@@ -9,12 +9,12 @@
 <meta property="og:title" content="Best Accessories for Your Device — WIB">
 <meta property="og:description" content="Find the best charger, case, screen guard, earbuds, and backpack for your specific phone or laptop. Compared and ranked with buy links.">
 <meta property="og:url" content="https://wibest.in/accessories/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <meta name="twitter:title" content="Best Accessories for Your Device — WIB">
 <meta name="twitter:description" content="Find the best charger, case, screen guard, earbuds, and backpack for your specific phone or laptop. Compared and ranked with buy links.">
-<meta name="twitter:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:image" content="https://wibest.in/og-default.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
@@ -65,7 +65,7 @@
 <meta property="og:title" content="Best Phone & Laptop Accessories in India — WIB">
 <meta property="og:description" content="Find the best chargers, cases, earbuds, and accessories for your device. Compared and ranked.">
 <meta property="og:url" content="https://wibest.in/accessories/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Accessories","url":"https://wibest.in/accessories/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
@@ -250,6 +250,14 @@ function render(){
 }
 
 switchCat('chargers');
+(function emitItemList(data){
+  var all=[];Object.values(data).forEach(function(arr){arr.forEach(function(it){all.push(it)})});
+  if(!all.length)return;
+  var list=all.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.name||'','url':'https://wibest.in/accessories/#'+encodeURIComponent((it.name||'').toLowerCase().replace(/\s+/g,'-'))}});
+  var s=document.createElement('script');s.type='application/ld+json';
+  s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
+  document.head.appendChild(s);
+})(ACCESSORIES);
 </script>
 <script src="/chat-widget.js"></script>
 </body>

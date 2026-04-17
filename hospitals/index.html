@@ -9,12 +9,12 @@
 <meta property="og:title" content="Best Hospitals in India - Compare & Book - WIB">
 <meta property="og:description" content="Compare 146+ hospitals across Delhi, Mumbai, Chennai, Bangalore, Kolkata, Hyderabad, Pune, Ahmedabad by speciality, ratings, insurance, and beds. Book via Practo.">
 <meta property="og:url" content="https://wibest.in/hospitals/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <meta name="twitter:title" content="Best Hospitals in India - Compare & Book - WIB">
 <meta name="twitter:description" content="Compare 146+ hospitals across Delhi, Mumbai, Chennai, Bangalore, Kolkata, Hyderabad, Pune, Ahmedabad by speciality, ratings, insurance, and beds. Book via Practo.">
-<meta name="twitter:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:image" content="https://wibest.in/og-default.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
@@ -74,7 +74,7 @@
 <meta property="og:title" content="Best Hospitals in India — Compare & Book — WIB">
 <meta property="og:description" content="Compare 146+ hospitals across Delhi, Mumbai, Bangalore, Chennai, and Hyderabad by specialty, ratings, and insurance.">
 <meta property="og:url" content="https://wibest.in/hospitals/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Hospitals in India","url":"https://wibest.in/hospitals/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
@@ -279,6 +279,13 @@ function init(){
   const sf=document.getElementById('specFilter');
   specs.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sf.appendChild(o)});
   applyFilters();
+  (function emitItemList(items){
+    if(!items||!items.length)return;
+    var list=items.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.n||'','url':'https://wibest.in/hospital-detail.html?name='+encodeURIComponent(it.n||'')}});
+    var s=document.createElement('script');s.type='application/ld+json';
+    s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
+    document.head.appendChild(s);
+  })(H);
 }
 function applyFilters(){
   const city=document.getElementById('cityFilter').value;

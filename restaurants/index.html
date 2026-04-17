@@ -39,7 +39,7 @@
 <meta property="og:title" content="Best Restaurants in India — Compare by City & Cuisine — WIB">
 <meta property="og:description" content="Discover the best restaurants across Delhi, Mumbai, Bangalore, Chennai, and Hyderabad. Filter by cuisine and budget.">
 <meta property="og:url" content="https://wibest.in/restaurants/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Restaurants in India","url":"https://wibest.in/restaurants/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
@@ -153,6 +153,13 @@ function render(){
   }).join('');
 }
 af();
+(function emitItemList(items){
+  if(!items||!items.length)return;
+  var list=items.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.n||'','url':'https://wibest.in/restaurants/#'+encodeURIComponent(it.z||it.n||'')}});
+  var s=document.createElement('script');s.type='application/ld+json';
+  s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
+  document.head.appendChild(s);
+})(R);
 </script>
 <script src="/chat-widget.js"></script>
 </body>

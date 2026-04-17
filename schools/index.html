@@ -10,12 +10,12 @@
 <meta property="og:title" content="Schools in India — WIB">
 <meta property="og:description" content="Compare top schools across India. Filter by board, city, fees, and ratings.">
 <meta property="og:url" content="https://wibest.in/schools/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <meta name="twitter:title" content="Schools in India — WIB">
 <meta name="twitter:description" content="Compare top schools across India. Filter by board, city, fees, and ratings.">
-<meta name="twitter:image" content="https://wibest.in/og-default.png">
+<meta name="twitter:image" content="https://wibest.in/og-default.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +95,7 @@
 <meta property="og:title" content="Best Schools in India — WIB">
 <meta property="og:description" content="Compare top schools across India by board, city, fees, and ratings.">
 <meta property="og:url" content="https://wibest.in/schools/">
-<meta property="og:image" content="https://wibest.in/og-default.png">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Schools in India","url":"https://wibest.in/schools/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
@@ -221,6 +221,13 @@ async function loadSchools(){
     document.getElementById('statCities').textContent=[...new Set(allSchools.map(s=>s.city).filter(Boolean))].length;
     document.getElementById('statBoards').textContent=[...new Set(allSchools.map(s=>getBoard(s)).filter(b=>b&&b!=='N/A'))].length;
     applyFilters();
+    (function emitItemList(items){
+      if(!items||!items.length)return;
+      var list=items.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.name||'','url':'https://wibest.in/school-detail.html?id='+encodeURIComponent(it.id||'')}});
+      var s=document.createElement('script');s.type='application/ld+json';
+      s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
+      document.head.appendChild(s);
+    })(allSchools);
   }catch(err){
     console.error('Error loading schools:',err);
     document.getElementById('schoolGrid').innerHTML='<div class="no-results">Unable to load schools. Please try refreshing.</div>';

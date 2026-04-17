@@ -3,11 +3,11 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ── Helpers ─────────────────────────────────────────────────────────────
-    // Admin = authenticated + email verified (or custom admin claim set via Admin SDK)
+    // Admin = authenticated AND either a custom admin claim OR the designated owner email.
+    // Email verification alone is NOT sufficient (anyone with a verified email could log in otherwise).
     function isAdmin() {
       return request.auth != null
-          && (request.auth.token.email_verified == true
-              || request.auth.token.admin == true
+          && (request.auth.token.admin == true
               || request.auth.token.email == 'hello@wibest.in');
     }
 
