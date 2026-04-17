@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>WIB — Best-in-India Comparison Guides</title>
+  <link>https://wibest.in/</link>
+  <description>India's independent comparison platform for phones, laptops, cars, schools, colleges, hospitals, travel and more.</description>
+  <language>en-in</language>
+  <atom:link href="https://wibest.in/rss.xml" rel="self" type="application/rss+xml"/>
+  <image>
+    <url>https://wibest.in/og-default.jpg</url>
+    <title>WIB — Best-in-India Comparison Guides</title>
+    <link>https://wibest.in/</link>
+  </image>
+  <!-- Items are rendered dynamically; clients that support JS will see the full list.
+       For static clients, /blog/index.html is the canonical listing. -->
+  <item>
+    <title>Browse all guides at wibest.in/blog</title>
+    <link>https://wibest.in/blog/</link>
+    <description>WIB publishes new comparison guides every week. Visit /blog for the full index.</description>
+    <guid isPermaLink="true">https://wibest.in/blog/</guid>
+  </item>
+</channel>
+</rss>

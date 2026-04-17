@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Seed Expansion Blogs — WIBest Admin</title>
+<title>Seed New Blogs — WIBest Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <style>
 body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#0b0f17;color:#e5e7eb}
@@ -17,9 +17,9 @@ button:disabled{background:#374151;cursor:not-allowed}
 </head>
 <body>
 <h1>WIBest Expansion Seeder</h1>
-<p>Writes the 12 new blog_posts (May 2025 expansion) into Firestore.</p>
-<div class="warn">⚠️ Requires firestore rules to allow writes to <code>blog_posts</code> during seeding (set <code>allow write: if true;</code> temporarily, then revert to <code>isAdmin()</code>).</div>
-<button id="seedBtn" onclick="seedAll()">🚀 Seed 12 New Blogs</button>
+<p>Seeds the <b>12 May</b> and <b>25 June</b> expansion blog posts (37 total) into Firestore. The original 50 posts are already in Firestore.</p>
+<div class="warn">⚠️ Temporarily set <code>allow write: if true;</code> on <code>/blog_posts</code> during seeding. Revert to <code>isAdmin()</code> afterward.</div>
+<button id="seedBtn" onclick="seedAll()">🚀 Seed 37 Blogs</button>
 <div id="log"></div>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -27,6 +27,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <script src="/config.js"></script>
 <script>var BLOG_POSTS = {};</script>
 <script src="/seed-data-expansion.js"></script>
+<script src="/seed-data-expansion-2.js"></script>
 <script>
 const db = initFirebase();
 const log = document.getElementById('log');
@@ -37,20 +38,16 @@ async function seedAll(){
   btn.disabled = true;
   log.textContent = '';
   const slugs = Object.keys(BLOG_POSTS);
-  l(`Seeding ${slugs.length} expansion blog posts...`, 'info');
+  l(`Seeding ${slugs.length} blog posts...`, 'info');
   let ok=0, err=0;
   for(const slug of slugs){
     try{
       const data = BLOG_POSTS[slug];
       data.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
-      data.publishedAt = firebase.firestore.Timestamp.fromDate(new Date(data.date||'2025-05-01'));
+      data.publishedAt = firebase.firestore.Timestamp.fromDate(new Date(data.date||'2025-06-01'));
       await db.collection('blog_posts').doc(slug).set(data, {merge:false});
-      l(`✓ ${slug}`, 'ok');
-      ok++;
-    }catch(e){
-      l(`✗ ${slug}: ${e.message}`, 'err');
-      err++;
-    }
+      l(`✓ ${slug}`, 'ok'); ok++;
+    }catch(e){ l(`✗ ${slug}: ${e.message}`, 'err'); err++; }
   }
   l(`\nDone. ${ok} succeeded, ${err} failed.`, err? 'err':'ok');
   btn.disabled = false;
