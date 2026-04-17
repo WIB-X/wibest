@@ -127,7 +127,8 @@ async function load(){
     var title=p.title||'Untitled';
     document.title=title+' — WIB Blog';
     var link=document.querySelector('link[rel="canonical"]');if(!link){link=document.createElement('link');link.rel='canonical';document.head.appendChild(link)}link.href='https://wibest.in/blog/'+slug+'/';
-    var meta=document.querySelector('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.appendChild(meta)}meta.content=p.description||p.excerpt||title;
+    var meta=document.querySelector('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.appendChild(meta)}meta.content=p.summary||p.description||p.excerpt||title;
+    var _ogImg=(p.coverImage||p.cover_image||"https://wibest.in/og-default.png");var _desc=(p.summary||p.summary||p.description||p.excerpt||title);var _url="https://wibest.in/blog/"+slug+"/";function _setM(s,a,v){var e=document.head.querySelector(s);if(!e){e=document.createElement(s.indexOf("link")===0?"link":"meta");var m=s.match(/[([^=]+)="([^"]+)"]/);if(m)e.setAttribute(m[1],m[2]);document.head.appendChild(e)}e.setAttribute(a,v)}_setM("meta[property=\"og:type\"]","content","article");_setM("meta[property=\"og:title\"]","content",title);_setM("meta[property=\"og:description\"]","content",_desc);_setM("meta[property=\"og:image\"]","content",_ogImg);_setM("meta[property=\"og:url\"]","content",_url);_setM("meta[name=\"twitter:card\"]","content","summary_large_image");_setM("meta[name=\"twitter:title\"]","content",title);_setM("meta[name=\"twitter:description\"]","content",_desc);_setM("meta[name=\"twitter:image\"]","content",_ogImg);
     var rawContent=p.content||p.body||'<p>Content not available.</p>';
     var readTime=p.read_time||p.readTime||calcReadTime(rawContent);
     var tocResult=buildTOC(rawContent);
@@ -137,7 +138,7 @@ async function load(){
     var shareText=encodeURIComponent(title+' — WIB');
     document.getElementById('articleContent').innerHTML=
       '<div class="breadcrumb"><a href="/blog">Blog</a> / '+escapeHtml(title)+'</div>'+
-      (p.cover_image?'<img src="'+escapeHtml(p.cover_image)+'" alt="'+escapeHtml(title)+'" loading="lazy" style="width:100%;height:320px;object-fit:cover;border-radius:12px;margin-bottom:24px">':'')+
+      ((p.coverImage||p.cover_image)?'<img src="'+escapeHtml(p.coverImage||p.cover_image)+'" alt="'+escapeHtml(title)+'" loading="lazy" style="width:100%;height:320px;object-fit:cover;border-radius:12px;margin-bottom:24px">':'')+
       '<div class="article-category">'+escapeHtml(p.category||'General')+'</div>'+
       '<h1>'+escapeHtml(title)+'</h1>'+
       '<div class="article-meta"><span>⏱ '+readTime+' min read</span>'+(date?'<span>📅 '+date+'</span>':'')+(p.author?'<span>By '+escapeHtml(p.author)+'</span>':'')+'</div>'+
