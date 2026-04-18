@@ -223,10 +223,9 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
     ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
     : query;
 
-  // Try a sequence of model names in priority order. Different Google AI tiers
-  // expose different models; we fall back gracefully.
-  const models = ['gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-2.0-flash-exp', 'gemini-pro'];
-  let lastErr = null;
+  // Models in priority order. Only CURRENT valid model names — no deprecated.
+  const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-8b'];
+  const errors = [];
 
   for (const model of models) {
     try {
@@ -240,25 +239,23 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
       });
       const data = await apiRes.json();
 
-      // Surface API-level errors clearly
       if (data.error) {
         console.error(`Gemini ${model} error:`, JSON.stringify(data.error));
-        lastErr = data.error.message || JSON.stringify(data.error);
-        continue;  // try next model
+        errors.push(`${model}: ${data.error.message || JSON.stringify(data.error)}`);
+        continue;
       }
 
       const candidate = (data.candidates || [])[0];
       if (!candidate) {
-        lastErr = 'Gemini returned no candidates (response may have been blocked). Raw: ' + JSON.stringify(data).slice(0, 300);
+        errors.push(`${model}: no candidates returned (may be blocked)`);
         continue;
       }
 
-      const finishReason = candidate.finishReason;
       const text = candidate.content && candidate.content.parts && candidate.content.parts[0]
         && candidate.content.parts[0].text;
 
       if (!text) {
-        lastErr = `Gemini returned candidate but no text (finishReason=${finishReason}). Raw: ` + JSON.stringify(candidate).slice(0, 300);
+        errors.push(`${model}: candidate has no text (finishReason=${candidate.finishReason})`);
         continue;
       }
 
@@ -266,14 +263,15 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
       return res.json({ answer: text, model: model });
     } catch (e) {
       console.error(`compareAI fetch error (${model}):`, e.message);
-      lastErr = e.message;
+      errors.push(`${model}: ${e.message}`);
     }
   }
 
-  // All models failed
+  // All models failed — return ALL errors so we can diagnose
   return res.status(500).json({
-    error: 'All Gemini models failed. Last error: ' + (lastErr || 'unknown'),
-    attempted: models
+    error: 'All Gemini models failed',
+    details: errors,
+    help: 'Check that Generative Language API is enabled on project wibest-449fe and the API key has no referrer restrictions.'
   });
 });
 
