@@ -18,7 +18,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <body>
 <h1>WIBest — Update Product Images</h1>
 <p>Matches each electronics product in Firestore with the best image URL from <code>PRODUCT_IMAGES</code> and updates the doc.</p>
-<div class="warn">Set <code>allow write: if true;</code> on <code>/items</code> temporarily, then revert to <code>isAdmin()</code>.</div>
+<div class="warn">Set <code>allow write: if true;</code> on <code>/electronics</code> temporarily, then revert to <code>isAdmin()</code>.</div>
 <button id="dryRun" onclick="run(true)">Dry-run (preview, no write)</button>
 <button id="apply" onclick="run(false)">Apply updates</button>
 <div id="log"></div>
@@ -57,14 +57,13 @@ async function run(dryRun){
   log.textContent = '';
   l((dryRun ? 'Dry-run — ' : 'Applying — ') + Object.keys(PRODUCT_IMAGES).length + ' images available', 'skip');
 
-  const snap = await db.collection('items').get();
+  // Electronics live in their own /electronics collection (not /items)
+  const snap = await db.collection('electronics').get();
   let scanned=0, matched=0, updated=0, skipped=0, failed=0;
   const updates = [];
 
   snap.forEach(doc => {
     const d = doc.data();
-    const isElectronics = d.subcategory === 'phone' || d.subcategory === 'laptop' || d.category === 'electronics' || d.category === 'phone' || d.category === 'laptop' || d.processor || d.ram;
-    if(!isElectronics) return;
     scanned++;
     if(d.image && d.image.length > 10){ l('skip (has image): ' + d.name, 'skip'); skipped++; return; }
     const m = findMatch(d.name);
