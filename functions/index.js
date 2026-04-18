@@ -240,3 +240,5 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
     return res.status(500).json({ error: e.message });
   }
 });
+
+// touch 2026-04-18T11:53:51Z — force redeploy after GEMINI_API_KEY secret added
