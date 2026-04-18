@@ -147,7 +147,17 @@ function render(id,c,autoEnquire){
         <div id="reviewMsg" style="display:none"></div>
       </div>
     </div>
-    ${lat&&lng?`<div class="section"><div class="section-title">Location</div><iframe class="map-frame" loading="lazy" src="https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed"></iframe></div>`:''}
+    ${(function(){
+      var addr = c.address || c.location || (c.city ? (c.name ? c.name + ', ' + c.city : c.city) : '');
+      var query = (lat && lng) ? (lat + ',' + lng) : addr;
+      if(!query) return '';
+      var addrHtml = addr ? '<div style="margin-bottom:14px;font-size:14px;color:var(--text-secondary);line-height:1.55"><strong style="color:var(--text-primary);font-weight:600">Address:</strong> ' + escapeHtml(addr) + '</div>' : '';
+      return '<div class="section"><div class="section-title">Location</div>'
+        + addrHtml
+        + '<iframe class="map-frame" loading="lazy" src="https://maps.google.com/maps?q=' + encodeURIComponent(query) + '&z=15&output=embed"></iframe>'
+        + '<div style="margin-top:10px"><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query) + '" target="_blank" rel="noopener" style="font-size:13px;color:var(--accent);font-weight:600">Open in Google Maps \u2192</a></div>'
+        + '</div>';
+    })()}
   </div>
   <div class="sidebar">
     <div class="sidebar-card" id="enquiryCard"><div class="sidebar-title">Send an Enquiry</div>

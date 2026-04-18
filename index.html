@@ -217,15 +217,24 @@ function runSearch(q){
   box.innerHTML='<div class="sr-empty">Searching...</div>';
   box.classList.add('open');
   var ql=q.toLowerCase();
-  var results=_srCache.filter(function(r){return r.name&&r.name.toLowerCase().includes(ql)}).slice(0,8);
+  var results=_srCache.filter(function(r){return r.name&&r.name.toLowerCase().includes(ql)}).slice(0,6);
+  var aiCta='<a href="/compare/ai/?q='+encodeURIComponent(q)+'" class="sr-item" style="background:linear-gradient(90deg,rgba(124,58,237,.08),rgba(37,99,235,.08));border-top:1px solid var(--border)"><span class="sr-cat" style="background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff">AI</span><div><div class="sr-name">Ask WIBest AI: \u201C'+q+'\u201D</div><div class="sr-sub">Get an India-specific comparison instantly</div></div></a>';
   if(results.length){
     box.innerHTML=results.map(function(r){
       return'<a href="'+r.url+'" class="sr-item"><span class="sr-cat">'+r.cat+'</span><div><div class="sr-name">'+r.name+'</div>'+(r.sub?'<div class="sr-sub">'+r.sub+'</div>':'')+'</div></a>';
-    }).join('');
+    }).join('') + aiCta;
   }else{
-    box.innerHTML='<div class="sr-empty">No results for "'+q+'". Try a different name.</div>';
+    box.innerHTML='<div class="sr-empty" style="padding:12px 16px;color:var(--text-muted);font-size:13px">No direct match. Try the AI:</div>'+aiCta;
   }
 }
+
+// Allow Enter key in search to jump straight to AI Compare
+document.getElementById('siteSearch').addEventListener('keydown', function(e){
+  if(e.key==='Enter'){
+    var q=this.value.trim();
+    if(q) window.location.href='/compare/ai/?q='+encodeURIComponent(q);
+  }
+});
 document.addEventListener('click',function(e){if(!e.target.closest('.hero-search'))document.getElementById('searchResults').classList.remove('open');});
 
 // Pre-load search index from Firestore once

@@ -134,6 +134,16 @@ document.querySelectorAll('#aiChips .ai-chip').forEach(c => {
     ask(c.textContent);
   });
 });
+
+// Auto-submit on ?q= URL parameter (so hero search can jump straight here)
+(function(){
+  var p = new URLSearchParams(location.search);
+  var q = p.get('q');
+  if(q){
+    document.getElementById('aiQ').value = q;
+    ask(q);
+  }
+})();
 </script>
 </body>
 </html>

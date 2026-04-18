@@ -160,6 +160,16 @@ if(!hospName){
 
   ${hIns.length?`<div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/></svg> Insurance Accepted</div><div class="ins-tags">${hIns.map(i=>`<span class="ins-tag">${i}</span>`).join('')}</div></div>`:''}
 
+  ${(function(){
+    var addr = h.address || h.location || (h.c ? (h.n + ', ' + h.c) : '');
+    if(!addr) return '';
+    return '<div class="section"><div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</div>'
+      + '<div style="margin-bottom:14px;font-size:14px;color:var(--text-secondary);line-height:1.55"><strong style="color:var(--text-primary);font-weight:600">Address:</strong> ' + addr + '</div>'
+      + '<iframe class="map-frame" loading="lazy" style="width:100%;height:260px;border:0;border-radius:10px" src="https://maps.google.com/maps?q=' + encodeURIComponent(addr) + '&z=15&output=embed"></iframe>'
+      + '<div style="margin-top:10px"><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(addr) + '" target="_blank" rel="noopener" style="font-size:13px;color:var(--accent);font-weight:600">Open in Google Maps \u2192</a></div>'
+      + '</div>';
+  })()}
+
   <div class="section">
     <div class="section-title"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Patient Reviews</div>
     <div class="rating-overview">
