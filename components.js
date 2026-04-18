@@ -27,6 +27,10 @@
     { href: '/compare/ai/',   label: 'AI Compare' },
     { href: '/insurance/',    label: 'Insurance' },
     { href: '/loans/',        label: 'Loans' },
+    { href: '/ev/',           label: 'EV Hub' },
+    { href: '/solar/',        label: 'Solar' },
+    { href: '/health-checkups/', label: 'Health Checkups' },
+    { href: '/senior-care/',  label: 'Senior Care' },
     { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940' }, // हिंदी
     { href: '/ta/',           label: '\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD' }, // தமிழ்
     { href: '/te/',           label: '\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41' }, // తెలుగు

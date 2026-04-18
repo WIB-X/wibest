@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV Hub India — Compare Electric Cars, Scooters & Charging | WIB</title>
+<meta name="description" content="Compare electric cars (Tata Nexon EV, MG ZS EV, Hyundai Creta Electric), e-scooters (Ola, Ather, TVS, Bajaj), and charging networks across India. Range, price, FAME-III subsidy, total cost vs petrol.">
+<meta property="og:title" content="EV Hub India — Compare Electric Vehicles & Charging">
+<meta property="og:description" content="Cars, scooters, charging — every Indian EV decision in one place.">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wibest.in/ev/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/ev/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/polish.css">
+<style>
+.v-wrap{max-width:1100px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 60px;padding:0 24px}
+.v-hero{text-align:center;padding:32px 0 40px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.v-hero h1{font-family:'Outfit',sans-serif;font-size:40px;font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin-bottom:14px}
+.v-hero h1 span{background:linear-gradient(135deg,#16a34a,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.v-hero p{color:var(--text-secondary);font-size:17px;max-width:640px;margin:0 auto 24px;line-height:1.6}
+.v-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.v-tab{padding:10px 22px;border-radius:100px;font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.v-tab.active{background:#16a34a;color:#fff;border-color:#16a34a}
+.v-tab:hover:not(.active){border-color:#16a34a;color:#16a34a}
+.v-intro{max-width:760px;margin:0 auto 28px;font-size:15px;line-height:1.75;color:var(--text-secondary)}
+.v-intro h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:var(--text-primary);margin:24px 0 10px}
+.v-intro p{margin-bottom:14px}
+.v-intro strong{color:var(--text-primary)}
+.v-table{width:100%;border-collapse:collapse;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px;margin-bottom:32px}
+.v-table th{background:var(--bg-secondary);padding:14px 16px;text-align:left;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.v-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+.v-table tr:last-child td{border-bottom:0}
+.v-table .item{font-weight:700;color:var(--text-primary);font-family:'Outfit',sans-serif}
+.v-table .price{color:#16a34a;font-weight:700}
+.v-table .star{color:#f59e0b;font-weight:700}
+.v-table .cta{background:#16a34a;color:#fff;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;display:inline-block}
+.v-table .cta:hover{background:#15803d}
+.calc{background:linear-gradient(135deg,#dcfce7,#cffafe);border:1px solid var(--border);border-radius:14px;padding:24px;margin:0 auto 28px;max-width:760px}
+[data-theme="dark"] .calc{background:linear-gradient(135deg,#0c2410,#0a1f24)}
+.calc h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:14px;color:var(--text-primary)}
+.calc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.calc-field label{display:block;font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.calc-field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font:inherit;font-size:15px;background:var(--bg-card);color:var(--text-primary);box-sizing:border-box}
+.calc-result{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-top:16px;border-top:1px solid var(--border)}
+.calc-cell{text-align:center}
+.calc-cell .num{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:#16a34a}
+.calc-cell .lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:4px}
+.v-lead{margin:32px 0 0;padding:28px;background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));border:1px solid var(--border);border-radius:14px;text-align:center}
+.v-lead h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.v-lead p{font-size:14px;color:var(--text-secondary);margin-bottom:16px}
+.v-faq{margin-top:48px}
+.v-faq h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;margin-bottom:18px}
+.v-faq details{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.v-faq summary{font-weight:600;cursor:pointer;font-size:15px}
+.v-faq details[open] summary{margin-bottom:10px}
+.v-faq p{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+@media(max-width:640px){.v-hero h1{font-size:30px}.v-table{font-size:12px}.v-table th,.v-table td{padding:10px 8px}.calc-row,.calc-result{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"EV Hub India","url":"https://wibest.in/ev/","description":"Compare electric cars, scooters and charging in India."}</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="v-wrap">
+  <section class="v-hero">
+    <h1>India's <span>EV Hub</span></h1>
+    <p>Electric cars, e-scooters, charging stations, and a real cost calculator — make the EV switch with full information. FAME-III subsidies + state incentives included.</p>
+    <div class="v-tabs">
+      <button class="v-tab active" data-tab="cars">Electric Cars</button>
+      <button class="v-tab" data-tab="scooters">Scooters & Bikes</button>
+      <button class="v-tab" data-tab="charging">Charging Networks</button>
+      <button class="v-tab" data-tab="cost">EV vs Petrol Calculator</button>
+    </div>
+  </section>
+
+  <div class="tab-pane active" id="cars">
+    <div class="v-intro">
+      <h2>Electric cars in India 2025 — buyer's reality check</h2>
+      <p>India's EV-car market crossed 100,000 annual units in 2024, led by Tata. <strong>The decision rarely hinges on price alone</strong> — real-world range, charging infrastructure in your city, and total cost of ownership over 5 years matter more. Below: top 8 EV cars sold in India, with on-road prices, ARAI-claimed range, real-world range (typically 70-80% of claimed), and warranty terms.</p>
+    </div>
+    <table class="v-table">
+      <thead><tr><th>Model</th><th>Range (ARAI / Real)</th><th>Battery</th><th>Ex-showroom</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="item">Tata Nexon EV Max</td><td>453 km / 320 km</td><td>40.5 kWh</td><td class="price">₹16.5 - 20.5 L</td><td class="star">★ 4.5</td><td><a class="cta" href="https://ev.tatamotors.com/nexon-ev/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Tata Punch EV</td><td>421 km / 290 km</td><td>35 kWh</td><td class="price">₹10.5 - 15 L</td><td class="star">★ 4.6</td><td><a class="cta" href="https://ev.tatamotors.com/punch-ev/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Mahindra XUV400 EV</td><td>456 km / 320 km</td><td>39.4 kWh</td><td class="price">₹15.5 - 19 L</td><td class="star">★ 4.4</td><td><a class="cta" href="https://auto.mahindra.com/suv/xuv400-ev.html" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">MG ZS EV</td><td>461 km / 330 km</td><td>50.3 kWh</td><td class="price">₹18.9 - 24.4 L</td><td class="star">★ 4.4</td><td><a class="cta" href="https://www.mgmotor.co.in/vehicles/the-new-zsev" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Hyundai Creta Electric</td><td>473 km / 340 km</td><td>51.4 kWh</td><td class="price">₹18 - 24 L</td><td class="star">★ 4.5</td><td><a class="cta" href="https://www.hyundai.com/in/en/electric/creta-electric" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">MG Comet EV</td><td>230 km / 175 km</td><td>17.3 kWh</td><td class="price">₹7.5 - 10 L</td><td class="star">★ 4.2</td><td><a class="cta" href="https://www.mgmotor.co.in/vehicles/comet-ev" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">BYD Atto 3</td><td>521 km / 380 km</td><td>60.5 kWh</td><td class="price">₹24.5 - 33.5 L</td><td class="star">★ 4.5</td><td><a class="cta" href="https://www.bydauto.co.in/en/atto-3.html" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Tata Curvv EV</td><td>502 km / 370 km</td><td>55 kWh</td><td class="price">₹17.5 - 22 L</td><td class="star">★ 4.5</td><td><a class="cta" href="https://ev.tatamotors.com/curvv-ev/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-pane" id="scooters">
+    <div class="v-intro">
+      <h2>Electric scooters — already cheaper than petrol over 3 years</h2>
+      <p>An electric scooter pays back its premium over petrol within 18-24 months in fuel savings. <strong>Range anxiety is overblown for most commuters</strong> — average daily ride is 25-30 km, well within any modern e-scooter's 80-130 km range. Below: top 8 e-scooters with FAME-III post-subsidy prices.</p>
+    </div>
+    <table class="v-table">
+      <thead><tr><th>Model</th><th>Range</th><th>Top Speed</th><th>Price (post subsidy)</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="item">Ola S1 Pro Gen 3</td><td>195 km</td><td>120 km/h</td><td class="price">₹1.20 L</td><td class="star">★ 4.3</td><td><a class="cta" href="https://www.olaelectric.com/s1-pro" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Ather 450X (3.7 kWh)</td><td>150 km</td><td>90 km/h</td><td class="price">₹1.45 L</td><td class="star">★ 4.7</td><td><a class="cta" href="https://www.atherenergy.com/450x" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Ather Rizta</td><td>123 km</td><td>80 km/h</td><td class="price">₹1.30 L</td><td class="star">★ 4.6</td><td><a class="cta" href="https://www.atherenergy.com/rizta" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">TVS iQube ST 5.1 kWh</td><td>145 km</td><td>82 km/h</td><td class="price">₹1.59 L</td><td class="star">★ 4.5</td><td><a class="cta" href="https://www.tvsmotor.com/tvs-iqube" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Bajaj Chetak 3503</td><td>153 km</td><td>73 km/h</td><td class="price">₹1.27 L</td><td class="star">★ 4.4</td><td><a class="cta" href="https://www.chetak.com/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Hero Vida V2 Pro</td><td>165 km</td><td>80 km/h</td><td class="price">₹1.49 L</td><td class="star">★ 4.3</td><td><a class="cta" href="https://www.vidaworld.com/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Suzuki e-Access</td><td>95 km</td><td>71 km/h</td><td class="price">₹1.10 L</td><td class="star">★ 4.2</td><td><a class="cta" href="https://www.suzukimotorcycle.co.in/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+        <tr><td class="item">Revolt RV400 (e-bike)</td><td>150 km</td><td>85 km/h</td><td class="price">₹1.38 L</td><td class="star">★ 4.4</td><td><a class="cta" href="https://www.revoltmotors.com/" target="_blank" rel="nofollow sponsored noopener">Visit</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-pane" id="charging">
+    <div class="v-intro">
+      <h2>EV charging networks in India — coverage explained</h2>
+      <p>Public charging in India is fragmented across 8 major operators. <strong>For long highway trips, Tata Power EZ and Statiq are the most reliable</strong> on golden quadrilateral routes. For city use, your home AC charger covers 90% of needs.</p>
+    </div>
+    <table class="v-table">
+      <thead><tr><th>Network</th><th>Stations</th><th>Coverage</th><th>App</th><th>Pricing/kWh</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="item">Tata Power EZ Charge</td><td>5,500+</td><td>Pan-India</td><td>Tata Power EZ</td><td>₹16-22</td><td><a class="cta" href="https://www.tatapower.com/business/ev-charging-solution" target="_blank" rel="nofollow noopener">Visit</a></td></tr>
+        <tr><td class="item">Statiq</td><td>7,000+</td><td>Pan-India + highways</td><td>Statiq</td><td>₹15-20</td><td><a class="cta" href="https://www.statiq.in/" target="_blank" rel="nofollow noopener">Visit</a></td></tr>
+        <tr><td class="item">Ather Grid</td><td>2,500+</td><td>Cities + intercity</td><td>Ather</td><td>Free for owners</td><td><a class="cta" href="https://www.atherenergy.com/atherspace" target="_blank" rel="nofollow noopener">Visit</a></td></tr>
+        <tr><td class="item">ChargeZone</td><td>3,000+</td><td>South + West India strong</td><td>ChargeZone</td><td>₹14-18</td><td><a class="cta" href="https://chargezone.co.in/" target="_blank" rel="nofollow noopener">Visit</a></td></tr>
+        <tr><td class="item">Jio-bp Pulse</td><td>3,500+</td><td>Pan-India + petrol pumps</td><td>Jio-bp</td><td>₹15-19</td><td><a class="cta" href="https://www.jiobppulse.com/" target="_blank" rel="nofollow noopener">Visit</a></td></tr>
+        <tr><td class="item">Ola Hypercharger</td><td>4,000+</td><td>For Ola scooter owners</td><td>Ola Electric</td><td>Subscription</td><td><a class="cta" href="https://www.olaelectric.com/hypercharger" target="_blank" rel="nofollow noopener">Visit</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-pane" id="cost">
+    <div class="calc">
+      <h3>EV vs Petrol — 5-year cost calculator</h3>
+      <div class="calc-row">
+        <div class="calc-field"><label>Daily km</label><input type="number" id="ev-km" value="40" min="5"></div>
+        <div class="calc-field"><label>Petrol ₹/litre</label><input type="number" id="ev-pp" value="105" min="50"></div>
+        <div class="calc-field"><label>Petrol mileage (km/l)</label><input type="number" id="ev-pm" value="20" min="5"></div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-field"><label>EV consumption (km/kWh)</label><input type="number" id="ev-cons" value="6" step="0.5"></div>
+        <div class="calc-field"><label>Electricity ₹/unit</label><input type="number" id="ev-rate" value="8" min="1"></div>
+        <div class="calc-field"><label>Years to compute</label><input type="number" id="ev-yrs" value="5" min="1" max="10"></div>
+      </div>
+      <div class="calc-result">
+        <div class="calc-cell"><div class="num" id="ev-petrol-cost">₹—</div><div class="lbl">Petrol fuel cost</div></div>
+        <div class="calc-cell"><div class="num" id="ev-ev-cost">₹—</div><div class="lbl">EV electricity cost</div></div>
+        <div class="calc-cell"><div class="num" id="ev-savings">₹—</div><div class="lbl">You save</div></div>
+      </div>
+    </div>
+    <div class="v-intro">
+      <h2>How to read this calculator</h2>
+      <p>Default numbers reflect a typical Bangalore commuter — 40 km/day, ₹105/L petrol, 20 km/L petrol mileage. EV consumption of 6 km/kWh is realistic across Tata Nexon EV, MG ZS EV, Mahindra XUV400 EV. Home electricity slab in most cities is ₹6-9/unit; commercial chargers add ₹10-15/unit.</p>
+      <p><strong>EVs typically pay back their price premium in 4-5 years</strong> for a daily commuter. If you drive less than 8,000 km/year, ICE may still be cheaper purely on fuel — but you also save on service costs (no oil changes, fewer brake-pad replacements, no clutch).</p>
+    </div>
+  </div>
+
+  <div class="v-lead">
+    <h3>Need help choosing the right EV?</h3>
+    <p>Our team will recommend cars or scooters that match your daily km, charging access, and budget — free, no spam.</p>
+    <div data-wib-lead data-entity="EV Help" data-category="general" style="max-width:520px;margin:0 auto;text-align:left"></div>
+  </div>
+
+  <section class="v-faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is FAME-III subsidy still active?</summary><p>Yes. FAME-III runs through Mar 2026 and provides ₹10,000 per kWh subsidy on e-scooters (capped at 15% of vehicle price) and direct purchase incentives on e-cars. Many states (Maharashtra, Delhi, Gujarat, Karnataka, Kerala, Telangana) add state-level subsidies on top.</p></details>
+    <details><summary>How long do EV batteries last?</summary><p>Modern Li-ion battery packs are warranted for 8 years / 1,60,000 km by most manufacturers. Real-world degradation is around 10-15% over 5 years with normal use. Battery replacement after warranty costs ₹3-7 lakh — but few owners ever hit that.</p></details>
+    <details><summary>Can I install a home charger? What does it cost?</summary><p>Yes. A 7.4 kW AC home charger (Type-2) costs ₹35-55k installed in India. You'll need a dedicated 32A breaker. Installation takes 4-6 hours. Most EV brands include a basic charger free with the car purchase.</p></details>
+    <details><summary>What about EV insurance?</summary><p>Premiums are ~10-15% higher than equivalent petrol cars due to expensive battery replacement. ACKO and Digit lead EV insurance with battery-specific cover. See our <a href="/insurance/">Insurance comparison</a>.</p></details>
+    <details><summary>Are EVs really better for the environment in India where coal generates 70% of power?</summary><p>Yes, but the gap narrows. Even on India's coal-heavy grid, EVs emit ~30% less CO₂ per km than petrol cars (well-to-wheel). As renewables grow, the gap widens further.</p></details>
+  </section>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/components.js"></script>
+<script src="/polish.js" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/widgets.js" defer></script>
+<script>
+document.querySelectorAll('.v-tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    var tab = t.dataset.tab;
+    document.querySelectorAll('.v-tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.tab-pane').forEach(function(x){x.classList.remove('active')});
+    t.classList.add('active');
+    document.getElementById(tab).classList.add('active');
+    if(typeof gtag === 'function') gtag('event', 'ev_tab', { tab: tab });
+  });
+});
+function fmt(n){if(n>=10000000)return '\u20B9'+(n/10000000).toFixed(1)+' Cr';if(n>=100000)return '\u20B9'+(n/100000).toFixed(1)+' L';return '\u20B9'+Math.round(n).toLocaleString('en-IN');}
+function calcEV(){
+  var km=+document.getElementById('ev-km').value||0, pp=+document.getElementById('ev-pp').value||0, pm=+document.getElementById('ev-pm').value||1;
+  var cons=+document.getElementById('ev-cons').value||1, rate=+document.getElementById('ev-rate').value||0, yrs=+document.getElementById('ev-yrs').value||0;
+  var totalKm=km*365*yrs;
+  var petrolCost=(totalKm/pm)*pp;
+  var evCost=(totalKm/cons)*rate;
+  document.getElementById('ev-petrol-cost').textContent=fmt(petrolCost);
+  document.getElementById('ev-ev-cost').textContent=fmt(evCost);
+  document.getElementById('ev-savings').textContent=fmt(petrolCost-evCost);
+}
+['ev-km','ev-pp','ev-pm','ev-cons','ev-rate','ev-yrs'].forEach(function(id){document.getElementById(id).addEventListener('input',calcEV)});
+calcEV();
+</script>
+</body>
+</html>
