@@ -28,6 +28,8 @@
     { href: '/insurance/',    label: 'Insurance' },
     { href: '/loans/',        label: 'Loans' },
     { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940' }, // हिंदी
+    { href: '/ta/',           label: '\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD' }, // தமிழ்
+    { href: '/te/',           label: '\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41' }, // తెలుగు
     { href: '/accessories',  label: 'Accessories' },
     { href: '/restaurants',  label: 'Restaurants' },
     { href: '/real-estate',  label: 'Real Estate' },
