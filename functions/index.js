@@ -241,7 +241,14 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ role: 'user', parts: [{ text: system + '\n\n' + user }] }],
-        generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
+        // 2.5 models allocate "thinking" tokens from the output budget by default,
+        // which was truncating replies to 1-2 sentences. Disable thinking for
+        // comparison answers (they don't need chain-of-thought) and raise budget.
+        generationConfig: {
+          temperature: 0.4,
+          maxOutputTokens: 2048,
+          thinkingConfig: { thinkingBudget: 0 }
+        }
       })
     });
     return apiRes.json();

@@ -73,9 +73,9 @@
     </div>
   </div>
 
-  <div class="wib-ad" data-slot="ai-comparison-page" style="margin-top:24px"></div>
-
   <div class="ai-out" id="aiOut"></div>
+
+  <div class="wib-ad" data-slot="ai-comparison-page" style="margin-top:24px"></div>
   <div class="ai-disclaimer">AI answers are guidance, not financial/medical advice. Always cross-check critical decisions.</div>
 </main>
 
@@ -106,6 +106,8 @@ async function ask(q){
   out.classList.add('show');
   out.innerHTML = '<div class="ai-loading"></div>WIBest AI is thinking…';
   btn.disabled = true; btn.textContent = 'Thinking…';
+  // Scroll the output into view so the user sees the answer arrive
+  setTimeout(function(){ out.scrollIntoView({ behavior:'smooth', block:'start' }); }, 50);
   try{
     const r = await fetch(ENDPOINT, {
       method:'POST',
