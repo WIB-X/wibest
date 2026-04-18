@@ -2,83 +2,163 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — WIB</title>
+<title>About WIB — Built by an Indian, for Indians</title>
+<meta name="description" content="WIB is India's independent comparison platform — schools, colleges, hospitals, phones, cars, travel and more. No paid placements, no sponsored rankings, no spam. One person trying to make every 'which is best?' question easier to answer.">
+<meta property="og:title" content="About WIB">
+<meta property="og:description" content="One person, building India's most honest comparison platform. Independent. Open. For everyone.">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/about/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/polish.css">
 <style>
-.page{max-width:800px;margin:calc(var(--nav-height)+var(--cat-height)+48px) auto 60px;padding:0 24px}
-.page h1{font-family:'Outfit',sans-serif;font-size:36px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
-.page h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;margin-top:40px;margin-bottom:12px}
-.page p{color:var(--text-secondary);font-size:15px;line-height:1.8;margin-bottom:16px}
-.values{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:24px}
-.value-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:background .3s}
-.value-card h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;margin-bottom:8px}
-.value-card p{font-size:13px;margin-bottom:0}
-.roadmap{margin-top:24px}
-.roadmap-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
-.roadmap-status{width:80px;flex-shrink:0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.roadmap-status.live{color:var(--green)}.roadmap-status.soon{color:var(--accent)}.roadmap-status.planned{color:var(--text-muted)}
-.roadmap-text{font-size:14px}
+.about-wrap{max-width:840px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.about-hero{display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:center;padding:32px 0 48px;border-bottom:1px solid var(--border)}
+.about-hero h1{font-family:'Outfit',sans-serif;font-size:42px;font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin-bottom:14px}
+.about-hero h1 span{background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-hero p{color:var(--text-secondary);font-size:17px;line-height:1.6}
+.about-illu{aspect-ratio:1;background:var(--bg-card);border-radius:24px;padding:18px;border:1px solid var(--border);box-shadow:0 8px 24px rgba(15,23,42,.06)}
+.about-illu svg{width:100%;height:100%;display:block}
+.section-h{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;letter-spacing:-0.02em;margin:48px 0 8px}
+.section-sub{color:var(--text-secondary);font-size:15px;line-height:1.7;margin-bottom:20px;max-width:680px}
+.story{font-size:16px;line-height:1.85;color:var(--text-secondary)}
+.story p{margin-bottom:16px}
+.story strong{color:var(--text-primary)}
+.story-callout{background:linear-gradient(135deg,#eff6ff,#faf5ff);border-left:4px solid var(--accent);padding:18px 22px;border-radius:0 12px 12px 0;margin:24px 0;font-size:16px;line-height:1.7;color:var(--text-primary)}
+[data-theme="dark"] .story-callout{background:linear-gradient(135deg,#1e293b,#27272a);color:#fafafa}
+.principles{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:20px}
+.principle{padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;transition:all .18s}
+.principle:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,23,42,.08);border-color:var(--accent)}
+.principle .pic{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#dbeafe,#ddd6fe);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px}
+.principle h3{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text-primary)}
+.principle p{font-size:13px;color:var(--text-secondary);line-height:1.55;margin:0}
+.timeline{margin:24px 0}
+.tl{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid var(--border)}
+.tl-tag{flex:0 0 90px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+.tl-tag.live{color:#16a34a}.tl-tag.now{color:var(--accent)}.tl-tag.next{color:#9333ea}.tl-tag.future{color:var(--text-muted)}
+.tl-text{font-size:14px;color:var(--text-secondary);line-height:1.55}
+.tl-text strong{color:var(--text-primary)}
+.cta-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.cta-row a{padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;transition:all .15s}
+.cta-row a.primary{background:var(--accent);color:#fff}
+.cta-row a.primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.cta-row a.secondary{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border)}
+.cta-row a.secondary:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:760px){.about-hero{grid-template-columns:1fr;gap:24px}.about-illu{max-width:240px;margin:0 auto}.about-hero h1{font-size:30px}}
 </style>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
-<link rel="canonical" href="https://wibest.in/about/">
-<meta name="description" content="WIB is India's independent comparison platform for schools, colleges, electronics, cars, hospitals, and travel. Data-driven. Ad-light. Built for India.">
-<meta property="og:title" content="About WIB — India's Comparison Platform">
-<meta property="og:description" content="Learn about WIB — India's independent platform for comparing schools, colleges, electronics, cars, hospitals, and travel.">
-<meta property="og:url" content="https://wibest.in/about/">
-<meta property="og:image" content="https://wibest.in/og-default.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@wibest_in">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"WIB","url":"https://wibest.in","logo":"https://wibest.in/favicon.svg","description":"India's independent comparison platform for schools, colleges, electronics, cars, hospitals, and travel.","sameAs":[]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"WIB","url":"https://wibest.in","logo":"https://wibest.in/favicon.svg","description":"India's independent comparison platform — built by one person, for everyone.","sameAs":[]}</script>
 <script src="/affiliate-config.js" async></script>
 <script src="/ads.js" async></script>
 </head>
 <body>
 <div id="wib-nav-placeholder"></div>
 
-<div class="page">
-  <h1>About WIB</h1>
-  <p>WIB is India's unified comparison platform. We help people make better decisions across every major life choice — from schools and colleges to electronics, cars, and places to live.</p>
-  <p>We believe comparison data should be free, transparent, and independent. No sponsored listings, no paid placements, no hidden agendas.</p>
+<main class="about-wrap">
 
-  <h2>Our Values</h2>
-  <div class="values">
-    <div class="value-card"><h3>Independence</h3><p>No school, college, or brand pays us to rank them higher. Data determines rankings.</p></div>
-    <div class="value-card"><h3>Transparency</h3><p>Every data point is sourced from public information or community reviews. Nothing is hidden.</p></div>
-    <div class="value-card"><h3>Accessibility</h3><p>Free for everyone. No paywalls, no premium tiers for basic comparison data.</p></div>
-    <div class="value-card"><h3>Community</h3><p>Reviews from real parents, students, and users. No fake reviews, no paid testimonials.</p></div>
+  <section class="about-hero">
+    <div>
+      <h1>Built because <span>I needed it.</span><br>Now it's for everyone.</h1>
+      <p>WIB started from a simple frustration: every time I searched for the "best" of anything in India — schools, phones, hospitals, weekend trips — I'd get spammy listicles, paid rankings, or one-sided reviews. So I built the comparison platform I wished existed.</p>
+    </div>
+    <div class="about-illu" aria-hidden="true">
+      <!-- Friendly cartoon-style illustration: laptop comparing things -->
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#dbeafe"/>
+            <stop offset="100%" stop-color="#ede9fe"/>
+          </linearGradient>
+          <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2563eb"/>
+            <stop offset="100%" stop-color="#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <circle cx="120" cy="120" r="110" fill="url(#bg)"/>
+        <!-- Mountains in background -->
+        <path d="M0,170 L60,110 L100,140 L140,90 L200,150 L240,120 L240,240 L0,240 Z" fill="#fff" opacity="0.5"/>
+        <!-- Laptop body -->
+        <rect x="60" y="120" width="120" height="70" rx="8" fill="#1e293b"/>
+        <rect x="68" y="128" width="104" height="54" rx="3" fill="url(#screen)"/>
+        <!-- Comparison rows on screen -->
+        <rect x="76" y="138" width="36" height="6" rx="2" fill="#fff" opacity="0.85"/>
+        <rect x="120" y="138" width="44" height="6" rx="2" fill="#fff" opacity="0.6"/>
+        <rect x="76" y="150" width="44" height="6" rx="2" fill="#fff" opacity="0.85"/>
+        <rect x="128" y="150" width="36" height="6" rx="2" fill="#fff" opacity="0.6"/>
+        <rect x="76" y="162" width="32" height="6" rx="2" fill="#16a34a"/>
+        <rect x="116" y="162" width="48" height="6" rx="2" fill="#fff" opacity="0.4"/>
+        <!-- Laptop base -->
+        <rect x="50" y="186" width="140" height="8" rx="3" fill="#0f172a"/>
+        <!-- Floating compare icons -->
+        <circle cx="50" cy="78" r="22" fill="#fff" opacity="0.9"/>
+        <text x="50" y="86" text-anchor="middle" font-size="22" font-weight="700" fill="#2563eb">A</text>
+        <text x="89" y="86" text-anchor="middle" font-size="22" fill="#94a3b8">vs</text>
+        <circle cx="128" cy="78" r="22" fill="#fff" opacity="0.9"/>
+        <text x="128" y="86" text-anchor="middle" font-size="22" font-weight="700" fill="#9333ea">B</text>
+        <!-- Sparkles -->
+        <g fill="#fbbf24"><path d="M 200 60 L 204 68 L 212 72 L 204 76 L 200 84 L 196 76 L 188 72 L 196 68 Z"/></g>
+        <g fill="#a855f7" opacity="0.8"><circle cx="40" cy="190" r="4"/><circle cx="200" cy="190" r="3"/><circle cx="220" cy="100" r="3"/></g>
+      </svg>
+    </div>
+  </section>
+
+  <h2 class="section-h">The story</h2>
+  <div class="story">
+    <p>A few years ago I was looking for a school for someone in the family. Then a phone. Then a hospital. Each time I'd open Google and get the same kind of result — a generic "Top 10" article ranked by who paid the SEO agency most, or a forum thread from 2017, or a brand page disguised as a review.</p>
+
+    <div class="story-callout">
+      I kept thinking: <em>"Why isn't there one place where I can just compare everything honestly, side by side, with real data, for India?"</em>
+    </div>
+
+    <p>So I started building it. WIB is that place. Schools, colleges, hospitals, phones, cars, weekend trips, washing machines, anything you have to choose between — compared transparently, ranked by data, with no paid promotions clouding the results.</p>
+
+    <p><strong>It's just me right now.</strong> One person, building this with the help of AI tools to scale what would normally take a team of fifteen. That's not a weakness — it's the whole point. AI lets a single Indian builder make something that competes with venture-funded sites, without the venture funding, without the spam, without the conflict of interest.</p>
+
+    <p>If WIB ever recommends something to you, it's because the data said so — never because someone wired us money to say so.</p>
   </div>
 
-  <h2>Category Roadmap</h2>
-  <div class="roadmap">
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Schools — 70+ schools across 10+ cities</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Colleges — 150+ colleges across 8+ cities (Engineering, Medical, Arts, Commerce)</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Electronics — Phones, laptops, tablets, and accessories compared</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Cars & Bikes — 50+ vehicles compared across brands and budgets</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Hospitals — 100+ hospitals across major cities with speciality ratings</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Travel — Destinations, hotels, and best-time-to-visit guides</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Restaurants — Dining options across cities with cuisine and budget filters</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Real Estate — Properties and neighbourhoods compared by city</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Jobs — Job listings across cities and industries</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Accessories — Phone cases, chargers, bags and more compared</div></div>
-    <div class="roadmap-item"><div class="roadmap-status live">Live</div><div class="roadmap-text">Places to Live — Neighbourhood-level cost, safety, and amenity scores</div></div>
-    <div class="roadmap-item"><div class="roadmap-status soon">Soon</div><div class="roadmap-text">Insurance — Health, life, and vehicle plans compared</div></div>
-    <div class="roadmap-item"><div class="roadmap-status planned">Planned</div><div class="roadmap-text">Financial Products — Credit cards, loans, and savings accounts</div></div>
+  <h2 class="section-h">What WIB stands for</h2>
+  <p class="section-sub">Four principles that everything we do has to pass through.</p>
+  <div class="principles">
+    <div class="principle"><div class="pic">\u2696\uFE0F</div><h3>Independent</h3><p>No advertiser ranks higher because they pay. Data and reviews drive every list.</p></div>
+    <div class="principle"><div class="pic">\u{1F50D}</div><h3>Transparent</h3><p>Every rating shows where the data came from. No black-box scores.</p></div>
+    <div class="principle"><div class="pic">\u{1F30F}</div><h3>Open to all</h3><p>No paywalls, no premium tier, no signup needed to see comparisons.</p></div>
+    <div class="principle"><div class="pic">\u{1F1EE}\u{1F1F3}</div><h3>India-first</h3><p>Indian prices, Indian models, Indian context. Not a US site translated.</p></div>
   </div>
 
-  <h2>Contact</h2>
-  <p>Have feedback, a correction, or a partnership inquiry? Reach us at <a href="mailto:hello@wibest.in" style="color:var(--accent)">hello@wibest.in</a> or visit our <a href="/contact" style="color:var(--accent)">contact page</a>.</p>
-</div>
+  <h2 class="section-h">Where we are</h2>
+  <p class="section-sub">A snapshot of what's live, what's improving, and what's coming next.</p>
+  <div class="timeline">
+    <div class="tl"><div class="tl-tag live">Live</div><div class="tl-text"><strong>97 in-depth blog guides</strong> — across schools, colleges, electronics, cars, hospitals, travel, home appliances</div></div>
+    <div class="tl"><div class="tl-tag live">Live</div><div class="tl-text"><strong>700+ institutions</strong> compared — schools, colleges, hospitals across 14+ Indian cities</div></div>
+    <div class="tl"><div class="tl-tag live">Live</div><div class="tl-text"><strong>WIBest AI</strong> — ask any comparison question, get instant India-specific answers (powered by Gemini)</div></div>
+    <div class="tl"><div class="tl-tag live">Live</div><div class="tl-text"><strong>Phone Recommendation Quiz</strong> — 3 questions, perfect picks for your budget</div></div>
+    <div class="tl"><div class="tl-tag live">Live</div><div class="tl-text"><strong>Hindi (हिंदी) edition</strong> — translated guides for non-English readers</div></div>
+    <div class="tl"><div class="tl-tag now">Now</div><div class="tl-text">Expanding South India coverage — Coimbatore, Madurai, Trichy, Kochi, Mysore, Mangalore, Vizag</div></div>
+    <div class="tl"><div class="tl-tag now">Now</div><div class="tl-text">Real reviews from verified buyers + AggregateRating snippets in Google search</div></div>
+    <div class="tl"><div class="tl-tag next">Next</div><div class="tl-text">Live Amazon price tracker with email alerts when prices drop</div></div>
+    <div class="tl"><div class="tl-tag next">Next</div><div class="tl-text">More vernacular editions — Tamil, Telugu, Kannada, Malayalam, Bengali</div></div>
+    <div class="tl"><div class="tl-tag future">Future</div><div class="tl-text">WhatsApp bot — ask comparison questions over chat, get answers instantly</div></div>
+    <div class="tl"><div class="tl-tag future">Future</div><div class="tl-text">School admission help, hospital appointment booking, college counseling</div></div>
+  </div>
+
+  <h2 class="section-h">Get involved</h2>
+  <p class="section-sub">WIB grows when people share what they know. Three easy ways to help:</p>
+  <div class="cta-row">
+    <a href="/contact" class="primary">Suggest an institution</a>
+    <a href="/blog" class="secondary">Read the guides</a>
+    <a href="/connect" class="secondary">Submit a review</a>
+  </div>
+</main>
+
 <div id="wib-footer-placeholder"></div>
-
 <script src="/config.js"></script>
 <script src="/components.js"></script>
 <script src="/polish.js" defer></script>
-<script src="/chat-widget.js"></script>
 </body>
 </html>

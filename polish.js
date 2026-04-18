@@ -13,14 +13,19 @@
 
   // Insert announcement bar at top of body (once, dismissible-per-session)
   function mountAnnounce() {
-    if (sessionStorage.getItem('wib-announce-dismissed')) return;
+    if (sessionStorage.getItem('wib-announce-dismissed')) {
+      document.body.classList.remove('wib-has-announce');
+      return;
+    }
     if (document.querySelector('.wib-announce')) return;
     var bar = document.createElement('div');
     bar.className = 'wib-announce';
     bar.innerHTML = '\u2728 New: Try our <a href="/compare/ai/">AI Compare</a> tool \u2014 get instant India-specific recommendations <button class="wib-announce-close" aria-label="Dismiss">\u00D7</button>';
     document.body.insertBefore(bar, document.body.firstChild);
+    document.body.classList.add('wib-has-announce');
     bar.querySelector('.wib-announce-close').onclick = function () {
       bar.remove();
+      document.body.classList.remove('wib-has-announce');
       sessionStorage.setItem('wib-announce-dismissed', '1');
     };
   }
