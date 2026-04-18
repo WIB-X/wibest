@@ -16,8 +16,17 @@
       enabled: false
     },
     earnkaro: {
-      ref: '5189767',         // EarnKaro referral id (Balachandran S)
-      enabled: true
+      // EarnKaro does NOT expose a public URL-rewrite endpoint.
+      // The /enkr2020/ path returns 403 for direct construction.
+      // To use EarnKaro you must either:
+      //   1. Call their Authenticated API (login + API key)
+      //      to convert each Flipkart URL → short ekaro.in/XXXX
+      //   2. Manually convert URLs in their Affiliaters dashboard
+      //      and store the short URL as the link
+      // See affiliate-config.js notes; we disable auto-wrap until one
+      // of those two flows is built. The ref is kept for future use.
+      ref: '5189767',
+      enabled: false
     },
     admitad: {
       adminitad_uid: '',      // <-- paste your Admitad campaign/website id
