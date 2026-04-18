@@ -16,8 +16,8 @@
       enabled: false
     },
     earnkaro: {
-      ref: '',                // <-- paste your EarnKaro referral id here
-      enabled: false
+      ref: '5189767',         // EarnKaro referral id (Balachandran S)
+      enabled: true
     },
     admitad: {
       adminitad_uid: '',      // <-- paste your Admitad campaign/website id
