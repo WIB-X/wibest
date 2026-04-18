@@ -1,0 +1,160 @@
+/* WIB Polish Layer — adds professional finish on top of styles.css.
+   Loaded after styles.css so these rules win.
+   Do not edit minor details here without checking how they cascade. */
+
+/* ──────────────── Trust Strip ──────────────── */
+.wib-trust{
+  background:linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-secondary) 100%);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:24px 20px;text-align:center;
+}
+.wib-trust-row{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+.wib-trust-item{display:flex;flex-direction:column;align-items:center;gap:2px}
+.wib-trust-num{font-family:'Outfit',sans-serif;font-size:24px;font-weight:800;color:var(--text-primary);line-height:1;letter-spacing:-0.02em}
+.wib-trust-lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+@media(max-width:640px){.wib-trust-row{gap:24px}.wib-trust-num{font-size:20px}}
+
+/* ──────────────── Author Byline Card ──────────────── */
+.wib-byline{
+  display:flex;align-items:center;gap:14px;padding:14px 18px;
+  background:var(--bg-secondary);border:1px solid var(--border);
+  border-radius:12px;margin:20px 0 32px;font-size:13px;
+}
+.wib-byline-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),#9333ea);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;flex-shrink:0;
+}
+.wib-byline-meta{display:flex;flex-direction:column;gap:2px;min-width:0}
+.wib-byline-name{font-weight:600;color:var(--text-primary);font-size:14px}
+.wib-byline-sub{color:var(--text-muted);font-size:12px}
+.wib-byline-badge{
+  margin-left:auto;background:#16a34a;color:#fff;
+  padding:4px 10px;border-radius:100px;font-size:11px;
+  font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+}
+@media(max-width:480px){.wib-byline-badge{display:none}}
+
+/* ──────────────── Polished Card Hover ──────────────── */
+.cat-card,.bc,.related-card,.dest-card,.hi-card{
+  transition:transform .18s cubic-bezier(.4,0,.2,1),box-shadow .18s,border-color .15s !important;
+  will-change:transform;
+}
+.cat-card:hover,.bc:hover,.related-card:hover,.dest-card:hover,.hi-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(15,23,42,.10),0 2px 6px rgba(15,23,42,.05) !important;
+  border-color:var(--accent) !important;
+}
+[data-theme="dark"] .cat-card:hover,[data-theme="dark"] .bc:hover,[data-theme="dark"] .related-card:hover{
+  box-shadow:0 12px 32px rgba(0,0,0,.5) !important;
+}
+
+/* ──────────────── Better Section Headings ──────────────── */
+.section-h{
+  font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;
+  letter-spacing:-0.02em;color:var(--text-primary);margin-bottom:6px;line-height:1.2;
+}
+.section-sub{font-size:14px;color:var(--text-secondary);margin-bottom:24px;max-width:560px}
+.section-eyebrow{
+  display:inline-block;font-size:11px;font-weight:700;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;
+  padding:4px 10px;background:var(--accent-light,rgba(37,99,235,.1));border-radius:100px;
+}
+
+/* ──────────────── Premium Buttons ──────────────── */
+.btn-primary,.btn-secondary{
+  position:relative;overflow:hidden;font-family:inherit;font-weight:600;
+  transition:all .18s ease;letter-spacing:0.01em;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent) 0%,#1d4ed8 100%) !important;
+  box-shadow:0 4px 14px rgba(37,99,235,.25);
+}
+.btn-primary:hover{
+  transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.35);
+}
+.btn-primary::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transition:left .5s;
+}
+.btn-primary:hover::after{left:100%}
+
+/* ──────────────── Trust Bar in Nav ──────────────── */
+.wib-announce{
+  background:linear-gradient(90deg,#1e40af,#7c3aed);
+  color:#fff;text-align:center;padding:8px 16px;
+  font-size:13px;font-weight:500;
+  position:relative;
+}
+.wib-announce a{color:#fff;text-decoration:underline;font-weight:600}
+.wib-announce-close{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  background:none;border:0;color:#fff;cursor:pointer;font-size:18px;line-height:1;opacity:.7;
+}
+.wib-announce-close:hover{opacity:1}
+@media(max-width:480px){.wib-announce{font-size:12px;padding:6px 36px 6px 12px}}
+
+/* ──────────────── Search-in-nav Bar ──────────────── */
+.nav-search{
+  position:relative;flex:0 0 280px;max-width:280px;
+}
+.nav-search input{
+  width:100%;padding:8px 14px 8px 38px;border:1.5px solid var(--border);
+  border-radius:100px;background:var(--bg-secondary);color:var(--text-primary);
+  font:inherit;font-size:13px;transition:all .15s;
+}
+.nav-search input:focus{outline:none;border-color:var(--accent);background:var(--bg-card);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.nav-search::before{
+  content:'';position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;background:no-repeat center/contain;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+}
+@media(max-width:900px){.nav-search{display:none}}
+
+/* ──────────────── Featured-In Strip ──────────────── */
+.wib-featured{padding:32px 20px;text-align:center;border-bottom:1px solid var(--border)}
+.wib-featured-lbl{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+.wib-featured-row{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap;opacity:.55}
+.wib-featured-row span{font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;color:var(--text-secondary)}
+@media(max-width:640px){.wib-featured-row{gap:20px}.wib-featured-row span{font-size:14px}}
+
+/* ──────────────── Toast Notifications ──────────────── */
+.wib-toast{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:#0f172a;color:#fff;padding:12px 20px;border-radius:8px;
+  font-size:14px;z-index:10002;opacity:0;transition:all .25s;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.wib-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.wib-toast.ok{background:#16a34a}
+.wib-toast.err{background:#dc2626}
+
+/* ──────────────── Sticky TOC for blog ──────────────── */
+@media(min-width:1100px){
+  .article{position:relative}
+  .toc{
+    position:sticky;top:140px;max-width:none !important;
+    margin:0 0 32px;
+  }
+}
+
+/* ──────────────── Improved typography hierarchy ──────────────── */
+body{font-feature-settings:"ss01","cv11";letter-spacing:-0.005em}
+h1,h2,h3,h4,.nav-logo,.section-h{font-feature-settings:"ss01"}
+
+/* ──────────────── Page transitions ──────────────── */
+@media(prefers-reduced-motion:no-preference){
+  main,.article,article,section{animation:wibFadeUp .35s ease both}
+}
+@keyframes wibFadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ──────────────── Hero polish ──────────────── */
+.hero{position:relative;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(800px 400px at 50% -10%,rgba(37,99,235,.10),transparent 60%);
+  z-index:0;
+}
+.hero > *{position:relative;z-index:1}

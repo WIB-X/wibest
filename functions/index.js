@@ -201,11 +201,13 @@ exports.refreshPrices = functions.pubsub
 // ── 8. AI Compare proxy (Gemini) ─────────────────────────────────────────────
 // Set GEMINI_API_KEY in functions/.env (or via Firebase secret manager)
 exports.compareAI = functions.https.onRequest(async (req, res) => {
-  // CORS
-  res.set('Access-Control-Allow-Origin', 'https://wibest.in');
+  // Permissive CORS — read-only API, no cookies, naturally rate-limited by Gemini cost.
+  res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type');
+  res.set('Access-Control-Max-Age', '3600');
   if (req.method === 'OPTIONS') return res.status(204).send('');
+  if (req.method === 'GET') return res.json({ status: 'ok', usage: 'POST { query: "..." }' });
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
 
   const apiKey = process.env.GEMINI_API_KEY;

@@ -23,8 +23,8 @@
   ];
 
   var MORE_LINKS = [
-    { href: '/quiz/',         label: 'Phone Quiz \u2728' },          // ✨
-    { href: '/compare/ai/',   label: 'AI Compare \u26A1' },          // ⚡
+    { href: '/quiz/',         label: 'Phone Quiz' },
+    { href: '/compare/ai/',   label: 'AI Compare' },
     { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940' }, // हिंदी
     { href: '/accessories',  label: 'Accessories' },
     { href: '/restaurants',  label: 'Restaurants' },

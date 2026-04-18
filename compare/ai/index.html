@@ -16,8 +16,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/polish.css">
 <style>
-.ai-wrap{max-width:760px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 100px;padding:0 20px}
+.ai-wrap{max-width:760px;margin:140px auto 100px;padding:0 20px}
+@media(max-width:768px){.ai-wrap{margin-top:120px}}
 .ai-hero{text-align:center;margin-bottom:32px}
 .ai-hero h1{font-family:'Outfit',sans-serif;font-size:34px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:10px;background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .ai-hero p{color:var(--text-secondary);font-size:16px;max-width:520px;margin:0 auto}
@@ -82,6 +84,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="/config.js"></script>
 <script src="/components.js"></script>
+<script src="/polish.js" defer></script>
 <script>
 // Lightweight markdown → HTML (headings, bullets, bold)
 function md(s){return s
