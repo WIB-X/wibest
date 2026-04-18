@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Loans in India — Home, Personal, Education, Car | WIB</title>
+<meta name="description" content="Compare home loans, personal loans, education loans, car loans, and credit cards from top Indian banks — HDFC, SBI, ICICI, Axis, Kotak. Lowest rates, instant approval, EMI calculator.">
+<meta property="og:title" content="Compare Loans in India — Best Rates by Bank">
+<meta property="og:description" content="Home, personal, education, car loans, credit cards — compared honestly. Lowest interest rates and EMI.">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wibest.in/loans/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compare Loans in India">
+<meta name="twitter:description" content="Lowest interest rates from top Indian banks.">
+<meta name="twitter:image" content="https://wibest.in/og-default.jpg">
+<link rel="canonical" href="https://wibest.in/loans/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/polish.css">
+<style>
+.ln-wrap{max-width:1100px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 60px;padding:0 24px}
+.ln-hero{text-align:center;padding:32px 0 40px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.ln-hero h1{font-family:'Outfit',sans-serif;font-size:40px;font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin-bottom:14px}
+.ln-hero h1 span{background:linear-gradient(135deg,#16a34a,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ln-hero p{color:var(--text-secondary);font-size:17px;max-width:640px;margin:0 auto 24px;line-height:1.6}
+.ln-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.ln-tab{padding:10px 22px;border-radius:100px;font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.ln-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 12px rgba(37,99,235,.25)}
+.ln-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
+.ln-intro{max-width:760px;margin:0 auto 28px;font-size:15px;line-height:1.75;color:var(--text-secondary)}
+.ln-intro h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:var(--text-primary);margin:24px 0 10px}
+.ln-intro p{margin-bottom:14px}
+.ln-intro strong{color:var(--text-primary)}
+.calc{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid var(--border);border-radius:14px;padding:24px;margin:0 auto 28px;max-width:760px}
+[data-theme="dark"] .calc{background:linear-gradient(135deg,#1e293b,#27272a)}
+.calc h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:14px;color:var(--text-primary)}
+.calc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.calc-field label{display:block;font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.calc-field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font:inherit;font-size:15px;background:var(--bg-card);color:var(--text-primary);box-sizing:border-box}
+.calc-field input:focus{outline:none;border-color:var(--accent)}
+.calc-result{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-top:16px;border-top:1px solid var(--border)}
+.calc-cell{text-align:center}
+.calc-cell .num{font-family:'Outfit',sans-serif;font-size:24px;font-weight:800;color:var(--accent)}
+.calc-cell .lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+.ln-table{width:100%;border-collapse:collapse;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px;margin-bottom:32px}
+.ln-table th{background:var(--bg-secondary);padding:14px 16px;text-align:left;font-weight:700;color:var(--text-primary);font-size:12px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.ln-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+.ln-table tr:last-child td{border-bottom:0}
+.ln-table .bank{font-weight:700;color:var(--text-primary);font-family:'Outfit',sans-serif}
+.ln-table .rate{color:#16a34a;font-weight:700}
+.ln-table .star{color:#f59e0b;font-weight:700}
+.ln-table .apply-btn{background:#16a34a;color:#fff;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;display:inline-block;transition:transform .15s}
+.ln-table .apply-btn:hover{transform:translateY(-1px);background:#15803d}
+.ln-lead{margin:32px 0 0;padding:28px;background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));border:1px solid var(--border);border-radius:14px;text-align:center}
+.ln-lead h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.ln-lead p{font-size:14px;color:var(--text-secondary);margin-bottom:16px}
+.ln-faq{margin-top:48px}
+.ln-faq h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:18px}
+.ln-faq details{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.ln-faq summary{font-weight:600;cursor:pointer;font-size:15px;color:var(--text-primary)}
+.ln-faq details[open] summary{margin-bottom:10px}
+.ln-faq p{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+@media(max-width:640px){.ln-hero h1{font-size:30px}.ln-table{font-size:12px}.ln-table th,.ln-table td{padding:10px 8px}.ln-table .apply-btn{padding:6px 12px;font-size:11px}.calc-row,.calc-result{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Compare Loans in India","url":"https://wibest.in/loans/","description":"Home, personal, education, car loans and credit cards comparison."}</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="ln-wrap">
+  <section class="ln-hero">
+    <h1>Compare <span>Loans</span> in India</h1>
+    <p>Home loans, personal loans, education loans, car loans, credit cards — find the lowest rates from top Indian banks. Free EMI calculator. No spam calls.</p>
+    <div class="ln-tabs" role="tablist">
+      <button class="ln-tab active" data-tab="home">Home Loan</button>
+      <button class="ln-tab" data-tab="personal">Personal Loan</button>
+      <button class="ln-tab" data-tab="education">Education Loan</button>
+      <button class="ln-tab" data-tab="car">Car Loan</button>
+      <button class="ln-tab" data-tab="card">Credit Card</button>
+    </div>
+  </section>
+
+  <!-- HOME -->
+  <div class="tab-pane active" id="home">
+    <div class="ln-intro">
+      <h2>Home loan — the biggest financial decision of your life</h2>
+      <p>A home loan typically runs 15-30 years. Even a 0.5% difference in interest rate can save you ₹5-10 lakh over the life of a ₹50 lakh loan. <strong>Always compare at least 4 banks before signing.</strong> The marketed "starting" rate is what's offered to top-CIBIL applicants — your actual rate depends on credit score, income, and the property type.</p>
+    </div>
+    <div class="calc">
+      <h3>Home loan EMI calculator</h3>
+      <div class="calc-row">
+        <div class="calc-field"><label>Loan amount (₹)</label><input type="number" id="hl-p" value="5000000" min="100000"></div>
+        <div class="calc-field"><label>Interest rate (%)</label><input type="number" id="hl-r" value="8.5" step="0.1" min="1"></div>
+        <div class="calc-field"><label>Tenure (years)</label><input type="number" id="hl-n" value="20" min="1" max="30"></div>
+      </div>
+      <div class="calc-result">
+        <div class="calc-cell"><div class="num" id="hl-emi">₹43,391</div><div class="lbl">Monthly EMI</div></div>
+        <div class="calc-cell"><div class="num" id="hl-tot">₹1.04 Cr</div><div class="lbl">Total Payment</div></div>
+        <div class="calc-cell"><div class="num" id="hl-int">₹54.1 L</div><div class="lbl">Total Interest</div></div>
+      </div>
+    </div>
+    <table class="ln-table">
+      <thead><tr><th>Bank</th><th>Interest rate (p.a.)</th><th>Processing fee</th><th>Max tenure</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="bank">SBI</td><td class="rate">8.50% onwards</td><td>0.35% (max ₹10k)</td><td>30 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://homeloans.sbi/" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">HDFC Bank</td><td class="rate">8.65% onwards</td><td>0.50%</td><td>30 yr</td><td class="star">★ 4.6</td><td><a class="apply-btn" href="https://www.hdfcbank.com/personal/borrow/popular-loans/home-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">ICICI Bank</td><td class="rate">8.75% onwards</td><td>0.50% + GST</td><td>30 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.icicibank.com/personal-banking/loans/home-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Axis Bank</td><td class="rate">8.75% onwards</td><td>1% (max ₹10k)</td><td>30 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.axisbank.com/retail/loans/home-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Kotak Mahindra</td><td class="rate">8.70% onwards</td><td>0.50%</td><td>20 yr</td><td class="star">★ 4.3</td><td><a class="apply-btn" href="https://www.kotak.com/en/personal-banking/loans/home-loan.html" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Bajaj Housing Finance</td><td class="rate">8.45% onwards</td><td>0.25%</td><td>30 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.bajajhousingfinance.in/home-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PERSONAL -->
+  <div class="tab-pane" id="personal">
+    <div class="ln-intro">
+      <h2>Personal loan — fast cash, but the most expensive loan you can take</h2>
+      <p>Personal loans are unsecured (no collateral) so banks charge 11-22% interest — much higher than home or car loans. <strong>Use only for genuine emergencies or big-ticket purchases you can repay quickly.</strong> Check the APR (annual percentage rate) which includes processing fees, not just the headline interest rate.</p>
+    </div>
+    <table class="ln-table">
+      <thead><tr><th>Bank</th><th>Interest rate (p.a.)</th><th>Min/Max amount</th><th>Tenure</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="bank">HDFC Bank</td><td class="rate">10.50% onwards</td><td>₹50k - ₹40L</td><td>1-6 yr</td><td class="star">★ 4.6</td><td><a class="apply-btn" href="https://www.hdfcbank.com/personal/borrow/popular-loans/personal-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">ICICI Bank</td><td class="rate">10.65% onwards</td><td>₹50k - ₹50L</td><td>1-6 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.icicibank.com/personal-banking/loans/personal-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Axis Bank</td><td class="rate">10.75% onwards</td><td>₹50k - ₹40L</td><td>1-5 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.axisbank.com/retail/loans/personal-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">SBI</td><td class="rate">11.05% onwards</td><td>₹25k - ₹20L</td><td>1-6 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://sbi.co.in/web/personal-banking/loans/personal-loans" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Bajaj Finserv</td><td class="rate">11.00% onwards</td><td>₹1L - ₹40L</td><td>6m-7yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.bajajfinserv.in/personal-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Kotak Mahindra</td><td class="rate">10.99% onwards</td><td>₹50k - ₹40L</td><td>1-5 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.kotak.com/en/personal-banking/loans/personal-loan.html" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="tab-pane" id="education">
+    <div class="ln-intro">
+      <h2>Education loan — invest in your future at India's lowest rates</h2>
+      <p>Education loans up to ₹7.5 lakh in India don't need collateral. Above that, banks ask for property pledge or third-party guarantee. <strong>Education loans qualify for tax deduction under Section 80E for 8 years</strong> — making the effective interest rate even lower. Foreign study loans (USA, UK, Canada, Australia) typically range from ₹20 lakh to ₹1 crore.</p>
+    </div>
+    <table class="ln-table">
+      <thead><tr><th>Bank</th><th>Interest rate (p.a.)</th><th>Max amount</th><th>Moratorium</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="bank">SBI Scholar Loan</td><td class="rate">8.05% onwards</td><td>₹1.5 Cr</td><td>Course + 1 yr</td><td class="star">★ 4.6</td><td><a class="apply-btn" href="https://sbi.co.in/web/personal-banking/loans/education-loans" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">HDFC Credila</td><td class="rate">9.55% onwards</td><td>No upper limit</td><td>Course + 1 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.hdfccredila.com/" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Axis Bank</td><td class="rate">11.50% onwards</td><td>₹75 L (study abroad)</td><td>Course + 6 mo</td><td class="star">★ 4.3</td><td><a class="apply-btn" href="https://www.axisbank.com/retail/loans/education-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">ICICI Bank</td><td class="rate">10.50% onwards</td><td>₹3 Cr</td><td>Course + 6 mo</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.icicibank.com/personal-banking/loans/education-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Bank of Baroda</td><td class="rate">9.15% onwards</td><td>₹1.5 Cr</td><td>Course + 1 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.bankofbaroda.in/personal-banking/loans/education-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CAR -->
+  <div class="tab-pane" id="car">
+    <div class="ln-intro">
+      <h2>Car loan — finance your new ride at the right rate</h2>
+      <p>Car loans typically cover 80-100% of on-road price. Loan tenure is usually 5-7 years; longer = lower EMI but more total interest paid. <strong>Always opt for at least 20% down payment</strong> to avoid being "underwater" (loan balance higher than car resale value).</p>
+    </div>
+    <table class="ln-table">
+      <thead><tr><th>Bank</th><th>Interest rate (p.a.)</th><th>Max LTV</th><th>Tenure</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="bank">SBI</td><td class="rate">8.85% onwards</td><td>90%</td><td>7 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://sbi.co.in/web/personal-banking/loans/auto-loans" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">HDFC Bank</td><td class="rate">8.95% onwards</td><td>100%</td><td>7 yr</td><td class="star">★ 4.6</td><td><a class="apply-btn" href="https://www.hdfcbank.com/personal/borrow/popular-loans/new-car-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">ICICI Bank</td><td class="rate">9.10% onwards</td><td>100%</td><td>7 yr</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.icicibank.com/personal-banking/loans/car-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Axis Bank</td><td class="rate">9.30% onwards</td><td>100%</td><td>8 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.axisbank.com/retail/loans/car-loan" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Kotak Mahindra</td><td class="rate">9.00% onwards</td><td>90%</td><td>7 yr</td><td class="star">★ 4.4</td><td><a class="apply-btn" href="https://www.kotak.com/en/personal-banking/loans/car-loan.html" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CREDIT CARD -->
+  <div class="tab-pane" id="card">
+    <div class="ln-intro">
+      <h2>Credit cards — the right card pays you to spend</h2>
+      <p>The best Indian credit cards in 2025 offer 1-5% cashback or 4-10 reward points per ₹100 spent. <strong>Match the card to your spend pattern</strong>: airlines for travelers, fuel cards for commuters, dining cards for foodies. Always pay full balance — interest is 36-48% APR.</p>
+    </div>
+    <table class="ln-table">
+      <thead><tr><th>Card</th><th>Best for</th><th>Annual fee</th><th>Reward rate</th><th>Rating</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="bank">HDFC Diners Club Black</td><td>Premium travel</td><td>₹10,000</td><td class="rate">5 RP / ₹150</td><td class="star">★ 4.7</td><td><a class="apply-btn" href="https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Axis Magnus Burgundy</td><td>High spenders</td><td>₹12,500</td><td class="rate">12 EDGE / ₹200</td><td class="star">★ 4.6</td><td><a class="apply-btn" href="https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">SBI Cashback</td><td>Online shoppers</td><td>₹999</td><td class="rate">5% online</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.sbicard.com/en/personal/credit-cards/shopping/cashback-sbi-card.page" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Amazon Pay ICICI</td><td>Amazon shoppers</td><td>FREE</td><td class="rate">5% on Amazon</td><td class="star">★ 4.6</td><td><a class="apply-btn" href="https://www.icicibank.com/personal-banking/cards/consumer-cards/credit-cards/amazon-credit-card" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">Flipkart Axis</td><td>Flipkart shoppers</td><td>₹500</td><td class="rate">5% Flipkart, 4% partners</td><td class="star">★ 4.5</td><td><a class="apply-btn" href="https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+        <tr><td class="bank">HDFC MoneyBack+</td><td>Beginners</td><td>₹500</td><td class="rate">2× CashPoints</td><td class="star">★ 4.3</td><td><a class="apply-btn" href="https://www.hdfcbank.com/personal/pay/cards/credit-cards/moneyback-plus-credit-card" target="_blank" rel="nofollow sponsored noopener">Apply</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ln-lead">
+    <h3>Need help choosing the right loan?</h3>
+    <p>Tell us your loan need and our team will recommend the best option for your profile — free, no spam.</p>
+    <div data-wib-lead data-entity="Loan Help" data-category="general" style="max-width:520px;margin:0 auto;text-align:left"></div>
+  </div>
+
+  <section class="ln-faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How is my CIBIL score calculated?</summary><p>CIBIL is a 300-900 score based on payment history (35%), credit utilization (30%), credit age (15%), credit mix (10%), and recent enquiries (10%). Above 750 unlocks the best rates; below 650 means most banks will reject you.</p></details>
+    <details><summary>Should I pre-pay my home loan or invest the surplus?</summary><p>Rule of thumb: if your home loan rate is higher than your investment return after tax, pre-pay. Most equity SIPs return 12-15% pre-tax, vs home loans at 8.5%. Investing usually wins long-term, but pre-paying is psychologically liberating.</p></details>
+    <details><summary>What is the difference between fixed and floating rate?</summary><p>Floating rates change with RBI repo rate (currently 6.5%). Fixed rates stay constant for the entire tenure. In India, almost everyone takes floating — historical data shows it's cheaper over 20+ year periods.</p></details>
+    <details><summary>Can I get a personal loan without a salary slip?</summary><p>Yes — self-employed and freelancers can apply with bank statements (12 months) and ITR (2 years). Rates may be 1-2% higher than salaried. NBFCs like Bajaj Finserv and KreditBee are friendlier than traditional banks.</p></details>
+    <details><summary>What is foreclosure charge on a loan?</summary><p>Banks charge 0-5% of outstanding amount if you close the loan early. RBI has banned foreclosure charges on floating-rate home loans for individual borrowers — but they still apply on personal/car/business loans. Always check before signing.</p></details>
+    <details><summary>How many credit cards should I have?</summary><p>2-3 is optimal. One general-purpose, one for online/cashback, one for fuel/travel. Too many cards hurt your CIBIL score. Don't open new cards within 6 months of a major loan application.</p></details>
+  </section>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/components.js"></script>
+<script src="/polish.js" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/widgets.js" defer></script>
+<script>
+// Tab switching
+document.querySelectorAll('.ln-tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    var tab = t.dataset.tab;
+    document.querySelectorAll('.ln-tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.tab-pane').forEach(function(x){x.classList.remove('active')});
+    t.classList.add('active');
+    document.getElementById(tab).classList.add('active');
+    if(typeof gtag === 'function') gtag('event', 'loan_tab', { tab: tab });
+  });
+});
+
+// EMI calculator
+function calcEMI(){
+  var p = parseFloat(document.getElementById('hl-p').value) || 0;
+  var r = (parseFloat(document.getElementById('hl-r').value) || 0) / 12 / 100;
+  var n = (parseFloat(document.getElementById('hl-n').value) || 0) * 12;
+  if(p <= 0 || r <= 0 || n <= 0){
+    document.getElementById('hl-emi').textContent = '\u20B9—';
+    document.getElementById('hl-tot').textContent = '\u20B9—';
+    document.getElementById('hl-int').textContent = '\u20B9—';
+    return;
+  }
+  var emi = p * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
+  var tot = emi * n;
+  var intt = tot - p;
+  var fmt = function(n){if(n>=10000000)return '\u20B9'+(n/10000000).toFixed(2)+' Cr';if(n>=100000)return '\u20B9'+(n/100000).toFixed(1)+' L';return '\u20B9'+Math.round(n).toLocaleString('en-IN');};
+  document.getElementById('hl-emi').textContent = '\u20B9' + Math.round(emi).toLocaleString('en-IN');
+  document.getElementById('hl-tot').textContent = fmt(tot);
+  document.getElementById('hl-int').textContent = fmt(intt);
+}
+['hl-p','hl-r','hl-n'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', calcEMI);
+});
+calcEMI();
+</script>
+</body>
+</html>
