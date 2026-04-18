@@ -45,14 +45,20 @@ jobs:
           SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           if [ -n "$SA" ]; then
-            echo "$SA" > "$RUNNER_TEMP/sa.json"
+            printf '%s' "$SA" > "$RUNNER_TEMP/sa.json"
+            # Sanity-check that it's valid JSON before continuing
+            node -e "JSON.parse(require('fs').readFileSync('$RUNNER_TEMP/sa.json','utf8'))" || { echo '::error::FIREBASE_SERVICE_ACCOUNT is not valid JSON. Re-paste it without surrounding quotes.'; exit 1; }
             echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/sa.json" >> "$GITHUB_ENV"
-            echo "Auth: service account"
+            echo "USE_SA=1" >> "$GITHUB_ENV"
+            echo "Auth: service account ✓"
           else
             echo "Auth: legacy CI token (FIREBASE_TOKEN)"
           fi
 
       - name: Deploy Firebase Functions & Firestore Rules
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: firebase deploy --only functions,firestore:rules --project wibest-449fe --non-interactive --force
+          # When SA is set, do NOT pass FIREBASE_TOKEN (they conflict).
+          FIREBASE_TOKEN: ${{ env.USE_SA == '1' && '' || secrets.FIREBASE_TOKEN }}
+        run: |
+          echo "Using GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-(unset)}"
+          firebase deploy --only functions,firestore:rules --project wibest-449fe --non-interactive --force --debug 2>&1 | tail -120
