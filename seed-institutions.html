@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Seed Institutions — WIBest Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#0b0f17;color:#e5e7eb}
+h1{color:#60a5fa}
+button{background:#2563eb;color:#fff;border:0;padding:12px 24px;font-size:16px;border-radius:8px;cursor:pointer;margin:6px 4px}
+button:hover{background:#1d4ed8}
+button:disabled{background:#374151;cursor:not-allowed}
+#log{background:#111827;border:1px solid #1f2937;border-radius:8px;padding:16px;margin-top:20px;max-height:600px;overflow:auto;font-family:ui-monospace,monospace;font-size:12px;white-space:pre-wrap}
+.ok{color:#10b981}.err{color:#ef4444}.info{color:#60a5fa}
+.warn{background:#7c2d12;color:#fed7aa;padding:12px;border-radius:8px;margin:16px 0}
+.stat{display:inline-block;background:#1f2937;padding:8px 14px;border-radius:8px;margin:4px;font-family:ui-monospace,monospace}
+</style>
+</head>
+<body>
+<h1>WIBest Institutions Seeder</h1>
+<p>Seeds 350+ schools, 120+ colleges, 100+ hospitals into the <code>items</code> Firestore collection.</p>
+<div class="warn">⚠️ Set <code>allow write: if true;</code> on <code>/items</code> temporarily, then revert to <code>isAdmin()</code>.</div>
+<div id="counts"></div>
+<button id="seedSchools" onclick="seed('schools')">🏫 Seed Schools</button>
+<button id="seedColleges" onclick="seed('colleges')">🎓 Seed Colleges</button>
+<button id="seedHospitals" onclick="seed('hospitals')">🏥 Seed Hospitals</button>
+<button onclick="seedAll()">🚀 Seed Everything</button>
+<div id="log"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script>var SCHOOLS_DATA=[],COLLEGES_DATA=[],HOSPITALS_DATA=[];</script>
+<script src="/seed-data-institutions.js"></script>
+<script src="/seed-data-institutions-2.js"></script>
+<script>
+const db = initFirebase();
+const log = document.getElementById('log');
+function l(m,c){var d=document.createElement('div');d.textContent=m;if(c)d.className=c;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+
+document.getElementById('counts').innerHTML =
+  '<span class="stat">Schools: '+SCHOOLS_DATA.length+'</span>'+
+  '<span class="stat">Colleges: '+COLLEGES_DATA.length+'</span>'+
+  '<span class="stat">Hospitals: '+HOSPITALS_DATA.length+'</span>';
+
+// Map a record to the 'items' Firestore schema
+function normalize(rec, category){
+  return {
+    name: rec.name,
+    category: category,             // school | college | hospital
+    city: rec.city,
+    state: rec.state || '',
+    board: rec.board || '',
+    type: rec.type || 'Co-ed',
+    stream: rec.stream || '',       // colleges only
+    speciality: rec.speciality || '',// hospitals only
+    fees: rec.fees || 0,
+    rating: rec.rating || 0,
+    established: rec.established || 0,
+    student_count: rec.studentCount || rec.beds || 0,
+    results: rec.results || 0,
+    board_results: rec.results || 0,
+    student_teacher_ratio: rec.studentTeacherRatio || '',
+    contact: rec.contact || '',
+    address: rec.address || '',
+    website: rec.website || '',
+    highlights: rec.highlights || '',
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+}
+
+async function batchWrite(records, category, btnId){
+  if(btnId) document.getElementById(btnId).disabled = true;
+  l('--- Seeding '+records.length+' '+category+'s ---', 'info');
+  let ok=0, err=0;
+  // Use Firestore batch write (max 500 per batch)
+  for(let i=0; i<records.length; i+=400){
+    const batch = db.batch();
+    const slice = records.slice(i, i+400);
+    slice.forEach(r => {
+      const docRef = db.collection('items').doc();
+      batch.set(docRef, normalize(r, category));
+    });
+    try{
+      await batch.commit();
+      ok += slice.length;
+      l('✓ Batch '+(i/400+1)+': wrote '+slice.length+' '+category+'s', 'ok');
+    }catch(e){
+      err += slice.length;
+      l('✗ Batch '+(i/400+1)+' failed: '+e.message, 'err');
+    }
+  }
+  l('=== '+category+' done: '+ok+' ok, '+err+' failed ===', err? 'err':'ok');
+  if(btnId) document.getElementById(btnId).disabled = false;
+  return {ok, err};
+}
+
+function seed(kind){
+  if(kind==='schools') return batchWrite(SCHOOLS_DATA, 'school', 'seedSchools');
+  if(kind==='colleges') return batchWrite(COLLEGES_DATA, 'college', 'seedColleges');
+  if(kind==='hospitals') return batchWrite(HOSPITALS_DATA, 'hospital', 'seedHospitals');
+}
+
+async function seedAll(){
+  await seed('schools');
+  await seed('colleges');
+  await seed('hospitals');
+  l('\n🎉 ALL DONE', 'ok');
+}
+</script>
+</body>
+</html>
