@@ -60,14 +60,20 @@ jobs:
 
       - name: Deploy Firebase Functions & Firestore Rules
         env:
-          # When SA is set, do NOT pass FIREBASE_TOKEN (they conflict).
-          FIREBASE_TOKEN: ${{ env.USE_SA == '1' && '' || secrets.FIREBASE_TOKEN }}
-        # set -o pipefail so the workflow fails when `firebase deploy` fails,
-        # instead of silently green-because-tail-succeeded.
+          # Pass legacy CI token; we'll unset it inside the script if SA is in use.
+          LEGACY_FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
           set -o pipefail
-          echo "Using GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-(unset)}"
+          # When service account is configured, FIREBASE_TOKEN must be unset.
+          # The CLI prefers FIREBASE_TOKEN if both are present (legacy path),
+          # which would cause 401s with an expired/old CI token.
+          if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+            echo "Auth method: service account (GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS)"
+            unset FIREBASE_TOKEN
+          else
+            echo "Auth method: legacy CI token"
+            export FIREBASE_TOKEN="$LEGACY_FIREBASE_TOKEN"
+          fi
           firebase deploy --only functions,firestore:rules --project wibest-449fe --non-interactive --force 2>&1 | tee /tmp/deploy.log
-          # Surface the last 60 lines for quick scanning even on success
-          echo "=== Last 60 lines of deploy ==="
-          tail -60 /tmp/deploy.log
+          echo "=== Last 80 lines of deploy ==="
+          tail -80 /tmp/deploy.log
