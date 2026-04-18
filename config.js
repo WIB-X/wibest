@@ -1,14 +1,18 @@
 /* ═══════════════════════════════════════════════════════
    WIB — Shared Configuration
    Update your Firebase API key below. All pages use this file.
+   Guarded so accidental double-loading doesn't throw SyntaxError.
    ═══════════════════════════════════════════════════════ */
 
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",
-  authDomain: "wibest-449fe.firebaseapp.com",
-  projectId: "wibest-449fe",
-  storageBucket: "wibest-449fe.appspot.com"
-};
+if (typeof window.FIREBASE_CONFIG === 'undefined') {
+  window.FIREBASE_CONFIG = {
+    apiKey: "AIzaSyA_IcdzywseRgXTY8MqiOY1LLfwnfps3Oo",
+    authDomain: "wibest-449fe.firebaseapp.com",
+    projectId: "wibest-449fe",
+    storageBucket: "wibest-449fe.appspot.com"
+  };
+}
+var FIREBASE_CONFIG = window.FIREBASE_CONFIG;
 
 /* ─── Theme ─── */
 function initTheme() {
