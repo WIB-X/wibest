@@ -223,22 +223,58 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
     ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
     : query;
 
-  try {
-    const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: system + '\n\n' + user }] }],
-        generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
-      })
-    });
-    const data = await apiRes.json();
-    const text = (((data.candidates || [])[0] || {}).content || {}).parts?.[0]?.text || 'No response.';
-    return res.json({ answer: text });
-  } catch (e) {
-    console.error('compareAI error:', e);
-    return res.status(500).json({ error: e.message });
+  // Try a sequence of model names in priority order. Different Google AI tiers
+  // expose different models; we fall back gracefully.
+  const models = ['gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-2.0-flash-exp', 'gemini-pro'];
+  let lastErr = null;
+
+  for (const model of models) {
+    try {
+      const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ role: 'user', parts: [{ text: system + '\n\n' + user }] }],
+          generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
+        })
+      });
+      const data = await apiRes.json();
+
+      // Surface API-level errors clearly
+      if (data.error) {
+        console.error(`Gemini ${model} error:`, JSON.stringify(data.error));
+        lastErr = data.error.message || JSON.stringify(data.error);
+        continue;  // try next model
+      }
+
+      const candidate = (data.candidates || [])[0];
+      if (!candidate) {
+        lastErr = 'Gemini returned no candidates (response may have been blocked). Raw: ' + JSON.stringify(data).slice(0, 300);
+        continue;
+      }
+
+      const finishReason = candidate.finishReason;
+      const text = candidate.content && candidate.content.parts && candidate.content.parts[0]
+        && candidate.content.parts[0].text;
+
+      if (!text) {
+        lastErr = `Gemini returned candidate but no text (finishReason=${finishReason}). Raw: ` + JSON.stringify(candidate).slice(0, 300);
+        continue;
+      }
+
+      // Success
+      return res.json({ answer: text, model: model });
+    } catch (e) {
+      console.error(`compareAI fetch error (${model}):`, e.message);
+      lastErr = e.message;
+    }
   }
+
+  // All models failed
+  return res.status(500).json({
+    error: 'All Gemini models failed. Last error: ' + (lastErr || 'unknown'),
+    attempted: models
+  });
 });
 
 // touch 2026-04-18T11:53:51Z — force redeploy after GEMINI_API_KEY secret added
