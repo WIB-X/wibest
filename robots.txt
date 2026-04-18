@@ -20,5 +20,12 @@ Disallow: /update-schools/
 Disallow: /migrate-cars.html
 Disallow: /migrate-electronics.html
 Disallow: /update-schools.html
+Disallow: /seed-blogs-all.html
+Disallow: /seed-blogs-batch3.html
+Disallow: /seed-blogs-hindi.html
+Disallow: /seed-categories.html
+Disallow: /seed-institutions.html
+Disallow: /update-product-images.html
+Disallow: /admin-auth-gate.js
 
 Sitemap: https://wibest.in/sitemap.xml

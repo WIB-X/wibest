@@ -22,28 +22,45 @@
     { href: '/blog',        label: 'Blog' },
   ];
 
-  var MORE_LINKS = [
-    { href: '/quiz/',         label: 'Phone Quiz' },
-    { href: '/compare/ai/',   label: 'AI Compare' },
-    { href: '/insurance/',    label: 'Insurance' },
-    { href: '/loans/',        label: 'Loans' },
-    { href: '/ev/',           label: 'EV Hub' },
-    { href: '/solar/',        label: 'Solar' },
-    { href: '/health-checkups/', label: 'Health Checkups' },
-    { href: '/senior-care/',  label: 'Senior Care' },
-    { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940' }, // हिंदी
-    { href: '/ta/',           label: '\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD' }, // தமிழ்
-    { href: '/te/',           label: '\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41' }, // తెలుగు
-    { href: '/accessories',  label: 'Accessories' },
-    { href: '/restaurants',  label: 'Restaurants' },
-    { href: '/real-estate',  label: 'Real Estate' },
-    { href: '/jobs',         label: 'Jobs' },
-    { href: '/price-finder', label: 'Price Finder' },
-    { href: '/compare',      label: 'Compare' },
-    { href: '/about',        label: 'About' },
-    { href: '/contact',      label: 'Contact' },
-    { href: '/connect',      label: 'Connect' },
+  // Grouped More-menu — renders as a 2-column dropdown with section headings.
+  // Avoids the unbounded scrolling list problem.
+  var MORE_GROUPS = [
+    { title: 'Tools', items: [
+      { href: '/compare/ai/',   label: 'AI Compare' },
+      { href: '/quiz/',         label: 'Phone Quiz' },
+      { href: '/compare',       label: 'Compare side-by-side' },
+      { href: '/price-finder',  label: 'Price Finder' }
+    ]},
+    { title: 'Money', items: [
+      { href: '/insurance/',    label: 'Insurance' },
+      { href: '/loans/',        label: 'Loans' }
+    ]},
+    { title: 'Lifestyle', items: [
+      { href: '/ev/',           label: 'EV Hub' },
+      { href: '/solar/',        label: 'Solar' },
+      { href: '/health-checkups/', label: 'Health Checkups' },
+      { href: '/senior-care/',  label: 'Senior Care' }
+    ]},
+    { title: 'More categories', items: [
+      { href: '/accessories',  label: 'Accessories' },
+      { href: '/restaurants',  label: 'Restaurants' },
+      { href: '/real-estate',  label: 'Real Estate' },
+      { href: '/jobs',         label: 'Jobs' }
+    ]},
+    { title: 'Languages', items: [
+      { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940 (Hindi)' },
+      { href: '/ta/',           label: '\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD (Tamil)' },
+      { href: '/te/',           label: '\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41 (Telugu)' }
+    ]},
+    { title: 'About', items: [
+      { href: '/about',        label: 'About WIB' },
+      { href: '/contact',      label: 'Contact' },
+      { href: '/connect',      label: 'Connect' }
+    ]}
   ];
+
+  // Flattened version for legacy callers (mobile menu, search, etc.)
+  var MORE_LINKS = MORE_GROUPS.reduce(function (acc, g) { return acc.concat(g.items); }, []);
 
   var CAT_STRIP_LINKS = [
     { href: '/schools',     label: 'Schools' },
@@ -68,8 +85,11 @@
 
   function renderNav() {
     var links = NAV_LINKS.map(function (l) { return navLink(l.href, l.label); }).join('');
-    var moreLinks = MORE_LINKS.map(function (l) {
-      return '<a href="' + l.href + '">' + l.label + '</a>';
+    // Render More-menu as 2-column grouped panel
+    var moreLinks = MORE_GROUPS.map(function (g) {
+      return '<div class="nav-dropdown-group"><div class="nav-dropdown-group-title">' + g.title + '</div>'
+        + g.items.map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('')
+        + '</div>';
     }).join('');
     var catLinks = CAT_STRIP_LINKS.map(function (l) {
       return '<a href="' + l.href + '" class="cat-link' + (isActive(l.href) ? ' active' : '') + '">' + l.label + '</a>';
