@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Perfect Phone — 30-Second Quiz | WIB</title>
+<meta name="description" content="Answer 3 questions and get a personalised smartphone recommendation tailored to your budget, use, and city — only India-available models.">
+<meta property="og:title" content="Find Your Perfect Phone — 30-Second Quiz">
+<meta property="og:description" content="3 questions. Get the best phone for your budget and use case in India.">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/quiz/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.q-wrap{max-width:640px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 20px}
+.q-progress{height:4px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:32px}
+.q-progress-fill{height:100%;background:var(--accent);transition:width .35s ease}
+.q-step{animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.q-num{font-size:13px;color:var(--text-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.q-title{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:24px;line-height:1.2}
+.q-options{display:grid;gap:12px}
+.q-opt{padding:18px 22px;border:2px solid var(--border);border-radius:12px;background:var(--bg-card);cursor:pointer;font-size:15px;font-weight:500;color:var(--text-primary);text-align:left;transition:all .15s;display:flex;align-items:center;gap:12px;font-family:inherit}
+.q-opt:hover{border-color:var(--accent);background:var(--bg-secondary)}
+.q-opt-emoji{font-size:24px}
+.q-result{text-align:center}
+.q-result h2{font-family:'Outfit',sans-serif;font-size:22px;margin-bottom:8px}
+.q-result-card{margin:24px 0;padding:24px;background:var(--bg-card);border:2px solid var(--accent);border-radius:14px;box-shadow:var(--shadow-md)}
+.q-result-card h3{font-family:'Outfit',sans-serif;font-size:24px;margin-bottom:6px;color:var(--text-primary)}
+.q-result-card .q-price{font-size:28px;font-weight:800;color:var(--accent);margin:8px 0}
+.q-result-card .q-why{color:var(--text-secondary);margin:14px 0;font-size:14px;line-height:1.6}
+.q-result-card .q-pros{display:grid;gap:6px;margin:14px 0;text-align:left;font-size:13px}
+.q-result-card .q-pros li{padding-left:20px;position:relative;color:var(--text-secondary)}
+.q-result-card .q-pros li::before{content:"✓";position:absolute;left:0;color:#16a34a;font-weight:700}
+.q-cta{display:inline-block;margin:6px 4px;padding:12px 24px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px}
+.q-cta.alt{background:#ff9900}
+.q-restart{margin-top:14px;padding:8px 18px;background:transparent;border:1px solid var(--border);color:var(--text-secondary);border-radius:8px;cursor:pointer;font-family:inherit}
+@media(max-width:480px){.q-title{font-size:22px}.q-opt{padding:14px 18px;font-size:14px}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="q-wrap">
+  <div class="q-progress"><div class="q-progress-fill" id="qFill" style="width:33%"></div></div>
+  <div id="qStage"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js"></script>
+<script>
+// Phone recommendation engine — picks based on (budget, use, OS)
+const RECOS = {
+  // budget-low (under ₹15k)
+  'low-photo-android':   {name:'Samsung Galaxy M15 5G', price:'₹12,499', why:'Best Samsung camera at this price. AMOLED display, 4 years of OS updates.', pros:['50MP main camera','6000 mAh battery','Samsung One UI'], asin:'B0CW2WZ8RZ'},
+  'low-gaming-android':  {name:'Realme Narzo 60x 5G', price:'₹9,499', why:'120Hz FHD+ display + Dimensity 6100+ — best price-to-performance for gaming.', pros:['120Hz FHD+ display','33W fast charging','Strong chipset'], asin:'B0DL1HN21G'},
+  'low-everyday-android':{name:'Redmi 13C 5G', price:'₹8,999', why:'Reliable everyday phone with clean MIUI, 5G ready, great battery.', pros:['5G ready','5000 mAh battery','Light HyperOS'], asin:'B0CW9NSY9D'},
+  // mid (₹15-30k)
+  'mid-photo-android':   {name:'Nothing Phone (3a)', price:'₹19,999', why:'Best camera versatility under ₹20k — 50MP main + 8MP ultrawide + 50MP 2x telephoto.', pros:['3-lens system','3000 nits peak display','Glyph interface'], asin:'B0DRT3MJWH'},
+  'mid-gaming-android':  {name:'Poco X7 Pro', price:'₹27,999', why:'Dimensity 8400 Ultra is flagship-tier silicon at sub-flagship price. IP68 rated.', pros:['Flagship chipset','IP68 rated','90W fast charging'], asin:'B0DPN2DGLQ'},
+  'mid-everyday-android':{name:'OnePlus Nord CE4', price:'₹24,999', why:'Polished OxygenOS, 100W charging, premium feel — does everything well.', pros:['100W fast charging','Clean OxygenOS','5500 mAh battery'], asin:'B0D34RW8FQ'},
+  'mid-photo-ios':       {name:'iPhone 15 (refurbished or sale)', price:'₹54,999+', why:'For iOS at this budget, refurbished iPhone 15 from Apple is your best bet.', pros:['iOS ecosystem','Excellent video','Long updates'], asin:'B0CHX1W1XY'},
+  // high (₹30-60k)
+  'high-photo-android':  {name:'Samsung Galaxy S25', price:'₹74,999', why:'Best Android camera in 2025 with Galaxy AI editing, 3x telephoto, 200MP capable in Ultra.', pros:['Galaxy AI features','3x optical zoom','7 years of updates'], asin:'B0DSL5ZHF1'},
+  'high-photo-ios':      {name:'iPhone 16', price:'₹79,900', why:'Best video recording on a phone. Cinematic Mode, ProRes, deep Apple ecosystem.', pros:['Best-in-class video','Apple Intelligence','Long resale value'], asin:'B0DGJ7TGLL'},
+  'high-gaming-android': {name:'iQOO Neo 10R', price:'₹26,999', why:'Snapdragon 8s Gen 3 — outperforms most ₹50k+ phones in benchmarks.', pros:['Snapdragon 8s Gen 3','144Hz AMOLED','80W charging'], asin:'B0DSXR1JM9'},
+  'high-gaming-ios':     {name:'iPhone 16', price:'₹79,900', why:'A18 chip leads single-core. Apple Arcade, Resident Evil ports — gaming on iPhone is finally great.', pros:['A18 chip','Apple Arcade','120Hz on Pro variants'], asin:'B0DGJ7TGLL'},
+  'high-everyday-android':{name:'OnePlus 13', price:'₹69,999', why:'Snapdragon 8 Elite, 100W charging, 6000 mAh battery — flagship that does everything.', pros:['Snapdragon 8 Elite','6000 mAh battery','100W charging'], asin:'B0DR8MDQXQ'},
+  'high-everyday-ios':   {name:'iPhone 16', price:'₹79,900', why:'Best all-round iPhone if you want long-term ecosystem value.', pros:['Apple Intelligence','iOS 18','Best resale'], asin:'B0DGJ7TGLL'}
+};
+
+const QUESTIONS = [
+  { key:'budget', q:"What's your budget?", opts:[
+    {emoji:'💸', label:'Under ₹15,000', val:'low'},
+    {emoji:'💵', label:'₹15,000 – ₹30,000', val:'mid'},
+    {emoji:'💎', label:'₹30,000+', val:'high'}
+  ]},
+  { key:'use', q:"What will you use it for most?", opts:[
+    {emoji:'📸', label:'Photos & videos', val:'photo'},
+    {emoji:'🎮', label:'Gaming', val:'gaming'},
+    {emoji:'📱', label:'Calls, social, browsing', val:'everyday'}
+  ]},
+  { key:'os', q:"Android or iPhone?", opts:[
+    {emoji:'🤖', label:'Android (more choice)', val:'android'},
+    {emoji:'🍎', label:'iPhone (only iOS)', val:'ios'},
+    {emoji:'🤷', label:'No preference', val:'android'}
+  ]}
+];
+
+const state = { step:0, ans:{} };
+const stage = document.getElementById('qStage');
+const fill  = document.getElementById('qFill');
+
+function render(){
+  fill.style.width = ((state.step + 1) / (QUESTIONS.length + 1)) * 100 + '%';
+  if(state.step < QUESTIONS.length){
+    const q = QUESTIONS[state.step];
+    stage.innerHTML = '<div class="q-step"><div class="q-num">Question '+(state.step+1)+' of '+QUESTIONS.length+'</div><div class="q-title">'+q.q+'</div><div class="q-options">'+q.opts.map((o,i)=>'<button class="q-opt" data-i="'+i+'"><span class="q-opt-emoji">'+o.emoji+'</span>'+o.label+'</button>').join('')+'</div></div>';
+    stage.querySelectorAll('.q-opt').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        state.ans[q.key] = q.opts[b.dataset.i].val;
+        state.step++;
+        if(typeof gtag === 'function') gtag('event','quiz_answer',{question:q.key, value:q.opts[b.dataset.i].val});
+        render();
+      });
+    });
+  } else {
+    showResult();
+  }
+}
+
+function showResult(){
+  let key = state.ans.budget+'-'+state.ans.use+'-'+state.ans.os;
+  let pick = RECOS[key];
+  // Fallback chain
+  if(!pick) pick = RECOS[state.ans.budget+'-'+state.ans.use+'-android'] || RECOS[state.ans.budget+'-everyday-android'];
+  if(!pick) pick = RECOS['mid-everyday-android'];
+  const url = 'https://www.amazon.in/dp/'+pick.asin+'?tag=wib04-21';
+  if(typeof gtag === 'function') gtag('event','quiz_complete',{recommended:pick.name});
+  stage.innerHTML = '<div class="q-result q-step"><div class="q-num">Your match</div><div class="q-result-card"><h3>'+pick.name+'</h3><div class="q-price">'+pick.price+'</div><p class="q-why">'+pick.why+'</p><ul class="q-pros">'+pick.pros.map(p=>'<li>'+p+'</li>').join('')+'</ul><a href="'+url+'" target="_blank" rel="nofollow sponsored noopener" class="q-cta alt">Buy on Amazon →</a><a href="/electronics" class="q-cta">See more options</a></div><button class="q-restart" onclick="location.reload()">Retake quiz</button><div style="margin-top:32px"><a href="/quiz" style="font-size:13px;color:var(--accent)">Want quizzes for laptops, cars, schools? Coming soon — </a><a href="/blog" style="font-size:13px;color:var(--accent);font-weight:600">browse all guides →</a></div></div>';
+}
+render();
+</script>
+</body>
+</html>

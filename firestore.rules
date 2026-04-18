@@ -18,7 +18,9 @@ service cloud.firestore {
           && d.email is string  && d.email.size() >= 3 && d.email.size() <= 200
           && d.text is string   && d.text.size()  <= 2000
           && d.rating is number && d.rating >= 1  && d.rating <= 5
-          && d.category is string;
+          && d.category is string
+          // entityId is required for the new widget; legacy reviews don't have it.
+          && (!('entityId' in d) || (d.entityId is string && d.entityId.size() <= 200));
     }
 
     function validContactRequest() {
@@ -121,6 +123,22 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+
+    // ── Price tracker: prices read-only for public; admin updates via Cloud Function ──
+    match /prices/{asin} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    // ── Price alerts: public can create, admin manages, owner can delete by email ──
+    match /price_alerts/{doc} {
+      allow create: if request.resource.data.email is string
+                    && request.resource.data.email.size() >= 5
+                    && request.resource.data.email.size() <= 200
+                    && request.resource.data.asin is string
+                    && request.resource.data.targetPrice is number
+                    && request.resource.data.targetPrice > 0;
+      allow read, update, delete: if isAdmin();
+    }
 
     // ── Deny everything else by default ─────────────────────────────────────
     match /{document=**} {

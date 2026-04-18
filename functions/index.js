@@ -153,3 +153,88 @@ exports.onNewSubscriber = functions.firestore
       )
     );
   });
+
+// ── 5. New Lead (contact_request enhanced for lead-gen widget) ───────────────
+// (Already covered by onNewContactRequest above — no duplicate trigger needed.)
+
+// ── 6. New Price Alert ───────────────────────────────────────────────────────
+exports.onNewPriceAlert = functions.firestore
+  .document('price_alerts/{id}')
+  .onCreate(async (snap) => {
+    const a = snap.data();
+    await sendMail(
+      `[WIB] New price alert — ${a.product || a.asin}`,
+      emailWrap('New price alert subscription',
+        row('Product', a.product || a.asin) +
+        row('ASIN', a.asin) +
+        row('Target ₹', a.targetPrice) +
+        row('Email', a.email),
+        DASHBOARD, 'Manage in Dashboard'
+      )
+    );
+  });
+
+// ── 7. Daily price refresh (cron) ────────────────────────────────────────────
+// NOTE: Without Amazon Product Advertising API credentials, this is a STUB.
+// When user gets PA-API access (3 sales required), replace the fetch block.
+const tracked = ['B0DGJ7TGLL', 'B0DGHRPYS4', 'B0CHX6LLXT', 'B0DGYJC2D5']; // sample ASINs
+exports.refreshPrices = functions.pubsub
+  .schedule('every 24 hours')
+  .timeZone('Asia/Kolkata')
+  .onRun(async () => {
+    // Stub: for each ASIN, write a synthetic price entry until PA-API is wired.
+    const now = new Date();
+    for (const asin of tracked) {
+      const ref = admin.firestore().collection('prices').doc(asin);
+      const cur = await ref.get();
+      const prev = cur.exists ? cur.data() : { history: [] };
+      const synthetic = 10000 + Math.floor(Math.random() * 50000);
+      const history = (prev.history || []).slice(-29);
+      history.push({ d: now.toISOString().slice(0,10), p: synthetic });
+      const low30 = Math.min(...history.map(h => h.p));
+      await ref.set({ asin, current: synthetic, low30, history, updatedAt: now }, { merge: true });
+    }
+    console.log('Refreshed prices for', tracked.length, 'ASINs');
+    return null;
+  });
+
+// ── 8. AI Compare proxy (Gemini) ─────────────────────────────────────────────
+// Set GEMINI_API_KEY in functions/.env (or via Firebase secret manager)
+exports.compareAI = functions.https.onRequest(async (req, res) => {
+  // CORS
+  res.set('Access-Control-Allow-Origin', 'https://wibest.in');
+  res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(204).send('');
+  if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
+
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return res.status(500).json({ error: 'GEMINI_API_KEY not configured' });
+
+  const { query, items } = req.body || {};
+  if (!query || typeof query !== 'string' || query.length > 500) {
+    return res.status(400).json({ error: 'query required (max 500 chars)' });
+  }
+
+  const system = 'You are WIBest AI — an expert comparison assistant for Indian shoppers. Be concise, India-specific (₹ prices, INR, Indian brands), and structured. Use markdown headings and bullets. Always end with a clear recommendation.';
+  const user = items
+    ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
+    : query;
+
+  try {
+    const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text: system + '\n\n' + user }] }],
+        generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
+      })
+    });
+    const data = await apiRes.json();
+    const text = (((data.candidates || [])[0] || {}).content || {}).parts?.[0]?.text || 'No response.';
+    return res.json({ answer: text });
+  } catch (e) {
+    console.error('compareAI error:', e);
+    return res.status(500).json({ error: e.message });
+  }
+});

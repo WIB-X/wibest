@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Anything with AI — WIB</title>
+<meta name="description" content="Ask WIBest AI to compare any two products, schools, hospitals, or destinations. Get instant India-specific recommendations.">
+<meta property="og:title" content="WIBest AI — India's smartest comparison assistant">
+<meta property="og:description" content="Ask anything: 'iPhone 16 vs Samsung S25', 'CBSE vs ICSE', 'Goa vs Kerala' — get expert India-focused answers in seconds.">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/compare/ai/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.ai-wrap{max-width:760px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 100px;padding:0 20px}
+.ai-hero{text-align:center;margin-bottom:32px}
+.ai-hero h1{font-family:'Outfit',sans-serif;font-size:34px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:10px;background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ai-hero p{color:var(--text-secondary);font-size:16px;max-width:520px;margin:0 auto}
+.ai-box{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--shadow-md)}
+.ai-form{display:flex;gap:8px}
+.ai-form input{flex:1;padding:14px 18px;border:2px solid var(--border);border-radius:10px;background:var(--bg-secondary);color:var(--text-primary);font:inherit;font-size:15px}
+.ai-form input:focus{outline:none;border-color:var(--accent)}
+.ai-form button{padding:14px 22px;background:var(--accent);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:600;cursor:pointer;font-size:15px}
+.ai-form button:disabled{background:#94a3b8;cursor:not-allowed}
+.ai-suggest{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.ai-chip{background:var(--bg-secondary);border:1px solid var(--border);border-radius:100px;padding:7px 14px;font-size:13px;color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.ai-chip:hover{border-color:var(--accent);color:var(--accent)}
+.ai-out{margin-top:24px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;font-size:15px;line-height:1.7;color:var(--text-secondary);min-height:60px;display:none}
+.ai-out.show{display:block}
+.ai-out h2{font-family:'Outfit',sans-serif;font-size:20px;color:var(--text-primary);margin:18px 0 10px}
+.ai-out h3{font-family:'Outfit',sans-serif;font-size:16px;color:var(--text-primary);margin:14px 0 8px}
+.ai-out ul{margin:6px 0 12px 22px}
+.ai-out li{margin-bottom:4px}
+.ai-out strong{color:var(--text-primary)}
+.ai-loading{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-disclaimer{font-size:12px;color:var(--text-muted);margin-top:14px;text-align:center}
+@media(max-width:480px){.ai-hero h1{font-size:26px}.ai-form{flex-direction:column}.ai-form button{width:100%}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="ai-wrap">
+  <div class="ai-hero">
+    <h1>Ask WIBest AI</h1>
+    <p>Compare phones, schools, cars, hospitals or travel destinations. India-specific. Instant answers.</p>
+  </div>
+
+  <div class="ai-box">
+    <form class="ai-form" id="aiForm">
+      <input type="text" id="aiQ" placeholder="e.g. iPhone 16 vs Samsung S25 for photography" maxlength="500" required autofocus>
+      <button type="submit" id="aiBtn">Ask AI</button>
+    </form>
+    <div class="ai-suggest" id="aiChips">
+      <span class="ai-chip">iPhone 16 vs Samsung S25</span>
+      <span class="ai-chip">CBSE vs ICSE for my child</span>
+      <span class="ai-chip">Best phone under ₹20,000</span>
+      <span class="ai-chip">Goa vs Kerala for honeymoon</span>
+      <span class="ai-chip">Hyundai Creta vs Tata Nexon</span>
+      <span class="ai-chip">Best hospital in Bangalore for cardiology</span>
+    </div>
+  </div>
+
+  <div class="wib-ad" data-slot="ai-comparison-page" style="margin-top:24px"></div>
+
+  <div class="ai-out" id="aiOut"></div>
+  <div class="ai-disclaimer">AI answers are guidance, not financial/medical advice. Always cross-check critical decisions.</div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/components.js"></script>
+<script>
+// Lightweight markdown → HTML (headings, bullets, bold)
+function md(s){return s
+  .replace(/^### (.*)$/gm,'<h3>$1</h3>')
+  .replace(/^## (.*)$/gm,'<h2>$1</h2>')
+  .replace(/^# (.*)$/gm,'<h2>$1</h2>')
+  .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+  .replace(/^\* (.*)$/gm,'<li>$1</li>')
+  .replace(/^- (.*)$/gm,'<li>$1</li>')
+  .replace(/(<li>.*<\/li>\n?)+/gs, m => '<ul>'+m+'</ul>')
+  .replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>');}
+
+const ENDPOINT = 'https://us-central1-wibest-449fe.cloudfunctions.net/compareAI';
+
+async function ask(q){
+  const out = document.getElementById('aiOut');
+  const btn = document.getElementById('aiBtn');
+  out.classList.add('show');
+  out.innerHTML = '<div class="ai-loading"></div>WIBest AI is thinking…';
+  btn.disabled = true; btn.textContent = 'Thinking…';
+  try{
+    const r = await fetch(ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ query: q })
+    });
+    const d = await r.json();
+    if(d.error){ out.innerHTML = '<strong>Error:</strong> '+d.error+'. The AI endpoint may not be configured yet — check back soon!'; }
+    else { out.innerHTML = md(d.answer || 'No answer returned.'); }
+    if(typeof gtag === 'function') gtag('event', 'ai_compare_query', { query: q.slice(0,80) });
+  }catch(e){
+    out.innerHTML = '<strong>Network error</strong>: '+e.message;
+  }finally{
+    btn.disabled = false; btn.textContent = 'Ask AI';
+  }
+}
+
+document.getElementById('aiForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const q = document.getElementById('aiQ').value.trim();
+  if(q) ask(q);
+});
+
+document.querySelectorAll('#aiChips .ai-chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.getElementById('aiQ').value = c.textContent;
+    ask(c.textContent);
+  });
+});
+</script>
+</body>
+</html>

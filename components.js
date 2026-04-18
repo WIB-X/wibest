@@ -23,6 +23,9 @@
   ];
 
   var MORE_LINKS = [
+    { href: '/quiz/',         label: '🎯 Phone Quiz' },
+    { href: '/compare/ai/',   label: '🤖 AI Compare' },
+    { href: '/hi/',           label: '🇮🇳 हिंदी' },
     { href: '/accessories',  label: 'Accessories' },
     { href: '/restaurants',  label: 'Restaurants' },
     { href: '/real-estate',  label: 'Real Estate' },
