@@ -62,6 +62,12 @@ jobs:
         env:
           # When SA is set, do NOT pass FIREBASE_TOKEN (they conflict).
           FIREBASE_TOKEN: ${{ env.USE_SA == '1' && '' || secrets.FIREBASE_TOKEN }}
+        # set -o pipefail so the workflow fails when `firebase deploy` fails,
+        # instead of silently green-because-tail-succeeded.
         run: |
+          set -o pipefail
           echo "Using GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-(unset)}"
-          firebase deploy --only functions,firestore:rules --project wibest-449fe --non-interactive --force --debug 2>&1 | tail -120
+          firebase deploy --only functions,firestore:rules --project wibest-449fe --non-interactive --force 2>&1 | tee /tmp/deploy.log
+          # Surface the last 60 lines for quick scanning even on success
+          echo "=== Last 60 lines of deploy ==="
+          tail -60 /tmp/deploy.log
