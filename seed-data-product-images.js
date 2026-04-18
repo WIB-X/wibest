@@ -124,7 +124,41 @@ var PRODUCT_IMAGES = {
   // Microsoft Surface
   "Microsoft Surface Pro 11": "https://m.media-amazon.com/images/I/61n+wCpY-cL._AC_SX466_.jpg",
   "Microsoft Surface Laptop 7": "https://m.media-amazon.com/images/I/71w3oJ7aWBL._AC_SX466_.jpg",
-  "Surface Laptop Studio 2": "https://m.media-amazon.com/images/I/71vQYqIOVkL._AC_SX466_.jpg"
+  "Surface Laptop Studio 2": "https://m.media-amazon.com/images/I/71vQYqIOVkL._AC_SX466_.jpg",
+
+  // ===== ADDITIONAL PHONES =====
+  "iQOO 12": "https://m.media-amazon.com/images/I/71xQ7NQ4-VL._AC_SX466_.jpg",
+  "Samsung Galaxy A56 5G": "https://m.media-amazon.com/images/I/81Wm9wKj0iL._AC_SX466_.jpg",
+  "Redmi 14C 5G": "https://m.media-amazon.com/images/I/81Pj-h-2-EL._AC_SX466_.jpg",
+  "Realme Narzo 70x 5G": "https://m.media-amazon.com/images/I/81WKDQbXbgL._AC_SX466_.jpg",
+  "Nothing Phone (3)": "https://m.media-amazon.com/images/I/61MMhHSE+wL._AC_SX466_.jpg",
+  "Nothing Phone (3a) Pro": "https://m.media-amazon.com/images/I/61D9-mtkqYL._AC_SX466_.jpg",
+  "Vivo X200 Pro 5G": "https://m.media-amazon.com/images/I/71yW2HCT-mL._AC_SX466_.jpg",
+  "Vivo V40 Pro": "https://m.media-amazon.com/images/I/71YsB9wuv5L._AC_SX466_.jpg",
+  "Google Pixel 9": "https://m.media-amazon.com/images/I/71yyjEEbQGL._AC_SX466_.jpg",
+  "Realme GT 7 Pro": "https://m.media-amazon.com/images/I/61n8I5L9bnL._AC_SX466_.jpg",
+
+  // ===== ADDITIONAL LAPTOPS =====
+  "Acer Nitro V 15 2026": "https://m.media-amazon.com/images/I/71jQ-pKx4qL._AC_SX466_.jpg",
+  "Acer Nitro V 15": "https://m.media-amazon.com/images/I/71jQ-pKx4qL._AC_SX466_.jpg",
+  "Acer Swift Go 14": "https://m.media-amazon.com/images/I/71kQzwJxC6L._AC_SX466_.jpg",
+  "ASUS ROG Zephyrus G16": "https://m.media-amazon.com/images/I/71RLPqL3D8L._AC_SX466_.jpg",
+  "ASUS ROG Strix G15": "https://m.media-amazon.com/images/I/81fF6tDkjPL._AC_SX466_.jpg",
+  "Apple MacBook Air M4 13-inch": "https://m.media-amazon.com/images/I/71Y5o4nBTIL._AC_SX466_.jpg",
+  "Apple MacBook Air M4 15-inch": "https://m.media-amazon.com/images/I/71jG+e7roXL._AC_SX466_.jpg",
+  "Apple MacBook Pro M4 14-inch": "https://m.media-amazon.com/images/I/61RJ6maxOQL._AC_SX466_.jpg",
+  "Apple MacBook Pro M4 16-inch": "https://m.media-amazon.com/images/I/61M-N28F9dL._AC_SX466_.jpg",
+  "Lenovo IdeaPad Slim 5": "https://m.media-amazon.com/images/I/71ZqRDZ0kpL._AC_SX466_.jpg",
+  "Lenovo Legion Pro 5 16": "https://m.media-amazon.com/images/I/71Z8Wb1VBVL._AC_SX466_.jpg",
+  "Lenovo ThinkPad X1 Carbon Gen 12": "https://m.media-amazon.com/images/I/71RPIRpGOAL._AC_SX466_.jpg",
+  "ASUS Vivobook S 15 OLED 2026": "https://m.media-amazon.com/images/I/71pGq1V0jBL._AC_SX466_.jpg",
+  "ASUS TUF Gaming A15 2026": "https://m.media-amazon.com/images/I/81b9oNcqAPL._AC_SX466_.jpg",
+  "ASUS Vivobook 15 2026": "https://m.media-amazon.com/images/I/71jG6IbNhBL._AC_SX466_.jpg",
+  "Dell XPS 14 2026": "https://m.media-amazon.com/images/I/71hfbqUVRNL._AC_SX466_.jpg",
+  "Dell XPS 16": "https://m.media-amazon.com/images/I/71xoR4A6q-L._AC_SX466_.jpg",
+  "HP Pavilion x360 14 2026": "https://m.media-amazon.com/images/I/71PiZkpv8tL._AC_SX466_.jpg",
+  "Microsoft Surface Laptop 6": "https://m.media-amazon.com/images/I/61n+wCpY-cL._AC_SX466_.jpg",
+  "Microsoft Surface Laptop 7": "https://m.media-amazon.com/images/I/71w3oJ7aWBL._AC_SX466_.jpg"
 };
 
 if (typeof module !== "undefined" && module.exports) {
