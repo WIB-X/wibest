@@ -54,14 +54,44 @@
     btn.disabled = true;
     btn.textContent = 'Signing in…';
     err.textContent = '';
+
+    var done = false;
+    var reset = function (msg) {
+      if (done) return; done = true;
+      btn.disabled = false;
+      btn.textContent = 'Sign In';
+      if (msg) err.textContent = msg;
+    };
+
+    // 15s safety timeout — if Firebase Auth hangs (network / blocked cookies),
+    // user gets their button back instead of being stuck forever.
+    var timer = setTimeout(function () {
+      reset('Sign-in timed out. Check your connection or try again.');
+    }, 15000);
+
     firebase.auth().signInWithEmailAndPassword(email, pass)
-      .then(function () { /* onAuthStateChanged handles the rest */ })
+      .then(function (cred) {
+        clearTimeout(timer);
+        done = true;
+        // Explicitly hide overlay — onAuthStateChanged should also do this,
+        // but if it races we don't want to stay stuck.
+        var overlay = document.getElementById('wib-auth-overlay');
+        if (overlay) overlay.style.display = 'none';
+      })
       .catch(function (e) {
-        err.textContent = e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
-          ? 'Incorrect email or password.'
-          : (e.message || 'Sign-in failed.');
-        btn.disabled = false;
-        btn.textContent = 'Sign In';
+        clearTimeout(timer);
+        console.error('[wib-auth] sign-in failed:', e);
+        var msg;
+        if (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential') {
+          msg = 'Incorrect email or password.';
+        } else if (e.code === 'auth/too-many-requests') {
+          msg = 'Too many attempts. Wait a minute and retry.';
+        } else if (e.code === 'auth/network-request-failed') {
+          msg = 'Network error. Check connection.';
+        } else {
+          msg = (e.code ? '['+e.code+'] ' : '') + (e.message || 'Sign-in failed.');
+        }
+        reset(msg);
       });
   };
 
