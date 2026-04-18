@@ -112,12 +112,17 @@ body.wib-has-announce nav.nav{top:36px !important}
   transition:transform .15s ease;
 }
 .nav-logo img{
-  width:44px;height:44px;
-  border-radius:8px;
+  width:56px;height:56px;
+  border-radius:10px;
   background:#fff;
-  padding:4px;
+  padding:0;
+  object-fit:cover;            /* zoom into the WIB text, crop whitespace */
+  object-position:center;
   box-shadow:0 2px 6px rgba(15,23,42,.10);
   transition:transform .15s ease,box-shadow .15s ease;
+}
+@media(max-width:480px){
+  .nav-logo img{width:48px;height:48px;border-radius:9px}
 }
 .nav-logo:hover img{
   transform:translateY(-1px);

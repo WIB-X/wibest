@@ -76,7 +76,7 @@
     return [
       '<a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;font-size:14px;transition:top .2s" onfocus="this.style.top=\'0\'" onblur="this.style.top=\'-40px\'">Skip to content</a>',
       '<nav class="nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">',
-      '<a href="/" class="nav-logo" aria-label="WIB Home"><img src="/logo-256.png" alt="WIB" width="44" height="44" style="display:block"></a>',
+      '<a href="/" class="nav-logo" aria-label="WIB Home"><img src="/logo-256.png" alt="WIB" width="56" height="56" style="display:block"></a>',
       '<div class="nav-links">' + links,
       '<div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle(\'open\')">More \u25BE</button>',
       '<div class="nav-dropdown">' + moreLinks + '</div></div>',
