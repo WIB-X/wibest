@@ -23,9 +23,9 @@
   ];
 
   var MORE_LINKS = [
-    { href: '/quiz/',         label: '🎯 Phone Quiz' },
-    { href: '/compare/ai/',   label: '🤖 AI Compare' },
-    { href: '/hi/',           label: '🇮🇳 हिंदी' },
+    { href: '/quiz/',         label: 'Phone Quiz \u2728' },          // ✨
+    { href: '/compare/ai/',   label: 'AI Compare \u26A1' },          // ⚡
+    { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940' }, // हिंदी
     { href: '/accessories',  label: 'Accessories' },
     { href: '/restaurants',  label: 'Restaurants' },
     { href: '/real-estate',  label: 'Real Estate' },
@@ -78,7 +78,7 @@
       '<nav class="nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">',
       '<a href="/" class="nav-logo" aria-label="WIB Home">WIB</a>',
       '<div class="nav-links">' + links,
-      '<div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle(\'open\')">More ▾</button>',
+      '<div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle(\'open\')">More \u25BE</button>',
       '<div class="nav-dropdown">' + moreLinks + '</div></div>',
       '</div>',
       '<div class="nav-right">',

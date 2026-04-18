@@ -6,7 +6,7 @@
  *  - Firebase/external APIs: Network-only (never cache auth/DB requests)
  */
 
-const CACHE_NAME = 'wib-v3';
+const CACHE_NAME = 'wib-v4';
 const CACHE_TIMEOUT_MS = 3000; // Network timeout before using cache
 
 // Core assets to pre-cache on install
