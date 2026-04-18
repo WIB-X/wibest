@@ -200,7 +200,9 @@ exports.refreshPrices = functions.pubsub
 
 // ── 8. AI Compare proxy (Gemini) ─────────────────────────────────────────────
 // Set GEMINI_API_KEY in functions/.env (or via Firebase secret manager)
-exports.compareAI = functions.https.onRequest(async (req, res) => {
+exports.compareAI = functions
+  .runWith({ minInstances: 1, memory: '512MB', timeoutSeconds: 30 })
+  .https.onRequest(async (req, res) => {
   // Permissive CORS — read-only API, no cookies, naturally rate-limited by Gemini cost.
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -218,19 +220,29 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
     return res.status(400).json({ error: 'query required (max 500 chars)' });
   }
 
-  const system = 'You are WIBest AI — an expert comparison assistant for Indian shoppers. Be concise, India-specific (₹ prices, INR, Indian brands), and structured. Use markdown headings and bullets. Always end with a clear recommendation.';
+  // Inject today's date + a current-events snapshot so the model doesn't
+  // claim recent products are "unreleased" (training cutoff is 1-2 years behind).
+  const today = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+  const currentContext = [
+    `Today's date is ${today}.`,
+    'Smartphones currently available in India: iPhone 17 / 17 Pro / 17 Pro Max (launched Sep 2025), iPhone 16 series still selling, Samsung Galaxy S25 / S25 Ultra (launched Jan 2025), OnePlus 13, Xiaomi 15, Vivo X200, Pixel 10.',
+    'Upcoming: iPhone 18 (expected Sep 2026), Samsung Galaxy S26 (expected Jan/Feb 2026).',
+    'Cars currently on sale: Tata Nexon facelift, Hyundai Creta N-Line, Maruti Grand Vitara, Mahindra XUV700, BYD Atto 3, MG ZS EV, Tata Punch EV.',
+    'Treat anything the user asks about as available unless you are certain it is discontinued. Do NOT add disclaimers about release dates unless specifically asked.'
+  ].join(' ');
+  const system = `You are WIBest AI — an expert comparison assistant for Indian shoppers. ${currentContext} Be concise (under 300 words), India-specific (₹ prices, INR, Indian brands, availability on Flipkart/Amazon.in/Croma), and well-structured. Use markdown: **bold** for key terms, ## for section headings, bullet points for specs. Always end with a clear "**Recommendation:**" line.`;
   const user = items
     ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
     : query;
 
-  // Models in priority order — current valid model names only.
-  // 2.5-flash often 503s transiently ("high demand"), so we retry it once after a short delay.
+  // Models in priority order — FASTEST first. Comparison answers don't need
+  // deep reasoning, so flash-lite (≈1-2s) is a much better UX than flash (≈4-6s).
   const models = [
+    { name: 'gemini-2.5-flash-lite',  retry: true  },
     { name: 'gemini-2.5-flash',       retry: true  },
-    { name: 'gemini-2.5-flash-lite',  retry: false },
     { name: 'gemini-flash-latest',    retry: false },
-    { name: 'gemini-2.0-flash',       retry: false },
     { name: 'gemini-2.0-flash-lite',  retry: false },
+    { name: 'gemini-2.0-flash',       retry: false },
   ];
   const errors = [];
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
