@@ -223,21 +223,52 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
     ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
     : query;
 
-  // Models in priority order. Only CURRENT valid model names — no deprecated.
-  const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-8b'];
+  // Models in priority order — current valid model names only.
+  // 2.5-flash often 503s transiently ("high demand"), so we retry it once after a short delay.
+  const models = [
+    { name: 'gemini-2.5-flash',       retry: true  },
+    { name: 'gemini-2.5-flash-lite',  retry: false },
+    { name: 'gemini-flash-latest',    retry: false },
+    { name: 'gemini-2.0-flash',       retry: false },
+    { name: 'gemini-2.0-flash-lite',  retry: false },
+  ];
   const errors = [];
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-  for (const model of models) {
+  async function callModel(model) {
+    const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text: system + '\n\n' + user }] }],
+        generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
+      })
+    });
+    return apiRes.json();
+  }
+
+  function extractText(data) {
+    const candidate = (data.candidates || [])[0];
+    if (!candidate) return { error: 'no candidates returned (may be blocked)' };
+    const text = candidate.content && candidate.content.parts && candidate.content.parts[0]
+      && candidate.content.parts[0].text;
+    if (!text) return { error: `candidate has no text (finishReason=${candidate.finishReason})` };
+    return { text };
+  }
+
+  for (const { name: model, retry } of models) {
     try {
-      const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ role: 'user', parts: [{ text: system + '\n\n' + user }] }],
-          generationConfig: { temperature: 0.4, maxOutputTokens: 1024 }
-        })
-      });
-      const data = await apiRes.json();
+      let data = await callModel(model);
+
+      // Retry once on transient overload (UNAVAILABLE / 503 / "high demand")
+      if (data.error && retry) {
+        const msg = (data.error.message || '').toLowerCase();
+        const transient = data.error.status === 'UNAVAILABLE' || data.error.code === 503 || msg.includes('high demand') || msg.includes('overloaded');
+        if (transient) {
+          await sleep(1200);
+          data = await callModel(model);
+        }
+      }
 
       if (data.error) {
         console.error(`Gemini ${model} error:`, JSON.stringify(data.error));
@@ -245,22 +276,11 @@ exports.compareAI = functions.https.onRequest(async (req, res) => {
         continue;
       }
 
-      const candidate = (data.candidates || [])[0];
-      if (!candidate) {
-        errors.push(`${model}: no candidates returned (may be blocked)`);
-        continue;
-      }
-
-      const text = candidate.content && candidate.content.parts && candidate.content.parts[0]
-        && candidate.content.parts[0].text;
-
-      if (!text) {
-        errors.push(`${model}: candidate has no text (finishReason=${candidate.finishReason})`);
-        continue;
-      }
+      const { text, error: extractErr } = extractText(data);
+      if (extractErr) { errors.push(`${model}: ${extractErr}`); continue; }
 
       // Success
-      return res.json({ answer: text, model: model });
+      return res.json({ answer: text, model });
     } catch (e) {
       console.error(`compareAI fetch error (${model}):`, e.message);
       errors.push(`${model}: ${e.message}`);

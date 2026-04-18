@@ -113,7 +113,16 @@ async function ask(q){
       body: JSON.stringify({ query: q })
     });
     const d = await r.json();
-    if(d.error){ out.innerHTML = '<strong>Error:</strong> '+d.error+'. The AI endpoint may not be configured yet — check back soon!'; }
+    if(d.error){
+      // Friendly message when all models are rate-limited / overloaded
+      var det = (d.details || []).join(' ');
+      var busy = /high demand|overloaded|quota|rate/i.test(det);
+      if(busy){
+        out.innerHTML = '<strong>WIBest AI is busy right now.</strong><br>Google\'s AI servers are under heavy load. Please try again in 30–60 seconds.';
+      } else {
+        out.innerHTML = '<strong>Error:</strong> '+d.error+'<br><small style="color:var(--text-muted)">'+(det||'').slice(0,300)+'</small>';
+      }
+    }
     else { out.innerHTML = md(d.answer || 'No answer returned.'); }
     if(typeof gtag === 'function') gtag('event', 'ai_compare_query', { query: q.slice(0,80) });
   }catch(e){
