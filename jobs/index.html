@@ -90,6 +90,9 @@
     <div class="ptl"><div class="ptl-name">Freshersworld</div><div class="ptl-type">Entry-Level & Govt Jobs</div><div class="ptl-desc">Focuses on fresher and government jobs. Good for walk-in interview updates, government exam notifications, and campus placement info.</div><div class="ptl-feat"><span>Govt Jobs</span><span>Walk-ins</span><span>Campus Placement</span></div><a href="https://www.freshersworld.com" target="_blank" rel="noopener">Visit Freshersworld</a></div>
   </div>
 
+  <h2 id="featuredJobsHead" style="display:none">Live job openings on WIB</h2>
+  <div id="featuredJobs" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-bottom:32px"></div>
+
   <h2>Trending roles in India (2026) with salary ranges</h2>
   <div class="roles-grid">
     <div class="role"><div class="role-name">AI / ML Engineer</div><div class="role-cat">Tech - Artificial Intelligence</div><div class="role-salary"><span class="fresh">Fresher: ₹8-15 LPA</span> · <span class="exp">5yr+: ₹25-60 LPA</span></div><div class="role-skills">Skills: Python, TensorFlow/PyTorch, NLP, Computer Vision, MLOps</div><div class="role-links"><a href="https://www.naukri.com/ai-ml-engineer-jobs" target="_blank">Naukri</a><a href="https://www.linkedin.com/jobs/search/?keywords=AI%20ML%20engineer&location=India" target="_blank">LinkedIn</a></div></div>
@@ -134,6 +137,40 @@ function searchJobs(){
   document.getElementById('searchResults').scrollIntoView({behavior:'smooth'});
   if(typeof gtag==='function')gtag('event','job_search',{search_term:q,city:city||'all'});
 }
+</script>
+<script>
+(function(){
+  if(typeof firebase==='undefined'||typeof initFirebase!=='function')return;
+  try{
+    var db=initFirebase();
+    db.collection('jobs').limit(60).get().then(function(snap){
+      if(snap.empty)return;
+      var items=[];snap.forEach(function(d){var x=d.data();if(x.name)items.push(x)});
+      if(!items.length)return;
+      items.sort(function(a,b){return (Number(a.postedDays)||0)-(Number(b.postedDays)||0)});
+      items=items.slice(0,12);
+      document.getElementById('featuredJobsHead').style.display='block';
+      var fmtSal=function(min,max){if(!min)return'';var f=function(n){return n>=100000?'\u20B9'+(n/100000).toFixed(1)+' LPA':'\u20B9'+(n/1000).toFixed(0)+'k'};return f(min)+(max?' - '+f(max):'')};
+      document.getElementById('featuredJobs').innerHTML=items.map(function(j){
+        var sal=fmtSal(j.salaryMin,j.salaryMax);
+        var nq=encodeURIComponent(j.name||'');
+        var cq=encodeURIComponent(j.city||'India');
+        return '<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px">'
+          +'<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px">'
+          +'<div><div style="font-family:Outfit,sans-serif;font-size:15px;font-weight:700;color:var(--text-primary);line-height:1.3">'+(j.name||'Role')+'</div>'
+          +(j.company?'<div style="font-size:13px;color:var(--accent);font-weight:600;margin-top:2px">'+j.company+'</div>':'')+'</div>'
+          +(j.postedDays!=null?'<div style="font-size:11px;color:var(--text-muted);white-space:nowrap">'+(j.postedDays<=1?'Today':j.postedDays+'d ago')+'</div>':'')+'</div>'
+          +'<div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">'+(j.city||'')+(j.experience?' \u00B7 '+j.experience:'')+(j.type?' \u00B7 '+j.type:'')+'</div>'
+          +(sal?'<div style="font-size:14px;font-weight:700;color:#16a34a;margin-bottom:10px">'+sal+'</div>':'')
+          +(j.highlights?'<div style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:12px">'+j.highlights+'</div>':'')
+          +'<div style="display:flex;gap:8px;flex-wrap:wrap">'
+          +'<a href="https://www.naukri.com/'+nq+'-jobs-in-'+cq.toLowerCase()+'" target="_blank" rel="noopener" style="font-size:12px;background:var(--accent);color:#fff;padding:6px 12px;border-radius:6px;font-weight:600">Apply via Naukri</a>'
+          +'<a href="https://www.linkedin.com/jobs/search/?keywords='+nq+'&location='+cq+'" target="_blank" rel="noopener" style="font-size:12px;background:#0a66c2;color:#fff;padding:6px 12px;border-radius:6px;font-weight:600">LinkedIn</a>'
+          +'</div></div>';
+      }).join('');
+    }).catch(function(e){console.warn('[WIB] jobs firestore load failed',e.message)});
+  }catch(e){}
+})();
 </script>
 <script src="/chat-widget.js"></script>
 </body>
