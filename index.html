@@ -229,12 +229,20 @@ function runSearch(q){
 }
 
 // Allow Enter key in search to jump straight to AI Compare
-document.getElementById('siteSearch').addEventListener('keydown', function(e){
-  if(e.key==='Enter'){
-    var q=this.value.trim();
-    if(q) window.location.href='/compare/ai/?q='+encodeURIComponent(q);
+(function(){
+  var s = document.getElementById('siteSearch');
+  if(!s) return;
+  function go(){
+    var q = s.value.trim();
+    if(q) window.location.href = '/compare/ai/?q=' + encodeURIComponent(q);
   }
-});
+  s.addEventListener('keydown', function(e){
+    if(e.key==='Enter' || e.keyCode===13){ e.preventDefault(); go(); }
+  });
+  // Also wire the magnifying-glass icon (works for mobile/touch)
+  var icon = document.querySelector('.hero-search-icon');
+  if(icon){ icon.style.cursor='pointer'; icon.style.pointerEvents='auto'; icon.addEventListener('click', go); }
+})();
 document.addEventListener('click',function(e){if(!e.target.closest('.hero-search'))document.getElementById('searchResults').classList.remove('open');});
 
 // Pre-load search index from Firestore once
