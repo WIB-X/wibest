@@ -175,26 +175,75 @@ exports.onNewPriceAlert = functions.firestore
   });
 
 // ── 7. Daily price refresh (cron) ────────────────────────────────────────────
-// NOTE: Without Amazon Product Advertising API credentials, this is a STUB.
-// When user gets PA-API access (3 sales required), replace the fetch block.
-const tracked = ['B0DGJ7TGLL', 'B0DGHRPYS4', 'B0CHX6LLXT', 'B0DGYJC2D5']; // sample ASINs
-exports.refreshPrices = functions.pubsub
-  .schedule('every 24 hours')
+// REMOVED: was writing synthetic/random prices to Firestore, which misled users.
+// Will reintroduce with real data once Amazon PA-API credentials are obtained
+// (requires 3 qualifying affiliate sales in the Associates program first).
+
+// ── 7b. Weekly newsletter digest (cron) ──────────────────────────────────────
+// Every Friday 10:00 IST: pulls the 5 most-recent blog posts + newest featured
+// listings and emails all confirmed newsletter subscribers a digest.
+exports.sendWeeklyDigest = functions.pubsub
+  .schedule('0 10 * * FRI')
   .timeZone('Asia/Kolkata')
   .onRun(async () => {
-    // Stub: for each ASIN, write a synthetic price entry until PA-API is wired.
-    const now = new Date();
-    for (const asin of tracked) {
-      const ref = admin.firestore().collection('prices').doc(asin);
-      const cur = await ref.get();
-      const prev = cur.exists ? cur.data() : { history: [] };
-      const synthetic = 10000 + Math.floor(Math.random() * 50000);
-      const history = (prev.history || []).slice(-29);
-      history.push({ d: now.toISOString().slice(0,10), p: synthetic });
-      const low30 = Math.min(...history.map(h => h.p));
-      await ref.set({ asin, current: synthetic, low30, history, updatedAt: now }, { merge: true });
+    const db = admin.firestore();
+
+    // Pull subscribers (only confirmed + not unsubscribed)
+    const subsSnap = await db.collection('newsletter_subscribers')
+      .where('unsubscribed', '==', false)
+      .limit(5000)
+      .get();
+    const emails = [];
+    subsSnap.forEach(d => { const s = d.data(); if (s.email) emails.push(s.email); });
+    if (emails.length === 0) { console.log('No subscribers; skipping digest.'); return null; }
+
+    // Pull 5 most-recent blog posts
+    const postsSnap = await db.collection('blog_posts')
+      .orderBy('publishedAt', 'desc').limit(5).get();
+    const posts = [];
+    postsSnap.forEach(d => posts.push({ slug: d.id, ...d.data() }));
+    if (posts.length === 0) { console.log('No posts to feature; skipping digest.'); return null; }
+
+    // Build HTML — reuse emailWrap style so the brand stays consistent
+    const postRows = posts.map(p => {
+      const url = `https://wibest.in/blog/${p.slug}/`;
+      const title = (p.title || p.slug).replace(/</g, '&lt;');
+      const summary = (p.summary || p.description || '').replace(/</g, '&lt;').slice(0, 140);
+      return `<tr><td style="padding:12px 14px;border-bottom:1px solid #e2e8f0">
+        <a href="${url}" style="color:#2563eb;font-weight:600;text-decoration:none;font-size:15px">${title}</a>
+        <div style="color:#64748b;font-size:13px;margin-top:4px;line-height:1.5">${summary}${summary.length >= 140 ? '…' : ''}</div>
+      </td></tr>`;
+    }).join('');
+
+    const html = emailWrap(
+      'This week on WIB',
+      postRows,
+      'https://wibest.in/blog/', 'Read all guides'
+    ).replace(/Automated notification from WIB · wibest\.in/,
+      'You got this because you subscribed at wibest.in. ' +
+      '<a href="https://wibest.in/unsubscribe?email={{EMAIL}}" style="color:#94a3b8">Unsubscribe</a>');
+
+    // Send in batches of 100 via BCC (fits Zoho SMTP limits)
+    const transport = createTransport();
+    const batches = [];
+    for (let i = 0; i < emails.length; i += 100) batches.push(emails.slice(i, i + 100));
+
+    let sent = 0;
+    for (const batch of batches) {
+      try {
+        await transport.sendMail({
+          from: `"WIBest Weekly" <${senderEmail()}>`,
+          to: senderEmail(),         // visible recipient is us
+          bcc: batch,                // subscribers stay hidden from each other
+          subject: `WIBest Weekly: ${posts[0].title || 'new guides this week'}`,
+          html: html.replace('{{EMAIL}}', '')
+        });
+        sent += batch.length;
+      } catch (e) {
+        console.error('digest batch failed:', e.message);
+      }
     }
-    console.log('Refreshed prices for', tracked.length, 'ASINs');
+    console.log(`Weekly digest sent to ${sent}/${emails.length} subscribers.`);
     return null;
   });
 
