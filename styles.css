@@ -251,6 +251,11 @@ img{image-rendering:auto}
 }
 
 /* === Prevent horizontal overflow globally === */
+/* scrollbar-gutter reserves space for the scrollbar at all times,
+   preventing the ~15px layout shift when content grows tall enough
+   to scroll (which is why centered containers can look slightly
+   left of the visual center). */
+html { scrollbar-gutter: stable; }
 html, body { overflow-x: hidden; max-width: 100vw; }
 img, video, iframe { max-width: 100%; height: auto; }
 table { max-width: 100%; }
