@@ -180,22 +180,101 @@ exports.onNewPriceAlert = functions.firestore
 // (requires 3 qualifying affiliate sales in the Associates program first).
 
 // ── 7b. Weekly newsletter digest (cron) ──────────────────────────────────────
-// Every Friday 10:00 IST: pulls the 5 most-recent blog posts + newest featured
-// listings and emails all confirmed newsletter subscribers a digest.
+// Every Friday 10:00 IST: pulls the 5 most-recent blog posts and emails all
+// non-unsubscribed subscribers a rich digest with cover images + CTAs.
+function digestHtml(posts) {
+  const escape = (s) => (s || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const postCards = posts.map((p, i) => {
+    const url = `https://wibest.in/blog/${p.slug}/`;
+    const title = escape(p.title || p.slug).slice(0, 100);
+    const summary = escape(p.summary || p.description || '').slice(0, 180);
+    const cover = p.coverImage || p.cover_image || 'https://wibest.in/og-default.jpg';
+    const category = escape(p.category || 'Guide');
+    const readTime = p.readTime || '5 min read';
+    // Category colour mapping
+    const catColors = {
+      Insurance: '#0891b2', Finance: '#7c3aed', Education: '#2563eb',
+      Travel: '#059669', Appliances: '#ea580c', Electronics: '#db2777',
+      Health: '#dc2626', Cars: '#1d4ed8'
+    };
+    const catColor = catColors[category] || '#2563eb';
+    return `
+      <table cellpadding="0" cellspacing="0" border="0" style="width:100%;margin-bottom:18px">
+        <tr><td style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden">
+          <a href="${url}" style="text-decoration:none;color:inherit;display:block">
+            <img src="${cover}" alt="${title}" width="560" style="width:100%;max-width:560px;height:auto;display:block;border:0">
+            <div style="padding:18px 22px">
+              <span style="display:inline-block;font-size:11px;font-weight:700;color:#fff;background:${catColor};padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">${category}</span>
+              <div style="font-family:-apple-system,'Helvetica Neue',sans-serif;font-size:18px;font-weight:700;color:#0f172a;line-height:1.35;margin-bottom:8px">${title}</div>
+              <div style="color:#64748b;font-size:14px;line-height:1.6;margin-bottom:12px">${summary}${summary.length >= 180 ? '…' : ''}</div>
+              <div style="color:#94a3b8;font-size:12px">📖 ${readTime} · #${i + 1} this week</div>
+            </div>
+          </a>
+        </td></tr>
+      </table>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WIBest Weekly</title></head>
+<body style="margin:0;padding:0;background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f1f5f9">
+  <tr><td align="center" style="padding:30px 16px">
+    <table cellpadding="0" cellspacing="0" border="0" width="600" style="width:100%;max-width:600px">
+
+      <!-- Logo/Header -->
+      <tr><td style="padding:0 0 28px 0;text-align:center">
+        <span style="font-family:'Outfit','Helvetica Neue',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#2563eb">WIBest Weekly</span>
+        <div style="color:#64748b;font-size:13px;margin-top:4px">India's comparison digest · every Friday</div>
+      </td></tr>
+
+      <!-- Greeting -->
+      <tr><td style="background:#fff;border-radius:14px;padding:28px 28px 8px;border:1px solid #e2e8f0">
+        <h1 style="margin:0 0 10px;font-family:'Outfit','Helvetica Neue',sans-serif;font-size:24px;font-weight:700;color:#0f172a;letter-spacing:-0.02em">👋 This week's top guides</h1>
+        <p style="margin:0 0 20px;color:#475569;font-size:15px;line-height:1.6">Hand-picked comparisons to help you decide better. Five guides, zero sponsored rankings.</p>
+      </td></tr>
+
+      <!-- Posts -->
+      <tr><td style="padding:16px 0 0 0">
+        ${postCards}
+      </td></tr>
+
+      <!-- Tools CTA -->
+      <tr><td style="background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid #ddd6fe;border-radius:12px;padding:24px 26px;margin-top:8px">
+        <div style="font-family:'Outfit','Helvetica Neue',sans-serif;font-size:16px;font-weight:700;color:#0f172a;margin-bottom:10px">🤖 Try our free tools</div>
+        <div style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:14px">Ask WIBest AI any comparison question, or take our 3-question phone recommendation quiz.</div>
+        <a href="https://wibest.in/compare/ai/?utm_source=newsletter&utm_campaign=weekly" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;margin-right:8px;margin-bottom:6px">Ask WIBest AI →</a>
+        <a href="https://wibest.in/quiz/?utm_source=newsletter&utm_campaign=weekly" style="display:inline-block;background:#fff;color:#2563eb;border:1px solid #2563eb;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600">Phone Quiz →</a>
+      </td></tr>
+
+      <!-- Footer -->
+      <tr><td style="padding:32px 20px 20px;text-align:center">
+        <div style="font-size:12px;color:#94a3b8;line-height:1.7">
+          You got this because you subscribed at <a href="https://wibest.in" style="color:#64748b">wibest.in</a>.<br>
+          <a href="https://wibest.in/unsubscribe/" style="color:#94a3b8;text-decoration:underline">Unsubscribe</a> ·
+          <a href="https://wibest.in/privacy/" style="color:#94a3b8;text-decoration:underline">Privacy</a> ·
+          <a href="https://wibest.in/contact/" style="color:#94a3b8;text-decoration:underline">Contact</a>
+        </div>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>
+</body></html>`;
+}
+
 exports.sendWeeklyDigest = functions.pubsub
   .schedule('0 10 * * FRI')
   .timeZone('Asia/Kolkata')
   .onRun(async () => {
     const db = admin.firestore();
 
-    // Pull subscribers (only confirmed + not unsubscribed)
-    const subsSnap = await db.collection('newsletter_subscribers')
-      .where('unsubscribed', '==', false)
-      .limit(5000)
-      .get();
+    // Pull subscribers (skip unsubscribed — guard against missing field too)
+    const subsSnap = await db.collection('newsletter_subscribers').limit(5000).get();
     const emails = [];
-    subsSnap.forEach(d => { const s = d.data(); if (s.email) emails.push(s.email); });
-    if (emails.length === 0) { console.log('No subscribers; skipping digest.'); return null; }
+    subsSnap.forEach(d => {
+      const s = d.data();
+      if (s.email && s.unsubscribed !== true) emails.push(s.email);
+    });
+    if (emails.length === 0) { console.log('No active subscribers; skipping digest.'); return null; }
 
     // Pull 5 most-recent blog posts
     const postsSnap = await db.collection('blog_posts')
@@ -204,48 +283,68 @@ exports.sendWeeklyDigest = functions.pubsub
     postsSnap.forEach(d => posts.push({ slug: d.id, ...d.data() }));
     if (posts.length === 0) { console.log('No posts to feature; skipping digest.'); return null; }
 
-    // Build HTML — reuse emailWrap style so the brand stays consistent
-    const postRows = posts.map(p => {
-      const url = `https://wibest.in/blog/${p.slug}/`;
-      const title = (p.title || p.slug).replace(/</g, '&lt;');
-      const summary = (p.summary || p.description || '').replace(/</g, '&lt;').slice(0, 140);
-      return `<tr><td style="padding:12px 14px;border-bottom:1px solid #e2e8f0">
-        <a href="${url}" style="color:#2563eb;font-weight:600;text-decoration:none;font-size:15px">${title}</a>
-        <div style="color:#64748b;font-size:13px;margin-top:4px;line-height:1.5">${summary}${summary.length >= 140 ? '…' : ''}</div>
-      </td></tr>`;
-    }).join('');
-
-    const html = emailWrap(
-      'This week on WIB',
-      postRows,
-      'https://wibest.in/blog/', 'Read all guides'
-    ).replace(/Automated notification from WIB · wibest\.in/,
-      'You got this because you subscribed at wibest.in. ' +
-      '<a href="https://wibest.in/unsubscribe?email={{EMAIL}}" style="color:#94a3b8">Unsubscribe</a>');
-
-    // Send in batches of 100 via BCC (fits Zoho SMTP limits)
+    const html = digestHtml(posts);
+    const subject = `WIBest Weekly: ${(posts[0].title || 'new guides this week').slice(0, 80)}`;
     const transport = createTransport();
-    const batches = [];
-    for (let i = 0; i < emails.length; i += 100) batches.push(emails.slice(i, i + 100));
 
-    let sent = 0;
-    for (const batch of batches) {
+    // Send in BCC batches of 80 (Zoho free tier: ~500/hr). Small delay between batches.
+    let sent = 0, failed = 0;
+    for (let i = 0; i < emails.length; i += 80) {
+      const batch = emails.slice(i, i + 80);
       try {
         await transport.sendMail({
           from: `"WIBest Weekly" <${senderEmail()}>`,
-          to: senderEmail(),         // visible recipient is us
-          bcc: batch,                // subscribers stay hidden from each other
-          subject: `WIBest Weekly: ${posts[0].title || 'new guides this week'}`,
-          html: html.replace('{{EMAIL}}', '')
+          to: senderEmail(),
+          bcc: batch,
+          subject,
+          html
         });
         sent += batch.length;
       } catch (e) {
-        console.error('digest batch failed:', e.message);
+        console.error(`digest batch ${i / 80 + 1} failed:`, e.message);
+        failed += batch.length;
       }
+      // Respect Zoho rate limits
+      if (i + 80 < emails.length) await new Promise(r => setTimeout(r, 1500));
     }
-    console.log(`Weekly digest sent to ${sent}/${emails.length} subscribers.`);
+    console.log(`Weekly digest: ${sent} sent, ${failed} failed, ${emails.length} total subscribers.`);
     return null;
   });
+
+// ── 7c. Unsubscribe endpoint (HTTPS) ─────────────────────────────────────────
+// Called from /unsubscribe/ page. Flips `unsubscribed: true` for a subscriber.
+exports.unsubscribe = functions.https.onRequest(async (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(204).send('');
+  if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
+
+  const { email } = req.body || {};
+  if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'valid email required' });
+  }
+  try {
+    const db = admin.firestore();
+    const snap = await db.collection('newsletter_subscribers')
+      .where('email', '==', email.toLowerCase().trim())
+      .limit(5).get();
+    if (snap.empty) {
+      // Don't reveal whether email is on list (anti-enumeration) — succeed silently
+      return res.json({ ok: true });
+    }
+    const batch = db.batch();
+    snap.forEach(doc => batch.update(doc.ref, {
+      unsubscribed: true,
+      unsubscribedAt: admin.firestore.FieldValue.serverTimestamp()
+    }));
+    await batch.commit();
+    return res.json({ ok: true });
+  } catch (e) {
+    console.error('unsubscribe error:', e.message);
+    return res.status(500).json({ error: 'internal error' });
+  }
+});
 
 // ── 8. AI Compare proxy (Gemini) ─────────────────────────────────────────────
 // Set GEMINI_API_KEY in functions/.env (or via Firebase secret manager)
