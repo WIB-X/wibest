@@ -86,7 +86,7 @@ BLOG_POSTS["best-neet-coaching-for-droppers-india-2026"] = {
     {q: "Allen vs Aakash vs PW — which has the highest selection rate?", a: "Allen has the highest raw numbers at Kota. Aakash is strongest in metros. PW wins on cost-per-selection ratio (₹25K program selection ratio is genuinely competitive). For top 1,000 AIR, Allen dominates; for govt MBBS (any govt college), all three are viable."},
     {q: "Offline Kota vs Online PW — which is better for a dropper?", a: "Offline Kota: better if you need structure, peer competition, and face-to-face doubt clearing. Online PW: better if you're self-disciplined, have a quiet study space, and family support at home. Selection rates at top Kota batches > online, but PW now matches mid-tier offline."},
     {q: "How much does a year in Kota actually cost?", a: "Tuition: ₹1.4-1.6 L (Allen). Hostel: ₹80K-1.2 L (shared room). Mess: ₹3,500-5,500/month. Books + test series: ₹15-25 K. Total: ₹2.8-3.5 L for one year. Factor ₹50K buffer for travel, doctor visits, misc."},
-    {q: "Can a dropper year hurt my admission chances?", a: "No. NEET doesn't penalize droppers. Medical colleges don't discriminate based on drop year — a fresher with AIR 5,000 and a 2-year dropper with AIR 5,000 get identical choice preference. Some colleges mention "preferred fresher" but this is informal, not enforced."}
+    {q: "Can a dropper year hurt my admission chances?", a: "No. NEET doesn't penalize droppers. Medical colleges don't discriminate based on drop year — a fresher with AIR 5,000 and a 2-year dropper with AIR 5,000 get identical choice preference. Some colleges mention \"preferred fresher\" but this is informal, not enforced."}
   ]
 };
 
