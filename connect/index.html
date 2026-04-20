@@ -2,30 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connect — WIB</title>
+<title>Connect with WIB — Follow, Subscribe, Share</title>
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css?v=20260419">
 <link rel="stylesheet" href="/polish.css?v=20260419">
 <style>
-.page{max-width:900px;margin:calc(var(--nav-height)+var(--cat-height)+48px) auto 60px;padding:0 24px}
-.page h1{font-family:'Outfit',sans-serif;font-size:36px;font-weight:700;margin-bottom:8px}
-.page p.intro{color:var(--text-secondary);font-size:15px;line-height:1.7;margin-bottom:32px}
-.services{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.service{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .25s}
-.service:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md)}
-.service h3{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px}
-.service p{font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px}
-.service-tag{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.c-wrap{max-width:960px;margin:calc(var(--nav-height)+var(--cat-height)+40px) auto 60px;padding:0 24px}
+.c-hero{text-align:center;padding:24px 0 40px}
+.c-hero h1{font-family:'Outfit',sans-serif;font-size:40px;font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:14px}
+.c-hero h1 span{background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.c-hero p{color:var(--text-secondary);font-size:17px;line-height:1.6;max-width:620px;margin:0 auto}
+.section-h{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin:40px 0 14px}
+.section-sub{color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:20px;max-width:640px}
+.social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.social{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s}
+.social:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.social-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.social-icon svg{width:20px;height:20px;fill:#fff}
+.social-icon.twitter{background:#0f0f0f}
+.social-icon.instagram{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)}
+.social-icon.linkedin{background:#0a66c2}
+.social-icon.whatsapp{background:#25D366}
+.social-icon.youtube{background:#ff0000}
+.social-icon.telegram{background:#0088cc}
+.social-meta .n{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:var(--text-primary)}
+.social-meta .h{font-size:12px;color:var(--text-muted);margin-top:2px}
+.newsletter-card{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid #ddd6fe;border-radius:16px;padding:28px 32px;margin-top:36px}
+[data-theme="dark"] .newsletter-card{background:linear-gradient(135deg,#1e293b,#27272a);border-color:#334155}
+.newsletter-card h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px}
+.newsletter-card p{color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:16px;max-width:520px}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap;max-width:520px}
+.nl-form input{flex:1;min-width:220px;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:14px}
+.nl-form input:focus{outline:none;border-color:var(--accent)}
+.nl-form button{padding:12px 22px;background:var(--accent);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:600;cursor:pointer;font-size:14px;white-space:nowrap}
+.nl-form button:hover{background:var(--accent-hover)}
+.nl-msg{margin-top:10px;font-size:13px;min-height:18px}
+.nl-msg.ok{color:#16a34a}.nl-msg.err{color:#dc2626}
+.share-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;color:#fff;transition:transform .15s}
+.share-btn:hover{transform:translateY(-1px)}
+.share-btn.wa{background:#25D366}
+.share-btn.tw{background:#0f0f0f}
+.share-btn.li{background:#0a66c2}
+.share-btn.cp{background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)}
+.contribute{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:18px}
+.c-card{padding:20px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.c-card h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.c-card p{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
+.c-card a{color:var(--accent);font-size:13px;font-weight:600;text-decoration:none}
+.c-card a:hover{text-decoration:underline}
+@media(max-width:640px){.c-hero h1{font-size:28px}.section-h{font-size:18px}}
 </style>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
 <link rel="canonical" href="https://wibest.in/connect/">
-<meta name="description" content="Connect with WIB on Instagram, Twitter, and LinkedIn for the latest comparisons and guides from India.">
+<meta name="description" content="Connect with WIB — follow us on Twitter, Instagram, LinkedIn, subscribe to the weekly newsletter, share guides, and contribute reviews.">
 <meta property="og:title" content="Connect with WIB">
-<meta property="og:description" content="Follow WIB on social media and stay updated with the latest comparisons and reviews from India.">
+<meta property="og:description" content="Follow WIB on social media, subscribe to our newsletter, and contribute to the community.">
 <meta property="og:url" content="https://wibest.in/connect/">
 <meta property="og:image" content="https://wibest.in/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -37,21 +72,134 @@
 <body>
 <div id="wib-nav-placeholder"></div>
 
-<div class="page">
-  <h1>Connect</h1>
-  <p class="intro">WIB connects people with the right institutions, products, and services. Here is how we can help.</p>
-  <div class="services">
-    <div class="service"><div class="service-tag">For parents</div><h3>School & College Enquiries</h3><p>Send enquiries directly to schools and colleges through WIB. We forward your request and help facilitate a connection.</p><a href="/schools" class="btn-primary" style="font-size:13px;padding:8px 20px">Browse Schools</a></div>
-    <div class="service"><div class="service-tag">For institutions</div><h3>Verified Listings</h3><p>Schools and colleges can claim and verify their listings to ensure accurate information reaches prospective parents and students.</p><a href="/contact" class="btn-secondary" style="font-size:13px;padding:8px 20px">Contact Us</a></div>
-    <div class="service"><div class="service-tag">For everyone</div><h3>Community Reviews</h3><p>Share your experience with schools, colleges, or products. No login required — just your name, email, and honest review.</p><a href="/schools" class="btn-secondary" style="font-size:13px;padding:8px 20px">Write a Review</a></div>
+<main class="c-wrap">
+  <section class="c-hero">
+    <h1>Let's <span>stay connected</span></h1>
+    <p>Follow WIB on your favourite platform, get the weekly digest, share guides that helped you, or write a review to help the next person.</p>
+  </section>
+
+  <!-- Social links -->
+  <h2 class="section-h">Follow us</h2>
+  <p class="section-sub">One quick post a week on what's new, what's trending, and what we're building next. Zero spam.</p>
+  <div class="social-grid">
+    <a class="social" href="https://twitter.com/wibest_in" target="_blank" rel="noopener" aria-label="Follow WIB on Twitter/X">
+      <div class="social-icon twitter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+      <div class="social-meta"><div class="n">Twitter / X</div><div class="h">@wibest_in · daily threads</div></div>
+    </a>
+    <a class="social" href="https://www.instagram.com/wibest.in/" target="_blank" rel="noopener" aria-label="Follow WIB on Instagram">
+      <div class="social-icon instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+      <div class="social-meta"><div class="n">Instagram</div><div class="h">@wibest.in · visual guides</div></div>
+    </a>
+    <a class="social" href="https://www.linkedin.com/company/wibest" target="_blank" rel="noopener" aria-label="Follow WIB on LinkedIn">
+      <div class="social-icon linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+      <div class="social-meta"><div class="n">LinkedIn</div><div class="h">Company updates</div></div>
+    </a>
+    <a class="social" href="https://youtube.com/@wibest_in" target="_blank" rel="noopener" aria-label="Subscribe to WIB on YouTube">
+      <div class="social-icon youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+      <div class="social-meta"><div class="n">YouTube</div><div class="h">Video comparisons (coming soon)</div></div>
+    </a>
+    <a class="social" href="https://wa.me/?text=Check%20out%20WIB%20at%20https://wibest.in" target="_blank" rel="noopener" aria-label="Share WIB on WhatsApp">
+      <div class="social-icon whatsapp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.687 5.567l-.999 3.648 3.801-.914z"/></svg></div>
+      <div class="social-meta"><div class="n">WhatsApp</div><div class="h">Share with friends</div></div>
+    </a>
+    <a class="social" href="https://t.me/wibest_in" target="_blank" rel="noopener" aria-label="Join WIB on Telegram">
+      <div class="social-icon telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.707 11.533L22.92 2.954c1.033-.374 1.936.253 1.602 1.816l-.001.001-3.781 17.815c-.28 1.268-1.034 1.575-2.093.979l-5.78-4.262-2.789 2.685c-.308.308-.567.567-1.163.567l.413-5.875 10.702-9.67c.466-.41-.103-.64-.72-.232L6.086 13.064l-5.7-1.779c-1.238-.39-1.265-1.238.321-1.752z"/></svg></div>
+      <div class="social-meta"><div class="n">Telegram</div><div class="h">Price drops + deals</div></div>
+    </a>
   </div>
-</div>
+
+  <!-- Newsletter signup -->
+  <section class="newsletter-card">
+    <h2>WIB Weekly — every Friday</h2>
+    <p>Five hand-picked guides, the best deals spotted during the week, and what we're working on next. Unsubscribe any time.</p>
+    <form class="nl-form" id="nlForm">
+      <input type="email" id="nlEmail" placeholder="your@email.com" required autocomplete="email">
+      <button type="submit" id="nlBtn">Subscribe</button>
+    </form>
+    <div class="nl-msg" id="nlMsg"></div>
+  </section>
+
+  <!-- Share -->
+  <h2 class="section-h">Share WIB</h2>
+  <p class="section-sub">Found a guide that helped you? The fastest way to help WIB grow is sharing with someone who needs it.</p>
+  <div class="share-row">
+    <a class="share-btn wa" href="https://wa.me/?text=Hey%2C%20check%20out%20WIB%20-%20India%27s%20comparison%20platform%20for%20schools%2C%20phones%2C%20cars%2C%20hospitals%2C%20travel.%20https%3A%2F%2Fwibest.in" target="_blank" rel="noopener">Share on WhatsApp</a>
+    <a class="share-btn tw" href="https://twitter.com/intent/tweet?text=WIB%20-%20India%27s%20best%20comparison%20platform.&url=https%3A%2F%2Fwibest.in" target="_blank" rel="noopener">Share on Twitter</a>
+    <a class="share-btn li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwibest.in" target="_blank" rel="noopener">Share on LinkedIn</a>
+    <button class="share-btn cp" onclick="copyLink(event)">Copy Link</button>
+  </div>
+
+  <!-- Contribute -->
+  <h2 class="section-h">Contribute to the community</h2>
+  <p class="section-sub">WIB is better when it's built together. Here's how you can help.</p>
+  <div class="contribute">
+    <div class="c-card">
+      <h3>Write a review</h3>
+      <p>Rate schools, colleges, hospitals, or products you've used. Honest reviews from real users beat marketing every time.</p>
+      <a href="/schools">Browse schools →</a>
+    </div>
+    <div class="c-card">
+      <h3>Claim a listing</h3>
+      <p>Run a school, college, or hospital? Email us with proof and we'll verify your listing so accurate info reaches parents and patients.</p>
+      <a href="/contact">Contact WIB →</a>
+    </div>
+    <div class="c-card">
+      <h3>Suggest a topic</h3>
+      <p>Missing a comparison you need? Tell us what you'd like covered next — schools in a specific city, a new phone, anything.</p>
+      <a href="/contact">Send a suggestion →</a>
+    </div>
+    <div class="c-card">
+      <h3>Report an error</h3>
+      <p>Spotted outdated pricing, wrong details, or a broken link? Let us know and we'll fix it within 24 hours.</p>
+      <a href="/contact">Report an issue →</a>
+    </div>
+  </div>
+</main>
+
 <div id="wib-footer-placeholder"></div>
 
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="/config.js"></script>
 <script src="/components.js?v=20260419"></script>
 <script src="/polish.js?v=20260419" defer></script>
 <script src="/cookie-consent.js" defer></script>
-<script src="/chat-widget.js"></script>
+
+<script>
+// Newsletter subscribe — reuses homepage logic
+const db = initFirebase();
+document.getElementById('nlForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('nlEmail').value.trim().toLowerCase();
+  const msg = document.getElementById('nlMsg');
+  const btn = document.getElementById('nlBtn');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.className = 'nl-msg err'; msg.textContent = 'Please enter a valid email.'; return;
+  }
+  btn.disabled = true; btn.textContent = 'Subscribing…';
+  try {
+    await db.collection('newsletter_subscribers').add({
+      email, source: 'connect-page', unsubscribed: false,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    msg.className = 'nl-msg ok';
+    msg.textContent = '✓ Subscribed. First digest arrives this Friday.';
+    document.getElementById('nlEmail').value = '';
+    if (typeof gtag === 'function') gtag('event', 'newsletter_subscribe', { source: 'connect' });
+  } catch (err) {
+    msg.className = 'nl-msg err';
+    msg.textContent = 'Something went wrong. Please try again.';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Subscribe';
+  }
+});
+
+function copyLink(ev) {
+  navigator.clipboard.writeText('https://wibest.in').then(() => {
+    const b = ev.target; const orig = b.textContent;
+    b.textContent = '✓ Copied!'; setTimeout(() => { b.textContent = orig; }, 1500);
+  });
+}
+</script>
 </body>
 </html>
