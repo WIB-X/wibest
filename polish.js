@@ -56,7 +56,7 @@
   window.wibInjectByline = function (target, opts) {
     if (!target) return;
     opts = opts || {};
-    var name = opts.name || 'WIBest Editorial';
+    var name = opts.name || 'WIB Editorial';
     var initials = name.split(/\s+/).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
     var date = opts.date || '';
     var readTime = opts.readTime || '';

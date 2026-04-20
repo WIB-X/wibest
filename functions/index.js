@@ -214,7 +214,7 @@ function digestHtml(posts) {
       </table>`;
   }).join('');
 
-  return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WIBest Weekly</title></head>
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WIB Weekly</title></head>
 <body style="margin:0;padding:0;background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased">
 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f1f5f9">
   <tr><td align="center" style="padding:30px 16px">
@@ -222,7 +222,7 @@ function digestHtml(posts) {
 
       <!-- Logo/Header -->
       <tr><td style="padding:0 0 28px 0;text-align:center">
-        <span style="font-family:'Outfit','Helvetica Neue',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#2563eb">WIBest Weekly</span>
+        <span style="font-family:'Outfit','Helvetica Neue',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#2563eb">WIB Weekly</span>
         <div style="color:#64748b;font-size:13px;margin-top:4px">India's comparison digest · every Friday</div>
       </td></tr>
 
@@ -240,8 +240,8 @@ function digestHtml(posts) {
       <!-- Tools CTA -->
       <tr><td style="background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid #ddd6fe;border-radius:12px;padding:24px 26px;margin-top:8px">
         <div style="font-family:'Outfit','Helvetica Neue',sans-serif;font-size:16px;font-weight:700;color:#0f172a;margin-bottom:10px">🤖 Try our free tools</div>
-        <div style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:14px">Ask WIBest AI any comparison question, or take our 3-question phone recommendation quiz.</div>
-        <a href="https://wibest.in/compare/ai/?utm_source=newsletter&utm_campaign=weekly" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;margin-right:8px;margin-bottom:6px">Ask WIBest AI →</a>
+        <div style="color:#475569;font-size:14px;line-height:1.7;margin-bottom:14px">Ask WIB AI any comparison question, or take our 3-question phone recommendation quiz.</div>
+        <a href="https://wibest.in/compare/ai/?utm_source=newsletter&utm_campaign=weekly" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;margin-right:8px;margin-bottom:6px">Ask WIB AI →</a>
         <a href="https://wibest.in/quiz/?utm_source=newsletter&utm_campaign=weekly" style="display:inline-block;background:#fff;color:#2563eb;border:1px solid #2563eb;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600">Phone Quiz →</a>
       </td></tr>
 
@@ -284,7 +284,7 @@ exports.sendWeeklyDigest = functions.pubsub
     if (posts.length === 0) { console.log('No posts to feature; skipping digest.'); return null; }
 
     const html = digestHtml(posts);
-    const subject = `WIBest Weekly: ${(posts[0].title || 'new guides this week').slice(0, 80)}`;
+    const subject = `WIB Weekly: ${(posts[0].title || 'new guides this week').slice(0, 80)}`;
     const transport = createTransport();
 
     // Send in BCC batches of 80 (Zoho free tier: ~500/hr). Small delay between batches.
@@ -293,7 +293,7 @@ exports.sendWeeklyDigest = functions.pubsub
       const batch = emails.slice(i, i + 80);
       try {
         await transport.sendMail({
-          from: `"WIBest Weekly" <${senderEmail()}>`,
+          from: `"WIB Weekly" <${senderEmail()}>`,
           to: senderEmail(),
           bcc: batch,
           subject,
@@ -378,7 +378,7 @@ exports.compareAI = functions
     'Cars currently on sale: Tata Nexon facelift, Hyundai Creta N-Line, Maruti Grand Vitara, Mahindra XUV700, BYD Atto 3, MG ZS EV, Tata Punch EV.',
     'Treat anything the user asks about as available unless you are certain it is discontinued. Do NOT add disclaimers about release dates unless specifically asked.'
   ].join(' ');
-  const system = `You are WIBest AI — an expert comparison assistant for Indian shoppers. ${currentContext} Be concise (under 300 words), India-specific (₹ prices, INR, Indian brands, availability on Flipkart/Amazon.in/Croma), and well-structured. Use markdown: **bold** for key terms, ## for section headings, bullet points for specs. Always end with a clear "**Recommendation:**" line.`;
+  const system = `You are WIB AI — an expert comparison assistant for Indian shoppers. ${currentContext} Be concise (under 300 words), India-specific (₹ prices, INR, Indian brands, availability on Flipkart/Amazon.in/Croma), and well-structured. Use markdown: **bold** for key terms, ## for section headings, bullet points for specs. Always end with a clear "**Recommendation:**" line.`;
   const user = items
     ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
     : query;

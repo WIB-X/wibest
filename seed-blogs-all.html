@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Seed New Blogs — WIBest Admin</title>
+<title>Seed New Blogs — WIB Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <style>
 body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#0b0f17;color:#e5e7eb}
@@ -20,7 +20,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <script src="/admin-auth-gate.js"></script>
 </head>
 <body>
-<h1>WIBest Expansion Seeder</h1>
+<h1>WIB Expansion Seeder</h1>
 <p>Seeds the <b>12 May</b> and <b>25 June</b> expansion blog posts (37 total) into Firestore. The original 50 posts are already in Firestore.</p>
 <div class="warn">⚠️ Temporarily set <code>allow write: if true;</code> on <code>/blog_posts</code> during seeding. Revert to <code>isAdmin()</code> afterward.</div>
 <button id="seedBtn" onclick="seedAll()">🚀 Seed 37 Blogs</button>

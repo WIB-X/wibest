@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unsubscribe — WIB</title>
-<meta name="description" content="Unsubscribe from the WIBest weekly newsletter. Enter your email to stop receiving emails.">
+<meta name="description" content="Unsubscribe from the WIB weekly newsletter. Enter your email to stop receiving emails.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="canonical" href="https://wibest.in/unsubscribe/">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -35,7 +35,7 @@
 <main class="unsub-wrap">
   <div class="unsub-card">
     <h1>Unsubscribe from newsletter</h1>
-    <p>Enter your email below. You'll stop receiving WIBest Weekly emails within 24 hours.</p>
+    <p>Enter your email below. You'll stop receiving WIB Weekly emails within 24 hours.</p>
 
     <form class="unsub-form" id="unsubForm">
       <input type="email" id="unsubEmail" placeholder="your@email.com" required autocomplete="email">
@@ -81,7 +81,7 @@ document.getElementById('unsubForm').addEventListener('submit', async (e) => {
     const d = await r.json();
     if (d.ok) {
       msg.className = 'unsub-msg ok';
-      msg.textContent = '✓ You have been unsubscribed. You will stop receiving WIBest Weekly emails within 24 hours. Sorry to see you go!';
+      msg.textContent = '✓ You have been unsubscribed. You will stop receiving WIB Weekly emails within 24 hours. Sorry to see you go!';
       msg.style.display = 'block';
       document.getElementById('unsubForm').style.display = 'none';
     } else {
