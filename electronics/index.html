@@ -147,6 +147,7 @@
 <script src="/components.js"></script>
 <script src="/polish.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/seed-data-product-images.js"></script>
 <script>
 const db = initFirebase();
 let allProducts = [];
@@ -222,6 +223,24 @@ function applyFilters(){
 // Brand gradient colors for image placeholder
 const brandGradients={"Samsung":"linear-gradient(135deg,#1428a0,#4285f4)","Apple":"linear-gradient(135deg,#1d1d1f,#555)","OnePlus":"linear-gradient(135deg,#eb0028,#ff6b6b)","Xiaomi":"linear-gradient(135deg,#ff6900,#ffb347)","Redmi":"linear-gradient(135deg,#ff6900,#ffb347)","Realme":"linear-gradient(135deg,#ffc600,#ff8c00)","Vivo":"linear-gradient(135deg,#415fff,#7b68ee)","Oppo":"linear-gradient(135deg,#1a472a,#4ade80)","Nothing":"linear-gradient(135deg,#000,#333)","Google":"linear-gradient(135deg,#4285f4,#34a853)","Motorola":"linear-gradient(135deg,#3a0ca3,#7b2ff7)","iQOO":"linear-gradient(135deg,#ff4500,#ff8c00)","HP":"linear-gradient(135deg,#0096d6,#00bfff)","Dell":"linear-gradient(135deg,#007db8,#00a6d6)","Lenovo":"linear-gradient(135deg,#e2231a,#ff6b6b)","ASUS":"linear-gradient(135deg,#00529b,#3a86ff)","Acer":"linear-gradient(135deg,#83b81a,#a3d944)","MSI":"linear-gradient(135deg,#ff0000,#cc0000)","MacBook":"linear-gradient(135deg,#1d1d1f,#555)"};
 
+// Client-side PRODUCT_IMAGES lookup: if Firestore doc lacks an image field,
+// we can still show a real photo by matching the product name.
+// Falls back gracefully when no match exists.
+var PRODUCT_IMAGES = window.PRODUCT_IMAGES || {};
+function imageForProduct(p) {
+  if (p.image || p.img || p.imageUrl || p.photo) return p.image || p.img || p.imageUrl || p.photo;
+  if (!p.name) return '';
+  // Direct key match
+  if (PRODUCT_IMAGES[p.name]) return PRODUCT_IMAGES[p.name];
+  // Fuzzy: try matching by significant tokens (brand + model number)
+  var target = p.name.toLowerCase();
+  for (var key in PRODUCT_IMAGES) {
+    var k = key.toLowerCase();
+    if (target.indexOf(k) !== -1 || k.indexOf(target) !== -1) return PRODUCT_IMAGES[key];
+  }
+  return '';
+}
+
 function renderProducts(products){
   const grid=document.getElementById('productGrid');
   if(!products.length){grid.innerHTML='';return}
@@ -229,7 +248,7 @@ function renderProducts(products){
     const isPhone=p.subcategory==='phone';
     const gradient=brandGradients[p.brand]||'linear-gradient(135deg,#2563eb,#7c3aed)';
     const initial=(p.brand||'W').charAt(0);
-    const imageUrl=p.image||p.img||p.imageUrl||p.photo||'';
+    const imageUrl=imageForProduct(p);
     const specs=isPhone?[
       {l:'Display',v:p.display||'N/A'},{l:'Processor',v:p.processor||'N/A'},
       {l:'RAM',v:p.ram||'N/A'},{l:'Storage',v:p.storage||'N/A'},

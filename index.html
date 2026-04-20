@@ -68,12 +68,12 @@
 .cta p{color:var(--text-secondary);margin-bottom:24px;font-size:15px}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 /* Search bar */
-.hero-search{position:relative;max-width:580px;margin:0 auto 40px}
+.hero-search{position:relative;max-width:580px;margin:0 auto 40px;z-index:50}
 .hero-search input{width:100%;padding:16px 52px 16px 20px;border:2px solid var(--border);border-radius:12px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:16px;transition:border .2s,box-shadow .2s;box-shadow:var(--shadow-sm)}
 .hero-search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.1)}
 .hero-search input::placeholder{color:var(--text-muted)}
 .hero-search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--text-muted);fill:none;stroke-width:2;pointer-events:none}
-.search-results{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-md);z-index:100;max-height:360px;overflow-y:auto;display:none}
+.search-results{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-md);z-index:200;max-height:360px;overflow-y:auto;display:none}
 .search-results.open{display:block}
 .sr-item{display:flex;align-items:center;gap:12px;padding:12px 16px;text-decoration:none;transition:background .15s;border-bottom:1px solid var(--border)}
 .sr-item:last-child{border-bottom:none}
@@ -227,19 +227,26 @@ function doSearch(q){
   var box=document.getElementById('searchResults');
   q=q.trim();
   if(q.length<2){box.classList.remove('open');return}
-  _srTimer=setTimeout(function(){runSearch(q)},320);
+  // Render IMMEDIATELY on first keystroke so user always sees feedback,
+  // even before Firestore cache loads. Debounce only the detailed filter.
+  runSearch(q);
+  _srTimer=setTimeout(function(){runSearch(q)},250);
 }
 function runSearch(q){
   var box=document.getElementById('searchResults');
-  box.innerHTML='<div class="sr-empty">Searching...</div>';
   box.classList.add('open');
   var ql=q.toLowerCase();
+  var esc=function(s){return String(s||'').replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+  var qEsc=esc(q);
   var results=_srCache.filter(function(r){return r.name&&r.name.toLowerCase().includes(ql)}).slice(0,6);
-  var aiCta='<a href="/compare/ai/?q='+encodeURIComponent(q)+'" class="sr-item" style="background:linear-gradient(90deg,rgba(124,58,237,.08),rgba(37,99,235,.08));border-top:1px solid var(--border)"><span class="sr-cat" style="background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff">AI</span><div><div class="sr-name">Ask WIBest AI: \u201C'+q+'\u201D</div><div class="sr-sub">Get an India-specific comparison instantly</div></div></a>';
+  var aiCta='<a href="/compare/ai/?q='+encodeURIComponent(q)+'" class="sr-item" style="background:linear-gradient(90deg,rgba(124,58,237,.08),rgba(37,99,235,.08));border-top:1px solid var(--border)"><span class="sr-cat" style="background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff">AI</span><div><div class="sr-name">Ask WIBest AI: \u201C'+qEsc+'\u201D</div><div class="sr-sub">Press Enter \u21B5 or click to get a comparison instantly</div></div></a>';
   if(results.length){
     box.innerHTML=results.map(function(r){
-      return'<a href="'+r.url+'" class="sr-item"><span class="sr-cat">'+r.cat+'</span><div><div class="sr-name">'+r.name+'</div>'+(r.sub?'<div class="sr-sub">'+r.sub+'</div>':'')+'</div></a>';
+      return'<a href="'+esc(r.url)+'" class="sr-item"><span class="sr-cat">'+esc(r.cat)+'</span><div><div class="sr-name">'+esc(r.name)+'</div>'+(r.sub?'<div class="sr-sub">'+esc(r.sub)+'</div>':'')+'</div></a>';
     }).join('') + aiCta;
+  }else if(_srCache.length===0){
+    // Cache not yet loaded — AI CTA is the best option
+    box.innerHTML='<div class="sr-empty" style="padding:12px 16px;color:var(--text-muted);font-size:13px">Searching site\u2026</div>'+aiCta;
   }else{
     box.innerHTML='<div class="sr-empty" style="padding:12px 16px;color:var(--text-muted);font-size:13px">No direct match. Try the AI:</div>'+aiCta;
   }

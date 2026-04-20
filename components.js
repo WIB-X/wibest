@@ -106,7 +106,7 @@
       '<nav class="nav" role="navigation" aria-label="Main navigation"><div class="nav-inner">',
       '<a href="/" class="nav-logo" aria-label="WIB Home"><img src="/logo-256.png" alt="WIB" width="56" height="56" style="display:block"></a>',
       '<div class="nav-links">' + links,
-      '<div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle(\'open\')">More \u25BE</button>',
+      '<div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle(\'open\')">More <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:4px"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
       '<div class="nav-dropdown">' + moreLinks + '</div></div>',
       '</div>',
       '<div class="nav-right">',
