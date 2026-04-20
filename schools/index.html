@@ -228,7 +228,17 @@ async function loadSchools(){
     applyFilters();
     (function emitItemList(items){
       if(!items||!items.length)return;
-      var list=items.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.name||'','url':'https://wibest.in/school-detail.html?id='+encodeURIComponent(it.id||'')}});
+      var list=items.slice(0,25).map(function(it,i){
+        var school={
+          '@type':'EducationalOrganization',
+          'name':it.name||'',
+          'url':'https://wibest.in/school-detail.html?id='+encodeURIComponent(it.id||''),
+          'address':{'@type':'PostalAddress','addressLocality':it.city||''}
+        };
+        var r=it.google_rating||it.rating||0;
+        if(r>0)school.aggregateRating={'@type':'AggregateRating','ratingValue':r,'bestRating':5,'ratingCount':it.reviews_count||it.review_count||1};
+        return {'@type':'ListItem','position':i+1,'item':school};
+      });
       var s=document.createElement('script');s.type='application/ld+json';
       s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
       document.head.appendChild(s);

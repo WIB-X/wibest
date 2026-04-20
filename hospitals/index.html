@@ -286,7 +286,17 @@ function init(){
   applyFilters();
   (function emitItemList(items){
     if(!items||!items.length)return;
-    var list=items.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.n||'','url':'https://wibest.in/hospital-detail.html?name='+encodeURIComponent(it.n||'')}});
+    var list=items.slice(0,25).map(function(it,i){
+      var h={
+        '@type':'Hospital',
+        'name':it.n||'',
+        'url':'https://wibest.in/hospital-detail.html?name='+encodeURIComponent(it.n||''),
+        'address':{'@type':'PostalAddress','addressLocality':it.c||''}
+      };
+      if(it.s&&it.s.length)h.medicalSpecialty=it.s;
+      if(it.r)h.aggregateRating={'@type':'AggregateRating','ratingValue':it.r,'bestRating':5,'ratingCount':1};
+      return {'@type':'ListItem','position':i+1,'item':h};
+    });
     var s=document.createElement('script');s.type='application/ld+json';
     s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
     document.head.appendChild(s);

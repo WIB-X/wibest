@@ -29,6 +29,10 @@
   <url><loc>https://wibest.in/schools/surat/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/schools/vadodara/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/schools/visakhapatnam/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/madurai/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/mangalore/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/mysore/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/schools/trichy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/affiliate-disclosure/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://wibest.in/colleges/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/colleges/jaipur/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -47,6 +51,10 @@
   <url><loc>https://wibest.in/colleges/surat/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/colleges/vadodara/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/colleges/visakhapatnam/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/colleges/madurai/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/colleges/mangalore/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/colleges/mysore/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/colleges/trichy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/electronics/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/cars/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/hospitals/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>

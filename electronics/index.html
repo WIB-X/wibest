@@ -171,10 +171,20 @@ async function loadProducts(){
     document.getElementById('statProducts').textContent=allProducts.length;
     document.getElementById('statBrands').textContent=[...new Set(allProducts.map(p=>p.brand).filter(Boolean))].length;
     applyFilters();
-    // Emit ItemList schema for SEO
+    // Emit ItemList schema for SEO with per-item Product + AggregateRating
     (function emitItemList(items){
       if(!items||!items.length)return;
-      var list=items.slice(0,20).map(function(it,i){return {'@type':'ListItem','position':i+1,'name':it.name||'','url':'https://wibest.in/electronics-detail.html?id='+encodeURIComponent(it.id||'')}});
+      var list=items.slice(0,25).map(function(it,i){
+        var p={
+          '@type':'Product',
+          'name':it.name||'',
+          'url':'https://wibest.in/electronics-detail.html?id='+encodeURIComponent(it.id||''),
+          'brand':{'@type':'Brand','name':it.brand||''}
+        };
+        if(it.price)p.offers={'@type':'Offer','price':it.price,'priceCurrency':'INR','availability':'https://schema.org/InStock'};
+        if(it.rating)p.aggregateRating={'@type':'AggregateRating','ratingValue':it.rating,'bestRating':5,'ratingCount':it.reviews_count||1};
+        return {'@type':'ListItem','position':i+1,'item':p};
+      });
       var s=document.createElement('script');s.type='application/ld+json';
       s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
       document.head.appendChild(s);
