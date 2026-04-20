@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Next Car — 7-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Petrol vs diesel vs EV, sedan vs SUV, family size, fuel economy — answer 7 questions and WIB AI will recommend the perfect car for you in India.">
+<meta property="og:title" content="Find your next car — AI-powered quiz">
+<meta property="og:description" content="7 questions. One specific car matched to your needs and budget.">
+<meta property="og:url" content="https://wibest.in/decide/car/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/car/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Find your <span>next car</span></h1>
+    <p>7 questions about how you'll drive and we'll match you to one specific model.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'car',
+  accent: '#dc2626',
+  aiContext: 'You are WIB AI helping an Indian car buyer. Recommend ONE specific car available in India in 2026 with current ex-showroom and on-road ₹ price (assume Delhi). Indian brands & models: Maruti Suzuki (Swift, Baleno, Brezza, Grand Vitara, Fronx, Jimny), Hyundai (i20, Verna, Creta, Alcazar, Tucson, Exter), Tata (Punch, Nexon, Harrier, Safari, Curvv, Punch EV, Nexon EV, Harrier EV), Mahindra (XUV3XO, XUV700, Scorpio-N, Thar, BE 6, XEV 9e), Honda (City, Amaze, Elevate), Toyota (Glanza, Hyryder, Innova Hycross, Fortuner), Kia (Sonet, Seltos, Carens), MG (Astor, Hector, ZS EV, Comet), Skoda (Kushaq, Slavia, Kylaq), VW (Virtus, Taigun), BYD (Atto 3, Seal). Consider real fuel economy, service network, resale value, safety ratings (Bharat NCAP/Global NCAP).',
+  category: 'Cars',
+  affiliates: [
+    { label: 'CarDekho', url: 'https://www.cardekho.com/cars/{{name}}', style: 'background:#e23744;color:#fff' },
+    { label: 'CarWale', url: 'https://www.carwale.com/{{name}}-cars/', style: 'background:#2196f3;color:#fff' }
+  ],
+  questions: [
+    { key:'budget', q:"What's your on-road budget?", opts: [
+      { emoji:'💵', label:'Under ₹7 lakh', val:'under-7L' },
+      { emoji:'💰', label:'₹7-12 lakh', val:'7-12L' },
+      { emoji:'💎', label:'₹12-20 lakh', val:'12-20L' },
+      { emoji:'👑', label:'₹20-35 lakh', val:'20-35L' },
+      { emoji:'🏆', label:'₹35 lakh+', val:'above-35L' }
+    ]},
+    { key:'fuel', q:"Which fuel type?", opts: [
+      { emoji:'⛽', label:'Petrol', val:'petrol' },
+      { emoji:'🛢️', label:'Diesel', val:'diesel' },
+      { emoji:'🔌', label:'Electric (EV)', val:'ev' },
+      { emoji:'💨', label:'CNG', val:'cng' },
+      { emoji:'🔋', label:'Hybrid', val:'hybrid' },
+      { emoji:'🤷', label:'Recommend best for me', val:'any' }
+    ]},
+    { key:'body', q:"What body type?", opts: [
+      { emoji:'🚗', label:'Hatchback (small, city)', val:'hatchback' },
+      { emoji:'🏎️', label:'Sedan', val:'sedan' },
+      { emoji:'🚙', label:'Compact SUV', val:'compact-suv' },
+      { emoji:'🚐', label:'Full-size SUV', val:'suv' },
+      { emoji:'🚌', label:'MPV / 7-seater', val:'mpv' }
+    ]},
+    { key:'family', q:"How many people will travel together usually?", opts: [
+      { emoji:'🧍', label:'1-2 people', val:'1-2' },
+      { emoji:'👨‍👩‍👧', label:'3-4 (small family)', val:'3-4' },
+      { emoji:'👨‍👩‍👧‍👦', label:'5-6 (large family)', val:'5-6' },
+      { emoji:'👨‍👩‍👧‍👦👴', label:'7+ (joint family)', val:'7-plus' }
+    ]},
+    { key:'usage', q:"What's your daily driving like?", opts: [
+      { emoji:'🏙️', label:'City commute (under 30 km/day)', val:'city-short' },
+      { emoji:'🚦', label:'City heavy traffic (30-60 km/day)', val:'city-heavy' },
+      { emoji:'🛣️', label:'Mostly highway', val:'highway' },
+      { emoji:'🏔️', label:'Mixed + hills/long trips', val:'mixed' }
+    ]},
+    { key:'priority', q:"What matters most?", opts: [
+      { emoji:'⛽', label:'Fuel economy', val:'mileage' },
+      { emoji:'🛡️', label:'Safety (5-star NCAP)', val:'safety' },
+      { emoji:'✨', label:'Features & tech', val:'features' },
+      { emoji:'🏆', label:'Brand & resale value', val:'brand' },
+      { emoji:'🛠️', label:'Service network reach', val:'service' }
+    ]},
+    { key:'transmission', q:"Manual or automatic?", opts: [
+      { emoji:'🎮', label:'Manual (more control, cheaper)', val:'manual' },
+      { emoji:'🤖', label:'Automatic (AT/AMT/CVT/DCT)', val:'auto' },
+      { emoji:'🤷', label:'No preference', val:'any' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

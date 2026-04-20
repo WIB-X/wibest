@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best School for My Child — 8-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Parents — answer 8 questions and WIB AI will recommend the top 3 schools matching your city, board, budget, and child's needs. No promotional rankings.">
+<meta property="og:title" content="Best school for my child — personalised AI quiz">
+<meta property="og:description" content="8 questions. Top 3 school matches tailored to your child and priorities.">
+<meta property="og:url" content="https://wibest.in/decide/school/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/school/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Best school for <span>your child</span></h1>
+    <p>8 questions about your family's priorities. We'll match you to the top 3 schools in your city.</p>
+  </div>
+
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'school',
+  accent: '#7c3aed',
+  aiContext: 'You are WIB AI helping an Indian parent choose a school for their child. Recommend top 3 real schools in the user\'s specified city. Consider CBSE/ICSE/IB/IGCSE board preferences, realistic 2026 fees, transport/distance, co-educational vs single-gender, special needs support if mentioned. Use real school names that exist in India today. For fees, give specific ranges in ₹. Format as markdown with the top pick detailed, then 2 alternatives.',
+  category: 'Schools',
+  affiliates: [
+    { label: 'Browse all schools', url: 'https://wibest.in/schools/?q={{name}}', style: 'background:#7c3aed;color:#fff' },
+    { label: 'Write enquiry', url: 'https://wibest.in/schools/?enquire={{name}}', style: 'background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)' }
+  ],
+  questions: [
+    { key:'city', q:"Which city is your child in?", opts: [
+      { emoji:'🏙️', label:'Delhi / NCR', val:'Delhi' },
+      { emoji:'🌊', label:'Mumbai', val:'Mumbai' },
+      { emoji:'🌆', label:'Bangalore', val:'Bangalore' },
+      { emoji:'🏛️', label:'Chennai', val:'Chennai' },
+      { emoji:'🌇', label:'Hyderabad', val:'Hyderabad' },
+      { emoji:'🎭', label:'Kolkata', val:'Kolkata' },
+      { emoji:'🏞️', label:'Pune', val:'Pune' },
+      { emoji:'📍', label:'Other city (mention in next step)', val:'other' }
+    ]},
+    { key:'grade', q:"Which grade are you looking for?", opts: [
+      { emoji:'🧸', label:'Pre-school / Nursery / KG', val:'preschool' },
+      { emoji:'✏️', label:'Primary (1-5)', val:'primary' },
+      { emoji:'📚', label:'Middle (6-8)', val:'middle' },
+      { emoji:'🧪', label:'Secondary (9-10)', val:'secondary' },
+      { emoji:'🎓', label:'Senior Secondary (11-12)', val:'senior' }
+    ]},
+    { key:'board', q:"Which board do you prefer?", opts: [
+      { emoji:'🇮🇳', label:'CBSE', val:'CBSE' },
+      { emoji:'📝', label:'ICSE / CISCE', val:'ICSE' },
+      { emoji:'🌍', label:'International (IB / IGCSE)', val:'IB/IGCSE' },
+      { emoji:'🏛️', label:'State Board', val:'state' },
+      { emoji:'🤷', label:'Open — recommend best', val:'any' }
+    ]},
+    { key:'fees', q:"What annual fee range is comfortable?", opts: [
+      { emoji:'💵', label:'Under ₹50,000', val:'under-50k' },
+      { emoji:'💰', label:'₹50,000 – ₹1.5 lakh', val:'50k-1.5L' },
+      { emoji:'💎', label:'₹1.5 – 3 lakh', val:'1.5-3L' },
+      { emoji:'👑', label:'₹3 lakh+ (premium)', val:'above-3L' }
+    ]},
+    { key:'priority', q:"What matters most in a school?", sub:"Pick one primary focus", opts: [
+      { emoji:'🏆', label:'Academic rigour & board results', val:'academics' },
+      { emoji:'🎨', label:'Balanced (academics + arts + sports)', val:'balanced' },
+      { emoji:'🎭', label:'Extra-curricular / sports strength', val:'extracurricular' },
+      { emoji:'🌱', label:'Child-friendly, low-stress learning', val:'progressive' },
+      { emoji:'🌍', label:'International exposure & culture', val:'global' }
+    ]},
+    { key:'transport', q:"How important is school proximity?", opts: [
+      { emoji:'🏠', label:'Must be within 5 km of home', val:'5km' },
+      { emoji:'🚗', label:'Up to 10 km / 30 min by bus', val:'10km' },
+      { emoji:'✈️', label:'Distance doesn\'t matter — best school wins', val:'any' }
+    ]},
+    { key:'coed', q:"Co-ed or single-gender?", opts: [
+      { emoji:'👦👧', label:'Co-ed preferred', val:'coed' },
+      { emoji:'👦', label:'Boys only', val:'boys' },
+      { emoji:'👧', label:'Girls only', val:'girls' },
+      { emoji:'🤷', label:'No preference', val:'any' }
+    ]},
+    { key:'special', q:"Any special requirement?", opts: [
+      { emoji:'✅', label:'None — standard school', val:'none' },
+      { emoji:'🧠', label:'Gifted / advanced learner support', val:'gifted' },
+      { emoji:'🎯', label:'Learning difficulties / special needs', val:'special-needs' },
+      { emoji:'🏏', label:'Strong sports academy', val:'sports' },
+      { emoji:'🎶', label:'Strong music / arts', val:'arts' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

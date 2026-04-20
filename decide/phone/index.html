@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Perfect Phone — 7-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Answer 7 questions and WIB AI will recommend the perfect smartphone for your budget, photography, gaming, and daily use needs — all India-available models.">
+<meta property="og:title" content="Find your perfect phone — AI-powered quiz">
+<meta property="og:description" content="7 questions. One personalised phone recommendation. Powered by WIB AI.">
+<meta property="og:url" content="https://wibest.in/decide/phone/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/phone/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Find your <span>perfect phone</span></h1>
+    <p>7 quick questions. One specific phone tailored to you — with buy links.</p>
+  </div>
+
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'phone',
+  title: 'Perfect phone',
+  accent: '#2563eb',
+  aiContext: 'You are WIB AI helping an Indian shopper choose a smartphone. Only recommend phones actually available in India in April 2026 (iPhone 16/17 series, Samsung Galaxy S24/S25, OnePlus 12/13, Pixel 9/10, Nothing Phone 3a, iQOO, Poco X7, Realme GT, Vivo X200, Xiaomi 15). Use real current ₹ prices. Think about value-for-money, not just flagship features.',
+  category: 'Electronics',
+  affiliates: [
+    { label: 'Amazon', url: 'https://www.amazon.in/s?k={{name}}&tag=wib04-21', style: 'background:#ff9900;color:#111' },
+    { label: 'Flipkart', url: 'https://www.flipkart.com/search?q={{name}}', style: 'background:#2874f0;color:#fff' }
+  ],
+  questions: [
+    { key:'budget', q:"What's your budget?", opts: [
+      { emoji:'💸', label:'Under ₹15,000', val:'under-15k' },
+      { emoji:'💵', label:'₹15,000 – ₹30,000', val:'15-30k' },
+      { emoji:'💰', label:'₹30,000 – ₹60,000', val:'30-60k' },
+      { emoji:'💎', label:'₹60,000 – ₹1 lakh', val:'60-100k' },
+      { emoji:'👑', label:'Over ₹1 lakh (flagship)', val:'above-100k' }
+    ]},
+    { key:'os', q:"iPhone or Android?", opts: [
+      { emoji:'🍎', label:'iPhone / iOS', val:'ios' },
+      { emoji:'🤖', label:'Android', val:'android' },
+      { emoji:'🤷', label:'Either is fine — recommend best', val:'any' }
+    ]},
+    { key:'primary', q:"What matters most to you?", sub:"Pick the one thing you care about the most", opts: [
+      { emoji:'📸', label:'Photography & video', val:'camera' },
+      { emoji:'🎮', label:'Gaming & performance', val:'gaming' },
+      { emoji:'🔋', label:'Long battery life', val:'battery' },
+      { emoji:'✨', label:'Premium feel & brand', val:'premium' },
+      { emoji:'📱', label:'Just a reliable daily driver', val:'everyday' }
+    ]},
+    { key:'size', q:"How big a screen do you want?", opts: [
+      { emoji:'🤏', label:'Compact (under 6.2\")', val:'small' },
+      { emoji:'📏', label:'Medium (6.2\" – 6.6\")', val:'medium' },
+      { emoji:'📐', label:'Large (6.6\"+)', val:'large' },
+      { emoji:'🤷', label:'No preference', val:'any' }
+    ]},
+    { key:'usage', q:"How long do you keep a phone?", opts: [
+      { emoji:'🔄', label:'1-2 years (I upgrade often)', val:'short' },
+      { emoji:'📅', label:'3-4 years (typical)', val:'medium' },
+      { emoji:'♾️', label:'5+ years (make it last)', val:'long' }
+    ]},
+    { key:'city', q:"Which city are you in?", sub:"Helps us account for network coverage and service availability", opts: [
+      { emoji:'🏙️', label:'Tier 1 (Mumbai, Delhi, Bangalore, Chennai, Hyderabad)', val:'tier1' },
+      { emoji:'🏘️', label:'Tier 2 (Pune, Jaipur, Coimbatore, etc.)', val:'tier2' },
+      { emoji:'🌾', label:'Tier 3 / Rural / Small town', val:'tier3' }
+    ]},
+    { key:'brand_block', q:"Any brand you absolutely won't buy?", sub:"Helps us avoid wasted recommendations", opts: [
+      { emoji:'🚫', label:'No Chinese brands (OnePlus OK)', val:'no-chinese' },
+      { emoji:'🍎', label:'Not Apple', val:'no-apple' },
+      { emoji:'📱', label:'Not Samsung', val:'no-samsung' },
+      { emoji:'🤷', label:'No restrictions — open to anything', val:'no-restriction' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

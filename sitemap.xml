@@ -168,6 +168,13 @@
 
   <url><loc>https://wibest.in/quiz/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/compare/ai/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/decide/</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://wibest.in/decide/phone/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/decide/school/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/decide/insurance/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/decide/laptop/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/decide/car/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/decide/holiday/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/insurance/</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://wibest.in/loans/</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://wibest.in/ev/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>

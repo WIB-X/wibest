@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick the Right Laptop — 6-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Answer 6 questions and WIB AI will recommend the perfect laptop for your work, study, gaming, or creative needs — India-available models with current prices.">
+<meta property="og:title" content="Pick the right laptop — AI quiz">
+<meta property="og:description" content="6 questions. One specific laptop tailored to your use case.">
+<meta property="og:url" content="https://wibest.in/decide/laptop/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/laptop/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Pick the <span>right laptop</span></h1>
+    <p>6 quick questions. One specific laptop with the exact specs you need + buy links.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'laptop',
+  accent: '#16a34a',
+  aiContext: 'You are WIB AI helping an Indian shopper choose a laptop. Recommend ONE specific laptop available in India in 2026 with real model name and current ₹ price. Brands: Apple (M3/M4 MacBook Air/Pro), Dell (XPS, Inspiron, Vostro), HP (Pavilion, Envy, OmniBook), Lenovo (ThinkPad, IdeaPad, Legion), ASUS (ROG, Vivobook, ZenBook), Acer (Aspire, Predator), MSI (gaming), Microsoft Surface, LG Gram. Match exact specs (RAM, SSD, GPU, screen) to use case.',
+  category: 'Electronics',
+  affiliates: [
+    { label: 'Amazon', url: 'https://www.amazon.in/s?k={{name}}+laptop&tag=wib04-21', style: 'background:#ff9900;color:#111' },
+    { label: 'Flipkart', url: 'https://www.flipkart.com/search?q={{name}}+laptop', style: 'background:#2874f0;color:#fff' },
+    { label: 'Croma', url: 'https://www.croma.com/searchB?q={{name}}', style: 'background:#0c8045;color:#fff' }
+  ],
+  questions: [
+    { key:'use', q:"What will you mostly use the laptop for?", opts: [
+      { emoji:'💼', label:'Office work, browsing, email', val:'office' },
+      { emoji:'🎓', label:'College / study + light projects', val:'study' },
+      { emoji:'🎨', label:'Creative work (video, photo, design)', val:'creative' },
+      { emoji:'🎮', label:'Gaming', val:'gaming' },
+      { emoji:'💻', label:'Programming / development', val:'dev' },
+      { emoji:'🌐', label:'Just web browsing & Netflix', val:'casual' }
+    ]},
+    { key:'budget', q:"What's your budget?", opts: [
+      { emoji:'💵', label:'Under ₹40,000', val:'under-40k' },
+      { emoji:'💰', label:'₹40,000 – ₹70,000', val:'40-70k' },
+      { emoji:'💎', label:'₹70,000 – ₹1.2 lakh', val:'70k-1.2L' },
+      { emoji:'👑', label:'₹1.2 lakh+', val:'above-1.2L' }
+    ]},
+    { key:'os', q:"OS preference?", opts: [
+      { emoji:'🪟', label:'Windows', val:'windows' },
+      { emoji:'🍎', label:'macOS', val:'macos' },
+      { emoji:'🐧', label:'Linux-friendly', val:'linux' },
+      { emoji:'🤷', label:'Doesn\'t matter', val:'any' }
+    ]},
+    { key:'portability', q:"How portable does it need to be?", opts: [
+      { emoji:'🪶', label:'Ultra-light — daily commute (under 1.4 kg)', val:'ultralight' },
+      { emoji:'🎒', label:'Light — fits backpack easily (1.4-1.8 kg)', val:'light' },
+      { emoji:'🪑', label:'Mostly desktop replacement (1.8 kg+ OK)', val:'desktop' }
+    ]},
+    { key:'screen', q:"Screen size preference?", opts: [
+      { emoji:'📱', label:'13" — small & portable', val:'13' },
+      { emoji:'💻', label:'14-15" — most popular', val:'14-15' },
+      { emoji:'🖥️', label:'16-17" — large & immersive', val:'16-17' }
+    ]},
+    { key:'years', q:"How many years do you want it to last?", opts: [
+      { emoji:'🔄', label:'2-3 years (will replace)', val:'short' },
+      { emoji:'📅', label:'4-5 years (typical)', val:'medium' },
+      { emoji:'♾️', label:'6+ years (buy once, use long)', val:'long' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

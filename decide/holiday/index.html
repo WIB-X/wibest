@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan My Next Holiday — 6-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Tell us your home city, dates, and budget — WIB AI will recommend the perfect holiday destination in India with 2-night stay suggestion and travel mode.">
+<meta property="og:title" content="Plan my next holiday — AI quiz">
+<meta property="og:description" content="6 questions. One destination + stay + how to get there.">
+<meta property="og:url" content="https://wibest.in/decide/holiday/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/holiday/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Plan my <span>next holiday</span></h1>
+    <p>6 questions. We'll match you to the perfect Indian destination + 2-night stay + how to get there.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'holiday',
+  accent: '#059669',
+  aiContext: 'You are WIB AI helping an Indian traveler plan a holiday. Recommend ONE specific Indian destination given the user\'s home city, budget, dates, and group type. Also suggest a specific hotel/homestay (real, well-reviewed) and travel mode (flight/train/car) with realistic costs in ₹. Consider current weather, peak vs off-season pricing, and weekend vs long-weekend traffic. Be honest if their constraints make a destination unrealistic and suggest a closer alternative.',
+  category: 'Travel',
+  affiliates: [
+    { label: 'Book on MakeMyTrip', url: 'https://www.makemytrip.com/hotels/hotels-in-{{name}}.html', style: 'background:#eb2026;color:#fff' },
+    { label: 'Goibibo', url: 'https://www.goibibo.com/hotels/hotels-in-{{name}}/', style: 'background:#0080ff;color:#fff' },
+    { label: 'See on WIB Travel', url: 'https://wibest.in/travel/?q={{name}}', style: 'background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)' }
+  ],
+  questions: [
+    { key:'city', q:"Where do you live?", opts: [
+      { emoji:'🌊', label:'Mumbai', val:'Mumbai' },
+      { emoji:'🏙️', label:'Delhi / NCR', val:'Delhi' },
+      { emoji:'🌆', label:'Bangalore', val:'Bangalore' },
+      { emoji:'🏛️', label:'Chennai', val:'Chennai' },
+      { emoji:'🌇', label:'Hyderabad', val:'Hyderabad' },
+      { emoji:'🎭', label:'Kolkata', val:'Kolkata' },
+      { emoji:'🏞️', label:'Pune', val:'Pune' },
+      { emoji:'📍', label:'Other', val:'other' }
+    ]},
+    { key:'dates', q:"When are you going?", opts: [
+      { emoji:'🌸', label:'This weekend', val:'this-weekend' },
+      { emoji:'📅', label:'In 2-4 weeks', val:'2-4-weeks' },
+      { emoji:'🗓️', label:'Next month', val:'next-month' },
+      { emoji:'🌴', label:'Summer holidays (May-June)', val:'summer' },
+      { emoji:'🌧️', label:'Monsoon (July-Sept)', val:'monsoon' },
+      { emoji:'❄️', label:'Diwali / Christmas', val:'festive' }
+    ]},
+    { key:'days', q:"How many days/nights?", opts: [
+      { emoji:'🌙', label:'1 night quick break', val:'1n' },
+      { emoji:'🌒', label:'2-3 nights weekend', val:'2-3n' },
+      { emoji:'🗓️', label:'4-5 nights mini-vacation', val:'4-5n' },
+      { emoji:'🏖️', label:'7+ nights full holiday', val:'7n-plus' }
+    ]},
+    { key:'budget', q:"Total budget per person?", opts: [
+      { emoji:'💵', label:'Under ₹5,000', val:'under-5k' },
+      { emoji:'💰', label:'₹5,000 – ₹15,000', val:'5-15k' },
+      { emoji:'💎', label:'₹15,000 – ₹40,000', val:'15-40k' },
+      { emoji:'👑', label:'₹40,000 – ₹1 lakh', val:'40k-1L' },
+      { emoji:'🏆', label:'No budget constraint', val:'no-limit' }
+    ]},
+    { key:'vibe', q:"What kind of trip?", opts: [
+      { emoji:'🏖️', label:'Beach & relaxation', val:'beach' },
+      { emoji:'🏔️', label:'Hill station / mountains', val:'hills' },
+      { emoji:'🛕', label:'Heritage / culture / history', val:'heritage' },
+      { emoji:'🌿', label:'Wildlife / nature', val:'wildlife' },
+      { emoji:'🏃', label:'Adventure / trekking', val:'adventure' },
+      { emoji:'🎉', label:'Nightlife / city break', val:'city' },
+      { emoji:'🧘', label:'Wellness / yoga / detox', val:'wellness' }
+    ]},
+    { key:'group', q:"Who's going?", opts: [
+      { emoji:'🧍', label:'Solo', val:'solo' },
+      { emoji:'💑', label:'Couple', val:'couple' },
+      { emoji:'👨‍👩‍👧', label:'Family with kids', val:'family' },
+      { emoji:'👵👴', label:'Family with senior parents', val:'family-seniors' },
+      { emoji:'👯', label:'Friends group', val:'friends' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>
