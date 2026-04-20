@@ -106,7 +106,7 @@ async function load(){
   if(!slug||slug==='blog'){document.getElementById('articleContent').innerHTML='<div class="loading">Article not found. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';return}
   try{
     var doc=await db.collection('blog_posts').doc(slug).get();
-    if(!doc.exists){document.getElementById('articleContent').innerHTML='<div class="loading">Article not found in database. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';return}
+    if(!doc.exists){(function(){var m=document.createElement("meta");m.name="robots";m.content="noindex,follow";document.head.appendChild(m);})();document.getElementById('articleContent').innerHTML='<div class="loading">Article not found in database. <a href="/blog" style="color:var(--accent)">Back to Blog</a></div>';return}
     var p=doc.data();
     var title=p.title||'Untitled';
     WIBMeta.apply({title:title+" â WIB Blog",description:p.summary||p.description||p.excerpt||title,image:p.coverImage||p.cover_image,url:"https://wibest.in/blog/"+slug+"/",type:"article"});
