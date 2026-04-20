@@ -21,7 +21,7 @@
 .detail-wrap{margin-top:calc(var(--nav-height)+var(--cat-height));max-width:900px;margin-left:auto;margin-right:auto;padding:40px 24px 64px}
 .bc{font-size:12px;color:var(--text-muted);margin-bottom:20px}.bc a{color:var(--accent)}
 .hosp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:24px}
-.hosp-name{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em}
+.hosp-name{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em;margin:0}
 .hosp-meta{font-size:14px;color:var(--text-secondary);margin-top:4px}
 .hosp-rating{font-size:28px;font-weight:700;color:var(--green);background:var(--green-bg);padding:12px 20px;border-radius:12px;text-align:center;line-height:1}
 .hosp-rating small{display:block;font-size:11px;font-weight:400;color:var(--text-muted);margin-top:4px}
@@ -105,7 +105,7 @@ var hospName=params.get('name')||'';
 var hospCity=params.get('city')||'';
 
 if(!hospName){
-  document.getElementById('content').innerHTML='<div class="bc"><a href="/">Home</a> / <a href="/hospitals/">Hospitals</a></div><h2>Hospital not found</h2><p>Please select a hospital from the <a href="/hospitals/">hospitals listing</a>.</p>';
+  document.getElementById('content').innerHTML='<div class="bc"><a href="/">Home</a> / <a href="/hospitals/">Hospitals</a></div><h1>Hospital not found</h1><p>Please select a hospital from the <a href="/hospitals/">hospitals listing</a>.</p>';
 } else {
   document.title=hospName+' - Hospital Details - WIB';
   var h={n:decodeURIComponent(hospName),c:decodeURIComponent(hospCity)};
@@ -131,7 +131,7 @@ if(!hospName){
   <div class="bc"><a href="/">Home</a> / <a href="/hospitals/">Hospitals</a> / ${h.n}</div>
   <div class="hosp-header">
     <div>
-      <div class="hosp-name">${h.n}</div>
+      <h1 class="hosp-name">${h.n}</h1>
       <div class="hosp-meta">${h.c} | ${hType} | Est. ${hEst||'N/A'} | ${hBeds?hBeds+' beds':''}${hAccr?' | '+hAccr:''}</div>
     </div>
     ${hRating?`<div class="hosp-rating">${hRating.toFixed(1)}<small>Rating</small></div>`:''}

@@ -163,7 +163,7 @@ var filtered=R.slice();
         });
         added++;
       });
-      if(added){ filtered=R.slice(); af(); console.log('[WIB] +'+added+' restaurants from Firestore'); }
+      if(added){ filtered=R.slice(); af(); }
     }).catch(function(e){ console.warn('[WIB] restaurants firestore load failed', e.message); });
   }catch(e){}
 })();
