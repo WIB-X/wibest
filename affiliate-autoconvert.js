@@ -127,14 +127,22 @@
       }
     } catch (e) {}
 
-    // Show a tiny "redirecting" indicator so the click feels responsive
-    var origText = a.textContent;
-    var origCursor = a.style.cursor;
-    a.style.cursor = 'wait';
+    // Loading indicator — delayed reveal (150ms) so fast/cached conversions
+    // don't flash an unnecessary spinner. Disables further clicks + adds
+    // a brand-accent spinner next to the link text.
+    a.classList.add('wib-aff-loading');
+    var showSpinnerTimer = setTimeout(function () {
+      a.classList.add('wib-aff-show');
+    }, 150);
+
+    function cleanup() {
+      clearTimeout(showSpinnerTimer);
+      a.classList.remove('wib-aff-loading', 'wib-aff-show');
+    }
 
     convertOne(href).then(function (converted) {
       a.dataset.wibAffConverted = '1';
-      a.style.cursor = origCursor;
+      cleanup();
       // If the user intended to open in a new tab (target=_blank), honor that
       if (a.target === '_blank') {
         window.open(converted, '_blank', 'noopener');
@@ -142,10 +150,33 @@
         window.location.href = converted;
       }
     }).catch(function () {
-      a.style.cursor = origCursor;
+      cleanup();
       window.location.href = href; // fallback
     });
   }, true);
+
+  // Inject spinner styles once — uses the link's own currentColor so it
+  // automatically matches whatever brand color the button already uses
+  // (orange for Amazon, blue for Flipkart, purple for Myntra, etc.).
+  var styleEl = document.createElement('style');
+  styleEl.textContent = [
+    '@keyframes wib-aff-spin { to { transform: rotate(360deg) } }',
+    '.wib-aff-loading { pointer-events: none; position: relative }',
+    '.wib-aff-loading::after {',
+    '  content: ""; display: inline-block;',
+    '  width: 12px; height: 12px;',
+    '  margin-left: 8px;',
+    '  border: 2px solid currentColor;',
+    '  border-top-color: transparent;',
+    '  border-radius: 50%;',
+    '  vertical-align: -2px;',
+    '  opacity: 0;',
+    '  transition: opacity 0.15s ease;',
+    '  animation: wib-aff-spin 0.7s linear infinite;',
+    '}',
+    '.wib-aff-loading.wib-aff-show::after { opacity: 0.85 }'
+  ].join('');
+  (document.head || document.documentElement).appendChild(styleEl);
 
   // Expose for manual calls + testing
   window.WIBAffiliate = window.WIBAffiliate || {};
