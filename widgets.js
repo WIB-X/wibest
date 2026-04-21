@@ -214,7 +214,33 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { mountAll(); });
   else mountAll();
-  new MutationObserver(function (muts) { muts.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) mountAll(n); }); }); }).observe(document.body || document.documentElement, { childList: true, subtree: true });
+
+  // Watch for new [data-wib-*] widgets added dynamically (e.g., via blog-post.html
+  // or Decide engine). Debounced + filtered so AdSense's heavy DOM mutations
+  // don't trigger thousands of querySelectorAll calls (was causing 16s+ TBT).
+  var rescanTimer = null;
+  var hasRelevantMutation = function (muts) {
+    for (var i = 0; i < muts.length; i++) {
+      var added = muts[i].addedNodes;
+      for (var j = 0; j < added.length; j++) {
+        var n = added[j];
+        if (n.nodeType !== 1) continue;
+        // Check if the node itself or any descendant has a data-wib-* attribute
+        // without running querySelectorAll (which is the expensive part).
+        if (n.dataset && (n.dataset.wibReviews !== undefined || n.dataset.wibLead !== undefined || n.dataset.wibPrice !== undefined)) return true;
+        if (n.innerHTML && n.innerHTML.indexOf('data-wib-') !== -1) return true;
+      }
+    }
+    return false;
+  };
+  new MutationObserver(function (muts) {
+    if (!hasRelevantMutation(muts)) return;
+    if (rescanTimer) return; // already scheduled
+    rescanTimer = setTimeout(function () {
+      rescanTimer = null;
+      mountAll();
+    }, 400);
+  }).observe(document.body || document.documentElement, { childList: true, subtree: true });
 
   window.WIBWidgets = { mountAll: mountAll };
 })();
