@@ -16,3 +16,17 @@ node_modules/
 # Temp
 *.tmp
 *.swp
+
+# Secrets — never commit env files, API keys, credentials
+.env
+.env.*
+*.env
+*.env.*
+env.txt
+env.*
+secrets
+secrets.*
+*.key
+*.pem
+service-account*.json
+firebase-adminsdk*.json

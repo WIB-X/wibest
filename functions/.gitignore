@@ -1,2 +1,13 @@
 node_modules/
+
+# Secrets — match every permutation anyone might save
 .env
+.env.*
+*.env
+*.env.*
+env.txt
+env.*
+secrets
+secrets.*
+*.key
+*.pem
