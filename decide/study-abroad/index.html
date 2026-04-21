@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick Your Study Abroad Country — 7-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Confused between USA, Canada, UK, Germany, Australia for your master's? Answer 7 questions and WIB AI will recommend the best country + 2 universities for your budget, course, and visa goals.">
+<meta property="og:title" content="Pick your study abroad country — AI quiz">
+<meta property="og:description" content="7 questions. Country + universities + estimated cost.">
+<meta property="og:url" content="https://wibest.in/decide/study-abroad/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/study-abroad/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Pick your <span>study abroad</span> country</h1>
+    <p>7 questions about your course, budget, and post-study work goals. We'll recommend country + 2 universities + cost estimate.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'study-abroad',
+  accent: '#9333ea',
+  aiContext: 'You are WIB AI helping an Indian student pick a study-abroad destination for postgraduate education in 2026. Top destinations for Indian students: USA, Canada, UK, Germany, Australia, Ireland, Netherlands, Singapore, New Zealand, France. Consider: tuition (USD/CAD/GBP/EUR), 1-year living cost, post-study work visa duration, average starting salary in INR equivalent, recent visa policy changes (US H-1B uncertainty, UK student visa rules, Canada PGWP changes, Germany Blue Card), STEM vs non-STEM. Recommend ONE country with 2 specific universities (real names, current rankings), ballpark cost in ₹ (tuition + living), expected post-study work permit, and rough starting salary. Be honest about visa risks.',
+  category: 'Education',
+  affiliates: [
+    { label: 'Browse education loans', url: 'https://wibest.in/loans/?type=education&country={{name}}', style: 'background:#9333ea;color:#fff' },
+    { label: 'Talk to study advisor', url: 'https://wibest.in/contact/?subject=Study abroad: {{name}}', style: 'background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)' }
+  ],
+  questions: [
+    { key:'course', q:"What do you want to study?", opts: [
+      { emoji:'💻', label:'CS / Data Science / AI', val:'cs' },
+      { emoji:'🔧', label:'Engineering (Mech/Civil/EE)', val:'engineering' },
+      { emoji:'💼', label:'MBA / Management', val:'mba' },
+      { emoji:'💰', label:'Finance / Economics', val:'finance' },
+      { emoji:'⚕️', label:'Medicine / Public Health', val:'health' },
+      { emoji:'🎨', label:'Design / Arts / Media', val:'design' },
+      { emoji:'⚖️', label:'Law', val:'law' }
+    ]},
+    { key:'budget', q:"What's your total budget for the degree (tuition + living)?", opts: [
+      { emoji:'💵', label:'Under ₹25 lakh', val:'under-25L' },
+      { emoji:'💰', label:'₹25 - 50 lakh', val:'25-50L' },
+      { emoji:'💎', label:'₹50 lakh - 1 crore', val:'50L-1Cr' },
+      { emoji:'👑', label:'₹1 crore+', val:'above-1Cr' }
+    ]},
+    { key:'funding', q:"How will you fund it?", opts: [
+      { emoji:'🏦', label:'Education loan (primary)', val:'loan' },
+      { emoji:'👨‍👩', label:'Family savings', val:'family' },
+      { emoji:'🎓', label:'Scholarship-dependent', val:'scholarship' },
+      { emoji:'💼', label:'Mix (loan + family + earn)', val:'mix' }
+    ]},
+    { key:'goal', q:"What's your post-study goal?", opts: [
+      { emoji:'🌍', label:'Settle abroad permanently', val:'settle' },
+      { emoji:'💼', label:'Work 3-5 years, then decide', val:'work-then-decide' },
+      { emoji:'🇮🇳', label:'Return to India for senior role', val:'return' },
+      { emoji:'🎓', label:'Pursue PhD / academia', val:'academia' }
+    ]},
+    { key:'gre', q:"Do you have GRE/GMAT/IELTS scores?", opts: [
+      { emoji:'✅', label:'Yes, strong scores (320+ GRE / 720+ GMAT)', val:'strong' },
+      { emoji:'👍', label:'Yes, average scores', val:'average' },
+      { emoji:'⏳', label:'Will take soon', val:'planning' },
+      { emoji:'❌', label:'Prefer no-test admission', val:'no-test' }
+    ]},
+    { key:'risk', q:"How comfortable are you with visa/policy uncertainty?", opts: [
+      { emoji:'🛡️', label:'Want safest country (no visa risk)', val:'safe' },
+      { emoji:'⚖️', label:'Balanced — some risk OK for big upside', val:'balanced' },
+      { emoji:'🎢', label:'High risk OK if reward is great (e.g. USA)', val:'high-risk' }
+    ]},
+    { key:'climate', q:"Climate / lifestyle preference?", opts: [
+      { emoji:'☀️', label:'Warm year-round (Aus, Singapore)', val:'warm' },
+      { emoji:'🌤️', label:'Mild (UK, Ireland, NZ)', val:'mild' },
+      { emoji:'❄️', label:'Cold OK (Canada, Germany, Netherlands)', val:'cold' },
+      { emoji:'🤷', label:'No preference', val:'any' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

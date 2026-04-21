@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick Your Annual Health Checkup — 6-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Confused between Apollo, Thyrocare, Lal PathLabs, Metropolis preventive packages? Answer 6 questions and WIB AI will recommend the perfect health checkup for your age, family history, and budget.">
+<meta property="og:title" content="Pick your annual health checkup — AI quiz">
+<meta property="og:description" content="6 questions. The right health package for your age and risks.">
+<meta property="og:url" content="https://wibest.in/decide/health-checkup/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/health-checkup/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Pick your <span>annual health checkup</span></h1>
+    <p>6 questions about your age, family history, and concerns. We'll match you to the right package — provider, tests, price.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'health-checkup',
+  accent: '#dc2626',
+  aiContext: 'You are WIB AI helping an Indian shopper choose an annual preventive health checkup. Real Indian providers: Apollo Diagnostics (Premium ₹3,000-12,000, executive ₹15,000+), Thyrocare (Aarogyam packages ₹2,000-6,000), Lal PathLabs (Lifestyle packages ₹2,500-10,000), Metropolis Healthcare (Wellness ₹2,500-15,000), Dr Lal PathLabs Swasthya Plus, SRL Diagnostics, Tata 1mg Labs. Recommend ONE specific package by name with: list of key tests included, price ₹, provider, home-collection availability, and report turnaround. Tailor to age (basic ₹2K for 20s/30s, comprehensive ₹6-12K for 40+, executive ₹15K+ with cardiac/cancer screening for 50+). Mention if family history changes recommendation (cardiac → CRP, lipid; cancer → tumor markers).',
+  category: 'Health',
+  affiliates: [
+    { label: 'Browse on WIB Health Checkups', url: 'https://wibest.in/health-checkups/?q={{name}}', style: 'background:#dc2626;color:#fff' },
+    { label: 'Compare hospitals', url: 'https://wibest.in/hospitals/', style: 'background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)' }
+  ],
+  questions: [
+    { key:'age', q:"What's your age?", sub:"Determines which tests are recommended", opts: [
+      { emoji:'🎓', label:'Under 30', val:'under-30' },
+      { emoji:'💼', label:'30 – 45', val:'30-45' },
+      { emoji:'🏃', label:'45 – 55', val:'45-55' },
+      { emoji:'🧓', label:'55 – 65', val:'55-65' },
+      { emoji:'👴', label:'65+', val:'65-plus' }
+    ]},
+    { key:'gender', q:"Gender at birth?", sub:"Determines screening tests (PSA, Pap smear, mammography, etc.)", opts: [
+      { emoji:'♂️', label:'Male', val:'male' },
+      { emoji:'♀️', label:'Female', val:'female' }
+    ]},
+    { key:'family', q:"Any family history of these conditions?", opts: [
+      { emoji:'❤️', label:'Heart disease (heart attack, stroke)', val:'cardiac' },
+      { emoji:'🩸', label:'Diabetes', val:'diabetes' },
+      { emoji:'🎗️', label:'Cancer', val:'cancer' },
+      { emoji:'🫁', label:'Multiple — cardiac + diabetes + cancer', val:'multiple' },
+      { emoji:'✅', label:'None / unknown', val:'none' }
+    ]},
+    { key:'lifestyle', q:"How would you describe your lifestyle?", opts: [
+      { emoji:'🥗', label:'Healthy — exercise, balanced diet', val:'healthy' },
+      { emoji:'🍔', label:'Average — some sedentary, occasional junk', val:'average' },
+      { emoji:'😴', label:'Mostly sedentary, irregular sleep', val:'sedentary' },
+      { emoji:'🚬', label:'Smoker / heavy drinker / poor diet', val:'high-risk' }
+    ]},
+    { key:'budget', q:"What's your budget for the checkup?", opts: [
+      { emoji:'💵', label:'Under ₹2,000 (basic)', val:'under-2k' },
+      { emoji:'💰', label:'₹2,000 – 5,000', val:'2-5k' },
+      { emoji:'💎', label:'₹5,000 – 12,000 (comprehensive)', val:'5-12k' },
+      { emoji:'👑', label:'₹12,000+ (executive)', val:'above-12k' }
+    ]},
+    { key:'concerns', q:"Any specific concerns?", opts: [
+      { emoji:'🩺', label:'General health screening', val:'general' },
+      { emoji:'❤️', label:'Cardiac risk (chest pain / family history)', val:'cardiac' },
+      { emoji:'🍬', label:'Diabetes monitoring', val:'diabetes' },
+      { emoji:'🎗️', label:'Cancer screening', val:'cancer' },
+      { emoji:'⚖️', label:'Weight / hormone issues', val:'hormones' },
+      { emoji:'🧘', label:'Pre-marital / fertility', val:'fertility' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan My Weekend Trip — 5-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="2-3 days, your home city, your budget — answer 5 questions and WIB AI will pick the perfect weekend destination + stay + how to get there.">
+<meta property="og:title" content="Plan my weekend trip — AI quiz">
+<meta property="og:description" content="5 questions. Destination + 1-night stay + travel mode in 90 seconds.">
+<meta property="og:url" content="https://wibest.in/decide/weekend-trip/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/weekend-trip/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Plan my <span>weekend trip</span></h1>
+    <p>5 questions. Destination + stay + how to get there. Within driving distance from your city.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'weekend-trip',
+  accent: '#ea580c',
+  aiContext: 'You are WIB AI helping an Indian traveler pick a weekend destination (2-3 days) within driving distance from their home city. Stick to destinations 100-400 km away (max 6-8 hr drive). For Bangalore: Coorg, Chikmagalur, Mysore, Wayanad, Pondicherry, Sakleshpur, Yelagiri, Hampi, Mahabalipuram, Mantralayam, Yercaud. For Mumbai: Lonavala, Mahabaleshwar, Matheran, Igatpuri, Kashid, Tarkarli, Nashik wineries, Daman, Diu, Sajjangad. For Delhi: Mussoorie, Nainital, Rishikesh, Lansdowne, Kasauli, Jim Corbett, Agra, Jaipur, Bharatpur. For Chennai: Pondicherry, Yercaud, Tirupati, Mahabalipuram, Kanchipuram, Vellore, Tranquebar. For Hyderabad: Nagarjuna Sagar, Ananthagiri, Horsley Hills, Belum Caves, Warangal, Bidar. Recommend ONE destination with: drive time, road quality, recommended stay (real hotel/homestay name + price ₹), top 2 things to do, fuel cost estimate, peak vs off-peak weekend distinction. Honestly call out if monsoon makes it bad.',
+  category: 'Travel',
+  affiliates: [
+    { label: 'Book on MakeMyTrip', url: 'https://www.makemytrip.com/hotels/hotels-in-{{name}}.html', style: 'background:#eb2026;color:#fff' },
+    { label: 'Goibibo', url: 'https://www.goibibo.com/hotels/hotels-in-{{name}}/', style: 'background:#0080ff;color:#fff' },
+    { label: 'See on WIB Travel', url: 'https://wibest.in/travel/?q={{name}}', style: 'background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)' }
+  ],
+  questions: [
+    { key:'city', q:"Where do you live?", opts: [
+      { emoji:'🏙️', label:'Bangalore', val:'Bangalore' },
+      { emoji:'🌊', label:'Mumbai', val:'Mumbai' },
+      { emoji:'🏛️', label:'Delhi / NCR', val:'Delhi' },
+      { emoji:'🏖️', label:'Chennai', val:'Chennai' },
+      { emoji:'🌇', label:'Hyderabad', val:'Hyderabad' },
+      { emoji:'🎭', label:'Kolkata', val:'Kolkata' },
+      { emoji:'🏞️', label:'Pune', val:'Pune' },
+      { emoji:'📍', label:'Other (mention in next question)', val:'other' }
+    ]},
+    { key:'when', q:"When are you going?", opts: [
+      { emoji:'⚡', label:'This weekend', val:'this-weekend' },
+      { emoji:'📅', label:'Next 2 weeks', val:'2-weeks' },
+      { emoji:'🗓️', label:'Next month', val:'next-month' },
+      { emoji:'🎯', label:'Long weekend (specific holiday)', val:'long-weekend' }
+    ]},
+    { key:'vibe', q:"What kind of weekend?", opts: [
+      { emoji:'🏔️', label:'Hill station / cool weather', val:'hills' },
+      { emoji:'🏖️', label:'Beach / waterfront', val:'beach' },
+      { emoji:'🛕', label:'Heritage / culture', val:'heritage' },
+      { emoji:'🌿', label:'Nature / wildlife', val:'wildlife' },
+      { emoji:'🍷', label:'Food + drinks scene', val:'food' },
+      { emoji:'🧘', label:'Quiet / wellness', val:'wellness' },
+      { emoji:'🏃', label:'Adventure / trekking', val:'adventure' }
+    ]},
+    { key:'budget', q:"Budget per person (total)?", opts: [
+      { emoji:'💵', label:'Under ₹3,000', val:'under-3k' },
+      { emoji:'💰', label:'₹3,000 – 8,000', val:'3-8k' },
+      { emoji:'💎', label:'₹8,000 – 20,000', val:'8-20k' },
+      { emoji:'👑', label:'No budget limit', val:'no-limit' }
+    ]},
+    { key:'group', q:"Who's coming?", opts: [
+      { emoji:'🧍', label:'Solo', val:'solo' },
+      { emoji:'💑', label:'Couple', val:'couple' },
+      { emoji:'👨‍👩‍👧', label:'Family with kids', val:'family-kids' },
+      { emoji:'👵👴', label:'Family with senior parents', val:'family-seniors' },
+      { emoji:'👯', label:'Friends', val:'friends' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>

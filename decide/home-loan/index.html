@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find the Right Home Loan — 7-Question AI Quiz | WIB Decide</title>
+<meta name="description" content="Compare home loans across SBI, HDFC, ICICI, Axis, LIC. Answer 7 questions and WIB AI will recommend the best lender + EMI estimate for your salary, city, and property value.">
+<meta property="og:title" content="Find the right home loan — AI-powered quiz">
+<meta property="og:description" content="7 questions. Best lender, lowest EMI, India-specific.">
+<meta property="og:url" content="https://wibest.in/decide/home-loan/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/decide/home-loan/">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="de-wrap">
+  <div class="de-hero">
+    <h1>Find the right <span>home loan</span></h1>
+    <p>7 questions about your income, property, and tenure preference. We'll match you to the best lender + EMI estimate.</p>
+  </div>
+  <div id="decide-root"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/decide-engine.js?v=20260420"></script>
+<script>
+WIBDecide.run({
+  slug: 'home-loan',
+  accent: '#0d9488',
+  aiContext: 'You are WIB AI helping an Indian home buyer pick a home loan lender. Indian banks/NBFCs in 2026: SBI Home Loan (8.40-9.15%), HDFC (8.50-9.40%), ICICI Bank (8.50-9.30%), Axis Bank (8.60-9.45%), LIC Housing Finance (8.50-9.25%), Kotak Mahindra (8.50-9.30%), PNB Housing (8.45-9.25%), Bajaj Finserv (8.55-9.35%), Tata Capital (8.55-9.30%). Calculate realistic EMI using user inputs (loan amount = property value × 0.8, typical 80% LTV). Recommend ONE lender with: interest rate range, EMI estimate (₹), processing fee, prepayment policy. Mention specific schemes (e.g. SBI Maxgain, HDFC Reach, women-borrower discount). Include 2 alternatives.',
+  category: 'Loans',
+  affiliates: [
+    { label: 'View on WIB Loans', url: 'https://wibest.in/loans/?type=home&q={{name}}', style: 'background:#0d9488;color:#fff' },
+    { label: 'Talk to expert', url: 'https://wibest.in/contact/?subject=Home loan: {{name}}', style: 'background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)' }
+  ],
+  questions: [
+    { key:'income', q:"What's your monthly take-home salary?", opts: [
+      { emoji:'💵', label:'Under ₹50,000', val:'under-50k' },
+      { emoji:'💰', label:'₹50,000 – ₹1 lakh', val:'50k-1L' },
+      { emoji:'💎', label:'₹1 – 2 lakh', val:'1-2L' },
+      { emoji:'👑', label:'₹2 lakh+', val:'above-2L' }
+    ]},
+    { key:'property', q:"What's the property value?", opts: [
+      { emoji:'🏠', label:'Under ₹40 lakh', val:'under-40L' },
+      { emoji:'🏡', label:'₹40 lakh – ₹75 lakh', val:'40-75L' },
+      { emoji:'🏘️', label:'₹75 lakh – ₹1.5 crore', val:'75L-1.5Cr' },
+      { emoji:'🏰', label:'₹1.5 crore – ₹3 crore', val:'1.5-3Cr' },
+      { emoji:'🏛️', label:'₹3 crore+', val:'above-3Cr' }
+    ]},
+    { key:'down', q:"How much down payment can you make?", opts: [
+      { emoji:'💸', label:'10% (minimum)', val:'10pct' },
+      { emoji:'💵', label:'20% (standard)', val:'20pct' },
+      { emoji:'💰', label:'30-40%', val:'30-40pct' },
+      { emoji:'💎', label:'50%+', val:'50pct-plus' }
+    ]},
+    { key:'tenure', q:"How long do you want the loan?", opts: [
+      { emoji:'⚡', label:'10 years (high EMI, low interest)', val:'10y' },
+      { emoji:'📅', label:'15-20 years', val:'15-20y' },
+      { emoji:'🐢', label:'25-30 years (low EMI, high total)', val:'25-30y' }
+    ]},
+    { key:'profile', q:"What's your employment type?", opts: [
+      { emoji:'💼', label:'Salaried (private)', val:'salaried-private' },
+      { emoji:'🏛️', label:'Salaried (govt / PSU)', val:'salaried-govt' },
+      { emoji:'🏢', label:'Self-employed (business)', val:'self-business' },
+      { emoji:'🩺', label:'Self-employed (professional — doctor, CA, etc.)', val:'self-pro' }
+    ]},
+    { key:'priority', q:"What matters most to you?", opts: [
+      { emoji:'📉', label:'Lowest interest rate', val:'lowest-rate' },
+      { emoji:'🏃', label:'Fast approval (under 7 days)', val:'fast' },
+      { emoji:'🏛️', label:'Govt-backed lender (trust)', val:'psu' },
+      { emoji:'🛠️', label:'Easy prepayment (no penalty)', val:'prepay-friendly' },
+      { emoji:'👩', label:'Women-borrower discount', val:'women' }
+    ]},
+    { key:'city', q:"Which city is the property in?", opts: [
+      { emoji:'🏙️', label:'Tier 1 metro (Mumbai/Delhi/Bangalore/etc.)', val:'tier1' },
+      { emoji:'🏘️', label:'Tier 2 (Pune/Jaipur/Coimbatore/etc.)', val:'tier2' },
+      { emoji:'🌾', label:'Tier 3 / smaller town', val:'tier3' }
+    ]}
+  ]
+});
+</script>
+</body>
+</html>
