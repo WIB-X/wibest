@@ -463,3 +463,88 @@ exports.compareAI = functions
 });
 
 // touch 2026-04-18T11:53:51Z — force redeploy after GEMINI_API_KEY secret added
+
+// ── 9. EarnKaro Affiliate Link Converter ────────────────────────────────────
+// Converts partner product URLs (Flipkart, Myntra, Ajio, Nykaa, etc.) into
+// EarnKaro tracked affiliate URLs on the fly. Caches results in Firestore for
+// 30 days to stay well under the 60/minute API rate limit.
+//
+// Client calls: POST /convertLink { url: "https://www.flipkart.com/..." }
+//        → { affiliateUrl: "https://ekaro.in/..." } on success
+//        → { affiliateUrl: <original> } on failure (graceful fallback)
+exports.convertLink = functions
+  .runWith({ memory: '256MB', timeoutSeconds: 15 })
+  .https.onRequest(async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.set('Access-Control-Max-Age', '3600');
+    if (req.method === 'OPTIONS') return res.status(204).send('');
+    if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
+
+    const { url } = req.body || {};
+    if (!url || typeof url !== 'string' || !/^https?:\/\//i.test(url)) {
+      return res.status(400).json({ error: 'valid http(s) url required' });
+    }
+
+    const apiKey = process.env.EARNKARO_API_KEY;
+    if (!apiKey) {
+      // No key configured — return original URL so user still gets to the product
+      console.warn('EARNKARO_API_KEY not set; returning original URL');
+      return res.json({ affiliateUrl: url, fallback: true });
+    }
+
+    const db = admin.firestore();
+    // Cache key — hash-ish of the URL (simple safe doc ID)
+    const cacheKey = Buffer.from(url).toString('base64').replace(/[^A-Za-z0-9]/g, '').slice(0, 120);
+    const cacheRef = db.collection('affiliate_link_cache').doc(cacheKey);
+
+    // Try cache first
+    try {
+      const cached = await cacheRef.get();
+      if (cached.exists) {
+        const d = cached.data();
+        const ageMs = Date.now() - (d.createdAt?.toMillis?.() || 0);
+        // 30-day TTL
+        if (d.affiliateUrl && ageMs < 30 * 24 * 60 * 60 * 1000) {
+          return res.json({ affiliateUrl: d.affiliateUrl, cached: true });
+        }
+      }
+    } catch (e) {
+      console.warn('cache read failed:', e.message);
+    }
+
+    // Call EarnKaro API
+    try {
+      const ekRes = await fetch('https://ekaro-api.affiliaters.in/api/converter/public', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ deal: url, convert_option: 'convert_only' })
+      });
+      const data = await ekRes.json();
+
+      if (data.success !== 1 || !data.data) {
+        console.warn('EarnKaro API non-success:', JSON.stringify(data).slice(0, 200));
+        return res.json({ affiliateUrl: url, fallback: true, reason: data.message || 'no data' });
+      }
+
+      // EK returns a full text block — extract the URL we sent (first http url in response)
+      const match = String(data.data).match(/https?:\/\/[^\s"'<>]+/);
+      const affiliateUrl = match ? match[0] : url;
+
+      // Cache it (fire-and-forget; don't block response)
+      cacheRef.set({
+        affiliateUrl,
+        originalUrl: url,
+        createdAt: admin.firestore.FieldValue.serverTimestamp()
+      }).catch(e => console.warn('cache write failed:', e.message));
+
+      return res.json({ affiliateUrl, cached: false });
+    } catch (e) {
+      console.error('EarnKaro fetch error:', e.message);
+      return res.json({ affiliateUrl: url, fallback: true, reason: e.message });
+    }
+  });

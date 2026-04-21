@@ -41,6 +41,7 @@ jobs:
           EMAIL_PASS=${{ secrets.EMAIL_PASS }}
           EMAIL_ADMIN=${{ secrets.EMAIL_ADMIN }}
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          EARNKARO_API_KEY=${{ secrets.EARNKARO_API_KEY }}
           EOF
 
       - name: Write service account credentials

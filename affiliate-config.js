@@ -16,17 +16,15 @@
       enabled: false
     },
     earnkaro: {
-      // EarnKaro does NOT expose a public URL-rewrite endpoint.
-      // The /enkr2020/ path returns 403 for direct construction.
-      // To use EarnKaro you must either:
-      //   1. Call their Authenticated API (login + API key)
-      //      to convert each Flipkart URL → short ekaro.in/XXXX
-      //   2. Manually convert URLs in their Affiliaters dashboard
-      //      and store the short URL as the link
-      // See affiliate-config.js notes; we disable auto-wrap until one
-      // of those two flows is built. The ref is kept for future use.
+      // EarnKaro Deep Link API wired via /convertLink Cloud Function +
+      // /affiliate-autoconvert.js client interceptor.
+      // Bearer token: stored as GitHub secret EARNKARO_API_KEY; the
+      // Cloud Function reads from process.env. Never exposed to the browser.
+      // Covered partners: Flipkart, Myntra, Ajio, Nykaa, Croma, TataCliq,
+      // 1mg, Pharmeasy, Boat, Noise, MakeMyTrip, Goibibo — see the
+      // PARTNER_DOMAINS list in affiliate-autoconvert.js for the full set.
       ref: '5189767',
-      enabled: false
+      enabled: true
     },
     admitad: {
       adminitad_uid: '',      // <-- paste your Admitad campaign/website id
