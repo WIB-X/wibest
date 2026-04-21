@@ -56,16 +56,18 @@
     {
       match: /(^|\.)flipkart\.com$/i,
       wrap: function (u) {
-        // Prefer Cuelinks if configured
+        // Prefer Cuelinks if configured (simple URL-wrap pattern works fine)
         if (CONFIG.cuelinks.enabled && CONFIG.cuelinks.channel) {
           return new URL('https://linksredirect.com/?cid=' + encodeURIComponent(CONFIG.cuelinks.channel) + '&source=linkkit&url=' + encodeURIComponent(u.href));
-        }
-        if (CONFIG.earnkaro.enabled && CONFIG.earnkaro.ref) {
-          return new URL('https://ekaro.in/enkr2020/?url=' + encodeURIComponent(u.href) + '&ref=' + encodeURIComponent(CONFIG.earnkaro.ref));
         }
         if (CONFIG.admitad.enabled && CONFIG.admitad.adminitad_uid) {
           return new URL('https://ad.admitad.com/g/' + encodeURIComponent(CONFIG.admitad.adminitad_uid) + '/?ulp=' + encodeURIComponent(u.href));
         }
+        // EarnKaro: return the original Flipkart URL unchanged. The
+        // /affiliate-autoconvert.js script intercepts clicks on Flipkart
+        // links and converts via the Cloud Function (fktr.in/... short
+        // links that actually track). The old /enkr2020/?url=&ref= URL
+        // pattern has been deprecated by EarnKaro — returns 403 now.
         return u;
       }
     },
