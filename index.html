@@ -28,9 +28,14 @@
 <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Load fonts async to avoid render-blocking (1.35s savings) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="/styles.css?v=20260421">
 <link rel="stylesheet" href="/styles.css?v=20260421">
-<link rel="stylesheet" href="/polish.css?v=20260421">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
 <style>
 .hero{margin-top:calc(var(--nav-height)+var(--cat-height));padding:80px 24px 60px;text-align:center;background:var(--bg-primary);border-bottom:1px solid var(--border);transition:background .3s;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 20%,rgba(37,99,235,0.04) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(22,163,74,0.03) 0%,transparent 50%);pointer-events:none}
@@ -216,7 +221,7 @@
 
 <div id="wib-footer-placeholder"></div>
 
-<script><a href="/blog">Blog</a><div class="nav-more"><button class="nav-more-btn" onclick="this.parentElement.classList.toggle('open')">More ▾</button><div class="nav-dropdown"><a href="/restaurants">Restaurants</a><a href="/real-estate">Real Estate</a><a href="/jobs">Jobs</a><a href="/price-finder">Price Finder</a><a href="/compare">Compare</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/connect">Connect</a></div></div></div>
+<script>
 function toggleChat(){var c=document.getElementById('wib-chat');c.style.display=c.style.display==='none'?'flex':'none';}
 function quickChat(msg){document.getElementById('chatInput').value=msg;sendChat();}
 function sendChat(){var input=document.getElementById('chatInput');var msg=input.value.trim();if(!msg)return;var box=document.getElementById('chatMessages');box.innerHTML+='<div style="background:var(--accent);color:#fff;border-radius:12px 12px 4px 12px;padding:12px 16px;font-size:13px;max-width:80%;margin-left:auto;margin-bottom:12px">'+msg+'</div>';input.value='';box.innerHTML+='<div id="typing" style="color:var(--text-muted);font-size:12px;margin-bottom:12px">Thinking...</div>';box.scrollTop=box.scrollHeight;setTimeout(function(){var r=getResponse(msg);var t=document.getElementById('typing');if(t)t.remove();box.innerHTML+='<div style="background:var(--accent-light);border-radius:12px 12px 12px 4px;padding:12px 16px;font-size:13px;line-height:1.6;color:var(--text-primary);max-width:90%;margin-bottom:12px">'+r+'</div>';box.scrollTop=box.scrollHeight;},800);}
@@ -311,7 +316,7 @@ function subscribeNewsletter(){
   }
 }
 </script>
-<script src="/chat-widget.js"></script>
+<script src="/chat-widget.js" defer></script>
 <script src="/config.js"></script>
 <script src="/components.js?v=20260419"></script>
 <script src="/polish.js?v=20260419" defer></script>
