@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions Command Center — Track School & College Applications | WIB</title>
+<meta name="description" content="The dashboard every Indian parent needs in admission season. Track schools, colleges, NEET/JEE deadlines, results, fees in one place. No signup. Free forever.">
+<meta property="og:title" content="Admissions Command Center — One dashboard for every application">
+<meta property="og:description" content="Track every school/college application, deadline, result. Built for Indian parents.">
+<meta property="og:url" content="https://wibest.in/admissions/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://wibest.in/admissions/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WIB Admissions Command Center","url":"https://wibest.in/admissions/","description":"Track multiple school and college applications with deadline alerts.","applicationCategory":"EducationApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Admissions","item":"https://wibest.in/admissions/"}]}</script>
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260419">
+<link rel="stylesheet" href="/polish.css?v=20260420">
+<style>
+.ad-wrap{max-width:1100px;margin:calc(var(--nav-height,64px)+var(--cat-height,0px)+24px) auto 80px;padding:0 24px}
+.ad-hero{text-align:center;padding:32px 0 36px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.ad-hero h1{font-family:'Outfit',sans-serif;font-size:38px;font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin:0 0 14px}
+.ad-hero h1 span{background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ad-hero p{color:var(--text-secondary);font-size:17px;line-height:1.6;max-width:620px;margin:0 auto 24px}
+.ad-hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:14px}
+.ad-stat{text-align:center}
+.ad-stat .n{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--accent);letter-spacing:-0.02em}
+.ad-stat .l{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.ad-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;justify-content:space-between;align-items:center}
+.ad-actions .left{display:flex;gap:10px;flex-wrap:wrap}
+.ad-actions button{padding:10px 18px;border-radius:8px;font:inherit;font-size:14px;font-weight:600;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);cursor:pointer;transition:all .2s}
+.ad-actions button:hover{border-color:var(--accent);color:var(--accent)}
+.ad-actions button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ad-actions button.primary:hover{background:var(--accent-hover);color:#fff}
+.ad-actions button.danger{color:#dc2626;border-color:#dc2626}
+.ad-actions button.danger:hover{background:#fef2f2}
+.ad-empty{text-align:center;padding:64px 24px;background:var(--bg-card);border:2px dashed var(--border);border-radius:14px;color:var(--text-secondary)}
+.ad-empty h3{font-family:'Outfit',sans-serif;font-size:20px;color:var(--text-primary);margin:0 0 8px}
+.ad-empty p{font-size:14px;line-height:1.6;margin:0 0 16px;max-width:420px;margin-left:auto;margin-right:auto}
+.ad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.app-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;position:relative;transition:all .2s}
+.app-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md)}
+.app-card.urgent{border-left:4px solid #dc2626}
+.app-card.soon{border-left:4px solid #ea580c}
+.app-card.ok{border-left:4px solid #16a34a}
+.app-card.done{opacity:.6}
+.app-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.app-name{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--text-primary);line-height:1.3;flex:1}
+.app-status{padding:3px 10px;border-radius:5px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;flex-shrink:0;white-space:nowrap}
+.app-status.researching{background:#dbeafe;color:#1e40af}
+.app-status.applied{background:#fef3c7;color:#92400e}
+.app-status.shortlisted{background:#dcfce7;color:#166534}
+.app-status.interview{background:#fce7f3;color:#9f1239}
+.app-status.accepted{background:#d1fae5;color:#065f46}
+.app-status.rejected{background:#fee2e2;color:#991b1b}
+.app-status.enrolled{background:#1e3a8a;color:#dbeafe}
+[data-theme="dark"] .app-status{filter:brightness(.85)}
+.app-meta{font-size:13px;color:var(--text-muted);margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.app-deadline{font-size:13px;font-weight:600;padding:6px 10px;border-radius:6px;display:inline-block;margin-bottom:10px}
+.app-deadline.urgent{background:#fef2f2;color:#dc2626}
+.app-deadline.soon{background:#fff7ed;color:#ea580c}
+.app-deadline.ok{background:#f0fdf4;color:#16a34a}
+.app-deadline.passed{background:var(--bg-secondary);color:var(--text-muted);text-decoration:line-through}
+.app-notes{font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:10px;padding:8px 10px;background:var(--bg-secondary);border-radius:6px;border-left:3px solid var(--border);max-height:60px;overflow:hidden}
+.app-actions{display:flex;gap:6px}
+.app-actions button{padding:5px 10px;font-size:12px;border-radius:5px;background:transparent;border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;font-family:inherit}
+.app-actions button:hover{background:var(--bg-secondary);color:var(--text-primary)}
+.app-actions button.del:hover{background:#fef2f2;color:#dc2626;border-color:#dc2626}
+
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:var(--bg-card);border-radius:14px;padding:28px 30px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;margin:0 0 6px}
+.modal-sub{color:var(--text-secondary);font-size:13px;margin:0 0 20px}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.fld input,.fld select,.fld textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;font-size:14px;box-sizing:border-box}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--accent)}
+.fld textarea{min-height:70px;resize:vertical}
+.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.modal-actions button{padding:10px 22px;border-radius:8px;font:inherit;font-weight:600;font-size:14px;cursor:pointer;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-primary)}
+.modal-actions button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.modal-actions button.primary:hover{background:var(--accent-hover)}
+.modal-actions button.cancel{color:var(--text-muted)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:500;z-index:10000;box-shadow:0 10px 30px rgba(0,0,0,.3);display:none}
+.toast.show{display:block;animation:fadein .3s ease}
+@keyframes fadein{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.fld-help{font-size:11px;color:var(--text-muted);margin-top:4px}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filter-pill{padding:6px 14px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.filter-pill:hover{border-color:var(--accent)}
+.filter-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tip-box{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid #ddd6fe;border-radius:12px;padding:18px 22px;margin-bottom:24px;font-size:14px;line-height:1.6;color:var(--text-secondary)}
+[data-theme="dark"] .tip-box{background:linear-gradient(135deg,#1e293b,#27272a);border-color:#334155}
+.tip-box strong{color:var(--text-primary)}
+@media(max-width:560px){.ad-hero h1{font-size:28px}.ad-grid{grid-template-columns:1fr}.fld-row{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
+<script src="/affiliate-config.js" async></script>
+<script src="/ads.js" async></script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="ad-wrap">
+  <section class="ad-hero">
+    <h1>Admissions <span>Command Center</span></h1>
+    <p>Track every school, college, or coaching admission application in one place. Deadline alerts, status updates, fees comparison — built for Indian parents and students. <strong>No signup. Free forever.</strong></p>
+    <div class="ad-hero-stats" id="heroStats" style="display:none">
+      <div class="ad-stat"><div class="n" id="statTotal">0</div><div class="l">Applications</div></div>
+      <div class="ad-stat"><div class="n" id="statUrgent">0</div><div class="l">Due in 7 days</div></div>
+      <div class="ad-stat"><div class="n" id="statShortlisted">0</div><div class="l">Shortlisted</div></div>
+    </div>
+  </section>
+
+  <div class="tip-box" id="tipBox">
+    💡 <strong>How it works:</strong> Add each application you're tracking. Your data stays in this browser only — no account needed, no data sent to us. Use the <strong>Export</strong> button to back up your list, then <strong>Import</strong> on another device or after browser cleanup.
+  </div>
+
+  <div class="ad-actions">
+    <div class="left">
+      <button class="primary" onclick="openAddModal()">+ Add Application</button>
+      <button onclick="exportData()">↓ Export</button>
+      <button onclick="importData()">↑ Import</button>
+    </div>
+    <div class="left">
+      <button onclick="loadSample()" id="sampleBtn">📄 Load sample data</button>
+      <button class="danger" onclick="clearAll()" id="clearBtn" style="display:none">🗑 Clear all</button>
+    </div>
+  </div>
+
+  <div class="filter-row" id="filterRow"></div>
+
+  <div id="appsContainer"></div>
+</main>
+
+<!-- Add/Edit Modal -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h2 id="modalTitle">Add Application</h2>
+    <p class="modal-sub" id="modalSub">Tracking helps you never miss a deadline.</p>
+
+    <div class="fld">
+      <label>Institute name *</label>
+      <input id="fName" placeholder="e.g. Delhi Public School Bangalore North">
+    </div>
+
+    <div class="fld-row">
+      <div class="fld">
+        <label>Type</label>
+        <select id="fType">
+          <option value="School">School</option>
+          <option value="College">College</option>
+          <option value="University">University</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label>Status</label>
+        <select id="fStatus">
+          <option value="researching">Researching</option>
+          <option value="applied">Applied</option>
+          <option value="shortlisted">Shortlisted</option>
+          <option value="interview">Interview / Test scheduled</option>
+          <option value="accepted">Accepted</option>
+          <option value="rejected">Rejected</option>
+          <option value="enrolled">Enrolled</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="fld-row">
+      <div class="fld">
+        <label>Course / Class</label>
+        <input id="fCourse" placeholder="e.g. Class 6 / B.Tech CSE / NEET prep">
+      </div>
+      <div class="fld">
+        <label>Location</label>
+        <input id="fLocation" placeholder="e.g. Bangalore">
+      </div>
+    </div>
+
+    <div class="fld-row">
+      <div class="fld">
+        <label>Deadline</label>
+        <input id="fDeadline" type="date">
+        <div class="fld-help">Application or interview date</div>
+      </div>
+      <div class="fld">
+        <label>Annual fees (₹)</label>
+        <input id="fFees" type="number" placeholder="100000">
+      </div>
+    </div>
+
+    <div class="fld">
+      <label>Notes</label>
+      <textarea id="fNotes" placeholder="Documents needed, contact person, what's next..."></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeModal()">Cancel</button>
+      <button class="primary" onclick="saveApp()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<input type="file" id="importFile" accept="application/json" style="display:none">
+
+<div id="wib-footer-placeholder"></div>
+
+<script src="/config.js"></script>
+<script src="/components.js?v=20260419"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+
+<script>
+const LS_KEY = 'wib-admissions-v1';
+let apps = [];
+let editingId = null;
+let currentFilter = 'all';
+
+function load(){
+  try{ apps = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+  catch(e){ apps = []; }
+}
+function save(){
+  localStorage.setItem(LS_KEY, JSON.stringify(apps));
+}
+
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+function daysUntil(dateStr){
+  if(!dateStr) return null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const d = new Date(dateStr); d.setHours(0,0,0,0);
+  return Math.round((d - today) / 86400000);
+}
+
+function deadlineClass(days){
+  if(days === null) return '';
+  if(days < 0) return 'passed';
+  if(days <= 3) return 'urgent';
+  if(days <= 14) return 'soon';
+  return 'ok';
+}
+
+function deadlineText(days){
+  if(days === null) return '';
+  if(days < 0) return `Passed ${-days}d ago`;
+  if(days === 0) return 'Today!';
+  if(days === 1) return 'Tomorrow';
+  if(days <= 7) return `${days} days left`;
+  if(days <= 30) return `${days} days left`;
+  return new Date(Date.now() + days*86400000).toLocaleDateString('en-IN', {day:'numeric', month:'short'});
+}
+
+function cardClass(app){
+  const days = daysUntil(app.deadline);
+  if(['accepted','rejected','enrolled'].includes(app.status)) return 'done';
+  if(days !== null && days >= 0 && days <= 3) return 'urgent';
+  if(days !== null && days >= 0 && days <= 14) return 'soon';
+  return 'ok';
+}
+
+function fmtFees(n){
+  if(!n) return '';
+  n = parseInt(n);
+  if(n >= 100000) return '₹' + (n/100000).toFixed(1) + 'L';
+  if(n >= 1000) return '₹' + (n/1000).toFixed(0) + 'K';
+  return '₹' + n.toLocaleString('en-IN');
+}
+
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+function render(){
+  const cont = document.getElementById('appsContainer');
+  const filtered = currentFilter === 'all' ? apps : apps.filter(a => a.status === currentFilter);
+
+  // Sort: urgent deadline first, then by added time
+  const sorted = filtered.slice().sort((a,b) => {
+    const dA = daysUntil(a.deadline);
+    const dB = daysUntil(b.deadline);
+    if(dA === null && dB === null) return (b.addedAt||0) - (a.addedAt||0);
+    if(dA === null) return 1;
+    if(dB === null) return -1;
+    return dA - dB;
+  });
+
+  // Update stats
+  if(apps.length){
+    document.getElementById('heroStats').style.display = 'flex';
+    document.getElementById('statTotal').textContent = apps.length;
+    document.getElementById('statUrgent').textContent = apps.filter(a => {const d = daysUntil(a.deadline); return d !== null && d >= 0 && d <= 7;}).length;
+    document.getElementById('statShortlisted').textContent = apps.filter(a => ['shortlisted','interview','accepted'].includes(a.status)).length;
+    document.getElementById('clearBtn').style.display = '';
+    document.getElementById('sampleBtn').style.display = 'none';
+  } else {
+    document.getElementById('heroStats').style.display = 'none';
+    document.getElementById('clearBtn').style.display = 'none';
+    document.getElementById('sampleBtn').style.display = '';
+  }
+
+  // Update filter pills
+  renderFilters();
+
+  if(!sorted.length){
+    if(apps.length){
+      cont.innerHTML = `<div class="ad-empty"><h3>No applications match this filter</h3><p>Try switching to "All" or add a new one.</p></div>`;
+    } else {
+      cont.innerHTML = `<div class="ad-empty"><h3>No applications yet</h3><p>Add your first application to start tracking deadlines, status, and notes in one place. Or click "Load sample data" to see how it looks.</p><button class="primary" onclick="openAddModal()" style="padding:10px 22px;border-radius:8px;background:var(--accent);color:#fff;border:0;font-weight:600;cursor:pointer;font-family:inherit">+ Add first application</button></div>`;
+    }
+    return;
+  }
+
+  cont.innerHTML = '<div class="ad-grid">' + sorted.map(app => {
+    const days = daysUntil(app.deadline);
+    const dlClass = deadlineClass(days);
+    const dlText = deadlineText(days);
+    const cClass = cardClass(app);
+    return `
+      <div class="app-card ${cClass}">
+        <div class="app-head">
+          <div class="app-name">${escapeHtml(app.name)}</div>
+          <span class="app-status ${app.status}">${app.status.replace(/-/g,' ')}</span>
+        </div>
+        <div class="app-meta">
+          ${app.type ? `<span>📋 ${escapeHtml(app.type)}</span>` : ''}
+          ${app.course ? `<span>🎓 ${escapeHtml(app.course)}</span>` : ''}
+          ${app.location ? `<span>📍 ${escapeHtml(app.location)}</span>` : ''}
+          ${app.fees ? `<span>💰 ${fmtFees(app.fees)}/yr</span>` : ''}
+        </div>
+        ${dlText ? `<div class="app-deadline ${dlClass}">⏱ ${dlText}</div>` : ''}
+        ${app.notes ? `<div class="app-notes">${escapeHtml(app.notes)}</div>` : ''}
+        <div class="app-actions">
+          <button onclick="openEditModal('${app.id}')">✎ Edit</button>
+          <button class="del" onclick="deleteApp('${app.id}')">🗑 Delete</button>
+        </div>
+      </div>
+    `;
+  }).join('') + '</div>';
+}
+
+function renderFilters(){
+  const fr = document.getElementById('filterRow');
+  if(!apps.length){ fr.innerHTML=''; return; }
+  const counts = { all: apps.length };
+  apps.forEach(a => { counts[a.status] = (counts[a.status]||0) + 1; });
+  const labels = { all:'All', researching:'Researching', applied:'Applied', shortlisted:'Shortlisted', interview:'Interview', accepted:'Accepted', rejected:'Rejected', enrolled:'Enrolled' };
+  fr.innerHTML = Object.keys(labels).filter(k => k==='all' || counts[k]).map(k =>
+    `<button class="filter-pill ${currentFilter===k?'active':''}" onclick="setFilter('${k}')">${labels[k]} (${counts[k]||0})</button>`
+  ).join('');
+}
+
+function setFilter(f){ currentFilter = f; render(); }
+
+function openAddModal(){
+  editingId = null;
+  document.getElementById('modalTitle').textContent = 'Add Application';
+  ['fName','fCourse','fLocation','fDeadline','fFees','fNotes'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('fType').value = 'School';
+  document.getElementById('fStatus').value = 'researching';
+  document.getElementById('modal').classList.add('open');
+  setTimeout(() => document.getElementById('fName').focus(), 100);
+}
+
+function openEditModal(id){
+  const app = apps.find(a => a.id === id);
+  if(!app) return;
+  editingId = id;
+  document.getElementById('modalTitle').textContent = 'Edit Application';
+  document.getElementById('fName').value = app.name || '';
+  document.getElementById('fType').value = app.type || 'School';
+  document.getElementById('fStatus').value = app.status || 'researching';
+  document.getElementById('fCourse').value = app.course || '';
+  document.getElementById('fLocation').value = app.location || '';
+  document.getElementById('fDeadline').value = app.deadline || '';
+  document.getElementById('fFees').value = app.fees || '';
+  document.getElementById('fNotes').value = app.notes || '';
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+
+function saveApp(){
+  const name = document.getElementById('fName').value.trim();
+  if(!name){ toast('Please enter institute name'); return; }
+  const data = {
+    name,
+    type: document.getElementById('fType').value,
+    status: document.getElementById('fStatus').value,
+    course: document.getElementById('fCourse').value.trim(),
+    location: document.getElementById('fLocation').value.trim(),
+    deadline: document.getElementById('fDeadline').value,
+    fees: document.getElementById('fFees').value,
+    notes: document.getElementById('fNotes').value.trim()
+  };
+  if(editingId){
+    const i = apps.findIndex(a => a.id === editingId);
+    apps[i] = { ...apps[i], ...data };
+    toast('Updated');
+  } else {
+    apps.push({ id: uid(), addedAt: Date.now(), ...data });
+    toast('Added');
+    if(typeof gtag === 'function') gtag('event', 'admissions_add', { type: data.type });
+  }
+  save(); render(); closeModal();
+}
+
+function deleteApp(id){
+  if(!confirm('Delete this application?')) return;
+  apps = apps.filter(a => a.id !== id);
+  save(); render();
+  toast('Deleted');
+}
+
+function clearAll(){
+  if(!confirm('Delete ALL applications? This cannot be undone (unless you have an export).')) return;
+  apps = [];
+  save(); render();
+  toast('All cleared');
+}
+
+function exportData(){
+  if(!apps.length){ toast('Nothing to export'); return; }
+  const blob = new Blob([JSON.stringify(apps, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'wib-admissions-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast('Exported ' + apps.length + ' applications');
+}
+
+function importData(){
+  document.getElementById('importFile').click();
+}
+
+document.getElementById('importFile').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try{
+      const data = JSON.parse(ev.target.result);
+      if(!Array.isArray(data)) throw new Error('Invalid format');
+      const merged = apps.concat(data.filter(d => d.name));
+      // Dedupe by name + deadline
+      const seen = new Set();
+      apps = merged.filter(a => {
+        const key = (a.name || '') + '|' + (a.deadline || '');
+        if(seen.has(key)) return false;
+        seen.add(key); return true;
+      });
+      save(); render();
+      toast('Imported ' + data.length + ' (deduped to ' + apps.length + ' total)');
+    } catch(e){
+      toast('Import failed: ' + e.message);
+    }
+    e.target.value = '';
+  };
+  reader.readAsText(file);
+});
+
+function loadSample(){
+  if(apps.length && !confirm('Load sample over current data?')) return;
+  const today = Date.now();
+  apps = [
+    { id: uid(), addedAt: today-86400000*5, name: 'Delhi Public School Bangalore North', type: 'School', status: 'shortlisted', course: 'Class 6', location: 'Bangalore', deadline: new Date(today + 86400000*5).toISOString().slice(0,10), fees: '180000', notes: 'Visited campus on Apr 15. Need to submit progress card from previous school.' },
+    { id: uid(), addedAt: today-86400000*7, name: 'National Public School Indiranagar', type: 'School', status: 'applied', course: 'Class 6', location: 'Bangalore', deadline: new Date(today + 86400000*2).toISOString().slice(0,10), fees: '210000', notes: 'Form submitted. Entrance test on 24th April. Bring 4 photos and Aadhaar.' },
+    { id: uid(), addedAt: today-86400000*3, name: 'Inventure Academy', type: 'School', status: 'researching', course: 'Class 6 (IB)', location: 'Whitefield', deadline: new Date(today + 86400000*18).toISOString().slice(0,10), fees: '650000', notes: 'IB curriculum. 45 km from home — transport may be expensive.' },
+    { id: uid(), addedAt: today-86400000*1, name: 'Christ University BBA', type: 'College', status: 'interview', course: 'BBA Honours', location: 'Bangalore', deadline: new Date(today + 86400000*8).toISOString().slice(0,10), fees: '420000', notes: 'Group discussion + personal interview. 60% weightage on academics.' },
+    { id: uid(), addedAt: today-86400000*10, name: 'Allen Career Institute Kota', type: 'Coaching', status: 'enrolled', course: 'NEET 2027 Dropper Batch', location: 'Kota', deadline: new Date(today - 86400000*5).toISOString().slice(0,10), fees: '160000', notes: 'Joined Leader batch. Started May 1. Hostel: ₹95K extra.' }
+  ];
+  save(); render();
+  toast('Sample loaded — feel free to edit or delete');
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// Click outside modal to close
+document.getElementById('modal').addEventListener('click', e => {
+  if(e.target.id === 'modal') closeModal();
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeModal();
+  if(e.key === 'a' && !e.target.matches('input,textarea,select') && !document.getElementById('modal').classList.contains('open')) {
+    e.preventDefault(); openAddModal();
+  }
+});
+
+load(); render();
+</script>
+</body>
+</html>

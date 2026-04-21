@@ -27,6 +27,7 @@
   var MORE_GROUPS = [
     { title: 'Tools', items: [
       { href: '/decide/',       label: 'Decide for me 🆕' },
+      { href: '/admissions/',   label: 'Admissions Tracker 🆕' },
       { href: '/compare/ai/',   label: 'AI Compare' },
       { href: '/quiz/',         label: 'Phone Quiz' },
       { href: '/compare',       label: 'Compare side-by-side' },
