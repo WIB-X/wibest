@@ -222,12 +222,12 @@ img{image-rendering:auto}
   .hero-stat .val, .hero-stat strong { font-size: 22px !important; }
   .hero-stat .lbl, .hero-stat span:last-child { font-size: 12px !important; }
 
-  /* Hero search */
-  .hero-search input { padding: 12px 44px 12px 14px !important; font-size: 15px !important; }
+  /* Hero search — 16px prevents iOS Safari zoom-on-focus */
+  .hero-search input { padding: 12px 44px 12px 14px !important; font-size: 16px !important; }
 
   /* Newsletter */
   .newsletter-form { flex-direction: column; align-items: stretch; gap: 10px; }
-  .newsletter-form input { min-width: 0 !important; width: 100% !important; font-size: 15px; padding: 12px 14px; }
+  .newsletter-form input { min-width: 0 !important; width: 100% !important; font-size: 16px; padding: 12px 14px; }
   .newsletter-form button, .newsletter-form .btn-primary { width: 100%; padding: 12px 14px; }
 
   /* Destination / product cards */
@@ -259,3 +259,27 @@ html { scrollbar-gutter: stable; }
 html, body { overflow-x: hidden; max-width: 100vw; }
 img, video, iframe { max-width: 100%; height: auto; }
 table { max-width: 100%; }
+
+/* === Mobile input zoom prevention ===
+   iOS Safari auto-zooms when a form input has font-size < 16px,
+   which shifts the entire page and requires double-tap to zoom out.
+   Force 16px on small screens for all form controls regardless of
+   per-page overrides. Uses specificity (html body) to beat most
+   page-level !important declarations. Does not affect desktop. */
+@media (max-width: 768px) {
+  html body input:not([type="checkbox"]):not([type="radio"]),
+  html body select,
+  html body textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* === Global touch target minimums === */
+@media (max-width: 768px) {
+  html body button:not(.checkbox):not(.no-mobile-size),
+  html body a.btn,
+  html body a.btn-primary,
+  html body a.btn-secondary {
+    min-height: 40px;
+  }
+}
