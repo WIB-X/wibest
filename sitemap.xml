@@ -58,6 +58,14 @@
   <url><loc>https://wibest.in/electronics/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/cars/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/hospitals/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/hospitals/delhi/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/mumbai/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/bangalore/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/chennai/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/kolkata/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/hyderabad/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/pune/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/ahmedabad/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://wibest.in/travel/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/restaurants/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/real-estate/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
