@@ -8,6 +8,16 @@
  *
  * The active nav item is determined by matching the current pathname.
  */
+
+// ── Microsoft Clarity (user behavior analytics — heatmaps + session recordings) ─
+// Free, async, doesn't impact PageSpeed. Project ID stored client-side as
+// expected by Clarity (it's not a secret — just an account identifier).
+(function (c, l, a, r, i, t, y) {
+  c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+  t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+  y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+})(window, document, "clarity", "script", "wiaqwueuya");
+
 (function () {
   'use strict';
 
