@@ -49,7 +49,10 @@
 .results-count{font-size:13px;color:var(--text-muted);padding:12px 0 0}
 .grid-wrap{max-width:1200px;margin:0 auto;padding:20px 24px 60px}
 .college-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;cursor:pointer}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;position:relative;overflow:hidden}
+.card-link{position:absolute;inset:0;z-index:1;text-indent:-9999px;overflow:hidden;border-radius:var(--radius)}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.card-actions{position:relative;z-index:2}
 .card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md);transform:translateY(-2px)}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
 .card-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:600;line-height:1.3;flex:1;padding-right:12px}
@@ -78,13 +81,6 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
-<link rel="canonical" href="https://wibest.in/colleges/">
-<meta property="og:title" content="Best Colleges in India — WIB">
-<meta property="og:description" content="Compare top engineering, medical, and arts colleges across India.">
-<meta property="og:url" content="https://wibest.in/colleges/">
-<meta property="og:image" content="https://wibest.in/og-default.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Colleges in India","url":"https://wibest.in/colleges/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Colleges","item":"https://wibest.in/colleges/"}]}</script>
 <script src="/affiliate-config.js" async></script>
@@ -175,11 +171,11 @@ function renderColleges(colleges){
   const grid=document.getElementById('collegeGrid');if(!colleges.length){grid.innerHTML='';return}
   const star='<svg viewBox="0 0 16 16"><path d="M8 1.5l2.18 4.42 4.87.71-3.52 3.43.83 4.84L8 12.42l-4.36 2.48.83-4.84L1 6.63l4.87-.71z"/></svg>';
   grid.innerHTML=colleges.map(c=>{const r=c.google_rating||0;const courses=(c.courses||[]).slice(0,4);
-    return `<div class="card" onclick="window.location.href='/college-detail.html?id=${c.id}'"><div class="card-top"><div class="card-name">${c.name||'College'}</div>${r>0?`<div class="card-rating">${star} ${r.toFixed(1)}</div>`:''}</div>
+    return `<div class="card"><a class="card-link" href="/college-detail.html?id=${c.id}" aria-label="${(c.name||'College').replace(/"/g,'&quot;')}">${c.name||'College'}</a><div class="card-top"><div class="card-name">${c.name||'College'}</div>${r>0?`<div class="card-rating">${star} ${r.toFixed(1)}</div>`:''}</div>
     <div class="card-meta">${c.stream?`<span class="meta-tag stream">${c.stream}</span>`:''}<span class="meta-tag">${c.city||''}</span><span class="meta-tag">${c.type||''}</span>${c.accreditation?`<span class="meta-tag">${c.accreditation}</span>`:''}</div>
     <div class="card-stats"><div class="stat"><div class="stat-val">${c.fees?formatFees(c.fees):'N/A'}</div><div class="stat-label">Annual Fees</div></div><div class="stat"><div class="stat-val">${c.placement_percent?c.placement_percent+'%':'N/A'}</div><div class="stat-label">Placements</div></div><div class="stat"><div class="stat-val">${c.avg_package?formatPkg(c.avg_package):'N/A'}</div><div class="stat-label">Avg Package</div></div></div>
     ${courses.length?`<div class="card-courses">${courses.map(co=>`<span class="course-chip">${co}</span>`).join('')}</div>`:''}
-    <div class="card-actions"><button class="btn-details" onclick="event.stopPropagation();window.location.href='/college-detail.html?id=${c.id}'">View Details</button><button class="btn-enquiry" onclick="event.stopPropagation();window.location.href='/college-detail.html?id=${c.id}&enquire=true'">Enquire</button></div></div>`;
+    <div class="card-actions"><a class="btn-details" href="/college-detail.html?id=${c.id}" style="text-decoration:none;display:inline-block">View Details</a><a class="btn-enquiry" href="/college-detail.html?id=${c.id}&enquire=true" style="text-decoration:none;display:inline-block">Enquire</a></div></div>`;
   }).join('');
   if(window.wibInitReveal)window.wibInitReveal();
 }

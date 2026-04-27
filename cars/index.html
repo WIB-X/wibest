@@ -51,7 +51,10 @@
 .results-count{font-size:13px;color:var(--text-muted);padding:12px 0 0}
 .grid-wrap{max-width:1200px;margin:0 auto;padding:20px 24px 40px}
 .vehicle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-.vcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
+.vcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative}
+.vcard-link{position:absolute;inset:0;z-index:1;text-indent:-9999px;overflow:hidden;border-radius:var(--radius)}
+.vcard-link:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.vcard-actions{position:relative;z-index:2}
 .vcard:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
 .vcard-img{height:140px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .vcard-img .brand-initial{font-family:'Outfit',sans-serif;font-size:48px;font-weight:800;color:rgba(255,255,255,.2);z-index:1}
@@ -88,13 +91,6 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
-<link rel="canonical" href="https://wibest.in/cars/">
-<meta property="og:title" content="Compare Cars & Bikes in India — WIB">
-<meta property="og:description" content="Compare cars and bikes across India. Specs, prices, mileage, and user ratings.">
-<meta property="og:url" content="https://wibest.in/cars/">
-<meta property="og:image" content="https://wibest.in/og-default.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Cars & Bikes","url":"https://wibest.in/cars/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Cars & Bikes","item":"https://wibest.in/cars/"}]}</script>
 <script src="/affiliate-config.js" async></script>
@@ -197,7 +193,8 @@ function render(vehicles){
     const gradient=brandGradients[v.brand]||'linear-gradient(135deg,#2563eb,#7c3aed)';
     const initial=(v.brand||'W').charAt(0);
     const imageUrl=v.image||v.img||v.imageUrl||v.photo||'';
-    return `<div class="vcard" onclick="window.location.href='/cars-detail.html?id=${v.id}'">
+    return `<div class="vcard">
+      <a class="vcard-link" href="/cars-detail.html?id=${v.id}" aria-label="${(v.name||'Vehicle').replace(/"/g,'&quot;')}">${v.name||'Vehicle'}</a>
       <div class="vcard-img" style="background:${gradient}">
         ${imageUrl?`<img src="${imageUrl}" alt="${v.name||'Vehicle'}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}
         <div class="brand-initial" style="${imageUrl?'display:none':''}">${initial}</div>
@@ -213,7 +210,7 @@ function render(vehicles){
           <div class="spec-item"><div class="spec-label">Mileage</div><div class="spec-val">${v.mileage||'N/A'}</div></div>
           <div class="spec-item"><div class="spec-label">${isCar?'Transmission':'Type'}</div><div class="spec-val">${isCar?(v.transmission||'N/A'):(v.bike_type||'N/A')}</div></div>
         </div>
-        <div class="vcard-actions" onclick="event.stopPropagation()"><button class="btn-view" onclick="window.location.href='/cars-detail.html?id=${v.id}'">View Details</button><button class="btn-compare" onclick="window.location.href='/compare?type=cars'">Compare</button></div>
+        <div class="vcard-actions"><a class="btn-view" href="/cars-detail.html?id=${v.id}" style="text-decoration:none;display:inline-block;text-align:center">View Details</a><a class="btn-compare" href="/compare?type=cars" style="text-decoration:none;display:inline-block;text-align:center">Compare</a></div>
       </div>
     </div>`;
   }).join('');

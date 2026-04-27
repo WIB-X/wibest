@@ -53,7 +53,10 @@
 .results-count{font-size:13px;color:var(--text-muted);padding:12px 0 0}
 .grid-wrap{max-width:1200px;margin:0 auto;padding:20px 24px 60px}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.pcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
+.pcard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative}
+.pcard-link{position:absolute;inset:0;z-index:1;text-indent:-9999px;overflow:hidden;border-radius:var(--radius)}
+.pcard-link:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.pcard-actions{position:relative;z-index:2}
 .pcard:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
 .pcard-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .pcard-img .brand-initial{font-family:'Outfit',sans-serif;font-size:56px;font-weight:800;color:rgba(255,255,255,.25);letter-spacing:-0.04em;z-index:1}
@@ -90,13 +93,6 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-JBXR43H9PE");</script>
-<link rel="canonical" href="https://wibest.in/electronics/">
-<meta property="og:title" content="Compare Phones & Laptops in India — WIB">
-<meta property="og:description" content="Compare phones and laptops side by side. Specs, prices, and ratings all in one place.">
-<meta property="og:url" content="https://wibest.in/electronics/">
-<meta property="og:image" content="https://wibest.in/og-default.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@wibest_in">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Electronics","url":"https://wibest.in/electronics/","isPartOf":{"@type":"WebSite","name":"WIB","url":"https://wibest.in"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Electronics","item":"https://wibest.in/electronics/"}]}</script>
 <script src="/affiliate-config.js" async></script>
@@ -268,7 +264,8 @@ function renderProducts(products){
       {l:'RAM',v:p.ram||'N/A'},{l:'Storage',v:p.storage||'N/A'},
       {l:'Graphics',v:p.graphics||'N/A'},{l:'Battery',v:p.battery||'N/A'}
     ];
-    return `<div class="pcard" onclick="window.location.href='/electronics-detail.html?id=${p.id}'">
+    return `<div class="pcard">
+      <a class="pcard-link" href="/electronics-detail.html?id=${p.id}" aria-label="${(p.name||'Product').replace(/"/g,'&quot;')}">${p.name||'Product'}</a>
       <div class="pcard-img" style="background:${gradient}">
         ${imageUrl?`<img src="${imageUrl}" alt="${p.name||'Product'}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}
         <div class="brand-initial" style="${imageUrl?'display:none':''}">${initial}</div>
@@ -280,8 +277,8 @@ function renderProducts(products){
         <div class="pcard-meta"><span class="meta-tag" style="background:var(--accent-light);color:var(--accent)">${p.brand||''}</span>${p.year?`<span class="meta-tag">${p.year}</span>`:''}</div>
         ${p.rating?`<div class="pcard-rating"><span class="stars">★ ${p.rating.toFixed(1)}</span><span class="count">(${p.reviews_count||0} reviews)</span></div>`:''}
         <div class="pcard-specs">${specs.map(s=>`<div class="spec-item"><div class="spec-label">${s.l}</div><div class="spec-val">${s.v}</div></div>`).join('')}</div>
-        <div class="pcard-actions" onclick="event.stopPropagation()">
-          <button class="btn-view" onclick="window.location.href='/electronics-detail.html?id=${p.id}'">View Details</button>
+        <div class="pcard-actions">
+          <a class="btn-view" href="/electronics-detail.html?id=${p.id}" style="text-decoration:none;display:inline-block;text-align:center">View Details</a>
           <a href="https://www.amazon.in/s?k=${encodeURIComponent(p.name)}&tag=wib04-21" target="_blank" rel="noopener" class="btn-amazon">Amazon</a>
           <a href="https://www.flipkart.com/search?q=${encodeURIComponent(p.name)}" target="_blank" rel="noopener" class="btn-flipkart">Flipkart</a>
           <a href="${brandUrl(p.brand)}" target="_blank" rel="noopener" class="btn-official">Official</a>
