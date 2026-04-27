@@ -94,6 +94,7 @@
 <script src="/cookie-consent.js" defer></script>
 <script src="/widgets.js" defer></script>
 <script src="/sanitize.js"></script>
+<script src="/hospitals-data.js?v=20260427"></script>
 <script>
 var db=initFirebase();
 var selectedRating=0;
@@ -107,23 +108,37 @@ var hospCity=params.get('city')||'';
 if(!hospName){
   document.getElementById('content').innerHTML='<div class="bc"><a href="/">Home</a> / <a href="/hospitals/">Hospitals</a></div><h1>Hospital not found</h1><p>Please select a hospital from the <a href="/hospitals/">hospitals listing</a>.</p>';
 } else {
-  document.title=hospName+' - Hospital Details - WIB';
-  var h={n:decodeURIComponent(hospName),c:decodeURIComponent(hospCity)};
-  var _hospUrl='https://wibest.in/hospital-detail.html?name='+encodeURIComponent(hospName);
-  var _bcScript=document.createElement('script');_bcScript.type='application/ld+json';_bcScript.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://wibest.in'},{'@type':'ListItem','position':2,'name':'Hospitals','item':'https://wibest.in/hospitals/'},{'@type':'ListItem','position':3,'name':decodeURIComponent(hospName),'item':_hospUrl}]});document.head.appendChild(_bcScript);
-  // Try to get extra details from URL params
-  var hType=params.get('type')||'';
-  var hRating=parseFloat(params.get('r'))||0;
-  var hBeds=parseInt(params.get('b'))||0;
-  var hEst=parseInt(params.get('e'))||0;
-  var hSpecs=(params.get('s')||'').split(',').filter(Boolean);
-  var hIns=(params.get('i')||'').split(',').filter(Boolean);
-  var hAccr=params.get('a')||'';
-  var hEr=params.get('er')==='1';
-  var hWeb=params.get('w')||'';
-  
-  
-  var practoUrl='https://www.google.com/search?q='+encodeURIComponent(h.n+' '+h.c+' practo book appointment');
+  document.title=decodeURIComponent(hospName)+' - Hospital Details - WIB';
+  var nameDecoded = decodeURIComponent(hospName);
+  var cityDecoded = decodeURIComponent(hospCity);
+  // Look up the hospital from the shared data file (name + city is unique key)
+  var dataset = window.WIB_HOSPITALS || [];
+  var match = dataset.find(function(x){
+    return x.n === nameDecoded && (!cityDecoded || x.c === cityDecoded);
+  }) || dataset.find(function(x){return x.n === nameDecoded}) || {};
+
+  var h = {n: nameDecoded, c: match.c || cityDecoded};
+  var _hospUrl='https://wibest.in/hospital-detail.html?name='+encodeURIComponent(hospName)+(cityDecoded?'&city='+encodeURIComponent(cityDecoded):'');
+  var _bcScript=document.createElement('script');_bcScript.type='application/ld+json';_bcScript.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://wibest.in'},{'@type':'ListItem','position':2,'name':'Hospitals','item':'https://wibest.in/hospitals/'},{'@type':'ListItem','position':3,'name':nameDecoded,'item':_hospUrl}]});document.head.appendChild(_bcScript);
+
+  // Hospital data: prefer the matched record from the dataset; URL params are fallback only.
+  var hType  = match.t  || params.get('type') || '';
+  var hRating= match.r  || parseFloat(params.get('r')) || 0;
+  var hBeds  = match.b  || parseInt(params.get('b'))   || 0;
+  var hEst   = match.e  || parseInt(params.get('e'))   || 0;
+  var hSpecs = match.s  || (params.get('s')||'').split(',').filter(Boolean);
+  var hIns   = match.i  || (params.get('i')||'').split(',').filter(Boolean);
+  var hAccr  = match.a  || params.get('a') || '';
+  var hEr    = (typeof match.er !== 'undefined') ? !!match.er : (params.get('er')==='1');
+  var hWeb   = match.w  || params.get('w') || '';
+  var hAddr  = match.addr  || '';
+  var hPhone = match.phone || '';
+  h.address  = hAddr;
+
+  // Practo URL (real, not Google search): https://www.practo.com/[city]/hospitals?q=[name]
+  var practoUrl = (window.WIB_practoUrl)
+    ? window.WIB_practoUrl(h.n, h.c)
+    : 'https://www.practo.com/' + encodeURIComponent((h.c||'').toLowerCase().replace(/\s+/g,'-')) + '/hospitals?q=' + encodeURIComponent(h.n);
   
   var safeName=h.n.replace(/'/g,"\\'");
   
@@ -145,7 +160,8 @@ if(!hospName){
   </div>
 
   <div class="action-btns">
-    <a href="${practoUrl}" target="_blank" rel="noopener" class="btn-practo">Find on Practo</a>
+    ${hPhone?`<a href="tel:${hPhone.replace(/[^+\d]/g,'')}" class="btn-practo">Call ${hPhone}</a>`:''}
+    <a href="${practoUrl}" target="_blank" rel="noopener" class="btn-website">Find on Practo</a>
     ${hWeb?`<a href="${hWeb}" target="_blank" rel="noopener" class="btn-website">Official Website</a>`:''}
     <a href="/compare?type=hospitals" class="btn-website">Compare Hospitals</a>
   </div>
@@ -218,11 +234,20 @@ if(!hospName){
   document.getElementById('shareWA').href='https://wa.me/?text='+_ct+'%20'+_cu;
   document.getElementById('shareTW').href='https://twitter.com/intent/tweet?text='+_ct+'&url='+_cu+'&via=wibest_in';
 
-  // AggregateRating JSON-LD
-  var _jld={'@context':'https://schema.org','@type':'Hospital','name':h.n,'description':'Hospital in '+h.c+', India','url':'https://wibest.in/hospital-detail.html?name='+encodeURIComponent(hospName),'address':{'@type':'PostalAddress','addressLocality':h.c,'addressCountry':'IN'}};
-  if(hRating>0) _jld['aggregateRating']={'@type':'AggregateRating','ratingValue':hRating,'bestRating':5,'ratingCount':10};
-  if(hSpecs.length) _jld['medicalSpecialty']=hSpecs[0];
-  var _ls=document.createElement('script');_ls.type='application/ld+json';_ls.text=JSON.stringify(_jld);document.head.appendChild(_ls);
+  // Hospital JSON-LD with full address + phone + rating + specialties
+  var _jld = {
+    '@context':'https://schema.org','@type':'Hospital',
+    'name': h.n,
+    'description':'Hospital in '+h.c+', India',
+    'url': _hospUrl,
+    'address':{'@type':'PostalAddress','addressLocality': h.c,'addressCountry':'IN'}
+  };
+  if (hAddr) _jld.address.streetAddress = hAddr;
+  if (hPhone) _jld.telephone = hPhone;
+  if (hWeb) _jld.sameAs = [hWeb];
+  if (hRating > 0) _jld.aggregateRating = {'@type':'AggregateRating','ratingValue': hRating,'bestRating':5,'ratingCount':10};
+  if (hSpecs.length) _jld.medicalSpecialty = hSpecs;
+  var _ls = document.createElement('script');_ls.type='application/ld+json';_ls.text=JSON.stringify(_jld);document.head.appendChild(_ls);
 
   loadReviews();
 }
