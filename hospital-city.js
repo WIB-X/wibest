@@ -131,7 +131,8 @@
                   (h.s.length > 4 ? '<span class="spec-tag">+' + (h.s.length-4) + ' more</span>' : '');
       var phone = h.phone ? '<a href="tel:' + esc(h.phone.replace(/[^+\d]/g,'')) + '" class="btn-secondary" style="font-size:12px;padding:10px;text-align:center" onclick="event.stopPropagation()">Call</a>' : '';
       var websiteBtn = web ? '<a href="' + esc(web) + '" target="_blank" rel="noopener" class="btn-secondary" style="font-size:12px;padding:10px;text-align:center" onclick="event.stopPropagation()">Website</a>' : '';
-      return '<a class="hcard ' + typeClass + '" href="' + detailHref + '" style="display:block;text-decoration:none;color:inherit">' +
+      return '<div class="hcard ' + typeClass + '">' +
+        '<a class="hcard-link" href="' + detailHref + '" aria-label="' + esc(h.n) + '">' + esc(h.n) + '</a>' +
         '<div class="hcard-top"><div class="hcard-name">' + esc(h.n) + '</div><div class="hcard-rating">★ ' + h.r + '</div></div>' +
         '<div class="hcard-city">' + esc(h.c) + ' · ' + esc(h.t) + ' · Est. ' + h.e + '</div>' +
         '<div class="hcard-tags">' + specs + '</div>' +
@@ -142,10 +143,10 @@
           '<div class="detail-item"><div class="detail-label">Insurance</div><div class="detail-val">' + esc(h.i.slice(0,2).join(', ')) + '</div></div>' +
         '</div>' +
         '<div class="hcard-actions">' +
-          '<a href="' + practo + '" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px;text-align:center" onclick="event.stopPropagation()">Find on Practo</a>' +
+          '<a href="' + practo + '" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px;text-align:center">Find on Practo</a>' +
           (phone || websiteBtn) +
         '</div>' +
-      '</a>';
+      '</div>';
     }).join('');
     if (window.wibInitReveal) window.wibInitReveal();
   }

@@ -66,8 +66,10 @@
 .detail-item{padding:8px 10px;background:var(--bg-secondary);border-radius:6px}
 .detail-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
 .detail-val{font-size:13px;font-weight:600;margin-top:1px}
-.hcard-actions{display:flex;gap:10px}
+.hcard-actions{display:flex;gap:10px;position:relative;z-index:2}
 .hcard-actions a{flex:1;padding:10px;border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;text-align:center;transition:all .2s;display:block}
+.hcard-link{position:absolute;inset:0;z-index:1;text-indent:-9999px;overflow:hidden;border-radius:var(--radius)}
+.hcard-link:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
 .no-results{text-align:center;padding:60px 24px;color:var(--text-muted);font-size:15px;grid-column:1/-1}
 @media(max-width:768px){.hero-section h1{font-size:24px}.hosp-grid{grid-template-columns:1fr}.filters{flex-direction:column}.filter-group select,.search-input{width:100%}.search-group{width:100%}.hcard-details{grid-template-columns:1fr}}
 </style>
@@ -241,7 +243,8 @@ function render(){
                 (h.s.length > 4 ? '<span class="spec-tag">+' + (h.s.length-4) + ' more</span>' : '');
     var phone = h.phone ? '<a href="tel:' + esc(h.phone.replace(/[^+\d]/g,'')) + '" class="btn-secondary" style="font-size:12px;padding:10px;text-align:center" onclick="event.stopPropagation()">Call</a>' : '';
     var websiteBtn = web ? '<a href="' + esc(web) + '" target="_blank" rel="noopener" class="btn-secondary" style="font-size:12px;padding:10px;text-align:center" onclick="event.stopPropagation()">Website</a>' : '';
-    return '<a class="hcard ' + typeClass + '" href="' + detailHref + '" style="display:block;text-decoration:none;color:inherit">' +
+    return '<div class="hcard ' + typeClass + '">' +
+      '<a class="hcard-link" href="' + detailHref + '" aria-label="' + esc(h.n) + '">' + esc(h.n) + '</a>' +
       '<div class="hcard-top"><div class="hcard-name">' + esc(h.n) + '</div><div class="hcard-rating">★ ' + h.r + '</div></div>' +
       '<div class="hcard-city">' + esc(h.c) + ' · ' + esc(h.t) + ' · Est. ' + h.e + '</div>' +
       '<div class="hcard-tags">' + specs + '</div>' +
@@ -252,10 +255,10 @@ function render(){
         '<div class="detail-item"><div class="detail-label">Insurance</div><div class="detail-val">' + esc(h.i.slice(0,2).join(', ')) + '</div></div>' +
       '</div>' +
       '<div class="hcard-actions">' +
-        '<a href="' + practo + '" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px;text-align:center" onclick="event.stopPropagation()">Find on Practo</a>' +
+        '<a href="' + practo + '" target="_blank" rel="noopener" class="btn-primary" style="font-size:12px;padding:10px;text-align:center">Find on Practo</a>' +
         (phone || websiteBtn) +
       '</div>' +
-    '</a>';
+    '</div>';
   }).join('');
   if (window.wibInitReveal) window.wibInitReveal();
 }
