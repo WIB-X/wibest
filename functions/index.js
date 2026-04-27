@@ -364,8 +364,11 @@ exports.compareAI = functions
   if (!apiKey) return res.status(500).json({ error: 'GEMINI_API_KEY not configured' });
 
   const { query, items } = req.body || {};
-  if (!query || typeof query !== 'string' || query.length > 500) {
-    return res.status(400).json({ error: 'query required (max 500 chars)' });
+  // 8000-char limit accommodates structured prompts from /decide/ quizzes
+  // (template + answers + instructions easily reach 1500-2500 chars) and
+  // longer comparison contexts, while still guarding against abuse.
+  if (!query || typeof query !== 'string' || query.length > 8000) {
+    return res.status(400).json({ error: 'query required (max 8000 chars)' });
   }
 
   // Inject today's date + a current-events snapshot so the model doesn't
