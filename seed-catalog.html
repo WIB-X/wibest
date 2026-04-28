@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Seed Catalog (Electronics + Vehicles) — WIB Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+body{font-family:system-ui,sans-serif;max-width:980px;margin:40px auto;padding:0 20px;background:#0b0f17;color:#e5e7eb}
+h1{color:#60a5fa;margin-bottom:6px}
+h2{color:#a78bfa;font-size:18px;margin:24px 0 10px}
+button{background:#2563eb;color:#fff;border:0;padding:11px 20px;font-size:14px;border-radius:8px;cursor:pointer;margin:6px 4px;font-weight:600}
+button:hover{background:#1d4ed8}
+button:disabled{background:#374151;cursor:not-allowed}
+#log{background:#111827;border:1px solid #1f2937;border-radius:8px;padding:16px;margin-top:20px;max-height:600px;overflow:auto;font-family:ui-monospace,monospace;font-size:12px;white-space:pre-wrap}
+.ok{color:#10b981}.err{color:#ef4444}.info{color:#60a5fa}.warn-text{color:#fbbf24}
+.warn{background:#7c2d12;color:#fed7aa;padding:12px;border-radius:8px;margin:16px 0;font-size:13px}
+.warn-red{background:#7f1d1d;color:#fecaca;padding:12px;border-radius:8px;margin:16px 0;font-size:13px}
+.stat{display:inline-block;background:#1f2937;padding:6px 12px;border-radius:6px;margin:3px;font-family:ui-monospace,monospace;font-size:12px}
+hr{border-color:#1f2937;margin:20px 0}
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/admin-auth-gate.js"></script>
+</head>
+<body>
+<h1>WIB Catalog Seeder</h1>
+<p style="color:#888;font-size:14px;margin-bottom:14px">Manages <code>electronics</code> and <code>vehicles</code> Firestore collections.</p>
+
+<div class="warn">⚠️ Set <code>allow write: if true;</code> on <code>/electronics</code> and <code>/vehicles</code> temporarily, then revert to <code>isAdmin()</code> after seeding.</div>
+
+<div id="counts">Loading data files...</div>
+
+<h2>📱 Electronics (phones + laptops)</h2>
+<button onclick="seed('electronics')" id="seedE">➕ Add Electronics (skips name+brand dupes)</button>
+<button onclick="wipeAndReseed('electronics')" id="wipeE" style="background:#dc2626">🗑️ Wipe + Reseed Electronics</button>
+
+<h2>🚗 Vehicles (cars + bikes)</h2>
+<button onclick="seed('vehicles')" id="seedV">➕ Add Vehicles (skips name+brand dupes)</button>
+<button onclick="wipeAndReseed('vehicles')" id="wipeV" style="background:#dc2626">🗑️ Wipe + Reseed Vehicles</button>
+
+<hr>
+
+<button onclick="diagnose()" style="background:#0891b2">🔍 Diagnose counts (read-only)</button>
+
+<div id="log"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>var ELECTRONICS_DATA=[],VEHICLES_DATA=[];</script>
+<script src="/seed-data-electronics.js"></script>
+<script src="/seed-data-vehicles.js"></script>
+<script>
+const db = initFirebase();
+const log = document.getElementById('log');
+function l(m,c){var d=document.createElement('div');d.textContent=m;if(c)d.className=c;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+
+document.getElementById('counts').innerHTML =
+  '<span class="stat">Electronics in JS: '+ELECTRONICS_DATA.length+'</span>'+
+  '<span class="stat">Vehicles in JS: '+VEHICLES_DATA.length+'</span>';
+
+function dataFor(kind){
+  return kind==='electronics' ? ELECTRONICS_DATA : VEHICLES_DATA;
+}
+
+function dedupKey(rec){
+  // Normalise name+brand for comparison
+  return ((rec.name||'').trim().toLowerCase() + '||' + (rec.brand||'').trim().toLowerCase());
+}
+
+async function loadExistingKeys(collection){
+  const keys = new Set();
+  let last = null;
+  while(true){
+    let q = db.collection(collection).orderBy('__name__').limit(500);
+    if(last) q = q.startAfter(last);
+    const snap = await q.get();
+    if(snap.empty) break;
+    snap.forEach(d => keys.add(dedupKey(d.data())));
+    last = snap.docs[snap.docs.length - 1];
+    if(snap.size < 500) break;
+  }
+  return keys;
+}
+
+async function seed(kind){
+  const collection = kind; // 'electronics' or 'vehicles'
+  const data = dataFor(kind);
+  const btnId = kind==='electronics' ? 'seedE' : 'seedV';
+  document.getElementById(btnId).disabled = true;
+  l('--- Seeding '+collection+' (with name+brand dedupe) ---','info');
+  const existing = await loadExistingKeys(collection);
+  l('Found '+existing.size+' existing entries in /'+collection,'info');
+  const newOnes = data.filter(r => !existing.has(dedupKey(r)));
+  l('To add: '+newOnes.length+' new (skipping '+(data.length-newOnes.length)+' duplicates)','info');
+  if(newOnes.length === 0){
+    l('Nothing to add — all entries already exist.','ok');
+    document.getElementById(btnId).disabled = false;
+    return;
+  }
+  let ok=0, err=0;
+  for(let i=0; i<newOnes.length; i+=400){
+    const batch = db.batch();
+    const slice = newOnes.slice(i, i+400);
+    slice.forEach(r => {
+      const ref = db.collection(collection).doc();
+      batch.set(ref, Object.assign({}, r, {createdAt: firebase.firestore.FieldValue.serverTimestamp()}));
+    });
+    try{
+      await batch.commit();
+      ok += slice.length;
+      l('✓ Batch '+(i/400+1)+': wrote '+slice.length,'ok');
+    }catch(e){
+      err += slice.length;
+      l('✗ Batch '+(i/400+1)+' failed: '+e.message,'err');
+    }
+  }
+  l('=== '+collection+' done: '+ok+' added, '+err+' failed ===', err? 'err':'ok');
+  document.getElementById(btnId).disabled = false;
+}
+
+async function wipeCollection(collection){
+  l('--- Wiping all docs in /'+collection+' ---','info');
+  let total = 0;
+  while(true){
+    const snap = await db.collection(collection).orderBy('__name__').limit(500).get();
+    if(snap.empty) break;
+    const docs = snap.docs;
+    for(let i=0; i<docs.length; i+=400){
+      const batch = db.batch();
+      docs.slice(i, i+400).forEach(d => batch.delete(d.ref));
+      try{
+        await batch.commit();
+        total += Math.min(400, docs.length-i);
+        l('✓ Deleted '+total+' so far...','ok');
+      }catch(e){ l('✗ Delete batch failed: '+e.message,'err'); throw e; }
+    }
+    if(snap.size < 500) break;
+  }
+  l('=== Wiped '+total+' from /'+collection+' ===','ok');
+  return total;
+}
+
+async function wipeAndReseed(kind){
+  if(!confirm('Delete ALL existing entries in /'+kind+' collection, then write all '+dataFor(kind).length+' fresh entries from the JS data file. Continue?')) return;
+  await wipeCollection(kind);
+  await seed(kind);
+  l('🎉 '+kind+' wipe + reseed complete','ok');
+}
+
+async function diagnose(){
+  l('--- Diagnose ---','info');
+  for(const col of ['electronics','vehicles']){
+    let total = 0, byBrand = {};
+    let last = null;
+    while(true){
+      let q = db.collection(col).orderBy('__name__').limit(500);
+      if(last) q = q.startAfter(last);
+      const snap = await q.get();
+      if(snap.empty) break;
+      snap.forEach(d => {
+        total++;
+        const b = (d.data().brand||'?');
+        byBrand[b] = (byBrand[b]||0) + 1;
+      });
+      last = snap.docs[snap.docs.length-1];
+      if(snap.size < 500) break;
+    }
+    l('=== /'+col+': '+total+' docs ===','ok');
+    Object.entries(byBrand).sort((a,b)=>b[1]-a[1]).slice(0,20).forEach(([k,v]) => l('  '+k+': '+v));
+  }
+}
+</script>
+</body>
+</html>
