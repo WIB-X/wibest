@@ -35,6 +35,9 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button id="wipeColleges" onclick="wipeAndReseed('colleges')" style="background:#dc2626">🗑️ Wipe + Reseed Colleges</button>
 <button id="wipeHospitals" onclick="wipeAndReseed('hospitals')" style="background:#dc2626">🗑️ Wipe + Reseed Hospitals</button>
 <hr style="margin:24px 0;border-color:#374151">
+<div class="warn" style="background:#7f1d1d">☢️ <strong>NUCLEAR — wipes EVERY doc in /items</strong> regardless of category (cleans 'schools' plural, 'colleges' plural, '(none)', stale hospital dupes, etc). Then reseeds schools + colleges fresh.</div>
+<button onclick="wipeAllAndReseed()" style="background:#7f1d1d">☢️ Wipe ALL /items + Reseed Schools & Colleges</button>
+<hr style="margin:24px 0;border-color:#374151">
 <button onclick="diagnose()" style="background:#0891b2">🔍 Diagnose Firestore counts (read-only)</button>
 <div id="log"></div>
 
@@ -154,6 +157,46 @@ async function wipeAndReseed(kind){
   await wipeCategory(single, btn);
   await seed(kind);
   l('🎉 '+kind+' wipe + reseed complete', 'ok');
+}
+
+// Nuclear wipe — deletes EVERY document in /items, regardless of category
+// or shape. Then reseeds schools and colleges from the JS data files.
+// Hospitals are intentionally NOT reseeded — the live hospitals pages now
+// read from /hospitals-data.js directly, so there's no need for them in
+// Firestore. (If admissions/compare pages need them later, run Seed Hospitals
+// separately.)
+async function wipeAllAndReseed(){
+  if(!confirm('☢️ Delete EVERY document in /items collection (all categories, all shapes), then reseed schools + colleges from the JS files. Are you sure?')) return;
+  if(!confirm('Last warning: this is irreversible. The live hospitals pages already use hospitals-data.js so they will not break, but admissions/compare pages may until you run Seed Hospitals separately. Continue?')) return;
+
+  l('--- NUCLEAR WIPE: deleting all docs in /items ---', 'info');
+  let total = 0, last = null;
+  while(true){
+    let q = db.collection('items').orderBy('__name__').limit(500);
+    if(last) q = q.startAfter(last);
+    const snap = await q.get();
+    if(snap.empty) break;
+    const docs = snap.docs;
+    for(let i=0; i<docs.length; i+=400){
+      const batch = db.batch();
+      docs.slice(i, i+400).forEach(d => batch.delete(d.ref));
+      try{
+        await batch.commit();
+        total += Math.min(400, docs.length-i);
+        l('✓ Deleted '+total+' docs so far...', 'ok');
+      }catch(e){
+        l('✗ Delete batch failed: '+e.message, 'err');
+        throw e;
+      }
+    }
+    if(snap.size < 500) break;
+    // After deletion, restart from the beginning (since we used startAfter on docs that no longer exist)
+    last = null;
+  }
+  l('=== Wiped '+total+' docs from /items ===', 'ok');
+  await seed('schools');
+  await seed('colleges');
+  l('🎉 Nuclear wipe + schools/colleges reseed complete', 'ok');
 }
 
 async function diagnose(){

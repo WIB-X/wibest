@@ -206,7 +206,7 @@ async function loadSchools(){
     }else{
       const snap=await db.collection('items').get();
       allSchools=[];
-      snap.forEach(doc=>{const d=doc.data();if(d.category==='college'||d.stream)return;allSchools.push({id:doc.id,...d})});
+      snap.forEach(doc=>{const d=doc.data();if(d.category!=='school')return;allSchools.push({id:doc.id,...d})});
       setCache(allSchools);
     }
     const cities=[...new Set(allSchools.map(s=>s.city).filter(Boolean))].sort();

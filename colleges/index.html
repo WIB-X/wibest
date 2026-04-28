@@ -129,10 +129,12 @@ function formatFees(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1
 function formatPkg(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1)+'L';return a.toString()}
 async function loadColleges(){
   try{
-    const snap=await db.collection('colleges').get();allColleges=[];
-    snap.forEach(doc=>{allColleges.push({id:doc.id,...doc.data()})});
-    const snap2=await db.collection('items').where('category','==','college').get();
-    snap2.forEach(doc=>{if(!allColleges.find(c=>c.id===doc.id))allColleges.push({id:doc.id,...doc.data()})});
+    // Strict: only items collection where category==='college'.
+    // The legacy 'colleges' collection is intentionally not queried — it
+    // accumulated dupes and stale data from earlier seeders.
+    allColleges = [];
+    const snap2 = await db.collection('items').where('category','==','college').get();
+    snap2.forEach(doc => allColleges.push({id:doc.id, ...doc.data()}));
     const cities=[...new Set(allColleges.map(c=>c.city).filter(Boolean))].sort();
     const cityEl=document.getElementById('cityFilter');cities.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cityEl.appendChild(o)});
     const streams=[...new Set(allColleges.map(c=>c.stream).filter(Boolean))].sort();
