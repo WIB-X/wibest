@@ -29,6 +29,11 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button id="seedColleges" onclick="seed('colleges')">🎓 Seed Colleges</button>
 <button id="seedHospitals" onclick="seed('hospitals')">🏥 Seed Hospitals</button>
 <button onclick="seedAll()">🚀 Seed Everything</button>
+<hr style="margin:24px 0;border-color:#374151">
+<div class="warn" style="background:#7c2d12">⚠️ <strong>Wipe + Reseed</strong> — deletes all existing entries of that category from /items, then writes fresh. Use this to fix duplicates.</div>
+<button id="wipeSchools" onclick="wipeAndReseed('schools')" style="background:#dc2626">🗑️ Wipe + Reseed Schools</button>
+<button id="wipeColleges" onclick="wipeAndReseed('colleges')" style="background:#dc2626">🗑️ Wipe + Reseed Colleges</button>
+<button id="wipeHospitals" onclick="wipeAndReseed('hospitals')" style="background:#dc2626">🗑️ Wipe + Reseed Hospitals</button>
 <div id="log"></div>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -108,6 +113,45 @@ async function seedAll(){
   await seed('colleges');
   await seed('hospitals');
   l('\n🎉 ALL DONE', 'ok');
+}
+
+// Delete all docs in /items where category === target. Returns number deleted.
+async function wipeCategory(category, btnId){
+  if(btnId) document.getElementById(btnId).disabled = true;
+  l('--- Wiping all '+category+' entries from /items ---', 'info');
+  let total = 0;
+  // Firestore: query in batches of 500, delete in batches of 400 (under 500 limit).
+  while(true){
+    const snap = await db.collection('items').where('category','==',category).limit(500).get();
+    if(snap.empty) break;
+    const docs = snap.docs;
+    for(let i=0; i<docs.length; i+=400){
+      const batch = db.batch();
+      docs.slice(i, i+400).forEach(d => batch.delete(d.ref));
+      try{
+        await batch.commit();
+        total += Math.min(400, docs.length-i);
+        l('✓ Deleted '+total+' '+category+'s so far...', 'ok');
+      }catch(e){
+        l('✗ Delete batch failed: '+e.message, 'err');
+        if(btnId) document.getElementById(btnId).disabled = false;
+        throw e;
+      }
+    }
+    if(docs.length < 500) break;
+  }
+  l('=== Wiped '+total+' '+category+' entries ===', 'ok');
+  if(btnId) document.getElementById(btnId).disabled = false;
+  return total;
+}
+
+async function wipeAndReseed(kind){
+  const single = kind === 'schools' ? 'school' : kind === 'colleges' ? 'college' : 'hospital';
+  const btn = 'wipe' + kind.charAt(0).toUpperCase() + kind.slice(1);
+  if(!confirm('Delete ALL existing '+single+' entries from Firestore, then re-seed from the JS data files. Continue?')) return;
+  await wipeCategory(single, btn);
+  await seed(kind);
+  l('🎉 '+kind+' wipe + reseed complete', 'ok');
 }
 </script>
 </body>
