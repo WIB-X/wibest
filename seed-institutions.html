@@ -34,6 +34,8 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button id="wipeSchools" onclick="wipeAndReseed('schools')" style="background:#dc2626">🗑️ Wipe + Reseed Schools</button>
 <button id="wipeColleges" onclick="wipeAndReseed('colleges')" style="background:#dc2626">🗑️ Wipe + Reseed Colleges</button>
 <button id="wipeHospitals" onclick="wipeAndReseed('hospitals')" style="background:#dc2626">🗑️ Wipe + Reseed Hospitals</button>
+<hr style="margin:24px 0;border-color:#374151">
+<button onclick="diagnose()" style="background:#0891b2">🔍 Diagnose Firestore counts (read-only)</button>
 <div id="log"></div>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -152,6 +154,35 @@ async function wipeAndReseed(kind){
   await wipeCategory(single, btn);
   await seed(kind);
   l('🎉 '+kind+' wipe + reseed complete', 'ok');
+}
+
+async function diagnose(){
+  l('--- Diagnosing /items collection ---', 'info');
+  // Count total docs (small-batch paginate to be safe)
+  let totalDocs = 0, byCategory = {}, byCity = {};
+  let last = null;
+  while(true){
+    let q = db.collection('items').orderBy('__name__').limit(500);
+    if(last) q = q.startAfter(last);
+    const snap = await q.get();
+    if(snap.empty) break;
+    snap.forEach(d => {
+      totalDocs++;
+      const data = d.data();
+      const cat = data.category || '(none)';
+      byCategory[cat] = (byCategory[cat] || 0) + 1;
+      const key = (data.category || '?') + ':' + (data.city || '?');
+      byCity[key] = (byCity[key] || 0) + 1;
+    });
+    last = snap.docs[snap.docs.length - 1];
+    l('  scanned '+totalDocs+' docs so far...', 'info');
+    if(snap.size < 500) break;
+  }
+  l('=== TOTAL: '+totalDocs+' docs in /items ===', 'ok');
+  l('--- by category ---', 'info');
+  Object.keys(byCategory).sort().forEach(k => l('  '+k+': '+byCategory[k]));
+  l('--- by category:city (top 30) ---', 'info');
+  Object.entries(byCity).sort((a,b)=>b[1]-a[1]).slice(0,30).forEach(([k,v]) => l('  '+k+': '+v));
 }
 </script>
 </body>
