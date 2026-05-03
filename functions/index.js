@@ -346,6 +346,121 @@ exports.unsubscribe = functions.https.onRequest(async (req, res) => {
   }
 });
 
+// ── Catalog cache: load wibest data files once per warm function instance ──
+// Used by aiAnswer to inject real catalog entries into the prompt so the AI
+// can quote actual hospital names, restaurant addresses, etc.
+const _catalogCache = { hospitals: null, restaurants: null, fetchedAt: 0 };
+const CATALOG_TTL = 6 * 60 * 60 * 1000; // 6 hours
+
+async function loadCatalog() {
+  const now = Date.now();
+  if (_catalogCache.hospitals && (now - _catalogCache.fetchedAt) < CATALOG_TTL) {
+    return _catalogCache;
+  }
+  try {
+    const [hosp, rest] = await Promise.all([
+      fetch('https://wibest.in/hospitals-data.js').then(r => r.text()).catch(() => null),
+      fetch('https://wibest.in/restaurants-data.js').then(r => r.text()).catch(() => null),
+    ]);
+    // Parse: extract array literal from `window.WIB_HOSPITALS = [...]` and `window.WIB_RESTAURANTS = [...]`
+    const parseArr = (txt, varname) => {
+      if (!txt) return [];
+      const m = txt.match(new RegExp('window\\.' + varname + '\\s*=\\s*(\\[[\\s\\S]*?\\n\\]\\s*;)'));
+      if (!m) return [];
+      try {
+        // Wrap in IIFE to safely eval the array literal
+        // eslint-disable-next-line no-new-func
+        return Function('"use strict";return ' + m[1].replace(/;$/, ''))();
+      } catch (e) { return []; }
+    };
+    _catalogCache.hospitals = parseArr(hosp, 'WIB_HOSPITALS');
+    _catalogCache.restaurants = parseArr(rest, 'WIB_RESTAURANTS');
+    _catalogCache.fetchedAt = now;
+    console.log('Catalog loaded: ' + _catalogCache.hospitals.length + ' hospitals, ' + _catalogCache.restaurants.length + ' restaurants');
+  } catch (e) {
+    console.error('catalog load failed:', e.message);
+  }
+  return _catalogCache;
+}
+
+// Detect category + extract city/keyword tokens from a free-text query
+function detectIntent(q) {
+  const lower = q.toLowerCase();
+  const cityList = ['delhi','mumbai','bangalore','bengaluru','chennai','hyderabad','pune','kolkata','ahmedabad','coimbatore','indore','jaipur','kochi','cochin','lucknow','chandigarh','visakhapatnam','vizag','gurugram','noida','navi mumbai','thane','pimpri-chinchwad'];
+  const cityHit = cityList.find(c => lower.includes(c));
+  const intent = {
+    category: null,
+    city: cityHit ? (cityHit === 'bengaluru' ? 'Bangalore' : cityHit === 'cochin' ? 'Kochi' : cityHit === 'vizag' ? 'Visakhapatnam' : cityHit.replace(/(^|\s)([a-z])/g, (_,a,b) => a + b.toUpperCase())) : null,
+    keyword: null,
+  };
+  if (/\bhospital|cardiac|cardiology|oncology|cancer|neurolog|orthopedic|dental|maternity|paediatric|ivf|gynaec|kidney|liver transplant|nephrology|gastro/.test(lower)) {
+    intent.category = 'hospital';
+    const specMap = {
+      cardiac: ['Cardiology','Cardiac Surgery','Cardiac Sciences'],
+      cardiology: ['Cardiology','Cardiac Surgery','Cardiac Sciences'],
+      oncology: ['Oncology','Surgical Oncology','Radiation Oncology'],
+      cancer: ['Oncology','Surgical Oncology','Radiation Oncology'],
+      neuro: ['Neurology','Neurosciences','Neurosurgery'],
+      ortho: ['Orthopedics','Joint Replacement','Sports Medicine'],
+      dental: ['Dental'],
+      maternity: ['Maternity','Gynaecology','IVF'],
+      paediatric: ['Paediatrics','Neonatology'],
+      ivf: ['IVF','Gynaecology'],
+      kidney: ['Kidney Transplant','Nephrology','Renal Sciences'],
+      liver: ['Liver Transplant','Hepatology'],
+      gastro: ['Gastroenterology','Hepatology'],
+    };
+    for (const k in specMap) if (lower.includes(k)) { intent.keyword = specMap[k]; break; }
+  } else if (/\brestaurant|food|eat|dining|cuisine|biryani|cafe|brewery|kebab|seafood|street food|chettinad|gujarati|bengali|awadhi|italian|chinese|continental/.test(lower)) {
+    intent.category = 'restaurant';
+    const cuMap = {
+      biryani: ['Biryani'],
+      cafe: ['Cafe'],
+      brewery: ['Brewery'],
+      kebab: ['Kebabs','Mughlai'],
+      seafood: ['Seafood','Coastal'],
+      'street food': ['Street Food','Chaat'],
+      chettinad: ['Chettinad'],
+      gujarati: ['Gujarati'],
+      bengali: ['Bengali'],
+      awadhi: ['Awadhi','Mughlai'],
+      italian: ['Italian'],
+      chinese: ['Chinese','Asian'],
+    };
+    for (const k in cuMap) if (lower.includes(k)) { intent.keyword = cuMap[k]; break; }
+  }
+  return intent;
+}
+
+async function buildCatalogContext(query) {
+  const intent = detectIntent(query);
+  if (!intent.category) return '';
+  const cat = await loadCatalog();
+  let pool = [];
+  if (intent.category === 'hospital') {
+    pool = (cat.hospitals || []).filter(h => !intent.city || h.c === intent.city);
+    if (intent.keyword) pool = pool.filter(h => (h.s||[]).some(s => intent.keyword.includes(s)));
+    pool.sort((a,b) => (b.r||0) - (a.r||0));
+    pool = pool.slice(0, 12);
+    if (!pool.length) return '';
+    const lines = pool.map(h => `- ${h.n} (${h.c}) — ${(h.s||[]).slice(0,3).join(', ')} — ★${h.r||'?'} — ${h.addr||''} — ${h.phone||''}`);
+    return `\n\n[VERIFIED WIB HOSPITAL CATALOG — quote these by name when relevant${intent.city ? ' (filtered to ' + intent.city + ')' : ''}${intent.keyword ? ' (filtered to ' + intent.keyword.join('/') + ')' : ''}]\n` + lines.join('\n');
+  }
+  if (intent.category === 'restaurant') {
+    pool = (cat.restaurants || []).filter(r => !intent.city || r.c === intent.city);
+    if (intent.keyword) pool = pool.filter(r => (r.cu||[]).some(c => intent.keyword.includes(c)));
+    pool.sort((a,b) => (b.r||0) - (a.r||0));
+    pool = pool.slice(0, 12);
+    if (!pool.length) return '';
+    const lines = pool.map(r => {
+      const budget = r.b===1?'budget':r.b===2?'mid':'premium';
+      return `- ${r.n} (${r.c}) — ${(r.cu||[]).slice(0,3).join(', ')} — ★${r.r||'?'} — ${budget} — ${r.a||''}`;
+    });
+    return `\n\n[VERIFIED WIB RESTAURANT CATALOG — quote these by name when relevant${intent.city ? ' (filtered to ' + intent.city + ')' : ''}${intent.keyword ? ' (filtered to ' + intent.keyword.join('/') + ')' : ''}]\n` + lines.join('\n');
+  }
+  return '';
+}
+
 // ── 8. AI Compare proxy (Gemini) ─────────────────────────────────────────────
 // Set GEMINI_API_KEY in functions/.env (or via Firebase secret manager)
 exports.compareAI = functions
@@ -402,9 +517,13 @@ Style:
 - Always end with a clear "**Recommendation:**" line
 
 If the user asks about something genuinely outside your scope (e.g. legal advice, medical diagnosis, stock picks), say so politely and redirect — but DO NOT decline questions about schools, hospitals, restaurants, colleges, travel destinations, insurance, or anything from the categories above. Those are core to your purpose.`;
+  // Inject relevant entries from the WIB catalog (hospitals, restaurants) so the
+  // AI can quote real names with addresses/phones/ratings instead of guessing.
+  const catalogContext = await buildCatalogContext(items ? items.join(' ') + ' ' + query : query);
+
   const user = items
-    ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}`
-    : query;
+    ? `Compare these for an Indian buyer: ${items.join(' vs ')}\n\nUser context: ${query}${catalogContext}`
+    : query + catalogContext;
 
   // Models in priority order — FASTEST first. Comparison answers don't need
   // deep reasoning, so flash-lite (≈1-2s) is a much better UX than flash (≈4-6s).
