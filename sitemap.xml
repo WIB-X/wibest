@@ -68,6 +68,21 @@
   <url><loc>https://wibest.in/hospitals/ahmedabad/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://wibest.in/travel/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/restaurants/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/restaurants/delhi/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/mumbai/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/bangalore/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/chennai/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/hyderabad/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/pune/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/kolkata/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/ahmedabad/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/coimbatore/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/indore/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/jaipur/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/kochi/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/lucknow/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/chandigarh/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/restaurants/visakhapatnam/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/real-estate/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/jobs/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/accessories/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
