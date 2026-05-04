@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>WIB Research Reports</title>
+  <link>https://wibest.in/reports/</link>
+  <atom:link href="https://wibest.in/feed-reports.xml" rel="self" type="application/rss+xml" />
+  <description>Original research from WIB's editorial team on India's healthcare, dining, travel, and consumer markets.</description>
+  <language>en-IN</language>
+  <pubDate>Mon, 04 May 2026 13:54:12 GMT</pubDate>
+  <lastBuildDate>Mon, 04 May 2026 13:54:12 GMT</lastBuildDate>
+  <item>
+    <title>State of Indian Travel 2026</title>
+    <link>https://wibest.in/reports/state-of-indian-travel-2026/</link>
+    <guid isPermaLink="true">https://wibest.in/reports/state-of-indian-travel-2026/</guid>
+    <pubDate>Sun, 04 May 2026 14:00:00 GMT</pubDate>
+    <description>WIB&apos;s research on India&apos;s domestic travel landscape: 102 destinations, 12-month weather windows, weekend getaway analysis, state-by-state distribution.</description>
+  </item>
+  <item>
+    <title>State of Indian Restaurants 2026</title>
+    <link>https://wibest.in/reports/state-of-indian-restaurants-2026/</link>
+    <guid isPermaLink="true">https://wibest.in/reports/state-of-indian-restaurants-2026/</guid>
+    <pubDate>Sun, 04 May 2026 13:00:00 GMT</pubDate>
+    <description>WIB&apos;s annual research on Indian dining: 450 restaurants across 15 cities, cuisine concentration, premium-vs-budget split, city-by-city personalities.</description>
+  </item>
+  <item>
+    <title>State of Indian Hospitals 2026</title>
+    <link>https://wibest.in/reports/state-of-indian-hospitals-2026/</link>
+    <guid isPermaLink="true">https://wibest.in/reports/state-of-indian-hospitals-2026/</guid>
+    <pubDate>Sun, 04 May 2026 12:00:00 GMT</pubDate>
+    <description>WIB&apos;s annual research on India&apos;s hospital landscape: 236 multi-specialty hospitals across 15 cities, NABH coverage, specialty distribution, bed capacity.</description>
+  </item>
+</channel>
+</rss>
