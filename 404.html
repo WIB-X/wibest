@@ -46,6 +46,12 @@
     <a href="/blog" class="btn-secondary">Read the Blog</a>
   </div>
 
+  <!-- Smart suggestions based on the broken URL -->
+  <div id="smartSuggest" style="display:none;width:100%;max-width:640px;margin-bottom:32px">
+    <h3 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary);margin-bottom:12px">Did you mean?</h3>
+    <div id="smartList" style="display:grid;gap:8px"></div>
+  </div>
+
   <div class="error-categories">
     <h3>Browse by Category</h3>
     <div class="cat-grid">
@@ -59,9 +65,100 @@
       <a href="/restaurants" class="cat-chip">🍽️ Restaurants</a>
       <a href="/real-estate" class="cat-chip">🏠 Real Estate</a>
       <a href="/jobs" class="cat-chip">💼 Jobs</a>
+      <a href="/finance" class="cat-chip">💰 Finance</a>
+      <a href="/insurance" class="cat-chip">🛡️ Insurance</a>
+      <a href="/calculators" class="cat-chip">🧮 Calculators</a>
+      <a href="/cities" class="cat-chip">🏙️ City Living</a>
+      <a href="/blog" class="cat-chip">📝 Blog</a>
     </div>
   </div>
 </div>
+
+<style>
+.smart-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:inherit;transition:all .15s;text-align:left}
+.smart-row:hover{border-color:var(--accent);transform:translateX(2px)}
+.smart-row .ic{font-size:20px;flex-shrink:0}
+.smart-row .text{flex:1;min-width:0}
+.smart-row .title{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.3}
+.smart-row .meta{font-size:12px;color:var(--text-muted)}
+.smart-row .arrow{color:var(--accent);font-weight:700}
+</style>
+
+<script src="/search-index.js?v=20260504"></script>
+<script>
+(function(){
+  // Suggest pages based on the broken URL path
+  var path = (location.pathname || '').toLowerCase();
+  // Strip common prefixes/suffixes and language codes
+  var cleaned = path
+    .replace(/^\/+/, '')
+    .replace(/\/+$/, '')
+    .replace(/^(hi|ta|te|kn|ml|bn)\//, '')
+    .replace(/-(hi|ta|te|kn|ml|bn)$/, '')
+    .replace(/\.(html?|php|asp)$/, '');
+  // Tokens to score against
+  var tokens = cleaned.split(/[\/\-_\.]/).filter(function(t){return t.length >= 3});
+  if (!tokens.length) return;
+
+  function score(label, url){
+    label = label.toLowerCase();
+    url = url.toLowerCase();
+    var s = 0;
+    for (var i=0; i<tokens.length; i++){
+      var t = tokens[i];
+      if (label.indexOf(t) !== -1) s += 10;
+      if (url.indexOf(t) !== -1) s += 8;
+    }
+    // Boost exact slug-tail match
+    var tail = cleaned.split('/').pop();
+    if (tail && url.indexOf(tail) !== -1) s += 30;
+    return s;
+  }
+
+  function iconFor(url){
+    if (url.indexOf('/restaurants/') !== -1) return '🍽️';
+    if (url.indexOf('/hospitals/') !== -1) return '🏥';
+    if (url.indexOf('/schools/') !== -1) return '🎒';
+    if (url.indexOf('/colleges/') !== -1) return '🎓';
+    if (url.indexOf('/finance/') !== -1) return '💰';
+    if (url.indexOf('/insurance/') !== -1) return '🛡️';
+    if (url.indexOf('/travel/') !== -1) return '✈️';
+    if (url.indexOf('/cars/') !== -1 || url.indexOf('/bikes/') !== -1) return '🚗';
+    if (url.indexOf('/calculators/') !== -1) return '🧮';
+    if (url.indexOf('/cities/') !== -1) return '🏙️';
+    if (url.indexOf('/blog/') !== -1) return '📝';
+    if (url.indexOf('/real-estate/') !== -1) return '🏠';
+    return '🔗';
+  }
+
+  var index = window.WIB_SEARCH_INDEX || [];
+  if (!index.length) return;
+
+  var ranked = [];
+  for (var i=0; i<index.length; i++){
+    var s = score(index[i].l, index[i].u);
+    if (s > 0) ranked.push({e: index[i], s: s});
+  }
+  ranked.sort(function(a,b){return b.s - a.s;});
+  var top = ranked.slice(0, 5);
+  if (!top.length) return;
+
+  var html = top.map(function(r){
+    return '<a class="smart-row" href="' + r.e.u + '">' +
+      '<span class="ic">' + iconFor(r.e.u) + '</span>' +
+      '<span class="text">' +
+        '<div class="title">' + r.e.l + '</div>' +
+        '<div class="meta">' + r.e.c + ' · ' + r.e.u + '</div>' +
+      '</span>' +
+      '<span class="arrow">→</span>' +
+    '</a>';
+  }).join('');
+  document.getElementById('smartList').innerHTML = html;
+  document.getElementById('smartSuggest').style.display = 'block';
+  // Track 404s with their broken URL for content planning
+  try { if (window.gtag) gtag('event', '404_smart_suggest', { broken_url: path, suggestions: top.length }); } catch(e){}
+})();
+</script>
 
 <div id="wib-footer-placeholder"></div>
 <script src="/config.js"></script>
