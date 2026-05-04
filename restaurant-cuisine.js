@@ -19,7 +19,7 @@
     });
   }
   function matchName(r){
-    if (!NAME_RX) return true;
+    if (!NAME_RX) return false;
     return NAME_RX.test(r.n) || NAME_RX.test((r.cu||[]).join(' '));
   }
 
