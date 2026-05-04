@@ -146,6 +146,20 @@ service cloud.firestore {
       allow write: if false;  // only admin SDK writes
     }
 
+    // ── Finance lead-gen forms: public can create, admin manages ──
+    match /finance_leads/{doc} {
+      allow create: if request.resource.data.email is string
+                    && request.resource.data.email.size() >= 5
+                    && request.resource.data.email.size() <= 200
+                    && request.resource.data.phone is string
+                    && request.resource.data.phone.size() == 10
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() >= 2
+                    && request.resource.data.name.size() <= 100
+                    && request.resource.data.category is string;
+      allow read, update, delete: if isAdmin();
+    }
+
     // ── Deny everything else by default ─────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
