@@ -437,6 +437,9 @@ async function buildCatalogContext(query) {
   if (!intent.category) return '';
   const cat = await loadCatalog();
   let pool = [];
+  // Compute relevant WIB landing pages to cite at the end of the answer
+  const relatedPages = [];
+  const cityLower = intent.city ? intent.city.toLowerCase() : '';
   if (intent.category === 'hospital') {
     pool = (cat.hospitals || []).filter(h => !intent.city || h.c === intent.city);
     if (intent.keyword) pool = pool.filter(h => (h.s||[]).some(s => intent.keyword.includes(s)));
@@ -444,7 +447,19 @@ async function buildCatalogContext(query) {
     pool = pool.slice(0, 12);
     if (!pool.length) return '';
     const lines = pool.map(h => `- ${h.n} (${h.c}) — ${(h.s||[]).slice(0,3).join(', ')} — ★${h.r||'?'} — ${h.addr||''} — ${h.phone||''}`);
-    return `\n\n[VERIFIED WIB HOSPITAL CATALOG — quote these by name when relevant${intent.city ? ' (filtered to ' + intent.city + ')' : ''}${intent.keyword ? ' (filtered to ' + intent.keyword.join('/') + ')' : ''}]\n` + lines.join('\n');
+    if (cityLower) {
+      relatedPages.push(`https://wibest.in/hospitals/${cityLower}/`);
+      // Match keyword to known specialty pages
+      const specMap = { cardiology:'best-cardiology', cardiac:'best-cardiology', oncology:'best-oncology', cancer:'best-oncology', neurology:'best-neurology', orthopedics:'best-orthopedics', orthopaedics:'best-orthopedics', gastroenterology:'best-gastroenterology', paediatrics:'best-paediatrics', pediatrics:'best-paediatrics', gynaecology:'best-gynaecology' };
+      if (intent.keyword) {
+        for (const k of intent.keyword) {
+          const key = k.toLowerCase();
+          for (const w in specMap) { if (key.includes(w)) { relatedPages.push(`https://wibest.in/hospitals/${cityLower}/${specMap[w]}/`); break; } }
+        }
+      }
+    }
+    const cite = relatedPages.length ? `\n\n[CITATION URLS — link to these in your "Related WIB pages" section at the end]\n${[...new Set(relatedPages)].join('\n')}` : '';
+    return `\n\n[VERIFIED WIB HOSPITAL CATALOG — quote these by name when relevant${intent.city ? ' (filtered to ' + intent.city + ')' : ''}${intent.keyword ? ' (filtered to ' + intent.keyword.join('/') + ')' : ''}]\n` + lines.join('\n') + cite;
   }
   if (intent.category === 'restaurant') {
     pool = (cat.restaurants || []).filter(r => !intent.city || r.c === intent.city);
@@ -456,7 +471,18 @@ async function buildCatalogContext(query) {
       const budget = r.b===1?'budget':r.b===2?'mid':'premium';
       return `- ${r.n} (${r.c}) — ${(r.cu||[]).slice(0,3).join(', ')} — ★${r.r||'?'} — ${budget} — ${r.a||''}`;
     });
-    return `\n\n[VERIFIED WIB RESTAURANT CATALOG — quote these by name when relevant${intent.city ? ' (filtered to ' + intent.city + ')' : ''}${intent.keyword ? ' (filtered to ' + intent.keyword.join('/') + ')' : ''}]\n` + lines.join('\n');
+    if (cityLower) {
+      relatedPages.push(`https://wibest.in/restaurants/${cityLower}/`);
+      const cuMap = { biryani:'best-biryani', cafe:'best-cafes', cafes:'best-cafes', 'south indian':'best-south-indian', mughlai:'best-mughlai', seafood:'best-seafood', 'street food':'best-street-food', chinese:'best-chinese', bengali:'best-bengali', 'kebabs':'best-kebabs', awadhi:'best-awadhi', maharashtrian:'best-maharashtrian', rajasthani:'best-rajasthani', gujarati:'best-gujarati-thali', kerala:'best-kerala-food', chettinad:'best-chettinad', andhra:'best-andhra' };
+      if (intent.keyword) {
+        for (const k of intent.keyword) {
+          const key = k.toLowerCase();
+          for (const w in cuMap) { if (key.includes(w)) { relatedPages.push(`https://wibest.in/restaurants/${cityLower}/${cuMap[w]}/`); break; } }
+        }
+      }
+    }
+    const cite = relatedPages.length ? `\n\n[CITATION URLS — link to these in your "Related WIB pages" section at the end]\n${[...new Set(relatedPages)].join('\n')}` : '';
+    return `\n\n[VERIFIED WIB RESTAURANT CATALOG — quote these by name when relevant${intent.city ? ' (filtered to ' + intent.city + ')' : ''}${intent.keyword ? ' (filtered to ' + intent.keyword.join('/') + ')' : ''}]\n` + lines.join('\n') + cite;
   }
   return '';
 }
@@ -515,6 +541,7 @@ Style:
 - India-specific: ₹ prices in INR, Indian brands, locality references (Bangalore, Mumbai, Delhi etc.), availability on Flipkart/Amazon.in/Practo/Zomato
 - Use markdown: **bold** key terms, ## headings, bullet points
 - Always end with a clear "**Recommendation:**" line
+- If [CITATION URLS] are provided in catalog context, append a final "## Related WIB pages" section with those URLs as markdown links (label them readably, e.g., "Best Cardiology Hospitals in Bangalore"). Skip this section if no citation URLs.
 
 If the user asks about something genuinely outside your scope (e.g. legal advice, medical diagnosis, stock picks), say so politely and redirect — but DO NOT decline questions about schools, hospitals, restaurants, colleges, travel destinations, insurance, or anything from the categories above. Those are core to your purpose.`;
   // Inject relevant entries from the WIB catalog (hospitals, restaurants) so the
@@ -587,6 +614,17 @@ If the user asks about something genuinely outside your scope (e.g. legal advice
 
       const { text, error: extractErr } = extractText(data);
       if (extractErr) { errors.push(`${model}: ${extractErr}`); continue; }
+
+      // Log query to Firestore for content-planning analytics (non-blocking)
+      try {
+        admin.firestore().collection('ai_query_log').add({
+          query: query.slice(0, 500),
+          items: items || [],
+          model,
+          answeredAt: admin.firestore.FieldValue.serverTimestamp(),
+          source: req.headers['referer'] || 'unknown',
+        }).catch(() => {}); // ignore log failures
+      } catch (e) {}
 
       // Success
       return res.json({ answer: text, model });

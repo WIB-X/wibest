@@ -140,6 +140,12 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    // ── AI query log: written by Cloud Function (admin SDK bypasses rules), read by admin only ──
+    match /ai_query_log/{doc} {
+      allow read: if isAdmin();
+      allow write: if false;  // only admin SDK writes
+    }
+
     // ── Deny everything else by default ─────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
