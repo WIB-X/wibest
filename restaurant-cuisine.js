@@ -71,9 +71,11 @@
       var swiggy = 'https://www.swiggy.com/search?query=' + encodeURIComponent(r.n + ' ' + r.c);
       var maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(r.n + ', ' + r.a + ', ' + r.c);
       var cuisines = (r.cu||[]).slice(0,4).map(function(c){return '<span class="cu-tag">'+esc(c)+'</span>'}).join('');
+      var compareData = JSON.stringify({n:r.n, c:'Restaurant', city:r.c, r:r.r, tags:(r.cu||[]).slice(0,2).join(', '), u:window.location.pathname});
       return '<div class="rcard">'+
         '<div class="rcard-rank">#'+(i+1)+'</div>'+
-        '<div class="rcard-top"><div class="rcard-name">'+esc(r.n)+'</div><div class="rcard-rating">★ '+r.r+'</div></div>'+
+        '<button class="rcard-add" title="Add to compare list" data-compare-add=\''+compareData.replace(/'/g, '&#39;')+'\' style="position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .15s">+</button>'+
+        '<div class="rcard-top" style="padding-right:36px"><div class="rcard-name">'+esc(r.n)+'</div><div class="rcard-rating">★ '+r.r+'</div></div>'+
         '<div class="rcard-meta">'+esc(r.a)+' · '+budget+'</div>'+
         '<div class="rcard-cuisines">'+cuisines+'</div>'+
         '<div class="rcard-actions">'+

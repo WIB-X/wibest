@@ -190,6 +190,10 @@
     if (!window.WIBSearch) {
       var s2 = document.createElement('script'); s2.src = '/search.js?v=20260504'; s2.defer = true; document.head.appendChild(s2);
     }
+    // Auto-load compare cart
+    if (!window.WIBCompare) {
+      var s3 = document.createElement('script'); s3.src = '/compare-cart.js?v=20260504'; s3.defer = true; document.head.appendChild(s3);
+    }
   });
 
   // Newsletter subscribe function (used by footer)

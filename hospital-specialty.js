@@ -43,9 +43,11 @@
       var web = h.w ? '<a href="'+esc(h.w)+'" target="_blank" rel="noopener" class="btn-web">Website</a>' : '';
       var phone = h.phone ? '<a href="tel:'+esc(h.phone)+'" class="btn-phone">Call</a>' : '';
       var specs = (h.s||[]).slice(0,4).map(function(s){return '<span class="sp-tag">'+esc(s)+'</span>'}).join('');
+      var compareData = JSON.stringify({n:h.n, c:'Hospital', city:h.c, r:h.r, tags:(h.s||[]).slice(0,2).join(', '), u:window.location.pathname});
       return '<div class="hcard">'+
         '<div class="hcard-rank">#'+(i+1)+'</div>'+
-        '<div class="hcard-top"><div class="hcard-name">'+esc(h.n)+'</div><div class="hcard-rating">★ '+h.r+'</div></div>'+
+        '<button class="hcard-add" title="Add to compare list" data-compare-add=\''+compareData.replace(/'/g, '&#39;')+'\' style="position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .15s">+</button>'+
+        '<div class="hcard-top" style="padding-right:36px"><div class="hcard-name">'+esc(h.n)+'</div><div class="hcard-rating">★ '+h.r+'</div></div>'+
         '<div class="hcard-meta">'+esc(h.t)+' · '+(h.b||0)+' beds · est. '+(h.e||'')+' · '+esc(h.a||'')+' '+emer+'</div>'+
         '<div class="hcard-addr">'+esc(h.addr||'')+'</div>'+
         '<div class="hcard-specs">'+specs+'</div>'+
