@@ -196,6 +196,10 @@
     }
     // PWA install banner
     var s4 = document.createElement('script'); s4.src = '/pwa-install.js?v=20260504'; s4.defer = true; document.head.appendChild(s4);
+    // Register service worker (cache shell + assets for offline)
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      navigator.serviceWorker.register('/sw.js').catch(function(err){ console.warn('SW register failed:', err); });
+    }
   });
 
   // Newsletter subscribe function (used by footer)
