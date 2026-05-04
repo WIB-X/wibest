@@ -1,0 +1,5 @@
+window.WIB_HOSPITALS = [
+{n:"Jaypee Hospital",c:"Noida",t:"Private",r:4.4,b:525,e:2014,s:["Cardiac Sciences","Oncology","Neurosciences","Liver Transplant","Kidney Transplant","Orthopedics"],i:["Most TPA","CGHS","Star Health"],a:"NABH, JCI",er:1,w:"https://www.jaypeehospital.org",addr:"Sector 128, Noida, Uttar Pradesh 201304",phone:"+91-120-4122222"},
+{n:"Yatharth Super Speciality Hospital",c:"Noida",t:"Private",r:4.3,b:450,e:2010,s:["Cardiology","Neurosciences","Oncology","Orthopedics","Gastroenterology","Critical Care"],i:["Most TPA","Ayushman Bharat","Star Health"],a:"NABH",er:1,w:"https://www.yatharthhospitals.com",addr:"Plot No 1, Gejha Road, Sector 110, Noida, Uttar Pradesh 201304",phone:"+91-120-2460000"},
+{n:"Metro Hospital and Heart Institute",c:"Noida",t:"Private",r:4.2,b:317,e:1998,s:["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Nephrology","Urology"],i:["Most TPA","CGHS","Star Health"],a:"NABH",er:1,w:"https://metrohospitals.com",addr:"L-94, Sector 11, Noida, Uttar Pradesh 201301",phone:"+91-120-6966666"}
+];

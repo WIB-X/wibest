@@ -1,0 +1,6 @@
+window.WIB_HOSPITALS = [
+{n:"Medanta Gurugram",c:"Gurugram",t:"Private",r:4.5,b:1500,e:2009,s:["Cardiac Surgery","Liver Transplant","Neuroscience","Oncology","Robotic Surgery"],i:["Most TPA","Star Health","CGHS"],a:"NABH, JCI",er:1,w:"https://www.medanta.org",addr:"CH Baktawar Singh Road, Sector 38, Gurugram 122001",phone:"+91-124-4141414"},
+{n:"Fortis Memorial Gurugram",c:"Gurugram",t:"Private",r:4.4,b:1000,e:2013,s:["Oncology","Neurosciences","Orthopedics","Renal Sciences"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.fortishealthcare.com",addr:"Sector 44, Gurugram 122002",phone:"+91-124-4962200"},
+{n:"Artemis Hospital Gurugram",c:"Gurugram",t:"Private",r:4.3,b:400,e:2007,s:["Cardiac Sciences","Neurology","Oncology","Gastroenterology","Kidney Transplant"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.artemishospitals.com",addr:"Sector 51, Gurugram 122001",phone:"+91-124-4511111"},
+{n:"Park Hospital Gurugram",c:"Gurugram",t:"Private",r:4.2,b:275,e:2012,s:["Cardiology","Neurosciences","Orthopedics","Oncology","Gastroenterology","Renal Sciences"],i:["Most TPA","CGHS","Star Health"],a:"NABH",er:1,w:"https://www.parkhospital.in",addr:"Q Block, South City 2, Sohna Road, Sector 47, Gurugram 122018",phone:"+91-124-4585555"}
+];
