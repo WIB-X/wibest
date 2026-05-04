@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Blog Comments - WIB Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F172A;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-300:#CBD5E1;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--green:#16A34A;--green-50:#F0FDF4;--amber:#D97706;--amber-50:#FFFBEB;--red:#DC2626;--red-50:#FEF2F2;--white:#FFF;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--slate-50);line-height:1.5}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:var(--navy);color:var(--white)}
+  .topbar h1{font-size:16px;font-weight:700;letter-spacing:-0.01em}
+  .topbar a{color:var(--slate-300);font-size:12px;text-decoration:none;background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:6px}
+  .wrap{max-width:1100px;margin:32px auto;padding:0 28px}
+  h2{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px}
+  .lede{color:var(--slate-500);font-size:14px;margin-bottom:24px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px}
+  .stat{background:var(--white);border:1px solid var(--slate-200);border-radius:10px;padding:18px 22px}
+  .stat .num{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--navy);line-height:1.1}
+  .stat .lbl{font-size:11px;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-top:4px}
+  .filter{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .filter select,.filter input{padding:8px 12px;border:1px solid var(--slate-200);border-radius:8px;font:inherit;font-size:13px;background:var(--white)}
+  .filter input{flex:1;min-width:200px}
+  .list{display:flex;flex-direction:column;gap:12px}
+  .item{background:var(--white);border:1px solid var(--slate-200);border-radius:10px;padding:18px 22px}
+  .item-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+  .item-meta{font-size:13px;color:var(--slate-500)}
+  .item-meta strong{color:var(--navy)}
+  .item-page{font-size:12px}
+  .item-page a{color:var(--blue);text-decoration:none}
+  .item-text{font-size:14.5px;line-height:1.6;color:var(--slate-700);white-space:pre-wrap;background:var(--slate-50);padding:12px 16px;border-radius:8px;margin-bottom:12px}
+  .item-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{padding:7px 16px;border:none;border-radius:6px;font:inherit;font-weight:600;font-size:12px;cursor:pointer;transition:all .15s}
+  .btn-approve{background:var(--green);color:var(--white)}.btn-approve:hover{background:#15803d}
+  .btn-reject{background:var(--white);color:var(--red);border:1px solid var(--slate-200)}.btn-reject:hover{background:var(--red-50);border-color:var(--red)}
+  .btn-delete{background:var(--white);color:var(--red);border:1px solid var(--red-50)}.btn-delete:hover{background:var(--red-50);border-color:var(--red)}
+  .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+  .tag-pending{background:var(--amber-50);color:var(--amber)}
+  .tag-approved{background:var(--green-50);color:var(--green)}
+  .tag-rejected{background:var(--slate-100);color:var(--slate-600)}
+  .empty{padding:60px 24px;text-align:center;color:var(--slate-500);background:var(--white);border:1px dashed var(--slate-200);border-radius:10px}
+  .toast{position:fixed;bottom:24px;right:24px;padding:14px 22px;background:var(--navy);color:var(--white);border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 12px 32px rgba(15,23,42,0.35);opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none;z-index:1000}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.success{background:var(--green)} .toast.error{background:var(--red)}
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/config.js"></script>
+<script src="/admin-auth-gate.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Blog Comments</h1>
+  <a href="/admin-dashboard/">&larr; Admin Dashboard</a>
+</div>
+
+<main class="wrap">
+  <h2>Moderate comments</h2>
+  <p class="lede">Approve, reject, or delete reader comments. Approved comments appear publicly on their blog post.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="statPending">-</div><div class="lbl">Pending</div></div>
+    <div class="stat"><div class="num" id="statApproved">-</div><div class="lbl">Approved</div></div>
+    <div class="stat"><div class="num" id="statRejected">-</div><div class="lbl">Rejected</div></div>
+    <div class="stat"><div class="num" id="statTotal">-</div><div class="lbl">Total</div></div>
+  </div>
+
+  <div class="filter">
+    <select id="filterStatus" onchange="renderList()">
+      <option value="pending" selected>Pending</option>
+      <option value="approved">Approved</option>
+      <option value="rejected">Rejected</option>
+      <option value="all">All</option>
+    </select>
+    <input type="search" id="filterSearch" placeholder="Search by name / email / text..." oninput="renderList()">
+    <button class="btn btn-approve" onclick="loadData()" style="padding:8px 14px">Refresh</button>
+  </div>
+
+  <div class="list" id="list"></div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var db, allRows = [];
+
+function showToast(msg, kind){var t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+(kind||'');setTimeout(function(){t.className='toast'},2500)}
+function fmtDate(ts){if(!ts)return '-';var d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}
+function escapeHtml(s){return String(s||'').replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+async function loadData(){
+  if (!db) db = initFirebase();
+  document.getElementById('list').innerHTML = '<div class="empty">Loading...</div>';
+  try {
+    var snap = await db.collection('blog_comments').orderBy('createdAt','desc').limit(500).get();
+    allRows = [];
+    snap.forEach(function(doc){ allRows.push(Object.assign({id:doc.id}, doc.data())); });
+  } catch(e) {
+    var snap = await db.collection('blog_comments').limit(500).get();
+    allRows = [];
+    snap.forEach(function(doc){ allRows.push(Object.assign({id:doc.id}, doc.data())); });
+    allRows.sort(function(a,b){var ta=a.createdAt&&a.createdAt.toMillis?a.createdAt.toMillis():0;var tb=b.createdAt&&b.createdAt.toMillis?b.createdAt.toMillis():0;return tb-ta});
+  }
+  updateStats();
+  renderList();
+}
+
+function updateStats(){
+  document.getElementById('statTotal').textContent = allRows.length;
+  document.getElementById('statPending').textContent = allRows.filter(function(r){return (r.status||'pending')==='pending'}).length;
+  document.getElementById('statApproved').textContent = allRows.filter(function(r){return r.status==='approved'}).length;
+  document.getElementById('statRejected').textContent = allRows.filter(function(r){return r.status==='rejected'}).length;
+}
+
+function renderList(){
+  var status = document.getElementById('filterStatus').value;
+  var search = (document.getElementById('filterSearch').value||'').toLowerCase().trim();
+  var rows = allRows.filter(function(r){
+    var st = r.status || 'pending';
+    if (status !== 'all' && st !== status) return false;
+    if (search) {
+      var hay = ((r.name||'')+' '+(r.email||'')+' '+(r.text||'')+' '+(r.page||'')).toLowerCase();
+      if (hay.indexOf(search) === -1) return false;
+    }
+    return true;
+  });
+  var list = document.getElementById('list');
+  if (!rows.length) { list.innerHTML = '<div class="empty">No comments match the filter.</div>'; return; }
+  list.innerHTML = rows.map(function(r){
+    var st = r.status || 'pending';
+    var stTag = '<span class="tag tag-'+st+'">'+st+'</span>';
+    return '<div class="item">' +
+      '<div class="item-head">' +
+        '<div class="item-meta"><strong>'+escapeHtml(r.name||'Anon')+'</strong> · '+escapeHtml(r.email||'')+' · '+fmtDate(r.createdAt)+' '+stTag+'</div>' +
+        '<div class="item-page">on <a href="'+escapeHtml(r.page||'#')+'" target="_blank">'+escapeHtml(r.page||'-')+'</a></div>' +
+      '</div>' +
+      '<div class="item-text">'+escapeHtml(r.text||'')+'</div>' +
+      '<div class="item-actions">' +
+        (st !== 'approved' ? '<button class="btn btn-approve" onclick="setStatus(\''+r.id+'\',\'approved\')">✓ Approve</button>' : '') +
+        (st !== 'rejected' ? '<button class="btn btn-reject" onclick="setStatus(\''+r.id+'\',\'rejected\')">✗ Reject</button>' : '') +
+        '<button class="btn btn-delete" onclick="del(\''+r.id+'\')">Delete</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+async function setStatus(id, status){
+  try {
+    await db.collection('blog_comments').doc(id).update({status:status, statusUpdatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+    showToast('Marked '+status, 'success');
+    await loadData();
+  } catch(e) { showToast('Update failed', 'error') }
+}
+async function del(id){
+  if (!confirm('Delete this comment permanently?')) return;
+  try {
+    await db.collection('blog_comments').doc(id).delete();
+    showToast('Deleted', 'success');
+    await loadData();
+  } catch(e) { showToast('Delete failed', 'error') }
+}
+
+function whenAuth(cb){var t=0;var i=setInterval(function(){if(typeof firebase!=='undefined'&&firebase.auth&&firebase.auth().currentUser){clearInterval(i);cb()}else if(++t>60){clearInterval(i)}},250)}
+whenAuth(loadData);
+</script>
+</body>
+</html>

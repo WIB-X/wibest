@@ -160,6 +160,23 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    // ── Blog comments: public can read approved + create (status=pending), admin moderates ──
+    match /blog_comments/{doc} {
+      allow read: if true;  // client filters status==approved
+      allow create: if request.resource.data.status == 'pending'
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() >= 2
+                    && request.resource.data.name.size() <= 100
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() >= 5
+                    && request.resource.data.email.size() <= 200
+                    && request.resource.data.text is string
+                    && request.resource.data.text.size() >= 10
+                    && request.resource.data.text.size() <= 2000
+                    && request.resource.data.page is string;
+      allow update, delete: if isAdmin();
+    }
+
     // ── Deny everything else by default ─────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
