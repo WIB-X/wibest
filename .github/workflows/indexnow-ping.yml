@@ -17,51 +17,48 @@ jobs:
         with:
           fetch-depth: 2  # need previous commit to diff
 
-      - name: Find changed HTML files
-        id: changes
+      - name: Find changed HTML files and submit to IndexNow
+        # Combined into one step + use `set +e` to allow grep/empty results without failing the workflow
         run: |
+          set +e
+          KEY="d8fc4e9b3a2b4e8a9f1c6d3e7f5a2b9c"
+
           # Compare HEAD vs HEAD~1 for changed/added .html files
-          CHANGED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '*.html' | head -100)
+          CHANGED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '*.html' 2>/dev/null | head -100)
           if [ -z "$CHANGED" ]; then
-            echo "no_changes=true" >> $GITHUB_OUTPUT
-            echo "No HTML changes; skipping IndexNow ping."
+            echo "No HTML changes; nothing to submit."
             exit 0
           fi
 
-          # Convert file paths to public URLs
-          # blog/foo/index.html  -->  https://wibest.in/blog/foo/
-          # accessories/index.html -->  https://wibest.in/accessories/
-          URLS=""
+          # Build URL list, skipping admin/dev/detail pages
+          : > /tmp/urls.txt
           while IFS= read -r f; do
-            # Skip dev/admin pages
+            [ -z "$f" ] && continue
             case "$f" in
-              admin*|seed-*|migrate-*|update-*|verify-*|*-detail.html) continue;;
+              admin*|seed-*|migrate-*|update-*|verify-*|*-detail.html|*detail.html) continue;;
             esac
-            # Strip /index.html
+            # Strip /index.html and prefix with https://wibest.in/
             url=$(echo "$f" | sed 's|/index\.html$|/|; s|^|https://wibest.in/|')
-            URLS="${URLS}${url}\n"
+            echo "$url" >> /tmp/urls.txt
           done <<< "$CHANGED"
 
-          # Save to file for the next step
-          printf "$URLS" | grep -v '^$' > /tmp/urls.txt
-          echo "Submitting these URLs:"
-          cat /tmp/urls.txt
-          echo "no_changes=false" >> $GITHUB_OUTPUT
+          if [ ! -s /tmp/urls.txt ]; then
+            echo "All changed HTMLs were filtered (admin/dev pages); nothing to submit."
+            exit 0
+          fi
 
-      - name: Ping IndexNow
-        if: steps.changes.outputs.no_changes != 'true'
-        run: |
-          # IndexNow shared key — must match wibest.in/<key>.txt content
-          KEY="d8fc4e9b3a2b4e8a9f1c6d3e7f5a2b9c"
-          if [ ! -s /tmp/urls.txt ]; then echo "No URLs to submit"; exit 0; fi
+          echo "Submitting these URLs to IndexNow:"
+          cat /tmp/urls.txt
+          echo ""
 
           # Build JSON payload
-          URLS_JSON=$(cat /tmp/urls.txt | jq -R . | jq -s .)
+          URLS_JSON=$(jq -R . /tmp/urls.txt | jq -s .)
           BODY=$(jq -n --arg host "wibest.in" --arg key "$KEY" --arg loc "https://wibest.in/$KEY.txt" --argjson urls "$URLS_JSON" \
             '{host: $host, key: $key, keyLocation: $loc, urlList: $urls}')
 
           echo "Payload:"
           echo "$BODY"
+          echo ""
 
           # Submit to IndexNow (Bing/Yandex aggregator — propagates to all engines)
           HTTP_CODE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
@@ -69,8 +66,15 @@ jobs:
             -H "Content-Type: application/json; charset=utf-8" \
             -d "$BODY")
           echo "Response code: $HTTP_CODE"
-          cat /tmp/response.txt
-          # 200 = success, 202 = accepted, 422 = invalid URLs (don't fail build)
+          cat /tmp/response.txt 2>/dev/null || true
+          echo ""
+
+          # 200 = success, 202 = accepted. Anything else: warn but DO NOT fail build.
+          # IndexNow may reject if key file isn't yet served by Pages — that's OK, next push retries.
           if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "202" ]; then
-            echo "::warning::IndexNow returned $HTTP_CODE (non-fatal)"
+            echo "::warning::IndexNow returned HTTP $HTTP_CODE (non-fatal — key file may not be live yet, will retry on next push)"
+          else
+            echo "::notice::IndexNow ping successful ($HTTP_CODE)"
           fi
+          # Always exit 0 — workflow failures here block deploys for no good reason
+          exit 0
