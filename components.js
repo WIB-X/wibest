@@ -67,6 +67,7 @@
     { title: 'About', items: [
       { href: '/about',              label: 'About WIB' },
       { href: '/editorial-process',  label: 'Editorial Process' },
+      { href: '/reviews',            label: 'Reader Reviews' },
       { href: '/contact',            label: 'Contact' },
       { href: '/connect',            label: 'Connect' }
     ]}
@@ -151,8 +152,8 @@
       '</div>',
       '<div class="footer-col"><h4>Company</h4>',
       '<a href="/about">About</a><a href="/contact">Contact</a>',
-      '<a href="/editorial-process">Editorial Process</a><a href="/connect">Connect</a>',
-      '<a href="/blog">Blog</a>',
+      '<a href="/editorial-process">Editorial Process</a><a href="/reviews">Reader Reviews</a>',
+      '<a href="/connect">Connect</a><a href="/blog">Blog</a>',
       '</div>',
       '<div class="footer-col"><h4>Legal</h4>',
       '<a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>',
