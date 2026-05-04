@@ -206,6 +206,13 @@ async function load(){
         '</div>'+
       '</div>';
     setTimeout(function(){if(window.WIBAds)WIBAds.injectInArticle(document.querySelector(".article-body"))},100);
+    // BlogPosting schema (E-E-A-T parity with English template)
+    (function(){
+      var pubDate=(p.publishedAt&&p.publishedAt.toDate)?p.publishedAt.toDate().toISOString():(p.createdAt&&p.createdAt.toDate?p.createdAt.toDate().toISOString():new Date().toISOString());
+      var modDate=(p.updatedAt&&p.updatedAt.toDate)?p.updatedAt.toDate().toISOString():pubDate;
+      var bp={"":"https://schema.org","":"BlogPosting","headline":title,"description":p.summary||p.description||title,"image":p.coverImage||p.cover_image||"https://wibest.in/og-default.jpg","datePublished":pubDate,"dateModified":modDate,"author":{"":"Person","name":p.author||"WIB Editorial Team","url":"https://wibest.in/editorial-process/"},"reviewedBy":{"":"Organization","name":"WIB Editorial","url":"https://wibest.in/editorial-process/"},"isAccessibleForFree":true,"publisher":{"":"Organization","name":"WIB","logo":{"":"ImageObject","url":"https://wibest.in/icon-512.png"}},"mainEntityOfPage":{"":"WebPage","":canonicalUrl},"inLanguage":document.documentElement.lang||"en","articleSection":p.category||"General"};
+      var s=document.createElement("script");s.type="application/ld+json";s.text=JSON.stringify(bp);document.head.appendChild(s);
+    })();
     // FAQ Schema
     (function(){var tmp=document.createElement('div');tmp.innerHTML=rawContent;var faqs=[];tmp.querySelectorAll('h2,h3').forEach(function(h){if(h.textContent.indexOf('?')===-1)return;var answer='';var el=h.nextElementSibling;while(el&&!/^H[23]$/.test(el.tagName)){answer+=el.textContent.trim()+' ';el=el.nextElementSibling}answer=answer.trim();if(answer.length>10)faqs.push({q:h.textContent.trim(),a:answer})});if(faqs.length>=2){var s=document.createElement('script');s.type='application/ld+json';s.text=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqs.map(function(f){return{'@type':'Question','name':f.q,'acceptedAnswer':{'@type':'Answer','text':f.a}}})});document.head.appendChild(s)}})();
   }catch(err){
