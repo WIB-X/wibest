@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Embed Widget</title>
+<meta name="robots" content="noindex,follow">
+<style>
+:root {
+  --bg: #ffffff; --bg-alt: #f8fafc; --border: #e2e8f0; --text: #0f172a; --text-2: #475569; --muted: #94a3b8;
+  --accent: #2563eb; --accent-light: #eff6ff; --green: #16a34a; --green-bg: #f0fdf4; --orange:#f97316;
+}
+[data-theme="dark"] {
+  --bg: #0f172a; --bg-alt: #1e293b; --border: #334155; --text: #f1f5f9; --text-2: #cbd5e1; --muted: #94a3b8;
+  --accent: #60a5fa; --accent-light: #1e3a5f; --green: #4ade80; --green-bg: #064e3b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{padding:14px 16px}
+.head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.head .title{font-weight:800;font-size:14px;color:var(--text)}
+.head .sub{font-size:11px;color:var(--muted);margin-top:1px}
+.list{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--bg-alt);border-radius:8px;text-decoration:none;color:inherit;border:1px solid transparent;transition:all .15s}
+.item:hover{border-color:var(--accent);transform:translateX(2px)}
+.rank{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+.body{flex:1;min-width:0}
+.row1{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:3px}
+.name{font-weight:700;font-size:13px;color:var(--text);line-height:1.3;flex:1}
+.rating{flex-shrink:0;background:var(--green-bg);color:var(--green);padding:2px 7px;border-radius:4px;font-weight:700;font-size:11px;font-variant-numeric:tabular-nums}
+.meta{font-size:11.5px;color:var(--text-2);line-height:1.4}
+.tags{margin-top:4px;display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:10px;padding:1px 6px;border-radius:3px;background:var(--accent-light);color:var(--accent);font-weight:600}
+.foot{margin-top:14px;padding-top:10px;border-top:1px solid var(--border);text-align:center;font-size:11px;color:var(--muted)}
+.foot a{color:var(--accent);text-decoration:none;font-weight:600}
+.empty{padding:30px 16px;text-align:center;color:var(--muted);font-size:13px}
+.loading{padding:30px 16px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:380px){.tag,.meta{font-size:10.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <div class="title" id="wTitle">Loading...</div>
+      <div class="sub" id="wSub"></div>
+    </div>
+  </div>
+  <div class="list" id="wList"><div class="loading">Loading WIB data...</div></div>
+  <div class="foot">Powered by <a href="https://wibest.in" target="_blank" rel="noopener">WIB — India's comparison platform</a></div>
+</div>
+
+<script>
+(function(){
+  var qs = new URLSearchParams(location.search);
+  var type = (qs.get('type') || 'restaurants').toLowerCase();
+  var city = qs.get('city') || 'Bangalore';
+  var filter = (qs.get('filter') || '').toLowerCase();
+  var limit = Math.min(parseInt(qs.get('limit') || '10', 10), 30);
+  var theme = (qs.get('theme') || 'auto').toLowerCase();
+
+  // Apply theme
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+
+  function esc(s){return String(s||'').replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function deepLink(){
+    var citySlug = city.toLowerCase().replace(/\s+/g, '-');
+    var section = type === 'hospitals' ? 'hospitals' : 'restaurants';
+    var base = 'https://wibest.in/' + section + '/' + citySlug + '/';
+    if (!filter) return base;
+    var slugMap = type === 'hospitals'
+      ? {cardiology:'best-cardiology',oncology:'best-oncology',neurology:'best-neurology',orthopedics:'best-orthopedics',gastroenterology:'best-gastroenterology',paediatrics:'best-paediatrics',gynaecology:'best-gynaecology'}
+      : {biryani:'best-biryani',cafes:'best-cafes','south indian':'best-south-indian','north indian':'best-north-indian',mughlai:'best-mughlai',seafood:'best-seafood','street food':'best-street-food','fine dining':'best-fine-dining'};
+    return slugMap[filter] ? base + slugMap[filter] + '/' : base;
+  }
+
+  function showError(msg){
+    document.getElementById('wList').innerHTML = '<div class="empty">' + esc(msg) + '<br><br><a href="https://wibest.in" target="_blank" style="color:var(--accent)">Visit WIB &rarr;</a></div>';
+  }
+
+  async function loadRestaurants(){
+    var citySlug = city.toLowerCase().replace(/\s+/g, '-');
+    var url = 'https://wibest.in/data/restaurants/' + citySlug + '.js';
+    try {
+      var res = await fetch(url);
+      if (!res.ok) throw new Error('Data unavailable');
+      var text = await res.text();
+      // Eval safely — file is trusted (same origin, deterministic format)
+      var raw = text.replace(/^\s*window\.WIB_RESTAURANTS\s*=\s*/, '').replace(/;\s*$/, '');
+      var data = JSON.parse(raw.replace(/(\w+):/g, '"$1":').replace(/'/g, '"'));
+      // Filter
+      var rows = data;
+      if (filter) {
+        rows = data.filter(function(r){
+          return (r.cu||[]).some(function(c){return c.toLowerCase().indexOf(filter) !== -1});
+        });
+      }
+      rows.sort(function(a,b){return (b.r||0) - (a.r||0)});
+      rows = rows.slice(0, limit);
+      render(rows, 'restaurant');
+    } catch(e) {
+      // Fallback: try eval approach
+      try {
+        var script = document.createElement('script');
+        script.src = url;
+        script.onload = function(){
+          var rows = window.WIB_RESTAURANTS || [];
+          if (filter) {
+            rows = rows.filter(function(r){return (r.cu||[]).some(function(c){return c.toLowerCase().indexOf(filter) !== -1})});
+          }
+          rows.sort(function(a,b){return (b.r||0) - (a.r||0)});
+          rows = rows.slice(0, limit);
+          render(rows, 'restaurant');
+        };
+        script.onerror = function(){ showError('Could not load data for ' + city); };
+        document.body.appendChild(script);
+      } catch(e2) { showError('Could not load data for ' + city); }
+    }
+  }
+  async function loadHospitals(){
+    var citySlug = city.toLowerCase().replace(/\s+/g, '-');
+    var url = 'https://wibest.in/data/hospitals/' + citySlug + '.js';
+    try {
+      var script = document.createElement('script');
+      script.src = url;
+      script.onload = function(){
+        var rows = window.WIB_HOSPITALS || [];
+        if (filter) {
+          rows = rows.filter(function(h){return (h.s||[]).some(function(s){return s.toLowerCase().indexOf(filter) !== -1})});
+        }
+        rows.sort(function(a,b){return (b.r||0) - (a.r||0)});
+        rows = rows.slice(0, limit);
+        render(rows, 'hospital');
+      };
+      script.onerror = function(){ showError('Could not load hospitals for ' + city); };
+      document.body.appendChild(script);
+    } catch(e){ showError('Could not load hospitals for ' + city); }
+  }
+
+  function render(rows, kind){
+    var titleBase = filter ? capitalize(filter) + (kind === 'restaurant' ? ' Restaurants' : ' Hospitals') : (kind === 'restaurant' ? 'Top Restaurants' : 'Top Hospitals');
+    document.getElementById('wTitle').textContent = titleBase + ' in ' + city;
+    document.getElementById('wSub').textContent = rows.length + ' top-rated picks';
+    var listEl = document.getElementById('wList');
+    if (!rows.length) { listEl.innerHTML = '<div class="empty">No matches in our dataset for this filter.</div>'; return; }
+    var deep = deepLink();
+    listEl.innerHTML = rows.map(function(r, i){
+      if (kind === 'restaurant') {
+        var tags = (r.cu||[]).slice(0,2).map(function(c){return '<span class="tag">'+esc(c)+'</span>'}).join('');
+        return '<a class="item" href="' + deep + '" target="_blank" rel="noopener">' +
+          '<span class="rank">' + (i+1) + '</span>' +
+          '<div class="body">' +
+            '<div class="row1"><span class="name">' + esc(r.n) + '</span><span class="rating">★ ' + r.r + '</span></div>' +
+            '<div class="meta">' + esc(r.a||'') + '</div>' +
+            (tags ? '<div class="tags">' + tags + '</div>' : '') +
+          '</div>' +
+        '</a>';
+      } else {
+        var tags = (r.s||[]).slice(0,2).map(function(s){return '<span class="tag">'+esc(s)+'</span>'}).join('');
+        return '<a class="item" href="' + deep + '" target="_blank" rel="noopener">' +
+          '<span class="rank">' + (i+1) + '</span>' +
+          '<div class="body">' +
+            '<div class="row1"><span class="name">' + esc(r.n) + '</span><span class="rating">★ ' + r.r + '</span></div>' +
+            '<div class="meta">' + esc(r.t||'') + (r.b ? ' · ' + r.b + ' beds' : '') + '</div>' +
+            (tags ? '<div class="tags">' + tags + '</div>' : '') +
+          '</div>' +
+        '</a>';
+      }
+    }).join('');
+  }
+  function capitalize(s){return s.charAt(0).toUpperCase() + s.slice(1)}
+
+  if (type === 'hospitals') loadHospitals();
+  else loadRestaurants();
+})();
+</script>
+</body>
+</html>
