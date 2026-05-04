@@ -194,6 +194,8 @@
     if (!window.WIBCompare) {
       var s3 = document.createElement('script'); s3.src = '/compare-cart.js?v=20260504'; s3.defer = true; document.head.appendChild(s3);
     }
+    // PWA install banner
+    var s4 = document.createElement('script'); s4.src = '/pwa-install.js?v=20260504'; s4.defer = true; document.head.appendChild(s4);
   });
 
   // Newsletter subscribe function (used by footer)
