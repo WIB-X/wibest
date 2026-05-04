@@ -1,0 +1,76 @@
+name: IndexNow ping on push
+# Submits changed HTML URLs to IndexNow (Bing, Yandex, Naver) for faster indexing.
+# Free, no auth required beyond a key file hosted on the site.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # need previous commit to diff
+
+      - name: Find changed HTML files
+        id: changes
+        run: |
+          # Compare HEAD vs HEAD~1 for changed/added .html files
+          CHANGED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '*.html' | head -100)
+          if [ -z "$CHANGED" ]; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+            echo "No HTML changes; skipping IndexNow ping."
+            exit 0
+          fi
+
+          # Convert file paths to public URLs
+          # blog/foo/index.html  -->  https://wibest.in/blog/foo/
+          # accessories/index.html -->  https://wibest.in/accessories/
+          URLS=""
+          while IFS= read -r f; do
+            # Skip dev/admin pages
+            case "$f" in
+              admin*|seed-*|migrate-*|update-*|verify-*|*-detail.html) continue;;
+            esac
+            # Strip /index.html
+            url=$(echo "$f" | sed 's|/index\.html$|/|; s|^|https://wibest.in/|')
+            URLS="${URLS}${url}\n"
+          done <<< "$CHANGED"
+
+          # Save to file for the next step
+          printf "$URLS" | grep -v '^$' > /tmp/urls.txt
+          echo "Submitting these URLs:"
+          cat /tmp/urls.txt
+          echo "no_changes=false" >> $GITHUB_OUTPUT
+
+      - name: Ping IndexNow
+        if: steps.changes.outputs.no_changes != 'true'
+        run: |
+          # IndexNow shared key — must match wibest.in/<key>.txt content
+          KEY="d8fc4e9b3a2b4e8a9f1c6d3e7f5a2b9c"
+          if [ ! -s /tmp/urls.txt ]; then echo "No URLs to submit"; exit 0; fi
+
+          # Build JSON payload
+          URLS_JSON=$(cat /tmp/urls.txt | jq -R . | jq -s .)
+          BODY=$(jq -n --arg host "wibest.in" --arg key "$KEY" --arg loc "https://wibest.in/$KEY.txt" --argjson urls "$URLS_JSON" \
+            '{host: $host, key: $key, keyLocation: $loc, urlList: $urls}')
+
+          echo "Payload:"
+          echo "$BODY"
+
+          # Submit to IndexNow (Bing/Yandex aggregator — propagates to all engines)
+          HTTP_CODE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$BODY")
+          echo "Response code: $HTTP_CODE"
+          cat /tmp/response.txt
+          # 200 = success, 202 = accepted, 422 = invalid URLs (don't fail build)
+          if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "202" ]; then
+            echo "::warning::IndexNow returned $HTTP_CODE (non-fatal)"
+          fi
