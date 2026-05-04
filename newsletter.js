@@ -80,7 +80,7 @@
       var db = initFirebase();
       // Use email as doc id to prevent duplicates
       var docId = email.replace(/[^a-z0-9@._-]/g, '_');
-      await db.collection('subscribers').doc(docId).set({
+      await db.collection('newsletter_subscribers').doc(docId).set({
         email: email,
         source: window.location.pathname,
         subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
