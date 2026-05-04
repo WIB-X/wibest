@@ -63,8 +63,50 @@
   <div class="ai-box">
     <form class="ai-form" id="aiForm">
       <input type="text" id="aiQ" placeholder="e.g. iPhone 17 Pro vs Samsung S25 Ultra for photography" maxlength="500" required autofocus>
+      <button type="button" id="aiMicBtn" title="Voice input (Hindi/English)" aria-label="Speak your question" style="padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;display:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
       <button type="submit" id="aiBtn">Ask AI</button>
     </form>
+    <script>
+    (function(){
+      var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) return; // browser doesn't support — keep mic hidden
+      var btn = document.getElementById('aiMicBtn');
+      var input = document.getElementById('aiQ');
+      if (!btn || !input) return;
+      btn.style.display = 'inline-flex';
+      btn.style.alignItems = 'center';
+      btn.style.justifyContent = 'center';
+      var listening = false;
+      var rec = new SR();
+      rec.continuous = false;
+      rec.interimResults = true;
+      // Auto-detect Hindi vs English from browser locale; can be toggled via ?lang=hi
+      var langOverride = new URLSearchParams(location.search).get('lang');
+      rec.lang = langOverride === 'hi' ? 'hi-IN' : (navigator.language || 'en-IN');
+      rec.onresult = function(ev){
+        var transcript = '';
+        for (var i = ev.resultIndex; i < ev.results.length; i++) {
+          transcript += ev.results[i][0].transcript;
+        }
+        input.value = transcript;
+      };
+      rec.onstart = function(){ listening = true; btn.style.background = '#dc2626'; btn.style.color = '#fff'; btn.style.animation = 'pulse 1.4s infinite'; };
+      rec.onend = function(){ listening = false; btn.style.background = ''; btn.style.color = ''; btn.style.animation = ''; if (input.value.trim()) input.form.dispatchEvent(new Event('submit', {cancelable:true})); };
+      rec.onerror = function(e){ listening = false; btn.style.background = ''; btn.style.color = ''; btn.style.animation = ''; console.warn('mic error:', e.error); };
+      btn.onclick = function(){
+        if (listening) { rec.stop(); return; }
+        try { rec.start(); } catch(e) { console.warn(e); }
+      };
+      // Track usage
+      try { if (window.gtag) gtag('event', 'voice_input_available'); } catch(e){}
+      // Keyframes for the pulsing red mic
+      var s = document.createElement('style');
+      s.textContent = '@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.55}}';
+      document.head.appendChild(s);
+    })();
+    </script>
     <div class="ai-suggest" id="aiChips">
       <span class="ai-chip">iPhone 17 Pro vs Samsung S25 Ultra</span>
       <span class="ai-chip">CBSE vs ICSE for my child</span>
