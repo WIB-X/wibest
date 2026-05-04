@@ -210,7 +210,7 @@ async function load(){
         "image": p.coverImage || p.cover_image || "https://wibest.in/og-default.jpg",
         "datePublished": pubDate,
         "dateModified": modDate,
-        "author": {"@type": "Person", "name": p.author || "WIB Editorial"},
+        "author": {"@type": "Person", "name": p.author || "WIB Editorial Team", "url": "https://wibest.in/editorial-process/"}, "reviewedBy": {"@type": "Organization", "name": "WIB Editorial", "url": "https://wibest.in/editorial-process/"}, "isAccessibleForFree": true,
         "publisher": {"@type": "Organization", "name": "WIB", "logo": {"@type": "ImageObject", "url": "https://wibest.in/icon-512.png"}},
         "mainEntityOfPage": {"@type": "WebPage", "@id": canonicalUrl},
         "keywords": (p.tags || []).join(", "),

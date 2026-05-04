@@ -65,9 +65,10 @@
       { href: '/te/',           label: '\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41 (Telugu)' }
     ]},
     { title: 'About', items: [
-      { href: '/about',        label: 'About WIB' },
-      { href: '/contact',      label: 'Contact' },
-      { href: '/connect',      label: 'Connect' }
+      { href: '/about',              label: 'About WIB' },
+      { href: '/editorial-process',  label: 'Editorial Process' },
+      { href: '/contact',            label: 'Contact' },
+      { href: '/connect',            label: 'Connect' }
     ]}
   ];
 
@@ -150,7 +151,8 @@
       '</div>',
       '<div class="footer-col"><h4>Company</h4>',
       '<a href="/about">About</a><a href="/contact">Contact</a>',
-      '<a href="/connect">Connect</a><a href="/blog">Blog</a>',
+      '<a href="/editorial-process">Editorial Process</a><a href="/connect">Connect</a>',
+      '<a href="/blog">Blog</a>',
       '</div>',
       '<div class="footer-col"><h4>Legal</h4>',
       '<a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>',

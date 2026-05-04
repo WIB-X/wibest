@@ -217,7 +217,7 @@ async function load(){
     const fullTitle=title+' — WIB Blog';
     const canonicalUrl='https://wibest.in/blog-post.html?id='+id;
     WIBMeta.apply({title:fullTitle,description:description,image:coverImage,url:canonicalUrl,type:'article'});
-    const jsonLd={'@context':'https://schema.org','@type':'Article','headline':title,'description':p.excerpt||title,'author':{'@type':'Person','name':p.author||'WIB Team'},'publisher':{'@type':'Organization','name':'WIB','url':'https://wibest.in'},'url':canonicalUrl,'wordCount':Math.round((p.content||'').replace(/<[^>]+>/g,' ').split(/\s+/).length)};
+    const jsonLd={'@context':'https://schema.org','@type':'Article','headline':title,'description':p.excerpt||title,'author':{'@type':'Person','name':p.author||'WIB Editorial Team','url':'https://wibest.in/editorial-process/'},'reviewedBy':{'@type':'Organization','name':'WIB Editorial','url':'https://wibest.in/editorial-process/'},'isAccessibleForFree':true,'publisher':{'@type':'Organization','name':'WIB','url':'https://wibest.in','logo':{'@type':'ImageObject','url':'https://wibest.in/icon-512.png'}},'url':canonicalUrl,'wordCount':Math.round((p.content||'').replace(/<[^>]+>/g,' ').split(/\s+/).length)};
     if(p.cover_image)jsonLd['image']=p.cover_image;
     if(p.createdAt?.toDate)jsonLd['datePublished']=p.createdAt.toDate().toISOString();
     const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
