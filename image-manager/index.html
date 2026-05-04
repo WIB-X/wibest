@@ -108,7 +108,7 @@
                 <input type="text" id="imageUrl" placeholder="Paste image URL here (e.g., https://example.com/school-photo.jpg)">
                 <button class="btn btn-blue" id="addBtn" onclick="addImage()">Add</button>
             </div>
-            <img class="preview-img" id="previewImg">
+            <img loading="lazy" decoding="async" class="preview-img" id="previewImg">
 
             <div class="msg msg-success" id="successMsg"></div>
             <div class="msg msg-error" id="errorMsg"></div>
@@ -214,7 +214,7 @@
             }
             container.innerHTML = currentImages.map((url, i) => `
                 <div class="img-card">
-                    <img src="${url}" alt="School photo ${i + 1}" onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--red);font-size:12px;padding:8px;text-align:center;\\'>Broken image URL</div>'">
+                    <img loading="lazy" decoding="async" src="${url}" alt="School photo ${i + 1}" onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--red);font-size:12px;padding:8px;text-align:center;\\'>Broken image URL</div>'">
                     <button class="remove-btn" onclick="removeImage(${i})" title="Remove image">&times;</button>
                 </div>
             `).join('');
