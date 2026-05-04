@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Newsletter Subscribers - WIB Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F172A;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-300:#CBD5E1;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--green:#16A34A;--green-50:#F0FDF4;--amber:#D97706;--amber-50:#FFFBEB;--red:#DC2626;--red-50:#FEF2F2;--white:#FFF;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--slate-50);line-height:1.5}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:var(--navy);color:var(--white)}
+  .topbar h1{font-size:16px;font-weight:700;letter-spacing:-0.01em}
+  .topbar a{color:var(--slate-300);font-size:12px;text-decoration:none;background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:6px}
+  .topbar a:hover{background:rgba(255,255,255,0.18)}
+  .wrap{max-width:1100px;margin:32px auto;padding:0 28px}
+  h2{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px}
+  .lede{color:var(--slate-500);font-size:14px;margin-bottom:24px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px}
+  .stat{background:var(--white);border:1px solid var(--slate-200);border-radius:10px;padding:18px 22px}
+  .stat .num{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--navy);line-height:1.1}
+  .stat .lbl{font-size:11px;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-top:4px}
+  .stat .lbl.new{color:var(--green)}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+  .btn{padding:10px 18px;border:none;border-radius:8px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;transition:all .15s}
+  .btn-primary{background:var(--blue);color:var(--white)}
+  .btn-primary:hover{background:var(--blue-dark)}
+  .btn-secondary{background:var(--white);color:var(--navy);border:1px solid var(--slate-200)}
+  .btn-secondary:hover{border-color:var(--slate-400)}
+  .btn-danger{background:var(--white);color:var(--red);border:1px solid var(--slate-200)}
+  .btn-danger:hover{border-color:var(--red);background:var(--red-50)}
+  .btn:disabled{opacity:0.5;cursor:not-allowed}
+  .filter{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .filter label{font-size:13px;color:var(--slate-600);font-weight:500}
+  .filter select,.filter input{padding:8px 12px;border:1px solid var(--slate-200);border-radius:8px;font-family:inherit;font-size:13px;background:var(--white)}
+  .filter input{flex:1;min-width:200px}
+  .table-wrap{background:var(--white);border:1px solid var(--slate-200);border-radius:10px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:12px 18px;font-size:13px;border-bottom:1px solid var(--slate-100)}
+  th{background:var(--slate-50);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--slate-500)}
+  tr:hover td{background:var(--slate-50)}
+  tr:last-child td{border-bottom:none}
+  td.email{font-weight:600;color:var(--navy);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12px}
+  td.source{color:var(--slate-500)}
+  td.date{color:var(--slate-500);font-size:12px}
+  .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+  .tag-new{background:var(--green-50);color:var(--green)}
+  .tag-exported{background:var(--slate-100);color:var(--slate-600)}
+  .empty{padding:60px 24px;text-align:center;color:var(--slate-500)}
+  .toast{position:fixed;bottom:24px;right:24px;padding:14px 22px;background:var(--navy);color:var(--white);border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 12px 32px rgba(15,23,42,0.35);opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none;z-index:1000}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.success{background:var(--green)}
+  .toast.error{background:var(--red)}
+  .help{margin-top:18px;padding:16px 20px;background:var(--blue-50);border-radius:10px;font-size:13px;line-height:1.6;color:var(--slate-700)}
+  .help strong{color:var(--navy)}
+  .help code{font-family:ui-monospace,SF Mono,Menlo,monospace;background:var(--white);padding:1px 6px;border-radius:4px;font-size:12px}
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/admin-auth-gate.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Newsletter Subscribers</h1>
+  <a href="/admin-dashboard/">&larr; Admin Dashboard</a>
+</div>
+
+<main class="wrap">
+  <h2>Subscriber list</h2>
+  <p class="lede">Anyone who signed up for the WIB weekly digest. Export to CSV, then upload to Zoho Campaigns.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="statTotal">-</div><div class="lbl">Total subscribers</div></div>
+    <div class="stat"><div class="num" id="statNew">-</div><div class="lbl new">New since last export</div></div>
+    <div class="stat"><div class="num" id="statThisWeek">-</div><div class="lbl">Joined this week</div></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="btnDownloadAll" onclick="downloadCSV('all')">Download all (CSV)</button>
+    <button class="btn btn-primary" id="btnDownloadNew" onclick="downloadCSV('new')">Download new only (CSV)</button>
+    <button class="btn btn-secondary" id="btnMarkExported" onclick="markAllExported()">Mark all as exported</button>
+    <button class="btn btn-secondary" onclick="loadData()">Refresh</button>
+  </div>
+
+  <div class="filter">
+    <label>Filter:</label>
+    <select id="filterStatus" onchange="renderTable()">
+      <option value="all">All subscribers</option>
+      <option value="new">New only (not yet exported)</option>
+      <option value="exported">Exported only</option>
+    </select>
+    <input type="search" id="filterSearch" placeholder="Search by email..." oninput="renderTable()">
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Source</th>
+          <th>Subscribed</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="help">
+    <strong>Workflow:</strong>
+    <ol style="margin:8px 0 8px 22px">
+      <li>Click <code>Download new only</code> on Sunday morning before sending the digest.</li>
+      <li>Open Zoho Campaigns &rarr; Contacts &rarr; Add Contacts &rarr; Import file &rarr; upload the CSV.</li>
+      <li>Send your weekly digest to the imported list.</li>
+      <li>Come back here and click <code>Mark all as exported</code> &mdash; next week, "Download new only" will only include subscribers added since this point.</li>
+    </ol>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var db, allRows = [];
+
+function showToast(msg, kind) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (kind || '');
+  setTimeout(function(){ t.className = 'toast'; }, 2500);
+}
+
+function fmtDate(ts) {
+  if (!ts) return '-';
+  var d = ts.toDate ? ts.toDate() : new Date(ts);
+  return d.toLocaleDateString('en-IN', { year:'numeric', month:'short', day:'numeric' }) +
+         ', ' + d.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+}
+
+async function loadData() {
+  if (!db) db = initFirebase();
+  document.getElementById('tbody').innerHTML = '<tr><td colspan="5" class="empty">Loading...</td></tr>';
+  try {
+    var snap = await db.collection('newsletter_subscribers').orderBy('createdAt','desc').get();
+    allRows = [];
+    snap.forEach(function(doc){
+      var d = doc.data();
+      allRows.push({
+        id: doc.id,
+        email: d.email || doc.id,
+        source: d.source || 'unknown',
+        createdAt: d.createdAt || d.subscribedAt || null,
+        exported: !!d.exported,
+        exportedAt: d.exportedAt || null,
+      });
+    });
+  } catch (err) {
+    // fallback if no orderBy index — fetch without sort
+    try {
+      var snap2 = await db.collection('newsletter_subscribers').get();
+      allRows = [];
+      snap2.forEach(function(doc){
+        var d = doc.data();
+        allRows.push({ id:doc.id, email:d.email||doc.id, source:d.source||'unknown', createdAt:d.createdAt||d.subscribedAt||null, exported:!!d.exported, exportedAt:d.exportedAt||null });
+      });
+      allRows.sort(function(a,b){
+        var ta = a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
+        var tb = b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
+        return tb - ta;
+      });
+    } catch(e2) {
+      console.error(e2);
+      showToast('Failed to load subscribers', 'error');
+      return;
+    }
+  }
+  updateStats();
+  renderTable();
+}
+
+function updateStats() {
+  document.getElementById('statTotal').textContent = allRows.length;
+  document.getElementById('statNew').textContent = allRows.filter(function(r){return !r.exported}).length;
+  var weekAgo = Date.now() - 7*24*60*60*1000;
+  var thisWeek = allRows.filter(function(r){
+    if (!r.createdAt || !r.createdAt.toMillis) return false;
+    return r.createdAt.toMillis() > weekAgo;
+  }).length;
+  document.getElementById('statThisWeek').textContent = thisWeek;
+}
+
+function getFiltered() {
+  var status = document.getElementById('filterStatus').value;
+  var search = (document.getElementById('filterSearch').value || '').toLowerCase().trim();
+  return allRows.filter(function(r){
+    if (status === 'new' && r.exported) return false;
+    if (status === 'exported' && !r.exported) return false;
+    if (search && r.email.toLowerCase().indexOf(search) === -1) return false;
+    return true;
+  });
+}
+
+function renderTable() {
+  var rows = getFiltered();
+  var tbody = document.getElementById('tbody');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="5" class="empty">No subscribers match the filter.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(function(r){
+    var statusTag = r.exported
+      ? '<span class="tag tag-exported">Exported</span>'
+      : '<span class="tag tag-new">New</span>';
+    return '<tr>' +
+      '<td class="email">' + r.email + '</td>' +
+      '<td>' + statusTag + '</td>' +
+      '<td class="source">' + r.source + '</td>' +
+      '<td class="date">' + fmtDate(r.createdAt) + '</td>' +
+      '<td><button class="btn btn-danger" style="padding:5px 12px;font-size:11px" onclick="deleteSubscriber(\'' + r.id + '\')">Delete</button></td>' +
+    '</tr>';
+  }).join('');
+}
+
+function downloadCSV(scope) {
+  var rows = scope === 'new' ? allRows.filter(function(r){return !r.exported}) : allRows;
+  if (!rows.length) {
+    showToast('Nothing to export', 'error');
+    return;
+  }
+  var csv = 'email,source,subscribed_at,exported\n';
+  rows.forEach(function(r){
+    var date = r.createdAt && r.createdAt.toDate ? r.createdAt.toDate().toISOString() : '';
+    csv += '"' + r.email.replace(/"/g, '""') + '","' + r.source.replace(/"/g, '""') + '","' + date + '",' + r.exported + '\n';
+  });
+  var blob = new Blob([csv], { type:'text/csv;charset=utf-8' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  var stamp = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = 'wib-subscribers-' + scope + '-' + stamp + '.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Downloaded ' + rows.length + ' subscribers', 'success');
+}
+
+async function markAllExported() {
+  var unexported = allRows.filter(function(r){return !r.exported});
+  if (!unexported.length) {
+    showToast('Nothing to mark', 'error');
+    return;
+  }
+  if (!confirm('Mark ' + unexported.length + ' subscriber(s) as exported? They will be excluded from "Download new only" next time.')) return;
+  var btn = document.getElementById('btnMarkExported');
+  btn.disabled = true; btn.textContent = 'Marking...';
+  try {
+    var batch = db.batch();
+    var ts = firebase.firestore.FieldValue.serverTimestamp();
+    unexported.forEach(function(r){
+      var ref = db.collection('newsletter_subscribers').doc(r.id);
+      batch.update(ref, { exported: true, exportedAt: ts });
+    });
+    await batch.commit();
+    showToast('Marked ' + unexported.length + ' as exported', 'success');
+    await loadData();
+  } catch(err) {
+    console.error(err);
+    showToast('Failed: ' + (err.message || 'unknown error'), 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Mark all as exported';
+  }
+}
+
+async function deleteSubscriber(id) {
+  if (!confirm('Delete ' + id + ' permanently?')) return;
+  try {
+    await db.collection('newsletter_subscribers').doc(id).delete();
+    showToast('Deleted', 'success');
+    await loadData();
+  } catch(err) {
+    showToast('Delete failed', 'error');
+  }
+}
+
+// Wait for auth-gate to allow page through, then load
+function whenAuth(cb) {
+  var tries = 0;
+  var tick = setInterval(function(){
+    if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser) {
+      clearInterval(tick); cb();
+    } else if (++tries > 60) { clearInterval(tick); }
+  }, 250);
+}
+whenAuth(loadData);
+</script>
+</body>
+</html>
