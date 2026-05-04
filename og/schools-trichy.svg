@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2" rx="20"/>
+  <text x="80" y="120" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="rgba(255,255,255,0.85)" letter-spacing="3">WIB</text>
+  <text x="80" y="320" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="86" font-weight="800" fill="#ffffff">Trichy</text>
+  <text x="80" y="400" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="500" fill="rgba(255,255,255,0.9)">Best Schools</text>
+  <text x="80" y="560" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" fill="rgba(255,255,255,0.75)" letter-spacing="2">wibest.in</text>
+</svg>
