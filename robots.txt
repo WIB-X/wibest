@@ -26,6 +26,11 @@ Disallow: /seed-blogs-hindi.html
 Disallow: /seed-categories.html
 Disallow: /seed-institutions.html
 Disallow: /update-product-images.html
+Disallow: /seed-blogs-batch4.html
+Disallow: /seed-blogs-vernacular.html
+Disallow: /seed-catalog.html
+Disallow: /verify-batch4.html
+Disallow: /verify-vernacular.html
 Disallow: /admin-auth-gate.js
 
 Sitemap: https://wibest.in/sitemap.xml
