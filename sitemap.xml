@@ -80,6 +80,13 @@
   <url><loc>https://wibest.in/hospitals/kolkata/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://wibest.in/hospitals/hyderabad/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://wibest.in/hospitals/pune/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/hospitals/chandigarh/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/hospitals/coimbatore/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/hospitals/indore/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/hospitals/jaipur/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/hospitals/kochi/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/hospitals/lucknow/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/hospitals/visakhapatnam/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/hospitals/ahmedabad/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://wibest.in/travel/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/restaurants/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -198,6 +205,36 @@
   <url><loc>https://wibest.in/hospitals/pune/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/hospitals/pune/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/hospitals/pune/best-paediatrics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/chandigarh/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/chandigarh/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/chandigarh/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/chandigarh/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/coimbatore/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/coimbatore/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/coimbatore/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/coimbatore/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/indore/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/indore/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/indore/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/indore/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/jaipur/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/jaipur/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/jaipur/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/jaipur/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/kochi/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/kochi/best-gastroenterology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/kochi/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/kochi/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/kochi/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/lucknow/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/lucknow/best-gastroenterology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/lucknow/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/lucknow/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/lucknow/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/visakhapatnam/best-cardiology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/visakhapatnam/best-neurology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/visakhapatnam/best-oncology/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/hospitals/visakhapatnam/best-orthopedics/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/colleges/bangalore/best-arts/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/colleges/bangalore/best-commerce/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/colleges/bangalore/best-engineering/</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
