@@ -124,6 +124,7 @@
       '<div class="nav-dropdown">' + moreLinks + '</div></div>',
       '</div>',
       '<div class="nav-right">',
+      '<button class="nav-search-btn" onclick="if(window.WIBSearch)WIBSearch.open()" aria-label="Search wibest.in" title="Search (Ctrl/Cmd+K or /)" style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);font-family:inherit;font-size:13px;cursor:pointer;margin-right:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="nav-search-label" style="display:inline">Search</span></button>',
       '<button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">' + sunSvg + moonSvg + '</button>',
       '<button class="hamburger" onclick="toggleMobile()" aria-label="Open menu"><span></span><span></span><span></span></button>',
       '</div>',
@@ -181,6 +182,14 @@
 
     var footerEl = document.getElementById('wib-footer-placeholder');
     if (footerEl) footerEl.outerHTML = renderFooter();
+
+    // Auto-load global search if not already present
+    if (!window.WIB_SEARCH_INDEX) {
+      var s1 = document.createElement('script'); s1.src = '/search-index.js?v=20260504'; s1.async = true; document.head.appendChild(s1);
+    }
+    if (!window.WIBSearch) {
+      var s2 = document.createElement('script'); s2.src = '/search.js?v=20260504'; s2.defer = true; document.head.appendChild(s2);
+    }
   });
 
   // Newsletter subscribe function (used by footer)
