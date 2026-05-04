@@ -14,8 +14,8 @@ button:disabled{background:#374151;cursor:not-allowed}
 .ok{color:#10b981}.err{color:#ef4444}
 .warn{background:#7c2d12;color:#fed7aa;padding:12px;border-radius:8px;margin:16px 0}
 </style>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
 <script src="/config.js"></script>
 <script src="/admin-auth-gate.js"></script>
 </head>
@@ -26,7 +26,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button id="seedBtn" onclick="seedAll()">🚀 Seed 10 Hindi Blogs</button>
 <div id="log"></div>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
 <script>var BLOG_POSTS = {};</script>
 <script src="/seed-data-hindi.js"></script>
 <script>

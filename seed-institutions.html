@@ -15,8 +15,8 @@ button:disabled{background:#374151;cursor:not-allowed}
 .warn{background:#7c2d12;color:#fed7aa;padding:12px;border-radius:8px;margin:16px 0}
 .stat{display:inline-block;background:#1f2937;padding:8px 14px;border-radius:8px;margin:4px;font-family:ui-monospace,monospace}
 </style>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
 <script src="/config.js"></script>
 <script src="/admin-auth-gate.js"></script>
 </head>
@@ -41,7 +41,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button onclick="diagnose()" style="background:#0891b2">🔍 Diagnose Firestore counts (read-only)</button>
 <div id="log"></div>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
 <script>var SCHOOLS_DATA=[],COLLEGES_DATA=[],HOSPITALS_DATA=[];</script>
 <script src="/seed-data-institutions.js"></script>
 <script src="/seed-data-institutions-2.js"></script>

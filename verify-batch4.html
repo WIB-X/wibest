@@ -31,8 +31,8 @@ td{padding:10px 12px;border-bottom:1px solid #1f2937;vertical-align:top}
 a{color:#60a5fa}
 .cat-tag{display:inline-block;padding:2px 8px;background:#1e293b;border-radius:4px;font-size:11px;color:#94a3b8;margin-right:6px}
 </style>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
 <script src="/config.js"></script>
 <script src="/admin-auth-gate.js"></script>
 </head>
@@ -49,7 +49,7 @@ a{color:#60a5fa}
 <div class="summary" id="summary"></div>
 <table id="results"><thead><tr><th>Slug</th><th>Firestore</th><th>URL Reachable</th><th>Title in Page</th><th>Notes</th></tr></thead><tbody></tbody></table>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
 <script>
 const SLUGS = {
   'Summer Appliances': [

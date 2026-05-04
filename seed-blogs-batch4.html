@@ -17,8 +17,8 @@ button:disabled{background:#374151;cursor:not-allowed}
 .group{background:#111827;padding:14px 16px;border-radius:8px;margin:12px 0;border-left:3px solid #60a5fa}
 .group h3{margin:0 0 8px;color:#93c5fd;font-size:14px}
 </style>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
 <script src="/config.js"></script>
 <script src="/admin-auth-gate.js"></script>
 </head>
@@ -34,7 +34,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button onclick="seedSet('travel')">Seed Hill Stations (6)</button>
 <div id="log"></div>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
 <script>var BLOG_POSTS = {}; var SUMMER_KEYS, EDU_KEYS, TAX_KEYS, TRAVEL_KEYS;</script>
 <script src="/seed-data-batch4a-summer.js"></script>
 <script>SUMMER_KEYS = new Set(Object.keys(BLOG_POSTS));</script>

@@ -15,8 +15,8 @@ button:disabled{background:#374151;cursor:not-allowed}
 .warn{background:#7c2d12;color:#fed7aa;padding:12px;border-radius:8px;margin:16px 0}
 .stat{display:inline-block;background:#1f2937;padding:8px 14px;border-radius:8px;margin:4px;font-family:ui-monospace,monospace}
 </style>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
 <script src="/config.js"></script>
 <script src="/admin-auth-gate.js"></script>
 </head>
@@ -31,7 +31,7 @@ button:disabled{background:#374151;cursor:not-allowed}
 <button onclick="seedSet('te')">Seed Telugu (10)</button>
 <div id="log"></div>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
 <script>var BLOG_POSTS = {}; var ENGLISH_KEYS, TAMIL_KEYS, TELUGU_KEYS;</script>
 <script src="/seed-data-expansion-3.js"></script>
 <script>ENGLISH_KEYS = new Set(Object.keys(BLOG_POSTS));</script>
