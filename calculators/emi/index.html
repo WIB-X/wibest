@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Calculator India - Home, Personal, Car, Education Loan | WIB</title>
+<meta name="description" content="Free EMI calculator for home loan, personal loan, car loan, and education loan in India. Calculates monthly EMI, total interest, and full amortisation schedule.">
+<link rel="canonical" href="https://wibest.in/calculators/emi/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EMI Calculator India">
+<meta property="og:description" content="Free EMI calculator with amortisation schedule for Indian loans.">
+<meta property="og:url" content="https://wibest.in/calculators/emi/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421">
+<style>
+.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
+.lede{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
+.input-group{margin-bottom:18px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.input-group label .val{color:var(--accent);font-weight:700}
+.input-group input[type="number"]{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;background:var(--bg-secondary)}
+.input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
+.input-group select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;background:var(--bg-secondary);color:var(--text-primary)}
+.results{padding:24px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-radius:12px;display:flex;flex-direction:column;justify-content:center}
+[data-theme="dark"] .results{background:linear-gradient(135deg,#1e293b,#27272a)}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.result-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.result-row .lbl{font-size:13px;color:var(--text-secondary);font-weight:500}
+.result-row .num{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em}
+.result-row.big .num{font-size:32px;color:var(--accent)}
+.bar{height:14px;border-radius:7px;background:var(--bg-secondary);overflow:hidden;display:flex;margin-top:18px}
+.bar-p{background:#16a34a}.bar-i{background:#dc2626}
+.bar-legend{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--text-secondary)}
+.bar-legend span::before{content:"●";margin-right:4px}
+.bar-legend .p::before{color:#16a34a}.bar-legend .i::before{color:#dc2626}
+.schedule{margin-top:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.schedule-head{padding:16px 22px;font-family:Outfit,sans-serif;font-size:16px;font-weight:700;border-bottom:1px solid var(--border)}
+.schedule-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.schedule-table th{background:var(--bg-secondary);padding:10px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted)}
+.schedule-table td{padding:8px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.schedule-table tr:last-child td{border-bottom:none}
+.schedule-wrap{max-height:400px;overflow-y:auto}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;line-height:1.5;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+.cta-block{margin-top:24px;padding:20px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-left:4px solid #16a34a;border-radius:0 10px 10px 0}
+[data-theme="dark"] .cta-block{background:linear-gradient(135deg,#064e3b,#065f46)}
+.cta-block h3{font-family:Outfit,sans-serif;font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text-primary)}
+.cta-block p{font-size:13.5px;color:var(--text-secondary);margin-bottom:10px}
+.cta-block a{display:inline-block;padding:9px 18px;background:#16a34a;color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px}
+@media(max-width:768px){.calc{grid-template-columns:1fr}h1{font-size:24px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"EMI","item":"https://wibest.in/calculators/emi/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"EMI = P × r × (1+r)^n / ((1+r)^n - 1) where P is principal loan amount, r is monthly interest rate (annual rate / 12 / 100), and n is loan tenure in months."}},{"@type":"Question","name":"What is a good EMI to income ratio?","acceptedAnswer":{"@type":"Answer","text":"Total monthly EMIs (across all loans) should not exceed 40-50% of your take-home income. Banks use this ratio to determine loan eligibility."}},{"@type":"Question","name":"Should I prepay my home loan?","acceptedAnswer":{"@type":"Answer","text":"Prepay if your home loan rate exceeds your post-tax mutual fund returns expectation (typically 9-11%). Otherwise invest the surplus. Most home loans allow free prepayment after 1-2 years."}}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; EMI</div>
+  <h1>EMI Calculator</h1>
+  <p class="lede">Calculate monthly EMI, total interest payable, and the full amortisation schedule for any loan in India.</p>
+
+  <div class="calc">
+    <div>
+      <div class="input-group">
+        <label>Loan type <span class="val" id="loanTypeLabel">Home Loan</span></label>
+        <select id="loanType" onchange="updateDefaults();calc()">
+          <option value="home">Home Loan</option>
+          <option value="personal">Personal Loan</option>
+          <option value="car">Car Loan</option>
+          <option value="education">Education Loan</option>
+          <option value="business">Business Loan</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Loan amount <span class="val" id="amountLabel">Rs 50,00,000</span></label>
+        <input type="range" id="amount" min="50000" max="50000000" step="10000" value="5000000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Interest rate (per annum) <span class="val" id="rateLabel">8.5%</span></label>
+        <input type="range" id="rate" min="5" max="24" step="0.05" value="8.5" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Tenure (years) <span class="val" id="tenureLabel">20 years</span></label>
+        <input type="range" id="tenure" min="1" max="30" step="1" value="20" oninput="calc()">
+      </div>
+    </div>
+    <div class="results">
+      <div class="result-row big"><span class="lbl">Monthly EMI</span><span class="num" id="emiOut">Rs 43,391</span></div>
+      <div class="result-row"><span class="lbl">Principal</span><span class="num" id="principalOut">Rs 50,00,000</span></div>
+      <div class="result-row"><span class="lbl">Total interest</span><span class="num" id="interestOut">Rs 54,13,879</span></div>
+      <div class="result-row"><span class="lbl">Total payable</span><span class="num" id="totalOut">Rs 1,04,13,879</span></div>
+      <div class="bar"><div class="bar-p" id="barP" style="width:48%"></div><div class="bar-i" id="barI" style="width:52%"></div></div>
+      <div class="bar-legend"><span class="p">Principal</span><span class="i">Interest</span></div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Compare loans before you commit</h3>
+    <p>Different banks offer different rates. Compare top personal loans in India to save lakhs over your loan tenure.</p>
+    <a href="/finance/best-personal-loan-india/">Compare personal loans &rsaquo;</a>
+  </div>
+
+  <div class="schedule">
+    <div class="schedule-head">Amortisation schedule (yearly)</div>
+    <div class="schedule-wrap">
+      <table class="schedule-table">
+        <thead><tr><th>Year</th><th>EMI paid</th><th>Principal</th><th>Interest</th><th>Outstanding</th></tr></thead>
+        <tbody id="schedBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-block">
+    <details class="faq-item"><summary>How is EMI calculated?</summary><p>EMI uses the standard reducing-balance formula: EMI = P × r × (1+r)<sup>n</sup> / ((1+r)<sup>n</sup> − 1) where P = principal, r = monthly interest rate (annual rate ÷ 12 ÷ 100), and n = tenure in months. Indian banks use this same formula across home, personal, car, and education loans.</p></details>
+    <details class="faq-item"><summary>What is a good EMI-to-income ratio?</summary><p>Keep total EMIs under 40-50% of your take-home (post-tax) income. Banks use this ratio (called FOIR — Fixed Obligation to Income Ratio) to decide your eligibility. Higher than 50% means rejection or higher interest rates.</p></details>
+    <details class="faq-item"><summary>Should I choose a longer tenure to reduce EMI?</summary><p>Longer tenure reduces monthly EMI but dramatically increases total interest paid. A 30-year vs 20-year home loan saves ~ Rs 8,000/month in EMI but costs an extra Rs 25-40 lakh in interest over the loan. Pick the shortest tenure your budget allows.</p></details>
+    <details class="faq-item"><summary>What is the difference between fixed and floating interest?</summary><p>Fixed: rate stays constant throughout the loan, predictable EMIs. Floating: rate changes with RBI repo rate (linked to MCLR or RLLR), can rise or fall. Most Indian home loans are floating; personal/car loans are usually fixed. Floating is cheaper long-term but riskier.</p></details>
+    <details class="faq-item"><summary>Can I prepay my loan?</summary><p>Most banks allow free prepayment of home loans after 1-2 years. Personal loans charge 4-5% prepayment fee in the first year. Always check the prepayment clause before signing. Prepaying within the first 5 years saves the most interest.</p></details>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260427"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function fmt(n){return 'Rs '+Math.round(n).toLocaleString('en-IN')}
+function updateDefaults(){
+  var t = document.getElementById('loanType').value;
+  var defaults = {
+    home: {a:5000000, r:8.5, y:20},
+    personal: {a:500000, r:11, y:5},
+    car: {a:800000, r:9.5, y:5},
+    education: {a:1500000, r:10.5, y:7},
+    business: {a:2000000, r:14, y:5},
+  };
+  var d = defaults[t];
+  document.getElementById('amount').value = d.a;
+  document.getElementById('rate').value = d.r;
+  document.getElementById('tenure').value = d.y;
+  document.getElementById('loanTypeLabel').textContent = document.getElementById('loanType').selectedOptions[0].text;
+}
+function calc(){
+  var P = parseFloat(document.getElementById('amount').value);
+  var R = parseFloat(document.getElementById('rate').value);
+  var Y = parseFloat(document.getElementById('tenure').value);
+  document.getElementById('amountLabel').textContent = fmt(P);
+  document.getElementById('rateLabel').textContent = R + '%';
+  document.getElementById('tenureLabel').textContent = Y + (Y === 1 ? ' year' : ' years');
+  var n = Y * 12;
+  var r = R / 12 / 100;
+  var emi = (P * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+  var total = emi * n;
+  var interest = total - P;
+  document.getElementById('emiOut').textContent = fmt(emi);
+  document.getElementById('principalOut').textContent = fmt(P);
+  document.getElementById('interestOut').textContent = fmt(interest);
+  document.getElementById('totalOut').textContent = fmt(total);
+  var pPct = (P / total) * 100;
+  document.getElementById('barP').style.width = pPct.toFixed(1) + '%';
+  document.getElementById('barI').style.width = (100 - pPct).toFixed(1) + '%';
+  // Yearly schedule
+  var balance = P;
+  var rows = '';
+  for (var y = 1; y <= Y; y++) {
+    var yearPrincipal = 0, yearInterest = 0;
+    for (var m = 0; m < 12; m++) {
+      var i = balance * r;
+      var p = emi - i;
+      yearInterest += i;
+      yearPrincipal += p;
+      balance -= p;
+      if (balance < 0) balance = 0;
+    }
+    rows += '<tr><td>'+y+'</td><td>'+fmt(emi*12)+'</td><td>'+fmt(yearPrincipal)+'</td><td>'+fmt(yearInterest)+'</td><td>'+fmt(balance)+'</td></tr>';
+  }
+  document.getElementById('schedBody').innerHTML = rows;
+}
+calc();
+</script>
+</body>
+</html>

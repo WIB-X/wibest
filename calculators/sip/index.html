@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Calculator India - Mutual Fund Returns Projection | WIB</title>
+<meta name="description" content="Free SIP calculator for Indian mutual funds. Project corpus over 5-30 years with realistic 12% equity return assumption. Compare SIP vs lump sum.">
+<link rel="canonical" href="https://wibest.in/calculators/sip/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SIP Calculator India">
+<meta property="og:description" content="Project mutual fund SIP returns over 5-30 years.">
+<meta property="og:url" content="https://wibest.in/calculators/sip/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421">
+<style>
+.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
+.lede{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
+.input-group{margin-bottom:18px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.input-group label .val{color:var(--accent);font-weight:700}
+.input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
+.results{padding:24px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-radius:12px;display:flex;flex-direction:column;justify-content:center}
+[data-theme="dark"] .results{background:linear-gradient(135deg,#1e293b,#27272a)}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.result-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.result-row .lbl{font-size:13px;color:var(--text-secondary);font-weight:500}
+.result-row .num{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em}
+.result-row.big .num{font-size:32px;color:var(--accent)}
+.bar{height:14px;border-radius:7px;background:var(--bg-secondary);overflow:hidden;display:flex;margin-top:18px}
+.bar-i{background:#16a34a}.bar-r{background:#2563eb}
+.bar-legend{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--text-secondary)}
+.bar-legend span::before{content:"●";margin-right:4px}
+.bar-legend .i::before{color:#16a34a}.bar-legend .r::before{color:#2563eb}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+.cta-block{margin-top:24px;padding:20px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-left:4px solid #16a34a;border-radius:0 10px 10px 0}
+[data-theme="dark"] .cta-block{background:linear-gradient(135deg,#064e3b,#065f46)}
+.cta-block h3{font-family:Outfit,sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.cta-block a{display:inline-block;padding:9px 18px;background:#16a34a;color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;margin-top:8px}
+@media(max-width:768px){.calc{grid-template-columns:1fr}h1{font-size:24px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"SIP","item":"https://wibest.in/calculators/sip/"}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; SIP Returns</div>
+  <h1>SIP Returns Calculator</h1>
+  <p class="lede">Project the corpus your monthly SIP will build over 5-30 years. Default 12% return assumes Indian large/mid-cap equity averages — adjust for your fund category.</p>
+
+  <div class="calc">
+    <div>
+      <div class="input-group">
+        <label>Monthly SIP <span class="val" id="sipLabel">Rs 10,000</span></label>
+        <input type="range" id="sip" min="500" max="200000" step="500" value="10000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Expected return (annual) <span class="val" id="rateLabel">12%</span></label>
+        <input type="range" id="rate" min="4" max="20" step="0.5" value="12" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Investment period <span class="val" id="yearsLabel">15 years</span></label>
+        <input type="range" id="years" min="1" max="40" step="1" value="15" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Annual SIP step-up <span class="val" id="stepupLabel">10%</span></label>
+        <input type="range" id="stepup" min="0" max="25" step="1" value="10" oninput="calc()">
+      </div>
+    </div>
+    <div class="results">
+      <div class="result-row big"><span class="lbl">Final corpus</span><span class="num" id="corpusOut">Rs 75,86,100</span></div>
+      <div class="result-row"><span class="lbl">Total invested</span><span class="num" id="investedOut">Rs 18,00,000</span></div>
+      <div class="result-row"><span class="lbl">Wealth gained</span><span class="num" id="returnsOut">Rs 57,86,100</span></div>
+      <div class="result-row"><span class="lbl">Money multiplier</span><span class="num" id="multiplierOut">4.2x</span></div>
+      <div class="bar"><div class="bar-i" id="barI" style="width:24%"></div><div class="bar-r" id="barR" style="width:76%"></div></div>
+      <div class="bar-legend"><span class="i">Invested</span><span class="r">Returns</span></div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Where to start your SIP</h3>
+    <p>Direct mutual fund apps charge zero commission, saving you 1-1.5% annually. Over 20 years that's 15-25% more wealth on the same investment.</p>
+    <a href="/finance/best-mutual-fund-app/">Compare best mutual fund apps &rsaquo;</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-block">
+    <details class="faq-item"><summary>What return rate should I assume for SIP?</summary><p>For Indian equity mutual funds: large-cap ~11-13%, flexi-cap ~12-15%, mid/small-cap ~14-18% (with higher volatility). Debt funds 6-8%. Hybrid funds 8-10%. The 12% default is conservative for equity SIP and matches Nifty 50 long-term CAGR.</p></details>
+    <details class="faq-item"><summary>Is SIP step-up worth it?</summary><p>Yes — increasing SIP by 10% annually as your salary grows can 2-3x your final corpus over 20 years. A Rs 10,000/month SIP at 12% over 20 years grows to Rs 99 lakh; with 10% annual step-up it becomes Rs 1.95 crore.</p></details>
+    <details class="faq-item"><summary>What is the difference between SIP and lump sum?</summary><p>SIP averages cost over time (rupee cost averaging) — better for volatile markets. Lump sum captures full upside if markets rise from entry point — better when markets are clearly low. For most retail investors, SIP is the safer, more disciplined approach.</p></details>
+    <details class="faq-item"><summary>How is SIP corpus calculated?</summary><p>Future value of SIP = P × ({(1+r)^n − 1} / r) × (1+r) where P = monthly SIP, r = monthly rate (annual / 12 / 100), n = total months. The calculator uses this formula plus a step-up adjustment if enabled.</p></details>
+    <details class="faq-item"><summary>How are SIP returns taxed in India?</summary><p>Equity mutual funds: 12.5% LTCG tax on gains above Rs 1.25 lakh per year (after 1-year holding). Debt funds: taxed at slab rate from FY24 onwards. ELSS: 3-year lock-in, taxed as equity. Plan your redemptions to use the Rs 1.25 lakh annual exemption.</p></details>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260427"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function fmt(n){return 'Rs '+Math.round(n).toLocaleString('en-IN')}
+function calc(){
+  var sip = parseFloat(document.getElementById('sip').value);
+  var rate = parseFloat(document.getElementById('rate').value);
+  var years = parseFloat(document.getElementById('years').value);
+  var stepup = parseFloat(document.getElementById('stepup').value);
+  document.getElementById('sipLabel').textContent = fmt(sip);
+  document.getElementById('rateLabel').textContent = rate + '%';
+  document.getElementById('yearsLabel').textContent = years + (years === 1 ? ' year' : ' years');
+  document.getElementById('stepupLabel').textContent = stepup + '%';
+
+  var monthlyRate = rate / 12 / 100;
+  var corpus = 0, invested = 0;
+  var currentSIP = sip;
+  for (var y = 0; y < years; y++) {
+    for (var m = 0; m < 12; m++) {
+      corpus = (corpus + currentSIP) * (1 + monthlyRate);
+      invested += currentSIP;
+    }
+    currentSIP = currentSIP * (1 + stepup/100);
+  }
+  var returns = corpus - invested;
+  var multiplier = invested > 0 ? corpus / invested : 0;
+
+  document.getElementById('corpusOut').textContent = fmt(corpus);
+  document.getElementById('investedOut').textContent = fmt(invested);
+  document.getElementById('returnsOut').textContent = fmt(returns);
+  document.getElementById('multiplierOut').textContent = multiplier.toFixed(1) + 'x';
+  var iPct = (invested / corpus) * 100;
+  document.getElementById('barI').style.width = iPct.toFixed(1) + '%';
+  document.getElementById('barR').style.width = (100 - iPct).toFixed(1) + '%';
+}
+calc();
+</script>
+</body>
+</html>

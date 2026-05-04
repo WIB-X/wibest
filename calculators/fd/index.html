@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FD Calculator India - Fixed Deposit Maturity Calculator | WIB</title>
+<meta name="description" content="Free fixed deposit calculator for Indian banks. Quarterly compounding (RBI standard). Compare maturity value across SBI, HDFC, ICICI, Axis and small finance banks.">
+<link rel="canonical" href="https://wibest.in/calculators/fd/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FD Calculator India">
+<meta property="og:description" content="Calculate fixed deposit maturity with quarterly compounding.">
+<meta property="og:url" content="https://wibest.in/calculators/fd/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421">
+<style>
+.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
+.lede{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
+.input-group{margin-bottom:18px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.input-group label .val{color:var(--accent);font-weight:700}
+.input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
+.input-group select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit}
+.results{padding:24px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-radius:12px;display:flex;flex-direction:column;justify-content:center}
+[data-theme="dark"] .results{background:linear-gradient(135deg,#1e293b,#27272a)}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.result-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.result-row .lbl{font-size:13px;color:var(--text-secondary);font-weight:500}
+.result-row .num{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em}
+.result-row.big .num{font-size:32px;color:var(--accent)}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+.cta-block{margin-top:24px;padding:20px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-left:4px solid #16a34a;border-radius:0 10px 10px 0}
+[data-theme="dark"] .cta-block{background:linear-gradient(135deg,#064e3b,#065f46)}
+.cta-block a{display:inline-block;padding:9px 18px;background:#16a34a;color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;margin-top:8px}
+@media(max-width:768px){.calc{grid-template-columns:1fr}h1{font-size:24px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"FD","item":"https://wibest.in/calculators/fd/"}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; FD Calculator</div>
+  <h1>FD Calculator</h1>
+  <p class="lede">Calculate fixed deposit maturity value with quarterly compounding (RBI standard for Indian banks).</p>
+
+  <div class="calc">
+    <div>
+      <div class="input-group">
+        <label>Deposit amount <span class="val" id="amountLabel">Rs 1,00,000</span></label>
+        <input type="range" id="amount" min="5000" max="10000000" step="1000" value="100000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Interest rate <span class="val" id="rateLabel">7%</span></label>
+        <input type="range" id="rate" min="3" max="10" step="0.1" value="7" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Tenure (years) <span class="val" id="yearsLabel">5 years</span></label>
+        <input type="range" id="years" min="0.5" max="10" step="0.5" value="5" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Compounding</label>
+        <select id="compounding" onchange="calc()">
+          <option value="4" selected>Quarterly (RBI standard)</option>
+          <option value="2">Half-yearly</option>
+          <option value="1">Annually</option>
+          <option value="12">Monthly</option>
+        </select>
+      </div>
+    </div>
+    <div class="results">
+      <div class="result-row big"><span class="lbl">Maturity value</span><span class="num" id="maturityOut">Rs 1,41,478</span></div>
+      <div class="result-row"><span class="lbl">Principal</span><span class="num" id="principalOut">Rs 1,00,000</span></div>
+      <div class="result-row"><span class="lbl">Interest earned</span><span class="num" id="interestOut">Rs 41,478</span></div>
+      <div class="result-row"><span class="lbl">Effective annual rate</span><span class="num" id="effRateOut">7.18%</span></div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Earn 7%+ on FD with small finance banks</h3>
+    <p>Top SFBs like Equitas and AU offer 7%+ FD rates while major banks cap at 6.5%. All deposits are RBI-insured up to Rs 5 lakh.</p>
+    <a href="/finance/best-savings-account-india/">Compare savings accounts &rsaquo;</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-block">
+    <details class="faq-item"><summary>How is FD interest compounded in India?</summary><p>Most Indian banks compound FD interest quarterly (every 3 months), per RBI guidelines. Some smaller co-op banks use annual compounding. Quarterly compounding gives slightly higher effective yield than annual at the same nominal rate.</p></details>
+    <details class="faq-item"><summary>Are FD returns taxed in India?</summary><p>Yes — FD interest is fully taxed at your income tax slab. TDS at 10% applies if interest exceeds Rs 40,000/year (Rs 50,000 for seniors). Submit Form 15G/15H to avoid TDS if your total income is below the taxable threshold.</p></details>
+    <details class="faq-item"><summary>Which bank gives the highest FD rate in India?</summary><p>Small finance banks (Equitas, AU, Suryoday, Jana, Ujjivan) typically offer 7-8% — highest among Indian options. Major banks (HDFC, ICICI, SBI, Axis) cap at 6.5-7%. Senior citizens get +0.25-0.5% across all banks.</p></details>
+    <details class="faq-item"><summary>Are small finance bank FDs safe?</summary><p>Yes — RBI regulates SFBs and DICGC insurance covers up to Rs 5 lakh per depositor per bank. For amounts above Rs 5 lakh, diversify across 2-3 banks for full coverage.</p></details>
+    <details class="faq-item"><summary>Can I break my FD before maturity?</summary><p>Yes, but with penalty — typically 0.5-1% reduction in the applicable interest rate. Some banks have higher penalty in the first year. For predictable liquidity needs, ladder multiple smaller FDs with staggered maturity dates instead.</p></details>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260427"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function fmt(n){return 'Rs '+Math.round(n).toLocaleString('en-IN')}
+function calc(){
+  var P = parseFloat(document.getElementById('amount').value);
+  var R = parseFloat(document.getElementById('rate').value);
+  var Y = parseFloat(document.getElementById('years').value);
+  var n = parseFloat(document.getElementById('compounding').value);
+  document.getElementById('amountLabel').textContent = fmt(P);
+  document.getElementById('rateLabel').textContent = R + '%';
+  document.getElementById('yearsLabel').textContent = Y + (Y === 1 ? ' year' : ' years');
+  // FV = P * (1 + r/n)^(n*t)
+  var maturity = P * Math.pow(1 + R/100/n, n*Y);
+  var interest = maturity - P;
+  var effRate = (Math.pow(1 + R/100/n, n) - 1) * 100;
+  document.getElementById('maturityOut').textContent = fmt(maturity);
+  document.getElementById('principalOut').textContent = fmt(P);
+  document.getElementById('interestOut').textContent = fmt(interest);
+  document.getElementById('effRateOut').textContent = effRate.toFixed(2) + '%';
+}
+calc();
+</script>
+</body>
+</html>

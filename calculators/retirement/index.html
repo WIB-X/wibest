@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retirement Calculator India - Corpus Needed at 60 | WIB</title>
+<meta name="description" content="Free retirement planning calculator for Indians. Calculate corpus needed at 60 to maintain your lifestyle, factoring inflation, life expectancy, and post-retirement returns.">
+<link rel="canonical" href="https://wibest.in/calculators/retirement/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Retirement Calculator India">
+<meta property="og:description" content="Plan your retirement corpus with inflation-adjusted projections.">
+<meta property="og:url" content="https://wibest.in/calculators/retirement/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421">
+<style>
+.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
+.lede{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
+.input-group{margin-bottom:18px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.input-group label .val{color:var(--accent);font-weight:700}
+.input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
+.results{padding:24px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-radius:12px;display:flex;flex-direction:column;justify-content:center}
+[data-theme="dark"] .results{background:linear-gradient(135deg,#064e3b,#065f46)}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.result-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.result-row .lbl{font-size:13px;color:var(--text-secondary);font-weight:500}
+.result-row .num{font-family:Outfit,sans-serif;font-size:20px;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em}
+.result-row.big .num{font-size:30px;color:#16a34a}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+.cta-block{margin-top:24px;padding:20px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-left:4px solid var(--accent);border-radius:0 10px 10px 0}
+[data-theme="dark"] .cta-block{background:linear-gradient(135deg,#1e293b,#27272a)}
+.cta-block a{display:inline-block;padding:9px 18px;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;margin-top:8px}
+.warn{margin-top:16px;padding:14px 18px;background:#fef3c7;border-left:4px solid #d97706;border-radius:0 8px 8px 0;font-size:13px;color:#92400e}
+[data-theme="dark"] .warn{background:#78350f;color:#fde68a}
+@media(max-width:768px){.calc{grid-template-columns:1fr}h1{font-size:24px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"Retirement","item":"https://wibest.in/calculators/retirement/"}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; Retirement</div>
+  <h1>Retirement Planner</h1>
+  <p class="lede">How much corpus do you need at retirement age to maintain your lifestyle? Factors in Indian inflation (6-7%), realistic post-retirement returns, and life expectancy.</p>
+
+  <div class="calc">
+    <div>
+      <div class="input-group">
+        <label>Current age <span class="val" id="ageLabel">30 years</span></label>
+        <input type="range" id="age" min="20" max="55" step="1" value="30" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Retirement age <span class="val" id="retireAgeLabel">60 years</span></label>
+        <input type="range" id="retireAge" min="40" max="75" step="1" value="60" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Current monthly expenses (Rs) <span class="val" id="expensesLabel">Rs 50,000</span></label>
+        <input type="range" id="expenses" min="10000" max="500000" step="5000" value="50000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Inflation rate (annual) <span class="val" id="inflLabel">6.5%</span></label>
+        <input type="range" id="infl" min="4" max="10" step="0.5" value="6.5" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Pre-retirement return <span class="val" id="preRetRateLabel">12%</span></label>
+        <input type="range" id="preRetRate" min="6" max="18" step="0.5" value="12" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Post-retirement return <span class="val" id="postRetRateLabel">8%</span></label>
+        <input type="range" id="postRetRate" min="4" max="12" step="0.5" value="8" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Life expectancy <span class="val" id="lifeLabel">85 years</span></label>
+        <input type="range" id="life" min="65" max="100" step="1" value="85" oninput="calc()">
+      </div>
+    </div>
+    <div class="results">
+      <div class="result-row big"><span class="lbl">Corpus needed at retirement</span><span class="num" id="corpusOut">Rs 8.7 crore</span></div>
+      <div class="result-row"><span class="lbl">Monthly expenses at retirement</span><span class="num" id="futureExpOut">Rs 3.3 lakh</span></div>
+      <div class="result-row"><span class="lbl">Years until retirement</span><span class="num" id="yearsToRetOut">30 years</span></div>
+      <div class="result-row"><span class="lbl">Years in retirement</span><span class="num" id="retYearsOut">25 years</span></div>
+      <div class="result-row"><span class="lbl">Required monthly SIP</span><span class="num" id="requiredSipOut">Rs 24,400</span></div>
+    </div>
+  </div>
+
+  <div class="warn" id="warn" style="display:none">⚠️ Your retirement age is later than your life expectancy. Adjust the values.</div>
+
+  <div class="cta-block">
+    <h3>Start a SIP to hit your retirement number</h3>
+    <p>The required monthly SIP above assumes you start now and continue till retirement. Direct mutual fund SIPs (no commission) compound faster.</p>
+    <a href="/finance/best-mutual-fund-app/">Compare best mutual fund apps &rsaquo;</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-block">
+    <details class="faq-item"><summary>What inflation rate should I use for India?</summary><p>Long-term Indian retail inflation (CPI) averages 6-7%. Use 6.5% as a middle estimate. Healthcare inflation is significantly higher (12-15%) — if you expect heavy medical needs, consider that separately.</p></details>
+    <details class="faq-item"><summary>What is the 4% withdrawal rule?</summary><p>The 4% rule (originally from US data) suggests withdrawing 4% of your corpus annually, adjusted for inflation. For India with higher inflation, a 3-3.5% withdrawal is safer to ensure the corpus lasts your full retirement.</p></details>
+    <details class="faq-item"><summary>Should I include EPF/PPF in retirement planning?</summary><p>Yes — EPF, PPF, NPS, and gratuity are all part of your retirement corpus. Subtract their estimated maturity value from the "corpus needed" above to get the additional savings you need to build through SIP/other investments.</p></details>
+    <details class="faq-item"><summary>What is the difference between pre and post-retirement return?</summary><p>Pre-retirement: while accumulating, you can take more equity risk (10-12% returns). Post-retirement: capital preservation matters more, shift to debt-heavy portfolio (7-9% returns). The calculator uses both rates separately for accurate projection.</p></details>
+    <details class="faq-item"><summary>How much should I save for retirement?</summary><p>General rule: save 20-25% of gross income consistently from age 25 onwards. Starting later (35-40) requires 35-50% savings to hit the same goal. Earlier you start, smaller monthly amount needed.</p></details>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> · Always consult a SEBI-registered financial planner.</div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260427"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function fmtCr(n){
+  if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(2) + ' crore';
+  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(2) + ' lakh';
+  return 'Rs ' + Math.round(n).toLocaleString('en-IN');
+}
+function fmt(n){return 'Rs '+Math.round(n).toLocaleString('en-IN')}
+
+function calc(){
+  var age = parseFloat(document.getElementById('age').value);
+  var retireAge = parseFloat(document.getElementById('retireAge').value);
+  var expenses = parseFloat(document.getElementById('expenses').value);
+  var infl = parseFloat(document.getElementById('infl').value);
+  var preRet = parseFloat(document.getElementById('preRetRate').value);
+  var postRet = parseFloat(document.getElementById('postRetRate').value);
+  var life = parseFloat(document.getElementById('life').value);
+
+  document.getElementById('ageLabel').textContent = age + ' years';
+  document.getElementById('retireAgeLabel').textContent = retireAge + ' years';
+  document.getElementById('expensesLabel').textContent = fmt(expenses);
+  document.getElementById('inflLabel').textContent = infl + '%';
+  document.getElementById('preRetRateLabel').textContent = preRet + '%';
+  document.getElementById('postRetRateLabel').textContent = postRet + '%';
+  document.getElementById('lifeLabel').textContent = life + ' years';
+
+  var yearsToRet = retireAge - age;
+  var retYears = life - retireAge;
+  var warn = document.getElementById('warn');
+  if (yearsToRet <= 0 || retYears <= 0) {
+    warn.style.display = 'block';
+    return;
+  }
+  warn.style.display = 'none';
+
+  // Future monthly expenses adjusted for inflation
+  var futureMonthly = expenses * Math.pow(1 + infl/100, yearsToRet);
+  // Annual expenses at retirement
+  var futureAnnual = futureMonthly * 12;
+
+  // Corpus needed: PV of inflation-adjusted annuity over retirement years
+  // Real return post-retirement = (1+postRet)/(1+infl) - 1
+  var realRate = (1 + postRet/100) / (1 + infl/100) - 1;
+  // Annuity due formula (start of period)
+  var corpus;
+  if (Math.abs(realRate) < 0.0001) {
+    corpus = futureAnnual * retYears;
+  } else {
+    corpus = futureAnnual * (1 - Math.pow(1 + realRate, -retYears)) / realRate;
+  }
+
+  // Required SIP to reach this corpus
+  var monthlyRate = preRet / 12 / 100;
+  var n = yearsToRet * 12;
+  var requiredSip;
+  if (Math.abs(monthlyRate) < 0.0001) {
+    requiredSip = corpus / n;
+  } else {
+    requiredSip = corpus / ((Math.pow(1 + monthlyRate, n) - 1) / monthlyRate * (1 + monthlyRate));
+  }
+
+  document.getElementById('corpusOut').textContent = fmtCr(corpus);
+  document.getElementById('futureExpOut').textContent = fmtCr(futureMonthly);
+  document.getElementById('yearsToRetOut').textContent = yearsToRet + ' years';
+  document.getElementById('retYearsOut').textContent = retYears + ' years';
+  document.getElementById('requiredSipOut').textContent = fmt(requiredSip);
+}
+calc();
+</script>
+</body>
+</html>
