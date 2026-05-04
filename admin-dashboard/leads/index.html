@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Finance Leads - WIB Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F172A;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748B;--slate-400:#94A3B8;--slate-300:#CBD5E1;--slate-200:#E2E8F0;--slate-100:#F1F5F9;--slate-50:#F8FAFC;--blue:#3B82F6;--blue-dark:#2563EB;--blue-50:#EFF6FF;--green:#16A34A;--green-50:#F0FDF4;--amber:#D97706;--amber-50:#FFFBEB;--red:#DC2626;--red-50:#FEF2F2;--white:#FFF;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;color:var(--navy);background:var(--slate-50);line-height:1.5}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:var(--navy);color:var(--white)}
+  .topbar h1{font-size:16px;font-weight:700;letter-spacing:-0.01em}
+  .topbar a{color:var(--slate-300);font-size:12px;text-decoration:none;background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:6px}
+  .topbar a:hover{background:rgba(255,255,255,0.18)}
+  .wrap{max-width:1300px;margin:32px auto;padding:0 28px}
+  h2{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px}
+  .lede{color:var(--slate-500);font-size:14px;margin-bottom:24px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px}
+  .stat{background:var(--white);border:1px solid var(--slate-200);border-radius:10px;padding:18px 22px}
+  .stat .num{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--navy);line-height:1.1}
+  .stat .lbl{font-size:11px;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-top:4px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+  .btn{padding:10px 18px;border:none;border-radius:8px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;transition:all .15s}
+  .btn-primary{background:var(--blue);color:var(--white)}.btn-primary:hover{background:var(--blue-dark)}
+  .btn-secondary{background:var(--white);color:var(--navy);border:1px solid var(--slate-200)}.btn-secondary:hover{border-color:var(--slate-400)}
+  .btn-danger{background:var(--white);color:var(--red);border:1px solid var(--slate-200)}.btn-danger:hover{border-color:var(--red);background:var(--red-50)}
+  .filter{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .filter label{font-size:13px;color:var(--slate-600);font-weight:500}
+  .filter select,.filter input{padding:8px 12px;border:1px solid var(--slate-200);border-radius:8px;font-family:inherit;font-size:13px;background:var(--white)}
+  .filter input{flex:1;min-width:180px}
+  .table-wrap{background:var(--white);border:1px solid var(--slate-200);border-radius:10px;overflow:auto}
+  table{width:100%;border-collapse:collapse;min-width:1100px}
+  th,td{text-align:left;padding:10px 14px;font-size:13px;border-bottom:1px solid var(--slate-100)}
+  th{background:var(--slate-50);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--slate-500)}
+  tr:hover td{background:var(--slate-50)}
+  td.email,td.phone{font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12px}
+  td.amount{font-weight:600}
+  .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+  .tag-new{background:var(--green-50);color:var(--green)}
+  .tag-contacted{background:var(--blue-50);color:var(--blue-dark)}
+  .tag-converted{background:#fef3c7;color:#92400e}
+  .tag-rejected{background:var(--slate-100);color:var(--slate-600)}
+  .empty{padding:60px 24px;text-align:center;color:var(--slate-500)}
+  .toast{position:fixed;bottom:24px;right:24px;padding:14px 22px;background:var(--navy);color:var(--white);border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 12px 32px rgba(15,23,42,0.35);opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none;z-index:1000}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.success{background:var(--green)} .toast.error{background:var(--red)}
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script src="/admin-auth-gate.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Finance Leads</h1>
+  <a href="/admin-dashboard/">&larr; Admin Dashboard</a>
+</div>
+
+<main class="wrap">
+  <h2>Lead capture</h2>
+  <p class="lede">Submissions from finance and insurance lead-gen forms. Export, follow up, and track conversion.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="statTotal">-</div><div class="lbl">Total leads</div></div>
+    <div class="stat"><div class="num" id="statNew">-</div><div class="lbl">New</div></div>
+    <div class="stat"><div class="num" id="statThisWeek">-</div><div class="lbl">This week</div></div>
+    <div class="stat"><div class="num" id="statConverted">-</div><div class="lbl">Converted</div></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="downloadCSV()">Download CSV</button>
+    <button class="btn btn-secondary" onclick="loadData()">Refresh</button>
+  </div>
+
+  <div class="filter">
+    <label>Status:</label>
+    <select id="filterStatus" onchange="renderTable()">
+      <option value="all">All</option>
+      <option value="new">New</option>
+      <option value="contacted">Contacted</option>
+      <option value="converted">Converted</option>
+      <option value="rejected">Rejected</option>
+    </select>
+    <label>Category:</label>
+    <select id="filterCat" onchange="renderTable()">
+      <option value="all">All</option>
+      <option value="credit_card">Credit card</option>
+      <option value="personal_loan">Personal loan</option>
+      <option value="mutual_fund">Mutual fund</option>
+      <option value="savings_account">Savings account</option>
+      <option value="term_insurance">Term insurance</option>
+      <option value="health_insurance">Health insurance</option>
+      <option value="car_insurance">Car insurance</option>
+      <option value="bike_insurance">Bike insurance</option>
+      <option value="travel_insurance">Travel insurance</option>
+    </select>
+    <input type="search" id="filterSearch" placeholder="Search name / email / phone..." oninput="renderTable()">
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>City</th>
+          <th>Income</th>
+          <th>Category</th>
+          <th>Product</th>
+          <th>Source</th>
+          <th>Submitted</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var db, allRows = [];
+
+function showToast(msg, kind){var t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+(kind||'');setTimeout(function(){t.className='toast'},2500)}
+function fmtDate(ts){if(!ts)return '-';var d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}
+function fmtMoney(n){if(!n)return '-';return 'Rs '+Number(n).toLocaleString('en-IN')}
+
+async function loadData() {
+  if (!db) db = initFirebase();
+  document.getElementById('tbody').innerHTML = '<tr><td colspan="11" class="empty">Loading...</td></tr>';
+  try {
+    var snap = await db.collection('finance_leads').orderBy('createdAt','desc').limit(500).get();
+    allRows = [];
+    snap.forEach(function(doc){ allRows.push(Object.assign({id:doc.id}, doc.data())); });
+  } catch(e) {
+    var snap = await db.collection('finance_leads').limit(500).get();
+    allRows = [];
+    snap.forEach(function(doc){ allRows.push(Object.assign({id:doc.id}, doc.data())); });
+    allRows.sort(function(a,b){var ta=a.createdAt&&a.createdAt.toMillis?a.createdAt.toMillis():0;var tb=b.createdAt&&b.createdAt.toMillis?b.createdAt.toMillis():0;return tb-ta});
+  }
+  updateStats();
+  renderTable();
+}
+function updateStats() {
+  document.getElementById('statTotal').textContent = allRows.length;
+  document.getElementById('statNew').textContent = allRows.filter(function(r){return (r.status||'new')==='new'}).length;
+  var weekAgo = Date.now() - 7*24*60*60*1000;
+  document.getElementById('statThisWeek').textContent = allRows.filter(function(r){return r.createdAt&&r.createdAt.toMillis&&r.createdAt.toMillis()>weekAgo}).length;
+  document.getElementById('statConverted').textContent = allRows.filter(function(r){return r.status==='converted'}).length;
+}
+function getFiltered() {
+  var s = document.getElementById('filterStatus').value;
+  var c = document.getElementById('filterCat').value;
+  var search = (document.getElementById('filterSearch').value||'').toLowerCase().trim();
+  return allRows.filter(function(r){
+    if (s !== 'all' && (r.status||'new') !== s) return false;
+    if (c !== 'all' && r.category !== c) return false;
+    if (search && (r.name||'').toLowerCase().indexOf(search)===-1 && (r.email||'').toLowerCase().indexOf(search)===-1 && (r.phone||'').indexOf(search)===-1) return false;
+    return true;
+  });
+}
+function renderTable() {
+  var rows = getFiltered();
+  var tbody = document.getElementById('tbody');
+  if (!rows.length) { tbody.innerHTML = '<tr><td colspan="11" class="empty">No leads match the filter.</td></tr>'; return; }
+  tbody.innerHTML = rows.map(function(r){
+    var st = r.status || 'new';
+    var stTag = '<span class="tag tag-'+st+'">'+st+'</span>';
+    return '<tr>'+
+      '<td>'+(r.name||'-')+'</td>'+
+      '<td class="phone"><a href="tel:+91'+(r.phone||'')+'">'+(r.phone||'-')+'</a></td>'+
+      '<td class="email">'+(r.email||'-')+'</td>'+
+      '<td>'+(r.city||'-')+'</td>'+
+      '<td class="amount">'+fmtMoney(r.income)+'</td>'+
+      '<td>'+(r.category||'-')+'</td>'+
+      '<td>'+(r.product||'-')+'</td>'+
+      '<td><a href="'+(r.source||'#')+'" target="_blank">'+((r.source||'').slice(0,30))+'</a></td>'+
+      '<td>'+fmtDate(r.createdAt)+'</td>'+
+      '<td>'+stTag+'</td>'+
+      '<td>'+
+        '<select onchange="updateStatus(\''+r.id+'\',this.value)" style="font-size:11px;padding:3px 6px;border:1px solid var(--slate-200);border-radius:4px">'+
+          '<option value="">→</option>'+
+          '<option value="contacted">Contacted</option>'+
+          '<option value="converted">Converted</option>'+
+          '<option value="rejected">Rejected</option>'+
+          '<option value="new">Reset to New</option>'+
+        '</select>'+
+        ' <button class="btn btn-danger" style="padding:3px 8px;font-size:11px" onclick="deleteLead(\''+r.id+'\')">Delete</button>'+
+      '</td>'+
+    '</tr>';
+  }).join('');
+}
+async function updateStatus(id, status) {
+  if (!status) return;
+  try {
+    await db.collection('finance_leads').doc(id).update({ status: status, statusUpdatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+    showToast('Status updated', 'success');
+    await loadData();
+  } catch(e) { showToast('Update failed', 'error') }
+}
+async function deleteLead(id) {
+  if (!confirm('Delete this lead?')) return;
+  try {
+    await db.collection('finance_leads').doc(id).delete();
+    showToast('Deleted', 'success');
+    await loadData();
+  } catch(e) { showToast('Delete failed', 'error') }
+}
+function downloadCSV() {
+  var rows = getFiltered();
+  if (!rows.length) { showToast('Nothing to export', 'error'); return; }
+  var csv = 'name,phone,email,city,income,category,product,source,submitted,status\n';
+  rows.forEach(function(r){
+    var date = r.createdAt&&r.createdAt.toDate?r.createdAt.toDate().toISOString():'';
+    csv += '"'+(r.name||'').replace(/"/g,'""')+'","'+(r.phone||'')+'","'+(r.email||'').replace(/"/g,'""')+'","'+(r.city||'')+'",'+(r.income||'')+',"'+(r.category||'')+'","'+(r.product||'').replace(/"/g,'""')+'","'+(r.source||'')+'","'+date+'","'+(r.status||'new')+'"\n';
+  });
+  var blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'wib-leads-' + new Date().toISOString().slice(0,10) + '.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Downloaded ' + rows.length + ' leads', 'success');
+}
+function whenAuth(cb){var t=0;var i=setInterval(function(){if(typeof firebase!=='undefined'&&firebase.auth&&firebase.auth().currentUser){clearInterval(i);cb()}else if(++t>60){clearInterval(i)}},250)}
+whenAuth(loadData);
+</script>
+</body>
+</html>
