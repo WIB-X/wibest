@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Bansi Vihar,Patna,North Indian | Vegetarian | Thali,4.5,Rs 500-2000,"Boring Road, Shrikrishna Nagar",No,https://wibest.in/restaurants/patna/
+Chacha Ki Hotel,Patna,Bihari | Litti Chokha | Local,4.6,Under Rs 500,"Boring Road, near Panchmukhi Hanuman Mandir",No,https://wibest.in/restaurants/patna/
+Kabila,Patna,Multi-Cuisine | Mughlai | Tandoor,4.4,Rs 500-2000,"Hotel Maurya, South Gandhi Maidan",Yes,https://wibest.in/restaurants/patna/
+Pind Balluchi,Patna,Punjabi | North Indian | Tandoor,4.3,Rs 500-2000,Patliputra Industrial Estate,No,https://wibest.in/restaurants/patna/
+Takshila,Patna,North Indian | Continental | Multi-Cuisine,4.5,Rs 2000+,"Hotel Maurya, South Gandhi Maidan",Yes,https://wibest.in/restaurants/patna/
+Mainland China,Patna,Chinese | Asian | Pan-Asian,4.4,Rs 500-2000,"Maurya Lok Complex, Dak Bungalow Road",No,https://wibest.in/restaurants/patna/
+Litti Hub,Patna,Bihari | Litti Chokha | Street Food,4.5,Under Rs 500,"Frazer Road, near Heritage Hotel",No,https://wibest.in/restaurants/patna/
+Cafe Coffee Day The Square,Patna,Cafe | Continental | Desserts,4.2,Rs 500-2000,"Boring Canal Road, near Panchmukhi Mandir",No,https://wibest.in/restaurants/patna/
+Banaras Restaurant,Patna,North Indian | Banarasi | Vegetarian,4.4,Under Rs 500,"Exhibition Road, Gandhi Maidan",No,https://wibest.in/restaurants/patna/
+Nirvana Restaurant,Patna,Multi-Cuisine | Mughlai | Tandoor,4.3,Rs 500-2000,"Lemon Tree Hotel, Frazer Road",Yes,https://wibest.in/restaurants/patna/

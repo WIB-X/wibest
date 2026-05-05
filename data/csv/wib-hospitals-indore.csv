@@ -1,0 +1,11 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+Bombay Hospital Indore,Indore,Private,600,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Transplant,,"Eastern Ring Road, Vijay Nagar, Indore 452010",https://wibest.in/hospitals/indore/
+Choithram Hospital,Indore,Trust,800,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gynaecology,,"5, Manik Bagh Road, Indore 452014",https://wibest.in/hospitals/indore/
+Sri Aurobindo Institute of Medical Sciences (SAIMS),Indore,Trust,1500,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Transplant,,"Indore-Ujjain Highway, Bhanwarasla Road, Indore 453555",https://wibest.in/hospitals/indore/
+Apollo Hospital Indore,Indore,Private,340,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,,"Scheme No 74C, Sector D, Vijay Nagar, Indore 452010",https://wibest.in/hospitals/indore/
+Medanta Hospital Indore,Indore,Private,300,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Liver Transplant,,"Eastern Ring Road, Indore 452010",https://wibest.in/hospitals/indore/
+Mahatma Gandhi Memorial (MGM) Medical College,Indore,Government,1100,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma,,"AB Road, Indore 452001",https://wibest.in/hospitals/indore/
+CHL Hospital Indore,Indore,Private,300,4.3,Cardiac Sciences | Neurology | Orthopedics | Gynaecology,,"AB Road, Sai Ram Nagar, Indore 452008",https://wibest.in/hospitals/indore/
+Care CHL Hospital Indore,Indore,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,,"AB Road, Indore 452008",https://wibest.in/hospitals/indore/
+Greater Kailash Hospital Indore,Indore,Private,180,4.2,Cardiac Sciences | Orthopedics | General Medicine | Gynaecology,,"Old Palasia, Indore 452001",https://wibest.in/hospitals/indore/
+Eye Retina Hospital Indore,Indore,Private,50,4.6,Eye Care | Retina | Cataract,,"AB Road, Indore 452001",https://wibest.in/hospitals/indore/

@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Zero Degrees,Nagpur,Multi-Cuisine | Continental | Indian,4.4,Rs 500-2000,"Centre Point Hotel, Ramdaspeth",Yes,https://wibest.in/restaurants/nagpur/
+Haldiram's Thaba,Nagpur,North Indian | Sweets | Vegetarian,4.5,Under Rs 500,"Wardha Road, Pratap Nagar",No,https://wibest.in/restaurants/nagpur/
+Krishnum,Nagpur,North Indian | Mughlai | Tandoor,4.4,Rs 500-2000,"Ramdaspeth, opposite IMA Hall",No,https://wibest.in/restaurants/nagpur/
+The Gondwana,Nagpur,Saoji | Vidarbha | Spicy,4.5,Rs 500-2000,"Hotel Tuli Imperial, Central Bazaar Road",Yes,https://wibest.in/restaurants/nagpur/
+Ashoka Hotel,Nagpur,Saoji | North Indian | Mutton,4.4,Under Rs 500,"Trimurti Nagar, Khamla",No,https://wibest.in/restaurants/nagpur/
+Barbeque Nation,Nagpur,Multi-Cuisine | Buffet | Grill,4.3,Rs 500-2000,"Empress City Mall, Pratap Nagar",No,https://wibest.in/restaurants/nagpur/
+Ranjit Hotel,Nagpur,Maharashtrian | North Indian | Thali,4.4,Under Rs 500,Sitabuldi Main Road,No,https://wibest.in/restaurants/nagpur/
+Cafe Coffee Bean & Tea Leaf,Nagpur,Cafe | Continental | Desserts,4.2,Rs 500-2000,"Eternity Mall, Sitabuldi",No,https://wibest.in/restaurants/nagpur/
+Sahil Restaurant,Nagpur,Saoji | Mutton | Local,4.5,Under Rs 500,"Mominpura, Old City",No,https://wibest.in/restaurants/nagpur/
+Mr Beans Cafe,Nagpur,Cafe | Italian | Continental,4.4,Rs 500-2000,"Dharampeth, near Maharaj Bagh",No,https://wibest.in/restaurants/nagpur/

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Open Data — Free CSV Datasets on Indian Hospitals & Restaurants</title>
+<meta name="description" content="Download WIB's verified datasets as CSV — 346 Indian hospitals across 27 cities, 500 restaurants across 20 cities. Free for journalism, research, and analysis with attribution.">
+<link rel="canonical" href="https://wibest.in/data/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WIB Open Data — Free Indian Hospital & Restaurant Datasets">
+<meta property="og:description" content="Free CSV datasets on Indian hospitals (346) and restaurants (500). Combined files + per-city slices. Attribution required.">
+<meta property="og:url" content="https://wibest.in/data/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:1000px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:42px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px}
+.lede{font-size:17px;color:var(--text-secondary);line-height:1.65;margin-bottom:32px;max-width:780px}
+h2{font-family:Outfit,sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:48px 0 14px}
+h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10px}
+.featured-card{display:block;padding:28px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border:2px solid var(--accent);border-radius:14px;text-decoration:none;color:inherit;margin-bottom:14px;transition:all .2s}
+[data-theme="dark"] .featured-card{background:linear-gradient(135deg,#1e293b,#312e81)}
+.featured-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.featured-card .badge{display:inline-block;padding:3px 10px;border-radius:6px;background:var(--accent);color:#fff;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.featured-card h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);margin:0 0 6px}
+.featured-card .meta{font-size:13px;color:var(--text-secondary);margin-bottom:12px}
+.featured-card .dl-btn{display:inline-block;padding:8px 16px;background:var(--accent);color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none}
+.tier{font-family:Outfit,sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.city-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;font-size:14px}
+.city-row span{color:var(--text-primary);font-weight:600}
+.city-row a{padding:4px 10px;background:var(--accent-light);color:var(--accent);border-radius:5px;font-size:12px;font-weight:600;text-decoration:none}
+.city-row a:hover{background:var(--accent);color:#fff}
+.use-list{padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;font-size:15px;line-height:1.75;color:var(--text-secondary)}
+.use-list ol{padding-left:22px;margin:0}.use-list li{margin-bottom:10px}
+.attribution-box{padding:20px 24px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:4px solid #d97706;border-radius:0 10px 10px 0;margin:20px 0;font-size:14.5px;line-height:1.65;color:#78350f}
+[data-theme="dark"] .attribution-box{background:linear-gradient(135deg,#78350f,#92400e);color:#fef3c7}
+.attribution-box strong{display:block;margin-bottom:6px;font-family:Outfit,sans-serif;font-size:15px}
+.attribution-box code{background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px}
+@media(max-width:600px){h1{font-size:30px}.featured-card{padding:20px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Open Data","item":"https://wibest.in/data/"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "WIB India Hospitals Dataset 2026",
+  "description": "Verified dataset of 346 multi-specialty hospitals across 27 Indian cities. Includes name, city, type (government/private), bed count, rating, specialties, NABH accreditation, and address.",
+  "url": "https://wibest.in/data/csv/wib-hospitals-all.csv",
+  "creator": {"@type": "Organization", "name": "WIB", "url": "https://wibest.in"},
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": ["India hospitals", "NABH accreditation", "multi-specialty hospitals", "healthcare data India", "Indian hospital ratings"],
+  "spatialCoverage": {"@type": "Place", "name": "India"},
+  "temporalCoverage": "2026",
+  "encodingFormat": "text/csv",
+  "distribution": {
+    "@type": "DataDownload",
+    "encodingFormat": "text/csv",
+    "contentUrl": "https://wibest.in/data/csv/wib-hospitals-all.csv"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "WIB India Restaurants Dataset 2026",
+  "description": "Verified dataset of 500 top-rated restaurants across 20 Indian cities. Includes name, city, cuisines, rating, budget tier, address, and vegetarian status.",
+  "url": "https://wibest.in/data/csv/wib-restaurants-all.csv",
+  "creator": {"@type": "Organization", "name": "WIB", "url": "https://wibest.in"},
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": ["India restaurants", "Indian cuisine data", "restaurant ratings India", "tier-3 dining", "regional cuisine"],
+  "spatialCoverage": {"@type": "Place", "name": "India"},
+  "temporalCoverage": "2026",
+  "encodingFormat": "text/csv",
+  "distribution": {
+    "@type": "DataDownload",
+    "encodingFormat": "text/csv",
+    "contentUrl": "https://wibest.in/data/csv/wib-restaurants-all.csv"
+  }
+}
+</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; Open Data</div>
+  <h1>WIB Open Data</h1>
+  <p class="lede">WIB's verified Indian comparison datasets, freely downloadable as CSV. Use them for journalism, research, academic analysis, app prototypes, or curiosity. Attribution required (CC-BY 4.0). All data is manually verified and editorially curated — see methodology in the linked research reports.</p>
+
+  <h2>Featured datasets</h2>
+
+  <a class="featured-card" href="/data/csv/wib-hospitals-all.csv" download>
+    <span class="badge">Healthcare</span>
+    <h3>WIB India Hospitals 2026</h3>
+    <div class="meta">346 multi-specialty hospitals · 27 cities · 9 columns (name, city, type, beds, rating, specialties, NABH, address, source URL)</div>
+    <span class="dl-btn">Download CSV (combined) &darr;</span>
+    <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city below</span>
+  </a>
+
+  <a class="featured-card" href="/data/csv/wib-restaurants-all.csv" download>
+    <span class="badge" style="background:#d97706">Food &amp; Dining</span>
+    <h3>WIB India Restaurants 2026</h3>
+    <div class="meta">500 top-rated restaurants · 20 cities · 8 columns (name, city, cuisines, rating, budget, address, vegetarian, source URL)</div>
+    <span class="dl-btn">Download CSV (combined) &darr;</span>
+    <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city below</span>
+  </a>
+
+  <h2>Per-city slices — Hospitals</h2>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px">Same schema as combined file, scoped to one city. Smaller files for focused analysis.</p>
+  <div class="tier">Top metros</div>
+  <div class="city-grid">
+    <div class="city-row"><span>Delhi</span><a href="/data/csv/wib-hospitals-delhi.csv" download>CSV</a></div>
+    <div class="city-row"><span>Mumbai</span><a href="/data/csv/wib-hospitals-mumbai.csv" download>CSV</a></div>
+    <div class="city-row"><span>Bangalore</span><a href="/data/csv/wib-hospitals-bangalore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Chennai</span><a href="/data/csv/wib-hospitals-chennai.csv" download>CSV</a></div>
+    <div class="city-row"><span>Hyderabad</span><a href="/data/csv/wib-hospitals-hyderabad.csv" download>CSV</a></div>
+    <div class="city-row"><span>Kolkata</span><a href="/data/csv/wib-hospitals-kolkata.csv" download>CSV</a></div>
+    <div class="city-row"><span>Pune</span><a href="/data/csv/wib-hospitals-pune.csv" download>CSV</a></div>
+    <div class="city-row"><span>Ahmedabad</span><a href="/data/csv/wib-hospitals-ahmedabad.csv" download>CSV</a></div>
+  </div>
+  <div class="tier">Tier-2 cities</div>
+  <div class="city-grid">
+    <div class="city-row"><span>Jaipur</span><a href="/data/csv/wib-hospitals-jaipur.csv" download>CSV</a></div>
+    <div class="city-row"><span>Lucknow</span><a href="/data/csv/wib-hospitals-lucknow.csv" download>CSV</a></div>
+    <div class="city-row"><span>Chandigarh</span><a href="/data/csv/wib-hospitals-chandigarh.csv" download>CSV</a></div>
+    <div class="city-row"><span>Kochi</span><a href="/data/csv/wib-hospitals-kochi.csv" download>CSV</a></div>
+    <div class="city-row"><span>Coimbatore</span><a href="/data/csv/wib-hospitals-coimbatore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Indore</span><a href="/data/csv/wib-hospitals-indore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Visakhapatnam</span><a href="/data/csv/wib-hospitals-visakhapatnam.csv" download>CSV</a></div>
+  </div>
+  <div class="tier">NCR &amp; metro extensions</div>
+  <div class="city-grid">
+    <div class="city-row"><span>Gurugram</span><a href="/data/csv/wib-hospitals-gurugram.csv" download>CSV</a></div>
+    <div class="city-row"><span>Noida</span><a href="/data/csv/wib-hospitals-noida.csv" download>CSV</a></div>
+    <div class="city-row"><span>Faridabad</span><a href="/data/csv/wib-hospitals-faridabad.csv" download>CSV</a></div>
+    <div class="city-row"><span>Navi Mumbai</span><a href="/data/csv/wib-hospitals-navi-mumbai.csv" download>CSV</a></div>
+    <div class="city-row"><span>Pimpri-Chinchwad</span><a href="/data/csv/wib-hospitals-pimpri-chinchwad.csv" download>CSV</a></div>
+  </div>
+  <div class="tier">Tier-3 cities</div>
+  <div class="city-grid">
+    <div class="city-row"><span>Bhopal</span><a href="/data/csv/wib-hospitals-bhopal.csv" download>CSV</a></div>
+    <div class="city-row"><span>Nagpur</span><a href="/data/csv/wib-hospitals-nagpur.csv" download>CSV</a></div>
+    <div class="city-row"><span>Mysore</span><a href="/data/csv/wib-hospitals-mysore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Vadodara</span><a href="/data/csv/wib-hospitals-vadodara.csv" download>CSV</a></div>
+    <div class="city-row"><span>Patna</span><a href="/data/csv/wib-hospitals-patna.csv" download>CSV</a></div>
+    <div class="city-row"><span>Madurai</span><a href="/data/csv/wib-hospitals-madurai.csv" download>CSV</a></div>
+    <div class="city-row"><span>Vellore</span><a href="/data/csv/wib-hospitals-vellore.csv" download>CSV</a></div>
+  </div>
+
+  <h2>Per-city slices — Restaurants</h2>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px">20 cities. Same schema as combined file.</p>
+  <div class="city-grid">
+    <div class="city-row"><span>Delhi</span><a href="/data/csv/wib-restaurants-delhi.csv" download>CSV</a></div>
+    <div class="city-row"><span>Mumbai</span><a href="/data/csv/wib-restaurants-mumbai.csv" download>CSV</a></div>
+    <div class="city-row"><span>Bangalore</span><a href="/data/csv/wib-restaurants-bangalore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Chennai</span><a href="/data/csv/wib-restaurants-chennai.csv" download>CSV</a></div>
+    <div class="city-row"><span>Hyderabad</span><a href="/data/csv/wib-restaurants-hyderabad.csv" download>CSV</a></div>
+    <div class="city-row"><span>Kolkata</span><a href="/data/csv/wib-restaurants-kolkata.csv" download>CSV</a></div>
+    <div class="city-row"><span>Pune</span><a href="/data/csv/wib-restaurants-pune.csv" download>CSV</a></div>
+    <div class="city-row"><span>Ahmedabad</span><a href="/data/csv/wib-restaurants-ahmedabad.csv" download>CSV</a></div>
+    <div class="city-row"><span>Jaipur</span><a href="/data/csv/wib-restaurants-jaipur.csv" download>CSV</a></div>
+    <div class="city-row"><span>Lucknow</span><a href="/data/csv/wib-restaurants-lucknow.csv" download>CSV</a></div>
+    <div class="city-row"><span>Chandigarh</span><a href="/data/csv/wib-restaurants-chandigarh.csv" download>CSV</a></div>
+    <div class="city-row"><span>Kochi</span><a href="/data/csv/wib-restaurants-kochi.csv" download>CSV</a></div>
+    <div class="city-row"><span>Coimbatore</span><a href="/data/csv/wib-restaurants-coimbatore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Indore</span><a href="/data/csv/wib-restaurants-indore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Visakhapatnam</span><a href="/data/csv/wib-restaurants-visakhapatnam.csv" download>CSV</a></div>
+    <div class="city-row"><span>Bhopal</span><a href="/data/csv/wib-restaurants-bhopal.csv" download>CSV</a></div>
+    <div class="city-row"><span>Nagpur</span><a href="/data/csv/wib-restaurants-nagpur.csv" download>CSV</a></div>
+    <div class="city-row"><span>Mysore</span><a href="/data/csv/wib-restaurants-mysore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Vadodara</span><a href="/data/csv/wib-restaurants-vadodara.csv" download>CSV</a></div>
+    <div class="city-row"><span>Patna</span><a href="/data/csv/wib-restaurants-patna.csv" download>CSV</a></div>
+  </div>
+
+  <h2>How to use this data</h2>
+  <div class="use-list">
+    <ol>
+      <li><strong>Open in Excel / Google Sheets</strong> — every CSV is UTF-8 encoded and uses comma separators with quoted fields. Drag-and-drop into any spreadsheet.</li>
+      <li><strong>Pandas / R / Python</strong> — <code>pd.read_csv('https://wibest.in/data/csv/wib-hospitals-all.csv')</code> works directly without download. Specialties and cuisines are pipe-separated within their column for easy splitting.</li>
+      <li><strong>Journalism &amp; reporting</strong> — query for specific facts ("which Bhopal hospitals are NABH-accredited?", "what's the average rating of South Indian restaurants in Coimbatore?") and cite WIB.</li>
+      <li><strong>Side projects &amp; prototypes</strong> — bootstrap a hospital-finder, food-discovery, or city-comparison app with real verified data instead of scraping Zomato/Practo (which prohibit scraping).</li>
+      <li><strong>Academic research</strong> — used in any thesis/paper, please cite as below and we'd love to know — drop us an email at <a href="mailto:hello@wibest.in" style="color:var(--accent)">hello@wibest.in</a>.</li>
+    </ol>
+  </div>
+
+  <div class="attribution-box">
+    <strong>Attribution required (CC-BY 4.0)</strong>
+    Use the data freely. When you publish, please cite as: <code>Source: WIB Open Data, https://wibest.in/data/</code> with a link back. That's it — no permission email needed, no fee, no partnership terms.
+  </div>
+
+  <h2>Methodology &amp; updates</h2>
+  <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7">Data is manually verified by the WIB editorial team — names cross-checked against hospital/restaurant websites, ratings normalized from public review aggregates, addresses spot-validated. We refresh quarterly and add new cities based on demand. The combined files always reflect the latest snapshot at the URLs above (no versioning needed — your script will pick up updates automatically). For methodology details on each dataset, see the matching research report in <a href="/reports/" style="color:var(--accent)">/reports/</a>.</p>
+
+  <p style="font-size:14px;color:var(--text-muted);margin-top:24px">Need data we don't publish here? Custom slices, additional fields, or specific cities — email <a href="mailto:hello@wibest.in" style="color:var(--accent)">hello@wibest.in</a> with the subject "Data request". Free for journalists and academics; nominal fee for commercial requests.</p>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+</body>
+</html>

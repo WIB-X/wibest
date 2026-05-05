@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Mandap,Vadodara,Gujarati | Thali | Vegetarian,4.5,Rs 500-2000,"Welcomhotel by ITC, RC Dutt Road",Yes,https://wibest.in/restaurants/vadodara/
+Canopy,Vadodara,Multi-Cuisine | Continental | Buffet,4.4,Rs 500-2000,"Vivanta Vadodara, Akota Gardens",Yes,https://wibest.in/restaurants/vadodara/
+Sayaji Sweets & Restaurant,Vadodara,Gujarati | Sweets | Vegetarian,4.5,Under Rs 500,"Sayajigunj, near railway station",No,https://wibest.in/restaurants/vadodara/
+Rajdhani Thali,Vadodara,Gujarati | Rajasthani | Thali,4.4,Rs 500-2000,"Inorbit Mall, Gotri Road",No,https://wibest.in/restaurants/vadodara/
+Mahalaxmi Bhojanalay,Vadodara,Gujarati | Thali | Home-Style,4.6,Under Rs 500,"Raopura, opposite Nyay Mandir",No,https://wibest.in/restaurants/vadodara/
+Kalyan Restaurant,Vadodara,Punjabi | North Indian | Tandoor,4.4,Rs 500-2000,"Race Course Circle, Alkapuri",No,https://wibest.in/restaurants/vadodara/
+Cafe Goodness,Vadodara,Cafe | Healthy | Continental,4.5,Rs 500-2000,"Old Padra Road, Akota",No,https://wibest.in/restaurants/vadodara/
+Peshawri,Vadodara,North West Frontier | Tandoor | Fine Dining,4.5,Rs 2000+,"Welcomhotel by ITC, RC Dutt Road",Yes,https://wibest.in/restaurants/vadodara/
+Hari Krishna,Vadodara,South Indian | Vegetarian | Dosa,4.4,Under Rs 500,"Sayajigunj, opposite Express Hotel",No,https://wibest.in/restaurants/vadodara/
+Black Taj,Vadodara,Mughlai | North Indian | Biryani,4.3,Rs 500-2000,"Fatehgunj, opposite EME Temple",No,https://wibest.in/restaurants/vadodara/

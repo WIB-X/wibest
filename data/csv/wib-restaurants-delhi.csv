@@ -1,0 +1,31 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Bukhara,Delhi,North Indian | Mughlai | Fine Dining,4.7,Rs 2000+,"ITC Maurya, Sardar Patel Marg",Yes,https://wibest.in/restaurants/delhi/
+Indian Accent,Delhi,Modern Indian | Fine Dining,4.8,Rs 2000+,"The Lodhi, Lodhi Road",Yes,https://wibest.in/restaurants/delhi/
+Karim's,Delhi,Mughlai | North Indian | Street Food,4.5,Under Rs 500,"Jama Masjid, Old Delhi",Yes,https://wibest.in/restaurants/delhi/
+Paranthe Wali Gali,Delhi,North Indian | Street Food | Vegetarian,4.2,Under Rs 500,"Chandni Chowk, Old Delhi",No,https://wibest.in/restaurants/delhi/
+Saravana Bhavan,Delhi,South Indian | Vegetarian,4.4,Under Rs 500,"Connaught Place, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+SodaBottleOpenerWala,Delhi,Parsi | Cafe | Continental,4.3,Rs 500-2000,"Khan Market, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Moti Mahal,Delhi,North Indian | Mughlai,4.3,Rs 500-2000,"Daryaganj, Old Delhi",Yes,https://wibest.in/restaurants/delhi/
+Farzi Cafe,Delhi,Modern Indian | Continental | Cafe,4.4,Rs 500-2000,Connaught Place,Yes,https://wibest.in/restaurants/delhi/
+Gulati Restaurant,Delhi,North Indian | Mughlai | Kebabs,4.3,Rs 500-2000,"Pandara Road, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Havemore,Delhi,North Indian | Mughlai | Tandoor,4.2,Rs 500-2000,"Pandara Road, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Big Chill Cafe,Delhi,Italian | Continental | Cafe,4.4,Rs 500-2000,"Khan Market, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Mamagoto,Delhi,Asian | Thai | Pan-Asian,4.3,Rs 500-2000,"Khan Market, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Perch Wine and Coffee Bar,Delhi,Cafe | Continental | Bar,4.4,Rs 500-2000,"Khan Market, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Sagar Ratna,Delhi,South Indian | Vegetarian,4.1,Under Rs 500,"Defence Colony, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Swagath Restaurant,Delhi,South Indian | Coastal | Seafood,4.2,Rs 500-2000,"Defence Colony, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Andhra Bhavan Canteen,Delhi,Andhra | South Indian | Non-Veg,4.4,Under Rs 500,"Ashoka Road, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Naturals Ice Cream,Delhi,Ice Cream | Desserts,4.5,Under Rs 500,"Connaught Place, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Wenger's,Delhi,Bakery | Desserts,4.4,Under Rs 500,"Connaught Place, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+United Coffee House,Delhi,North Indian | Continental | Cafe,4.3,Rs 500-2000,"Connaught Place, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Embassy Restaurant,Delhi,North Indian | Continental,4.2,Rs 500-2000,"Connaught Place, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Kake Da Hotel,Delhi,North Indian | Punjabi,4.2,Under Rs 500,"Connaught Place, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Dum Pukht,Delhi,Mughlai | Awadhi | Fine Dining,4.6,Rs 2000+,"ITC Maurya, Chanakyapuri",Yes,https://wibest.in/restaurants/delhi/
+Varq,Delhi,Modern Indian | Fine Dining,4.5,Rs 2000+,"Taj Mahal Hotel, Mansingh Road",Yes,https://wibest.in/restaurants/delhi/
+Megu,Delhi,Japanese | Sushi | Fine Dining,4.5,Rs 2000+,"The Leela Palace, Chanakyapuri",Yes,https://wibest.in/restaurants/delhi/
+Olive Bar Kitchen,Delhi,Italian | Mediterranean | Fine Dining,4.4,Rs 2000+,"Mehrauli, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Qla,Delhi,Modern Indian | Continental | Fine Dining,4.5,Rs 2000+,"Mehrauli, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Diggin,Delhi,Italian | Cafe | Continental,4.3,Rs 500-2000,"Anand Lok, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Rose Cafe,Delhi,Cafe | Continental | Brunch,4.4,Rs 500-2000,"Saket, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Pind Balluchi,Delhi,North Indian | Punjabi | Tandoor,4.0,Rs 500-2000,"Pitampura, New Delhi",Yes,https://wibest.in/restaurants/delhi/
+Carnatic Cafe,Delhi,South Indian | Vegetarian,4.3,Under Rs 500,"Lodhi Colony, New Delhi",Yes,https://wibest.in/restaurants/delhi/

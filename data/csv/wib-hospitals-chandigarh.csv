@@ -1,0 +1,11 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+PGIMER Chandigarh,Chandigarh,Government,1948,4.7,Cardiology | Neurology | Oncology | Transplant | Trauma,,"Sector 12, Chandigarh 160012",https://wibest.in/hospitals/chandigarh/
+Fortis Hospital Mohali,Chandigarh,Private,355,4.5,Cardiac Sciences | Neurosciences | Oncology | Orthopedics,,"Sector 62, Phase 8, Mohali 160062",https://wibest.in/hospitals/chandigarh/
+Max Super Speciality Hospital Mohali,Chandigarh,Private,220,4.4,Cardiac Sciences | Neurosciences | Oncology | Liver Transplant,,"Phase 6, Sector 56A, Mohali 160055",https://wibest.in/hospitals/chandigarh/
+Government Medical College Hospital,Chandigarh,Government,850,4.2,General Medicine | Surgery | Orthopedics | Paediatrics,,"Sector 32, Chandigarh 160030",https://wibest.in/hospitals/chandigarh/
+Cheema Medical Complex,Chandigarh,Private,120,4.3,Orthopedics | Joint Replacement | Spine,,"Phase 4, Mohali 160059",https://wibest.in/hospitals/chandigarh/
+Indus Super Speciality Hospital,Chandigarh,Private,200,4.3,Cardiology | Neurology | Orthopedics | Gastroenterology,,"Phase 1, Industrial Area, Mohali 160055",https://wibest.in/hospitals/chandigarh/
+Healing Hospital,Chandigarh,Private,180,4.4,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,,"Sector 34A, Chandigarh 160022",https://wibest.in/hospitals/chandigarh/
+Silver Oaks Hospital,Chandigarh,Private,90,4.3,Orthopedics | Joint Replacement | General Medicine,,"Phase 9, Mohali 160062",https://wibest.in/hospitals/chandigarh/
+Ojas Super Speciality Hospital,Chandigarh,Private,150,4.2,Cardiac Sciences | Neurology | Orthopedics | Oncology,,"Phase 7, Mohali 160061",https://wibest.in/hospitals/chandigarh/
+Grecian Super Speciality Hospital,Chandigarh,Private,140,4.3,Orthopedics | Cardiac Sciences | General Medicine | Gynaecology,,"Sector 69, Mohali 160062",https://wibest.in/hospitals/chandigarh/

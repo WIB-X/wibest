@@ -1,0 +1,5 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+Medanta Gurugram,Gurugram,Private,1500,4.5,Cardiac Surgery | Liver Transplant | Neuroscience | Oncology | Robotic Surgery,,"CH Baktawar Singh Road, Sector 38, Gurugram 122001",https://wibest.in/hospitals/gurugram/
+Fortis Memorial Gurugram,Gurugram,Private,1000,4.4,Oncology | Neurosciences | Orthopedics | Renal Sciences,,"Sector 44, Gurugram 122002",https://wibest.in/hospitals/gurugram/
+Artemis Hospital Gurugram,Gurugram,Private,400,4.3,Cardiac Sciences | Neurology | Oncology | Gastroenterology | Kidney Transplant,,"Sector 51, Gurugram 122001",https://wibest.in/hospitals/gurugram/
+Park Hospital Gurugram,Gurugram,Private,275,4.2,Cardiology | Neurosciences | Orthopedics | Oncology | Gastroenterology | Renal Sciences,,"Q Block, South City 2, Sohna Road, Sector 47, Gurugram 122018",https://wibest.in/hospitals/gurugram/

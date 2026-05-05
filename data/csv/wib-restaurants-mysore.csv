@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Vinayaka Mylari,Mysore,South Indian | Dosa | Breakfast,4.6,Under Rs 500,"Nazarbad, opposite Mysore Race Club",No,https://wibest.in/restaurants/mysore/
+Hotel RRR,Mysore,Andhra | South Indian | Meals,4.5,Under Rs 500,"Gandhi Square, Chamrajpura",No,https://wibest.in/restaurants/mysore/
+Lalith Mahal Palace Dining Hall,Mysore,Multi-Cuisine | Heritage | Continental,4.4,Rs 2000+,"Lalitha Mahal Palace Hotel, T Narasipura Road",Yes,https://wibest.in/restaurants/mysore/
+Hanumanthu Mess,Mysore,Mangalorean | Seafood | Chicken,4.5,Under Rs 500,"Salem Street, Mandi Mohalla",No,https://wibest.in/restaurants/mysore/
+Olive Garden,Mysore,Italian | Continental | Cafe,4.3,Rs 500-2000,"Ramanuja Road, Yadavagiri",No,https://wibest.in/restaurants/mysore/
+Le Olive Garden,Mysore,Multi-Cuisine | Continental | Garden Dining,4.4,Rs 500-2000,"Plot 113, KRS Road",No,https://wibest.in/restaurants/mysore/
+Mahesh Prasad,Mysore,South Indian | Vegetarian | Thali,4.4,Under Rs 500,"Sayyaji Rao Road, Devaraja Mohalla",No,https://wibest.in/restaurants/mysore/
+Tiger Trail,Mysore,North Indian | Mughlai | Multi-Cuisine,4.5,Rs 2000+,"Royal Orchid Metropole, JLB Road",Yes,https://wibest.in/restaurants/mysore/
+Old House,Mysore,Cafe | Continental | Italian,4.4,Rs 500-2000,"Vinoba Road, Jayalakshmipuram",No,https://wibest.in/restaurants/mysore/
+GTR (Gayatri Tiffin Room),Mysore,South Indian | Dosa | Breakfast,4.5,Under Rs 500,"Krishnamurthypuram, behind Mysuru Palace",No,https://wibest.in/restaurants/mysore/
