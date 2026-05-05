@@ -183,6 +183,40 @@ Post in r/india, r/IndiaSpeaks, r/IndiansR4Indians. Lead with the data, not the 
 
 ---
 
+---
+
+## Pitch 7 — "Beyond the Metros" (NEW, May 2026) → Tier-3 / regional angle
+
+**Best fit:** Mint, Scroll, ThePrint, FactorDaily, The Ken, Conde Nast Traveller, MoneyControl Healthcare. Anyone covering "non-metro India" beat or "Bharat vs India" framing.
+
+**Subject:** Data: India's tier-3 cities have a 29-point hospital quality gap — and a regional cuisine renaissance
+
+> Hi [Name],
+>
+> I run wibest.in, an independent India comparison platform. We just published a matched pair of research reports on India's tier-3 cities (Bhopal, Nagpur, Mysore, Vadodara, Patna) — the kind of cross-vertical data nobody compiles for free.
+>
+> Two findings I thought might interest you:
+>
+> **Healthcare:** NABH accreditation runs at 68% across 40 tier-3 hospitals we tracked, vs 97% in our metro cohort. That's a 29-percentage-point quality gap. Cardiology and orthopedics are now well-covered locally, but oncology and transplant care still push patients to metros (only 5/40 hospitals offer transplants). The AIIMS expansion programme is starting to close it in Bhopal and Patna.
+>
+> **Dining:** The pan-Indian metro menu (North Indian + Continental + Italian + Pan-Asian) hasn't crossed into tier-3 yet. 62% of tracked tier-3 restaurants lead with regional cuisine — Saoji in Nagpur, Bhopali Mughlai, Mysore-style tiffin, Gujarati thali, Bihari litti chokha. Regional-anchored restaurants outscore generic multi-cuisine 4.4 vs 4.3 in average ratings. The strongest single dish in our entire 500-restaurant dataset (4.6/5) is Vinayaka Mylari's butter dosa in Mysore.
+>
+> Both reports free to cite:
+> - Healthcare: https://wibest.in/reports/beyond-the-metros-tier3-hospitals-2026/
+> - Dining: https://wibest.in/reports/regional-cuisine-renaissance-tier3-india-2026/
+>
+> Happy to share underlying datasets (CSV) or break out a specific city if useful.
+>
+> [Your name]
+
+**Why this pitch is the strongest one in the playbook so far:**
+- Two reports = two angles in one email — journalist can pick whichever fits their week
+- "Beyond the Metros" framing aligns with the Bharat-vs-India narrative most outlets are already telling
+- Concrete numbers (29-point gap, 4.4 vs 4.3, 62%) — quotable headlines
+- Tier-3 cities are under-covered specifically because nobody else is doing this data work
+
+---
+
 ## Send order recommendation (Week 1)
 
 **Day 1 (Monday):** Send Pitch 1 to Surabhi Agarwal (ET) and Pitch 2 to Smitha Murthy (Hindu Business Line). Two outlets, two distinct angles.
