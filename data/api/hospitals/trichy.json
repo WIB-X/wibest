@@ -1,0 +1,16 @@
+{
+  "city": "Trichy",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/trichy/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Kauvery Hospital Trichy","city":"Trichy","type":"Private","beds":175,"rating":4.5,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Orthopedics","Critical Care"],"nabh":true,"address":"Tennur High Road, Tennur, Trichy 620017"},
+    {"name":"Apollo Speciality Hospital Trichy","city":"Trichy","type":"Private","beds":120,"rating":4.4,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Lake View Road, K K Nagar, Trichy 620021"},
+    {"name":"Kavery Medical Centre","city":"Trichy","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Nephrology","Renal Transplant","Gastroenterology"],"nabh":true,"address":"4/440 Alexandria Road, Cantonment, Trichy 620001"},
+    {"name":"Trichy SRM Medical College Hospital","city":"Trichy","type":"Trust","beds":1000,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Trauma"],"nabh":true,"address":"Irungalur, Trichy 621105"},
+    {"name":"Mahatma Gandhi Memorial Hospital","city":"Trichy","type":"Government","beds":1450,"rating":3.9,"specialties":["General Medicine","Cardiology","Surgery","Orthopedics","Trauma"],"nabh":false,"address":"Cantonment, Trichy 620001"},
+    {"name":"Sudha Hospital Trichy","city":"Trichy","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","IVF","Gynaecology"],"nabh":true,"address":"Sastri Road, Thillai Nagar, Trichy 620018"},
+    {"name":"ABC Hospital Trichy","city":"Trichy","type":"Private","beds":140,"rating":4.2,"specialties":["Cardiology","Internal Medicine","Orthopedics","Gastroenterology","Critical Care"],"nabh":true,"address":"Williams Road, Cantonment, Trichy 620001"},
+    {"name":"Vikram ENT Hospital","city":"Trichy","type":"Private","beds":80,"rating":4.4,"specialties":["ENT","Audiology","Cochlear Implant","Head and Neck Surgery"],"nabh":true,"address":"4 Beema Nagar, Trichy 620001"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "city": "Mangalore",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/mangalore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"KMC Hospital Mangalore","city":"Mangalore","type":"Trust","beds":600,"rating":4.5,"specialties":["Cardiology","Cardiothoracic Surgery","Oncology","Neurology","Transplant"],"nabh":true,"address":"Dr B R Ambedkar Circle, Mangalore 575001"},
+    {"name":"Father Muller Medical College Hospital","city":"Mangalore","type":"Trust","beds":1300,"rating":4.4,"specialties":["Cardiology","Oncology","Neurology","Orthopedics","Trauma"],"nabh":true,"address":"Father Muller Road, Kankanady, Mangalore 575002"},
+    {"name":"AJ Hospital Mangalore","city":"Mangalore","type":"Trust","beds":725,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurology","Renal Sciences"],"nabh":true,"address":"Kuntikan, NH-66, Mangalore 575004"},
+    {"name":"Yenepoya Specialty Hospital","city":"Mangalore","type":"Trust","beds":550,"rating":4.3,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Deralakatte, Mangalore 575018"},
+    {"name":"Indiana Hospital Mangalore","city":"Mangalore","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"Pumpwell, Mangalore 575002"},
+    {"name":"Unity Hospital Mangalore","city":"Mangalore","type":"Private","beds":170,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Critical Care","General Surgery"],"nabh":true,"address":"Highlands, Falnir, Mangalore 575002"},
+    {"name":"Mangala Hospital","city":"Mangalore","type":"Private","beds":120,"rating":4.2,"specialties":["Orthopedics","Joint Replacement","Spine Surgery","General Surgery","Internal Medicine"],"nabh":true,"address":"Kadri, Mangalore 575003"},
+    {"name":"Wenlock District Hospital","city":"Mangalore","type":"Government","beds":600,"rating":3.8,"specialties":["General Medicine","Surgery","Gynaecology","Paediatrics","Trauma"],"nabh":false,"address":"Hampankatta, Mangalore 575001"}
+  ]
+}

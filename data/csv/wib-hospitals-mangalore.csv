@@ -1,0 +1,9 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+KMC Hospital Mangalore,Mangalore,Trust,600,4.5,Cardiology | Cardiothoracic Surgery | Oncology | Neurology | Transplant,true,"Dr B R Ambedkar Circle, Mangalore 575001",https://wibest.in/hospitals/mangalore/
+Father Muller Medical College Hospital,Mangalore,Trust,1300,4.4,Cardiology | Oncology | Neurology | Orthopedics | Trauma,true,"Father Muller Road, Kankanady, Mangalore 575002",https://wibest.in/hospitals/mangalore/
+AJ Hospital Mangalore,Mangalore,Trust,725,4.4,Cardiology | Cardiac Surgery | Oncology | Neurology | Renal Sciences,true,"Kuntikan, NH-66, Mangalore 575004",https://wibest.in/hospitals/mangalore/
+Yenepoya Specialty Hospital,Mangalore,Trust,550,4.3,Cardiology | Neurology | Oncology | Orthopedics | Gastroenterology,true,"Deralakatte, Mangalore 575018",https://wibest.in/hospitals/mangalore/
+Indiana Hospital Mangalore,Mangalore,Private,200,4.3,Cardiology | Cardiac Surgery | Neurology | Orthopedics | Gynaecology,true,"Pumpwell, Mangalore 575002",https://wibest.in/hospitals/mangalore/
+Unity Hospital Mangalore,Mangalore,Private,170,4.3,Cardiology | Neurology | Orthopedics | Critical Care | General Surgery,true,"Highlands, Falnir, Mangalore 575002",https://wibest.in/hospitals/mangalore/
+Mangala Hospital,Mangalore,Private,120,4.2,Orthopedics | Joint Replacement | Spine Surgery | General Surgery | Internal Medicine,true,"Kadri, Mangalore 575003",https://wibest.in/hospitals/mangalore/
+Wenlock District Hospital,Mangalore,Government,600,3.8,General Medicine | Surgery | Gynaecology | Paediatrics | Trauma,false,"Hampankatta, Mangalore 575001",https://wibest.in/hospitals/mangalore/

@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Giri Manja's,Mangalore,Mangalorean | Seafood | Konkani,4.6,Rs 500-2000,"Bunder, near Old Port",No,https://wibest.in/restaurants/mangalore/
+Machali,Mangalore,Mangalorean | Seafood | Coastal,4.5,Rs 500-2000,"Maximus Mall, Light House Hill Road",No,https://wibest.in/restaurants/mangalore/
+Ocean Pearl,Mangalore,Mangalorean | Continental | Seafood,4.4,Rs 2000+,"Hotel Ocean Pearl, Navabharath Circle",Yes,https://wibest.in/restaurants/mangalore/
+Hao Ming,Mangalore,Chinese | Pan-Asian | Cantonese,4.4,Rs 500-2000,"Bharath Mall, Bejai",No,https://wibest.in/restaurants/mangalore/
+Spindrift,Mangalore,Multi-Cuisine | Continental | Cafe,4.4,Rs 500-2000,"Goldfinch Hotel, Bunts Hostel Road",No,https://wibest.in/restaurants/mangalore/
+Pabbas Ideal Ice Cream,Mangalore,Desserts | Ice Cream | Sweets,4.5,Under Rs 500,Lalbagh Main Road,Yes,https://wibest.in/restaurants/mangalore/
+Hotel Janatha Deluxe,Mangalore,Mangalorean | Vegetarian | South Indian,4.3,Under Rs 500,"K S Rao Road, Hampankatta",Yes,https://wibest.in/restaurants/mangalore/
+Panchakajjaya,Mangalore,Mangalorean | South Indian | Vegetarian,4.4,Under Rs 500,"Balmatta, near Kankanady",Yes,https://wibest.in/restaurants/mangalore/
+Liquid Lounge,Mangalore,Cafe | Continental | Italian,4.3,Rs 500-2000,"Bharath Mall, Bejai",No,https://wibest.in/restaurants/mangalore/
+Gajalee Mangalore,Mangalore,Mangalorean | Seafood | Goan,4.4,Rs 500-2000,"Hotel Deepa Comforts, M G Road",No,https://wibest.in/restaurants/mangalore/

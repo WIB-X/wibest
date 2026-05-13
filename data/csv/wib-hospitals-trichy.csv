@@ -1,0 +1,9 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+Kauvery Hospital Trichy,Trichy,Private,175,4.5,Cardiology | Cardiac Surgery | Neurosciences | Orthopedics | Critical Care,true,"Tennur High Road, Tennur, Trichy 620017",https://wibest.in/hospitals/trichy/
+Apollo Speciality Hospital Trichy,Trichy,Private,120,4.4,Cardiology | Neurology | Oncology | Orthopedics | Gastroenterology,true,"Lake View Road, K K Nagar, Trichy 620021",https://wibest.in/hospitals/trichy/
+Kavery Medical Centre,Trichy,Private,200,4.3,Cardiology | Cardiothoracic Surgery | Nephrology | Renal Transplant | Gastroenterology,true,"4/440 Alexandria Road, Cantonment, Trichy 620001",https://wibest.in/hospitals/trichy/
+Trichy SRM Medical College Hospital,Trichy,Trust,1000,4.2,Cardiology | Neurology | Oncology | Orthopedics | Trauma,true,"Irungalur, Trichy 621105",https://wibest.in/hospitals/trichy/
+Mahatma Gandhi Memorial Hospital,Trichy,Government,1450,3.9,General Medicine | Cardiology | Surgery | Orthopedics | Trauma,false,"Cantonment, Trichy 620001",https://wibest.in/hospitals/trichy/
+Sudha Hospital Trichy,Trichy,Private,120,4.3,Cardiology | Neurology | Orthopedics | IVF | Gynaecology,true,"Sastri Road, Thillai Nagar, Trichy 620018",https://wibest.in/hospitals/trichy/
+ABC Hospital Trichy,Trichy,Private,140,4.2,Cardiology | Internal Medicine | Orthopedics | Gastroenterology | Critical Care,true,"Williams Road, Cantonment, Trichy 620001",https://wibest.in/hospitals/trichy/
+Vikram ENT Hospital,Trichy,Private,80,4.4,ENT | Audiology | Cochlear Implant | Head and Neck Surgery,true,"4 Beema Nagar, Trichy 620001",https://wibest.in/hospitals/trichy/

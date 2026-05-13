@@ -1,0 +1,18 @@
+{
+  "city": "Mangalore",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/mangalore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Giri Manja's","city":"Mangalore","cuisines":["Mangalorean","Seafood","Konkani"],"rating":4.6,"budget_tier":"500_to_2000","address":"Bunder, near Old Port","vegetarian":false},
+    {"name":"Machali","city":"Mangalore","cuisines":["Mangalorean","Seafood","Coastal"],"rating":4.5,"budget_tier":"500_to_2000","address":"Maximus Mall, Light House Hill Road","vegetarian":false},
+    {"name":"Ocean Pearl","city":"Mangalore","cuisines":["Mangalorean","Continental","Seafood"],"rating":4.4,"budget_tier":"above_2000","address":"Hotel Ocean Pearl, Navabharath Circle","vegetarian":true},
+    {"name":"Hao Ming","city":"Mangalore","cuisines":["Chinese","Pan-Asian","Cantonese"],"rating":4.4,"budget_tier":"500_to_2000","address":"Bharath Mall, Bejai","vegetarian":false},
+    {"name":"Spindrift","city":"Mangalore","cuisines":["Multi-Cuisine","Continental","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"Goldfinch Hotel, Bunts Hostel Road","vegetarian":false},
+    {"name":"Pabbas Ideal Ice Cream","city":"Mangalore","cuisines":["Desserts","Ice Cream","Sweets"],"rating":4.5,"budget_tier":"under_500","address":"Lalbagh Main Road","vegetarian":true},
+    {"name":"Hotel Janatha Deluxe","city":"Mangalore","cuisines":["Mangalorean","Vegetarian","South Indian"],"rating":4.3,"budget_tier":"under_500","address":"K S Rao Road, Hampankatta","vegetarian":true},
+    {"name":"Panchakajjaya","city":"Mangalore","cuisines":["Mangalorean","South Indian","Vegetarian"],"rating":4.4,"budget_tier":"under_500","address":"Balmatta, near Kankanady","vegetarian":true},
+    {"name":"Liquid Lounge","city":"Mangalore","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Bharath Mall, Bejai","vegetarian":false},
+    {"name":"Gajalee Mangalore","city":"Mangalore","cuisines":["Mangalorean","Seafood","Goan"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hotel Deepa Comforts, M G Road","vegetarian":false}
+  ]
+}

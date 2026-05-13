@@ -3,7 +3,7 @@
   "version": "2026-05-06",
   "license": "CC-BY-4.0",
   "source": "https://wibest.in/data/",
-  "count": 535,
+  "count": 545,
   "data": [
     {"name":"Bukhara","city":"Delhi","cuisines":["North Indian","Mughlai","Fine Dining"],"rating":4.7,"budget_tier":"above_2000","address":"ITC Maurya, Sardar Patel Marg","vegetarian":true},
     {"name":"Indian Accent","city":"Delhi","cuisines":["Modern Indian","Fine Dining"],"rating":4.8,"budget_tier":"above_2000","address":"The Lodhi, Lodhi Road","vegetarian":true},
@@ -539,6 +539,16 @@
     {"name":"Pure South Indian Restaurant","city":"Surat","cuisines":["South Indian","Vegetarian","Dosa"],"rating":4.4,"budget_tier":"under_500","address":"Nanpura, opposite Saiba Hospital","vegetarian":true},
     {"name":"Cafe Hosh","city":"Surat","cuisines":["Cafe","Continental","Italian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Citylight Road, Parle Point","vegetarian":false},
     {"name":"Sufiyana","city":"Surat","cuisines":["Mughlai","North Indian","Biryani"],"rating":4.3,"budget_tier":"500_to_2000","address":"Adajan Patia, opposite Hari Krishna Diamonds","vegetarian":false},
-    {"name":"Jugaadi Adda","city":"Surat","cuisines":["North Indian","Continental","Cafe"],"rating":4.3,"budget_tier":"500_to_2000","address":"Piplod, near LP Savani School","vegetarian":false}
+    {"name":"Jugaadi Adda","city":"Surat","cuisines":["North Indian","Continental","Cafe"],"rating":4.3,"budget_tier":"500_to_2000","address":"Piplod, near LP Savani School","vegetarian":false},
+    {"name":"Giri Manja's","city":"Mangalore","cuisines":["Mangalorean","Seafood","Konkani"],"rating":4.6,"budget_tier":"500_to_2000","address":"Bunder, near Old Port","vegetarian":false},
+    {"name":"Machali","city":"Mangalore","cuisines":["Mangalorean","Seafood","Coastal"],"rating":4.5,"budget_tier":"500_to_2000","address":"Maximus Mall, Light House Hill Road","vegetarian":false},
+    {"name":"Ocean Pearl","city":"Mangalore","cuisines":["Mangalorean","Continental","Seafood"],"rating":4.4,"budget_tier":"above_2000","address":"Hotel Ocean Pearl, Navabharath Circle","vegetarian":true},
+    {"name":"Hao Ming","city":"Mangalore","cuisines":["Chinese","Pan-Asian","Cantonese"],"rating":4.4,"budget_tier":"500_to_2000","address":"Bharath Mall, Bejai","vegetarian":false},
+    {"name":"Spindrift","city":"Mangalore","cuisines":["Multi-Cuisine","Continental","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"Goldfinch Hotel, Bunts Hostel Road","vegetarian":false},
+    {"name":"Pabbas Ideal Ice Cream","city":"Mangalore","cuisines":["Desserts","Ice Cream","Sweets"],"rating":4.5,"budget_tier":"under_500","address":"Lalbagh Main Road","vegetarian":true},
+    {"name":"Hotel Janatha Deluxe","city":"Mangalore","cuisines":["Mangalorean","Vegetarian","South Indian"],"rating":4.3,"budget_tier":"under_500","address":"K S Rao Road, Hampankatta","vegetarian":true},
+    {"name":"Panchakajjaya","city":"Mangalore","cuisines":["Mangalorean","South Indian","Vegetarian"],"rating":4.4,"budget_tier":"under_500","address":"Balmatta, near Kankanady","vegetarian":true},
+    {"name":"Liquid Lounge","city":"Mangalore","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Bharath Mall, Bejai","vegetarian":false},
+    {"name":"Gajalee Mangalore","city":"Mangalore","cuisines":["Mangalorean","Seafood","Goan"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hotel Deepa Comforts, M G Road","vegetarian":false}
   ]
 }
