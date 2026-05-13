@@ -1,0 +1,16 @@
+{
+  "city": "Bhubaneswar",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/bhubaneswar/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"AIIMS Bhubaneswar","city":"Bhubaneswar","type":"Government","beds":960,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Nephrology","Trauma"],"nabh":false,"address":"Sijua, Patrapada, Bhubaneswar 751019"},
+    {"name":"Apollo Hospital Bhubaneswar","city":"Bhubaneswar","type":"Private","beds":330,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Renal Sciences"],"nabh":true,"address":"Plot 251, Sainik School Road, Unit 15, Bhubaneswar 751005"},
+    {"name":"KIMS Bhubaneswar","city":"Bhubaneswar","type":"Trust","beds":1450,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Oncology","Neurosurgery","Transplant"],"nabh":true,"address":"KIIT Campus, Patia, Bhubaneswar 751024"},
+    {"name":"AMRI Hospital Bhubaneswar","city":"Bhubaneswar","type":"Private","beds":175,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Plot 1, Beside Satyasai Enclave, Khandagiri, Bhubaneswar 751030"},
+    {"name":"SUM Hospital Bhubaneswar","city":"Bhubaneswar","type":"Trust","beds":1200,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Critical Care"],"nabh":true,"address":"Kalinga Nagar, Bhubaneswar 751003"},
+    {"name":"Care Hospital Bhubaneswar","city":"Bhubaneswar","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Renal Sciences","Critical Care","Internal Medicine"],"nabh":true,"address":"Plot 1, Chakeisihani, Mancheswar, Bhubaneswar 751017"},
+    {"name":"Kalinga Hospital","city":"Bhubaneswar","type":"Trust","beds":425,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gynaecology"],"nabh":true,"address":"Nalco Square, IRC Village, Bhubaneswar 751015"},
+    {"name":"Capital Hospital Bhubaneswar","city":"Bhubaneswar","type":"Government","beds":680,"rating":3.9,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Trauma"],"nabh":false,"address":"Unit 6, Bhubaneswar 751001"}
+  ]
+}

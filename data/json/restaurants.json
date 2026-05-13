@@ -3,7 +3,7 @@
   "version": "2026-05-06",
   "license": "CC-BY-4.0",
   "source": "https://wibest.in/data/",
-  "count": 545,
+  "count": 565,
   "data": [
     {"name":"Bukhara","city":"Delhi","cuisines":["North Indian","Mughlai","Fine Dining"],"rating":4.7,"budget_tier":"above_2000","address":"ITC Maurya, Sardar Patel Marg","vegetarian":true},
     {"name":"Indian Accent","city":"Delhi","cuisines":["Modern Indian","Fine Dining"],"rating":4.8,"budget_tier":"above_2000","address":"The Lodhi, Lodhi Road","vegetarian":true},
@@ -549,6 +549,26 @@
     {"name":"Hotel Janatha Deluxe","city":"Mangalore","cuisines":["Mangalorean","Vegetarian","South Indian"],"rating":4.3,"budget_tier":"under_500","address":"K S Rao Road, Hampankatta","vegetarian":true},
     {"name":"Panchakajjaya","city":"Mangalore","cuisines":["Mangalorean","South Indian","Vegetarian"],"rating":4.4,"budget_tier":"under_500","address":"Balmatta, near Kankanady","vegetarian":true},
     {"name":"Liquid Lounge","city":"Mangalore","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Bharath Mall, Bejai","vegetarian":false},
-    {"name":"Gajalee Mangalore","city":"Mangalore","cuisines":["Mangalorean","Seafood","Goan"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hotel Deepa Comforts, M G Road","vegetarian":false}
+    {"name":"Gajalee Mangalore","city":"Mangalore","cuisines":["Mangalorean","Seafood","Goan"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hotel Deepa Comforts, M G Road","vegetarian":false},
+    {"name":"Dalma Restaurant","city":"Bhubaneswar","cuisines":["Odia","Vegetarian","Thali"],"rating":4.6,"budget_tier":"500_to_2000","address":"Saheed Nagar, near AG Square","vegetarian":true},
+    {"name":"Hare Krishna Restaurant","city":"Bhubaneswar","cuisines":["South Indian","Vegetarian","Thali"],"rating":4.5,"budget_tier":"500_to_2000","address":"Master Canteen Square, Sahid Nagar","vegetarian":true},
+    {"name":"Truptee","city":"Bhubaneswar","cuisines":["Odia","Vegetarian","Sweets"],"rating":4.4,"budget_tier":"under_500","address":"Saheed Nagar Main Road","vegetarian":true},
+    {"name":"Mauli Tiffin Centre","city":"Bhubaneswar","cuisines":["Odia","Bengali","Sweets"],"rating":4.5,"budget_tier":"under_500","address":"Old Town, near Lingaraj Temple","vegetarian":true},
+    {"name":"Kanika Mayfair","city":"Bhubaneswar","cuisines":["Odia","Continental","Multi-Cuisine"],"rating":4.4,"budget_tier":"above_2000","address":"Mayfair Lagoon, Jaydev Vihar","vegetarian":true},
+    {"name":"Chappan Bhog","city":"Bhubaneswar","cuisines":["Odia","Sweets","Vegetarian"],"rating":4.5,"budget_tier":"under_500","address":"Master Canteen Square","vegetarian":true},
+    {"name":"Tangerine 9","city":"Bhubaneswar","cuisines":["Continental","Italian","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"Esplanade One Mall, Rasulgarh","vegetarian":false},
+    {"name":"Wildflower at Mayfair","city":"Bhubaneswar","cuisines":["Multi-Cuisine","Continental","Asian"],"rating":4.5,"budget_tier":"above_2000","address":"Mayfair Lagoon, Jaydev Vihar","vegetarian":false},
+    {"name":"Cafe Coffee Day Janpath","city":"Bhubaneswar","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Janpath Road, Master Canteen","vegetarian":false},
+    {"name":"Odisha Hotel","city":"Bhubaneswar","cuisines":["Odia","Bengali","Thali"],"rating":4.5,"budget_tier":"under_500","address":"Bapuji Nagar, near Forest Park","vegetarian":false},
+    {"name":"Khorikaa","city":"Guwahati","cuisines":["Assamese","Naga","Tribal"],"rating":4.6,"budget_tier":"500_to_2000","address":"GS Road, Bhangagarh","vegetarian":false},
+    {"name":"Paradise Restaurant","city":"Guwahati","cuisines":["Assamese","Bengali","Multi-Cuisine"],"rating":4.4,"budget_tier":"500_to_2000","address":"GNB Road, Silpukhuri","vegetarian":false},
+    {"name":"Heritage Khorikaa","city":"Guwahati","cuisines":["Assamese","Tribal","Vegetarian"],"rating":4.5,"budget_tier":"500_to_2000","address":"6 Mile, VIP Road","vegetarian":false},
+    {"name":"Beatrouts","city":"Guwahati","cuisines":["Cafe","Continental","Italian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Zoo Road, near Hub Mall","vegetarian":false},
+    {"name":"Kiran's Kitchen","city":"Guwahati","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Sundarpur, Beltola","vegetarian":false},
+    {"name":"Mainland China Guwahati","city":"Guwahati","cuisines":["Chinese","Asian","Pan-Asian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Hub Mall, Zoo Road","vegetarian":false},
+    {"name":"Sundarban Resort","city":"Guwahati","cuisines":["Bengali","Assamese","Multi-Cuisine"],"rating":4.3,"budget_tier":"above_2000","address":"VIP Road, near Khanapara","vegetarian":false},
+    {"name":"Cafe Hendrix","city":"Guwahati","cuisines":["Cafe","Continental","Mexican"],"rating":4.4,"budget_tier":"500_to_2000","address":"GS Road, Christian Basti","vegetarian":false},
+    {"name":"Naga Kitchen","city":"Guwahati","cuisines":["Naga","Tribal","Smoked Meat"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hatigaon, Lachit Nagar","vegetarian":false},
+    {"name":"Saffron Mayfair","city":"Guwahati","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Vivanta Guwahati, Khanapara","vegetarian":false}
   ]
 }

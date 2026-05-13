@@ -1,0 +1,9 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+AIIMS Bhubaneswar,Bhubaneswar,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Nephrology | Trauma,false,"Sijua, Patrapada, Bhubaneswar 751019",https://wibest.in/hospitals/bhubaneswar/
+Apollo Hospital Bhubaneswar,Bhubaneswar,Private,330,4.4,Cardiology | Cardiac Surgery | Neurosciences | Oncology | Renal Sciences,true,"Plot 251, Sainik School Road, Unit 15, Bhubaneswar 751005",https://wibest.in/hospitals/bhubaneswar/
+KIMS Bhubaneswar,Bhubaneswar,Trust,1450,4.3,Cardiology | Cardiothoracic Surgery | Oncology | Neurosurgery | Transplant,true,"KIIT Campus, Patia, Bhubaneswar 751024",https://wibest.in/hospitals/bhubaneswar/
+AMRI Hospital Bhubaneswar,Bhubaneswar,Private,175,4.3,Cardiology | Cardiac Surgery | Neurology | Orthopedics | Gastroenterology,true,"Plot 1, Beside Satyasai Enclave, Khandagiri, Bhubaneswar 751030",https://wibest.in/hospitals/bhubaneswar/
+SUM Hospital Bhubaneswar,Bhubaneswar,Trust,1200,4.2,Cardiology | Neurology | Oncology | Orthopedics | Critical Care,true,"Kalinga Nagar, Bhubaneswar 751003",https://wibest.in/hospitals/bhubaneswar/
+Care Hospital Bhubaneswar,Bhubaneswar,Private,200,4.3,Cardiology | Cardiac Surgery | Renal Sciences | Critical Care | Internal Medicine,true,"Plot 1, Chakeisihani, Mancheswar, Bhubaneswar 751017",https://wibest.in/hospitals/bhubaneswar/
+Kalinga Hospital,Bhubaneswar,Trust,425,4.2,Cardiology | Neurology | Oncology | Orthopedics | Gynaecology,true,"Nalco Square, IRC Village, Bhubaneswar 751015",https://wibest.in/hospitals/bhubaneswar/
+Capital Hospital Bhubaneswar,Bhubaneswar,Government,680,3.9,General Medicine | Surgery | Cardiology | Orthopedics | Trauma,false,"Unit 6, Bhubaneswar 751001",https://wibest.in/hospitals/bhubaneswar/

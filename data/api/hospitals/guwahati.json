@@ -1,0 +1,16 @@
+{
+  "city": "Guwahati",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/guwahati/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Apollo Hospital Guwahati","city":"Guwahati","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Critical Care"],"nabh":true,"address":"Lotus Tower, GS Road, Christian Basti, Guwahati 781005"},
+    {"name":"GNRC Hospital Dispur","city":"Guwahati","type":"Trust","beds":300,"rating":4.4,"specialties":["Neurosurgery","Neurology","Cardiology","Spine Surgery","Critical Care"],"nabh":true,"address":"Dispur, GS Road, Guwahati 781006"},
+    {"name":"Down Town Hospital","city":"Guwahati","type":"Private","beds":265,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"GS Road, Dispur, Guwahati 781006"},
+    {"name":"Hayat Hospital Guwahati","city":"Guwahati","type":"Private","beds":175,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Critical Care"],"nabh":true,"address":"Odalbakra, Lokhra Main Road, Guwahati 781034"},
+    {"name":"Excelcare Hospitals","city":"Guwahati","type":"Private","beds":230,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Boragaon, NH-37, Guwahati 781033"},
+    {"name":"Nemcare Hospital","city":"Guwahati","type":"Private","beds":140,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Orthopedics","Gynaecology","Critical Care"],"nabh":true,"address":"Bhangagarh, GS Road, Guwahati 781005"},
+    {"name":"Sun Valley Hospital","city":"Guwahati","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiology","Internal Medicine","Pulmonology","Critical Care","Gastroenterology"],"nabh":true,"address":"Kahilipara, GS Road, Guwahati 781019"},
+    {"name":"Ayursundra Superspeciality Hospital","city":"Guwahati","type":"Private","beds":210,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurology","Orthopedics","Bariatric Surgery"],"nabh":true,"address":"VIP Road, Six Mile, Guwahati 781022"}
+  ]
+}

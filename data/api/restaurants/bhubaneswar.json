@@ -1,0 +1,18 @@
+{
+  "city": "Bhubaneswar",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/bhubaneswar/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Dalma Restaurant","city":"Bhubaneswar","cuisines":["Odia","Vegetarian","Thali"],"rating":4.6,"budget_tier":"500_to_2000","address":"Saheed Nagar, near AG Square","vegetarian":true},
+    {"name":"Hare Krishna Restaurant","city":"Bhubaneswar","cuisines":["South Indian","Vegetarian","Thali"],"rating":4.5,"budget_tier":"500_to_2000","address":"Master Canteen Square, Sahid Nagar","vegetarian":true},
+    {"name":"Truptee","city":"Bhubaneswar","cuisines":["Odia","Vegetarian","Sweets"],"rating":4.4,"budget_tier":"under_500","address":"Saheed Nagar Main Road","vegetarian":true},
+    {"name":"Mauli Tiffin Centre","city":"Bhubaneswar","cuisines":["Odia","Bengali","Sweets"],"rating":4.5,"budget_tier":"under_500","address":"Old Town, near Lingaraj Temple","vegetarian":true},
+    {"name":"Kanika Mayfair","city":"Bhubaneswar","cuisines":["Odia","Continental","Multi-Cuisine"],"rating":4.4,"budget_tier":"above_2000","address":"Mayfair Lagoon, Jaydev Vihar","vegetarian":true},
+    {"name":"Chappan Bhog","city":"Bhubaneswar","cuisines":["Odia","Sweets","Vegetarian"],"rating":4.5,"budget_tier":"under_500","address":"Master Canteen Square","vegetarian":true},
+    {"name":"Tangerine 9","city":"Bhubaneswar","cuisines":["Continental","Italian","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"Esplanade One Mall, Rasulgarh","vegetarian":false},
+    {"name":"Wildflower at Mayfair","city":"Bhubaneswar","cuisines":["Multi-Cuisine","Continental","Asian"],"rating":4.5,"budget_tier":"above_2000","address":"Mayfair Lagoon, Jaydev Vihar","vegetarian":false},
+    {"name":"Cafe Coffee Day Janpath","city":"Bhubaneswar","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Janpath Road, Master Canteen","vegetarian":false},
+    {"name":"Odisha Hotel","city":"Bhubaneswar","cuisines":["Odia","Bengali","Thali"],"rating":4.5,"budget_tier":"under_500","address":"Bapuji Nagar, near Forest Park","vegetarian":false}
+  ]
+}

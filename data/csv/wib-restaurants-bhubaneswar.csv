@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Dalma Restaurant,Bhubaneswar,Odia | Vegetarian | Thali,4.6,Rs 500-2000,"Saheed Nagar, near AG Square",Yes,https://wibest.in/restaurants/bhubaneswar/
+Hare Krishna Restaurant,Bhubaneswar,South Indian | Vegetarian | Thali,4.5,Rs 500-2000,"Master Canteen Square, Sahid Nagar",Yes,https://wibest.in/restaurants/bhubaneswar/
+Truptee,Bhubaneswar,Odia | Vegetarian | Sweets,4.4,Under Rs 500,Saheed Nagar Main Road,Yes,https://wibest.in/restaurants/bhubaneswar/
+Mauli Tiffin Centre,Bhubaneswar,Odia | Bengali | Sweets,4.5,Under Rs 500,"Old Town, near Lingaraj Temple",Yes,https://wibest.in/restaurants/bhubaneswar/
+Kanika Mayfair,Bhubaneswar,Odia | Continental | Multi-Cuisine,4.4,Rs 2000+,"Mayfair Lagoon, Jaydev Vihar",Yes,https://wibest.in/restaurants/bhubaneswar/
+Chappan Bhog,Bhubaneswar,Odia | Sweets | Vegetarian,4.5,Under Rs 500,Master Canteen Square,Yes,https://wibest.in/restaurants/bhubaneswar/
+Tangerine 9,Bhubaneswar,Continental | Italian | Cafe,4.4,Rs 500-2000,"Esplanade One Mall, Rasulgarh",No,https://wibest.in/restaurants/bhubaneswar/
+Wildflower at Mayfair,Bhubaneswar,Multi-Cuisine | Continental | Asian,4.5,Rs 2000+,"Mayfair Lagoon, Jaydev Vihar",No,https://wibest.in/restaurants/bhubaneswar/
+Cafe Coffee Day Janpath,Bhubaneswar,Cafe | Continental | Desserts,4.1,Rs 500-2000,"Janpath Road, Master Canteen",No,https://wibest.in/restaurants/bhubaneswar/
+Odisha Hotel,Bhubaneswar,Odia | Bengali | Thali,4.5,Under Rs 500,"Bapuji Nagar, near Forest Park",No,https://wibest.in/restaurants/bhubaneswar/

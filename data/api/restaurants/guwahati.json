@@ -1,0 +1,18 @@
+{
+  "city": "Guwahati",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/guwahati/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Khorikaa","city":"Guwahati","cuisines":["Assamese","Naga","Tribal"],"rating":4.6,"budget_tier":"500_to_2000","address":"GS Road, Bhangagarh","vegetarian":false},
+    {"name":"Paradise Restaurant","city":"Guwahati","cuisines":["Assamese","Bengali","Multi-Cuisine"],"rating":4.4,"budget_tier":"500_to_2000","address":"GNB Road, Silpukhuri","vegetarian":false},
+    {"name":"Heritage Khorikaa","city":"Guwahati","cuisines":["Assamese","Tribal","Vegetarian"],"rating":4.5,"budget_tier":"500_to_2000","address":"6 Mile, VIP Road","vegetarian":false},
+    {"name":"Beatrouts","city":"Guwahati","cuisines":["Cafe","Continental","Italian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Zoo Road, near Hub Mall","vegetarian":false},
+    {"name":"Kiran's Kitchen","city":"Guwahati","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Sundarpur, Beltola","vegetarian":false},
+    {"name":"Mainland China Guwahati","city":"Guwahati","cuisines":["Chinese","Asian","Pan-Asian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Hub Mall, Zoo Road","vegetarian":false},
+    {"name":"Sundarban Resort","city":"Guwahati","cuisines":["Bengali","Assamese","Multi-Cuisine"],"rating":4.3,"budget_tier":"above_2000","address":"VIP Road, near Khanapara","vegetarian":false},
+    {"name":"Cafe Hendrix","city":"Guwahati","cuisines":["Cafe","Continental","Mexican"],"rating":4.4,"budget_tier":"500_to_2000","address":"GS Road, Christian Basti","vegetarian":false},
+    {"name":"Naga Kitchen","city":"Guwahati","cuisines":["Naga","Tribal","Smoked Meat"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hatigaon, Lachit Nagar","vegetarian":false},
+    {"name":"Saffron Mayfair","city":"Guwahati","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Vivanta Guwahati, Khanapara","vegetarian":false}
+  ]
+}
