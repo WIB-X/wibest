@@ -9,7 +9,8 @@
 <meta property="og:title" content="WIB Open Data — Free Indian Hospital & Restaurant Datasets">
 <meta property="og:description" content="Free CSV datasets on Indian hospitals (346) and restaurants (500). Combined files + per-city slices. Attribution required.">
 <meta property="og:url" content="https://wibest.in/data/">
-<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta property="og:image" content="https://wibest.in/og/open-data.svg">
+<meta name="twitter:image" content="https://wibest.in/og/open-data.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@wibest_in">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -65,7 +66,8 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
     "@type": "DataDownload",
     "encodingFormat": "text/csv",
     "contentUrl": "https://wibest.in/data/csv/wib-hospitals-all.csv"
-  }
+  },
+  "alternateName": ["WIB Hospitals 2026", "Indian hospitals dataset"]
 }
 </script>
 <script type="application/ld+json">
@@ -99,21 +101,27 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
 
   <h2>Featured datasets</h2>
 
-  <a class="featured-card" href="/data/csv/wib-hospitals-all.csv" download>
+  <div class="featured-card" style="cursor:default">
     <span class="badge">Healthcare</span>
     <h3>WIB India Hospitals 2026</h3>
-    <div class="meta">346 multi-specialty hospitals · 27 cities · 9 columns (name, city, type, beds, rating, specialties, NABH, address, source URL)</div>
-    <span class="dl-btn">Download CSV (combined) &darr;</span>
-    <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city below</span>
-  </a>
+    <div class="meta">346 multi-specialty hospitals · 27 cities · 9 fields (name, city, type, beds, rating, specialties, NABH, address, source URL)</div>
+    <a class="dl-btn" href="/data/csv/wib-hospitals-all.csv" download>Download CSV &darr;</a>
+    <a class="dl-btn" href="/data/json/hospitals.json" download style="background:#16a34a;margin-left:6px">Download JSON &darr;</a>
+    <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city slice below</span>
+  </div>
 
-  <a class="featured-card" href="/data/csv/wib-restaurants-all.csv" download>
+  <div class="featured-card" style="cursor:default">
     <span class="badge" style="background:#d97706">Food &amp; Dining</span>
     <h3>WIB India Restaurants 2026</h3>
-    <div class="meta">500 top-rated restaurants · 20 cities · 8 columns (name, city, cuisines, rating, budget, address, vegetarian, source URL)</div>
-    <span class="dl-btn">Download CSV (combined) &darr;</span>
-    <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city below</span>
-  </a>
+    <div class="meta">500 top-rated restaurants · 20 cities · 8 fields (name, city, cuisines, rating, budget, address, vegetarian, source URL)</div>
+    <a class="dl-btn" href="/data/csv/wib-restaurants-all.csv" download>Download CSV &darr;</a>
+    <a class="dl-btn" href="/data/json/restaurants.json" download style="background:#16a34a;margin-left:6px">Download JSON &darr;</a>
+    <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city slice below</span>
+  </div>
+
+  <div style="padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:18px;font-size:14px;color:var(--text-secondary);line-height:1.6">
+    <strong style="font-family:Outfit,sans-serif;color:var(--text-primary)">For developers:</strong> JSON variants include a header object with <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">name</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">version</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">license</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">count</code>, and a <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">data</code> array — drop-in compatible with most fetch/axios pipelines. CORS is open for client-side use.
+  </div>
 
   <h2>Per-city slices — Hospitals</h2>
   <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px">Same schema as combined file, scoped to one city. Smaller files for focused analysis.</p>

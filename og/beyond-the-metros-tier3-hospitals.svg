@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e"/>
+      <stop offset="60%" stop-color="#0e7490"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="gap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="2" rx="20"/>
+
+  <text x="80" y="115" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="rgba(255,255,255,0.85)" letter-spacing="4">WIB · RESEARCH REPORT</text>
+
+  <text x="80" y="220" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="78" font-weight="900" fill="#ffffff" letter-spacing="-2">Beyond the Metros</text>
+  <text x="80" y="285" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="34" font-weight="500" fill="rgba(255,255,255,0.92)">Hospital access in India's tier-3 cities</text>
+
+  <rect x="80" y="340" width="640" height="160" fill="rgba(0,0,0,0.25)" rx="14"/>
+  <text x="110" y="395" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="100" font-weight="900" fill="url(#gap)" letter-spacing="-3">29</text>
+  <text x="280" y="385" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">point NABH gap</text>
+  <text x="280" y="425" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" fill="rgba(255,255,255,0.8)">Tier-3 (68%) vs metros (97%)</text>
+  <text x="110" y="475" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="500" fill="rgba(255,255,255,0.78)">40 hospitals · 5 cities · Bhopal Nagpur Mysore Vadodara Patna</text>
+
+  <text x="80" y="568" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="rgba(255,255,255,0.75)" letter-spacing="2">wibest.in/reports</text>
+</svg>
