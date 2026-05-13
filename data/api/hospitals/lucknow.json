@@ -1,0 +1,18 @@
+{
+  "city": "Lucknow",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/lucknow/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Sanjay Gandhi Postgraduate Institute of Medical Sciences (SGPGIMS)","city":"Lucknow","type":"Government","beds":1080,"rating":4.7,"specialties":["Cardiac Sciences","Neurology","Oncology","Transplant","Liver Transplant"],"nabh":true,"address":"Raebareli Road, Lucknow 226014"},
+    {"name":"King George's Medical University (KGMU)","city":"Lucknow","type":"Government","beds":4500,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Trauma","Paediatrics"],"nabh":true,"address":"Chowk, Lucknow 226003"},
+    {"name":"Medanta Lucknow","city":"Lucknow","type":"Private","beds":450,"rating":4.6,"specialties":["Cardiac Sciences","Neurology","Oncology","Liver Transplant","Robotic Surgery"],"nabh":true,"address":"Sector A, Pocket 1, Sushant Golf City, Lucknow 226030"},
+    {"name":"Apollomedics Super Speciality Hospital Lucknow","city":"Lucknow","type":"Private","beds":340,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Kanpur Road, Lucknow 226012"},
+    {"name":"Sahara Hospital","city":"Lucknow","type":"Private","beds":325,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Viraj Khand, Gomti Nagar, Lucknow 226010"},
+    {"name":"Mayo Medical Centre","city":"Lucknow","type":"Private","beds":170,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Faizabad Road, Indira Nagar, Lucknow 226016"},
+    {"name":"Vivekananda Polyclinic and Institute of Medical Sciences","city":"Lucknow","type":"Trust","beds":300,"rating":4.4,"specialties":["General Medicine","Cardiac Sciences","Orthopedics","Surgery"],"nabh":true,"address":"5, Vivekananda Marg, Nirala Nagar, Lucknow 226020"},
+    {"name":"Charak Hospital","city":"Lucknow","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"Hardoi Road, Dubagga, Lucknow 226003"},
+    {"name":"Era's Lucknow Medical College Hospital","city":"Lucknow","type":"Trust","beds":830,"rating":4.2,"specialties":["Cardiac Sciences","Neurology","Orthopedics","General Medicine","Paediatrics"],"nabh":true,"address":"Sarfarazganj, Hardoi Road, Lucknow 226003"},
+    {"name":"Regency Hospital Lucknow","city":"Lucknow","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Critical Care"],"nabh":true,"address":"Tedhi Pulia, Sitapur Road, Lucknow 226020"}
+  ]
+}

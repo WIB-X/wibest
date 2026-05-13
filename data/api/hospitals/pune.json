@@ -1,0 +1,32 @@
+{
+  "city": "Pune",
+  "count": 24,
+  "source": "https://wibest.in/hospitals/pune/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Ruby Hall Clinic","city":"Pune","type":"Private","beds":750,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Transplant","Orthopedics"],"nabh":true,"address":"40, Sassoon Road, Pune 411001"},
+    {"name":"Sahyadri Hospital","city":"Pune","type":"Private","beds":500,"rating":4.4,"specialties":["Cardiac Sciences","Neuroscience","Orthopedics","Oncology"],"nabh":true,"address":"Plot No 9-C, Erandwane, Pune 411004"},
+    {"name":"Jehangir Hospital","city":"Pune","type":"Private","beds":350,"rating":4.4,"specialties":["Cardiac Sciences","Orthopedics","Neurology","IVF"],"nabh":true,"address":"32, Sassoon Road, Pune 411001"},
+    {"name":"Deenanath Mangeshkar Hospital","city":"Pune","type":"Trust","beds":800,"rating":4.5,"specialties":["Cardiac Sciences","Oncology","Neuroscience","Transplant"],"nabh":true,"address":"Near Mhatre Bridge, Erandawane, Pune 411004"},
+    {"name":"KEM Hospital Pune","city":"Pune","type":"Trust","beds":500,"rating":4.3,"specialties":["General Medicine","Surgery","Paediatrics","Obstetrics"],"nabh":true,"address":"489 Rasta Peth, Sardar Moodliar Road, Pune 411011"},
+    {"name":"Sassoon General Hospital","city":"Pune","type":"Government","beds":1300,"rating":4.0,"specialties":["General Medicine","Surgery","Trauma","Burns"],"nabh":true,"address":"Near Pune Railway Station, Pune 411001"},
+    {"name":"Aditya Birla Memorial Hospital","city":"Pune","type":"Private","beds":500,"rating":4.3,"specialties":["Cardiac Sciences","Oncology","Robotic Surgery","Transplant"],"nabh":true,"address":"Aditya Birla Hospital Marg, Thergaon, Chinchwad, Pune 411033"},
+    {"name":"Jupiter Hospital Pune","city":"Pune","type":"Private","beds":350,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Urology","Nephrology"],"nabh":true,"address":"Baner-Pashan Link Road, Baner, Pune 411045"},
+    {"name":"Sancheti Hospital","city":"Pune","type":"Private","beds":200,"rating":4.4,"specialties":["Orthopedics","Joint Replacement","Sports Medicine","Spine"],"nabh":true,"address":"16, Shivaji Nagar, Pune 411005"},
+    {"name":"Noble Hospital Pune","city":"Pune","type":"Private","beds":300,"rating":4.2,"specialties":["Cardiac Sciences","Orthopedics","General Surgery","Gastroenterology"],"nabh":true,"address":"153, Magarpatta City Road, Hadapsar, Pune 411013"},
+    {"name":"Command Hospital Pune","city":"Pune","type":"Government","beds":1000,"rating":4.3,"specialties":["General Medicine","Surgery","Orthopedics","Cardiac Sciences"],"nabh":true,"address":"Wanowrie, Pune 411040"},
+    {"name":"Bharati Hospital Pune","city":"Pune","type":"Trust","beds":600,"rating":4.1,"specialties":["General Medicine","Surgery","Orthopedics","Dental"],"nabh":true,"address":"Bharati Vidyapeeth Campus, Dhankawadi, Pune 411043"},
+    {"name":"Inamdar Hospital Pune","city":"Pune","type":"Private","beds":300,"rating":4.2,"specialties":["Cardiac Sciences","Orthopedics","Neurology","Gastroenterology"],"nabh":true,"address":"Sr No 15, Fatima Nagar, Wanowrie, Pune 411040"},
+    {"name":"Manipal Hospital Baner","city":"Pune","type":"Private","beds":250,"rating":4.4,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology","Nephrology"],"nabh":true,"address":"Survey No 111/11/1, Veerbhadra Nagar Rd, Baner-Mahalunge Rd, Baner, Pune 411045"},
+    {"name":"Manipal Hospital Kharadi","city":"Pune","type":"Private","beds":100,"rating":4.3,"specialties":["General Medicine","Surgery","Orthopedics","Gynaecology","Paediatrics","Critical Care"],"nabh":true,"address":"Survey No 22/2A, Near Nyati Empire, Kharadi Bypass Road, Kharadi, Pune 411014"},
+    {"name":"Poona Hospital and Research Centre","city":"Pune","type":"Trust","beds":300,"rating":4.3,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology","Nephrology","Urology","Critical Care"],"nabh":true,"address":"27 Sadashiv Peth, Near Alka Talkies, Pune 411030"},
+    {"name":"Inlaks and Budhrani Hospital","city":"Pune","type":"Trust","beds":250,"rating":4.2,"specialties":["Cardiology","Oncology","Orthopedics","Gynaecology","Paediatrics","General Medicine"],"nabh":true,"address":"7-9 Koregaon Park, Pune 411001"},
+    {"name":"Oyster and Pearl Hospital","city":"Pune","type":"Private","beds":100,"rating":4.2,"specialties":["Gynaecology","Maternity","Paediatrics","IVF","Neonatology","General Medicine","Surgery"],"nabh":true,"address":"Survey No 1671/75, Ganeshkhind Road, Behind Pride Hotel, Shivaji Nagar, Pune 411005"},
+    {"name":"Surya Mother and Child Super Speciality Hospital","city":"Pune","type":"Private","beds":110,"rating":4.4,"specialties":["Paediatrics","Neonatology","Gynaecology","Maternity","IVF"],"nabh":true,"address":"Sr No 8, Bhujbal Chowk, Near Wakad Octroi Naka, Wakad, Pune 411057"},
+    {"name":"AIMS Multispeciality Hospital","city":"Pune","type":"Private","beds":100,"rating":4.3,"specialties":["Cardiology","Orthopedics","Gastroenterology","Gynaecology","Paediatrics","General Medicine","Critical Care"],"nabh":true,"address":"Near AIMS Square, Aundh Gaon, Aundh, Pune 411007"},
+    {"name":"Sahyadri Super Speciality Hospital Hadapsar","city":"Pune","type":"Private","beds":150,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Oncology","Gastroenterology","Critical Care"],"nabh":true,"address":"S No 163, Bhosale Nagar, Hadapsar, Pune 411028"},
+    {"name":"Sanjeevan Hospital Pune","city":"Pune","type":"Private","beds":100,"rating":4.3,"specialties":["Orthopedics","Joint Replacement","Cardiology","General Medicine","Surgery","Gynaecology"],"nabh":true,"address":"FP 23, off Karve Road, Kashibai Khilare Path, Opposite Pune Central, Erandwane, Pune 411004"},
+    {"name":"National Institute of Ophthalmology Pune","city":"Pune","type":"Private","beds":50,"rating":4.5,"specialties":["Ophthalmology","Cataract","Retina"],"nabh":true,"address":"1187/30, Off Ghole Road, Near Mahatma Phule Museum, Shivaji Nagar, Pune 411005"},
+    {"name":"Sahyadri Super Speciality Hospital Nagar Road","city":"Pune","type":"Private","beds":130,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Oncology","Critical Care"],"nabh":true,"address":"Society Phase 1, Nagar Rd, Near Hermes Heritage, Shastrinagar, Yerawada, Pune 411006"}
+  ]
+}

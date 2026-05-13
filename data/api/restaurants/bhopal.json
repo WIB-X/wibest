@@ -1,0 +1,23 @@
+{
+  "city": "Bhopal",
+  "count": 15,
+  "source": "https://wibest.in/restaurants/bhopal/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Wind & Waves","city":"Bhopal","cuisines":["Multi-Cuisine","Lakeside","Indian"],"rating":4.5,"budget_tier":"500_to_2000","address":"Boat Club Road, Shyamla Hills","vegetarian":true},
+    {"name":"Under The Mango Tree","city":"Bhopal","cuisines":["North Indian","Mughlai","Continental"],"rating":4.4,"budget_tier":"500_to_2000","address":"Jehan Numa Palace Hotel, Shamla Hills","vegetarian":true},
+    {"name":"La Kuchina","city":"Bhopal","cuisines":["Italian","Pizza","Pasta"],"rating":4.3,"budget_tier":"500_to_2000","address":"Plot 30, Press Complex, MP Nagar","vegetarian":false},
+    {"name":"Bapu Ki Kutia","city":"Bhopal","cuisines":["North Indian","Vegetarian","Thali"],"rating":4.4,"budget_tier":"under_500","address":"DB Mall, Arera Hills","vegetarian":false},
+    {"name":"Manohar Dairy & Restaurant","city":"Bhopal","cuisines":["South Indian","Vegetarian","Sweets"],"rating":4.5,"budget_tier":"under_500","address":"Hamidia Road, opposite Bharat Talkies","vegetarian":false},
+    {"name":"Filfora","city":"Bhopal","cuisines":["Lebanese","Mediterranean","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"E-3/85, Arera Colony","vegetarian":false},
+    {"name":"Spice Bazaar","city":"Bhopal","cuisines":["Bhopali","Mughlai","Biryani"],"rating":4.3,"budget_tier":"500_to_2000","address":"Hotel Lake View Ashok, Shamla Hills","vegetarian":true},
+    {"name":"New Inn Cafe","city":"Bhopal","cuisines":["Cafe","Continental","Italian"],"rating":4.2,"budget_tier":"under_500","address":"Plot 31, Zone-II, MP Nagar","vegetarian":false},
+    {"name":"Sagar Gaire","city":"Bhopal","cuisines":["North Indian","Chinese","Fast Food"],"rating":4.3,"budget_tier":"under_500","address":"Bittan Market, Arera Colony","vegetarian":false},
+    {"name":"Indian Coffee House","city":"Bhopal","cuisines":["South Indian","Cafe","Snacks"],"rating":4.4,"budget_tier":"under_500","address":"Ahmedabad Palace, New Market","vegetarian":false},
+    {"name":"Jharokha","city":"Bhopal","cuisines":["North Indian","Mughlai","Awadhi"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hotel Noor Us Sabah Palace, V I P Road","vegetarian":true},
+    {"name":"The Reds","city":"Bhopal","cuisines":["Continental","Italian","Cafe"],"rating":4.2,"budget_tier":"500_to_2000","address":"Plot 14, MP Nagar Zone-1","vegetarian":false},
+    {"name":"Nukkad Bhopal","city":"Bhopal","cuisines":["Street Food","Chaat","North Indian"],"rating":4.4,"budget_tier":"under_500","address":"DB Mall, Arera Hills","vegetarian":false},
+    {"name":"Cafe Mocha","city":"Bhopal","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"DB City Mall, Arera Hills","vegetarian":false},
+    {"name":"Naan Stop","city":"Bhopal","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Plot 36, Press Complex, MP Nagar","vegetarian":false}
+  ]
+}

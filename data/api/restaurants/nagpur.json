@@ -1,0 +1,23 @@
+{
+  "city": "Nagpur",
+  "count": 15,
+  "source": "https://wibest.in/restaurants/nagpur/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Zero Degrees","city":"Nagpur","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Centre Point Hotel, Ramdaspeth","vegetarian":true},
+    {"name":"Haldiram's Thaba","city":"Nagpur","cuisines":["North Indian","Sweets","Vegetarian"],"rating":4.5,"budget_tier":"under_500","address":"Wardha Road, Pratap Nagar","vegetarian":false},
+    {"name":"Krishnum","city":"Nagpur","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Ramdaspeth, opposite IMA Hall","vegetarian":false},
+    {"name":"The Gondwana","city":"Nagpur","cuisines":["Saoji","Vidarbha","Spicy"],"rating":4.5,"budget_tier":"500_to_2000","address":"Hotel Tuli Imperial, Central Bazaar Road","vegetarian":true},
+    {"name":"Ashoka Hotel","city":"Nagpur","cuisines":["Saoji","North Indian","Mutton"],"rating":4.4,"budget_tier":"under_500","address":"Trimurti Nagar, Khamla","vegetarian":false},
+    {"name":"Barbeque Nation","city":"Nagpur","cuisines":["Multi-Cuisine","Buffet","Grill"],"rating":4.3,"budget_tier":"500_to_2000","address":"Empress City Mall, Pratap Nagar","vegetarian":false},
+    {"name":"Ranjit Hotel","city":"Nagpur","cuisines":["Maharashtrian","North Indian","Thali"],"rating":4.4,"budget_tier":"under_500","address":"Sitabuldi Main Road","vegetarian":false},
+    {"name":"Cafe Coffee Bean & Tea Leaf","city":"Nagpur","cuisines":["Cafe","Continental","Desserts"],"rating":4.2,"budget_tier":"500_to_2000","address":"Eternity Mall, Sitabuldi","vegetarian":false},
+    {"name":"Sahil Restaurant","city":"Nagpur","cuisines":["Saoji","Mutton","Local"],"rating":4.5,"budget_tier":"under_500","address":"Mominpura, Old City","vegetarian":false},
+    {"name":"Mr Beans Cafe","city":"Nagpur","cuisines":["Cafe","Italian","Continental"],"rating":4.4,"budget_tier":"500_to_2000","address":"Dharampeth, near Maharaj Bagh","vegetarian":false},
+    {"name":"7 Spice Restaurant","city":"Nagpur","cuisines":["North Indian","Mughlai","Multi-Cuisine"],"rating":4.4,"budget_tier":"500_to_2000","address":"Wardha Road, Pratap Nagar","vegetarian":false},
+    {"name":"Vidarbha Saoji","city":"Nagpur","cuisines":["Saoji","Maharashtrian","Mutton"],"rating":4.4,"budget_tier":"under_500","address":"Khamla Road, near MIDC","vegetarian":false},
+    {"name":"Naivedyam Nagpur","city":"Nagpur","cuisines":["South Indian","Vegetarian","Dosa"],"rating":4.3,"budget_tier":"under_500","address":"Dharampeth, Shankar Nagar Square","vegetarian":true},
+    {"name":"The Orchid Cafe","city":"Nagpur","cuisines":["Continental","Italian","Cafe"],"rating":4.3,"budget_tier":"500_to_2000","address":"The Orchid Hotel, Pratap Nagar","vegetarian":false},
+    {"name":"Anand Bhandar","city":"Nagpur","cuisines":["Maharashtrian","Vegetarian","Thali"],"rating":4.4,"budget_tier":"under_500","address":"Mahal, near Cotton Market","vegetarian":true}
+  ]
+}

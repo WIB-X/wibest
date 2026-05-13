@@ -1,0 +1,18 @@
+{
+  "city": "Jaipur",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/jaipur/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Sawai Man Singh (SMS) Hospital","city":"Jaipur","type":"Government","beds":2400,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Trauma","Transplant"],"nabh":true,"address":"JLN Marg, Jaipur 302004"},
+    {"name":"Fortis Escorts Hospital Jaipur","city":"Jaipur","type":"Private","beds":200,"rating":4.5,"specialties":["Cardiac Sciences","Cardiac Surgery","Vascular Surgery"],"nabh":true,"address":"JLN Marg, Malviya Nagar, Jaipur 302017"},
+    {"name":"Eternal Hospital","city":"Jaipur","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Cardiac Surgery","Neurology","Critical Care"],"nabh":true,"address":"3A, Jagatpura Road, Near Jawahar Circle, Jaipur 302017"},
+    {"name":"Narayana Multispeciality Hospital Jaipur","city":"Jaipur","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Sector 28, Pratap Nagar, Tonk Road, Jaipur 302033"},
+    {"name":"Bhagwan Mahaveer Cancer Hospital","city":"Jaipur","type":"Trust","beds":300,"rating":4.5,"specialties":["Oncology","Surgical Oncology","Radiation Oncology","Bone Marrow Transplant"],"nabh":true,"address":"JLN Marg, Jaipur 302017"},
+    {"name":"Soni Hospital","city":"Jaipur","type":"Private","beds":250,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"38, Kanota Bagh, JLN Marg, Jaipur 302004"},
+    {"name":"Manipal Hospital Jaipur","city":"Jaipur","type":"Private","beds":225,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Liver Transplant"],"nabh":true,"address":"Sector 5, Vidhyadhar Nagar, Jaipur 302039"},
+    {"name":"CK Birla Hospital Jaipur","city":"Jaipur","type":"Private","beds":160,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Gynaecology"],"nabh":true,"address":"Gopalpura Bypass, Riddhi Siddhi Choraha, Jaipur 302018"},
+    {"name":"EHCC Hospital Jaipur","city":"Jaipur","type":"Private","beds":100,"rating":4.4,"specialties":["Cardiac Sciences","Cardiac Surgery","Critical Care"],"nabh":true,"address":"Adjacent Eternal Hospital, Jagatpura Road, Jaipur 302017"},
+    {"name":"Rukmani Birla Hospital","city":"Jaipur","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","General Medicine","Gynaecology"],"nabh":true,"address":"Gopalpura Bypass, Triveni Nagar, Jaipur 302018"}
+  ]
+}

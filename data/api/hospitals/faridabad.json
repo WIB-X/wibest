@@ -1,0 +1,16 @@
+{
+  "city": "Faridabad",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/faridabad/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Amrita Hospital Faridabad","city":"Faridabad","type":"Trust","beds":2600,"rating":4.3,"specialties":["Cardiology","Oncology","Neurology","Transplant","Robotic Surgery"],"nabh":true,"address":"Sector 88, Faridabad 121002"},
+    {"name":"Asian Institute of Medical Sciences","city":"Faridabad","type":"Private","beds":425,"rating":4.3,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Gastroenterology","Liver Transplant"],"nabh":true,"address":"Badkal Flyover Road, Sector 21A, Faridabad 121001"},
+    {"name":"Asian Institute of Medical Sciences","city":"Faridabad","type":"Private","beds":450,"rating":4.4,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Renal Sciences"],"nabh":true,"address":"Sector 21A, Faridabad 121001"},
+    {"name":"Sarvodaya Hospital","city":"Faridabad","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"YMCA Road, Sector 8, Faridabad 121006"},
+    {"name":"Fortis Escorts Faridabad","city":"Faridabad","type":"Private","beds":210,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Orthopedics"],"nabh":true,"address":"Neelam Bata Road, Faridabad 121001"},
+    {"name":"QRG Health City","city":"Faridabad","type":"Private","beds":325,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Sector 16, Faridabad 121002"},
+    {"name":"Metro Hospital Faridabad","city":"Faridabad","type":"Private","beds":250,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"Sector 16A, Faridabad 121002"},
+    {"name":"ESIC Medical College Faridabad","city":"Faridabad","type":"Government","beds":510,"rating":4.0,"specialties":["General Medicine","Cardiology","Surgery","Orthopedics","Trauma"],"nabh":false,"address":"NH-3, NIT, Faridabad 121001"}
+  ]
+}

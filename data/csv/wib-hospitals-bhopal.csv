@@ -1,9 +1,13 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-AIIMS Bhopal,Bhopal,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma,,"Saket Nagar, Bhopal 462020",https://wibest.in/hospitals/bhopal/
-Bansal Hospital Bhopal,Bhopal,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,,"C-Sector, Shahpura, Bhopal 462016",https://wibest.in/hospitals/bhopal/
-Chirayu Medical College and Hospital,Bhopal,Trust,1100,4.3,Cardiac Sciences | Neurology | Oncology | Orthopedics | Paediatrics,,"Bairagarh, Bhopal 462030",https://wibest.in/hospitals/bhopal/
-L.B.S. Hospital Bhopal,Bhopal,Private,200,4.2,Cardiac Sciences | Orthopedics | General Medicine | Gynaecology,,"Habibganj, Bhopal 462024",https://wibest.in/hospitals/bhopal/
-Hamidia Hospital,Bhopal,Government,850,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma,,"Royal Market, Bhopal 462001",https://wibest.in/hospitals/bhopal/
-Kasturba Hospital Bhopal,Bhopal,Trust,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,,"Kalpana Nagar, Bhopal 462023",https://wibest.in/hospitals/bhopal/
-Apollo Sage Hospital Bhopal,Bhopal,Private,120,4.4,Cardiac Sciences | Neurology | Orthopedics | Oncology,,"E-1, Karond Square, Bhopal 462023",https://wibest.in/hospitals/bhopal/
-Siddhanta Red Cross Super Speciality Hospital,Bhopal,Trust,150,4.3,Cardiac Sciences | Orthopedics | Gastroenterology | General Medicine,,"E-8 Extension, Trilanga, Bhopal 462039",https://wibest.in/hospitals/bhopal/
+AIIMS Bhopal,Bhopal,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma,true,"Saket Nagar, Bhopal 462020",https://wibest.in/hospitals/bhopal/
+Bansal Hospital Bhopal,Bhopal,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,true,"C-Sector, Shahpura, Bhopal 462016",https://wibest.in/hospitals/bhopal/
+Chirayu Medical College and Hospital,Bhopal,Trust,1100,4.3,Cardiac Sciences | Neurology | Oncology | Orthopedics | Paediatrics,true,"Bairagarh, Bhopal 462030",https://wibest.in/hospitals/bhopal/
+L.B.S. Hospital Bhopal,Bhopal,Private,200,4.2,Cardiac Sciences | Orthopedics | General Medicine | Gynaecology,true,"Habibganj, Bhopal 462024",https://wibest.in/hospitals/bhopal/
+Hamidia Hospital,Bhopal,Government,850,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma,true,"Royal Market, Bhopal 462001",https://wibest.in/hospitals/bhopal/
+Kasturba Hospital Bhopal,Bhopal,Trust,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,true,"Kalpana Nagar, Bhopal 462023",https://wibest.in/hospitals/bhopal/
+Apollo Sage Hospital Bhopal,Bhopal,Private,120,4.4,Cardiac Sciences | Neurology | Orthopedics | Oncology,true,"E-1, Karond Square, Bhopal 462023",https://wibest.in/hospitals/bhopal/
+Siddhanta Red Cross Super Speciality Hospital,Bhopal,Trust,150,4.3,Cardiac Sciences | Orthopedics | Gastroenterology | General Medicine,true,"E-8 Extension, Trilanga, Bhopal 462039",https://wibest.in/hospitals/bhopal/
+People's Hospital Bhopal,Bhopal,Private,850,4.2,Cardiology | Neurology | Oncology | Nephrology | Orthopedics,true,"Bhanpur, Bhopal 462037",https://wibest.in/hospitals/bhopal/
+Hamidia Hospital Bhopal,Bhopal,Government,780,3.9,General Medicine | Surgery | Gynaecology | Paediatrics | Trauma,false,"Royal Market, Bhopal 462001",https://wibest.in/hospitals/bhopal/
+Siddhanta Red Cross Hospital,Bhopal,Private,200,4.3,Cardiology | Pulmonology | Critical Care | Internal Medicine,true,"E-7/12, Arera Colony, Bhopal 462016",https://wibest.in/hospitals/bhopal/
+Jawahar Lal Nehru Cancer Hospital,Bhopal,Trust,240,4.4,Oncology | Radiation Oncology | Surgical Oncology | Palliative Care,true,"Idgah Hills, Bhopal 462001",https://wibest.in/hospitals/bhopal/

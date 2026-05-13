@@ -8,5 +8,10 @@ window.WIB_RESTAURANTS = [
 {n:"Litti Hub",c:"Patna",cu:["Bihari","Litti Chokha","Street Food"],r:4.5,b:1,a:"Frazer Road, near Heritage Hotel",v:0,z:"litti-hub-frazer-road-patna"},
 {n:"Cafe Coffee Day The Square",c:"Patna",cu:["Cafe","Continental","Desserts"],r:4.2,b:2,a:"Boring Canal Road, near Panchmukhi Mandir",v:0,z:"ccd-square-boring-canal-patna"},
 {n:"Banaras Restaurant",c:"Patna",cu:["North Indian","Banarasi","Vegetarian"],r:4.4,b:1,a:"Exhibition Road, Gandhi Maidan",v:0,z:"banaras-restaurant-exhibition-road-patna"},
-{n:"Nirvana Restaurant",c:"Patna",cu:["Multi-Cuisine","Mughlai","Tandoor"],r:4.3,b:2,a:"Lemon Tree Hotel, Frazer Road",v:1,z:"nirvana-lemon-tree-patna"}
+{n:"Nirvana Restaurant",c:"Patna",cu:["Multi-Cuisine","Mughlai","Tandoor"],r:4.3,b:2,a:"Lemon Tree Hotel, Frazer Road",v:1,z:"nirvana-lemon-tree-patna"},
+{n:"Anandi Vatika",c:"Patna",cu:["North Indian","Vegetarian","Multi-Cuisine"],r:4.3,b:2,a:"Boring Road, Patliputra Colony",v:1,z:"anandi-vatika-boring-road-patna"},
+{n:"Hare Krishna Restaurant",c:"Patna",cu:["South Indian","Vegetarian","Dosa"],r:4.3,b:1,a:"Boring Canal Road, opposite Panchmukhi Hanuman Mandir",v:1,z:"hare-krishna-boring-canal-patna"},
+{n:"Pinky Palace",c:"Patna",cu:["Bihari","Mutton","Champaran"],r:4.4,b:1,a:"Patna Junction Area, near GPO",v:0,z:"pinky-palace-junction-patna"},
+{n:"Cafe Coffee Day Maurya Lok",c:"Patna",cu:["Cafe","Continental","Desserts"],r:4.1,b:2,a:"Maurya Lok Complex, Dak Bungalow Road",v:0,z:"ccd-maurya-lok-patna"},
+{n:"Nukkadwala Patna",c:"Patna",cu:["Street Food","Chaat","Bihari"],r:4.4,b:1,a:"Boring Road, opposite Panchmukhi Hanuman",v:0,z:"nukkadwala-boring-road-patna"}
 ];

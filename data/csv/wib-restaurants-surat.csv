@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Sasumaa,Surat,Gujarati | Thali | Vegetarian,4.5,Rs 500-2000,"Citylight Road, Athwa",Yes,https://wibest.in/restaurants/surat/
+Kansar Gujarati Thali,Surat,Gujarati | Thali | Vegetarian,4.4,Rs 500-2000,"Surat Marriott Hotel, Athwa Lines",Yes,https://wibest.in/restaurants/surat/
+Surati Locho King,Surat,Gujarati | Surati | Street Food,4.5,Under Rs 500,"Lal Darwaja, Bhagal",Yes,https://wibest.in/restaurants/surat/
+Coal Barbecues,Surat,Multi-Cuisine | Buffet | Grill,4.3,Rs 500-2000,"VR Mall, Dumas Road",No,https://wibest.in/restaurants/surat/
+Dholu Maharaj,Surat,Gujarati | Surati | Snacks,4.4,Under Rs 500,"Chowk Bazaar, near Old City",Yes,https://wibest.in/restaurants/surat/
+Royal Albert Hotel,Surat,North Indian | Continental | Multi-Cuisine,4.3,Rs 500-2000,"Vesu Main Road, near Surat Diamond Bourse",No,https://wibest.in/restaurants/surat/
+Pure South Indian Restaurant,Surat,South Indian | Vegetarian | Dosa,4.4,Under Rs 500,"Nanpura, opposite Saiba Hospital",Yes,https://wibest.in/restaurants/surat/
+Cafe Hosh,Surat,Cafe | Continental | Italian,4.4,Rs 500-2000,"Citylight Road, Parle Point",No,https://wibest.in/restaurants/surat/
+Sufiyana,Surat,Mughlai | North Indian | Biryani,4.3,Rs 500-2000,"Adajan Patia, opposite Hari Krishna Diamonds",No,https://wibest.in/restaurants/surat/
+Jugaadi Adda,Surat,North Indian | Continental | Cafe,4.3,Rs 500-2000,"Piplod, near LP Savani School",No,https://wibest.in/restaurants/surat/

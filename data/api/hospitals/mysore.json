@@ -1,0 +1,20 @@
+{
+  "city": "Mysore",
+  "count": 12,
+  "source": "https://wibest.in/hospitals/mysore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"JSS Hospital Mysore","city":"Mysore","type":"Trust","beds":1800,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Paediatrics","Transplant"],"nabh":true,"address":"M G Road, Mysore 570004"},
+    {"name":"Apollo BGS Hospital Mysore","city":"Mysore","type":"Private","beds":200,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Robotic Surgery"],"nabh":true,"address":"Adichunchanagiri Road, Mysore 570023"},
+    {"name":"Columbia Asia Hospital Mysore","city":"Mysore","type":"Private","beds":140,"rating":4.4,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Vijayanagar 1st Stage, Mysore 570017"},
+    {"name":"Manipal Hospital Mysore","city":"Mysore","type":"Private","beds":150,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Bannimantap A Layout, Mysore 570015"},
+    {"name":"K R Hospital Mysore","city":"Mysore","type":"Government","beds":850,"rating":4.0,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Trauma"],"nabh":true,"address":"Sayyaji Rao Road, Mysore 570001"},
+    {"name":"Vikram Hospital Mysore","city":"Mysore","type":"Private","beds":150,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Orthopedics","General Medicine"],"nabh":true,"address":"Yadavagiri, Mysore 570020"},
+    {"name":"Cauvery Hospital Mysore","city":"Mysore","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"M G Road, Mysore 570001"},
+    {"name":"Bharath Hospital and Institute of Oncology","city":"Mysore","type":"Private","beds":200,"rating":4.5,"specialties":["Oncology","Surgical Oncology","Radiation Oncology"],"nabh":true,"address":"15, Bogadi Layout, Mysore 570026"},
+    {"name":"Apollo BGS Hospital Mysuru","city":"Mysore","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Renal Sciences"],"nabh":true,"address":"Adichunchanagiri Road, Kuvempu Nagar, Mysuru 570023"},
+    {"name":"JSS Hospital Mysuru","city":"Mysore","type":"Trust","beds":1800,"rating":4.3,"specialties":["Cardiology","Neurosurgery","Oncology","Nephrology","Transplant"],"nabh":true,"address":"M G Road, Mysuru 570004"},
+    {"name":"Manipal Hospital Mysuru","city":"Mysore","type":"Private","beds":140,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology","Critical Care"],"nabh":true,"address":"Bannimantap, Mysuru 570015"},
+    {"name":"Columbia Asia Mysuru","city":"Mysore","type":"Private","beds":90,"rating":4.2,"specialties":["Cardiology","Internal Medicine","Orthopedics","Paediatrics","Gynaecology"],"nabh":true,"address":"Bannimantap A Layout, Mysuru 570015"}
+  ]
+}

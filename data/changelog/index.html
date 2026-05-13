@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Open Data — Changelog</title>
+<meta name="description" content="Versioned change history for WIB's open hospital and restaurant datasets. Useful when re-pulling CSVs to know what changed since your last download.">
+<link rel="canonical" href="https://wibest.in/data/changelog/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WIB Open Data — Changelog">
+<meta property="og:description" content="Versioned change history for WIB's open datasets.">
+<meta property="og:url" content="https://wibest.in/data/changelog/">
+<meta property="og:image" content="https://wibest.in/og/open-data.svg">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:880px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.65;margin-bottom:36px;max-width:720px}
+.entry{padding:24px 28px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:18px}
+.entry .v{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.entry .ver{font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:14px;font-weight:700;background:var(--accent-light);color:var(--accent);padding:4px 10px;border-radius:6px}
+.entry .date{font-size:13px;color:var(--text-muted)}
+.entry h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 10px;color:var(--text-primary)}
+.entry ul{margin:8px 0 0 0;padding-left:22px;font-size:14.5px;line-height:1.7;color:var(--text-secondary)}
+.entry li{margin-bottom:4px}
+.entry .tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:6px;text-transform:uppercase;letter-spacing:.04em;vertical-align:middle}
+.tag.add{background:#dcfce7;color:#15803d}
+.tag.deepen{background:#cffafe;color:#0891b2}
+.tag.fix{background:#fef9c3;color:#a16207}
+.tag.api{background:#ede9fe;color:#6d28d9}
+[data-theme="dark"] .tag.add{background:#14532d;color:#bbf7d0}
+[data-theme="dark"] .tag.deepen{background:#164e63;color:#cffafe}
+[data-theme="dark"] .tag.fix{background:#713f12;color:#fef9c3}
+[data-theme="dark"] .tag.api{background:#312e81;color:#ede9fe}
+.subscribe-box{padding:24px 28px;background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;border-radius:12px;margin-top:32px}
+.subscribe-box h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin:0 0 8px;color:#fff}
+.subscribe-box p{font-size:14px;color:rgba(255,255,255,0.88);margin-bottom:14px;line-height:1.6}
+.subscribe-box code{background:rgba(0,0,0,0.25);padding:2px 8px;border-radius:5px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px;color:#fff}
+.subscribe-box a{color:#fde047;font-weight:600}
+@media(max-width:600px){h1{font-size:28px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Open Data","item":"https://wibest.in/data/"},{"@type":"ListItem","position":3,"name":"Changelog","item":"https://wibest.in/data/changelog/"}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/data/">Open Data</a> &rsaquo; Changelog</div>
+  <h1>Open Data Changelog</h1>
+  <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
+
+  <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06</span><span class="date">May 6, 2026</span></div>
+    <h3><span class="tag deepen">deepen</span><span class="tag add">add</span><span class="tag api">api</span> Tier-3 deepening + Surat city + per-city JSON API</h3>
+    <ul>
+      <li>Hospitals dataset: 346 → <strong>399 records</strong> (+53). 27 → <strong>28 cities</strong>.
+        <ul>
+          <li>Tier-3 cities deepened 8 → 12 each: Bhopal, Nagpur, Mysore, Vadodara, Patna (+20)</li>
+          <li>NCR &amp; metro extensions backfilled to 8 each: Gurugram, Noida, Faridabad, Navi Mumbai, Pimpri-Chinchwad (+25)</li>
+          <li>New city: <strong>Surat</strong> (+8)</li>
+        </ul>
+      </li>
+      <li>Restaurants dataset: 500 → <strong>535 records</strong> (+35). 20 → <strong>21 cities</strong>.
+        <ul>
+          <li>Tier-3 cities deepened 10 → 15 each (+25)</li>
+          <li>New city: <strong>Surat</strong> (+10)</li>
+        </ul>
+      </li>
+      <li>New JSON API namespace: <code>/data/api/hospitals/&lt;city&gt;.json</code> and <code>/data/api/restaurants/&lt;city&gt;.json</code> for all cities</li>
+      <li>Per-city HTML pages now carry <code>schema.org/Dataset</code> markup pointing to their JSON endpoint</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="v"><span class="ver">v2026-05-05</span><span class="date">May 5, 2026</span></div>
+    <h3><span class="tag add">add</span> Initial open data launch + JSON variants</h3>
+    <ul>
+      <li>Launched <a href="/data/">/data/</a> with 49 CSV files: 2 combined + 47 per-city slices</li>
+      <li>Hospitals: 346 records / 27 cities. Restaurants: 500 records / 20 cities</li>
+      <li>JSON variants of combined datasets: <code>data/json/hospitals.json</code>, <code>data/json/restaurants.json</code></li>
+      <li>Schema.org Dataset markup for Google Dataset Search visibility</li>
+      <li>License: CC-BY 4.0 (no signup, no API key, no traffic limits)</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="v"><span class="ver">v2026-05-04</span><span class="date">May 4, 2026</span></div>
+    <h3><span class="tag add">add</span> Tier-3 city expansion (data only, pre-CSV-launch)</h3>
+    <ul>
+      <li>Hospitals: added Bhopal, Nagpur, Mysore, Vadodara, Patna with 8 records each (306 → 346)</li>
+      <li>Restaurants: same 5 tier-3 cities with 10 records each (450 → 500)</li>
+      <li>NCR satellite cities seeded: Gurugram (4), Noida (3), Faridabad (2), Navi Mumbai (2), Pimpri-Chinchwad (4)</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="v"><span class="ver">v2026-05-01</span><span class="date">May 1, 2026</span></div>
+    <h3><span class="tag add">add</span> Tier-2 expansion baseline</h3>
+    <ul>
+      <li>Hospitals: 236 → 306 (added Chandigarh, Coimbatore, Indore, Jaipur, Kochi, Lucknow, Vizag)</li>
+      <li>Restaurants: 14 → 15 cities (Vizag added)</li>
+    </ul>
+  </div>
+
+  <div class="subscribe-box">
+    <h3>How to know when data updates</h3>
+    <p>The combined files at <code>/data/csv/wib-hospitals-all.csv</code> and <code>/data/json/hospitals.json</code> always reflect the latest snapshot. JSON files include a <code>"version"</code> field in the header — check that against your cached version to detect changes.</p>
+    <p>For active subscribers, this changelog also publishes via the site's <a href="/feed-reports.xml">RSS feed</a> when major data versions ship. Quarterly updates expected; ad-hoc updates announced here.</p>
+  </div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+</body>
+</html>

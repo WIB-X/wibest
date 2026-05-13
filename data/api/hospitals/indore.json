@@ -1,0 +1,18 @@
+{
+  "city": "Indore",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/indore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Bombay Hospital Indore","city":"Indore","type":"Private","beds":600,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Eastern Ring Road, Vijay Nagar, Indore 452010"},
+    {"name":"Choithram Hospital","city":"Indore","type":"Trust","beds":800,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Gynaecology"],"nabh":true,"address":"5, Manik Bagh Road, Indore 452014"},
+    {"name":"Sri Aurobindo Institute of Medical Sciences (SAIMS)","city":"Indore","type":"Trust","beds":1500,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Indore-Ujjain Highway, Bhanwarasla Road, Indore 453555"},
+    {"name":"Apollo Hospital Indore","city":"Indore","type":"Private","beds":340,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Scheme No 74C, Sector D, Vijay Nagar, Indore 452010"},
+    {"name":"Medanta Hospital Indore","city":"Indore","type":"Private","beds":300,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Liver Transplant"],"nabh":true,"address":"Eastern Ring Road, Indore 452010"},
+    {"name":"Mahatma Gandhi Memorial (MGM) Medical College","city":"Indore","type":"Government","beds":1100,"rating":4.0,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Trauma"],"nabh":true,"address":"AB Road, Indore 452001"},
+    {"name":"CHL Hospital Indore","city":"Indore","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"AB Road, Sai Ram Nagar, Indore 452008"},
+    {"name":"Care CHL Hospital Indore","city":"Indore","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"AB Road, Indore 452008"},
+    {"name":"Greater Kailash Hospital Indore","city":"Indore","type":"Private","beds":180,"rating":4.2,"specialties":["Cardiac Sciences","Orthopedics","General Medicine","Gynaecology"],"nabh":true,"address":"Old Palasia, Indore 452001"},
+    {"name":"Eye Retina Hospital Indore","city":"Indore","type":"Private","beds":50,"rating":4.6,"specialties":["Eye Care","Retina","Cataract"],"nabh":true,"address":"AB Road, Indore 452001"}
+  ]
+}

@@ -1,3 +1,9 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-Amrita Hospital Faridabad,Faridabad,Trust,2600,4.3,Cardiology | Oncology | Neurology | Transplant | Robotic Surgery,,"Sector 88, Faridabad 121002",https://wibest.in/hospitals/faridabad/
-Asian Institute of Medical Sciences,Faridabad,Private,425,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology | Liver Transplant,,"Badkal Flyover Road, Sector 21A, Faridabad 121001",https://wibest.in/hospitals/faridabad/
+Amrita Hospital Faridabad,Faridabad,Trust,2600,4.3,Cardiology | Oncology | Neurology | Transplant | Robotic Surgery,true,"Sector 88, Faridabad 121002",https://wibest.in/hospitals/faridabad/
+Asian Institute of Medical Sciences,Faridabad,Private,425,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology | Liver Transplant,true,"Badkal Flyover Road, Sector 21A, Faridabad 121001",https://wibest.in/hospitals/faridabad/
+Asian Institute of Medical Sciences,Faridabad,Private,450,4.4,Cardiology | Neurosciences | Oncology | Orthopedics | Renal Sciences,true,"Sector 21A, Faridabad 121001",https://wibest.in/hospitals/faridabad/
+Sarvodaya Hospital,Faridabad,Private,300,4.3,Cardiology | Neurology | Oncology | Orthopedics | Gastroenterology,true,"YMCA Road, Sector 8, Faridabad 121006",https://wibest.in/hospitals/faridabad/
+Fortis Escorts Faridabad,Faridabad,Private,210,4.3,Cardiology | Cardiac Surgery | Neurosciences | Orthopedics,true,"Neelam Bata Road, Faridabad 121001",https://wibest.in/hospitals/faridabad/
+QRG Health City,Faridabad,Private,325,4.2,Cardiology | Neurology | Oncology | Orthopedics | Gastroenterology,true,"Sector 16, Faridabad 121002",https://wibest.in/hospitals/faridabad/
+Metro Hospital Faridabad,Faridabad,Private,250,4.2,Cardiology | Cardiac Surgery | Neurology | Orthopedics | Gynaecology,true,"Sector 16A, Faridabad 121002",https://wibest.in/hospitals/faridabad/
+ESIC Medical College Faridabad,Faridabad,Government,510,4.0,General Medicine | Cardiology | Surgery | Orthopedics | Trauma,false,"NH-3, NIT, Faridabad 121001",https://wibest.in/hospitals/faridabad/

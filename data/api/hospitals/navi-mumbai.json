@@ -1,0 +1,16 @@
+{
+  "city": "Navi Mumbai",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/navi-mumbai/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"MGM New Bombay Hospital","city":"Navi Mumbai","type":"Trust","beds":400,"rating":4.1,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Nephrology","Paediatrics"],"nabh":true,"address":"Plot No 35, Sector 3, Vashi, Navi Mumbai 400703"},
+    {"name":"Fortis Hiranandani Hospital Vashi","city":"Navi Mumbai","type":"Private","beds":149,"rating":4.3,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Renal Sciences","Kidney Transplant"],"nabh":true,"address":"Mini Sea Shore Road, Sector 10A, Vashi, Navi Mumbai 400703"},
+    {"name":"Apollo Hospital Navi Mumbai","city":"Navi Mumbai","type":"Private","beds":500,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurosciences","Transplant"],"nabh":true,"address":"Plot 13, Parsik Hill Road, CBD Belapur, Navi Mumbai 400614"},
+    {"name":"Fortis Hiranandani Hospital","city":"Navi Mumbai","type":"Private","beds":170,"rating":4.3,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Mini Sea Shore Road, Sector 10A, Vashi, Navi Mumbai 400703"},
+    {"name":"MGM Hospital Vashi","city":"Navi Mumbai","type":"Trust","beds":600,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Trauma"],"nabh":true,"address":"Sector 1, Kamothe, Navi Mumbai 410209"},
+    {"name":"Reliance Hospital Navi Mumbai","city":"Navi Mumbai","type":"Trust","beds":345,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Oncology","Neurosciences","Critical Care"],"nabh":true,"address":"Prabhat Colony, Sector 31, Vashi, Navi Mumbai 400703"},
+    {"name":"Terna Specialty Hospital","city":"Navi Mumbai","type":"Private","beds":240,"rating":4.1,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology","Gynaecology"],"nabh":true,"address":"Sector 12, Phase II, Nerul, Navi Mumbai 400706"},
+    {"name":"D Y Patil Hospital Navi Mumbai","city":"Navi Mumbai","type":"Trust","beds":1100,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurosurgery","Transplant"],"nabh":true,"address":"Sector 5, Nerul, Navi Mumbai 400706"}
+  ]
+}

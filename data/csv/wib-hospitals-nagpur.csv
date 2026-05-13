@@ -1,9 +1,13 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-AIIMS Nagpur,Nagpur,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma,,"MIHAN, Nagpur 441108",https://wibest.in/hospitals/nagpur/
-Wockhardt Hospital Nagpur,Nagpur,Private,200,4.4,Cardiac Sciences | Cardiac Surgery | Neurology | Orthopedics,,"Shankar Nagar Square, Nagpur 440010",https://wibest.in/hospitals/nagpur/
-Orange City Hospital,Nagpur,Private,200,4.3,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,,"19, Pande Layout, Nagpur 440015",https://wibest.in/hospitals/nagpur/
-CIIMS Hospital Nagpur,Nagpur,Trust,200,4.3,Cardiac Sciences | Cardiac Surgery | Critical Care | Neurology,,"88/2, Bajaj Nagar, Nagpur 440010",https://wibest.in/hospitals/nagpur/
-Government Medical College Nagpur,Nagpur,Government,1850,4.1,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma | Cardiac Sciences,,"Hanuman Nagar, Nagpur 440003",https://wibest.in/hospitals/nagpur/
-NKP Salve Institute of Medical Sciences,Nagpur,Trust,850,4.2,General Medicine | Surgery | Cardiac Sciences | Orthopedics | Paediatrics,,"Digdoh Hills, Hingna Road, Nagpur 440019",https://wibest.in/hospitals/nagpur/
-Alexis Hospital Nagpur,Nagpur,Private,225,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Liver Transplant,,"Mankapur Square, Koradi Road, Nagpur 440030",https://wibest.in/hospitals/nagpur/
-NMS Multispeciality Hospital,Nagpur,Private,150,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"Wardha Road, Nagpur 440015",https://wibest.in/hospitals/nagpur/
+AIIMS Nagpur,Nagpur,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma,true,"MIHAN, Nagpur 441108",https://wibest.in/hospitals/nagpur/
+Wockhardt Hospital Nagpur,Nagpur,Private,200,4.4,Cardiac Sciences | Cardiac Surgery | Neurology | Orthopedics,true,"Shankar Nagar Square, Nagpur 440010",https://wibest.in/hospitals/nagpur/
+Orange City Hospital,Nagpur,Private,200,4.3,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,true,"19, Pande Layout, Nagpur 440015",https://wibest.in/hospitals/nagpur/
+CIIMS Hospital Nagpur,Nagpur,Trust,200,4.3,Cardiac Sciences | Cardiac Surgery | Critical Care | Neurology,true,"88/2, Bajaj Nagar, Nagpur 440010",https://wibest.in/hospitals/nagpur/
+Government Medical College Nagpur,Nagpur,Government,1850,4.1,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma | Cardiac Sciences,true,"Hanuman Nagar, Nagpur 440003",https://wibest.in/hospitals/nagpur/
+NKP Salve Institute of Medical Sciences,Nagpur,Trust,850,4.2,General Medicine | Surgery | Cardiac Sciences | Orthopedics | Paediatrics,true,"Digdoh Hills, Hingna Road, Nagpur 440019",https://wibest.in/hospitals/nagpur/
+Alexis Hospital Nagpur,Nagpur,Private,225,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Liver Transplant,true,"Mankapur Square, Koradi Road, Nagpur 440030",https://wibest.in/hospitals/nagpur/
+NMS Multispeciality Hospital,Nagpur,Private,150,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"Wardha Road, Nagpur 440015",https://wibest.in/hospitals/nagpur/
+NKP Salve Institute of Medical Sciences,Nagpur,Private,850,4.3,Cardiology | Neurosurgery | Oncology | Nephrology | Orthopedics,true,"Hanuman Nagar, Digdoh Hills, Nagpur 440019",https://wibest.in/hospitals/nagpur/
+Wockhardt Hospital Nagpur,Nagpur,Private,340,4.4,Cardiology | Cardiac Surgery | Neurosciences | Orthopedics | Bariatric Surgery,true,"North Ambazari Road, Shankar Nagar, Nagpur 440010",https://wibest.in/hospitals/nagpur/
+Care Hospital Nagpur,Nagpur,Private,280,4.3,Cardiology | Cardiothoracic Surgery | Nephrology | Renal Transplant | Critical Care,true,"3, Farmland, Ramdaspeth, Nagpur 440010",https://wibest.in/hospitals/nagpur/
+Orange City Hospital,Nagpur,Private,200,4.2,Cardiology | Neurology | Gastroenterology | Orthopedics | Diabetology,true,"19 Pande Layout, Khamla, Nagpur 440025",https://wibest.in/hospitals/nagpur/

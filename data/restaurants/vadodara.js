@@ -8,5 +8,10 @@ window.WIB_RESTAURANTS = [
 {n:"Cafe Goodness",c:"Vadodara",cu:["Cafe","Healthy","Continental"],r:4.5,b:2,a:"Old Padra Road, Akota",v:0,z:"cafe-goodness-akota-vadodara"},
 {n:"Peshawri",c:"Vadodara",cu:["North West Frontier","Tandoor","Fine Dining"],r:4.5,b:3,a:"Welcomhotel by ITC, RC Dutt Road",v:1,z:"peshawri-welcomhotel-vadodara"},
 {n:"Hari Krishna",c:"Vadodara",cu:["South Indian","Vegetarian","Dosa"],r:4.4,b:1,a:"Sayajigunj, opposite Express Hotel",v:0,z:"hari-krishna-sayajigunj-vadodara"},
-{n:"Black Taj",c:"Vadodara",cu:["Mughlai","North Indian","Biryani"],r:4.3,b:2,a:"Fatehgunj, opposite EME Temple",v:0,z:"black-taj-fatehgunj-vadodara"}
+{n:"Black Taj",c:"Vadodara",cu:["Mughlai","North Indian","Biryani"],r:4.3,b:2,a:"Fatehgunj, opposite EME Temple",v:0,z:"black-taj-fatehgunj-vadodara"},
+{n:"Hocco Eatery",c:"Vadodara",cu:["Continental","Italian","Cafe"],r:4.4,b:2,a:"Race Course Circle, Alkapuri",v:0,z:"hocco-eatery-alkapuri-vadodara"},
+{n:"Volga Restaurant",c:"Vadodara",cu:["North Indian","Mughlai","Tandoor"],r:4.3,b:2,a:"Sayajigunj, near railway station",v:0,z:"volga-sayajigunj-vadodara"},
+{n:"Real Veg",c:"Vadodara",cu:["Gujarati","Vegetarian","Multi-Cuisine"],r:4.3,b:2,a:"Inorbit Mall, Gotri Road",v:1,z:"real-veg-inorbit-vadodara"},
+{n:"Cafe Brera",c:"Vadodara",cu:["Italian","Continental","Cafe"],r:4.4,b:2,a:"Old Padra Road, Akota",v:0,z:"cafe-brera-akota-vadodara"},
+{n:"Punjabi Adda",c:"Vadodara",cu:["Punjabi","North Indian","Tandoor"],r:4.2,b:2,a:"Sun Pharma Road, Atladara",v:0,z:"punjabi-adda-atladara-vadodara"}
 ];

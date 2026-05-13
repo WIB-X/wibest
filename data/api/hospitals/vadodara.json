@@ -1,0 +1,20 @@
+{
+  "city": "Vadodara",
+  "count": 12,
+  "source": "https://wibest.in/hospitals/vadodara/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Sterling Hospital Vadodara","city":"Vadodara","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Liver Transplant"],"nabh":true,"address":"Race Course Road, Gotri, Vadodara 390021"},
+    {"name":"Bhailal Amin General Hospital","city":"Vadodara","type":"Trust","beds":380,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Sarabhai Compound, Bhailal Amin Marg, Vadodara 390003"},
+    {"name":"Sayaji Hospital","city":"Vadodara","type":"Government","beds":1500,"rating":4.0,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Trauma","Cardiac Sciences"],"nabh":true,"address":"Anandpura, Vadodara 390001"},
+    {"name":"Kailash Cancer Hospital","city":"Vadodara","type":"Trust","beds":200,"rating":4.5,"specialties":["Oncology","Surgical Oncology","Radiation Oncology","Bone Marrow Transplant"],"nabh":true,"address":"Goraj, Tal. Waghodia, Vadodara 391760"},
+    {"name":"Sunshine Global Hospital Vadodara","city":"Vadodara","type":"Private","beds":150,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Gastroenterology"],"nabh":true,"address":"OP Road, Vadodara 390020"},
+    {"name":"Narhari Multispeciality Hospital","city":"Vadodara","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"Akota, Vadodara 390020"},
+    {"name":"GMERS Medical College Vadodara","city":"Vadodara","type":"Government","beds":600,"rating":4.0,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Cardiac Sciences"],"nabh":true,"address":"Gotri Road, Vadodara 390021"},
+    {"name":"Apollo Hospital Vadodara","city":"Vadodara","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Vasna-Bhayli Road, Vadodara 391410"},
+    {"name":"Sterling Hospital Vadodara","city":"Vadodara","type":"Private","beds":240,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Oncology","Orthopedics","Nephrology"],"nabh":true,"address":"Race Course Road, Alkapuri, Vadodara 390007"},
+    {"name":"Bhailal Amin General Hospital","city":"Vadodara","type":"Trust","beds":300,"rating":4.2,"specialties":["General Medicine","Cardiology","Orthopedics","Neurology","Gynaecology"],"nabh":true,"address":"Sevasi Sankheda Road, Vadodara 391101"},
+    {"name":"Sunshine Global Hospital","city":"Vadodara","type":"Private","beds":175,"rating":4.4,"specialties":["Cardiology","Neurosciences","Orthopedics","Bariatric Surgery","IVF"],"nabh":true,"address":"Manjalpur, Vadodara 390011"},
+    {"name":"Tristar Hospital Vadodara","city":"Vadodara","type":"Private","beds":90,"rating":4.2,"specialties":["Cardiology","Orthopedics","General Surgery","Internal Medicine","Critical Care"],"nabh":true,"address":"Karelibaug, Vadodara 390018"}
+  ]
+}

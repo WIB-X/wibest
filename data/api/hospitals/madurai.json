@@ -1,0 +1,9 @@
+{
+  "city": "Madurai",
+  "count": 1,
+  "source": "https://wibest.in/hospitals/madurai/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Aravind Eye Hospital","city":"Madurai","type":"Trust","beds":500,"rating":4.7,"specialties":["Ophthalmology","Cataract","Retina","Glaucoma","Cornea"],"nabh":true,"address":"1, Anna Nagar, Madurai 625020"}
+  ]
+}

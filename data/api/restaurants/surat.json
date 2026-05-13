@@ -1,0 +1,18 @@
+{
+  "city": "Surat",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/surat/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Sasumaa","city":"Surat","cuisines":["Gujarati","Thali","Vegetarian"],"rating":4.5,"budget_tier":"500_to_2000","address":"Citylight Road, Athwa","vegetarian":true},
+    {"name":"Kansar Gujarati Thali","city":"Surat","cuisines":["Gujarati","Thali","Vegetarian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Surat Marriott Hotel, Athwa Lines","vegetarian":true},
+    {"name":"Surati Locho King","city":"Surat","cuisines":["Gujarati","Surati","Street Food"],"rating":4.5,"budget_tier":"under_500","address":"Lal Darwaja, Bhagal","vegetarian":true},
+    {"name":"Coal Barbecues","city":"Surat","cuisines":["Multi-Cuisine","Buffet","Grill"],"rating":4.3,"budget_tier":"500_to_2000","address":"VR Mall, Dumas Road","vegetarian":false},
+    {"name":"Dholu Maharaj","city":"Surat","cuisines":["Gujarati","Surati","Snacks"],"rating":4.4,"budget_tier":"under_500","address":"Chowk Bazaar, near Old City","vegetarian":true},
+    {"name":"Royal Albert Hotel","city":"Surat","cuisines":["North Indian","Continental","Multi-Cuisine"],"rating":4.3,"budget_tier":"500_to_2000","address":"Vesu Main Road, near Surat Diamond Bourse","vegetarian":false},
+    {"name":"Pure South Indian Restaurant","city":"Surat","cuisines":["South Indian","Vegetarian","Dosa"],"rating":4.4,"budget_tier":"under_500","address":"Nanpura, opposite Saiba Hospital","vegetarian":true},
+    {"name":"Cafe Hosh","city":"Surat","cuisines":["Cafe","Continental","Italian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Citylight Road, Parle Point","vegetarian":false},
+    {"name":"Sufiyana","city":"Surat","cuisines":["Mughlai","North Indian","Biryani"],"rating":4.3,"budget_tier":"500_to_2000","address":"Adajan Patia, opposite Hari Krishna Diamonds","vegetarian":false},
+    {"name":"Jugaadi Adda","city":"Surat","cuisines":["North Indian","Continental","Cafe"],"rating":4.3,"budget_tier":"500_to_2000","address":"Piplod, near LP Savani School","vegetarian":false}
+  ]
+}

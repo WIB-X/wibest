@@ -1,5 +1,9 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-Medanta Gurugram,Gurugram,Private,1500,4.5,Cardiac Surgery | Liver Transplant | Neuroscience | Oncology | Robotic Surgery,,"CH Baktawar Singh Road, Sector 38, Gurugram 122001",https://wibest.in/hospitals/gurugram/
-Fortis Memorial Gurugram,Gurugram,Private,1000,4.4,Oncology | Neurosciences | Orthopedics | Renal Sciences,,"Sector 44, Gurugram 122002",https://wibest.in/hospitals/gurugram/
-Artemis Hospital Gurugram,Gurugram,Private,400,4.3,Cardiac Sciences | Neurology | Oncology | Gastroenterology | Kidney Transplant,,"Sector 51, Gurugram 122001",https://wibest.in/hospitals/gurugram/
-Park Hospital Gurugram,Gurugram,Private,275,4.2,Cardiology | Neurosciences | Orthopedics | Oncology | Gastroenterology | Renal Sciences,,"Q Block, South City 2, Sohna Road, Sector 47, Gurugram 122018",https://wibest.in/hospitals/gurugram/
+Medanta Gurugram,Gurugram,Private,1500,4.5,Cardiac Surgery | Liver Transplant | Neuroscience | Oncology | Robotic Surgery,true,"CH Baktawar Singh Road, Sector 38, Gurugram 122001",https://wibest.in/hospitals/gurugram/
+Fortis Memorial Gurugram,Gurugram,Private,1000,4.4,Oncology | Neurosciences | Orthopedics | Renal Sciences,true,"Sector 44, Gurugram 122002",https://wibest.in/hospitals/gurugram/
+Artemis Hospital Gurugram,Gurugram,Private,400,4.3,Cardiac Sciences | Neurology | Oncology | Gastroenterology | Kidney Transplant,true,"Sector 51, Gurugram 122001",https://wibest.in/hospitals/gurugram/
+Park Hospital Gurugram,Gurugram,Private,275,4.2,Cardiology | Neurosciences | Orthopedics | Oncology | Gastroenterology | Renal Sciences,true,"Q Block, South City 2, Sohna Road, Sector 47, Gurugram 122018",https://wibest.in/hospitals/gurugram/
+Artemis Hospital Gurugram,Gurugram,Private,550,4.5,Cardiology | Neurosurgery | Oncology | Renal Transplant | Robotics,true,"Sector 51, Gurugram 122001",https://wibest.in/hospitals/gurugram/
+Max Hospital Gurugram,Gurugram,Private,300,4.4,Cardiology | Oncology | Neurosciences | Orthopedics | Renal Sciences,true,"B Block, Sushant Lok 1, Gurugram 122002",https://wibest.in/hospitals/gurugram/
+Paras Hospital Gurugram,Gurugram,Private,300,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Liver Transplant,true,"C-1, Sushant Lok 1, Gurugram 122002",https://wibest.in/hospitals/gurugram/
+Manipal Hospitals Gurugram,Gurugram,Private,380,4.3,Cardiology | Cardiothoracic Surgery | Oncology | Neurosciences | Gastroenterology,true,"Sector 6, Palam Vihar, Gurugram 122017",https://wibest.in/hospitals/gurugram/

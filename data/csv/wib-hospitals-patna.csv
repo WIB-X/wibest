@@ -1,9 +1,13 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-AIIMS Patna,Patna,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma | Transplant,,"Phulwari Sharif, Patna 801507",https://wibest.in/hospitals/patna/
-Patna Medical College Hospital,Patna,Government,1750,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Cardiac Sciences | Trauma,,"Ashok Rajpath, Patna 800004",https://wibest.in/hospitals/patna/
-Paras HMRI Hospital Patna,Patna,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,,"Raja Bazar, Bailey Road, Patna 800014",https://wibest.in/hospitals/patna/
-Ruban Memorial Hospital,Patna,Private,200,4.3,Cardiac Sciences | Neurology | Orthopedics | Gynaecology,,"Patliputra Road, Patna 800013",https://wibest.in/hospitals/patna/
-Big Apollo Spectra Hospital,Patna,Private,150,4.3,Cardiac Sciences | Neurology | Orthopedics | General Medicine,,"Behind Hartali Mor, Kankarbagh, Patna 800020",https://wibest.in/hospitals/patna/
-Mediversal Multi Super Speciality Hospital,Patna,Private,200,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,,"Bypass Road, Patna 800027",https://wibest.in/hospitals/patna/
-Rajeshwar Hospital Patna,Patna,Private,120,4.2,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"Boring Road, Patna 800001",https://wibest.in/hospitals/patna/
-IGIMS Patna,Patna,Government,1100,4.2,Cardiac Sciences | Neurology | Oncology | Orthopedics | Transplant,,"Sheikhpura, Patna 800014",https://wibest.in/hospitals/patna/
+AIIMS Patna,Patna,Government,960,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma | Transplant,true,"Phulwari Sharif, Patna 801507",https://wibest.in/hospitals/patna/
+Patna Medical College Hospital,Patna,Government,1750,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Cardiac Sciences | Trauma,true,"Ashok Rajpath, Patna 800004",https://wibest.in/hospitals/patna/
+Paras HMRI Hospital Patna,Patna,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,true,"Raja Bazar, Bailey Road, Patna 800014",https://wibest.in/hospitals/patna/
+Ruban Memorial Hospital,Patna,Private,200,4.3,Cardiac Sciences | Neurology | Orthopedics | Gynaecology,true,"Patliputra Road, Patna 800013",https://wibest.in/hospitals/patna/
+Big Apollo Spectra Hospital,Patna,Private,150,4.3,Cardiac Sciences | Neurology | Orthopedics | General Medicine,true,"Behind Hartali Mor, Kankarbagh, Patna 800020",https://wibest.in/hospitals/patna/
+Mediversal Multi Super Speciality Hospital,Patna,Private,200,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,true,"Bypass Road, Patna 800027",https://wibest.in/hospitals/patna/
+Rajeshwar Hospital Patna,Patna,Private,120,4.2,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"Boring Road, Patna 800001",https://wibest.in/hospitals/patna/
+IGIMS Patna,Patna,Government,1100,4.2,Cardiac Sciences | Neurology | Oncology | Orthopedics | Transplant,true,"Sheikhpura, Patna 800014",https://wibest.in/hospitals/patna/
+AIIMS Patna,Patna,Government,960,4.4,Cardiac Sciences | Neurology | Oncology | Nephrology | Trauma,false,"Phulwari Sharif, Patna 801507",https://wibest.in/hospitals/patna/
+IGIMS Patna,Patna,Government,1050,4.2,Cardiology | Cardiothoracic Surgery | Neurology | Oncology | Endocrinology,false,"Sheikhpura, Patna 800014",https://wibest.in/hospitals/patna/
+Paras HMRI Hospital Patna,Patna,Private,350,4.3,Cardiology | Cardiac Surgery | Neurosciences | Oncology | Renal Sciences,true,"Raja Bazar, Bailey Road, Patna 800014",https://wibest.in/hospitals/patna/
+Ruban Memorial Hospital,Patna,Private,200,4.2,Cardiology | Neurology | Gastroenterology | Orthopedics | Nephrology,true,"Patliputra Colony, Patna 800013",https://wibest.in/hospitals/patna/

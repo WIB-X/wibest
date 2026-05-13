@@ -1,0 +1,16 @@
+{
+  "city": "Noida",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/noida/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Jaypee Hospital","city":"Noida","type":"Private","beds":525,"rating":4.4,"specialties":["Cardiac Sciences","Oncology","Neurosciences","Liver Transplant","Kidney Transplant","Orthopedics"],"nabh":true,"address":"Sector 128, Noida, Uttar Pradesh 201304"},
+    {"name":"Yatharth Super Speciality Hospital","city":"Noida","type":"Private","beds":450,"rating":4.3,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Gastroenterology","Critical Care"],"nabh":true,"address":"Plot No 1, Gejha Road, Sector 110, Noida, Uttar Pradesh 201304"},
+    {"name":"Metro Hospital and Heart Institute","city":"Noida","type":"Private","beds":317,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Nephrology","Urology"],"nabh":true,"address":"L-94, Sector 11, Noida, Uttar Pradesh 201301"},
+    {"name":"Fortis Hospital Noida","city":"Noida","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Renal Sciences"],"nabh":true,"address":"B-22, Sector 62, Noida 201301"},
+    {"name":"Apollo Hospital Noida","city":"Noida","type":"Private","beds":300,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Transplant"],"nabh":true,"address":"E-2, Sector 26, Noida 201301"},
+    {"name":"Max Super Speciality Noida","city":"Noida","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Oncology","Neurosciences","Orthopedics","Critical Care"],"nabh":true,"address":"A-364, Sector 19, Noida 201301"},
+    {"name":"Felix Hospital Noida","city":"Noida","type":"Private","beds":200,"rating":4.2,"specialties":["Cardiology","Neurology","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"NH-1, Sector 137, Noida 201301"},
+    {"name":"Jaypee Hospital Noida","city":"Noida","type":"Private","beds":1200,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Oncology","Neurosciences","Liver Transplant"],"nabh":true,"address":"Sector 128, Noida 201304"}
+  ]
+}

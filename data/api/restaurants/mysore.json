@@ -1,0 +1,23 @@
+{
+  "city": "Mysore",
+  "count": 15,
+  "source": "https://wibest.in/restaurants/mysore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Vinayaka Mylari","city":"Mysore","cuisines":["South Indian","Dosa","Breakfast"],"rating":4.6,"budget_tier":"under_500","address":"Nazarbad, opposite Mysore Race Club","vegetarian":false},
+    {"name":"Hotel RRR","city":"Mysore","cuisines":["Andhra","South Indian","Meals"],"rating":4.5,"budget_tier":"under_500","address":"Gandhi Square, Chamrajpura","vegetarian":false},
+    {"name":"Lalith Mahal Palace Dining Hall","city":"Mysore","cuisines":["Multi-Cuisine","Heritage","Continental"],"rating":4.4,"budget_tier":"above_2000","address":"Lalitha Mahal Palace Hotel, T Narasipura Road","vegetarian":true},
+    {"name":"Hanumanthu Mess","city":"Mysore","cuisines":["Mangalorean","Seafood","Chicken"],"rating":4.5,"budget_tier":"under_500","address":"Salem Street, Mandi Mohalla","vegetarian":false},
+    {"name":"Olive Garden","city":"Mysore","cuisines":["Italian","Continental","Cafe"],"rating":4.3,"budget_tier":"500_to_2000","address":"Ramanuja Road, Yadavagiri","vegetarian":false},
+    {"name":"Le Olive Garden","city":"Mysore","cuisines":["Multi-Cuisine","Continental","Garden Dining"],"rating":4.4,"budget_tier":"500_to_2000","address":"Plot 113, KRS Road","vegetarian":false},
+    {"name":"Mahesh Prasad","city":"Mysore","cuisines":["South Indian","Vegetarian","Thali"],"rating":4.4,"budget_tier":"under_500","address":"Sayyaji Rao Road, Devaraja Mohalla","vegetarian":false},
+    {"name":"Tiger Trail","city":"Mysore","cuisines":["North Indian","Mughlai","Multi-Cuisine"],"rating":4.5,"budget_tier":"above_2000","address":"Royal Orchid Metropole, JLB Road","vegetarian":true},
+    {"name":"Old House","city":"Mysore","cuisines":["Cafe","Continental","Italian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Vinoba Road, Jayalakshmipuram","vegetarian":false},
+    {"name":"GTR (Gayatri Tiffin Room)","city":"Mysore","cuisines":["South Indian","Dosa","Breakfast"],"rating":4.5,"budget_tier":"under_500","address":"Krishnamurthypuram, behind Mysuru Palace","vegetarian":false},
+    {"name":"Hotel Mahesh Prasad Annex","city":"Mysore","cuisines":["South Indian","Vegetarian","Andhra"],"rating":4.3,"budget_tier":"under_500","address":"Sayyaji Rao Road, Devaraja Mohalla","vegetarian":true},
+    {"name":"Cosmo Village Restaurant","city":"Mysore","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.2,"budget_tier":"500_to_2000","address":"Hyderali Road, Yadavagiri","vegetarian":false},
+    {"name":"Depth N Green","city":"Mysore","cuisines":["Continental","Italian","Cafe"],"rating":4.3,"budget_tier":"500_to_2000","address":"Vinoba Road, Jayalakshmipuram","vegetarian":false},
+    {"name":"Mylari Original","city":"Mysore","cuisines":["South Indian","Dosa","Breakfast"],"rating":4.5,"budget_tier":"under_500","address":"Nazarbad Main Road","vegetarian":false},
+    {"name":"Park Lane Hotel","city":"Mysore","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"2716 Sri Harsha Road, Lashkar Mohalla","vegetarian":false}
+  ]
+}

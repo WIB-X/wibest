@@ -1,0 +1,29 @@
+{
+  "city": "Delhi",
+  "count": 21,
+  "source": "https://wibest.in/hospitals/delhi/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"AIIMS Delhi","city":"Delhi","type":"Government","beds":2478,"rating":4.8,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029"},
+    {"name":"Sir Ganga Ram Hospital","city":"Delhi","type":"Private","beds":675,"rating":4.6,"specialties":["Gastroenterology","Nephrology","Cardiology","Oncology"],"nabh":true,"address":"Rajinder Nagar, New Delhi 110060"},
+    {"name":"Max Super Speciality Saket","city":"Delhi","type":"Private","beds":500,"rating":4.5,"specialties":["Cardiac Sciences","Neurosciences","Oncology","Orthopedics"],"nabh":true,"address":"1, Press Enclave Marg, Saket, New Delhi 110017"},
+    {"name":"Fortis Escorts Heart Institute","city":"Delhi","type":"Private","beds":310,"rating":4.6,"specialties":["Cardiac Surgery","Cardiology","Vascular Surgery"],"nabh":true,"address":"Okhla Road, New Delhi 110025"},
+    {"name":"BLK-Max Super Speciality","city":"Delhi","type":"Private","beds":700,"rating":4.4,"specialties":["Bone Marrow Transplant","Oncology","Liver Transplant","Cardiology"],"nabh":true,"address":"Pusa Road, Rajinder Nagar, New Delhi 110005"},
+    {"name":"Safdarjung Hospital","city":"Delhi","type":"Government","beds":1600,"rating":4.2,"specialties":["General Medicine","Surgery","Orthopedics","Burns"],"nabh":true,"address":"Ansari Nagar West, New Delhi 110029"},
+    {"name":"Indraprastha Apollo","city":"Delhi","type":"Private","beds":710,"rating":4.5,"specialties":["Cardiology","Oncology","Transplant","Robotic Surgery"],"nabh":true,"address":"Mathura Road, Sarita Vihar, New Delhi 110076"},
+    {"name":"RML Hospital","city":"Delhi","type":"Government","beds":1531,"rating":4.1,"specialties":["General Medicine","Surgery","Paediatrics","Psychiatry"],"nabh":true,"address":"Baba Kharak Singh Marg, New Delhi 110001"},
+    {"name":"Lok Nayak Hospital","city":"Delhi","type":"Government","beds":2000,"rating":4.0,"specialties":["General Medicine","Surgery","Burns","Trauma"],"nabh":true,"address":"Jawaharlal Nehru Marg, New Delhi 110002"},
+    {"name":"Moolchand Hospital","city":"Delhi","type":"Private","beds":250,"rating":4.3,"specialties":["Gynaecology","IVF","Orthopedics","Cardiology"],"nabh":true,"address":"Lajpat Nagar III, New Delhi 110024"},
+    {"name":"Rajiv Gandhi Cancer Institute","city":"Delhi","type":"Trust","beds":302,"rating":4.6,"specialties":["Oncology","Surgical Oncology","Radiation Oncology"],"nabh":true,"address":"Sector 5, Rohini, New Delhi 110085"},
+    {"name":"Dharamshila Narayana","city":"Delhi","type":"Private","beds":300,"rating":4.4,"specialties":["Oncology","Bone Marrow Transplant","Radiation Oncology"],"nabh":true,"address":"Vasundhara Enclave, New Delhi 110096"},
+    {"name":"Primus Super Speciality","city":"Delhi","type":"Private","beds":150,"rating":4.3,"specialties":["Bariatric Surgery","Orthopedics","Spine","Urology"],"nabh":true,"address":"2 Chandragupta Marg, Chanakyapuri, New Delhi 110021"},
+    {"name":"Venkateshwar Hospital","city":"Delhi","type":"Private","beds":350,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Joint Replacement","IVF"],"nabh":true,"address":"Sector 18A, Dwarka, New Delhi 110075"},
+    {"name":"LHMC & Sucheta Kriplani","city":"Delhi","type":"Government","beds":800,"rating":4.2,"specialties":["Gynaecology","Paediatrics","General Medicine"],"nabh":true,"address":"Bangla Sahib Marg, Connaught Place, New Delhi 110001"},
+    {"name":"GTB Hospital","city":"Delhi","type":"Government","beds":1800,"rating":4.0,"specialties":["General Medicine","Surgery","Trauma","Burns"],"nabh":true,"address":"Dilshad Garden, New Delhi 110095"},
+    {"name":"Max Super Speciality Hospital Patparganj","city":"Delhi","type":"Private","beds":400,"rating":4.4,"specialties":["Cardiology","Neurology","Oncology","Nephrology","Gastroenterology","Orthopedics"],"nabh":true,"address":"108A, IP Extension, Patparganj, Delhi 110092"},
+    {"name":"Sri Balaji Action Medical Institute","city":"Delhi","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiology","Oncology","Neurology","Orthopedics","Nephrology","Urology"],"nabh":true,"address":"FC-34, A-4, Paschim Vihar, New Delhi 110063"},
+    {"name":"Manipal Hospital Dwarka","city":"Delhi","type":"Private","beds":380,"rating":4.3,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Gastroenterology","Transplant"],"nabh":true,"address":"Sector 6, Dwarka, New Delhi 110075"},
+    {"name":"Fortis Hospital Shalimar Bagh","city":"Delhi","type":"Private","beds":262,"rating":4.3,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology","Renal Sciences"],"nabh":true,"address":"AA-299, Shaheed Udham Singh Marg, Shalimar Bagh, Delhi 110088"},
+    {"name":"Holy Family Hospital","city":"Delhi","type":"Trust","beds":345,"rating":4.3,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Okhla Road, New Delhi 110025"}
+  ]
+}

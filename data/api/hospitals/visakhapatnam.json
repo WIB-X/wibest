@@ -1,0 +1,18 @@
+{
+  "city": "Visakhapatnam",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/visakhapatnam/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Apollo Hospitals Visakhapatnam","city":"Visakhapatnam","type":"Private","beds":255,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Health City, Arilova, Visakhapatnam 530040"},
+    {"name":"KIMS ICON Hospital Visakhapatnam","city":"Visakhapatnam","type":"Private","beds":300,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Beach Road, Sheelanagar, Visakhapatnam 530012"},
+    {"name":"Care Hospitals Visakhapatnam","city":"Visakhapatnam","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Ramnagar, Visakhapatnam 530002"},
+    {"name":"Seven Hills Hospital Visakhapatnam","city":"Visakhapatnam","type":"Private","beds":300,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Rockdale Layout, Visakhapatnam 530002"},
+    {"name":"Andhra Medical College / King George Hospital","city":"Visakhapatnam","type":"Government","beds":1100,"rating":4.1,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Cardiac Sciences"],"nabh":true,"address":"Maharani Peta, Visakhapatnam 530002"},
+    {"name":"Medicover Hospitals Visakhapatnam","city":"Visakhapatnam","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Orthopedics","IVF"],"nabh":true,"address":"Beach Road, Maharani Peta, Visakhapatnam 530002"},
+    {"name":"Indus Hospitals","city":"Visakhapatnam","type":"Private","beds":170,"rating":4.4,"specialties":["Orthopedics","Joint Replacement","Spine","Sports Medicine"],"nabh":true,"address":"Sheela Nagar, Visakhapatnam 530012"},
+    {"name":"Queen's NRI Hospital","city":"Visakhapatnam","type":"Private","beds":150,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"Seethamadhara, Visakhapatnam 530013"},
+    {"name":"Visakha Hospital and Diagnostics","city":"Visakhapatnam","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"Daba Gardens, Visakhapatnam 530020"},
+    {"name":"L V Prasad Eye Institute Visakhapatnam","city":"Visakhapatnam","type":"Trust","beds":80,"rating":4.7,"specialties":["Eye Care","Cataract","Retina","Cornea","Glaucoma"],"nabh":true,"address":"Mithila Nagar, Visakhapatnam 530013"}
+  ]
+}

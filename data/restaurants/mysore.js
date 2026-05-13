@@ -8,5 +8,10 @@ window.WIB_RESTAURANTS = [
 {n:"Mahesh Prasad",c:"Mysore",cu:["South Indian","Vegetarian","Thali"],r:4.4,b:1,a:"Sayyaji Rao Road, Devaraja Mohalla",v:0,z:"mahesh-prasad-sayyaji-rao-mysore"},
 {n:"Tiger Trail",c:"Mysore",cu:["North Indian","Mughlai","Multi-Cuisine"],r:4.5,b:3,a:"Royal Orchid Metropole, JLB Road",v:1,z:"tiger-trail-royal-orchid-mysore"},
 {n:"Old House",c:"Mysore",cu:["Cafe","Continental","Italian"],r:4.4,b:2,a:"Vinoba Road, Jayalakshmipuram",v:0,z:"old-house-jayalakshmipuram-mysore"},
-{n:"GTR (Gayatri Tiffin Room)",c:"Mysore",cu:["South Indian","Dosa","Breakfast"],r:4.5,b:1,a:"Krishnamurthypuram, behind Mysuru Palace",v:0,z:"gtr-krishnamurthypuram-mysore"}
+{n:"GTR (Gayatri Tiffin Room)",c:"Mysore",cu:["South Indian","Dosa","Breakfast"],r:4.5,b:1,a:"Krishnamurthypuram, behind Mysuru Palace",v:0,z:"gtr-krishnamurthypuram-mysore"},
+{n:"Hotel Mahesh Prasad Annex",c:"Mysore",cu:["South Indian","Vegetarian","Andhra"],r:4.3,b:1,a:"Sayyaji Rao Road, Devaraja Mohalla",v:1,z:"mahesh-prasad-annex-sayyaji-rao-mysore"},
+{n:"Cosmo Village Restaurant",c:"Mysore",cu:["Multi-Cuisine","Continental","Indian"],r:4.2,b:2,a:"Hyderali Road, Yadavagiri",v:0,z:"cosmo-village-yadavagiri-mysore"},
+{n:"Depth N Green",c:"Mysore",cu:["Continental","Italian","Cafe"],r:4.3,b:2,a:"Vinoba Road, Jayalakshmipuram",v:0,z:"depth-n-green-jayalakshmipuram-mysore"},
+{n:"Mylari Original",c:"Mysore",cu:["South Indian","Dosa","Breakfast"],r:4.5,b:1,a:"Nazarbad Main Road",v:0,z:"mylari-original-nazarbad-mysore"},
+{n:"Park Lane Hotel",c:"Mysore",cu:["Multi-Cuisine","Continental","Indian"],r:4.3,b:2,a:"2716 Sri Harsha Road, Lashkar Mohalla",v:0,z:"park-lane-hotel-lashkar-mysore"}
 ];

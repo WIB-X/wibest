@@ -1,11 +1,11 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-Sanjay Gandhi Postgraduate Institute of Medical Sciences (SGPGIMS),Lucknow,Government,1080,4.7,Cardiac Sciences | Neurology | Oncology | Transplant | Liver Transplant,,"Raebareli Road, Lucknow 226014",https://wibest.in/hospitals/lucknow/
-King George's Medical University (KGMU),Lucknow,Government,4500,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma | Paediatrics,,"Chowk, Lucknow 226003",https://wibest.in/hospitals/lucknow/
-Medanta Lucknow,Lucknow,Private,450,4.6,Cardiac Sciences | Neurology | Oncology | Liver Transplant | Robotic Surgery,,"Sector A, Pocket 1, Sushant Golf City, Lucknow 226030",https://wibest.in/hospitals/lucknow/
-Apollomedics Super Speciality Hospital Lucknow,Lucknow,Private,340,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics,,"Kanpur Road, Lucknow 226012",https://wibest.in/hospitals/lucknow/
-Sahara Hospital,Lucknow,Private,325,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,,"Viraj Khand, Gomti Nagar, Lucknow 226010",https://wibest.in/hospitals/lucknow/
-Mayo Medical Centre,Lucknow,Private,170,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,,"Faizabad Road, Indira Nagar, Lucknow 226016",https://wibest.in/hospitals/lucknow/
-Vivekananda Polyclinic and Institute of Medical Sciences,Lucknow,Trust,300,4.4,General Medicine | Cardiac Sciences | Orthopedics | Surgery,,"5, Vivekananda Marg, Nirala Nagar, Lucknow 226020",https://wibest.in/hospitals/lucknow/
-Charak Hospital,Lucknow,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"Hardoi Road, Dubagga, Lucknow 226003",https://wibest.in/hospitals/lucknow/
-Era's Lucknow Medical College Hospital,Lucknow,Trust,830,4.2,Cardiac Sciences | Neurology | Orthopedics | General Medicine | Paediatrics,,"Sarfarazganj, Hardoi Road, Lucknow 226003",https://wibest.in/hospitals/lucknow/
-Regency Hospital Lucknow,Lucknow,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Critical Care,,"Tedhi Pulia, Sitapur Road, Lucknow 226020",https://wibest.in/hospitals/lucknow/
+Sanjay Gandhi Postgraduate Institute of Medical Sciences (SGPGIMS),Lucknow,Government,1080,4.7,Cardiac Sciences | Neurology | Oncology | Transplant | Liver Transplant,true,"Raebareli Road, Lucknow 226014",https://wibest.in/hospitals/lucknow/
+King George's Medical University (KGMU),Lucknow,Government,4500,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Trauma | Paediatrics,true,"Chowk, Lucknow 226003",https://wibest.in/hospitals/lucknow/
+Medanta Lucknow,Lucknow,Private,450,4.6,Cardiac Sciences | Neurology | Oncology | Liver Transplant | Robotic Surgery,true,"Sector A, Pocket 1, Sushant Golf City, Lucknow 226030",https://wibest.in/hospitals/lucknow/
+Apollomedics Super Speciality Hospital Lucknow,Lucknow,Private,340,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics,true,"Kanpur Road, Lucknow 226012",https://wibest.in/hospitals/lucknow/
+Sahara Hospital,Lucknow,Private,325,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Gastroenterology,true,"Viraj Khand, Gomti Nagar, Lucknow 226010",https://wibest.in/hospitals/lucknow/
+Mayo Medical Centre,Lucknow,Private,170,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,true,"Faizabad Road, Indira Nagar, Lucknow 226016",https://wibest.in/hospitals/lucknow/
+Vivekananda Polyclinic and Institute of Medical Sciences,Lucknow,Trust,300,4.4,General Medicine | Cardiac Sciences | Orthopedics | Surgery,true,"5, Vivekananda Marg, Nirala Nagar, Lucknow 226020",https://wibest.in/hospitals/lucknow/
+Charak Hospital,Lucknow,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"Hardoi Road, Dubagga, Lucknow 226003",https://wibest.in/hospitals/lucknow/
+Era's Lucknow Medical College Hospital,Lucknow,Trust,830,4.2,Cardiac Sciences | Neurology | Orthopedics | General Medicine | Paediatrics,true,"Sarfarazganj, Hardoi Road, Lucknow 226003",https://wibest.in/hospitals/lucknow/
+Regency Hospital Lucknow,Lucknow,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Critical Care,true,"Tedhi Pulia, Sitapur Road, Lucknow 226020",https://wibest.in/hospitals/lucknow/

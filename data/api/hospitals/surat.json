@@ -1,0 +1,16 @@
+{
+  "city": "Surat",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/surat/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Kiran Multi Super Speciality Hospital","city":"Surat","type":"Trust","beds":800,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurosciences","Transplant"],"nabh":true,"address":"Sumul Dairy Road, Katargam, Surat 395004"},
+    {"name":"BAPS Pramukh Swami Hospital","city":"Surat","type":"Trust","beds":225,"rating":4.5,"specialties":["Cardiology","Cardiac Surgery","Oncology","Orthopedics","Nephrology"],"nabh":true,"address":"Vasta Devdi Road, Adajan, Surat 395009"},
+    {"name":"Sunshine Global Hospital Surat","city":"Surat","type":"Private","beds":160,"rating":4.3,"specialties":["Cardiology","Neurology","Bariatric Surgery","IVF","Critical Care"],"nabh":true,"address":"Piplod-Magdalla Main Road, Dumas Road, Surat 395007"},
+    {"name":"Apple Hospital Surat","city":"Surat","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology","Critical Care"],"nabh":true,"address":"Udhana Magdalla Road, Vesu, Surat 395007"},
+    {"name":"Mahavir Hospital Surat","city":"Surat","type":"Trust","beds":300,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gynaecology"],"nabh":true,"address":"Athwa Lines, Surat 395001"},
+    {"name":"Smimer Hospital Surat","city":"Surat","type":"Government","beds":850,"rating":3.9,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Trauma"],"nabh":false,"address":"Umarwada, Surat 395010"},
+    {"name":"Yash Hospital Surat","city":"Surat","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiology","Internal Medicine","Pulmonology","Orthopedics","Gynaecology"],"nabh":true,"address":"Citylight Road, Athwa, Surat 395007"},
+    {"name":"Tristar Hospital Surat","city":"Surat","type":"Private","beds":140,"rating":4.2,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology","Bariatric Surgery"],"nabh":true,"address":"VIP Main Road, Vesu, Surat 395007"}
+  ]
+}

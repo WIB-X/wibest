@@ -1,0 +1,9 @@
+{
+  "city": "Vellore",
+  "count": 1,
+  "source": "https://wibest.in/hospitals/vellore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"CMC Vellore","city":"Vellore","type":"Trust","beds":2700,"rating":4.7,"specialties":["General Medicine","Oncology","Haematology","Nephrology","Neurology"],"nabh":true,"address":"Ida Scudder Road, Vellore 632004"}
+  ]
+}

@@ -1,11 +1,11 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-Amrita Institute of Medical Sciences (AIMS Kochi),Kochi,Trust,1450,4.7,Cardiac Sciences | Neurology | Oncology | Transplant | Robotic Surgery,,"AIMS Ponekkara P O, Kochi 682041",https://wibest.in/hospitals/kochi/
-Aster Medcity Kochi,Kochi,Private,670,4.6,Cardiac Sciences | Neurology | Oncology | Liver Transplant | Robotic Surgery,,"Kuttisahib Road, Cheranalloor, South Chittoor, Kochi 682027",https://wibest.in/hospitals/kochi/
-Lakeshore Hospital Kochi,Kochi,Private,450,4.5,Gastroenterology | Liver Transplant | Cardiac Sciences | Orthopedics,,"NH Bypass, Maradu, Kochi 682304",https://wibest.in/hospitals/kochi/
-VPS Lakeshore Hospital,Kochi,Private,330,4.5,Cardiac Sciences | Neurology | Oncology | Gynaecology,,"Maradu, NH Bypass, Kochi 682304",https://wibest.in/hospitals/kochi/
-Medical Trust Hospital Kochi,Kochi,Trust,600,4.4,Cardiac Sciences | Neurology | Orthopedics | Gastroenterology | Gynaecology,,"M G Road, Kochi 682016",https://wibest.in/hospitals/kochi/
-Renai Medicity,Kochi,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,,"Palarivattom, Kochi 682025",https://wibest.in/hospitals/kochi/
-Lisie Hospital,Kochi,Trust,500,4.5,Cardiac Sciences | Cardiac Surgery | Orthopedics | Paediatrics,,"Lisie Junction, Ernakulam, Kochi 682018",https://wibest.in/hospitals/kochi/
-Specialists' Hospital Kochi,Kochi,Private,200,4.4,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"Ernakulam North, Kochi 682018",https://wibest.in/hospitals/kochi/
-Welcare Hospital Kochi,Kochi,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,,"Vyttila, Kochi 682019",https://wibest.in/hospitals/kochi/
-Medical Trust Hospital Cochin Cardiac Centre,Kochi,Trust,120,4.5,Cardiac Sciences | Cardiac Surgery,,"M G Road, Kochi 682016",https://wibest.in/hospitals/kochi/
+Amrita Institute of Medical Sciences (AIMS Kochi),Kochi,Trust,1450,4.7,Cardiac Sciences | Neurology | Oncology | Transplant | Robotic Surgery,true,"AIMS Ponekkara P O, Kochi 682041",https://wibest.in/hospitals/kochi/
+Aster Medcity Kochi,Kochi,Private,670,4.6,Cardiac Sciences | Neurology | Oncology | Liver Transplant | Robotic Surgery,true,"Kuttisahib Road, Cheranalloor, South Chittoor, Kochi 682027",https://wibest.in/hospitals/kochi/
+Lakeshore Hospital Kochi,Kochi,Private,450,4.5,Gastroenterology | Liver Transplant | Cardiac Sciences | Orthopedics,true,"NH Bypass, Maradu, Kochi 682304",https://wibest.in/hospitals/kochi/
+VPS Lakeshore Hospital,Kochi,Private,330,4.5,Cardiac Sciences | Neurology | Oncology | Gynaecology,true,"Maradu, NH Bypass, Kochi 682304",https://wibest.in/hospitals/kochi/
+Medical Trust Hospital Kochi,Kochi,Trust,600,4.4,Cardiac Sciences | Neurology | Orthopedics | Gastroenterology | Gynaecology,true,"M G Road, Kochi 682016",https://wibest.in/hospitals/kochi/
+Renai Medicity,Kochi,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,true,"Palarivattom, Kochi 682025",https://wibest.in/hospitals/kochi/
+Lisie Hospital,Kochi,Trust,500,4.5,Cardiac Sciences | Cardiac Surgery | Orthopedics | Paediatrics,true,"Lisie Junction, Ernakulam, Kochi 682018",https://wibest.in/hospitals/kochi/
+Specialists' Hospital Kochi,Kochi,Private,200,4.4,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"Ernakulam North, Kochi 682018",https://wibest.in/hospitals/kochi/
+Welcare Hospital Kochi,Kochi,Private,200,4.3,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,true,"Vyttila, Kochi 682019",https://wibest.in/hospitals/kochi/
+Medical Trust Hospital Cochin Cardiac Centre,Kochi,Trust,120,4.5,Cardiac Sciences | Cardiac Surgery,true,"M G Road, Kochi 682016",https://wibest.in/hospitals/kochi/

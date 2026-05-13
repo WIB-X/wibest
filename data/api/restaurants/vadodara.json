@@ -1,0 +1,23 @@
+{
+  "city": "Vadodara",
+  "count": 15,
+  "source": "https://wibest.in/restaurants/vadodara/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Mandap","city":"Vadodara","cuisines":["Gujarati","Thali","Vegetarian"],"rating":4.5,"budget_tier":"500_to_2000","address":"Welcomhotel by ITC, RC Dutt Road","vegetarian":true},
+    {"name":"Canopy","city":"Vadodara","cuisines":["Multi-Cuisine","Continental","Buffet"],"rating":4.4,"budget_tier":"500_to_2000","address":"Vivanta Vadodara, Akota Gardens","vegetarian":true},
+    {"name":"Sayaji Sweets & Restaurant","city":"Vadodara","cuisines":["Gujarati","Sweets","Vegetarian"],"rating":4.5,"budget_tier":"under_500","address":"Sayajigunj, near railway station","vegetarian":false},
+    {"name":"Rajdhani Thali","city":"Vadodara","cuisines":["Gujarati","Rajasthani","Thali"],"rating":4.4,"budget_tier":"500_to_2000","address":"Inorbit Mall, Gotri Road","vegetarian":false},
+    {"name":"Mahalaxmi Bhojanalay","city":"Vadodara","cuisines":["Gujarati","Thali","Home-Style"],"rating":4.6,"budget_tier":"under_500","address":"Raopura, opposite Nyay Mandir","vegetarian":false},
+    {"name":"Kalyan Restaurant","city":"Vadodara","cuisines":["Punjabi","North Indian","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Race Course Circle, Alkapuri","vegetarian":false},
+    {"name":"Cafe Goodness","city":"Vadodara","cuisines":["Cafe","Healthy","Continental"],"rating":4.5,"budget_tier":"500_to_2000","address":"Old Padra Road, Akota","vegetarian":false},
+    {"name":"Peshawri","city":"Vadodara","cuisines":["North West Frontier","Tandoor","Fine Dining"],"rating":4.5,"budget_tier":"above_2000","address":"Welcomhotel by ITC, RC Dutt Road","vegetarian":true},
+    {"name":"Hari Krishna","city":"Vadodara","cuisines":["South Indian","Vegetarian","Dosa"],"rating":4.4,"budget_tier":"under_500","address":"Sayajigunj, opposite Express Hotel","vegetarian":false},
+    {"name":"Black Taj","city":"Vadodara","cuisines":["Mughlai","North Indian","Biryani"],"rating":4.3,"budget_tier":"500_to_2000","address":"Fatehgunj, opposite EME Temple","vegetarian":false},
+    {"name":"Hocco Eatery","city":"Vadodara","cuisines":["Continental","Italian","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"Race Course Circle, Alkapuri","vegetarian":false},
+    {"name":"Volga Restaurant","city":"Vadodara","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Sayajigunj, near railway station","vegetarian":false},
+    {"name":"Real Veg","city":"Vadodara","cuisines":["Gujarati","Vegetarian","Multi-Cuisine"],"rating":4.3,"budget_tier":"500_to_2000","address":"Inorbit Mall, Gotri Road","vegetarian":true},
+    {"name":"Cafe Brera","city":"Vadodara","cuisines":["Italian","Continental","Cafe"],"rating":4.4,"budget_tier":"500_to_2000","address":"Old Padra Road, Akota","vegetarian":false},
+    {"name":"Punjabi Adda","city":"Vadodara","cuisines":["Punjabi","North Indian","Tandoor"],"rating":4.2,"budget_tier":"500_to_2000","address":"Sun Pharma Road, Atladara","vegetarian":false}
+  ]
+}

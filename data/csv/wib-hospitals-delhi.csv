@@ -1,22 +1,22 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-AIIMS Delhi,Delhi,Government,2478,4.8,Cardiology | Neurology | Oncology | Orthopedics | Transplant,,"Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029",https://wibest.in/hospitals/delhi/
-Sir Ganga Ram Hospital,Delhi,Private,675,4.6,Gastroenterology | Nephrology | Cardiology | Oncology,,"Rajinder Nagar, New Delhi 110060",https://wibest.in/hospitals/delhi/
-Max Super Speciality Saket,Delhi,Private,500,4.5,Cardiac Sciences | Neurosciences | Oncology | Orthopedics,,"1, Press Enclave Marg, Saket, New Delhi 110017",https://wibest.in/hospitals/delhi/
-Fortis Escorts Heart Institute,Delhi,Private,310,4.6,Cardiac Surgery | Cardiology | Vascular Surgery,,"Okhla Road, New Delhi 110025",https://wibest.in/hospitals/delhi/
-BLK-Max Super Speciality,Delhi,Private,700,4.4,Bone Marrow Transplant | Oncology | Liver Transplant | Cardiology,,"Pusa Road, Rajinder Nagar, New Delhi 110005",https://wibest.in/hospitals/delhi/
-Safdarjung Hospital,Delhi,Government,1600,4.2,General Medicine | Surgery | Orthopedics | Burns,,"Ansari Nagar West, New Delhi 110029",https://wibest.in/hospitals/delhi/
-Indraprastha Apollo,Delhi,Private,710,4.5,Cardiology | Oncology | Transplant | Robotic Surgery,,"Mathura Road, Sarita Vihar, New Delhi 110076",https://wibest.in/hospitals/delhi/
-RML Hospital,Delhi,Government,1531,4.1,General Medicine | Surgery | Paediatrics | Psychiatry,,"Baba Kharak Singh Marg, New Delhi 110001",https://wibest.in/hospitals/delhi/
-Lok Nayak Hospital,Delhi,Government,2000,4.0,General Medicine | Surgery | Burns | Trauma,,"Jawaharlal Nehru Marg, New Delhi 110002",https://wibest.in/hospitals/delhi/
-Moolchand Hospital,Delhi,Private,250,4.3,Gynaecology | IVF | Orthopedics | Cardiology,,"Lajpat Nagar III, New Delhi 110024",https://wibest.in/hospitals/delhi/
-Rajiv Gandhi Cancer Institute,Delhi,Trust,302,4.6,Oncology | Surgical Oncology | Radiation Oncology,,"Sector 5, Rohini, New Delhi 110085",https://wibest.in/hospitals/delhi/
-Dharamshila Narayana,Delhi,Private,300,4.4,Oncology | Bone Marrow Transplant | Radiation Oncology,,"Vasundhara Enclave, New Delhi 110096",https://wibest.in/hospitals/delhi/
-Primus Super Speciality,Delhi,Private,150,4.3,Bariatric Surgery | Orthopedics | Spine | Urology,,"2 Chandragupta Marg, Chanakyapuri, New Delhi 110021",https://wibest.in/hospitals/delhi/
-Venkateshwar Hospital,Delhi,Private,350,4.3,Cardiac Sciences | Neurology | Joint Replacement | IVF,,"Sector 18A, Dwarka, New Delhi 110075",https://wibest.in/hospitals/delhi/
-LHMC & Sucheta Kriplani,Delhi,Government,800,4.2,Gynaecology | Paediatrics | General Medicine,,"Bangla Sahib Marg, Connaught Place, New Delhi 110001",https://wibest.in/hospitals/delhi/
-GTB Hospital,Delhi,Government,1800,4.0,General Medicine | Surgery | Trauma | Burns,,"Dilshad Garden, New Delhi 110095",https://wibest.in/hospitals/delhi/
-Max Super Speciality Hospital Patparganj,Delhi,Private,400,4.4,Cardiology | Neurology | Oncology | Nephrology | Gastroenterology | Orthopedics,,"108A, IP Extension, Patparganj, Delhi 110092",https://wibest.in/hospitals/delhi/
-Sri Balaji Action Medical Institute,Delhi,Private,300,4.3,Cardiology | Oncology | Neurology | Orthopedics | Nephrology | Urology,,"FC-34, A-4, Paschim Vihar, New Delhi 110063",https://wibest.in/hospitals/delhi/
-Manipal Hospital Dwarka,Delhi,Private,380,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology | Transplant,,"Sector 6, Dwarka, New Delhi 110075",https://wibest.in/hospitals/delhi/
-Fortis Hospital Shalimar Bagh,Delhi,Private,262,4.3,Cardiology | Neurology | Oncology | Orthopedics | Gastroenterology | Renal Sciences,,"AA-299, Shaheed Udham Singh Marg, Shalimar Bagh, Delhi 110088",https://wibest.in/hospitals/delhi/
-Holy Family Hospital,Delhi,Trust,345,4.3,General Medicine | Surgery | Cardiology | Orthopedics | Gynaecology | Paediatrics,,"Okhla Road, New Delhi 110025",https://wibest.in/hospitals/delhi/
+AIIMS Delhi,Delhi,Government,2478,4.8,Cardiology | Neurology | Oncology | Orthopedics | Transplant,true,"Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029",https://wibest.in/hospitals/delhi/
+Sir Ganga Ram Hospital,Delhi,Private,675,4.6,Gastroenterology | Nephrology | Cardiology | Oncology,true,"Rajinder Nagar, New Delhi 110060",https://wibest.in/hospitals/delhi/
+Max Super Speciality Saket,Delhi,Private,500,4.5,Cardiac Sciences | Neurosciences | Oncology | Orthopedics,true,"1, Press Enclave Marg, Saket, New Delhi 110017",https://wibest.in/hospitals/delhi/
+Fortis Escorts Heart Institute,Delhi,Private,310,4.6,Cardiac Surgery | Cardiology | Vascular Surgery,true,"Okhla Road, New Delhi 110025",https://wibest.in/hospitals/delhi/
+BLK-Max Super Speciality,Delhi,Private,700,4.4,Bone Marrow Transplant | Oncology | Liver Transplant | Cardiology,true,"Pusa Road, Rajinder Nagar, New Delhi 110005",https://wibest.in/hospitals/delhi/
+Safdarjung Hospital,Delhi,Government,1600,4.2,General Medicine | Surgery | Orthopedics | Burns,true,"Ansari Nagar West, New Delhi 110029",https://wibest.in/hospitals/delhi/
+Indraprastha Apollo,Delhi,Private,710,4.5,Cardiology | Oncology | Transplant | Robotic Surgery,true,"Mathura Road, Sarita Vihar, New Delhi 110076",https://wibest.in/hospitals/delhi/
+RML Hospital,Delhi,Government,1531,4.1,General Medicine | Surgery | Paediatrics | Psychiatry,true,"Baba Kharak Singh Marg, New Delhi 110001",https://wibest.in/hospitals/delhi/
+Lok Nayak Hospital,Delhi,Government,2000,4.0,General Medicine | Surgery | Burns | Trauma,true,"Jawaharlal Nehru Marg, New Delhi 110002",https://wibest.in/hospitals/delhi/
+Moolchand Hospital,Delhi,Private,250,4.3,Gynaecology | IVF | Orthopedics | Cardiology,true,"Lajpat Nagar III, New Delhi 110024",https://wibest.in/hospitals/delhi/
+Rajiv Gandhi Cancer Institute,Delhi,Trust,302,4.6,Oncology | Surgical Oncology | Radiation Oncology,true,"Sector 5, Rohini, New Delhi 110085",https://wibest.in/hospitals/delhi/
+Dharamshila Narayana,Delhi,Private,300,4.4,Oncology | Bone Marrow Transplant | Radiation Oncology,true,"Vasundhara Enclave, New Delhi 110096",https://wibest.in/hospitals/delhi/
+Primus Super Speciality,Delhi,Private,150,4.3,Bariatric Surgery | Orthopedics | Spine | Urology,true,"2 Chandragupta Marg, Chanakyapuri, New Delhi 110021",https://wibest.in/hospitals/delhi/
+Venkateshwar Hospital,Delhi,Private,350,4.3,Cardiac Sciences | Neurology | Joint Replacement | IVF,true,"Sector 18A, Dwarka, New Delhi 110075",https://wibest.in/hospitals/delhi/
+LHMC & Sucheta Kriplani,Delhi,Government,800,4.2,Gynaecology | Paediatrics | General Medicine,true,"Bangla Sahib Marg, Connaught Place, New Delhi 110001",https://wibest.in/hospitals/delhi/
+GTB Hospital,Delhi,Government,1800,4.0,General Medicine | Surgery | Trauma | Burns,true,"Dilshad Garden, New Delhi 110095",https://wibest.in/hospitals/delhi/
+Max Super Speciality Hospital Patparganj,Delhi,Private,400,4.4,Cardiology | Neurology | Oncology | Nephrology | Gastroenterology | Orthopedics,true,"108A, IP Extension, Patparganj, Delhi 110092",https://wibest.in/hospitals/delhi/
+Sri Balaji Action Medical Institute,Delhi,Private,300,4.3,Cardiology | Oncology | Neurology | Orthopedics | Nephrology | Urology,true,"FC-34, A-4, Paschim Vihar, New Delhi 110063",https://wibest.in/hospitals/delhi/
+Manipal Hospital Dwarka,Delhi,Private,380,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology | Transplant,true,"Sector 6, Dwarka, New Delhi 110075",https://wibest.in/hospitals/delhi/
+Fortis Hospital Shalimar Bagh,Delhi,Private,262,4.3,Cardiology | Neurology | Oncology | Orthopedics | Gastroenterology | Renal Sciences,true,"AA-299, Shaheed Udham Singh Marg, Shalimar Bagh, Delhi 110088",https://wibest.in/hospitals/delhi/
+Holy Family Hospital,Delhi,Trust,345,4.3,General Medicine | Surgery | Cardiology | Orthopedics | Gynaecology | Paediatrics,true,"Okhla Road, New Delhi 110025",https://wibest.in/hospitals/delhi/

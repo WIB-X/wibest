@@ -8,5 +8,10 @@ window.WIB_RESTAURANTS = [
 {n:"Spice Bazaar",c:"Bhopal",cu:["Bhopali","Mughlai","Biryani"],r:4.3,b:2,a:"Hotel Lake View Ashok, Shamla Hills",v:1,z:"spice-bazaar-lake-view-bhopal"},
 {n:"New Inn Cafe",c:"Bhopal",cu:["Cafe","Continental","Italian"],r:4.2,b:1,a:"Plot 31, Zone-II, MP Nagar",v:0,z:"new-inn-cafe-mp-nagar-bhopal"},
 {n:"Sagar Gaire",c:"Bhopal",cu:["North Indian","Chinese","Fast Food"],r:4.3,b:1,a:"Bittan Market, Arera Colony",v:0,z:"sagar-gaire-bittan-market-bhopal"},
-{n:"Indian Coffee House",c:"Bhopal",cu:["South Indian","Cafe","Snacks"],r:4.4,b:1,a:"Ahmedabad Palace, New Market",v:0,z:"indian-coffee-house-new-market-bhopal"}
+{n:"Indian Coffee House",c:"Bhopal",cu:["South Indian","Cafe","Snacks"],r:4.4,b:1,a:"Ahmedabad Palace, New Market",v:0,z:"indian-coffee-house-new-market-bhopal"},
+{n:"Jharokha",c:"Bhopal",cu:["North Indian","Mughlai","Awadhi"],r:4.4,b:2,a:"Hotel Noor Us Sabah Palace, V I P Road",v:1,z:"jharokha-noor-us-sabah-bhopal"},
+{n:"The Reds",c:"Bhopal",cu:["Continental","Italian","Cafe"],r:4.2,b:2,a:"Plot 14, MP Nagar Zone-1",v:0,z:"the-reds-mp-nagar-bhopal"},
+{n:"Nukkad Bhopal",c:"Bhopal",cu:["Street Food","Chaat","North Indian"],r:4.4,b:1,a:"DB Mall, Arera Hills",v:0,z:"nukkad-db-mall-bhopal"},
+{n:"Cafe Mocha",c:"Bhopal",cu:["Cafe","Continental","Italian"],r:4.3,b:2,a:"DB City Mall, Arera Hills",v:0,z:"cafe-mocha-db-city-bhopal"},
+{n:"Naan Stop",c:"Bhopal",cu:["North Indian","Mughlai","Tandoor"],r:4.3,b:2,a:"Plot 36, Press Complex, MP Nagar",v:0,z:"naan-stop-mp-nagar-bhopal"}
 ];

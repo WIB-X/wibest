@@ -1,3 +1,9 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-MGM New Bombay Hospital,Navi Mumbai,Trust,400,4.1,Cardiology | Neurosciences | Oncology | Orthopedics | Nephrology | Paediatrics,,"Plot No 35, Sector 3, Vashi, Navi Mumbai 400703",https://wibest.in/hospitals/navi-mumbai/
-Fortis Hiranandani Hospital Vashi,Navi Mumbai,Private,149,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Renal Sciences | Kidney Transplant,,"Mini Sea Shore Road, Sector 10A, Vashi, Navi Mumbai 400703",https://wibest.in/hospitals/navi-mumbai/
+MGM New Bombay Hospital,Navi Mumbai,Trust,400,4.1,Cardiology | Neurosciences | Oncology | Orthopedics | Nephrology | Paediatrics,true,"Plot No 35, Sector 3, Vashi, Navi Mumbai 400703",https://wibest.in/hospitals/navi-mumbai/
+Fortis Hiranandani Hospital Vashi,Navi Mumbai,Private,149,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Renal Sciences | Kidney Transplant,true,"Mini Sea Shore Road, Sector 10A, Vashi, Navi Mumbai 400703",https://wibest.in/hospitals/navi-mumbai/
+Apollo Hospital Navi Mumbai,Navi Mumbai,Private,500,4.4,Cardiology | Cardiac Surgery | Oncology | Neurosciences | Transplant,true,"Plot 13, Parsik Hill Road, CBD Belapur, Navi Mumbai 400614",https://wibest.in/hospitals/navi-mumbai/
+Fortis Hiranandani Hospital,Navi Mumbai,Private,170,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology,true,"Mini Sea Shore Road, Sector 10A, Vashi, Navi Mumbai 400703",https://wibest.in/hospitals/navi-mumbai/
+MGM Hospital Vashi,Navi Mumbai,Trust,600,4.2,Cardiology | Neurology | Oncology | Orthopedics | Trauma,true,"Sector 1, Kamothe, Navi Mumbai 410209",https://wibest.in/hospitals/navi-mumbai/
+Reliance Hospital Navi Mumbai,Navi Mumbai,Trust,345,4.3,Cardiology | Cardiothoracic Surgery | Oncology | Neurosciences | Critical Care,true,"Prabhat Colony, Sector 31, Vashi, Navi Mumbai 400703",https://wibest.in/hospitals/navi-mumbai/
+Terna Specialty Hospital,Navi Mumbai,Private,240,4.1,Cardiology | Neurology | Orthopedics | Gastroenterology | Gynaecology,true,"Sector 12, Phase II, Nerul, Navi Mumbai 400706",https://wibest.in/hospitals/navi-mumbai/
+D Y Patil Hospital Navi Mumbai,Navi Mumbai,Trust,1100,4.2,Cardiology | Cardiac Surgery | Oncology | Neurosurgery | Transplant,true,"Sector 5, Nerul, Navi Mumbai 400706",https://wibest.in/hospitals/navi-mumbai/

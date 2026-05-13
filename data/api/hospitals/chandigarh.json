@@ -1,0 +1,18 @@
+{
+  "city": "Chandigarh",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/chandigarh/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"PGIMER Chandigarh","city":"Chandigarh","type":"Government","beds":1948,"rating":4.7,"specialties":["Cardiology","Neurology","Oncology","Transplant","Trauma"],"nabh":true,"address":"Sector 12, Chandigarh 160012"},
+    {"name":"Fortis Hospital Mohali","city":"Chandigarh","type":"Private","beds":355,"rating":4.5,"specialties":["Cardiac Sciences","Neurosciences","Oncology","Orthopedics"],"nabh":true,"address":"Sector 62, Phase 8, Mohali 160062"},
+    {"name":"Max Super Speciality Hospital Mohali","city":"Chandigarh","type":"Private","beds":220,"rating":4.4,"specialties":["Cardiac Sciences","Neurosciences","Oncology","Liver Transplant"],"nabh":true,"address":"Phase 6, Sector 56A, Mohali 160055"},
+    {"name":"Government Medical College Hospital","city":"Chandigarh","type":"Government","beds":850,"rating":4.2,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics"],"nabh":true,"address":"Sector 32, Chandigarh 160030"},
+    {"name":"Cheema Medical Complex","city":"Chandigarh","type":"Private","beds":120,"rating":4.3,"specialties":["Orthopedics","Joint Replacement","Spine"],"nabh":true,"address":"Phase 4, Mohali 160059"},
+    {"name":"Indus Super Speciality Hospital","city":"Chandigarh","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Phase 1, Industrial Area, Mohali 160055"},
+    {"name":"Healing Hospital","city":"Chandigarh","type":"Private","beds":180,"rating":4.4,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Sector 34A, Chandigarh 160022"},
+    {"name":"Silver Oaks Hospital","city":"Chandigarh","type":"Private","beds":90,"rating":4.3,"specialties":["Orthopedics","Joint Replacement","General Medicine"],"nabh":true,"address":"Phase 9, Mohali 160062"},
+    {"name":"Ojas Super Speciality Hospital","city":"Chandigarh","type":"Private","beds":150,"rating":4.2,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Oncology"],"nabh":true,"address":"Phase 7, Mohali 160061"},
+    {"name":"Grecian Super Speciality Hospital","city":"Chandigarh","type":"Private","beds":140,"rating":4.3,"specialties":["Orthopedics","Cardiac Sciences","General Medicine","Gynaecology"],"nabh":true,"address":"Sector 69, Mohali 160062"}
+  ]
+}

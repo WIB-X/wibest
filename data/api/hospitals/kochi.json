@@ -1,0 +1,18 @@
+{
+  "city": "Kochi",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/kochi/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Amrita Institute of Medical Sciences (AIMS Kochi)","city":"Kochi","type":"Trust","beds":1450,"rating":4.7,"specialties":["Cardiac Sciences","Neurology","Oncology","Transplant","Robotic Surgery"],"nabh":true,"address":"AIMS Ponekkara P O, Kochi 682041"},
+    {"name":"Aster Medcity Kochi","city":"Kochi","type":"Private","beds":670,"rating":4.6,"specialties":["Cardiac Sciences","Neurology","Oncology","Liver Transplant","Robotic Surgery"],"nabh":true,"address":"Kuttisahib Road, Cheranalloor, South Chittoor, Kochi 682027"},
+    {"name":"Lakeshore Hospital Kochi","city":"Kochi","type":"Private","beds":450,"rating":4.5,"specialties":["Gastroenterology","Liver Transplant","Cardiac Sciences","Orthopedics"],"nabh":true,"address":"NH Bypass, Maradu, Kochi 682304"},
+    {"name":"VPS Lakeshore Hospital","city":"Kochi","type":"Private","beds":330,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Gynaecology"],"nabh":true,"address":"Maradu, NH Bypass, Kochi 682304"},
+    {"name":"Medical Trust Hospital Kochi","city":"Kochi","type":"Trust","beds":600,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Gastroenterology","Gynaecology"],"nabh":true,"address":"M G Road, Kochi 682016"},
+    {"name":"Renai Medicity","city":"Kochi","type":"Private","beds":300,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Palarivattom, Kochi 682025"},
+    {"name":"Lisie Hospital","city":"Kochi","type":"Trust","beds":500,"rating":4.5,"specialties":["Cardiac Sciences","Cardiac Surgery","Orthopedics","Paediatrics"],"nabh":true,"address":"Lisie Junction, Ernakulam, Kochi 682018"},
+    {"name":"Specialists' Hospital Kochi","city":"Kochi","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"Ernakulam North, Kochi 682018"},
+    {"name":"Welcare Hospital Kochi","city":"Kochi","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Vyttila, Kochi 682019"},
+    {"name":"Medical Trust Hospital Cochin Cardiac Centre","city":"Kochi","type":"Trust","beds":120,"rating":4.5,"specialties":["Cardiac Sciences","Cardiac Surgery"],"nabh":true,"address":"M G Road, Kochi 682016"}
+  ]
+}

@@ -1,11 +1,11 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-Apollo Hospitals Visakhapatnam,Visakhapatnam,Private,255,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Transplant,,"Health City, Arilova, Visakhapatnam 530040",https://wibest.in/hospitals/visakhapatnam/
-KIMS ICON Hospital Visakhapatnam,Visakhapatnam,Private,300,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics,,"Beach Road, Sheelanagar, Visakhapatnam 530012",https://wibest.in/hospitals/visakhapatnam/
-Care Hospitals Visakhapatnam,Visakhapatnam,Private,200,4.4,Cardiac Sciences | Neurology | Orthopedics | Gastroenterology,,"Ramnagar, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
-Seven Hills Hospital Visakhapatnam,Visakhapatnam,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,,"Rockdale Layout, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
-Andhra Medical College / King George Hospital,Visakhapatnam,Government,1100,4.1,General Medicine | Surgery | Orthopedics | Paediatrics | Cardiac Sciences,,"Maharani Peta, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
-Medicover Hospitals Visakhapatnam,Visakhapatnam,Private,200,4.3,Cardiac Sciences | Neurology | Orthopedics | IVF,,"Beach Road, Maharani Peta, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
-Indus Hospitals,Visakhapatnam,Private,170,4.4,Orthopedics | Joint Replacement | Spine | Sports Medicine,,"Sheela Nagar, Visakhapatnam 530012",https://wibest.in/hospitals/visakhapatnam/
-Queen's NRI Hospital,Visakhapatnam,Private,150,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"Seethamadhara, Visakhapatnam 530013",https://wibest.in/hospitals/visakhapatnam/
-Visakha Hospital and Diagnostics,Visakhapatnam,Private,120,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"Daba Gardens, Visakhapatnam 530020",https://wibest.in/hospitals/visakhapatnam/
-L V Prasad Eye Institute Visakhapatnam,Visakhapatnam,Trust,80,4.7,Eye Care | Cataract | Retina | Cornea | Glaucoma,,"Mithila Nagar, Visakhapatnam 530013",https://wibest.in/hospitals/visakhapatnam/
+Apollo Hospitals Visakhapatnam,Visakhapatnam,Private,255,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Transplant,true,"Health City, Arilova, Visakhapatnam 530040",https://wibest.in/hospitals/visakhapatnam/
+KIMS ICON Hospital Visakhapatnam,Visakhapatnam,Private,300,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics,true,"Beach Road, Sheelanagar, Visakhapatnam 530012",https://wibest.in/hospitals/visakhapatnam/
+Care Hospitals Visakhapatnam,Visakhapatnam,Private,200,4.4,Cardiac Sciences | Neurology | Orthopedics | Gastroenterology,true,"Ramnagar, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
+Seven Hills Hospital Visakhapatnam,Visakhapatnam,Private,300,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics,true,"Rockdale Layout, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
+Andhra Medical College / King George Hospital,Visakhapatnam,Government,1100,4.1,General Medicine | Surgery | Orthopedics | Paediatrics | Cardiac Sciences,true,"Maharani Peta, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
+Medicover Hospitals Visakhapatnam,Visakhapatnam,Private,200,4.3,Cardiac Sciences | Neurology | Orthopedics | IVF,true,"Beach Road, Maharani Peta, Visakhapatnam 530002",https://wibest.in/hospitals/visakhapatnam/
+Indus Hospitals,Visakhapatnam,Private,170,4.4,Orthopedics | Joint Replacement | Spine | Sports Medicine,true,"Sheela Nagar, Visakhapatnam 530012",https://wibest.in/hospitals/visakhapatnam/
+Queen's NRI Hospital,Visakhapatnam,Private,150,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"Seethamadhara, Visakhapatnam 530013",https://wibest.in/hospitals/visakhapatnam/
+Visakha Hospital and Diagnostics,Visakhapatnam,Private,120,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"Daba Gardens, Visakhapatnam 530020",https://wibest.in/hospitals/visakhapatnam/
+L V Prasad Eye Institute Visakhapatnam,Visakhapatnam,Trust,80,4.7,Eye Care | Cataract | Retina | Cornea | Glaucoma,true,"Mithila Nagar, Visakhapatnam 530013",https://wibest.in/hospitals/visakhapatnam/

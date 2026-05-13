@@ -104,7 +104,7 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
   <div class="featured-card" style="cursor:default">
     <span class="badge">Healthcare</span>
     <h3>WIB India Hospitals 2026</h3>
-    <div class="meta">346 multi-specialty hospitals · 27 cities · 9 fields (name, city, type, beds, rating, specialties, NABH, address, source URL)</div>
+    <div class="meta">399 multi-specialty hospitals · 28 cities · 9 fields (name, city, type, beds, rating, specialties, NABH, address, source URL)</div>
     <a class="dl-btn" href="/data/csv/wib-hospitals-all.csv" download>Download CSV &darr;</a>
     <a class="dl-btn" href="/data/json/hospitals.json" download style="background:#16a34a;margin-left:6px">Download JSON &darr;</a>
     <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city slice below</span>
@@ -113,7 +113,7 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
   <div class="featured-card" style="cursor:default">
     <span class="badge" style="background:#d97706">Food &amp; Dining</span>
     <h3>WIB India Restaurants 2026</h3>
-    <div class="meta">500 top-rated restaurants · 20 cities · 8 fields (name, city, cuisines, rating, budget, address, vegetarian, source URL)</div>
+    <div class="meta">535 top-rated restaurants · 21 cities · 8 fields (name, city, cuisines, rating, budget, address, vegetarian, source URL)</div>
     <a class="dl-btn" href="/data/csv/wib-restaurants-all.csv" download>Download CSV &darr;</a>
     <a class="dl-btn" href="/data/json/restaurants.json" download style="background:#16a34a;margin-left:6px">Download JSON &darr;</a>
     <span style="margin-left:10px;font-size:12px;color:var(--text-muted)">Or pick a city slice below</span>
@@ -122,6 +122,17 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
   <div style="padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:18px;font-size:14px;color:var(--text-secondary);line-height:1.6">
     <strong style="font-family:Outfit,sans-serif;color:var(--text-primary)">For developers:</strong> JSON variants include a header object with <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">name</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">version</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">license</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">count</code>, and a <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">data</code> array — drop-in compatible with most fetch/axios pipelines. CORS is open for client-side use.
   </div>
+
+  <h2>Per-city JSON API</h2>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px">Lighter-weight per-city JSON endpoints, pre-filtered. Useful for prototypes that only need one city.</p>
+  <div style="padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:14px;font-size:14px;color:var(--text-secondary);line-height:1.7">
+    <code style="background:var(--bg-secondary);padding:2px 8px;border-radius:5px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px">GET /data/api/hospitals/&lt;city-slug&gt;.json</code> &mdash; e.g. <a href="/data/api/hospitals/bhopal.json"><code style="background:var(--accent-light);padding:2px 6px;border-radius:4px;color:var(--accent);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">bhopal.json</code></a>, <a href="/data/api/hospitals/gurugram.json"><code style="background:var(--accent-light);padding:2px 6px;border-radius:4px;color:var(--accent);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">gurugram.json</code></a>, <a href="/data/api/hospitals/surat.json"><code style="background:var(--accent-light);padding:2px 6px;border-radius:4px;color:var(--accent);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">surat.json</code></a>
+    <br><br>
+    <code style="background:var(--bg-secondary);padding:2px 8px;border-radius:5px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px">GET /data/api/restaurants/&lt;city-slug&gt;.json</code> &mdash; e.g. <a href="/data/api/restaurants/nagpur.json"><code style="background:var(--accent-light);padding:2px 6px;border-radius:4px;color:var(--accent);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">nagpur.json</code></a>, <a href="/data/api/restaurants/mysore.json"><code style="background:var(--accent-light);padding:2px 6px;border-radius:4px;color:var(--accent);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">mysore.json</code></a>
+    <br><br>
+    Each per-city JSON includes <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">city</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">count</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">source</code>, <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">license</code>, and a <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">data</code> array. Same schema as the combined files.
+  </div>
+  <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:18px">📋 <a href="/data/changelog/" style="color:var(--accent);font-weight:600;text-decoration:none">View dataset changelog &rarr;</a> for what changed since your last download.</p>
 
   <h2>Per-city slices — Hospitals</h2>
   <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px">Same schema as combined file, scoped to one city. Smaller files for focused analysis.</p>
@@ -163,6 +174,7 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
     <div class="city-row"><span>Patna</span><a href="/data/csv/wib-hospitals-patna.csv" download>CSV</a></div>
     <div class="city-row"><span>Madurai</span><a href="/data/csv/wib-hospitals-madurai.csv" download>CSV</a></div>
     <div class="city-row"><span>Vellore</span><a href="/data/csv/wib-hospitals-vellore.csv" download>CSV</a></div>
+    <div class="city-row"><span>Surat ✨</span><a href="/data/csv/wib-hospitals-surat.csv" download>CSV</a></div>
   </div>
 
   <h2>Per-city slices — Restaurants</h2>
@@ -188,6 +200,7 @@ h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;margin:24px 0 10
     <div class="city-row"><span>Mysore</span><a href="/data/csv/wib-restaurants-mysore.csv" download>CSV</a></div>
     <div class="city-row"><span>Vadodara</span><a href="/data/csv/wib-restaurants-vadodara.csv" download>CSV</a></div>
     <div class="city-row"><span>Patna</span><a href="/data/csv/wib-restaurants-patna.csv" download>CSV</a></div>
+    <div class="city-row"><span>Surat ✨</span><a href="/data/csv/wib-restaurants-surat.csv" download>CSV</a></div>
   </div>
 
   <h2>How to use this data</h2>

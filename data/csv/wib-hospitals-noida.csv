@@ -1,4 +1,9 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-Jaypee Hospital,Noida,Private,525,4.4,Cardiac Sciences | Oncology | Neurosciences | Liver Transplant | Kidney Transplant | Orthopedics,,"Sector 128, Noida, Uttar Pradesh 201304",https://wibest.in/hospitals/noida/
-Yatharth Super Speciality Hospital,Noida,Private,450,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology | Critical Care,,"Plot No 1, Gejha Road, Sector 110, Noida, Uttar Pradesh 201304",https://wibest.in/hospitals/noida/
-Metro Hospital and Heart Institute,Noida,Private,317,4.2,Cardiology | Cardiac Surgery | Neurology | Orthopedics | Nephrology | Urology,,"L-94, Sector 11, Noida, Uttar Pradesh 201301",https://wibest.in/hospitals/noida/
+Jaypee Hospital,Noida,Private,525,4.4,Cardiac Sciences | Oncology | Neurosciences | Liver Transplant | Kidney Transplant | Orthopedics,true,"Sector 128, Noida, Uttar Pradesh 201304",https://wibest.in/hospitals/noida/
+Yatharth Super Speciality Hospital,Noida,Private,450,4.3,Cardiology | Neurosciences | Oncology | Orthopedics | Gastroenterology | Critical Care,true,"Plot No 1, Gejha Road, Sector 110, Noida, Uttar Pradesh 201304",https://wibest.in/hospitals/noida/
+Metro Hospital and Heart Institute,Noida,Private,317,4.2,Cardiology | Cardiac Surgery | Neurology | Orthopedics | Nephrology | Urology,true,"L-94, Sector 11, Noida, Uttar Pradesh 201301",https://wibest.in/hospitals/noida/
+Fortis Hospital Noida,Noida,Private,200,4.4,Cardiology | Neurosciences | Oncology | Orthopedics | Renal Sciences,true,"B-22, Sector 62, Noida 201301",https://wibest.in/hospitals/noida/
+Apollo Hospital Noida,Noida,Private,300,4.4,Cardiology | Cardiac Surgery | Neurosciences | Oncology | Transplant,true,"E-2, Sector 26, Noida 201301",https://wibest.in/hospitals/noida/
+Max Super Speciality Noida,Noida,Private,200,4.3,Cardiology | Oncology | Neurosciences | Orthopedics | Critical Care,true,"A-364, Sector 19, Noida 201301",https://wibest.in/hospitals/noida/
+Felix Hospital Noida,Noida,Private,200,4.2,Cardiology | Neurology | Orthopedics | Gynaecology | Paediatrics,true,"NH-1, Sector 137, Noida 201301",https://wibest.in/hospitals/noida/
+Jaypee Hospital Noida,Noida,Private,1200,4.3,Cardiology | Cardiothoracic Surgery | Oncology | Neurosciences | Liver Transplant,true,"Sector 128, Noida 201304",https://wibest.in/hospitals/noida/

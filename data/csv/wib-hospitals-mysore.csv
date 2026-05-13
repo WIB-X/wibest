@@ -1,9 +1,13 @@
 name,city,type,beds,rating,specialties,nabh,address,source
-JSS Hospital Mysore,Mysore,Trust,1800,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Paediatrics | Transplant,,"M G Road, Mysore 570004",https://wibest.in/hospitals/mysore/
-Apollo BGS Hospital Mysore,Mysore,Private,200,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Robotic Surgery,,"Adichunchanagiri Road, Mysore 570023",https://wibest.in/hospitals/mysore/
-Columbia Asia Hospital Mysore,Mysore,Private,140,4.4,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,,"Vijayanagar 1st Stage, Mysore 570017",https://wibest.in/hospitals/mysore/
-Manipal Hospital Mysore,Mysore,Private,150,4.4,Cardiac Sciences | Neurology | Orthopedics | Gastroenterology,,"Bannimantap A Layout, Mysore 570015",https://wibest.in/hospitals/mysore/
-K R Hospital Mysore,Mysore,Government,850,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma,,"Sayyaji Rao Road, Mysore 570001",https://wibest.in/hospitals/mysore/
-Vikram Hospital Mysore,Mysore,Private,150,4.3,Cardiac Sciences | Neurology | Orthopedics | General Medicine,,"Yadavagiri, Mysore 570020",https://wibest.in/hospitals/mysore/
-Cauvery Hospital Mysore,Mysore,Private,120,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,,"M G Road, Mysore 570001",https://wibest.in/hospitals/mysore/
-Bharath Hospital and Institute of Oncology,Mysore,Private,200,4.5,Oncology | Surgical Oncology | Radiation Oncology,,"15, Bogadi Layout, Mysore 570026",https://wibest.in/hospitals/mysore/
+JSS Hospital Mysore,Mysore,Trust,1800,4.4,Cardiac Sciences | Neurology | Oncology | Orthopedics | Paediatrics | Transplant,true,"M G Road, Mysore 570004",https://wibest.in/hospitals/mysore/
+Apollo BGS Hospital Mysore,Mysore,Private,200,4.5,Cardiac Sciences | Neurology | Oncology | Orthopedics | Robotic Surgery,true,"Adichunchanagiri Road, Mysore 570023",https://wibest.in/hospitals/mysore/
+Columbia Asia Hospital Mysore,Mysore,Private,140,4.4,Cardiac Sciences | Orthopedics | Gynaecology | Paediatrics,true,"Vijayanagar 1st Stage, Mysore 570017",https://wibest.in/hospitals/mysore/
+Manipal Hospital Mysore,Mysore,Private,150,4.4,Cardiac Sciences | Neurology | Orthopedics | Gastroenterology,true,"Bannimantap A Layout, Mysore 570015",https://wibest.in/hospitals/mysore/
+K R Hospital Mysore,Mysore,Government,850,4.0,General Medicine | Surgery | Orthopedics | Paediatrics | Trauma,true,"Sayyaji Rao Road, Mysore 570001",https://wibest.in/hospitals/mysore/
+Vikram Hospital Mysore,Mysore,Private,150,4.3,Cardiac Sciences | Neurology | Orthopedics | General Medicine,true,"Yadavagiri, Mysore 570020",https://wibest.in/hospitals/mysore/
+Cauvery Hospital Mysore,Mysore,Private,120,4.3,Cardiac Sciences | Orthopedics | Gynaecology | General Medicine,true,"M G Road, Mysore 570001",https://wibest.in/hospitals/mysore/
+Bharath Hospital and Institute of Oncology,Mysore,Private,200,4.5,Oncology | Surgical Oncology | Radiation Oncology,true,"15, Bogadi Layout, Mysore 570026",https://wibest.in/hospitals/mysore/
+Apollo BGS Hospital Mysuru,Mysore,Private,200,4.4,Cardiology | Neurology | Oncology | Orthopedics | Renal Sciences,true,"Adichunchanagiri Road, Kuvempu Nagar, Mysuru 570023",https://wibest.in/hospitals/mysore/
+JSS Hospital Mysuru,Mysore,Trust,1800,4.3,Cardiology | Neurosurgery | Oncology | Nephrology | Transplant,true,"M G Road, Mysuru 570004",https://wibest.in/hospitals/mysore/
+Manipal Hospital Mysuru,Mysore,Private,140,4.3,Cardiology | Neurology | Orthopedics | Gastroenterology | Critical Care,true,"Bannimantap, Mysuru 570015",https://wibest.in/hospitals/mysore/
+Columbia Asia Mysuru,Mysore,Private,90,4.2,Cardiology | Internal Medicine | Orthopedics | Paediatrics | Gynaecology,true,"Bannimantap A Layout, Mysuru 570015",https://wibest.in/hospitals/mysore/

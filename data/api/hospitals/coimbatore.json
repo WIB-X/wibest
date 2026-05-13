@@ -1,0 +1,18 @@
+{
+  "city": "Coimbatore",
+  "count": 10,
+  "source": "https://wibest.in/hospitals/coimbatore/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Kovai Medical Center and Hospital (KMCH)","city":"Coimbatore","type":"Private","beds":1100,"rating":4.6,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Avanashi Road, Coimbatore 641014"},
+    {"name":"PSG Hospitals","city":"Coimbatore","type":"Trust","beds":900,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Paediatrics"],"nabh":true,"address":"Peelamedu, Coimbatore 641004"},
+    {"name":"Ganga Hospital","city":"Coimbatore","type":"Private","beds":300,"rating":4.7,"specialties":["Orthopedics","Trauma","Plastic Surgery","Joint Replacement"],"nabh":true,"address":"313, Mettupalayam Road, Coimbatore 641043"},
+    {"name":"Sri Ramakrishna Hospital","city":"Coimbatore","type":"Private","beds":540,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","General Medicine"],"nabh":true,"address":"395, Sarojini Naidu Road, Coimbatore 641044"},
+    {"name":"Coimbatore Medical College Hospital","city":"Coimbatore","type":"Government","beds":1050,"rating":4.1,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Trauma"],"nabh":true,"address":"Trichy Road, Coimbatore 641018"},
+    {"name":"GEM Hospital","city":"Coimbatore","type":"Private","beds":200,"rating":4.5,"specialties":["Gastroenterology","Bariatric Surgery","Liver Transplant"],"nabh":true,"address":"45/A, Pankaja Mill Road, Ramanathapuram, Coimbatore 641045"},
+    {"name":"Royal Care Super Speciality Hospital","city":"Coimbatore","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Oncology"],"nabh":true,"address":"Neelambur, Sulur, Coimbatore 641062"},
+    {"name":"Sri Kuppuswamy Naidu Memorial Hospital (KMH)","city":"Coimbatore","type":"Trust","beds":350,"rating":4.4,"specialties":["Cardiac Sciences","Orthopedics","General Medicine","Paediatrics"],"nabh":true,"address":"Pappanaickenpalayam, Coimbatore 641037"},
+    {"name":"Aravind Eye Hospital Coimbatore","city":"Coimbatore","type":"Trust","beds":250,"rating":4.7,"specialties":["Eye Care","Cataract","Retina"],"nabh":true,"address":"Avinashi Road, Civil Aerodrome Post, Coimbatore 641014"},
+    {"name":"Lotus Eye Hospital Coimbatore","city":"Coimbatore","type":"Private","beds":120,"rating":4.5,"specialties":["Eye Care","Cataract","Retina","Cornea"],"nabh":true,"address":"77, R T O Road, Avinashi Road, Coimbatore 641014"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "city": "Patna",
+  "count": 12,
+  "source": "https://wibest.in/hospitals/patna/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"AIIMS Patna","city":"Patna","type":"Government","beds":960,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Trauma","Transplant"],"nabh":true,"address":"Phulwari Sharif, Patna 801507"},
+    {"name":"Patna Medical College Hospital","city":"Patna","type":"Government","beds":1750,"rating":4.0,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Cardiac Sciences","Trauma"],"nabh":true,"address":"Ashok Rajpath, Patna 800004"},
+    {"name":"Paras HMRI Hospital Patna","city":"Patna","type":"Private","beds":300,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Raja Bazar, Bailey Road, Patna 800014"},
+    {"name":"Ruban Memorial Hospital","city":"Patna","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"Patliputra Road, Patna 800013"},
+    {"name":"Big Apollo Spectra Hospital","city":"Patna","type":"Private","beds":150,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Orthopedics","General Medicine"],"nabh":true,"address":"Behind Hartali Mor, Kankarbagh, Patna 800020"},
+    {"name":"Mediversal Multi Super Speciality Hospital","city":"Patna","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics"],"nabh":true,"address":"Bypass Road, Patna 800027"},
+    {"name":"Rajeshwar Hospital Patna","city":"Patna","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","General Medicine"],"nabh":true,"address":"Boring Road, Patna 800001"},
+    {"name":"IGIMS Patna","city":"Patna","type":"Government","beds":1100,"rating":4.2,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Sheikhpura, Patna 800014"},
+    {"name":"AIIMS Patna","city":"Patna","type":"Government","beds":960,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Nephrology","Trauma"],"nabh":false,"address":"Phulwari Sharif, Patna 801507"},
+    {"name":"IGIMS Patna","city":"Patna","type":"Government","beds":1050,"rating":4.2,"specialties":["Cardiology","Cardiothoracic Surgery","Neurology","Oncology","Endocrinology"],"nabh":false,"address":"Sheikhpura, Patna 800014"},
+    {"name":"Paras HMRI Hospital Patna","city":"Patna","type":"Private","beds":350,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Renal Sciences"],"nabh":true,"address":"Raja Bazar, Bailey Road, Patna 800014"},
+    {"name":"Ruban Memorial Hospital","city":"Patna","type":"Private","beds":200,"rating":4.2,"specialties":["Cardiology","Neurology","Gastroenterology","Orthopedics","Nephrology"],"nabh":true,"address":"Patliputra Colony, Patna 800013"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "city": "Pimpri-Chinchwad",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/pimpri-chinchwad/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Lokmanya Hospital Nigdi","city":"Pimpri-Chinchwad","type":"Private","beds":110,"rating":4.3,"specialties":["Orthopedics","Joint Replacement","Spine","Sports Medicine","Trauma"],"nabh":true,"address":"Sector 27, Lokmanya Tilak Road, Pradhikaran, Nigdi, Pimpri-Chinchwad 411044"},
+    {"name":"Dr D Y Patil Hospital and Research Centre","city":"Pimpri-Chinchwad","type":"Private","beds":1800,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Neurology","Oncology","Orthopedics","Nephrology","Kidney Transplant","Gastroenterology","Paediatrics"],"nabh":true,"address":"Sant Tukaram Nagar, Pimpri, Pune 411018"},
+    {"name":"Lifepoint Multispeciality Hospital","city":"Pimpri-Chinchwad","type":"Private","beds":100,"rating":4.2,"specialties":["Cardiology","Orthopedics","Neurology","Gastroenterology","Gynaecology","Critical Care"],"nabh":true,"address":"Survey No 145/1, Mumbai Bangalore Highway, Near Sayaji Hotel, Wakad, Pune 411057"},
+    {"name":"7 Orange Hospital","city":"Pimpri-Chinchwad","type":"Private","beds":100,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Critical Care","Orthopedics","General Medicine"],"nabh":true,"address":"Pawana Nagar Housing Society, Next to Jain School, Chinchwad, Pimpri-Chinchwad 411033"},
+    {"name":"Aditya Birla Memorial Hospital","city":"Pimpri-Chinchwad","type":"Trust","beds":500,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurosciences","Orthopedics"],"nabh":true,"address":"Aditya Birla Hospital Marg, Thergaon, Pimpri-Chinchwad 411033"},
+    {"name":"D Y Patil Hospital Pimpri","city":"Pimpri-Chinchwad","type":"Trust","beds":1300,"rating":4.2,"specialties":["Cardiology","Neurosciences","Oncology","Nephrology","Orthopedics"],"nabh":true,"address":"Sant Tukaram Nagar, Pimpri 411018"},
+    {"name":"Lokmanya Hospital Pune","city":"Pimpri-Chinchwad","type":"Private","beds":175,"rating":4.3,"specialties":["Orthopedics","Joint Replacement","Cardiology","Neurology","Spine Surgery"],"nabh":true,"address":"Plot 314, Telco Road, Chinchwad 411033"},
+    {"name":"Niramaya Hospital","city":"Pimpri-Chinchwad","type":"Private","beds":140,"rating":4.2,"specialties":["Cardiology","Critical Care","Orthopedics","Gynaecology","Internal Medicine"],"nabh":true,"address":"Chinchwad Station Road, Chinchwad 411033"}
+  ]
+}

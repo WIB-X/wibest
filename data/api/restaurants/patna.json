@@ -1,0 +1,23 @@
+{
+  "city": "Patna",
+  "count": 15,
+  "source": "https://wibest.in/restaurants/patna/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Bansi Vihar","city":"Patna","cuisines":["North Indian","Vegetarian","Thali"],"rating":4.5,"budget_tier":"500_to_2000","address":"Boring Road, Shrikrishna Nagar","vegetarian":false},
+    {"name":"Chacha Ki Hotel","city":"Patna","cuisines":["Bihari","Litti Chokha","Local"],"rating":4.6,"budget_tier":"under_500","address":"Boring Road, near Panchmukhi Hanuman Mandir","vegetarian":false},
+    {"name":"Kabila","city":"Patna","cuisines":["Multi-Cuisine","Mughlai","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hotel Maurya, South Gandhi Maidan","vegetarian":true},
+    {"name":"Pind Balluchi","city":"Patna","cuisines":["Punjabi","North Indian","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Patliputra Industrial Estate","vegetarian":false},
+    {"name":"Takshila","city":"Patna","cuisines":["North Indian","Continental","Multi-Cuisine"],"rating":4.5,"budget_tier":"above_2000","address":"Hotel Maurya, South Gandhi Maidan","vegetarian":true},
+    {"name":"Mainland China","city":"Patna","cuisines":["Chinese","Asian","Pan-Asian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Maurya Lok Complex, Dak Bungalow Road","vegetarian":false},
+    {"name":"Litti Hub","city":"Patna","cuisines":["Bihari","Litti Chokha","Street Food"],"rating":4.5,"budget_tier":"under_500","address":"Frazer Road, near Heritage Hotel","vegetarian":false},
+    {"name":"Cafe Coffee Day The Square","city":"Patna","cuisines":["Cafe","Continental","Desserts"],"rating":4.2,"budget_tier":"500_to_2000","address":"Boring Canal Road, near Panchmukhi Mandir","vegetarian":false},
+    {"name":"Banaras Restaurant","city":"Patna","cuisines":["North Indian","Banarasi","Vegetarian"],"rating":4.4,"budget_tier":"under_500","address":"Exhibition Road, Gandhi Maidan","vegetarian":false},
+    {"name":"Nirvana Restaurant","city":"Patna","cuisines":["Multi-Cuisine","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Lemon Tree Hotel, Frazer Road","vegetarian":true},
+    {"name":"Anandi Vatika","city":"Patna","cuisines":["North Indian","Vegetarian","Multi-Cuisine"],"rating":4.3,"budget_tier":"500_to_2000","address":"Boring Road, Patliputra Colony","vegetarian":true},
+    {"name":"Hare Krishna Restaurant","city":"Patna","cuisines":["South Indian","Vegetarian","Dosa"],"rating":4.3,"budget_tier":"under_500","address":"Boring Canal Road, opposite Panchmukhi Hanuman Mandir","vegetarian":true},
+    {"name":"Pinky Palace","city":"Patna","cuisines":["Bihari","Mutton","Champaran"],"rating":4.4,"budget_tier":"under_500","address":"Patna Junction Area, near GPO","vegetarian":false},
+    {"name":"Cafe Coffee Day Maurya Lok","city":"Patna","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Maurya Lok Complex, Dak Bungalow Road","vegetarian":false},
+    {"name":"Nukkadwala Patna","city":"Patna","cuisines":["Street Food","Chaat","Bihari"],"rating":4.4,"budget_tier":"under_500","address":"Boring Road, opposite Panchmukhi Hanuman","vegetarian":false}
+  ]
+}

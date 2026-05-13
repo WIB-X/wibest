@@ -1,0 +1,16 @@
+{
+  "city": "Gurugram",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/gurugram/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Medanta Gurugram","city":"Gurugram","type":"Private","beds":1500,"rating":4.5,"specialties":["Cardiac Surgery","Liver Transplant","Neuroscience","Oncology","Robotic Surgery"],"nabh":true,"address":"CH Baktawar Singh Road, Sector 38, Gurugram 122001"},
+    {"name":"Fortis Memorial Gurugram","city":"Gurugram","type":"Private","beds":1000,"rating":4.4,"specialties":["Oncology","Neurosciences","Orthopedics","Renal Sciences"],"nabh":true,"address":"Sector 44, Gurugram 122002"},
+    {"name":"Artemis Hospital Gurugram","city":"Gurugram","type":"Private","beds":400,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Oncology","Gastroenterology","Kidney Transplant"],"nabh":true,"address":"Sector 51, Gurugram 122001"},
+    {"name":"Park Hospital Gurugram","city":"Gurugram","type":"Private","beds":275,"rating":4.2,"specialties":["Cardiology","Neurosciences","Orthopedics","Oncology","Gastroenterology","Renal Sciences"],"nabh":true,"address":"Q Block, South City 2, Sohna Road, Sector 47, Gurugram 122018"},
+    {"name":"Artemis Hospital Gurugram","city":"Gurugram","type":"Private","beds":550,"rating":4.5,"specialties":["Cardiology","Neurosurgery","Oncology","Renal Transplant","Robotics"],"nabh":true,"address":"Sector 51, Gurugram 122001"},
+    {"name":"Max Hospital Gurugram","city":"Gurugram","type":"Private","beds":300,"rating":4.4,"specialties":["Cardiology","Oncology","Neurosciences","Orthopedics","Renal Sciences"],"nabh":true,"address":"B Block, Sushant Lok 1, Gurugram 122002"},
+    {"name":"Paras Hospital Gurugram","city":"Gurugram","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiology","Neurosciences","Oncology","Orthopedics","Liver Transplant"],"nabh":true,"address":"C-1, Sushant Lok 1, Gurugram 122002"},
+    {"name":"Manipal Hospitals Gurugram","city":"Gurugram","type":"Private","beds":380,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Oncology","Neurosciences","Gastroenterology"],"nabh":true,"address":"Sector 6, Palam Vihar, Gurugram 122017"}
+  ]
+}

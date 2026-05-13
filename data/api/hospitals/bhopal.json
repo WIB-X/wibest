@@ -1,0 +1,20 @@
+{
+  "city": "Bhopal",
+  "count": 12,
+  "source": "https://wibest.in/hospitals/bhopal/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"AIIMS Bhopal","city":"Bhopal","type":"Government","beds":960,"rating":4.5,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Trauma"],"nabh":true,"address":"Saket Nagar, Bhopal 462020"},
+    {"name":"Bansal Hospital Bhopal","city":"Bhopal","type":"Private","beds":300,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"C-Sector, Shahpura, Bhopal 462016"},
+    {"name":"Chirayu Medical College and Hospital","city":"Bhopal","type":"Trust","beds":1100,"rating":4.3,"specialties":["Cardiac Sciences","Neurology","Oncology","Orthopedics","Paediatrics"],"nabh":true,"address":"Bairagarh, Bhopal 462030"},
+    {"name":"L.B.S. Hospital Bhopal","city":"Bhopal","type":"Private","beds":200,"rating":4.2,"specialties":["Cardiac Sciences","Orthopedics","General Medicine","Gynaecology"],"nabh":true,"address":"Habibganj, Bhopal 462024"},
+    {"name":"Hamidia Hospital","city":"Bhopal","type":"Government","beds":850,"rating":4.0,"specialties":["General Medicine","Surgery","Orthopedics","Paediatrics","Trauma"],"nabh":true,"address":"Royal Market, Bhopal 462001"},
+    {"name":"Kasturba Hospital Bhopal","city":"Bhopal","type":"Trust","beds":200,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Kalpana Nagar, Bhopal 462023"},
+    {"name":"Apollo Sage Hospital Bhopal","city":"Bhopal","type":"Private","beds":120,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Orthopedics","Oncology"],"nabh":true,"address":"E-1, Karond Square, Bhopal 462023"},
+    {"name":"Siddhanta Red Cross Super Speciality Hospital","city":"Bhopal","type":"Trust","beds":150,"rating":4.3,"specialties":["Cardiac Sciences","Orthopedics","Gastroenterology","General Medicine"],"nabh":true,"address":"E-8 Extension, Trilanga, Bhopal 462039"},
+    {"name":"People's Hospital Bhopal","city":"Bhopal","type":"Private","beds":850,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Nephrology","Orthopedics"],"nabh":true,"address":"Bhanpur, Bhopal 462037"},
+    {"name":"Hamidia Hospital Bhopal","city":"Bhopal","type":"Government","beds":780,"rating":3.9,"specialties":["General Medicine","Surgery","Gynaecology","Paediatrics","Trauma"],"nabh":false,"address":"Royal Market, Bhopal 462001"},
+    {"name":"Siddhanta Red Cross Hospital","city":"Bhopal","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Pulmonology","Critical Care","Internal Medicine"],"nabh":true,"address":"E-7/12, Arera Colony, Bhopal 462016"},
+    {"name":"Jawahar Lal Nehru Cancer Hospital","city":"Bhopal","type":"Trust","beds":240,"rating":4.4,"specialties":["Oncology","Radiation Oncology","Surgical Oncology","Palliative Care"],"nabh":true,"address":"Idgah Hills, Bhopal 462001"}
+  ]
+}
