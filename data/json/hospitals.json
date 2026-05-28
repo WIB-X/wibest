@@ -3,7 +3,7 @@
   "version": "2026-05-06",
   "license": "CC-BY-4.0",
   "source": "https://wibest.in/data/",
-  "count": 447,
+  "count": 463,
   "data": [
     {"name":"AIIMS Delhi","city":"Delhi","type":"Government","beds":2478,"rating":4.8,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029"},
     {"name":"Sir Ganga Ram Hospital","city":"Delhi","type":"Private","beds":675,"rating":4.6,"specialties":["Gastroenterology","Nephrology","Cardiology","Oncology"],"nabh":true,"address":"Rajinder Nagar, New Delhi 110060"},
@@ -451,6 +451,22 @@
     {"name":"Orchid Medical Centre","city":"Ranchi","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiology","Orthopedics","Gastroenterology","Gynaecology","IVF"],"nabh":true,"address":"Behind Marwari College, Lalpur, Ranchi 834001"},
     {"name":"Pulse Hospital Ranchi","city":"Ranchi","type":"Private","beds":100,"rating":4.2,"specialties":["Cardiology","Critical Care","Internal Medicine","Pulmonology","Orthopedics"],"nabh":true,"address":"Booty Road, Bariatu, Ranchi 834009"},
     {"name":"Alam Hospital Ranchi","city":"Ranchi","type":"Private","beds":130,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"Doranda, near Hinoo, Ranchi 834002"},
-    {"name":"Sadar Hospital Ranchi","city":"Ranchi","type":"Government","beds":300,"rating":3.8,"specialties":["General Medicine","Surgery","Gynaecology","Paediatrics","Trauma"],"nabh":false,"address":"Purulia Road, Sadar, Ranchi 834001"}
+    {"name":"Sadar Hospital Ranchi","city":"Ranchi","type":"Government","beds":300,"rating":3.8,"specialties":["General Medicine","Surgery","Gynaecology","Paediatrics","Trauma"],"nabh":false,"address":"Purulia Road, Sadar, Ranchi 834001"},
+    {"name":"Max Super Speciality Hospital Dehradun","city":"Dehradun","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Orthopedics"],"nabh":true,"address":"Mussoorie Diversion Road, Malsi, Dehradun 248001"},
+    {"name":"Synergy Hospital Dehradun","city":"Dehradun","type":"Private","beds":150,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Critical Care","Nephrology"],"nabh":true,"address":"Eastern Patel Nagar, Dehradun 248001"},
+    {"name":"Doon Hospital Dehradun","city":"Dehradun","type":"Government","beds":765,"rating":3.9,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Trauma"],"nabh":false,"address":"Chakrata Road, Dehradun 248001"},
+    {"name":"CMI Hospital Dehradun","city":"Dehradun","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","IVF"],"nabh":true,"address":"Diversion Road, Patel Nagar, Dehradun 248001"},
+    {"name":"Kailash Hospital Dehradun","city":"Dehradun","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiology","Orthopedics","Gastroenterology","Gynaecology","Critical Care"],"nabh":true,"address":"Sahastradhara Road, Dehradun 248013"},
+    {"name":"Velmed Hospital","city":"Dehradun","type":"Private","beds":100,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Orthopedics","Internal Medicine","Critical Care"],"nabh":true,"address":"Old Survey Road, Dalanwala, Dehradun 248001"},
+    {"name":"Combined Medical Institute (CMI)","city":"Dehradun","type":"Trust","beds":300,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gynaecology"],"nabh":true,"address":"33 Haridwar Road, Dehradun 248001"},
+    {"name":"Himalayan Hospital Jolly Grant","city":"Dehradun","type":"Trust","beds":830,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurology","Oncology","Trauma"],"nabh":true,"address":"Swami Ram Nagar, Jolly Grant, Doiwala, Dehradun 248140"},
+    {"name":"AIIMS Raipur","city":"Raipur","type":"Government","beds":960,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Nephrology","Trauma"],"nabh":false,"address":"Tatibandh, GE Road, Raipur 492099"},
+    {"name":"Ramkrishna Care Hospital","city":"Raipur","type":"Private","beds":425,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Renal Sciences"],"nabh":true,"address":"Aurobindo Enclave, Pachpedi Naka, Raipur 492001"},
+    {"name":"Balaji Hospital Raipur","city":"Raipur","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Critical Care"],"nabh":true,"address":"Telibandha, Raipur 492006"},
+    {"name":"NH MMI Narayana Superspeciality","city":"Raipur","type":"Private","beds":260,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurosciences","Orthopedics","Renal Sciences"],"nabh":true,"address":"Raipur Bypass Road, Lodhipara Square, Raipur 492001"},
+    {"name":"Mekahara (DKS Hospital)","city":"Raipur","type":"Government","beds":850,"rating":3.9,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Trauma"],"nabh":false,"address":"GE Road, Raipur 492001"},
+    {"name":"Aarogya Hospital Raipur","city":"Raipur","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiology","Orthopedics","Gynaecology","IVF","Internal Medicine"],"nabh":true,"address":"Devendra Nagar, Raipur 492001"},
+    {"name":"Shri Balaji Institute of Medical Science","city":"Raipur","type":"Trust","beds":200,"rating":4.1,"specialties":["Cardiology","Neurology","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Mowa, Raipur 492001"},
+    {"name":"Apollo Hospitals Bilaspur","city":"Raipur","type":"Private","beds":250,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurology","Critical Care"],"nabh":true,"address":"Lingiyadih, Seepat Road, Bilaspur 495006"}
   ]
 }

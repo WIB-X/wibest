@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Should I Live in India? — 90-Second Quiz · WIB</title>
+<meta name="description" content="Take a 90-second quiz and get your best Indian city match from 36 options. We score against your priorities — cost of living, healthcare, dining, weather, jobs, and lifestyle. Free, no signup.">
+<link rel="canonical" href="https://wibest.in/decide/where-to-live/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Where Should I Live in India? — 90-Second Quiz">
+<meta property="og:description" content="Get your best Indian city match from 36 cities based on cost, healthcare, dining, weather, jobs, and lifestyle.">
+<meta property="og:url" content="https://wibest.in/decide/where-to-live/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:740px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 60px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:42px;font-weight:900;letter-spacing:-0.02em;margin-bottom:10px;background:linear-gradient(135deg,#2563eb,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.6;margin-bottom:28px}
+.quiz{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px}
+.progress-bar{height:6px;background:var(--bg-secondary);border-radius:3px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2563eb,#9333ea);transition:width .4s ease;border-radius:3px}
+.step{display:none}
+.step.active{display:block}
+.step-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
+.step h2{font-family:Outfit,sans-serif;font-size:24px;font-weight:800;margin-bottom:8px;line-height:1.2}
+.step .sub{font-size:14px;color:var(--text-muted);margin-bottom:24px}
+.options{display:grid;gap:10px}
+.option{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg-secondary);border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .15s;font-size:15px;font-weight:500;color:var(--text-primary)}
+.option:hover{border-color:var(--accent);transform:translateX(2px)}
+.option.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.option .icon{font-size:22px;line-height:1}
+.option.multi-select.selected{background:linear-gradient(135deg,#2563eb,#9333ea)}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:28px}
+.btn{padding:12px 28px;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .15s}
+.btn-next{background:var(--accent);color:#fff;margin-left:auto}
+.btn-next:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-back{background:var(--bg-secondary);color:var(--text-secondary);border:1px solid var(--border)}
+.btn-back:hover{background:var(--border)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* Results */
+.result{display:none}
+.result.active{display:block}
+.result-hero{background:linear-gradient(135deg,#2563eb,#9333ea);color:#fff;padding:36px 32px;border-radius:16px;text-align:center;margin-bottom:24px}
+.result-hero .label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.85;margin-bottom:8px}
+.result-hero h2{font-family:Outfit,sans-serif;font-size:48px;font-weight:900;margin-bottom:6px;letter-spacing:-0.02em}
+.result-hero .match-score{display:inline-block;padding:6px 16px;background:rgba(255,255,255,.2);border-radius:100px;font-size:14px;font-weight:700;margin-top:8px}
+.result-why{padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:18px}
+.result-why h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin-bottom:14px;color:var(--text-primary)}
+.result-why ul{padding-left:20px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);margin:0}
+.result-why li{margin-bottom:6px}
+.runner-ups{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:18px}
+.runner-ups h3{font-family:Outfit,sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:14px}
+.ru-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+.ru-row:last-child{border-bottom:none}
+.ru-name{font-weight:700;color:var(--text-primary)}
+.ru-score{font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px;color:var(--accent);font-weight:700}
+.explore-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.explore-links a{padding:8px 14px;background:var(--accent-light);color:var(--accent);border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .15s}
+.explore-links a:hover{background:var(--accent);color:#fff}
+.share-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;padding:18px;background:var(--bg-card);border-radius:12px;align-items:center}
+.share-row span{font-weight:600;font-size:14px;color:var(--text-primary);margin-right:6px}
+.share-row a{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:#fff;text-decoration:none}
+.share-row a.tw{background:#1da1f2}.share-row a.li{background:#0a66c2}.share-row a.wa{background:#25d366}
+.retake{display:block;text-align:center;margin-top:20px;color:var(--accent);font-weight:600;text-decoration:none;font-size:14px}
+.retake:hover{text-decoration:underline}
+
+@media(max-width:600px){h1{font-size:28px}.quiz{padding:22px}.result-hero h2{font-size:36px}.actions{flex-direction:column}.btn{width:100%}.btn-next{margin-left:0}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Decide","item":"https://wibest.in/decide/"},{"@type":"ListItem","position":3,"name":"Where to Live","item":"https://wibest.in/decide/where-to-live/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Where Should I Live in India Quiz","url":"https://wibest.in/decide/where-to-live/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/decide/">Decide</a> &rsaquo; Where to Live</div>
+  <h1>Where should I live in India?</h1>
+  <p class="lede">Answer 6 quick questions and get your best Indian city match from 36 options. Scored against verified data on cost of living, healthcare quality, dining, weather, jobs, and lifestyle — not vibes. No signup, no email, ~90 seconds.</p>
+
+  <div class="quiz" id="quizContainer">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16.6%"></div></div>
+
+    <div class="step active" data-step="1">
+      <div class="step-label">Question 1 of 6</div>
+      <h2>What stage of life are you optimising for?</h2>
+      <p class="sub">Pick the one closest to you. We'll weight the rest accordingly.</p>
+      <div class="options" data-name="stage">
+        <div class="option" data-value="early-career"><span class="icon">🚀</span><span>Early career — chasing the best job market</span></div>
+        <div class="option" data-value="family"><span class="icon">👨‍👩‍👧</span><span>Building a family — schools and healthcare matter most</span></div>
+        <div class="option" data-value="remote"><span class="icon">💻</span><span>Remote-work freedom — best lifestyle per rupee</span></div>
+        <div class="option" data-value="retire"><span class="icon">🏞️</span><span>Slowing down — quieter pace, cleaner air, good hospitals</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="2">
+      <div class="step-label">Question 2 of 6</div>
+      <h2>What's your monthly budget for rent + lifestyle?</h2>
+      <p class="sub">Approximate. Affects which cities score above your threshold.</p>
+      <div class="options" data-name="budget">
+        <div class="option" data-value="low"><span class="icon">💰</span><span>Under ₹50,000/month — value above all</span></div>
+        <div class="option" data-value="mid"><span class="icon">💰💰</span><span>₹50,000–₹1,50,000 — comfortable mid-range</span></div>
+        <div class="option" data-value="high"><span class="icon">💰💰💰</span><span>₹1,50,000+ — cost is not the constraint</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="3">
+      <div class="step-label">Question 3 of 6 · Multiple allowed</div>
+      <h2>What do you absolutely need within 1 hour?</h2>
+      <p class="sub">Pick all that apply. Strongest weight in the score.</p>
+      <div class="options" data-name="needs" data-multi="true">
+        <div class="option multi-select" data-value="top-hospital"><span class="icon">🏥</span><span>Top multi-specialty hospital (NABH-accredited, transplants available)</span></div>
+        <div class="option multi-select" data-value="international-school"><span class="icon">🎓</span><span>International / IB / Cambridge school</span></div>
+        <div class="option multi-select" data-value="airport"><span class="icon">✈️</span><span>International airport with global connections</span></div>
+        <div class="option multi-select" data-value="tech-jobs"><span class="icon">💼</span><span>Tech / consulting / finance job market</span></div>
+        <div class="option multi-select" data-value="metro-rail"><span class="icon">🚇</span><span>Metro rail network</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="4">
+      <div class="step-label">Question 4 of 6</div>
+      <h2>What weather do you prefer?</h2>
+      <p class="sub">Year-round average matters more than peak temps.</p>
+      <div class="options" data-name="weather">
+        <div class="option" data-value="cool"><span class="icon">❄️</span><span>Cool to cold — I want a real winter</span></div>
+        <div class="option" data-value="moderate"><span class="icon">🌤️</span><span>Moderate — Bengaluru/Pune-style mild year-round</span></div>
+        <div class="option" data-value="warm"><span class="icon">☀️</span><span>Warm — I prefer summer over winter</span></div>
+        <div class="option" data-value="coastal"><span class="icon">🌊</span><span>Coastal — humid is fine if I'm by the sea</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="5">
+      <div class="step-label">Question 5 of 6 · Multiple allowed</div>
+      <h2>What kind of food culture excites you?</h2>
+      <p class="sub">Tells us how much regional cuisine matters vs cosmopolitan variety.</p>
+      <div class="options" data-name="food" data-multi="true">
+        <div class="option multi-select" data-value="regional"><span class="icon">🍛</span><span>Deep regional cuisine — Saoji, Mangalorean, Odia, Assamese, Bengali</span></div>
+        <div class="option multi-select" data-value="vegetarian"><span class="icon">🥗</span><span>Strong vegetarian / thali tradition</span></div>
+        <div class="option multi-select" data-value="biryani"><span class="icon">🍚</span><span>Biryani / Mughlai / Nawabi cuisine</span></div>
+        <div class="option multi-select" data-value="cosmopolitan"><span class="icon">🌍</span><span>Cosmopolitan — Italian, Japanese, Thai, fine dining</span></div>
+        <div class="option multi-select" data-value="coastal-food"><span class="icon">🐟</span><span>Coastal seafood</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="6">
+      <div class="step-label">Question 6 of 6</div>
+      <h2>Big-city energy or small-city calm?</h2>
+      <p class="sub">Density vs pace tradeoff.</p>
+      <div class="options" data-name="pace">
+        <div class="option" data-value="metro"><span class="icon">🌆</span><span>Metro energy — I want density, options, nightlife</span></div>
+        <div class="option" data-value="tier2"><span class="icon">🏙️</span><span>Tier-2 — modern amenities, less chaos</span></div>
+        <div class="option" data-value="tier3"><span class="icon">🌳</span><span>Tier-3 — small, slow, regional</span></div>
+        <div class="option" data-value="any"><span class="icon">🤷</span><span>Don't care, optimise the other dimensions</span></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-back" id="btnBack" disabled>← Back</button>
+      <button class="btn btn-next" id="btnNext" disabled>Next →</button>
+    </div>
+  </div>
+
+  <div class="result" id="resultContainer">
+    <div class="result-hero">
+      <div class="label">Your best match</div>
+      <h2 id="winnerName">—</h2>
+      <div class="match-score" id="winnerScore">— match</div>
+    </div>
+
+    <div class="result-why">
+      <h3>Why this city won</h3>
+      <ul id="winnerReasons"></ul>
+      <div class="explore-links" id="winnerLinks"></div>
+    </div>
+
+    <div class="runner-ups">
+      <h3>Runner-ups</h3>
+      <div id="runnerUps"></div>
+    </div>
+
+    <div class="share-row">
+      <span>📤 Share your result:</span>
+      <a class="tw" id="shareTw" href="#" target="_blank" rel="noopener">X / Twitter</a>
+      <a class="li" id="shareLi" href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="wa" id="shareWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <a class="retake" href="#" id="retake">↻ Retake quiz</a>
+  </div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+// City scoring data — 36 cities × 10 dimensions, hand-curated from WIB datasets
+const CITIES = {
+  'Delhi':         {tier:'metro',  budget:'high',  weather:'cool',     hospitals:9.5, intlSchools:9.5, airport:10, techJobs:9, metro:10, food:{regional:6,vegetarian:7,biryani:9,cosmopolitan:9,seafood:5}, pace:10, vibe:'historic capital, deep Mughlai food culture, top hospitals, brutal AQI in winter'},
+  'Mumbai':        {tier:'metro',  budget:'high',  weather:'coastal',  hospitals:9.5, intlSchools:9, airport:10, techJobs:10,metro:9, food:{regional:8,vegetarian:8,biryani:7,cosmopolitan:10,seafood:9}, pace:10, vibe:'financial capital, fastest pace, best cosmopolitan dining, expensive everything'},
+  'Bangalore':     {tier:'metro',  budget:'high',  weather:'moderate', hospitals:9, intlSchools:9, airport:9, techJobs:10,metro:8, food:{regional:7,vegetarian:8,biryani:7,cosmopolitan:9,seafood:6}, pace:9, vibe:'tech capital, best weather of any metro, traffic is the tax'},
+  'Chennai':       {tier:'metro',  budget:'mid',  weather:'coastal',  hospitals:9.5, intlSchools:7, airport:8, techJobs:9, metro:7, food:{regional:9,vegetarian:8,biryani:8,cosmopolitan:7,seafood:8}, pace:9, vibe:'south India auto hub, classical music city, Chettinad and Madras filter coffee'},
+  'Hyderabad':     {tier:'metro',  budget:'mid',  weather:'moderate', hospitals:9, intlSchools:8, airport:9, techJobs:10,metro:8, food:{regional:7,vegetarian:7,biryani:10,cosmopolitan:8,seafood:6}, pace:9, vibe:'biryani capital, HITEC City tech boom, cost-to-quality ratio best of metros'},
+  'Kolkata':       {tier:'metro',  budget:'mid',  weather:'warm',     hospitals:8, intlSchools:7, airport:7, techJobs:6, metro:8, food:{regional:10,vegetarian:7,biryani:8,cosmopolitan:7,seafood:8}, pace:9, vibe:'literary capital, Bengali food paradise, slower than other metros'},
+  'Pune':          {tier:'metro',  budget:'mid',  weather:'moderate', hospitals:8, intlSchools:8, airport:7, techJobs:9, metro:6, food:{regional:7,vegetarian:7,biryani:6,cosmopolitan:8,seafood:5}, pace:8, vibe:'student + IT city, Bengaluru-like weather, lower cost than Mumbai/Blr'},
+  'Ahmedabad':     {tier:'metro',  budget:'mid',  weather:'warm',     hospitals:8, intlSchools:7, airport:7, techJobs:7, metro:7, food:{regional:9,vegetarian:10,biryani:5,cosmopolitan:6,seafood:4}, pace:8, vibe:'startup capital of Gujarat, vegetarian heaven, conservative culture'},
+
+  'Jaipur':        {tier:'tier2', budget:'mid',  weather:'warm',     hospitals:7, intlSchools:6, airport:7, techJobs:5, metro:5, food:{regional:8,vegetarian:9,biryani:6,cosmopolitan:6,seafood:3}, pace:6, vibe:'pink city, royal cuisine, tourism economy, modern amenities arriving'},
+  'Lucknow':       {tier:'tier2', budget:'low',  weather:'warm',     hospitals:7, intlSchools:5, airport:6, techJobs:5, metro:7, food:{regional:9,vegetarian:7,biryani:10,cosmopolitan:6,seafood:3}, pace:6, vibe:'Awadhi cuisine capital, slower pace, lowest cost of all state capitals'},
+  'Chandigarh':    {tier:'tier2', budget:'mid',  weather:'cool',     hospitals:8, intlSchools:7, airport:6, techJobs:6, metro:0, food:{regional:7,vegetarian:7,biryani:5,cosmopolitan:7,seafood:3}, pace:5, vibe:'planned city, cleanest in India, real winters, no metro rail'},
+  'Kochi':         {tier:'tier2', budget:'mid',  weather:'coastal',  hospitals:8, intlSchools:6, airport:7, techJobs:6, metro:6, food:{regional:9,vegetarian:6,biryani:7,cosmopolitan:7,seafood:10}, pace:6, vibe:'Kerala backwaters, coastal cuisine, Smart City corridor, monsoons are dramatic'},
+  'Coimbatore':    {tier:'tier2', budget:'mid',  weather:'moderate', hospitals:7, intlSchools:6, airport:6, techJobs:7, metro:0, food:{regional:8,vegetarian:9,biryani:6,cosmopolitan:6,seafood:5}, pace:5, vibe:'textile + auto hub, best weather in TN, education cluster'},
+  'Indore':        {tier:'tier2', budget:'low',  weather:'moderate', hospitals:7, intlSchools:5, airport:6, techJobs:6, metro:5, food:{regional:8,vegetarian:9,biryani:6,cosmopolitan:6,seafood:3}, pace:6, vibe:'street food champion, cleanest mid-sized city, low cost, MP capital of business'},
+  'Visakhapatnam': {tier:'tier2', budget:'low',  weather:'coastal',  hospitals:7, intlSchools:5, airport:6, techJobs:5, metro:0, food:{regional:8,vegetarian:6,biryani:7,cosmopolitan:5,seafood:9}, pace:5, vibe:'Andhra port city, hills meet sea, lower density, IT corridor growing'},
+  'Surat':         {tier:'tier2', budget:'mid',  weather:'warm',     hospitals:7, intlSchools:6, airport:5, techJobs:6, metro:4, food:{regional:9,vegetarian:10,biryani:5,cosmopolitan:5,seafood:5}, pace:6, vibe:'diamond + textile capital, vegetarian thali institutions, fast-growing'},
+
+  'Gurugram':      {tier:'metro',  budget:'high',  weather:'cool',     hospitals:9, intlSchools:9, airport:10, techJobs:10,metro:9, food:{regional:5,vegetarian:6,biryani:7,cosmopolitan:9,seafood:5}, pace:10, vibe:'corporate HQs cluster, Delhi NCR satellite, world-class hospitals, no character beyond work'},
+  'Noida':         {tier:'metro',  budget:'mid',  weather:'cool',     hospitals:8, intlSchools:8, airport:9, techJobs:9, metro:9, food:{regional:5,vegetarian:7,biryani:7,cosmopolitan:8,seafood:5}, pace:9, vibe:'IT-BPM hub, planned sectors, lower cost than Delhi proper'},
+  'Faridabad':     {tier:'metro',  budget:'mid',  weather:'cool',     hospitals:7, intlSchools:6, airport:8, techJobs:6, metro:8, food:{regional:5,vegetarian:6,biryani:6,cosmopolitan:6,seafood:4}, pace:7, vibe:'industrial NCR satellite, cheaper than Gurugram, less character'},
+  'Navi Mumbai':   {tier:'metro',  budget:'mid',  weather:'coastal',  hospitals:8, intlSchools:7, airport:9, techJobs:7, metro:7, food:{regional:7,vegetarian:7,biryani:6,cosmopolitan:7,seafood:8}, pace:8, vibe:'planned satellite to Mumbai, new airport opening, lower density, easier life'},
+  'Pimpri-Chinchwad':{tier:'metro',budget:'mid', weather:'moderate', hospitals:7, intlSchools:6, airport:7, techJobs:8, metro:5, food:{regional:7,vegetarian:7,biryani:5,cosmopolitan:7,seafood:5}, pace:7, vibe:'Pune satellite, Hinjewadi IT corridor, manufacturing belt, growing fast'},
+
+  'Bhopal':        {tier:'tier3', budget:'low',  weather:'moderate', hospitals:6, intlSchools:4, airport:5, techJobs:4, metro:4, food:{regional:7,vegetarian:8,biryani:8,cosmopolitan:5,seafood:3}, pace:4, vibe:'lakes city, Nawabi heritage, MP capital, low cost, slow pace'},
+  'Nagpur':        {tier:'tier3', budget:'low',  weather:'warm',     hospitals:7, intlSchools:5, airport:6, techJobs:5, metro:6, food:{regional:9,vegetarian:6,biryani:7,cosmopolitan:5,seafood:4}, pace:5, vibe:'orange city, Saoji cuisine capital, geographic centre of India, MIHAN aero hub'},
+  'Mysore':        {tier:'tier3', budget:'low',  weather:'moderate', hospitals:7, intlSchools:5, airport:5, techJobs:5, metro:0, food:{regional:9,vegetarian:8,biryani:5,cosmopolitan:5,seafood:4}, pace:4, vibe:'palace city, Mysore tiffin, IT spillover from Bangalore, easier living'},
+  'Vadodara':      {tier:'tier3', budget:'low',  weather:'warm',     hospitals:7, intlSchools:5, airport:5, techJobs:6, metro:0, food:{regional:9,vegetarian:10,biryani:5,cosmopolitan:5,seafood:4}, pace:5, vibe:'cultural Gujarat, MS University, Gujarati thali institutions, low cost'},
+  'Patna':         {tier:'tier3', budget:'low',  weather:'warm',     hospitals:6, intlSchools:4, airport:5, techJobs:4, metro:5, food:{regional:9,vegetarian:6,biryani:7,cosmopolitan:4,seafood:4}, pace:5, vibe:'Bihar capital, AIIMS Patna anchor, Bihari litti chokha, infrastructure still catching up'},
+
+  'Mangalore':     {tier:'tier3', budget:'low',  weather:'coastal',  hospitals:8, intlSchools:5, airport:6, techJobs:5, metro:0, food:{regional:9,vegetarian:6,biryani:6,cosmopolitan:6,seafood:10}, pace:4, vibe:'coastal Karnataka, Mangalorean seafood, KMC + Father Muller healthcare anchors'},
+  'Trichy':        {tier:'tier3', budget:'low',  weather:'warm',     hospitals:7, intlSchools:5, airport:5, techJobs:5, metro:0, food:{regional:7,vegetarian:8,biryani:7,cosmopolitan:4,seafood:5}, pace:4, vibe:'temple city, inland TN, NIT Trichy, Kauvery Hospital, low cost'},
+  'Bhubaneswar':   {tier:'tier3', budget:'low',  weather:'warm',     hospitals:8, intlSchools:5, airport:6, techJobs:6, metro:0, food:{regional:9,vegetarian:7,biryani:5,cosmopolitan:6,seafood:7}, pace:5, vibe:'temple city, Odia thali, KIIT + AIIMS Bhubaneswar, low cost, organised'},
+  'Guwahati':      {tier:'tier3', budget:'low',  weather:'coastal',  hospitals:7, intlSchools:5, airport:7, techJobs:5, metro:0, food:{regional:9,vegetarian:5,biryani:5,cosmopolitan:6,seafood:7}, pace:5, vibe:'Northeast gateway, Assamese + Naga cuisine, GNRC + Apollo, Brahmaputra views'},
+  'Trivandrum':    {tier:'tier2', budget:'low',  weather:'coastal',  hospitals:8, intlSchools:6, airport:7, techJobs:6, metro:0, food:{regional:9,vegetarian:7,biryani:7,cosmopolitan:6,seafood:9}, pace:4, vibe:'Kerala capital, sadya tradition, KIMSHEALTH + SCTIMST, technopark IT, slowest of state capitals'},
+  'Ranchi':        {tier:'tier3', budget:'low',  weather:'moderate', hospitals:6, intlSchools:4, airport:5, techJobs:4, metro:0, food:{regional:6,vegetarian:5,biryani:5,cosmopolitan:5,seafood:3}, pace:4, vibe:'Jharkhand capital, tribal heritage, RIMS anchor, hill-station climate, still developing'},
+
+  'Dehradun':      {tier:'tier2', budget:'mid',  weather:'cool',     hospitals:7, intlSchools:8, airport:6, techJobs:5, metro:0, food:{regional:7,vegetarian:6,biryani:5,cosmopolitan:7,seafood:3}, pace:4, vibe:'Doon Valley, hill-school capital (Doon, Welham), gateway to Mussoorie + Char Dham, cool climate'},
+  'Raipur':        {tier:'tier3', budget:'low',  weather:'warm',     hospitals:7, intlSchools:5, airport:5, techJobs:4, metro:0, food:{regional:7,vegetarian:7,biryani:6,cosmopolitan:5,seafood:3}, pace:5, vibe:'Chhattisgarh capital, AIIMS + NH MMI anchors, tribal cuisine, lowest cost of state capitals'},
+
+  'Madurai':       {tier:'tier3', budget:'low',  weather:'warm',     hospitals:5, intlSchools:4, airport:5, techJobs:4, metro:0, food:{regional:8,vegetarian:7,biryani:7,cosmopolitan:4,seafood:4}, pace:4, vibe:'temple city, Chettinad cuisine corridor, low cost, traditional'},
+  'Vellore':       {tier:'tier3', budget:'low',  weather:'warm',     hospitals:7, intlSchools:4, airport:4, techJobs:4, metro:0, food:{regional:6,vegetarian:6,biryani:5,cosmopolitan:4,seafood:4}, pace:3, vibe:'CMC Vellore healthcare destination, VIT engineering, very small-town'},
+};
+
+// City-slug map for links
+const SLUGS = {'Delhi':'delhi','Mumbai':'mumbai','Bangalore':'bangalore','Chennai':'chennai','Hyderabad':'hyderabad','Kolkata':'kolkata','Pune':'pune','Ahmedabad':'ahmedabad','Jaipur':'jaipur','Lucknow':'lucknow','Chandigarh':'chandigarh','Kochi':'kochi','Coimbatore':'coimbatore','Indore':'indore','Visakhapatnam':'visakhapatnam','Surat':'surat','Gurugram':'gurugram','Noida':'noida','Faridabad':'faridabad','Navi Mumbai':'navi-mumbai','Pimpri-Chinchwad':'pimpri-chinchwad','Bhopal':'bhopal','Nagpur':'nagpur','Mysore':'mysore','Vadodara':'vadodara','Patna':'patna','Mangalore':'mangalore','Trichy':'trichy','Bhubaneswar':'bhubaneswar','Guwahati':'guwahati','Trivandrum':'trivandrum','Ranchi':'ranchi','Dehradun':'dehradun','Raipur':'raipur','Madurai':'madurai','Vellore':'vellore'};
+
+let answers = {};
+let currentStep = 1;
+const totalSteps = 6;
+
+function updateProgress() {
+  document.getElementById('progressFill').style.width = (currentStep / totalSteps * 100) + '%';
+  document.getElementById('btnBack').disabled = currentStep === 1;
+  const cur = document.querySelector('.step.active');
+  const name = cur.querySelector('.options').dataset.name;
+  const multi = cur.querySelector('.options').dataset.multi === 'true';
+  if (multi) {
+    document.getElementById('btnNext').disabled = !(answers[name] && answers[name].length > 0);
+  } else {
+    document.getElementById('btnNext').disabled = !answers[name];
+  }
+  document.getElementById('btnNext').textContent = currentStep === totalSteps ? '✨ See my city →' : 'Next →';
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelector('.step[data-step="' + n + '"]').classList.add('active');
+  currentStep = n;
+  updateProgress();
+}
+
+document.querySelectorAll('.options').forEach(group => {
+  group.addEventListener('click', e => {
+    const opt = e.target.closest('.option');
+    if (!opt) return;
+    const name = group.dataset.name;
+    const multi = group.dataset.multi === 'true';
+    const val = opt.dataset.value;
+    if (multi) {
+      answers[name] = answers[name] || [];
+      if (answers[name].includes(val)) {
+        answers[name] = answers[name].filter(v => v !== val);
+        opt.classList.remove('selected');
+      } else {
+        answers[name].push(val);
+        opt.classList.add('selected');
+      }
+    } else {
+      group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      answers[name] = val;
+    }
+    updateProgress();
+  });
+});
+
+document.getElementById('btnNext').addEventListener('click', () => {
+  if (currentStep < totalSteps) {
+    showStep(currentStep + 1);
+  } else {
+    showResults();
+  }
+});
+document.getElementById('btnBack').addEventListener('click', () => {
+  if (currentStep > 1) showStep(currentStep - 1);
+});
+
+function scoreCity(c) {
+  let s = 0;
+  const reasons = [];
+
+  // Budget (gate): if budget doesn't match, heavy penalty
+  if (answers.budget === 'low' && c.budget === 'high') s -= 20;
+  else if (answers.budget === 'low' && c.budget === 'mid') s -= 5;
+  else if (answers.budget === 'mid' && c.budget === 'high') s -= 8;
+  else if (answers.budget === 'high' && c.budget === 'low') { s += 2; } // overpowered
+  else { s += 5; reasons.push('Fits your budget bracket (' + c.budget + ')'); }
+
+  // Stage weights
+  if (answers.stage === 'early-career') { s += c.techJobs * 1.5; if (c.techJobs >= 9) reasons.push('Strong tech/finance job market'); }
+  if (answers.stage === 'family')       { s += c.hospitals * 1.0 + c.intlSchools * 1.2; if (c.hospitals >= 8) reasons.push('Top hospitals available'); if (c.intlSchools >= 8) reasons.push('Strong international schools'); }
+  if (answers.stage === 'remote')       { s += (10 - Math.abs(c.pace - 7)) * 1.0; reasons.push('Good lifestyle-per-rupee ratio'); }
+  if (answers.stage === 'retire')       { s += c.hospitals * 1.5; if (c.pace <= 5) s += 8; if (c.pace <= 5) reasons.push('Slower pace fits a wind-down'); }
+
+  // Needs (multi)
+  (answers.needs || []).forEach(n => {
+    if (n === 'top-hospital')        { s += c.hospitals * 1.2; if (c.hospitals >= 8) reasons.push('Has top multi-specialty hospitals'); }
+    if (n === 'international-school'){ s += c.intlSchools * 1.5; if (c.intlSchools >= 7) reasons.push('International schools available'); }
+    if (n === 'airport')             { s += c.airport * 1.0; if (c.airport >= 8) reasons.push('Strong international airport'); }
+    if (n === 'tech-jobs')           { s += c.techJobs * 1.3; if (c.techJobs >= 8) reasons.push('Active tech job market'); }
+    if (n === 'metro-rail')          { s += c.metro * 1.5; if (c.metro >= 7) reasons.push('Metro rail network'); }
+  });
+
+  // Weather
+  if (answers.weather === c.weather) { s += 8; reasons.push('Weather matches your preference'); }
+  else if ((answers.weather === 'cool' && c.weather === 'moderate') || (answers.weather === 'warm' && c.weather === 'moderate')) s += 3;
+
+  // Food (multi) — average match
+  let foodScore = 0;
+  (answers.food || []).forEach(f => {
+    const map = {'regional':'regional','vegetarian':'vegetarian','biryani':'biryani','cosmopolitan':'cosmopolitan','coastal-food':'seafood'};
+    foodScore += c.food[map[f]] || 0;
+  });
+  if ((answers.food || []).length > 0) {
+    foodScore = foodScore / answers.food.length;
+    s += foodScore * 0.8;
+    if (foodScore >= 8) reasons.push('Food culture strongly matches your taste');
+  }
+
+  // Pace
+  if (answers.pace === 'metro' && c.tier === 'metro') { s += 6; reasons.push('Metro energy as requested'); }
+  if (answers.pace === 'tier2' && c.tier === 'tier2') { s += 6; reasons.push('Tier-2 calm with modern amenities'); }
+  if (answers.pace === 'tier3' && c.tier === 'tier3') { s += 6; reasons.push('Tier-3 small-city pace'); }
+  if (answers.pace === 'any')                          { s += 2; }
+
+  return { score: s, reasons: [...new Set(reasons)].slice(0, 6) };
+}
+
+function showResults() {
+  const ranked = Object.entries(CITIES).map(([name, c]) => {
+    const { score, reasons } = scoreCity(c);
+    return { name, score, reasons, vibe: c.vibe };
+  }).sort((a, b) => b.score - a.score);
+
+  const winner = ranked[0];
+  const runners = ranked.slice(1, 4);
+
+  document.getElementById('winnerName').textContent = winner.name;
+  const maxPossible = 90; // approximate cap
+  const pct = Math.min(100, Math.round(winner.score / maxPossible * 100));
+  document.getElementById('winnerScore').textContent = pct + '% match';
+
+  let reasonsHtml = winner.reasons.map(r => '<li>' + r + '</li>').join('');
+  reasonsHtml += '<li><em>' + winner.vibe + '</em></li>';
+  document.getElementById('winnerReasons').innerHTML = reasonsHtml;
+
+  const slug = SLUGS[winner.name];
+  let links = '';
+  if (slug) {
+    links += '<a href="/hospitals/' + slug + '/">Hospitals in ' + winner.name + ' →</a>';
+    links += '<a href="/restaurants/' + slug + '/">Restaurants in ' + winner.name + ' →</a>';
+    links += '<a href="/cities/">Compare all cities →</a>';
+  }
+  document.getElementById('winnerLinks').innerHTML = links;
+
+  let ruHtml = '';
+  runners.forEach((r, i) => {
+    const ruPct = Math.min(100, Math.round(r.score / maxPossible * 100));
+    ruHtml += '<div class="ru-row"><span class="ru-name">' + (i+2) + '. ' + r.name + '</span><span class="ru-score">' + ruPct + '% match</span></div>';
+  });
+  document.getElementById('runnerUps').innerHTML = ruHtml;
+
+  const shareText = 'My best Indian city match is ' + winner.name + ' (' + pct + '% match) — find yours at wibest.in/decide/where-to-live/';
+  const shareUrl = 'https://wibest.in/decide/where-to-live/';
+  document.getElementById('shareTw').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(shareUrl);
+  document.getElementById('shareLi').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+  document.getElementById('shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + shareUrl);
+
+  document.getElementById('quizContainer').style.display = 'none';
+  document.getElementById('resultContainer').classList.add('active');
+
+  // GA event
+  if (typeof gtag === 'function') {
+    gtag('event', 'quiz_completed', { event_category: 'engagement', event_label: winner.name, value: pct });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('retake').addEventListener('click', e => {
+  e.preventDefault();
+  answers = {};
+  currentStep = 1;
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.getElementById('quizContainer').style.display = 'block';
+  document.getElementById('resultContainer').classList.remove('active');
+  showStep(1);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+updateProgress();
+</script>
+</body>
+</html>

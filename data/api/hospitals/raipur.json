@@ -1,0 +1,16 @@
+{
+  "city": "Raipur",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/raipur/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"AIIMS Raipur","city":"Raipur","type":"Government","beds":960,"rating":4.4,"specialties":["Cardiac Sciences","Neurology","Oncology","Nephrology","Trauma"],"nabh":false,"address":"Tatibandh, GE Road, Raipur 492099"},
+    {"name":"Ramkrishna Care Hospital","city":"Raipur","type":"Private","beds":425,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Renal Sciences"],"nabh":true,"address":"Aurobindo Enclave, Pachpedi Naka, Raipur 492001"},
+    {"name":"Balaji Hospital Raipur","city":"Raipur","type":"Private","beds":300,"rating":4.3,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Critical Care"],"nabh":true,"address":"Telibandha, Raipur 492006"},
+    {"name":"NH MMI Narayana Superspeciality","city":"Raipur","type":"Private","beds":260,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurosciences","Orthopedics","Renal Sciences"],"nabh":true,"address":"Raipur Bypass Road, Lodhipara Square, Raipur 492001"},
+    {"name":"Mekahara (DKS Hospital)","city":"Raipur","type":"Government","beds":850,"rating":3.9,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Trauma"],"nabh":false,"address":"GE Road, Raipur 492001"},
+    {"name":"Aarogya Hospital Raipur","city":"Raipur","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiology","Orthopedics","Gynaecology","IVF","Internal Medicine"],"nabh":true,"address":"Devendra Nagar, Raipur 492001"},
+    {"name":"Shri Balaji Institute of Medical Science","city":"Raipur","type":"Trust","beds":200,"rating":4.1,"specialties":["Cardiology","Neurology","Orthopedics","Gynaecology","Paediatrics"],"nabh":true,"address":"Mowa, Raipur 492001"},
+    {"name":"Apollo Hospitals Bilaspur","city":"Raipur","type":"Private","beds":250,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurology","Critical Care"],"nabh":true,"address":"Lingiyadih, Seepat Road, Bilaspur 495006"}
+  ]
+}

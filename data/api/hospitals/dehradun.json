@@ -1,0 +1,16 @@
+{
+  "city": "Dehradun",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/dehradun/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Max Super Speciality Hospital Dehradun","city":"Dehradun","type":"Private","beds":200,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Orthopedics"],"nabh":true,"address":"Mussoorie Diversion Road, Malsi, Dehradun 248001"},
+    {"name":"Synergy Hospital Dehradun","city":"Dehradun","type":"Private","beds":150,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Critical Care","Nephrology"],"nabh":true,"address":"Eastern Patel Nagar, Dehradun 248001"},
+    {"name":"Doon Hospital Dehradun","city":"Dehradun","type":"Government","beds":765,"rating":3.9,"specialties":["General Medicine","Surgery","Cardiology","Orthopedics","Trauma"],"nabh":false,"address":"Chakrata Road, Dehradun 248001"},
+    {"name":"CMI Hospital Dehradun","city":"Dehradun","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","IVF"],"nabh":true,"address":"Diversion Road, Patel Nagar, Dehradun 248001"},
+    {"name":"Kailash Hospital Dehradun","city":"Dehradun","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiology","Orthopedics","Gastroenterology","Gynaecology","Critical Care"],"nabh":true,"address":"Sahastradhara Road, Dehradun 248013"},
+    {"name":"Velmed Hospital","city":"Dehradun","type":"Private","beds":100,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Orthopedics","Internal Medicine","Critical Care"],"nabh":true,"address":"Old Survey Road, Dalanwala, Dehradun 248001"},
+    {"name":"Combined Medical Institute (CMI)","city":"Dehradun","type":"Trust","beds":300,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gynaecology"],"nabh":true,"address":"33 Haridwar Road, Dehradun 248001"},
+    {"name":"Himalayan Hospital Jolly Grant","city":"Dehradun","type":"Trust","beds":830,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurology","Oncology","Trauma"],"nabh":true,"address":"Swami Ram Nagar, Jolly Grant, Doiwala, Dehradun 248140"}
+  ]
+}

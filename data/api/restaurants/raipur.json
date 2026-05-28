@@ -1,0 +1,18 @@
+{
+  "city": "Raipur",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/raipur/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Garam Masala","city":"Raipur","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Civil Lines, near Telibandha Talab","vegetarian":false},
+    {"name":"Chhattisgarh Bhojnalay","city":"Raipur","cuisines":["Chhattisgarhi","Tribal","Thali"],"rating":4.5,"budget_tier":"under_500","address":"Devendra Nagar, near Magneto Mall","vegetarian":true},
+    {"name":"Mehfil-E-Khaas","city":"Raipur","cuisines":["Mughlai","North Indian","Biryani"],"rating":4.4,"budget_tier":"500_to_2000","address":"Pandri Bus Stand area","vegetarian":false},
+    {"name":"Tatva The Multicuisine Restaurant","city":"Raipur","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Hyatt Regency, GE Road","vegetarian":false},
+    {"name":"Rasoi Express","city":"Raipur","cuisines":["North Indian","South Indian","Multi-Cuisine"],"rating":4.3,"budget_tier":"500_to_2000","address":"Magneto Mall, Devendra Nagar","vegetarian":false},
+    {"name":"Cafe Coffee Day Civil Lines","city":"Raipur","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Civil Lines, near Vidhan Sabha","vegetarian":false},
+    {"name":"Bawarchi Restaurant","city":"Raipur","cuisines":["North Indian","Mughlai","Vegetarian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Shankar Nagar, near Marine Drive","vegetarian":true},
+    {"name":"Sayaji Hotel Restaurant","city":"Raipur","cuisines":["Multi-Cuisine","Continental","Asian"],"rating":4.4,"budget_tier":"above_2000","address":"Sayaji Hotel, VIP Road, Telibandha","vegetarian":false},
+    {"name":"Annapurna Restaurant","city":"Raipur","cuisines":["Chhattisgarhi","Vegetarian","Thali"],"rating":4.4,"budget_tier":"under_500","address":"Jaistambh Chowk, near Railway Station","vegetarian":true},
+    {"name":"Cafe Hangout","city":"Raipur","cuisines":["Cafe","Italian","Continental"],"rating":4.3,"budget_tier":"500_to_2000","address":"VIP Road, Telibandha","vegetarian":false}
+  ]
+}

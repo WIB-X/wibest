@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Town Table,Dehradun,Multi-Cuisine | Continental | Indian,4.5,Rs 2000+,"Jaypee Residency Manor, Hotel Manor",No,https://wibest.in/restaurants/dehradun/
+Polo House,Dehradun,Continental | Italian | Cafe,4.4,Rs 2000+,100 Rajpur Road,No,https://wibest.in/restaurants/dehradun/
+Doon Darbar,Dehradun,Garhwali | North Indian | Pahari,4.5,Rs 500-2000,"Astley Hall, Rajpur Road",No,https://wibest.in/restaurants/dehradun/
+Kumar Sweets,Dehradun,Vegetarian | Sweets | North Indian,4.4,Under Rs 500,"Paltan Bazaar, near Clock Tower",Yes,https://wibest.in/restaurants/dehradun/
+Cafe De La Maison,Dehradun,Cafe | Continental | French,4.4,Rs 500-2000,"42 Rajpur Road, near IT Park",No,https://wibest.in/restaurants/dehradun/
+Mussoorie Express,Dehradun,North Indian | Mughlai | Tandoor,4.3,Rs 500-2000,"Convent Road, near Astley Hall",No,https://wibest.in/restaurants/dehradun/
+Black Pepper,Dehradun,Multi-Cuisine | Continental | Chinese,4.3,Rs 500-2000,"Rajpur Road, near IT Park",No,https://wibest.in/restaurants/dehradun/
+Yeti The Himalayan Kitchen,Dehradun,Tibetan | Nepali | Asian,4.4,Rs 500-2000,"Rajpur Road, near Income Tax Office",No,https://wibest.in/restaurants/dehradun/
+Anand Sweets,Dehradun,South Indian | Vegetarian | Sweets,4.4,Under Rs 500,"Paltan Bazaar, near Tehsil Chowk",Yes,https://wibest.in/restaurants/dehradun/
+Buddies Cafe,Dehradun,Cafe | Continental | Italian,4.3,Rs 500-2000,"Pacific Mall, Saharanpur Road",No,https://wibest.in/restaurants/dehradun/

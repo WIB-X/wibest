@@ -1,0 +1,9 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+Max Super Speciality Hospital Dehradun,Dehradun,Private,200,4.4,Cardiology | Cardiac Surgery | Neurosciences | Oncology | Orthopedics,true,"Mussoorie Diversion Road, Malsi, Dehradun 248001",https://wibest.in/hospitals/dehradun/
+Synergy Hospital Dehradun,Dehradun,Private,150,4.3,Cardiology | Neurology | Orthopedics | Critical Care | Nephrology,true,"Eastern Patel Nagar, Dehradun 248001",https://wibest.in/hospitals/dehradun/
+Doon Hospital Dehradun,Dehradun,Government,765,3.9,General Medicine | Surgery | Cardiology | Orthopedics | Trauma,false,"Chakrata Road, Dehradun 248001",https://wibest.in/hospitals/dehradun/
+CMI Hospital Dehradun,Dehradun,Private,200,4.3,Cardiology | Cardiac Surgery | Neurology | Orthopedics | IVF,true,"Diversion Road, Patel Nagar, Dehradun 248001",https://wibest.in/hospitals/dehradun/
+Kailash Hospital Dehradun,Dehradun,Private,120,4.2,Cardiology | Orthopedics | Gastroenterology | Gynaecology | Critical Care,true,"Sahastradhara Road, Dehradun 248013",https://wibest.in/hospitals/dehradun/
+Velmed Hospital,Dehradun,Private,100,4.3,Cardiology | Cardiac Surgery | Orthopedics | Internal Medicine | Critical Care,true,"Old Survey Road, Dalanwala, Dehradun 248001",https://wibest.in/hospitals/dehradun/
+Combined Medical Institute (CMI),Dehradun,Trust,300,4.2,Cardiology | Neurology | Oncology | Orthopedics | Gynaecology,true,"33 Haridwar Road, Dehradun 248001",https://wibest.in/hospitals/dehradun/
+Himalayan Hospital Jolly Grant,Dehradun,Trust,830,4.3,Cardiology | Cardiothoracic Surgery | Neurology | Oncology | Trauma,true,"Swami Ram Nagar, Jolly Grant, Doiwala, Dehradun 248140",https://wibest.in/hospitals/dehradun/

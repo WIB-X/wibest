@@ -1,0 +1,18 @@
+{
+  "city": "Dehradun",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/dehradun/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Town Table","city":"Dehradun","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.5,"budget_tier":"above_2000","address":"Jaypee Residency Manor, Hotel Manor","vegetarian":false},
+    {"name":"Polo House","city":"Dehradun","cuisines":["Continental","Italian","Cafe"],"rating":4.4,"budget_tier":"above_2000","address":"100 Rajpur Road","vegetarian":false},
+    {"name":"Doon Darbar","city":"Dehradun","cuisines":["Garhwali","North Indian","Pahari"],"rating":4.5,"budget_tier":"500_to_2000","address":"Astley Hall, Rajpur Road","vegetarian":false},
+    {"name":"Kumar Sweets","city":"Dehradun","cuisines":["Vegetarian","Sweets","North Indian"],"rating":4.4,"budget_tier":"under_500","address":"Paltan Bazaar, near Clock Tower","vegetarian":true},
+    {"name":"Cafe De La Maison","city":"Dehradun","cuisines":["Cafe","Continental","French"],"rating":4.4,"budget_tier":"500_to_2000","address":"42 Rajpur Road, near IT Park","vegetarian":false},
+    {"name":"Mussoorie Express","city":"Dehradun","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Convent Road, near Astley Hall","vegetarian":false},
+    {"name":"Black Pepper","city":"Dehradun","cuisines":["Multi-Cuisine","Continental","Chinese"],"rating":4.3,"budget_tier":"500_to_2000","address":"Rajpur Road, near IT Park","vegetarian":false},
+    {"name":"Yeti The Himalayan Kitchen","city":"Dehradun","cuisines":["Tibetan","Nepali","Asian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Rajpur Road, near Income Tax Office","vegetarian":false},
+    {"name":"Anand Sweets","city":"Dehradun","cuisines":["South Indian","Vegetarian","Sweets"],"rating":4.4,"budget_tier":"under_500","address":"Paltan Bazaar, near Tehsil Chowk","vegetarian":true},
+    {"name":"Buddies Cafe","city":"Dehradun","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Pacific Mall, Saharanpur Road","vegetarian":false}
+  ]
+}

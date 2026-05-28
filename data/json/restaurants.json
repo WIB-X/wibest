@@ -3,7 +3,7 @@
   "version": "2026-05-06",
   "license": "CC-BY-4.0",
   "source": "https://wibest.in/data/",
-  "count": 585,
+  "count": 605,
   "data": [
     {"name":"Bukhara","city":"Delhi","cuisines":["North Indian","Mughlai","Fine Dining"],"rating":4.7,"budget_tier":"above_2000","address":"ITC Maurya, Sardar Patel Marg","vegetarian":true},
     {"name":"Indian Accent","city":"Delhi","cuisines":["Modern Indian","Fine Dining"],"rating":4.8,"budget_tier":"above_2000","address":"The Lodhi, Lodhi Road","vegetarian":true},
@@ -589,6 +589,26 @@
     {"name":"Hotel Yuvraj Restaurant","city":"Ranchi","cuisines":["North Indian","Bengali","Mughlai"],"rating":4.2,"budget_tier":"500_to_2000","address":"Doranda, near Big Bazaar","vegetarian":false},
     {"name":"Domino's Pizza Lalpur","city":"Ranchi","cuisines":["Italian","Pizza","Fast Food"],"rating":4.1,"budget_tier":"500_to_2000","address":"Lalpur, near Albert Ekka Chowk","vegetarian":false},
     {"name":"Litti Galli","city":"Ranchi","cuisines":["Bihari","Jharkhandi","Litti Chokha"],"rating":4.4,"budget_tier":"under_500","address":"Kachehri Chowk, near Jail Chowk","vegetarian":false},
-    {"name":"The Big Banyan","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Ranchi Club Road, near Albert Ekka Chowk","vegetarian":false}
+    {"name":"The Big Banyan","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Ranchi Club Road, near Albert Ekka Chowk","vegetarian":false},
+    {"name":"Town Table","city":"Dehradun","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.5,"budget_tier":"above_2000","address":"Jaypee Residency Manor, Hotel Manor","vegetarian":false},
+    {"name":"Polo House","city":"Dehradun","cuisines":["Continental","Italian","Cafe"],"rating":4.4,"budget_tier":"above_2000","address":"100 Rajpur Road","vegetarian":false},
+    {"name":"Doon Darbar","city":"Dehradun","cuisines":["Garhwali","North Indian","Pahari"],"rating":4.5,"budget_tier":"500_to_2000","address":"Astley Hall, Rajpur Road","vegetarian":false},
+    {"name":"Kumar Sweets","city":"Dehradun","cuisines":["Vegetarian","Sweets","North Indian"],"rating":4.4,"budget_tier":"under_500","address":"Paltan Bazaar, near Clock Tower","vegetarian":true},
+    {"name":"Cafe De La Maison","city":"Dehradun","cuisines":["Cafe","Continental","French"],"rating":4.4,"budget_tier":"500_to_2000","address":"42 Rajpur Road, near IT Park","vegetarian":false},
+    {"name":"Mussoorie Express","city":"Dehradun","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Convent Road, near Astley Hall","vegetarian":false},
+    {"name":"Black Pepper","city":"Dehradun","cuisines":["Multi-Cuisine","Continental","Chinese"],"rating":4.3,"budget_tier":"500_to_2000","address":"Rajpur Road, near IT Park","vegetarian":false},
+    {"name":"Yeti The Himalayan Kitchen","city":"Dehradun","cuisines":["Tibetan","Nepali","Asian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Rajpur Road, near Income Tax Office","vegetarian":false},
+    {"name":"Anand Sweets","city":"Dehradun","cuisines":["South Indian","Vegetarian","Sweets"],"rating":4.4,"budget_tier":"under_500","address":"Paltan Bazaar, near Tehsil Chowk","vegetarian":true},
+    {"name":"Buddies Cafe","city":"Dehradun","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Pacific Mall, Saharanpur Road","vegetarian":false},
+    {"name":"Garam Masala","city":"Raipur","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Civil Lines, near Telibandha Talab","vegetarian":false},
+    {"name":"Chhattisgarh Bhojnalay","city":"Raipur","cuisines":["Chhattisgarhi","Tribal","Thali"],"rating":4.5,"budget_tier":"under_500","address":"Devendra Nagar, near Magneto Mall","vegetarian":true},
+    {"name":"Mehfil-E-Khaas","city":"Raipur","cuisines":["Mughlai","North Indian","Biryani"],"rating":4.4,"budget_tier":"500_to_2000","address":"Pandri Bus Stand area","vegetarian":false},
+    {"name":"Tatva The Multicuisine Restaurant","city":"Raipur","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Hyatt Regency, GE Road","vegetarian":false},
+    {"name":"Rasoi Express","city":"Raipur","cuisines":["North Indian","South Indian","Multi-Cuisine"],"rating":4.3,"budget_tier":"500_to_2000","address":"Magneto Mall, Devendra Nagar","vegetarian":false},
+    {"name":"Cafe Coffee Day Civil Lines","city":"Raipur","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Civil Lines, near Vidhan Sabha","vegetarian":false},
+    {"name":"Bawarchi Restaurant","city":"Raipur","cuisines":["North Indian","Mughlai","Vegetarian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Shankar Nagar, near Marine Drive","vegetarian":true},
+    {"name":"Sayaji Hotel Restaurant","city":"Raipur","cuisines":["Multi-Cuisine","Continental","Asian"],"rating":4.4,"budget_tier":"above_2000","address":"Sayaji Hotel, VIP Road, Telibandha","vegetarian":false},
+    {"name":"Annapurna Restaurant","city":"Raipur","cuisines":["Chhattisgarhi","Vegetarian","Thali"],"rating":4.4,"budget_tier":"under_500","address":"Jaistambh Chowk, near Railway Station","vegetarian":true},
+    {"name":"Cafe Hangout","city":"Raipur","cuisines":["Cafe","Italian","Continental"],"rating":4.3,"budget_tier":"500_to_2000","address":"VIP Road, Telibandha","vegetarian":false}
   ]
 }
