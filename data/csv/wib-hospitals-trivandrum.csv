@@ -1,0 +1,9 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+KIMSHEALTH Trivandrum,Trivandrum,Private,650,4.5,Cardiology | Cardiac Surgery | Oncology | Neurosciences | Transplant,true,"Anayara P O, Trivandrum 695029",https://wibest.in/hospitals/trivandrum/
+SCTIMST Trivandrum,Trivandrum,Government,325,4.6,Cardiac Sciences | Neurosurgery | Neurology | Cardiothoracic Surgery,true,"Medical College P O, Trivandrum 695011",https://wibest.in/hospitals/trivandrum/
+Ananthapuri Hospitals,Trivandrum,Private,340,4.4,Cardiology | Cardiac Surgery | Neurosurgery | Oncology | Nephrology,true,"NH Bypass, Chacka, Trivandrum 695024",https://wibest.in/hospitals/trivandrum/
+Cosmopolitan Hospital,Trivandrum,Private,280,4.3,Cardiology | Neurology | Orthopedics | Gastroenterology | Critical Care,true,"Murinjapalam, Pattom, Trivandrum 695004",https://wibest.in/hospitals/trivandrum/
+Sree Uthradom Thirunal (SUT) Hospital,Trivandrum,Trust,240,4.3,Cardiology | Cardiac Surgery | Oncology | Orthopedics | Critical Care,true,"Pattom, Trivandrum 695004",https://wibest.in/hospitals/trivandrum/
+Regional Cancer Centre Trivandrum,Trivandrum,Government,300,4.4,Oncology | Radiation Oncology | Surgical Oncology | Hemato Oncology,true,"Medical College Campus, Trivandrum 695011",https://wibest.in/hospitals/trivandrum/
+Trivandrum Medical College Hospital,Trivandrum,Government,2300,4.0,General Medicine | Cardiology | Neurology | Surgery | Trauma,false,"Medical College P O, Trivandrum 695011",https://wibest.in/hospitals/trivandrum/
+NIMS Medicity,Trivandrum,Trust,600,4.2,Cardiology | Cardiac Surgery | Oncology | Neurology | Orthopedics,true,"Aralumoodu P O, Neyyattinkara, Trivandrum 695123",https://wibest.in/hospitals/trivandrum/

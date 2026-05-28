@@ -1,0 +1,11 @@
+name,city,cuisines,rating,budget_tier,address,vegetarian,source
+Villa Maya,Trivandrum,Continental | European | Fine Dining,4.5,Rs 2000+,"Airport Road, Anayara",No,https://wibest.in/restaurants/trivandrum/
+Mathrubhumi Hotel,Trivandrum,Kerala | South Indian | Sadya,4.5,Under Rs 500,"Statue Junction, near Secretariat",Yes,https://wibest.in/restaurants/trivandrum/
+Kalavara Restaurant,Trivandrum,Kerala | Seafood | South Indian,4.4,Rs 500-2000,"Press Road, Statue Junction",No,https://wibest.in/restaurants/trivandrum/
+Travancore Court,Trivandrum,Multi-Cuisine | Continental | Indian,4.4,Rs 2000+,"Hotel Travancore Court, Thycaud",No,https://wibest.in/restaurants/trivandrum/
+Ariya Niwas,Trivandrum,Kerala | South Indian | Vegetarian,4.4,Under Rs 500,"Aristo Junction, Manorama Road",Yes,https://wibest.in/restaurants/trivandrum/
+Cafe Coffee Day Statue,Trivandrum,Cafe | Continental | Desserts,4.1,Rs 500-2000,"Statue Junction, M G Road",No,https://wibest.in/restaurants/trivandrum/
+Sea Shells Restaurant,Trivandrum,Kerala | Seafood | Continental,4.3,Rs 500-2000,"Hotel Mascot, Palayam",No,https://wibest.in/restaurants/trivandrum/
+Hotel Rahmaniya,Trivandrum,Kerala | Mughlai | Biryani,4.4,Under Rs 500,"Vazhuthacaud, near GPO",No,https://wibest.in/restaurants/trivandrum/
+Cafe Mojo,Trivandrum,Cafe | Continental | Italian,4.3,Rs 500-2000,"Mall of Travancore, Chackai",No,https://wibest.in/restaurants/trivandrum/
+Zam Zam Restaurant,Trivandrum,Kerala | Malabar | Biryani,4.4,Under Rs 500,"Pulimoodu, near Connemara Market",No,https://wibest.in/restaurants/trivandrum/

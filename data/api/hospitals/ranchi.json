@@ -1,0 +1,16 @@
+{
+  "city": "Ranchi",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/ranchi/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"RIMS Ranchi","city":"Ranchi","type":"Government","beds":1640,"rating":4.0,"specialties":["General Medicine","Cardiology","Surgery","Orthopedics","Trauma"],"nabh":false,"address":"Bariatu, Ranchi 834009"},
+    {"name":"Medica Hospitals Ranchi","city":"Ranchi","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Critical Care"],"nabh":true,"address":"Plot 27, Smriti Vihar, Ratu Road, Ranchi 834005"},
+    {"name":"Devkamal Hospital","city":"Ranchi","type":"Private","beds":140,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Orthopedics","Neurology","Critical Care"],"nabh":true,"address":"Doranda, near Big Bazaar, Ranchi 834002"},
+    {"name":"Raj Hospital Ranchi","city":"Ranchi","type":"Private","beds":160,"rating":4.2,"specialties":["Cardiology","Neurology","Orthopedics","Gynaecology","Internal Medicine"],"nabh":true,"address":"Old HB Road, Lalpur, Ranchi 834001"},
+    {"name":"Orchid Medical Centre","city":"Ranchi","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiology","Orthopedics","Gastroenterology","Gynaecology","IVF"],"nabh":true,"address":"Behind Marwari College, Lalpur, Ranchi 834001"},
+    {"name":"Pulse Hospital Ranchi","city":"Ranchi","type":"Private","beds":100,"rating":4.2,"specialties":["Cardiology","Critical Care","Internal Medicine","Pulmonology","Orthopedics"],"nabh":true,"address":"Booty Road, Bariatu, Ranchi 834009"},
+    {"name":"Alam Hospital Ranchi","city":"Ranchi","type":"Private","beds":130,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"Doranda, near Hinoo, Ranchi 834002"},
+    {"name":"Sadar Hospital Ranchi","city":"Ranchi","type":"Government","beds":300,"rating":3.8,"specialties":["General Medicine","Surgery","Gynaecology","Paediatrics","Trauma"],"nabh":false,"address":"Purulia Road, Sadar, Ranchi 834001"}
+  ]
+}

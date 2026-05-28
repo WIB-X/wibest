@@ -1,0 +1,18 @@
+{
+  "city": "Trivandrum",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/trivandrum/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Villa Maya","city":"Trivandrum","cuisines":["Continental","European","Fine Dining"],"rating":4.5,"budget_tier":"above_2000","address":"Airport Road, Anayara","vegetarian":false},
+    {"name":"Mathrubhumi Hotel","city":"Trivandrum","cuisines":["Kerala","South Indian","Sadya"],"rating":4.5,"budget_tier":"under_500","address":"Statue Junction, near Secretariat","vegetarian":true},
+    {"name":"Kalavara Restaurant","city":"Trivandrum","cuisines":["Kerala","Seafood","South Indian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Press Road, Statue Junction","vegetarian":false},
+    {"name":"Travancore Court","city":"Trivandrum","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Hotel Travancore Court, Thycaud","vegetarian":false},
+    {"name":"Ariya Niwas","city":"Trivandrum","cuisines":["Kerala","South Indian","Vegetarian"],"rating":4.4,"budget_tier":"under_500","address":"Aristo Junction, Manorama Road","vegetarian":true},
+    {"name":"Cafe Coffee Day Statue","city":"Trivandrum","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Statue Junction, M G Road","vegetarian":false},
+    {"name":"Sea Shells Restaurant","city":"Trivandrum","cuisines":["Kerala","Seafood","Continental"],"rating":4.3,"budget_tier":"500_to_2000","address":"Hotel Mascot, Palayam","vegetarian":false},
+    {"name":"Hotel Rahmaniya","city":"Trivandrum","cuisines":["Kerala","Mughlai","Biryani"],"rating":4.4,"budget_tier":"under_500","address":"Vazhuthacaud, near GPO","vegetarian":false},
+    {"name":"Cafe Mojo","city":"Trivandrum","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Mall of Travancore, Chackai","vegetarian":false},
+    {"name":"Zam Zam Restaurant","city":"Trivandrum","cuisines":["Kerala","Malabar","Biryani"],"rating":4.4,"budget_tier":"under_500","address":"Pulimoodu, near Connemara Market","vegetarian":false}
+  ]
+}

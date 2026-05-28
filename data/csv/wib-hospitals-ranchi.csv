@@ -1,0 +1,9 @@
+name,city,type,beds,rating,specialties,nabh,address,source
+RIMS Ranchi,Ranchi,Government,1640,4.0,General Medicine | Cardiology | Surgery | Orthopedics | Trauma,false,"Bariatu, Ranchi 834009",https://wibest.in/hospitals/ranchi/
+Medica Hospitals Ranchi,Ranchi,Private,200,4.3,Cardiology | Cardiac Surgery | Neurosciences | Oncology | Critical Care,true,"Plot 27, Smriti Vihar, Ratu Road, Ranchi 834005",https://wibest.in/hospitals/ranchi/
+Devkamal Hospital,Ranchi,Private,140,4.3,Cardiology | Cardiothoracic Surgery | Orthopedics | Neurology | Critical Care,true,"Doranda, near Big Bazaar, Ranchi 834002",https://wibest.in/hospitals/ranchi/
+Raj Hospital Ranchi,Ranchi,Private,160,4.2,Cardiology | Neurology | Orthopedics | Gynaecology | Internal Medicine,true,"Old HB Road, Lalpur, Ranchi 834001",https://wibest.in/hospitals/ranchi/
+Orchid Medical Centre,Ranchi,Private,120,4.3,Cardiology | Orthopedics | Gastroenterology | Gynaecology | IVF,true,"Behind Marwari College, Lalpur, Ranchi 834001",https://wibest.in/hospitals/ranchi/
+Pulse Hospital Ranchi,Ranchi,Private,100,4.2,Cardiology | Critical Care | Internal Medicine | Pulmonology | Orthopedics,true,"Booty Road, Bariatu, Ranchi 834009",https://wibest.in/hospitals/ranchi/
+Alam Hospital Ranchi,Ranchi,Private,130,4.2,Cardiology | Cardiac Surgery | Neurology | Orthopedics | Gynaecology,true,"Doranda, near Hinoo, Ranchi 834002",https://wibest.in/hospitals/ranchi/
+Sadar Hospital Ranchi,Ranchi,Government,300,3.8,General Medicine | Surgery | Gynaecology | Paediatrics | Trauma,false,"Purulia Road, Sadar, Ranchi 834001",https://wibest.in/hospitals/ranchi/

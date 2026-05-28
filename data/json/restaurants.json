@@ -3,7 +3,7 @@
   "version": "2026-05-06",
   "license": "CC-BY-4.0",
   "source": "https://wibest.in/data/",
-  "count": 565,
+  "count": 585,
   "data": [
     {"name":"Bukhara","city":"Delhi","cuisines":["North Indian","Mughlai","Fine Dining"],"rating":4.7,"budget_tier":"above_2000","address":"ITC Maurya, Sardar Patel Marg","vegetarian":true},
     {"name":"Indian Accent","city":"Delhi","cuisines":["Modern Indian","Fine Dining"],"rating":4.8,"budget_tier":"above_2000","address":"The Lodhi, Lodhi Road","vegetarian":true},
@@ -569,6 +569,26 @@
     {"name":"Sundarban Resort","city":"Guwahati","cuisines":["Bengali","Assamese","Multi-Cuisine"],"rating":4.3,"budget_tier":"above_2000","address":"VIP Road, near Khanapara","vegetarian":false},
     {"name":"Cafe Hendrix","city":"Guwahati","cuisines":["Cafe","Continental","Mexican"],"rating":4.4,"budget_tier":"500_to_2000","address":"GS Road, Christian Basti","vegetarian":false},
     {"name":"Naga Kitchen","city":"Guwahati","cuisines":["Naga","Tribal","Smoked Meat"],"rating":4.4,"budget_tier":"500_to_2000","address":"Hatigaon, Lachit Nagar","vegetarian":false},
-    {"name":"Saffron Mayfair","city":"Guwahati","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Vivanta Guwahati, Khanapara","vegetarian":false}
+    {"name":"Saffron Mayfair","city":"Guwahati","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Vivanta Guwahati, Khanapara","vegetarian":false},
+    {"name":"Villa Maya","city":"Trivandrum","cuisines":["Continental","European","Fine Dining"],"rating":4.5,"budget_tier":"above_2000","address":"Airport Road, Anayara","vegetarian":false},
+    {"name":"Mathrubhumi Hotel","city":"Trivandrum","cuisines":["Kerala","South Indian","Sadya"],"rating":4.5,"budget_tier":"under_500","address":"Statue Junction, near Secretariat","vegetarian":true},
+    {"name":"Kalavara Restaurant","city":"Trivandrum","cuisines":["Kerala","Seafood","South Indian"],"rating":4.4,"budget_tier":"500_to_2000","address":"Press Road, Statue Junction","vegetarian":false},
+    {"name":"Travancore Court","city":"Trivandrum","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.4,"budget_tier":"above_2000","address":"Hotel Travancore Court, Thycaud","vegetarian":false},
+    {"name":"Ariya Niwas","city":"Trivandrum","cuisines":["Kerala","South Indian","Vegetarian"],"rating":4.4,"budget_tier":"under_500","address":"Aristo Junction, Manorama Road","vegetarian":true},
+    {"name":"Cafe Coffee Day Statue","city":"Trivandrum","cuisines":["Cafe","Continental","Desserts"],"rating":4.1,"budget_tier":"500_to_2000","address":"Statue Junction, M G Road","vegetarian":false},
+    {"name":"Sea Shells Restaurant","city":"Trivandrum","cuisines":["Kerala","Seafood","Continental"],"rating":4.3,"budget_tier":"500_to_2000","address":"Hotel Mascot, Palayam","vegetarian":false},
+    {"name":"Hotel Rahmaniya","city":"Trivandrum","cuisines":["Kerala","Mughlai","Biryani"],"rating":4.4,"budget_tier":"under_500","address":"Vazhuthacaud, near GPO","vegetarian":false},
+    {"name":"Cafe Mojo","city":"Trivandrum","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Mall of Travancore, Chackai","vegetarian":false},
+    {"name":"Zam Zam Restaurant","city":"Trivandrum","cuisines":["Kerala","Malabar","Biryani"],"rating":4.4,"budget_tier":"under_500","address":"Pulimoodu, near Connemara Market","vegetarian":false},
+    {"name":"Kaveri Restaurant","city":"Ranchi","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Main Road, near Albert Ekka Chowk","vegetarian":false},
+    {"name":"Jharkhand Tribal Kitchen","city":"Ranchi","cuisines":["Jharkhandi","Tribal","Local"],"rating":4.5,"budget_tier":"500_to_2000","address":"Argora Square, near Birsa Park","vegetarian":false},
+    {"name":"Capitol Hill Hotel Restaurant","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Main Road, Sujata Chowk","vegetarian":false},
+    {"name":"Yellow Sapphire","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Asian"],"rating":4.4,"budget_tier":"above_2000","address":"Radisson Blu, Main Road","vegetarian":false},
+    {"name":"Punjabi Rasoi","city":"Ranchi","cuisines":["Punjabi","North Indian","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Lalpur Chowk, Kanke Road","vegetarian":false},
+    {"name":"Cafe Regal","city":"Ranchi","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Main Road, near Hotel BNR Chanakya","vegetarian":false},
+    {"name":"Hotel Yuvraj Restaurant","city":"Ranchi","cuisines":["North Indian","Bengali","Mughlai"],"rating":4.2,"budget_tier":"500_to_2000","address":"Doranda, near Big Bazaar","vegetarian":false},
+    {"name":"Domino's Pizza Lalpur","city":"Ranchi","cuisines":["Italian","Pizza","Fast Food"],"rating":4.1,"budget_tier":"500_to_2000","address":"Lalpur, near Albert Ekka Chowk","vegetarian":false},
+    {"name":"Litti Galli","city":"Ranchi","cuisines":["Bihari","Jharkhandi","Litti Chokha"],"rating":4.4,"budget_tier":"under_500","address":"Kachehri Chowk, near Jail Chowk","vegetarian":false},
+    {"name":"The Big Banyan","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Ranchi Club Road, near Albert Ekka Chowk","vegetarian":false}
   ]
 }

@@ -3,7 +3,7 @@
   "version": "2026-05-06",
   "license": "CC-BY-4.0",
   "source": "https://wibest.in/data/",
-  "count": 431,
+  "count": 447,
   "data": [
     {"name":"AIIMS Delhi","city":"Delhi","type":"Government","beds":2478,"rating":4.8,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Transplant"],"nabh":true,"address":"Sri Aurobindo Marg, Ansari Nagar, New Delhi 110029"},
     {"name":"Sir Ganga Ram Hospital","city":"Delhi","type":"Private","beds":675,"rating":4.6,"specialties":["Gastroenterology","Nephrology","Cardiology","Oncology"],"nabh":true,"address":"Rajinder Nagar, New Delhi 110060"},
@@ -435,6 +435,22 @@
     {"name":"Excelcare Hospitals","city":"Guwahati","type":"Private","beds":230,"rating":4.2,"specialties":["Cardiology","Neurology","Oncology","Orthopedics","Gastroenterology"],"nabh":true,"address":"Boragaon, NH-37, Guwahati 781033"},
     {"name":"Nemcare Hospital","city":"Guwahati","type":"Private","beds":140,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Orthopedics","Gynaecology","Critical Care"],"nabh":true,"address":"Bhangagarh, GS Road, Guwahati 781005"},
     {"name":"Sun Valley Hospital","city":"Guwahati","type":"Private","beds":120,"rating":4.2,"specialties":["Cardiology","Internal Medicine","Pulmonology","Critical Care","Gastroenterology"],"nabh":true,"address":"Kahilipara, GS Road, Guwahati 781019"},
-    {"name":"Ayursundra Superspeciality Hospital","city":"Guwahati","type":"Private","beds":210,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurology","Orthopedics","Bariatric Surgery"],"nabh":true,"address":"VIP Road, Six Mile, Guwahati 781022"}
+    {"name":"Ayursundra Superspeciality Hospital","city":"Guwahati","type":"Private","beds":210,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Neurology","Orthopedics","Bariatric Surgery"],"nabh":true,"address":"VIP Road, Six Mile, Guwahati 781022"},
+    {"name":"KIMSHEALTH Trivandrum","city":"Trivandrum","type":"Private","beds":650,"rating":4.5,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurosciences","Transplant"],"nabh":true,"address":"Anayara P O, Trivandrum 695029"},
+    {"name":"SCTIMST Trivandrum","city":"Trivandrum","type":"Government","beds":325,"rating":4.6,"specialties":["Cardiac Sciences","Neurosurgery","Neurology","Cardiothoracic Surgery"],"nabh":true,"address":"Medical College P O, Trivandrum 695011"},
+    {"name":"Ananthapuri Hospitals","city":"Trivandrum","type":"Private","beds":340,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosurgery","Oncology","Nephrology"],"nabh":true,"address":"NH Bypass, Chacka, Trivandrum 695024"},
+    {"name":"Cosmopolitan Hospital","city":"Trivandrum","type":"Private","beds":280,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology","Critical Care"],"nabh":true,"address":"Murinjapalam, Pattom, Trivandrum 695004"},
+    {"name":"Sree Uthradom Thirunal (SUT) Hospital","city":"Trivandrum","type":"Trust","beds":240,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Oncology","Orthopedics","Critical Care"],"nabh":true,"address":"Pattom, Trivandrum 695004"},
+    {"name":"Regional Cancer Centre Trivandrum","city":"Trivandrum","type":"Government","beds":300,"rating":4.4,"specialties":["Oncology","Radiation Oncology","Surgical Oncology","Hemato Oncology"],"nabh":true,"address":"Medical College Campus, Trivandrum 695011"},
+    {"name":"Trivandrum Medical College Hospital","city":"Trivandrum","type":"Government","beds":2300,"rating":4.0,"specialties":["General Medicine","Cardiology","Neurology","Surgery","Trauma"],"nabh":false,"address":"Medical College P O, Trivandrum 695011"},
+    {"name":"NIMS Medicity","city":"Trivandrum","type":"Trust","beds":600,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurology","Orthopedics"],"nabh":true,"address":"Aralumoodu P O, Neyyattinkara, Trivandrum 695123"},
+    {"name":"RIMS Ranchi","city":"Ranchi","type":"Government","beds":1640,"rating":4.0,"specialties":["General Medicine","Cardiology","Surgery","Orthopedics","Trauma"],"nabh":false,"address":"Bariatu, Ranchi 834009"},
+    {"name":"Medica Hospitals Ranchi","city":"Ranchi","type":"Private","beds":200,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Neurosciences","Oncology","Critical Care"],"nabh":true,"address":"Plot 27, Smriti Vihar, Ratu Road, Ranchi 834005"},
+    {"name":"Devkamal Hospital","city":"Ranchi","type":"Private","beds":140,"rating":4.3,"specialties":["Cardiology","Cardiothoracic Surgery","Orthopedics","Neurology","Critical Care"],"nabh":true,"address":"Doranda, near Big Bazaar, Ranchi 834002"},
+    {"name":"Raj Hospital Ranchi","city":"Ranchi","type":"Private","beds":160,"rating":4.2,"specialties":["Cardiology","Neurology","Orthopedics","Gynaecology","Internal Medicine"],"nabh":true,"address":"Old HB Road, Lalpur, Ranchi 834001"},
+    {"name":"Orchid Medical Centre","city":"Ranchi","type":"Private","beds":120,"rating":4.3,"specialties":["Cardiology","Orthopedics","Gastroenterology","Gynaecology","IVF"],"nabh":true,"address":"Behind Marwari College, Lalpur, Ranchi 834001"},
+    {"name":"Pulse Hospital Ranchi","city":"Ranchi","type":"Private","beds":100,"rating":4.2,"specialties":["Cardiology","Critical Care","Internal Medicine","Pulmonology","Orthopedics"],"nabh":true,"address":"Booty Road, Bariatu, Ranchi 834009"},
+    {"name":"Alam Hospital Ranchi","city":"Ranchi","type":"Private","beds":130,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Neurology","Orthopedics","Gynaecology"],"nabh":true,"address":"Doranda, near Hinoo, Ranchi 834002"},
+    {"name":"Sadar Hospital Ranchi","city":"Ranchi","type":"Government","beds":300,"rating":3.8,"specialties":["General Medicine","Surgery","Gynaecology","Paediatrics","Trauma"],"nabh":false,"address":"Purulia Road, Sadar, Ranchi 834001"}
   ]
 }

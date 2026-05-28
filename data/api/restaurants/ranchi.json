@@ -1,0 +1,18 @@
+{
+  "city": "Ranchi",
+  "count": 10,
+  "source": "https://wibest.in/restaurants/ranchi/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"Kaveri Restaurant","city":"Ranchi","cuisines":["North Indian","Mughlai","Tandoor"],"rating":4.4,"budget_tier":"500_to_2000","address":"Main Road, near Albert Ekka Chowk","vegetarian":false},
+    {"name":"Jharkhand Tribal Kitchen","city":"Ranchi","cuisines":["Jharkhandi","Tribal","Local"],"rating":4.5,"budget_tier":"500_to_2000","address":"Argora Square, near Birsa Park","vegetarian":false},
+    {"name":"Capitol Hill Hotel Restaurant","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Main Road, Sujata Chowk","vegetarian":false},
+    {"name":"Yellow Sapphire","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Asian"],"rating":4.4,"budget_tier":"above_2000","address":"Radisson Blu, Main Road","vegetarian":false},
+    {"name":"Punjabi Rasoi","city":"Ranchi","cuisines":["Punjabi","North Indian","Tandoor"],"rating":4.3,"budget_tier":"500_to_2000","address":"Lalpur Chowk, Kanke Road","vegetarian":false},
+    {"name":"Cafe Regal","city":"Ranchi","cuisines":["Cafe","Continental","Italian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Main Road, near Hotel BNR Chanakya","vegetarian":false},
+    {"name":"Hotel Yuvraj Restaurant","city":"Ranchi","cuisines":["North Indian","Bengali","Mughlai"],"rating":4.2,"budget_tier":"500_to_2000","address":"Doranda, near Big Bazaar","vegetarian":false},
+    {"name":"Domino's Pizza Lalpur","city":"Ranchi","cuisines":["Italian","Pizza","Fast Food"],"rating":4.1,"budget_tier":"500_to_2000","address":"Lalpur, near Albert Ekka Chowk","vegetarian":false},
+    {"name":"Litti Galli","city":"Ranchi","cuisines":["Bihari","Jharkhandi","Litti Chokha"],"rating":4.4,"budget_tier":"under_500","address":"Kachehri Chowk, near Jail Chowk","vegetarian":false},
+    {"name":"The Big Banyan","city":"Ranchi","cuisines":["Multi-Cuisine","Continental","Indian"],"rating":4.3,"budget_tier":"500_to_2000","address":"Ranchi Club Road, near Albert Ekka Chowk","vegetarian":false}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "city": "Trivandrum",
+  "count": 8,
+  "source": "https://wibest.in/hospitals/trivandrum/",
+  "license": "CC-BY-4.0",
+  "data": [
+    {"name":"KIMSHEALTH Trivandrum","city":"Trivandrum","type":"Private","beds":650,"rating":4.5,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurosciences","Transplant"],"nabh":true,"address":"Anayara P O, Trivandrum 695029"},
+    {"name":"SCTIMST Trivandrum","city":"Trivandrum","type":"Government","beds":325,"rating":4.6,"specialties":["Cardiac Sciences","Neurosurgery","Neurology","Cardiothoracic Surgery"],"nabh":true,"address":"Medical College P O, Trivandrum 695011"},
+    {"name":"Ananthapuri Hospitals","city":"Trivandrum","type":"Private","beds":340,"rating":4.4,"specialties":["Cardiology","Cardiac Surgery","Neurosurgery","Oncology","Nephrology"],"nabh":true,"address":"NH Bypass, Chacka, Trivandrum 695024"},
+    {"name":"Cosmopolitan Hospital","city":"Trivandrum","type":"Private","beds":280,"rating":4.3,"specialties":["Cardiology","Neurology","Orthopedics","Gastroenterology","Critical Care"],"nabh":true,"address":"Murinjapalam, Pattom, Trivandrum 695004"},
+    {"name":"Sree Uthradom Thirunal (SUT) Hospital","city":"Trivandrum","type":"Trust","beds":240,"rating":4.3,"specialties":["Cardiology","Cardiac Surgery","Oncology","Orthopedics","Critical Care"],"nabh":true,"address":"Pattom, Trivandrum 695004"},
+    {"name":"Regional Cancer Centre Trivandrum","city":"Trivandrum","type":"Government","beds":300,"rating":4.4,"specialties":["Oncology","Radiation Oncology","Surgical Oncology","Hemato Oncology"],"nabh":true,"address":"Medical College Campus, Trivandrum 695011"},
+    {"name":"Trivandrum Medical College Hospital","city":"Trivandrum","type":"Government","beds":2300,"rating":4.0,"specialties":["General Medicine","Cardiology","Neurology","Surgery","Trauma"],"nabh":false,"address":"Medical College P O, Trivandrum 695011"},
+    {"name":"NIMS Medicity","city":"Trivandrum","type":"Trust","beds":600,"rating":4.2,"specialties":["Cardiology","Cardiac Surgery","Oncology","Neurology","Orthopedics"],"nabh":true,"address":"Aralumoodu P O, Neyyattinkara, Trivandrum 695123"}
+  ]
+}
