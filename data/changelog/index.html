@@ -56,6 +56,16 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.8</span><span class="date">May 6, 2026 (morning)</span></div>
+    <h3><span class="tag add">add</span> WIB Score embeddable badge + /compare/ sitelinks search routing</h3>
+    <ul>
+      <li><strong>NEW /embed/score/</strong> — embeddable rating badge for hospitals and restaurants featured on WIB. Builds a self-contained HTML snippet (3 styles, 3 sizes) any business can paste into their own website. Includes do-follow link back to WIB. Tracks UTM source for analytics. Backlink play: every embed = inbound link from a real Indian business website.</li>
+      <li><strong>/compare/ smart routing</strong> — handles Google sitelinks search box (?q=) by detecting query intent and auto-redirecting to the right section (hospitals, restaurants, schools, colleges, electronics, cars, travel, reports, glossary, comparison tools). Previously SearchAction schema pointed Google here but page ignored the query.</li>
+      <li>/embed/ landing gets a callout to the new score badge tool.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.7</span><span class="date">May 6, 2026 (early morning)</span></div>
     <h3><span class="tag add">add</span> Retention round: Newsletter on 15 high-engagement pages + Compare 2 Hospitals tool</h3>
     <ul>

@@ -51,7 +51,47 @@
 
 <div class="page">
   <h1>Compare Side by Side</h1>
-  <p class="intro">Select 2 or 3 items to compare every detail on one screen.</p>
+  <p class="intro">Select 2 or 3 items to compare every detail on one screen, or jump to a dedicated tool:</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+    <a href="/compare/cities/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:linear-gradient(135deg,#0891b2,#9333ea);color:#fff;border-radius:8px;font-size:13.5px;font-weight:700;text-decoration:none">⚖️ Compare 2 cities</a>
+    <a href="/compare/hospitals/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:linear-gradient(135deg,#16a34a,#0891b2);color:#fff;border-radius:8px;font-size:13.5px;font-weight:700;text-decoration:none">⚖️ Compare 2 hospitals</a>
+    <a href="/decide/where-to-live/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:linear-gradient(135deg,#2563eb,#9333ea);color:#fff;border-radius:8px;font-size:13.5px;font-weight:700;text-decoration:none">🔥 Where should I live?</a>
+  </div>
+  <div id="searchQueryBanner" style="display:none;padding:14px 18px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:10px;margin-bottom:18px;font-size:14px;color:#78350f"></div>
+  <script>
+    // Handle ?q= from Google sitelinks search box
+    (function(){
+      const q = new URLSearchParams(window.location.search).get('q');
+      if (!q) return;
+      const qLow = q.toLowerCase();
+      const banner = document.getElementById('searchQueryBanner');
+      // Smart routing — send the user where they actually want
+      const routes = [
+        { test: /hospital|nabh|aiims|apollo|fortis|medanta/i, url: '/hospitals/' },
+        { test: /restaurant|biryani|thali|food|dosa|saoji/i, url: '/restaurants/' },
+        { test: /school|cbse|icse|ib /i, url: '/schools/' },
+        { test: /college|engineering|mba|jee|neet/i, url: '/colleges/' },
+        { test: /phone|laptop|electronic|smartphone/i, url: '/electronics/' },
+        { test: /car|bike|suv|hatchback|scooter/i, url: '/cars/' },
+        { test: /travel|destination|trip|vacation/i, url: '/travel/' },
+        { test: /report|research|index/i, url: '/reports/' },
+        { test: /compare cities|cost of living|metro vs/i, url: '/compare/cities/' },
+        { test: /vs|compare/i, url: '/compare/hospitals/' },
+        { test: /glossary|meaning|definition|what is/i, url: '/glossary/' },
+      ];
+      for (const r of routes) {
+        if (r.test.test(qLow)) {
+          banner.innerHTML = 'Searching for <strong>"' + q.replace(/[<>]/g,'') + '"</strong> — redirecting you to <a href="' + r.url + '" style="color:#92400e;font-weight:700">the most relevant section</a>...';
+          banner.style.display = 'block';
+          setTimeout(() => { window.location.href = r.url; }, 1200);
+          return;
+        }
+      }
+      // No specific match — show banner with the query so user knows we heard them
+      banner.innerHTML = 'Searching for <strong>"' + q.replace(/[<>]/g,'') + '"</strong>. Try one of the tabs below, or browse our <a href="/cities/" style="color:#92400e;font-weight:700">36 cities</a> · <a href="/glossary/" style="color:#92400e;font-weight:700">glossary</a> · <a href="/reports/" style="color:#92400e;font-weight:700">9 research reports</a>.';
+      banner.style.display = 'block';
+    })();
+  </script>
   <div class="tab-row">
     <button class="tab-btn active" onclick="switchTab('schools',this)">Schools</button>
     <button class="tab-btn" onclick="switchTab('colleges',this)">Colleges</button>

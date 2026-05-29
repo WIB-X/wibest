@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Score Badge — Free Embeddable Rating Badge for Indian Hospitals & Restaurants</title>
+<meta name="description" content="Hospitals and restaurants featured on WIB can embed our verified rating badge on their own website — one line of HTML, no signup. Free.">
+<link rel="canonical" href="https://wibest.in/embed/score/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WIB Score Badge — Free Embeddable Badge">
+<meta property="og:description" content="One-line embeddable rating badge for Indian hospitals and restaurants featured on WIB.">
+<meta property="og:url" content="https://wibest.in/embed/score/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 60px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-0.02em;margin-bottom:10px;background:linear-gradient(135deg,#0891b2,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px;max-width:720px}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;margin:36px 0 12px;color:var(--text-primary)}
+
+.builder{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:24px}
+.builder-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.builder-row label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:6px}
+.builder-row select{width:100%;padding:11px 14px;font-size:14px;font-weight:600;border:1px solid var(--border);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;cursor:pointer}
+
+.preview-box{margin-top:18px;padding:24px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px;text-align:center}
+.preview-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:14px}
+
+/* THE BADGE itself */
+.wib-badge{display:inline-block;text-decoration:none;font-family:-apple-system,Segoe UI,Roboto,sans-serif}
+.wib-badge.style-light{background:#fff;border:1px solid #e5e7eb}
+.wib-badge.style-dark{background:#0f172a;border:1px solid #1e293b}
+.wib-badge.style-color{background:linear-gradient(135deg,#0891b2,#9333ea);border:none}
+.wib-badge .wb-inner{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;min-width:240px}
+.wib-badge.style-color .wb-inner{padding:14px 18px}
+.wib-badge .wb-mark{font-family:Outfit,sans-serif;font-size:14px;font-weight:900;letter-spacing:1px;padding:6px 10px;background:#2563eb;color:#fff;border-radius:6px;line-height:1}
+.wib-badge.style-color .wb-mark{background:rgba(255,255,255,0.22);color:#fff}
+.wib-badge.style-dark .wb-mark{background:#3b82f6}
+.wib-badge .wb-body{text-align:left;flex:1}
+.wib-badge .wb-line1{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;line-height:1.2}
+.wib-badge.style-light .wb-line1{color:#6b7280}
+.wib-badge.style-dark .wb-line1{color:#94a3b8}
+.wib-badge.style-color .wb-line1{color:rgba(255,255,255,0.88)}
+.wib-badge .wb-line2{font-family:Outfit,sans-serif;font-size:16px;font-weight:800;line-height:1.2;margin-top:3px}
+.wib-badge.style-light .wb-line2{color:#111827}
+.wib-badge.style-dark .wb-line2{color:#fff}
+.wib-badge.style-color .wb-line2{color:#fff}
+.wib-badge .wb-rating{font-family:Outfit,sans-serif;font-size:18px;font-weight:900;line-height:1;display:flex;align-items:baseline;gap:2px}
+.wib-badge.style-light .wb-rating{color:#16a34a}
+.wib-badge.style-dark .wb-rating{color:#86efac}
+.wib-badge.style-color .wb-rating{color:#fde047}
+.wib-badge .wb-star{font-size:13px}
+
+.code-box{margin-top:18px;padding:18px 20px;background:#0f172a;color:#e2e8f0;border-radius:10px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px;line-height:1.5;overflow-x:auto;position:relative}
+.code-box .copy-btn{position:absolute;top:10px;right:10px;padding:6px 14px;background:#2563eb;color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;text-transform:uppercase;letter-spacing:.04em}
+.code-box .copy-btn:hover{background:#1d4ed8}
+.code-box .copy-btn.copied{background:#16a34a}
+.code-box pre{margin:0;white-space:pre-wrap;word-break:break-all}
+
+.benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:14px 0 24px}
+.benefit{padding:16px 18px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px}
+.benefit .ic{font-size:22px;margin-bottom:6px}
+.benefit h3{font-family:Outfit,sans-serif;font-size:13px;font-weight:800;margin:0 0 4px;color:var(--text-primary)}
+.benefit p{font-size:12.5px;color:var(--text-secondary);line-height:1.5;margin:0}
+
+.faq{padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:14px}
+.faq strong{font-family:Outfit,sans-serif;font-size:14.5px;color:var(--text-primary);display:block;margin-bottom:6px}
+.faq p{font-size:14px;color:var(--text-secondary);line-height:1.65;margin:0}
+
+@media(max-width:640px){
+  h1{font-size:28px}
+  .builder-row{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Embed","item":"https://wibest.in/embed/"},{"@type":"ListItem","position":3,"name":"Score Badge","item":"https://wibest.in/embed/score/"}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/embed/">Embed</a> &rsaquo; Score Badge</div>
+  <h1>WIB Score Badge</h1>
+  <p class="lede">A free, embeddable rating badge for any hospital or restaurant featured on WIB. One line of HTML on your website — verified rating, accreditation status, and a do-follow link back to your WIB listing. No signup, no API key, no traffic limits.</p>
+
+  <div class="benefit-grid">
+    <div class="benefit"><div class="ic">⚡</div><h3>One line of HTML</h3><p>Copy-paste a single tag. Works in any site builder, WordPress, Wix, Webflow.</p></div>
+    <div class="benefit"><div class="ic">✓</div><h3>Verified credibility</h3><p>WIB independently verifies ratings, NABH status, and address — your visitors see external proof.</p></div>
+    <div class="benefit"><div class="ic">📱</div><h3>Mobile responsive</h3><p>Scales to your container. Looks crisp on any device.</p></div>
+    <div class="benefit"><div class="ic">🆓</div><h3>Free forever</h3><p>No fees, no limits. We benefit from a link back; you benefit from the credibility.</p></div>
+  </div>
+
+  <h2>Build your badge</h2>
+  <div class="builder">
+    <div class="builder-row">
+      <div>
+        <label for="ebType">Type</label>
+        <select id="ebType">
+          <option value="hospitals">Hospital</option>
+          <option value="restaurants">Restaurant</option>
+        </select>
+      </div>
+      <div>
+        <label for="ebCity">City</label>
+        <select id="ebCity"></select>
+      </div>
+    </div>
+    <div class="builder-row" style="grid-template-columns:1fr">
+      <div>
+        <label for="ebItem">Select your business</label>
+        <select id="ebItem"></select>
+      </div>
+    </div>
+    <div class="builder-row">
+      <div>
+        <label for="ebStyle">Badge style</label>
+        <select id="ebStyle">
+          <option value="light">Light (white background)</option>
+          <option value="dark">Dark (slate background)</option>
+          <option value="color">Color (gradient)</option>
+        </select>
+      </div>
+      <div>
+        <label for="ebSize">Size</label>
+        <select id="ebSize">
+          <option value="md">Medium</option>
+          <option value="sm">Small</option>
+          <option value="lg">Large</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">Preview</div>
+      <div id="badgePreview"></div>
+    </div>
+
+    <div class="code-box">
+      <button class="copy-btn" id="copyBtn">Copy HTML</button>
+      <pre id="badgeCode">Loading...</pre>
+    </div>
+  </div>
+
+  <h2>How to use</h2>
+  <div class="faq">
+    <strong>Where do I paste it?</strong>
+    <p>Anywhere on your website — homepage hero, About page, Contact page footer, or a dedicated "Awards & Recognition" section. The badge is a standard HTML link, so it'll work in any CMS (WordPress, Squarespace, Wix, custom HTML).</p>
+  </div>
+  <div class="faq">
+    <strong>Does the badge update if my rating changes?</strong>
+    <p>The rating shown is based on WIB's current verified data at the time the snippet was generated. If your rating changes meaningfully on WIB, just regenerate the snippet from this page and replace it. We don't auto-update the embedded HTML to avoid your site loading external scripts.</p>
+  </div>
+  <div class="faq">
+    <strong>Is this an endorsement?</strong>
+    <p>The badge is a statement of fact — your business is listed on WIB with a verified rating. It's not an endorsement, partnership, or paid placement. WIB never accepts payment for listings or ratings.</p>
+  </div>
+  <div class="faq">
+    <strong>Can I customise the badge design?</strong>
+    <p>Three styles + three sizes are supported here. For other customisations (colors, languages), the badge HTML is entirely self-contained — edit it freely as long as the link back to your WIB listing remains intact.</p>
+  </div>
+  <div class="faq">
+    <strong>My hospital/restaurant isn't on WIB. Can I get listed?</strong>
+    <p>Email <a href="mailto:hello@wibest.in?subject=Add%20my%20business%20to%20WIB">hello@wibest.in</a> with your business name, full address, website, and (for hospitals) your NABH accreditation status. We add new businesses to the dataset based on our editorial review.</p>
+  </div>
+
+  <div id="wib-newsletter"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/newsletter.js?v=20260506" defer></script>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+const typeEl = document.getElementById('ebType');
+const cityEl = document.getElementById('ebCity');
+const itemEl = document.getElementById('ebItem');
+const styleEl = document.getElementById('ebStyle');
+const sizeEl = document.getElementById('ebSize');
+
+let HOSP = null, REST = null;
+
+async function loadData() {
+  try {
+    const [h, r] = await Promise.all([
+      fetch('/data/json/hospitals.json').then(r => r.json()),
+      fetch('/data/json/restaurants.json').then(r => r.json()),
+    ]);
+    HOSP = h.data || [];
+    REST = r.data || [];
+    populateCities();
+  } catch (e) {
+    document.getElementById('badgeCode').textContent = 'Could not load data. Reload the page.';
+  }
+}
+
+function getCurrentDataset() {
+  return typeEl.value === 'hospitals' ? HOSP : REST;
+}
+
+function populateCities() {
+  const data = getCurrentDataset();
+  if (!data) return;
+  const cities = [...new Set(data.map(d => d.city))].sort();
+  cityEl.innerHTML = '';
+  cities.forEach(c => cityEl.appendChild(new Option(c, c)));
+  populateItems();
+}
+
+function populateItems() {
+  const data = getCurrentDataset();
+  if (!data) return;
+  const city = cityEl.value;
+  const items = data.filter(d => d.city === city).sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+  itemEl.innerHTML = '';
+  items.forEach(it => itemEl.appendChild(new Option(it.name, it.name)));
+  render();
+}
+
+function slugify(s) { return (s||'').toLowerCase().replace(/\s+/g,'-'); }
+
+function getCurrentItem() {
+  const data = getCurrentDataset();
+  if (!data) return null;
+  return data.find(d => d.name === itemEl.value && d.city === cityEl.value);
+}
+
+function buildBadgeHtml(item) {
+  if (!item) return '';
+  const style = styleEl.value;
+  const size = sizeEl.value;
+  const cityslug = slugify(item.city);
+  const profileUrl = 'https://wibest.in/' + typeEl.value + '/' + cityslug + '/';
+  const fontSize = size === 'sm' ? '11px' : (size === 'lg' ? '14px' : '12px');
+  const titleSize = size === 'sm' ? '14px' : (size === 'lg' ? '18px' : '16px');
+  const ratingSize = size === 'sm' ? '15px' : (size === 'lg' ? '22px' : '18px');
+  const padding = size === 'sm' ? '10px 14px' : (size === 'lg' ? '16px 22px' : '12px 16px');
+  const minWidth = size === 'sm' ? '210px' : (size === 'lg' ? '280px' : '240px');
+
+  let bg, border, line1Color, line2Color, ratingColor, markBg, markColor;
+  if (style === 'light') {
+    bg = '#ffffff'; border = '1px solid #e5e7eb'; line1Color = '#6b7280'; line2Color = '#111827'; ratingColor = '#16a34a'; markBg = '#2563eb'; markColor = '#ffffff';
+  } else if (style === 'dark') {
+    bg = '#0f172a'; border = '1px solid #1e293b'; line1Color = '#94a3b8'; line2Color = '#ffffff'; ratingColor = '#86efac'; markBg = '#3b82f6'; markColor = '#ffffff';
+  } else {
+    bg = 'linear-gradient(135deg,#0891b2,#9333ea)'; border = 'none'; line1Color = 'rgba(255,255,255,0.88)'; line2Color = '#ffffff'; ratingColor = '#fde047'; markBg = 'rgba(255,255,255,0.22)'; markColor = '#ffffff';
+  }
+
+  const labelType = typeEl.value === 'hospitals' ? 'Hospital' : 'Restaurant';
+  const rating = item.rating != null ? item.rating : '—';
+  const subtitle = item.nabh ? 'NABH verified · ★ ' + rating + '/5' : '★ ' + rating + '/5 on WIB';
+
+  const html = '<a href="' + profileUrl + '?utm_source=badge&utm_medium=embed" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:' + bg + ';border:' + border + ';border-radius:10px;padding:' + padding + ';min-width:' + minWidth + ';">' +
+    '<div style="display:flex;align-items:center;gap:12px;">' +
+    '<div style="font-family:Outfit,sans-serif;font-size:' + fontSize + ';font-weight:900;letter-spacing:1px;padding:6px 10px;background:' + markBg + ';color:' + markColor + ';border-radius:6px;line-height:1;">WIB</div>' +
+    '<div style="text-align:left;flex:1;">' +
+      '<div style="font-size:' + fontSize + ';font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:' + line1Color + ';line-height:1.2;">Verified ' + labelType + '</div>' +
+      '<div style="font-family:Outfit,sans-serif;font-size:' + titleSize + ';font-weight:800;color:' + line2Color + ';line-height:1.2;margin-top:3px;">' + escapeHtml(item.name) + '</div>' +
+      '<div style="font-size:' + fontSize + ';color:' + line1Color + ';margin-top:3px;">' + subtitle + '</div>' +
+    '</div>' +
+    '<div style="font-family:Outfit,sans-serif;font-size:' + ratingSize + ';font-weight:900;color:' + ratingColor + ';line-height:1;">★ ' + rating + '</div>' +
+    '</div></a>';
+  return html;
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function render() {
+  const item = getCurrentItem();
+  if (!item) {
+    document.getElementById('badgePreview').innerHTML = '<em style="color:var(--text-muted);font-size:13px">Pick a city + business</em>';
+    document.getElementById('badgeCode').textContent = '';
+    return;
+  }
+  const html = buildBadgeHtml(item);
+  document.getElementById('badgePreview').innerHTML = html;
+  document.getElementById('badgeCode').textContent = html;
+}
+
+typeEl.addEventListener('change', populateCities);
+cityEl.addEventListener('change', populateItems);
+itemEl.addEventListener('change', render);
+styleEl.addEventListener('change', render);
+sizeEl.addEventListener('change', render);
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const code = document.getElementById('badgeCode').textContent;
+  try {
+    await navigator.clipboard.writeText(code);
+    const b = document.getElementById('copyBtn');
+    b.textContent = '✓ Copied';
+    b.classList.add('copied');
+    setTimeout(() => { b.textContent = 'Copy HTML'; b.classList.remove('copied'); }, 2000);
+    if (typeof gtag === 'function') {
+      gtag('event', 'badge_copied', { event_category: 'embed', event_label: typeEl.value + '/' + (itemEl.value || '') });
+    }
+  } catch (e) { alert('Could not copy. Select the code and copy manually.'); }
+});
+
+loadData();
+</script>
+</body>
+</html>
