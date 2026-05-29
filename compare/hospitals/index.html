@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare 2 Indian Hospitals Side-by-Side · WIB</title>
+<meta name="description" content="Pick any 2 of 463 verified Indian hospitals and see them side-by-side: NABH/JCI accreditation, bed count, specialties, type, ratings, and address. Free, no signup. Built on WIB's 36-city dataset.">
+<link rel="canonical" href="https://wibest.in/compare/hospitals/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Compare 2 Indian Hospitals Side-by-Side · WIB">
+<meta property="og:description" content="Side-by-side comparison of any 2 hospitals from WIB's 463-hospital, 36-city verified dataset.">
+<meta property="og:url" content="https://wibest.in/compare/hospitals/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:1000px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 60px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:36px;font-weight:900;letter-spacing:-0.02em;margin-bottom:10px;background:linear-gradient(135deg,#16a34a,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:15.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:28px;max-width:720px}
+.picker{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:24px}
+.filter-row{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.filter-row label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);align-self:center;margin-right:4px}
+.filter-row select{padding:8px 12px;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;font-weight:600;cursor:pointer}
+.picker-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}
+.picker-col label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:6px}
+.picker-col select{width:100%;padding:12px 14px;font-size:14px;font-weight:600;border:1px solid var(--border);border-radius:10px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;cursor:pointer}
+.picker-vs{font-family:Outfit,sans-serif;font-size:18px;font-weight:900;color:var(--text-muted);align-self:center;padding-bottom:12px}
+.btn-swap{display:block;margin:12px auto 0;padding:7px 14px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}
+
+.result{display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.result.active{display:block}
+.result-head{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.result-head .h{padding:20px;text-align:center}
+.result-head .h:first-child{border-right:1px solid var(--border)}
+.result-head .h h2{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 4px;line-height:1.25}
+.result-head .h .city{font-size:12px;color:var(--text-muted);font-weight:600}
+.result-head .h .rating{display:inline-block;margin-top:6px;padding:3px 10px;background:var(--green-bg);color:var(--green);border-radius:6px;font-size:12px;font-weight:700}
+
+.compare-row{display:grid;grid-template-columns:160px 1fr 1fr;border-bottom:1px solid var(--border);font-size:13.5px}
+.compare-row:last-child{border-bottom:none}
+.compare-row .metric{padding:12px 16px;font-weight:700;color:var(--text-primary);background:var(--bg-secondary);font-size:12px}
+.compare-row .val{padding:12px 16px;color:var(--text-secondary);line-height:1.55}
+.compare-row .val.winner{background:rgba(22,163,74,0.06);color:var(--text-primary);font-weight:600}
+.compare-row .val .yes{color:#16a34a;font-weight:700}
+.compare-row .val .no{color:#dc2626}
+.compare-row .specs{display:flex;flex-wrap:wrap;gap:4px}
+.compare-row .specs span{font-size:11px;padding:2px 7px;background:var(--accent-light);color:var(--accent);border-radius:4px;font-weight:600}
+
+.actions{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.btn-link{padding:9px 16px;background:var(--accent-light);color:var(--accent);border-radius:8px;font-size:13px;font-weight:600;text-decoration:none}
+.btn-link:hover{background:var(--accent);color:#fff}
+.btn-link.primary{background:#16a34a;color:#fff}
+.btn-link.primary:hover{background:#15803d}
+
+.share-row{margin-top:20px;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+.share-row span{font-weight:600;font-size:14px;color:var(--text-primary)}
+.share-row a{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:#fff;text-decoration:none}
+.share-row a.tw{background:#1da1f2}.share-row a.li{background:#0a66c2}.share-row a.wa{background:#25d366}
+
+.loading{padding:40px;text-align:center;color:var(--text-muted);font-size:14px}
+
+@media(max-width:640px){
+  h1{font-size:26px}
+  .picker-row{grid-template-columns:1fr;gap:14px}
+  .picker-vs{text-align:center;padding:0}
+  .result-head{grid-template-columns:1fr 1fr}
+  .compare-row{grid-template-columns:80px 1fr 1fr;font-size:12px}
+  .compare-row .metric{padding:8px 10px;font-size:10px}
+  .compare-row .val{padding:8px 10px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Compare","item":"https://wibest.in/compare/"},{"@type":"ListItem","position":3,"name":"Hospitals","item":"https://wibest.in/compare/hospitals/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compare Indian Hospitals Side-by-Side","url":"https://wibest.in/compare/hospitals/","applicationCategory":"HealthApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/compare/">Compare</a> &rsaquo; Hospitals</div>
+  <h1>Compare 2 Indian hospitals</h1>
+  <p class="lede">Pick any 2 of 463 verified hospitals across 36 Indian cities and see them side-by-side: NABH/JCI accreditation, bed count, specialties, type (private/government/trust), ratings, address. Built on WIB's open hospital dataset — same data behind every hospital page on the site.</p>
+
+  <div class="picker">
+    <div class="filter-row">
+      <label>Filter by city:</label>
+      <select id="filterCity">
+        <option value="">All cities</option>
+      </select>
+      <label style="margin-left:16px">Type:</label>
+      <select id="filterType">
+        <option value="">All types</option>
+        <option value="Private">Private</option>
+        <option value="Government">Government</option>
+        <option value="Trust">Trust</option>
+      </select>
+    </div>
+    <div class="picker-row">
+      <div class="picker-col">
+        <label for="hospA">Hospital A</label>
+        <select id="hospA"></select>
+      </div>
+      <div class="picker-vs">VS</div>
+      <div class="picker-col">
+        <label for="hospB">Hospital B</label>
+        <select id="hospB"></select>
+      </div>
+    </div>
+    <button class="btn-swap" id="btnSwap">↔ Swap hospitals</button>
+  </div>
+
+  <div class="loading" id="loadingMsg">Loading hospital data...</div>
+
+  <div class="result" id="resultBox">
+    <div class="result-head">
+      <div class="h" id="headA"><h2></h2><div class="city"></div><div class="rating"></div></div>
+      <div class="h" id="headB"><h2></h2><div class="city"></div><div class="rating"></div></div>
+    </div>
+    <div id="rows"></div>
+  </div>
+
+  <div class="actions" id="hospLinks" style="display:none"></div>
+
+  <div class="share-row" id="shareBox" style="display:none">
+    <span>📤 Share this comparison:</span>
+    <a class="tw" id="shareTw" href="#" target="_blank" rel="noopener">X / Twitter</a>
+    <a class="li" id="shareLi" href="#" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="wa" id="shareWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <div style="margin-top:28px;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;font-size:13.5px;color:var(--text-secondary);line-height:1.6">
+    <strong style="font-family:Outfit,sans-serif;color:var(--text-primary);display:block;margin-bottom:6px">Data source &amp; methodology</strong>
+    Hospital records are manually verified by WIB editorial — accreditation status, bed counts, specialties, addresses cross-checked against hospital websites and NABH registry. Ratings are normalised from public review aggregates. Full dataset (CSV + JSON) is open at <a href="/data/" style="color:var(--accent)">/data/</a> under CC-BY 4.0.
+  </div>
+
+  <div id="wib-newsletter"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/newsletter.js?v=20260506" defer></script>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+// Load combined hospital dataset from /data/json/
+let ALL_HOSPITALS = [];
+
+const cityFilterEl = document.getElementById('filterCity');
+const typeFilterEl = document.getElementById('filterType');
+const selA = document.getElementById('hospA');
+const selB = document.getElementById('hospB');
+const loadingMsg = document.getElementById('loadingMsg');
+
+function slugCity(city) { return (city||'').toLowerCase().replace(/\s+/g,'-'); }
+
+async function loadData() {
+  try {
+    const r = await fetch('/data/json/hospitals.json');
+    const j = await r.json();
+    ALL_HOSPITALS = (j.data || []).filter(h => h.name && h.city);
+    loadingMsg.style.display = 'none';
+    populateFilters();
+    populateDropdowns();
+    // Pre-select from URL if present
+    const p = new URLSearchParams(window.location.search);
+    const a = p.get('a'), b = p.get('b');
+    if (a && ALL_HOSPITALS.find(h => h.name === a)) selA.value = a;
+    if (b && ALL_HOSPITALS.find(h => h.name === b)) selB.value = b;
+    if (!a) selA.selectedIndex = 0;
+    if (!b) selB.selectedIndex = 1;
+    render();
+  } catch (e) {
+    loadingMsg.textContent = 'Failed to load hospital data. Reload the page.';
+  }
+}
+
+function populateFilters() {
+  const cities = [...new Set(ALL_HOSPITALS.map(h => h.city))].sort();
+  cities.forEach(c => cityFilterEl.appendChild(new Option(c, c)));
+}
+
+function populateDropdowns() {
+  const cityFilter = cityFilterEl.value;
+  const typeFilter = typeFilterEl.value;
+  let list = ALL_HOSPITALS.slice();
+  if (cityFilter) list = list.filter(h => h.city === cityFilter);
+  if (typeFilter) list = list.filter(h => h.type === typeFilter);
+  list.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+
+  const prevA = selA.value;
+  const prevB = selB.value;
+  selA.innerHTML = ''; selB.innerHTML = '';
+  list.forEach(h => {
+    const label = h.name + ' — ' + h.city;
+    selA.appendChild(new Option(label, h.name));
+    selB.appendChild(new Option(label, h.name));
+  });
+  // Restore prev selection if still valid
+  if (list.find(h => h.name === prevA)) selA.value = prevA; else selA.selectedIndex = 0;
+  if (list.find(h => h.name === prevB)) selB.value = prevB; else selB.selectedIndex = Math.min(1, list.length - 1);
+}
+
+function specialties(h) {
+  return (h.specialties || []).map(s => '<span>' + escapeHtml(s) + '</span>').join('') || '<em>Not listed</em>';
+}
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function render() {
+  const a = ALL_HOSPITALS.find(h => h.name === selA.value);
+  const b = ALL_HOSPITALS.find(h => h.name === selB.value);
+  if (!a || !b || a.name === b.name) {
+    document.getElementById('resultBox').classList.remove('active');
+    document.getElementById('hospLinks').style.display = 'none';
+    document.getElementById('shareBox').style.display = 'none';
+    return;
+  }
+
+  document.querySelector('#headA h2').textContent = a.name;
+  document.querySelector('#headA .city').textContent = a.city;
+  document.querySelector('#headA .rating').textContent = '★ ' + (a.rating || '—');
+  document.querySelector('#headB h2').textContent = b.name;
+  document.querySelector('#headB .city').textContent = b.city;
+  document.querySelector('#headB .rating').textContent = '★ ' + (b.rating || '—');
+
+  const rows = [
+    ['City', a.city, b.city, false],
+    ['Type', a.type || '—', b.type || '—', false],
+    ['Beds', a.beds != null ? a.beds : '—', b.beds != null ? b.beds : '—', true],
+    ['Rating', a.rating != null ? (a.rating + '/5') : '—', b.rating != null ? (b.rating + '/5') : '—', true],
+    ['NABH accredited', a.nabh ? '<span class="yes">✓ Yes</span>' : '<span class="no">No</span>', b.nabh ? '<span class="yes">✓ Yes</span>' : '<span class="no">No</span>', false],
+    ['Specialties', '<div class="specs">' + specialties(a) + '</div>', '<div class="specs">' + specialties(b) + '</div>', false],
+    ['Address', escapeHtml(a.address || '—'), escapeHtml(b.address || '—'), false],
+  ];
+
+  let html = '';
+  rows.forEach(([metric, va, vb, compareNum]) => {
+    let aClass = 'val', bClass = 'val';
+    if (compareNum) {
+      const na = parseFloat(va), nb = parseFloat(vb);
+      if (!isNaN(na) && !isNaN(nb)) {
+        if (na > nb) aClass = 'val winner';
+        else if (nb > na) bClass = 'val winner';
+      }
+    }
+    html += '<div class="compare-row"><div class="metric">' + metric + '</div><div class="' + aClass + '">' + va + '</div><div class="' + bClass + '">' + vb + '</div></div>';
+  });
+  document.getElementById('rows').innerHTML = html;
+  document.getElementById('resultBox').classList.add('active');
+
+  // Links
+  const slugA = slugCity(a.city), slugB = slugCity(b.city);
+  let linksHtml = '';
+  linksHtml += '<a class="btn-link primary" href="/hospitals/' + slugA + '/">All hospitals in ' + a.city + ' →</a>';
+  if (a.city !== b.city) linksHtml += '<a class="btn-link primary" href="/hospitals/' + slugB + '/">All hospitals in ' + b.city + ' →</a>';
+  linksHtml += '<a class="btn-link" href="/compare/cities/?a=' + encodeURIComponent(a.city) + '&b=' + encodeURIComponent(b.city) + '">Compare these cities →</a>';
+  linksHtml += '<a class="btn-link" href="/data/">Download dataset →</a>';
+  document.getElementById('hospLinks').innerHTML = linksHtml;
+  document.getElementById('hospLinks').style.display = 'flex';
+
+  // Share
+  const shareText = a.name + ' vs ' + b.name + ' — compare Indian hospitals on wibest.in';
+  const shareUrl = 'https://wibest.in/compare/hospitals/?a=' + encodeURIComponent(a.name) + '&b=' + encodeURIComponent(b.name);
+  document.getElementById('shareTw').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(shareUrl);
+  document.getElementById('shareLi').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+  document.getElementById('shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + shareUrl);
+  document.getElementById('shareBox').style.display = 'flex';
+
+  // Update URL
+  window.history.replaceState(null, '', '/compare/hospitals/?a=' + encodeURIComponent(a.name) + '&b=' + encodeURIComponent(b.name));
+  document.title = a.name + ' vs ' + b.name + ' — Compare Indian Hospitals · WIB';
+
+  // GA
+  if (typeof gtag === 'function') {
+    gtag('event', 'hospital_comparison', { event_category: 'engagement', event_label: a.name + ' vs ' + b.name });
+  }
+}
+
+selA.addEventListener('change', render);
+selB.addEventListener('change', render);
+cityFilterEl.addEventListener('change', () => { populateDropdowns(); render(); });
+typeFilterEl.addEventListener('change', () => { populateDropdowns(); render(); });
+document.getElementById('btnSwap').addEventListener('click', () => {
+  const tmp = selA.value; selA.value = selB.value; selB.value = tmp;
+  render();
+});
+
+loadData();
+</script>
+</body>
+</html>

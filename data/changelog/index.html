@@ -56,6 +56,15 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.7</span><span class="date">May 6, 2026 (early morning)</span></div>
+    <h3><span class="tag add">add</span> Retention round: Newsletter on 15 high-engagement pages + Compare 2 Hospitals tool</h3>
+    <ul>
+      <li><strong>Newsletter widget injected into 15 high-engagement pages</strong>: all 9 reports + /glossary/ + /decide/where-to-live/ + /compare/cities/ + /data/ + /data/changelog/ + /cities/. Previously only on listing pages — missing the readers most likely to subscribe.</li>
+      <li><strong>NEW /compare/hospitals/ tool</strong> — pick any 2 of 463 verified hospitals across 36 cities, see them side-by-side on: city, type, beds, rating, NABH accreditation, specialties, address. City + type filters narrow the picker. URL-shareable (?a=&b=). Loads from /data/json/hospitals.json (the same open dataset). Promoted on homepage trending + /hospitals/ index page + /compare/cities/ cross-link.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.6</span><span class="date">May 6, 2026 (post-midnight)</span></div>
     <h3><span class="tag add">add</span> Traffic-quality round: FAQ schema, Related Cities widget, Compare tool, Glossary</h3>
     <ul>
@@ -182,7 +191,11 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   </div>
 </main>
 
+<div id="wib-newsletter"></div>
 <div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/newsletter.js?v=20260506" defer></script>
 <script src="/config.js"></script>
 <script src="/components.js?v=20260505a"></script>
 <script src="/polish.js?v=20260419" defer></script>
