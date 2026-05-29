@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How WIB Verifies Data — Methodology Across Hospitals, Restaurants, Schools &amp; Research Reports</title>
+<meta name="description" content="The full methodology behind WIB's verified Indian comparison data — how hospitals are vetted for NABH status, how restaurants are scored, how reports are written, and what 'verified' actually means on this site.">
+<link rel="canonical" href="https://wibest.in/methodology/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How WIB Verifies Data — Methodology">
+<meta property="og:description" content="The full methodology behind WIB's verified Indian comparison data across hospitals, restaurants, schools, and research reports.">
+<meta property="og:url" content="https://wibest.in/methodology/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:880px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:42px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px;line-height:1.1}
+.lede{font-size:17px;color:var(--text-secondary);line-height:1.65;margin-bottom:28px;max-width:760px}
+.author-block{padding:16px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:32px;font-size:13.5px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.author-block strong{font-family:Outfit,sans-serif;font-weight:800;color:var(--text-primary)}
+.author-block .pill{padding:3px 10px;border-radius:100px;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.toc{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:36px}
+.toc strong{font-family:Outfit,sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);display:block;margin-bottom:10px}
+.toc a{display:inline-block;margin-right:14px;font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;margin-bottom:4px}
+h2{font-family:Outfit,sans-serif;font-size:26px;font-weight:900;letter-spacing:-0.01em;margin:52px 0 8px;color:var(--text-primary);scroll-margin-top:80px}
+h2 .num{display:inline-block;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-light);padding:3px 9px;border-radius:6px;margin-right:10px;vertical-align:middle}
+h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin:28px 0 8px;color:var(--text-primary)}
+p{font-size:15.5px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px}
+ul,ol{font-size:15.5px;line-height:1.75;color:var(--text-secondary);padding-left:24px;margin-bottom:14px}
+li{margin-bottom:6px}
+.callout{padding:18px 22px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;margin:20px 0;font-size:14.5px;color:#1e293b;line-height:1.65}
+[data-theme="dark"] .callout{background:linear-gradient(135deg,#1e293b,#27272a);color:#cbd5e1}
+.callout strong{color:var(--accent)}
+.process{padding:0;list-style:none;counter-reset:step;margin:18px 0}
+.process li{padding:12px 0 12px 44px;border-bottom:1px solid var(--border);position:relative;font-size:14.5px;line-height:1.65;color:var(--text-secondary)}
+.process li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:14px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-family:Outfit,sans-serif;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.process li:last-child{border-bottom:none}
+.process strong{display:block;font-family:Outfit,sans-serif;font-weight:800;color:var(--text-primary);margin-bottom:3px;font-size:15px}
+.limitation{padding:18px 22px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:4px solid #d97706;border-radius:0 10px 10px 0;margin:20px 0;font-size:14.5px;line-height:1.65;color:#78350f}
+[data-theme="dark"] .limitation{background:linear-gradient(135deg,#78350f,#92400e);color:#fef3c7}
+.limitation strong{display:block;margin-bottom:6px;font-family:Outfit,sans-serif;font-size:15px}
+a{color:var(--accent);font-weight:600}
+.standards{padding:24px 28px;background:var(--bg-card);border:2px solid var(--accent);border-radius:14px;margin-top:48px}
+.standards h2{margin-top:0}
+.standards ul{font-size:15px}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://wibest.in/methodology/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How WIB Verifies Data — Methodology","author":{"@type":"Organization","name":"WIB Editorial","url":"https://wibest.in/about/"},"datePublished":"2026-05-06","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"WIB","logo":{"@type":"ImageObject","url":"https://wibest.in/icon-512.png"}},"description":"The full methodology behind WIB's verified Indian comparison data across hospitals, restaurants, schools, and research reports.","mainEntityOfPage":{"@type":"WebPage","@id":"https://wibest.in/methodology/"}}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; Methodology</div>
+  <h1>How WIB Verifies Data</h1>
+  <p class="lede">WIB's competitive advantage is honest, manually-verified data. Most Indian comparison sites publish scraped or sponsored rankings; we don't. This page explains exactly what "verified" means on each of our datasets, how research reports are written, and where we acknowledge the limits of our coverage.</p>
+
+  <div class="author-block">
+    <span class="pill">Methodology</span>
+    <span><strong>Maintained by:</strong> WIB Editorial</span>
+    <span>·</span>
+    <span><strong>Last updated:</strong> May 2026</span>
+    <span>·</span>
+    <span><strong>Revision cycle:</strong> Quarterly</span>
+  </div>
+
+  <div class="toc">
+    <strong>On this page</strong>
+    <a href="#principles">Editorial principles</a>
+    <a href="#hospitals">Hospital data</a>
+    <a href="#restaurants">Restaurant data</a>
+    <a href="#schools">Schools &amp; colleges</a>
+    <a href="#reports">Research reports</a>
+    <a href="#updates">Data freshness</a>
+    <a href="#errors">Reporting errors</a>
+    <a href="#what-we-dont-do">What we don't do</a>
+  </div>
+
+  <h2 id="principles"><span class="num">01</span>Editorial principles</h2>
+  <p>Four rules every dataset and every report has to pass through.</p>
+  <ol>
+    <li><strong>Manual verification, not scraping.</strong> Every business in our hospital and restaurant datasets is added by editorial review, not a crawler. We check the source website, validate addresses, and confirm specialties/cuisines against the business's own listing — not third-party aggregators.</li>
+    <li><strong>No paid placements, ever.</strong> No hospital, restaurant, or school can pay for inclusion, higher rating, or better placement on WIB. This is a hard rule; there are zero exceptions. If a business asks to pay, we decline and document the request.</li>
+    <li><strong>Open data, transparent attribution.</strong> Every dataset is published as CSV and JSON at <a href="/data/">/data/</a> under CC-BY 4.0. Anyone can verify our numbers. When we publish a research report, we link to the underlying dataset so the analysis is independently reproducible.</li>
+    <li><strong>Acknowledge what we don't know.</strong> WIB is editorial, not statistical. Our samples are curated, not random. Every report includes a methodology section that explains coverage limits. We publish what we can stand behind; we don't manufacture coverage to sound bigger.</li>
+  </ol>
+
+  <h2 id="hospitals"><span class="num">02</span>Hospital data — verification protocol</h2>
+  <p>WIB tracks 463 multi-specialty hospitals across 36 Indian cities (as of May 2026). Each hospital record carries 9 fields: name, city, type (Government / Private / Trust), bed count, rating, specialties, NABH accreditation, address, and a source URL pointing to the business's WIB page.</p>
+
+  <p>Every record is added or updated via this protocol:</p>
+
+  <ol class="process">
+    <li><strong>Source identification.</strong> Hospital must have a verifiable public website OR a current presence on Practo / Apollo247 / Vesta Care / official AIIMS portal. Dental clinics, single-specialty chains, and government primary health centres are excluded — only multi-specialty hospitals qualify.</li>
+    <li><strong>Name + address cross-check.</strong> Hospital name and complete street address are confirmed against the hospital's own website. Where the website is dormant, we cross-check with Google Maps listings and the local NABH registry.</li>
+    <li><strong>NABH status check.</strong> We mark a hospital as NABH-accredited only if it appears on the National Accreditation Board for Hospitals registry at the time of inclusion. JCI status is checked separately when claimed.</li>
+    <li><strong>Bed count.</strong> Sourced from the hospital's own About page or annual report where available. Where bed count is not publicly stated, we either omit it (mark as null) or use a conservatively-reported range from the latest credible secondary source.</li>
+    <li><strong>Specialty list.</strong> Capped at the top 5 specialties the hospital itself highlights on its homepage. We don't list every specialty a hospital offers; we list the ones it positions as primary.</li>
+    <li><strong>Rating normalisation.</strong> Ratings are aggregated from publicly available review platforms (Google, Practo) on a 5-point scale. We don't accept reviews submitted to WIB without verification. Where a hospital has fewer than 10 public reviews, we either omit the rating or use a conservative 4.0 default and flag it.</li>
+    <li><strong>Quarterly re-verification.</strong> Each hospital record is re-checked every quarter. If a hospital's website is dead, NABH lapses, or the entity has closed, we mark the record stale and either update or remove it.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>The single biggest quality signal we publish:</strong> NABH accreditation status. It's a binary, government-verifiable fact, and the most rigorous independent quality marker available for Indian hospitals. When we say a hospital is NABH-accredited, you can verify it on the official NABH website.
+  </div>
+
+  <div class="limitation">
+    <strong>What our hospital data does NOT tell you</strong>
+    Bed availability on a given day, individual doctor quality within a hospital, specific surgical outcomes, infection rates, or pricing for procedures. These are real and important questions; they require primary data WIB doesn't yet collect.
+  </div>
+
+  <h2 id="restaurants"><span class="num">03</span>Restaurant data — verification protocol</h2>
+  <p>WIB tracks 605 top-rated restaurants across 28 Indian cities. Each record carries 8 fields: name, city, cuisines, rating, budget tier, address, vegetarian-friendly flag, and a source URL.</p>
+
+  <ol class="process">
+    <li><strong>Source identification.</strong> Restaurant must be currently operational with a verifiable presence on Zomato / Google Maps / its own website. Pop-ups, ghost kitchens, and delivery-only operations are excluded.</li>
+    <li><strong>Cuisine tagging.</strong> Up to 4 cuisines per restaurant. Editorial judgement, not auto-tagged. A North Indian restaurant that also lists "Continental, Chinese, South Indian" gets tagged with its actual identity — usually 2-3 cuisines max. We don't accept the "Multi-Cuisine + every cuisine" tag pile that diluted Zomato's data.</li>
+    <li><strong>Budget tier classification.</strong> Three tiers: under Rs 500 per person, Rs 500-2,000, and Rs 2,000+. Anchored in cost-for-two estimates from Zomato + verified by editorial sampling.</li>
+    <li><strong>Rating normalisation.</strong> Aggregated from Google / Zomato on a 5-point scale. Restaurants below 4.0 rating are generally excluded — WIB's coverage is "top-rated," not exhaustive.</li>
+    <li><strong>Vegetarian flag.</strong> Set to "Yes" only for restaurants that are pure vegetarian. Restaurants that serve non-veg but offer extensive veg menus are marked "No" — the flag means strictly vegetarian, not vegetarian-friendly.</li>
+    <li><strong>Regional cuisine emphasis.</strong> Where a city has a distinctive regional cuisine (Saoji in Nagpur, Bhopali in Bhopal, Mangalorean coastal in Mangalore, Odia in Bhubaneswar, Assamese in Guwahati, sadya in Trivandrum), WIB intentionally over-samples regional-anchored restaurants. This is editorial, not statistical — see the <a href="/reports/regional-cuisine-renaissance-tier3-india-2026/">Regional Cuisine Renaissance report</a> for why.</li>
+  </ol>
+
+  <div class="limitation">
+    <strong>What our restaurant data does NOT tell you</strong>
+    Daily availability, kitchen hygiene scores (no Indian equivalent of UK FHRS), individual dish quality, real-time wait times, or whether the chef is still in place. We capture stable structural information, not day-to-day operational signals.
+  </div>
+
+  <h2 id="schools"><span class="num">04</span>Schools &amp; colleges</h2>
+  <p>WIB's schools and colleges datasets are smaller and Firestore-backed (not yet exported as open CSV). Coverage:</p>
+  <ul>
+    <li><strong>Schools:</strong> 350+ schools across 20 cities, segmented by board (CBSE, ICSE, IB, State Board). Fee data, board affiliation year, and curricular focus are editorial-verified.</li>
+    <li><strong>Colleges:</strong> 365+ colleges across 20 cities, segmented by stream (Engineering, Medical, MBA, Commerce, Arts). NAAC accreditation, NIRF ranking band, and placement statistics are sourced from official institute disclosures where available.</li>
+  </ul>
+  <p>Schools and colleges go through the same editorial-verification process as hospitals (Step 1-4 above), with the addition of board / accreditation registry cross-checks for institutional credentials.</p>
+
+  <h2 id="reports"><span class="num">05</span>How research reports are written</h2>
+  <p>WIB publishes original India-focused research reports. Each report is built on data WIB already maintains, plus editorial analysis. Reports are not commissioned by industry, sponsored, or paid for in any form.</p>
+
+  <p>The standard report workflow:</p>
+
+  <ol class="process">
+    <li><strong>Question framing.</strong> A report starts with a specific question we can answer using our dataset (e.g., "What does tier-3 hospital quality actually look like?"). If the question requires data we don't have, we either gather it editorially or don't publish.</li>
+    <li><strong>Sample definition.</strong> We define the exact sample — which cities, how many businesses, how selected. This is curated, not random. We over-sample where editorial judgement says it matters (e.g., we pick the top 8 hospitals in each tier-3 city rather than randomly sampling 40 hospitals nationwide).</li>
+    <li><strong>Comparative anchor.</strong> Every report compares the focus dataset against a benchmark. The tier-3 report compares against our metro cohort; the city living index compares 8 metros side-by-side; the salary report breaks down by city × experience × role.</li>
+    <li><strong>Editorial analysis.</strong> Numbers don't write the report; editorial does. We interpret what the data means, where the gap is, what would close it. The interpretive prose is always WIB editorial opinion, distinct from the numerical findings.</li>
+    <li><strong>Methodology section.</strong> Every report includes a "Method &amp; data" section explaining sample, source, and limitations. Datasets are linked at <a href="/data/">/data/</a> so any reader can verify.</li>
+    <li><strong>Publishing.</strong> Reports are published as static pages with Report + Article + FAQPage schema. Each report has a stable URL and date. We don't backdate revisions; significant updates are published as new reports.</li>
+  </ol>
+
+  <h2 id="updates"><span class="num">06</span>Data freshness commitments</h2>
+  <ul>
+    <li><strong>Combined CSV/JSON datasets</strong> (<code>/data/csv/wib-hospitals-all.csv</code>, <code>/data/json/hospitals.json</code>, etc.) are the canonical source. They reflect the latest verified snapshot. There's no version pinning — pulling the file at any time returns the current state.</li>
+    <li><strong>Per-city slices</strong> stay in sync with the combined files. Same data, scoped to one city for lighter downloads.</li>
+    <li><strong>Per-city JSON API endpoints</strong> (<code>/data/api/hospitals/<city>.json</code>) are pre-filtered. Same data, programmatic access.</li>
+    <li><strong>Changelog</strong> at <a href="/data/changelog/">/data/changelog/</a> records every meaningful dataset version. Each version has a date stamp and a short description of what changed.</li>
+    <li><strong>Quarterly review cycle.</strong> Each record is re-verified every quarter. Closed or dormant businesses are removed; new businesses are added; ratings are refreshed.</li>
+  </ul>
+
+  <h2 id="errors"><span class="num">07</span>Reporting errors and corrections</h2>
+  <p>WIB makes editorial mistakes. Bed counts are mis-typed. NABH expires without our knowledge. A restaurant closes and we miss it. We treat error reports as gold.</p>
+
+  <p>If you spot an error:</p>
+  <ul>
+    <li>Email <a href="mailto:hello@wibest.in?subject=Data%20correction">hello@wibest.in</a> with the page URL and the specific error.</li>
+    <li>Include a source for the corrected information — the business's own website, official registry, etc.</li>
+    <li>We respond within 5 working days and either correct, remove, or explain.</li>
+  </ul>
+
+  <p>Major corrections (factual errors in a research report, dataset rollbacks) are documented in the changelog. We don't silently edit published research.</p>
+
+  <h2 id="what-we-dont-do"><span class="num">08</span>What WIB doesn't do</h2>
+  <p>Equally important to what we do is what we explicitly refuse to do:</p>
+  <ul>
+    <li><strong>No paid placements.</strong> No business can pay for inclusion, better rating, or higher ranking. Ever.</li>
+    <li><strong>No fake reviews.</strong> We don't accept unverifiable user-submitted reviews. All ratings are aggregated from established public sources.</li>
+    <li><strong>No scraping of competitors.</strong> Our data is editorially built, not lifted from Zomato/Practo. We cross-check those sources for sanity, but our database is our own.</li>
+    <li><strong>No anonymous editorial.</strong> Reports are bylined "WIB Editorial." Methodology is public. Authors are real Indian humans, not bots.</li>
+    <li><strong>No hidden affiliate manipulation.</strong> Where we use affiliate links (Amazon, Flipkart, EarnKaro, Cuelinks), they're disclosed at <a href="/affiliate-disclosure/">/affiliate-disclosure/</a> and never influence rankings.</li>
+    <li><strong>No clickbait headlines.</strong> "Top 10 hospitals" headlines that aren't supported by data are not published. Every superlative is anchored in our dataset.</li>
+  </ul>
+
+  <div class="standards">
+    <h2 id="standards">Editorial standards in one paragraph</h2>
+    <p style="font-size:16px;color:var(--text-secondary);line-height:1.75">Every datapoint on WIB is added by editorial review against the business's own source. No paid placements, ever. Data is open and citable. Research reports are anchored in publicly-linked datasets. We acknowledge what we don't know. When we make a mistake, we correct it visibly. Methodology is documented here, on a stable URL, and updated quarterly. If a fact on WIB is wrong, <a href="mailto:hello@wibest.in?subject=Correction">tell us</a> and we'll fix it within 5 working days.</p>
+  </div>
+
+  <div style="margin-top:36px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;font-size:14px;color:var(--text-secondary);line-height:1.65;text-align:center">
+    Want to know about a specific dataset's methodology? Email <a href="mailto:hello@wibest.in?subject=Methodology%20question" style="color:var(--accent);font-weight:600">hello@wibest.in</a>. Want to cite WIB in research? See <a href="/data/" style="color:var(--accent);font-weight:600">/data/</a> for citation format and CC-BY 4.0 terms.
+  </div>
+
+  <div id="wib-newsletter"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/newsletter.js?v=20260506" defer></script>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+</body>
+</html>
