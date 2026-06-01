@@ -56,6 +56,27 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.24</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag fix">seo</span> Google News readiness — NewsArticle schema + RSS hardening across all 10 reports</h3>
+    <ul>
+      <li><strong>NewsArticle JSON-LD</strong> added to all 10 reports alongside existing Report schema. Each carries: <code>headline</code>, <code>datePublished</code>, <code>dateModified</code>, <code>author</code> (Person), <code>publisher</code> (Organization with logo ImageObject 512×512), <code>image</code> array (report-specific OG image where available, default elsewhere), <code>mainEntityOfPage</code>, <code>articleSection</code>, <code>inLanguage</code> en-IN, <code>isAccessibleForFree</code>.</li>
+      <li><strong>news_keywords</strong> meta tag added to all 10 reports with 4-5 targeted India-specific phrases each.</li>
+      <li><strong>article:section</strong> meta tag set to "Research Reports" for Google Publisher Center categorisation.</li>
+      <li><strong>RSS feed (feed-reports.xml) hardened</strong>:
+        <ul>
+          <li>Added missing 10th item (India Salary Index 2026 was published Tue but not in feed).</li>
+          <li>Added xmlns:dc + xmlns:media + xmlns:content namespaces.</li>
+          <li><code>dc:creator</code> + <code>category</code> tags per item.</li>
+          <li><code>media:content</code> image enclosures per item — Google News reads these.</li>
+          <li>Channel-level <code>image</code> element with WIB icon.</li>
+          <li><code>copyright</code>, <code>managingEditor</code>, <code>webMaster</code> populated.</li>
+        </ul>
+      </li>
+      <li><strong>Next step (manual):</strong> Submit wibest.in to Google Publisher Center → news.google.com/publications. Average review time: 2-4 weeks. If accepted, reports surface in Top Stories carousels, News tab, and Discover feed — surfaces most comparison sites never reach.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.23</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">page</span> Launched <a href="/guides/">/guides/</a> — categorised hub for all 147 buyer guides</h3>
     <ul>

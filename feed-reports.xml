@@ -1,75 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
   <title>WIB Research Reports</title>
   <link>https://wibest.in/reports/</link>
   <atom:link href="https://wibest.in/feed-reports.xml" rel="self" type="application/rss+xml" />
-  <description>Original research from WIB editorial team on India healthcare, dining, travel, cities, education.</description>
+  <description>Original research from WIB editorial team on India healthcare, dining, travel, cities, education, salary, and remote work.</description>
   <language>en-IN</language>
-  <pubDate>Mon, 04 May 2026 15:33:41 GMT</pubDate>
-  <lastBuildDate>Mon, 04 May 2026 15:33:41 GMT</lastBuildDate>
+  <copyright>CC-BY 4.0 — WIB (wibest.in)</copyright>
+  <managingEditor>editorial@wibest.in (WIB Editorial)</managingEditor>
+  <webMaster>editorial@wibest.in (WIB Editorial)</webMaster>
+  <pubDate>Wed, 06 May 2026 20:00:00 GMT</pubDate>
+  <lastBuildDate>Wed, 06 May 2026 20:00:00 GMT</lastBuildDate>
+  <image>
+    <url>https://wibest.in/icon-512.png</url>
+    <title>WIB Research Reports</title>
+    <link>https://wibest.in/reports/</link>
+    <width>512</width>
+    <height>512</height>
+  </image>
   <item>
     <title>Best Indian Cities for Remote Workers 2026</title>
     <link>https://wibest.in/reports/best-indian-cities-remote-workers-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/best-indian-cities-remote-workers-2026/</guid>
     <pubDate>Tue, 06 May 2026 14:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Cities</category>
+    <category>Remote Work</category>
     <description>36 Indian cities ranked for remote workers across 7 dimensions. Bangalore is the safe pick; Indore is the actually-good pick. Includes relocation playbook.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
+  </item>
+  <item>
+    <title>India Salary Index 2026</title>
+    <link>https://wibest.in/reports/india-salary-index-2026/</link>
+    <guid isPermaLink="true">https://wibest.in/reports/india-salary-index-2026/</guid>
+    <pubDate>Tue, 06 May 2026 13:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Salary</category>
+    <category>Jobs</category>
+    <description>Realistic CTC ranges for tech, finance, healthcare, design, and consulting roles across 0-15 years experience and 6 major Indian cities.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
   <item>
     <title>Metro vs Tier-3 India: A Side-by-Side Reality Check (2026)</title>
     <link>https://wibest.in/reports/metro-vs-tier3-india-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/metro-vs-tier3-india-2026/</guid>
     <pubDate>Tue, 06 May 2026 12:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Cities</category>
+    <category>Comparisons</category>
     <description>Direct comparison of 8 Indian metros vs 5 tier-3 cities on healthcare, dining, education, and cost of living. Tier-3 wins on cost, trails on hospital quality (29-pt NABH gap) and elite education.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
   <item>
     <title>Regional Cuisine Renaissance: India's Tier-3 Dining (2026)</title>
     <link>https://wibest.in/reports/regional-cuisine-renaissance-tier3-india-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/regional-cuisine-renaissance-tier3-india-2026/</guid>
     <pubDate>Mon, 04 May 2026 20:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Food</category>
+    <category>Cities</category>
     <description>50 verified restaurants across Bhopal, Nagpur, Mysore, Vadodara and Patna reveal that regional cuisines (Saoji, Bhopali Mughlai, Mysore tiffin, Gujarati thali, Bihari litti chokha) outscore generic multi-cuisine in tier-3 India.</description>
+    <media:content url="https://wibest.in/og/regional-cuisine-renaissance-tier3.svg" medium="image" />
   </item>
   <item>
     <title>Beyond the Metros: Hospital Access in India's Tier-3 Cities (2026)</title>
     <link>https://wibest.in/reports/beyond-the-metros-tier3-hospitals-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/beyond-the-metros-tier3-hospitals-2026/</guid>
     <pubDate>Mon, 04 May 2026 19:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Healthcare</category>
+    <category>Cities</category>
     <description>WIB analyses 40 multi-specialty hospitals across Bhopal, Nagpur, Mysore, Vadodara and Patna. NABH coverage gap (68% vs 97% in metros), specialty depth, and the patient-flight question for cancer and transplant care.</description>
+    <media:content url="https://wibest.in/og/beyond-the-metros-tier3-hospitals.svg" medium="image" />
   </item>
   <item>
     <title>Education Affordability Index India 2026</title>
     <link>https://wibest.in/reports/education-affordability-index-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/education-affordability-index-2026/</guid>
     <pubDate>Sun, 04 May 2026 16:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Education</category>
     <description>WIB analyses what it actually costs to educate one Indian child from K to PG in 2026. Rs 8L to Rs 4.5Cr — the 56x cost spread.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
   <item>
     <title>India City Living Index 2026</title>
     <link>https://wibest.in/reports/india-city-living-index-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/india-city-living-index-2026/</guid>
     <pubDate>Sun, 04 May 2026 15:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Cities</category>
     <description>WIB ranks 8 Indian metros across 9 dimensions of livability — cost, jobs, healthcare, schools, weather, transport, AQI, food, lifestyle.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
   <item>
     <title>State of Indian Travel 2026</title>
     <link>https://wibest.in/reports/state-of-indian-travel-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/state-of-indian-travel-2026/</guid>
     <pubDate>Sun, 04 May 2026 14:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Travel</category>
     <description>WIB research on India domestic travel: 102 destinations, 12-month weather windows, weekend getaway analysis, state-by-state distribution.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
   <item>
     <title>State of Indian Restaurants 2026</title>
     <link>https://wibest.in/reports/state-of-indian-restaurants-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/state-of-indian-restaurants-2026/</guid>
     <pubDate>Sun, 04 May 2026 13:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Food</category>
     <description>WIB annual research on Indian dining: 450 restaurants across 15 cities, cuisine concentration, premium-vs-budget split, city personalities.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
   <item>
     <title>State of Indian Hospitals 2026</title>
     <link>https://wibest.in/reports/state-of-indian-hospitals-2026/</link>
     <guid isPermaLink="true">https://wibest.in/reports/state-of-indian-hospitals-2026/</guid>
     <pubDate>Sun, 04 May 2026 12:00:00 GMT</pubDate>
+    <dc:creator>WIB Editorial</dc:creator>
+    <category>Healthcare</category>
     <description>WIB annual research on India hospital landscape: 306 multi-specialty hospitals across 15 cities, NABH coverage, specialty distribution, bed capacity.</description>
+    <media:content url="https://wibest.in/og-default.jpg" medium="image" />
   </item>
 </channel>
 </rss>
