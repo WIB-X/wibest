@@ -56,6 +56,29 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.18</span><span class="date">May 6, 2026 (night)</span></div>
+    <h3><span class="tag fix">infra</span> Sitemap-index split + Calculators discoverability fix</h3>
+    <ul>
+      <li><strong>Sitemap split into 7 category sub-sitemaps</strong> + index. 690 URLs were in a single monolithic sitemap.xml; now also available as:
+        <ul>
+          <li><code>sitemap-index.xml</code> — root index pointing to all 7 sub-sitemaps</li>
+          <li><code>sitemap-core.xml</code> — 264 URLs (homepage, /about, /team, /now, /faq, /best-of, etc.)</li>
+          <li><code>sitemap-hospitals.xml</code> — 155 URLs (all hospital city + specialty pages)</li>
+          <li><code>sitemap-blog.xml</code> — 148 URLs (all blog posts)</li>
+          <li><code>sitemap-restaurants.xml</code> — 94 URLs</li>
+          <li><code>sitemap-cities.xml</code> — 15 URLs (/cities/ hub + comparisons)</li>
+          <li><code>sitemap-reports.xml</code> — 11 URLs</li>
+          <li><code>sitemap-data.xml</code> — 3 URLs (/data/, /data/changelog/, /api/)</li>
+        </ul>
+      </li>
+      <li>Monolithic <code>sitemap.xml</code> kept unchanged for backward compatibility (Google may have it cached).</li>
+      <li><code>robots.txt</code> declares both: sitemap-index.xml first (preferred), sitemap.xml second (fallback).</li>
+      <li><strong>Why split:</strong> Google handles category sitemaps better at scale — per-category change-frequency signals, easier debugging of indexation issues per content type, and signals technical maturity to AdSense reviewers.</li>
+      <li><strong>Calculators discoverability fix</strong> — /calculators/ has 5 working tools (EMI, SIP, FD, Tax, Retirement) but was buried with no homepage promotion and no footer link. Fixed: added trending-row chip with 🧮 marker + Open Data column footer link.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.17</span><span class="date">May 6, 2026 (late evening)</span></div>
     <h3><span class="tag add">add</span> Glossary expands to 56+ terms with new Finance &amp; Insurance category + homepage perf tweaks</h3>
     <ul>

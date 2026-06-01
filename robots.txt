@@ -33,4 +33,5 @@ Disallow: /verify-batch4.html
 Disallow: /verify-vernacular.html
 Disallow: /admin-auth-gate.js
 
+Sitemap: https://wibest.in/sitemap-index.xml
 Sitemap: https://wibest.in/sitemap.xml
