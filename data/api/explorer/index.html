@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Explorer — Live JSON Sandbox for WIB Open Data · WIB</title>
+<meta name="description" content="Interactive API explorer for WIB's open hospitals and restaurants JSON endpoints. Pick a city, hit Fetch, see live JSON, copy the curl command — no signup required.">
+<link rel="canonical" href="https://wibest.in/data/api/explorer/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WIB API Explorer — Live JSON Sandbox">
+<meta property="og:description" content="Interactive sandbox for WIB's open JSON endpoints — 36 hospital cities and 28 restaurant cities.">
+<meta property="og:url" content="https://wibest.in/data/api/explorer/">
+<meta property="og:image" content="https://wibest.in/og/open-data.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="date-reviewed" content="2026-05-06">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:1100px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:42px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px;background:linear-gradient(135deg,#0891b2,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.65;margin-bottom:30px;max-width:760px}
+.panel{display:grid;grid-template-columns:340px 1fr;gap:24px;margin-top:24px}
+@media(max-width:900px){.panel{grid-template-columns:1fr}}
+.controls{padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.controls h2{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 14px}
+.controls label{display:block;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.controls select,.controls input{width:100%;padding:10px 12px;font-size:14.5px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text-primary);font-family:inherit;margin-bottom:16px}
+.controls select:focus,.controls input:focus{outline:none;border-color:var(--accent)}
+.controls button{width:100%;padding:12px 18px;font-size:15px;font-weight:700;border:none;border-radius:8px;background:linear-gradient(135deg,#0891b2,#9333ea);color:#fff;cursor:pointer;font-family:inherit}
+.controls button:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(8,145,178,0.3)}
+.controls .url-preview{margin-top:14px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-family:JetBrains Mono,ui-monospace,monospace;font-size:11.5px;color:var(--text-secondary);word-break:break-all;line-height:1.5}
+.controls .url-preview strong{color:var(--text-primary);display:block;font-size:10px;font-family:DM Sans,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:6px}
+.output{padding:0;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;min-height:500px;display:flex;flex-direction:column}
+.output-head{padding:14px 20px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.output-head h2{font-family:Outfit,sans-serif;font-size:15px;font-weight:800;margin:0}
+.output-head .status{font-size:12px;color:var(--text-muted);font-family:JetBrains Mono,ui-monospace,monospace}
+.output-head .copy{padding:6px 12px;font-size:12px;font-weight:700;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);color:var(--text-primary);cursor:pointer;font-family:inherit}
+.output-head .copy:hover{border-color:var(--accent);color:var(--accent)}
+.output pre{margin:0;padding:20px;font-family:JetBrains Mono,ui-monospace,monospace;font-size:12.5px;line-height:1.65;color:var(--text-primary);overflow:auto;flex:1;background:var(--bg-card);max-height:560px}
+.tab-row{display:flex;border-bottom:1px solid var(--border)}
+.tab{padding:10px 18px;font-size:13px;font-weight:700;color:var(--text-muted);background:transparent;border:none;cursor:pointer;border-bottom:2px solid transparent;font-family:inherit}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.snippet{display:none}
+.snippet.active{display:block}
+.examples{margin-top:36px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.examples h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:900;margin:0 0 12px}
+.examples p{font-size:14.5px;color:var(--text-secondary);line-height:1.65;margin-bottom:18px}
+.examples ul{padding-left:22px;font-size:14.5px;line-height:1.8;color:var(--text-secondary)}
+.examples code{background:var(--accent-light);color:var(--accent);padding:2px 8px;border-radius:5px;font-family:JetBrains Mono,ui-monospace,monospace;font-size:12.5px}
+.examples a{color:var(--accent);text-decoration:none;font-weight:600}
+.examples a:hover{text-decoration:underline}
+.json-key{color:#9333ea}
+.json-str{color:#0891b2}
+.json-num{color:#d97706}
+.json-bool{color:#16a34a;font-weight:700}
+.json-null{color:#dc2626;font-weight:700}
+[data-theme="dark"] .json-key{color:#c084fc}
+[data-theme="dark"] .json-str{color:#67e8f9}
+[data-theme="dark"] .json-num{color:#fbbf24}
+[data-theme="dark"] .json-bool{color:#86efac}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Open Data","item":"https://wibest.in/data/"},{"@type":"ListItem","position":3,"name":"API","item":"https://wibest.in/api/"},{"@type":"ListItem","position":4,"name":"Explorer","item":"https://wibest.in/data/api/explorer/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WIB API Explorer","url":"https://wibest.in/data/api/explorer/","applicationCategory":"DeveloperApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Interactive sandbox for the WIB Open Data JSON endpoints — query 36 hospital cities and 28 restaurant cities live in the browser, no signup needed.","datePublished":"2026-05-06","dateModified":"2026-05-06"}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/data/">Open Data</a> &rsaquo; <a href="/api/">API</a> &rsaquo; Explorer</div>
+  <h1>API Explorer</h1>
+  <p class="lede">Interactive sandbox for WIB's open JSON endpoints. Pick a vertical and city, hit <strong>Fetch</strong>, see live JSON. Copy the curl/JavaScript/Python snippet at the bottom — works in your shell or notebook unmodified. No signup, no API key, CC-BY 4.0 attribution required.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <h2>Request</h2>
+
+      <label for="vertical">Vertical</label>
+      <select id="vertical">
+        <option value="hospitals">Hospitals (36 cities)</option>
+        <option value="restaurants">Restaurants (28 cities)</option>
+      </select>
+
+      <label for="city">City</label>
+      <select id="city"></select>
+
+      <button id="fetchBtn">Fetch JSON →</button>
+
+      <div class="url-preview">
+        <strong>Endpoint</strong>
+        <span id="urlPreview">https://wibest.in/data/api/hospitals/bangalore.json</span>
+      </div>
+    </div>
+
+    <div class="output">
+      <div class="output-head">
+        <h2>Response</h2>
+        <span class="status" id="status">ready</span>
+        <button class="copy" id="copyBtn">Copy JSON</button>
+      </div>
+      <pre id="response">// Click "Fetch JSON →" to see live data here.
+// Try Bangalore hospitals — 30 records, ~12 KB.</pre>
+      <div class="tab-row">
+        <button class="tab active" data-tab="curl">curl</button>
+        <button class="tab" data-tab="js">JavaScript</button>
+        <button class="tab" data-tab="py">Python</button>
+      </div>
+      <pre class="snippet active" id="snip-curl">curl https://wibest.in/data/api/hospitals/bangalore.json</pre>
+      <pre class="snippet" id="snip-js">const res = await fetch('https://wibest.in/data/api/hospitals/bangalore.json');
+const json = await res.json();
+console.log(json.data.slice(0, 5));</pre>
+      <pre class="snippet" id="snip-py">import urllib.request, json
+with urllib.request.urlopen('https://wibest.in/data/api/hospitals/bangalore.json') as r:
+    data = json.load(r)
+print(data['count'], 'hospitals')</pre>
+    </div>
+  </div>
+
+  <section class="examples">
+    <h2>What you can build with this</h2>
+    <p>The WIB API is intentionally simple — flat JSON, one file per city, no auth, no rate limits, no SLA. It exists for journalists, researchers, hobbyists, and side-project builders who need real Indian comparison data without scraping anyone.</p>
+    <ul>
+      <li><strong>Newsroom dashboards</strong> — pull <code>/data/api/hospitals/&lt;city&gt;.json</code> into Google Sheets or Datawrapper for embeddable charts.</li>
+      <li><strong>Side projects</strong> — restaurant-finder Telegram bot, hospital-comparison Streamlit app, college aggregator for a school newsletter.</li>
+      <li><strong>Research</strong> — geo-mapping NABH coverage gaps across tier-2 vs tier-3 cities; computing dispersion in private vs government hospital bed counts.</li>
+      <li><strong>Aggregators</strong> — overlay WIB data with your own (Google Places, BookMyShow events, IMDb) for cross-source comparison products.</li>
+    </ul>
+    <p><strong>Licence:</strong> CC-BY 4.0 — credit "WIB (wibest.in)" wherever you publish. Read the <a href="/api/">full API docs</a> for response-schema reference and the <a href="/data/changelog/">changelog</a> for versioning notes.</p>
+  </section>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+
+<script>
+const HOSPITAL_CITIES = ['ahmedabad','bangalore','bhopal','bhubaneswar','chandigarh','chennai','coimbatore','dehradun','delhi','faridabad','gurugram','guwahati','hyderabad','indore','jaipur','kochi','kolkata','lucknow','mangalore','mumbai','mysore','nagpur','navi-mumbai','noida','patna','pimpri-chinchwad','pune','raipur','ranchi','surat','trichy','trivandrum','vadodara','visakhapatnam'];
+const RESTAURANT_CITIES = ['ahmedabad','bangalore','bhopal','bhubaneswar','chandigarh','chennai','coimbatore','dehradun','delhi','guwahati','hyderabad','indore','jaipur','kochi','kolkata','lucknow','mangalore','mumbai','mysore','nagpur','patna','pune','raipur','ranchi','surat','trivandrum','vadodara','visakhapatnam'];
+
+const sel = id => document.getElementById(id);
+const verticalSel = sel('vertical'), citySel = sel('city');
+
+function fillCities() {
+  const cities = verticalSel.value === 'hospitals' ? HOSPITAL_CITIES : RESTAURANT_CITIES;
+  citySel.innerHTML = cities.map(c => `<option value="${c}">${c.replace(/-/g,' ').replace(/\b\w/g, l=>l.toUpperCase())}</option>`).join('');
+  if (cities.includes('bangalore')) citySel.value = 'bangalore';
+  updateURL();
+}
+function currentURL() {
+  return `https://wibest.in/data/api/${verticalSel.value}/${citySel.value}.json`;
+}
+function updateURL() {
+  const u = currentURL();
+  sel('urlPreview').textContent = u;
+  sel('snip-curl').textContent = `curl ${u}`;
+  sel('snip-js').textContent = `const res = await fetch('${u}');\nconst json = await res.json();\nconsole.log(json.data.slice(0, 5));`;
+  sel('snip-py').textContent = `import urllib.request, json\nwith urllib.request.urlopen('${u}') as r:\n    data = json.load(r)\nprint(data['count'], '${verticalSel.value}')`;
+}
+function syntaxHighlight(json) {
+  return json
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, m => {
+      let cls = 'json-num';
+      if (/^"/.test(m)) cls = /:$/.test(m) ? 'json-key' : 'json-str';
+      else if (/true|false/.test(m)) cls = 'json-bool';
+      else if (/null/.test(m)) cls = 'json-null';
+      return `<span class="${cls}">${m}</span>`;
+    });
+}
+async function fetchData() {
+  const url = currentURL();
+  sel('status').textContent = 'fetching...';
+  sel('response').textContent = '';
+  const t0 = performance.now();
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    const ms = Math.round(performance.now() - t0);
+    const pretty = JSON.stringify(json, null, 2);
+    sel('response').innerHTML = syntaxHighlight(pretty);
+    sel('status').textContent = `${res.status} OK · ${ms} ms · ${(pretty.length/1024).toFixed(1)} KB`;
+    if (typeof gtag === 'function') gtag('event', 'api_explorer_fetch', {vertical: verticalSel.value, city: citySel.value});
+  } catch (e) {
+    sel('response').textContent = `Error: ${e.message}`;
+    sel('status').textContent = 'error';
+  }
+}
+verticalSel.addEventListener('change', fillCities);
+citySel.addEventListener('change', updateURL);
+sel('fetchBtn').addEventListener('click', fetchData);
+sel('copyBtn').addEventListener('click', () => {
+  const text = sel('response').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    sel('copyBtn').textContent = 'Copied ✓';
+    setTimeout(() => sel('copyBtn').textContent = 'Copy JSON', 1400);
+  });
+});
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.snippet').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    sel('snip-' + t.dataset.tab).classList.add('active');
+  });
+});
+fillCities();
+</script>
+<script src="/components.js?v=20260505a"></script>
+</body>
+</html>

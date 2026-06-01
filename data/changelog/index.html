@@ -56,6 +56,20 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.22</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag api">tool</span> Launched <a href="/data/api/explorer/">/data/api/explorer/</a> — interactive JSON sandbox for the WIB API</h3>
+    <ul>
+      <li>Pick a vertical (hospitals or restaurants) and any of the 36 / 28 cities; hit Fetch; see live JSON with syntax highlighting.</li>
+      <li>Auto-generates curl, JavaScript (<code>fetch</code>), and Python (<code>urllib.request</code>) code snippets for the current endpoint — copy-pasteable into shell or notebooks.</li>
+      <li>Status bar shows HTTP code, latency, and response size in KB.</li>
+      <li>GA event <code>api_explorer_fetch</code> fired on each successful fetch with vertical + city as event params — for understanding which endpoints get used.</li>
+      <li><strong>WebApplication schema</strong> with <code>price: 0</code> + <code>applicationCategory: DeveloperApplication</code> — registers correctly in Google's tool-result rich snippets.</li>
+      <li>Promoted with a gradient hero CTA on /api/, added to sitemap-core.xml at priority 0.75.</li>
+      <li><strong>Why this matters:</strong> Interactive tools differentiate from low-value content sites and demonstrate the API is real and working — important for both journalist credibility and AdSense reviewer perception.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.21</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">page</span> Launched <a href="/quick-answers/">/quick-answers/</a> — featured-snippet bait for top India comparison queries</h3>
     <ul>
