@@ -56,6 +56,26 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.12</span><span class="date">May 6, 2026 (afternoon)</span></div>
+    <h3><span class="tag fix">audit</span> Full site audit + schema enrichment + stale-fact corrections</h3>
+    <p style="font-size:14px;color:var(--text-secondary);margin:0 0 10px">Systematic audit across 689 indexable pages. Findings:</p>
+    <ul>
+      <li><strong>✅ Zero broken internal links</strong> across 16,552 internal links scanned</li>
+      <li><strong>✅ Zero duplicate titles</strong> across 689 pages</li>
+      <li><strong>✅ Zero missing canonical URLs, titles, meta descriptions</strong></li>
+      <li><strong>✅ All 685 sitemap URLs resolve</strong> to existing files</li>
+      <li><strong>✅ 216 of 218 images have alt attributes</strong> (the 2 without are admin-only pages with noindex)</li>
+      <li><strong>✅ Firestore security rules</strong> properly gate all writes behind isAdmin()</li>
+      <li><strong>✅ Dev/seed files</strong> have <code>noindex,nofollow</code> + robots.txt block</li>
+      <li>Fixed stale numbers: homepage Schools "20 cities" → 25, Colleges "20 cities" → 25, Guides "205+" → "157 Guides + Reports" (accurate), Restaurants OG description "15 cities" → 28, Hospitals OG description "236+" → 463</li>
+      <li>Enriched homepage WebSite schema: added <code>alternateName</code>, <code>inLanguage</code> array (7 languages), <code>audience</code> (India)</li>
+      <li>Enriched homepage Organization schema: added <code>foundingDate</code>, <code>founder</code> Person, <code>knowsAbout</code> array (10 topics), <code>alternateName</code></li>
+      <li>Added <strong>/cities/</strong> hub to homepage trending row (was only in footer + Latest research)</li>
+    </ul>
+    <p style="font-size:13.5px;color:var(--text-muted);margin:12px 0 0;font-style:italic">Audit conclusion: site hygiene is strong. The main risk vectors (broken links, duplicate titles, missing canonicals, exposed secrets, broken alt tags) are all clean. Quality concerns flagged by AdSense are not technical — they're judgement signals around editorial substance, which is what the recent /methodology/, /team/, /press-coverage/ work addresses.</p>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.11</span><span class="date">May 6, 2026 (noon)</span></div>
     <h3><span class="tag add">add</span> /team/ page + Person author schema across 9 reports</h3>
     <ul>
