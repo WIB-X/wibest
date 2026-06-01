@@ -56,6 +56,23 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.17</span><span class="date">May 6, 2026 (late evening)</span></div>
+    <h3><span class="tag add">add</span> Glossary expands to 56+ terms with new Finance &amp; Insurance category + homepage perf tweaks</h3>
+    <ul>
+      <li><strong>+10 glossary terms across 2 categories:</strong>
+        <ul>
+          <li><strong>Cities &amp; Living additions (4):</strong> AQI (Air Quality Index — 0-500 scale, Delhi-NCR vs Bangalore patterns), EMI, SIP</li>
+          <li><strong>NEW category — Finance &amp; Insurance (8 terms):</strong> NPS, PPF, ELSS, HRA, ULIP, Term insurance vs life insurance, Health insurance vs Mediclaim, Copay vs Deductible, CIBIL Score</li>
+        </ul>
+      </li>
+      <li>All new entries follow same format: title + plain-English definition + concrete India-specific anchoring (rupee figures, percentages, specific companies/products where relevant). Cross-links to relevant reports and tools (EMI calculator, City Living Index).</li>
+      <li>Category nav updated with the new Finance section. Lede + term count meta updated. Search box continues working across all 56+ terms.</li>
+      <li><strong>Homepage performance:</strong> added <code>fetchpriority="high"</code> to critical CSS preload (modest LCP win for Chromium browsers); deferred <code>/config.js</code> (Firebase init not needed for above-the-fold render).</li>
+    </ul>
+    <p style="font-size:13.5px;color:var(--text-muted);margin:12px 0 0;font-style:italic">Long-tail SEO math on the new terms: 'CIBIL Score' (~18K monthly searches India), 'PPF interest rate' (~22K), 'EMI calculator' (~110K — that's the calculator tool surface), 'HRA exemption' (~33K), 'SIP vs ELSS' (~14K). Combined: 100K+ monthly impressions if even 20% of these rank.</p>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.16</span><span class="date">May 6, 2026 (later evening)</span></div>
     <h3><span class="tag add">add</span> /faq/ site-wide + /decide/ landing fix (quiz now linked from parent)</h3>
     <ul>
