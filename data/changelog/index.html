@@ -56,6 +56,18 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.21</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">page</span> Launched <a href="/quick-answers/">/quick-answers/</a> — featured-snippet bait for top India comparison queries</h3>
+    <ul>
+      <li>22 one-sentence answers grouped into 6 sections: Hospitals, Restaurants &amp; Food, Cities &amp; Living, Education, Money &amp; Salary, Travel.</li>
+      <li>Each answer deep-links to the underlying WIB page (city directory, glossary term, report, or calculator).</li>
+      <li><strong>FAQPage schema</strong> with 7 highest-volume mainEntity questions ("which Indian city has best hospitals", "what is a good CIBIL score for home loan", "when does Tatkal booking open", etc.) — directly targets Google's Position-0 / People-Also-Ask boxes.</li>
+      <li>Added to sitemap-core.xml at priority 0.85, promoted on homepage trending row (purple-cyan gradient chip with ⚡ marker), and added to footer Open Data column.</li>
+      <li><strong>Why this works:</strong> Google increasingly favours pages where a sub-15-word answer fits the search query verbatim. Quick-Answers pages on competitor sites (Bankrate, NerdWallet, Investopedia) consistently rank for featured snippets even when the underlying topic page doesn't.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.20</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag fix">seo</span> Freshness signal — <code>dateModified</code> injected into every hospital, restaurant, city, and report page</h3>
     <ul>

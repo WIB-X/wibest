@@ -160,6 +160,7 @@
       '<a href="/data">Open Data</a><a href="/api">API</a>',
       '<a href="/calculators">Calculators</a>',
       '<a href="/best-of">Best of WIB</a><a href="/glossary">Glossary</a>',
+      '<a href="/quick-answers">Quick Answers</a>',
       '<a href="/press">Press Kit</a><a href="/press-coverage">Press Coverage</a>',
       '<a href="/connect">Connect</a><a href="/blog">Blog</a>',
       '</div>',
