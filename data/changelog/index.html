@@ -56,6 +56,24 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.14</span><span class="date">May 6, 2026 (late afternoon)</span></div>
+    <h3><span class="tag add">add</span> /api/ developer landing + /best-of/ showcase + /changelog/ root redirect</h3>
+    <ul>
+      <li><strong>NEW /api/</strong> — full developer documentation page (~1,200 words). Quickstart code samples in JS, Python (pandas), curl. Documented endpoints for combined + per-city JSON. Response schema reference for both hospital and restaurant records with field-by-field type tables. Recipes (NABH filter, top cardiology hospitals, pandas aggregations). Rate limits + license + roadmap. WebAPI schema.</li>
+      <li><strong>NEW /best-of/</strong> — curated showcase of WIB's strongest content for new visitors and press use. Features 5 research reports with concrete summaries, 4 interactive tools, 2 data hub callouts, 12 standout city pages, and 6 editorial-pages tiles. Built specifically as an entry point for journalists.</li>
+      <li><strong>/changelog/ at root</strong> — redirect to /data/changelog/ (noindex + meta refresh + JS fallback). Makes the buried changelog discoverable as a top-level URL without remembering the /data/ prefix.</li>
+      <li>Wired in:
+        <ul>
+          <li>Homepage trending row: /best-of/ (⭐) and /api/ ({}) chips added</li>
+          <li>Global footer: /api/ and /best-of/ added to Company column</li>
+          <li>/data/ landing: developer API docs link added next to changelog link</li>
+          <li>Sitemap: +2 URLs at priority 0.85 each</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.13</span><span class="date">May 6, 2026 (mid-afternoon)</span></div>
     <h3><span class="tag add">add</span> /now/ page (indie-founder pattern) + date-reviewed meta on 62 city pages</h3>
     <ul>

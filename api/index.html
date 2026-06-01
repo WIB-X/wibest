@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIB Public API — Free JSON Endpoints for Indian Hospitals &amp; Restaurants</title>
+<meta name="description" content="Free public JSON API for Indian hospital and restaurant data. 463 hospitals + 605 restaurants across 36 cities. No signup, no API key, CORS-enabled. CC-BY 4.0 license.">
+<link rel="canonical" href="https://wibest.in/api/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WIB Public API — Free JSON Endpoints">
+<meta property="og:description" content="Free JSON API for Indian comparison data. 463 hospitals + 605 restaurants. No signup, no API key.">
+<meta property="og:url" content="https://wibest.in/api/">
+<meta property="og:image" content="https://wibest.in/og/open-data.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wibest.in/og/open-data.svg">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:42px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px;background:linear-gradient(135deg,#1e3a8a,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.65;margin-bottom:28px;max-width:760px}
+h2{font-family:Outfit,sans-serif;font-size:26px;font-weight:900;letter-spacing:-0.01em;margin:48px 0 12px;color:var(--text-primary)}
+h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin:24px 0 8px;color:var(--text-primary)}
+p{font-size:15.5px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px}
+ul{font-size:15.5px;line-height:1.75;color:var(--text-secondary);padding-left:22px;margin-bottom:14px}
+li{margin-bottom:5px}
+a{color:var(--accent);font-weight:600}
+
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0 28px}
+.quick{padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-align:center}
+.quick .ic{font-size:24px;margin-bottom:6px}
+.quick h4{font-family:Outfit,sans-serif;font-size:14px;font-weight:800;margin:0 0 4px;color:var(--text-primary)}
+.quick p{font-size:13px;color:var(--text-secondary);margin:0;line-height:1.5}
+
+.endpoint{padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:14px}
+.endpoint .method{display:inline-block;padding:3px 10px;background:#16a34a;color:#fff;border-radius:4px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:11px;font-weight:700;margin-right:10px;letter-spacing:.04em}
+.endpoint .url{font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:14.5px;font-weight:600;color:var(--text-primary);word-break:break-all}
+.endpoint .desc{font-size:14px;color:var(--text-secondary);margin:8px 0 0;line-height:1.65}
+.endpoint .example{display:inline-block;margin-top:6px;font-size:12px;color:var(--text-muted)}
+.endpoint .example a{color:var(--accent);font-weight:600;text-decoration:none;font-family:ui-monospace,SF Mono,Menlo,monospace}
+.endpoint .example a:hover{text-decoration:underline}
+
+.code{padding:18px 20px;background:#0f172a;color:#e2e8f0;border-radius:10px;font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:13px;line-height:1.55;overflow-x:auto;margin:14px 0;position:relative}
+.code .lang{position:absolute;top:8px;right:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#64748b;padding:2px 8px;background:rgba(255,255,255,0.05);border-radius:4px}
+.code pre{margin:0;white-space:pre-wrap;word-break:break-all}
+.code .kw{color:#c084fc}
+.code .str{color:#86efac}
+.code .num{color:#fbbf24}
+.code .comm{color:#64748b;font-style:italic}
+
+.callout{padding:18px 22px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;margin:20px 0;font-size:14.5px;line-height:1.65;color:#1e293b}
+[data-theme="dark"] .callout{background:linear-gradient(135deg,#1e293b,#312e81);color:#cbd5e1}
+.callout strong{color:var(--accent)}
+
+.field-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.field-table th{background:var(--bg-secondary);padding:10px 14px;text-align:left;font-family:Outfit,sans-serif;font-size:12px;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.field-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary);font-size:13.5px;line-height:1.55}
+.field-table td:first-child{font-family:ui-monospace,SF Mono,Menlo,monospace;color:var(--accent);font-weight:600;white-space:nowrap}
+.field-table td:nth-child(2){font-family:ui-monospace,SF Mono,Menlo,monospace;color:var(--text-muted);font-size:12px}
+
+@media(max-width:640px){
+  h1{font-size:30px}
+  .endpoint .url{font-size:13px}
+  .code{font-size:11.5px}
+  .field-table{font-size:12.5px}
+  .field-table td{padding:8px 10px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"API","item":"https://wibest.in/api/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebAPI","name":"WIB Public Data API","url":"https://wibest.in/api/","description":"Free public JSON API for Indian hospital and restaurant data.","provider":{"@type":"Organization","name":"WIB","url":"https://wibest.in"},"license":"https://creativecommons.org/licenses/by/4.0/"}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; API</div>
+  <h1>WIB Public API</h1>
+  <p class="lede">Free JSON endpoints for India's verified hospital and restaurant data — 463 hospitals + 605 restaurants across 36 cities. No signup, no API key, no rate limits. CORS-enabled for browser fetches. CC-BY 4.0 license. Use it for journalism, research, prototypes, dashboards, and apps.</p>
+
+  <div class="quick-grid">
+    <div class="quick"><div class="ic">⚡</div><h4>No signup</h4><p>No API key, no auth header. Just GET.</p></div>
+    <div class="quick"><div class="ic">🌐</div><h4>CORS-enabled</h4><p>Fetch directly from any web app.</p></div>
+    <div class="quick"><div class="ic">📦</div><h4>Static JSON</h4><p>CDN-cached. Fast everywhere.</p></div>
+    <div class="quick"><div class="ic">📜</div><h4>CC-BY 4.0</h4><p>Attribute WIB; everything else is yours.</p></div>
+  </div>
+
+  <h2>Quickstart</h2>
+  <p>Open this URL in a browser — you'll get back the full hospital dataset as JSON:</p>
+  <div class="code"><span class="lang">URL</span><pre>https://wibest.in/data/json/hospitals.json</pre></div>
+
+  <p>From JavaScript / browser:</p>
+  <div class="code"><span class="lang">JS</span><pre><span class="kw">const</span> res = <span class="kw">await</span> <span class="kw">fetch</span>(<span class="str">'https://wibest.in/data/json/hospitals.json'</span>);
+<span class="kw">const</span> json = <span class="kw">await</span> res.json();
+<span class="comm">// json.count = 463, json.data = [...]</span>
+<span class="kw">console</span>.log(json.data[<span class="num">0</span>]);</pre></div>
+
+  <p>From Python (pandas):</p>
+  <div class="code"><span class="lang">Python</span><pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+df = pd.read_json(<span class="str">'https://wibest.in/data/json/hospitals.json'</span>, orient=<span class="str">'records'</span>)[<span class="str">'data'</span>]
+<span class="comm"># or use the CSV directly:</span>
+df = pd.read_csv(<span class="str">'https://wibest.in/data/csv/wib-hospitals-all.csv'</span>)</pre></div>
+
+  <p>From curl:</p>
+  <div class="code"><span class="lang">cURL</span><pre>curl https://wibest.in/data/json/hospitals.json | jq <span class="str">'.data[] | select(.nabh == true)'</span></pre></div>
+
+  <h2>Endpoints</h2>
+
+  <h3>Hospitals</h3>
+  <div class="endpoint">
+    <span class="method">GET</span>
+    <span class="url">/data/json/hospitals.json</span>
+    <p class="desc">Complete dataset. All 463 hospitals across 36 cities. ~88 KB. Header object includes <code>name</code>, <code>version</code>, <code>license</code>, <code>count</code>; payload is <code>data</code> array.</p>
+    <div class="example">Try it: <a href="/data/json/hospitals.json" target="_blank">/data/json/hospitals.json</a></div>
+  </div>
+  <div class="endpoint">
+    <span class="method">GET</span>
+    <span class="url">/data/api/hospitals/&lt;city-slug&gt;.json</span>
+    <p class="desc">Per-city slice. Pre-filtered, smaller payload. Slugs are lowercase, hyphenated: <code>bangalore</code>, <code>navi-mumbai</code>, <code>pimpri-chinchwad</code>. 36 available.</p>
+    <div class="example">Try it: <a href="/data/api/hospitals/bangalore.json" target="_blank">/data/api/hospitals/bangalore.json</a> · <a href="/data/api/hospitals/bhubaneswar.json" target="_blank">/data/api/hospitals/bhubaneswar.json</a></div>
+  </div>
+  <div class="endpoint">
+    <span class="method">GET</span>
+    <span class="url">/data/csv/wib-hospitals-&lt;city-slug&gt;.csv</span>
+    <p class="desc">CSV variant of the per-city slice. Same data, comma-separated. Easier for spreadsheet imports.</p>
+    <div class="example">Try it: <a href="/data/csv/wib-hospitals-mumbai.csv" target="_blank">/data/csv/wib-hospitals-mumbai.csv</a></div>
+  </div>
+
+  <h3>Restaurants</h3>
+  <div class="endpoint">
+    <span class="method">GET</span>
+    <span class="url">/data/json/restaurants.json</span>
+    <p class="desc">Complete dataset. All 605 restaurants across 28 cities. ~92 KB.</p>
+    <div class="example">Try it: <a href="/data/json/restaurants.json" target="_blank">/data/json/restaurants.json</a></div>
+  </div>
+  <div class="endpoint">
+    <span class="method">GET</span>
+    <span class="url">/data/api/restaurants/&lt;city-slug&gt;.json</span>
+    <p class="desc">Per-city slice. 28 cities available. Same slug convention as hospitals.</p>
+    <div class="example">Try it: <a href="/data/api/restaurants/nagpur.json" target="_blank">/data/api/restaurants/nagpur.json</a> · <a href="/data/api/restaurants/mysore.json" target="_blank">/data/api/restaurants/mysore.json</a></div>
+  </div>
+
+  <h2>Response schema</h2>
+
+  <p>All combined and per-city JSON responses follow this shape:</p>
+  <div class="code"><span class="lang">JSON</span><pre>{
+  <span class="str">"name"</span>: <span class="str">"WIB India Hospitals Dataset 2026"</span>,
+  <span class="str">"version"</span>: <span class="str">"2026-05-06"</span>,
+  <span class="str">"license"</span>: <span class="str">"CC-BY-4.0"</span>,
+  <span class="str">"source"</span>: <span class="str">"https://wibest.in/data/"</span>,
+  <span class="str">"count"</span>: <span class="num">463</span>,
+  <span class="str">"data"</span>: [
+    {
+      <span class="str">"name"</span>: <span class="str">"Apollo Hospital Chennai"</span>,
+      <span class="str">"city"</span>: <span class="str">"Chennai"</span>,
+      <span class="str">"type"</span>: <span class="str">"Private"</span>,
+      <span class="str">"beds"</span>: <span class="num">3200</span>,
+      <span class="str">"rating"</span>: <span class="num">4.5</span>,
+      <span class="str">"specialties"</span>: [<span class="str">"Cardiology"</span>, <span class="str">"Oncology"</span>, ...],
+      <span class="str">"nabh"</span>: <span class="kw">true</span>,
+      <span class="str">"address"</span>: <span class="str">"21 Greams Lane, Chennai 600006"</span>
+    },
+    ...
+  ]
+}</pre></div>
+
+  <h3>Hospital record fields</h3>
+  <table class="field-table">
+    <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>name</td><td>string</td><td>Hospital name as it appears on the hospital's own website.</td></tr>
+      <tr><td>city</td><td>string</td><td>City name (e.g., "Bangalore", "Navi Mumbai"). 36 distinct cities.</td></tr>
+      <tr><td>type</td><td>string</td><td>One of: <code>Private</code>, <code>Government</code>, <code>Trust</code>.</td></tr>
+      <tr><td>beds</td><td>number | null</td><td>Bed count, or <code>null</code> if not publicly reported.</td></tr>
+      <tr><td>rating</td><td>number | null</td><td>Editorial 1-5 rating normalised from public review aggregates.</td></tr>
+      <tr><td>specialties</td><td>string[]</td><td>Up to 5 primary specialties the hospital highlights.</td></tr>
+      <tr><td>nabh</td><td>boolean</td><td>NABH accreditation status. <code>true</code> only if currently listed on NABH registry.</td></tr>
+      <tr><td>address</td><td>string</td><td>Verified street address with pincode.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Restaurant record fields</h3>
+  <table class="field-table">
+    <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>name</td><td>string</td><td>Restaurant name.</td></tr>
+      <tr><td>city</td><td>string</td><td>City name. 28 distinct cities.</td></tr>
+      <tr><td>cuisines</td><td>string[]</td><td>Up to 4 cuisines per restaurant. Editorial tagging.</td></tr>
+      <tr><td>rating</td><td>number</td><td>Editorial 1-5 rating from public review aggregates.</td></tr>
+      <tr><td>budget_tier</td><td>string</td><td>One of: <code>under_500</code>, <code>500_to_2000</code>, <code>above_2000</code> (per person, INR).</td></tr>
+      <tr><td>address</td><td>string</td><td>Verified street address.</td></tr>
+      <tr><td>vegetarian</td><td>boolean</td><td><code>true</code> only for strictly vegetarian restaurants.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Patterns &amp; recipes</h2>
+
+  <h3>Filter by NABH-accredited hospitals in a city</h3>
+  <div class="code"><span class="lang">JS</span><pre><span class="kw">const</span> r = <span class="kw">await</span> <span class="kw">fetch</span>(<span class="str">'/data/api/hospitals/bangalore.json'</span>);
+<span class="kw">const</span> json = <span class="kw">await</span> r.json();
+<span class="kw">const</span> nabhOnly = json.data.filter(h =&gt; h.nabh);
+<span class="kw">console</span>.log(nabhOnly.length, <span class="str">'NABH hospitals in'</span>, json.city);</pre></div>
+
+  <h3>Find top-rated cardiology hospitals across India</h3>
+  <div class="code"><span class="lang">JS</span><pre><span class="kw">const</span> r = <span class="kw">await</span> <span class="kw">fetch</span>(<span class="str">'/data/json/hospitals.json'</span>);
+<span class="kw">const</span> json = <span class="kw">await</span> r.json();
+<span class="kw">const</span> cardio = json.data
+  .filter(h =&gt; h.specialties.includes(<span class="str">'Cardiology'</span>) || h.specialties.includes(<span class="str">'Cardiac Surgery'</span>))
+  .sort((a, b) =&gt; (b.rating || <span class="num">0</span>) - (a.rating || <span class="num">0</span>))
+  .slice(<span class="num">0</span>, <span class="num">10</span>);</pre></div>
+
+  <h3>Pandas: NABH coverage by city</h3>
+  <div class="code"><span class="lang">Python</span><pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+df = pd.read_csv(<span class="str">'https://wibest.in/data/csv/wib-hospitals-all.csv'</span>)
+nabh_by_city = df.groupby(<span class="str">'city'</span>)[<span class="str">'nabh'</span>].agg([<span class="str">'sum'</span>, <span class="str">'count'</span>])
+nabh_by_city[<span class="str">'rate'</span>] = nabh_by_city[<span class="str">'sum'</span>] / nabh_by_city[<span class="str">'count'</span>]
+print(nabh_by_city.sort_values(<span class="str">'rate'</span>, ascending=<span class="kw">False</span>))</pre></div>
+
+  <h2>Rate limits &amp; reliability</h2>
+  <ul>
+    <li><strong>No rate limits.</strong> Files are static JSON/CSV served by GitHub Pages — there's nothing to rate-limit beyond Cloudflare's defaults (which are generous).</li>
+    <li><strong>Caching is your friend.</strong> Each combined dataset is ~90KB. If you're fetching often, cache it client-side or server-side for at least an hour. The data updates weekly at most.</li>
+    <li><strong>Versioning.</strong> The header object's <code>version</code> field is a date stamp. Pin to it if your app needs stable references; otherwise the URL always returns the latest snapshot.</li>
+    <li><strong>Changelog.</strong> Major dataset updates are logged at <a href="/data/changelog/">/data/changelog/</a>.</li>
+  </ul>
+
+  <h2>License &amp; attribution</h2>
+  <p>All data is published under <strong>Creative Commons Attribution 4.0 (CC-BY 4.0)</strong>. You can use it commercially, modify it, redistribute it — the only requirement is attribution.</p>
+
+  <p>Suggested attribution:</p>
+  <div class="code"><span class="lang">HTML</span><pre>Data source: <span class="str">&lt;a href="https://wibest.in/data/"&gt;</span>WIB Open Data<span class="str">&lt;/a&gt;</span>, CC-BY 4.0</pre></div>
+
+  <p>For academic citation:</p>
+  <div class="code"><span class="lang">BibTeX</span><pre><span class="kw">@misc</span>{wib_hospitals_2026,
+  author = {WIB Editorial},
+  title = {WIB India Hospitals Dataset 2026},
+  year = {2026},
+  url = {https://wibest.in/data/},
+  license = {CC-BY-4.0}
+}</pre></div>
+
+  <div class="callout">
+    <strong>Built something with the API?</strong> Email <a href="mailto:hello@wibest.in?subject=Built+with+WIB+API">hello@wibest.in</a> with what you made. We'll feature it on the <a href="/press-coverage/">/press-coverage/</a> page and link back to your project.
+  </div>
+
+  <h2>Roadmap</h2>
+  <ul>
+    <li><strong>Schools and colleges</strong> open data export is queued — same JSON + CSV pattern as hospitals/restaurants. ETA: June 2026.</li>
+    <li><strong>Historical snapshots.</strong> Quarterly versioned datasets so researchers can study how Indian hospital/restaurant landscapes change over time.</li>
+    <li><strong>Geo lookups.</strong> Filter by state, lat/lng radius, or postal pincode.</li>
+    <li><strong>Aggregate endpoints.</strong> Pre-computed summaries (NABH coverage by city, cuisine distribution, etc.) so you don't need to load the full dataset for basic metrics.</li>
+  </ul>
+
+  <p>Want something specific? Email <a href="mailto:hello@wibest.in?subject=API+feature+request">hello@wibest.in</a> with what you need.</p>
+
+  <div id="wib-newsletter"></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/newsletter.js?v=20260506" defer></script>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+</body>
+</html>
