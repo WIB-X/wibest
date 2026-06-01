@@ -56,6 +56,23 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.23</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">page</span> Launched <a href="/guides/">/guides/</a> — categorised hub for all 147 buyer guides</h3>
+    <ul>
+      <li>147 blog posts auto-categorised into 10 buckets via slug-pattern matching:
+        <ul>
+          <li>Travel &amp; Stays (31), Home Appliances (20), Education (20), Vehicles &amp; Auto (17), Phones &amp; Mobile (17), Finance &amp; Insurance (17), Laptops &amp; Tech (13), Hospitals &amp; Health (10), Food &amp; Dining (1), Beauty &amp; Wellness (1).</li>
+        </ul>
+      </li>
+      <li>Category nav at top for jump-to navigation; each section shows guide count and full grid of titles.</li>
+      <li>CollectionPage schema with dateModified; BreadcrumbList schema.</li>
+      <li>Added to sitemap-core.xml at priority 0.9 (weekly changefreq — new posts hit this hub).</li>
+      <li>Promoted on homepage trending row (amber-purple gradient chip with &#128218; marker) + global footer.</li>
+      <li><strong>Why this matters:</strong> 148 blog posts in a flat <code>/blog/</code> directory were essentially invisible past the first 20-30 most-recent. The categorised hub solves three problems simultaneously: internal link equity now flows into older posts (PageRank distribution), readers find related guides on-platform (lower bounce + higher pages-per-session), and Google sees a publication-grade information architecture instead of a content dump.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.22</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag api">tool</span> Launched <a href="/data/api/explorer/">/data/api/explorer/</a> — interactive JSON sandbox for the WIB API</h3>
     <ul>
