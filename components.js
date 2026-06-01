@@ -152,7 +152,7 @@
       '<a href="/real-estate">Real Estate</a><a href="/jobs">Jobs</a>',
       '</div>',
       '<div class="footer-col"><h4>Company</h4>',
-      '<a href="/about">About</a><a href="/contact">Contact</a>',
+      '<a href="/about">About</a><a href="/team">Team</a><a href="/contact">Contact</a>',
       '<a href="/editorial-process">Editorial Process</a><a href="/methodology">Methodology</a>',
       '<a href="/reviews">Reader Reviews</a>',
       '<a href="/reports">Research Reports</a><a href="/cities">All Cities</a>',

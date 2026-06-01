@@ -56,6 +56,18 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.11</span><span class="date">May 6, 2026 (noon)</span></div>
+    <h3><span class="tag add">add</span> /team/ page + Person author schema across 9 reports</h3>
+    <ul>
+      <li><strong>NEW /team/</strong> — substantive editorial page documenting WIB's team structure (one founder + AI-augmented editorial), how decisions get made, what the founder decides directly vs what AI assists with, the four principles, editorial accountability (5-day SLA, single inbox), how readers and businesses can contribute. Includes AboutPage + Organization + Person schema with founder/employee/numberOfEmployees fields. ~1,400 words.</li>
+      <li><strong>Report author schema upgraded</strong> — all 9 research reports now declare a <code>Person</code> author ("WIB Editorial", linked to /team/) instead of generic Organization. Google E-E-A-T rewards bylined editorial; organisation publisher field retained for correct schema modelling.</li>
+      <li><strong>/about/ → /team/ + /methodology/ CTA</strong> — gradient callout block after the four principles linking readers to both pages.</li>
+      <li><strong>Homepage E-E-A-T row</strong> — first chip changed from "About the founder" to "👤 The team" pointing at /team/ (more accurate; the founder is also "team" structure documentation).</li>
+      <li><strong>Global footer</strong> — /team/ added next to /about/ in the Company column.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.10</span><span class="date">May 6, 2026 (late morning)</span></div>
     <h3><span class="tag add">add</span> /methodology/ page + homepage E-E-A-T signals</h3>
     <ul>
