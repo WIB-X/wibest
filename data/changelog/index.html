@@ -56,6 +56,19 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.20</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag fix">seo</span> Freshness signal — <code>dateModified</code> injected into every hospital, restaurant, city, and report page</h3>
+    <ul>
+      <li>62 hospital + restaurant city pages now emit <code>WebPage</code> or <code>CollectionPage</code> JSON-LD with both <code>datePublished</code> (2025-08-15) and <code>dateModified</code> (2026-05-06).</li>
+      <li>10 city pages (/cities/*) — same.</li>
+      <li>10 reports — <code>Report</code> schema now carries <code>dateModified</code> alongside its existing <code>datePublished</code>.</li>
+      <li><strong>Why this matters:</strong> Google's freshness algorithm reads <code>dateModified</code> from JSON-LD before falling back to crawl heuristics. Pages without it are treated as static; pages with a recent <code>dateModified</code> get a freshness boost on queries with implicit recency signals ("best hospitals 2026", "compare cities India 2026").</li>
+      <li>Combined with the per-page <code>&lt;meta name="date-reviewed"&gt;</code> already shipped, this gives both human readers and crawlers a consistent "last reviewed" date.</li>
+      <li>147 blog posts already had <code>dateModified</code> — verified during this pass.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.19</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">content</span> Glossary expanded to 66+ terms — Cars, Electronics, Travel categories added</h3>
     <ul>
