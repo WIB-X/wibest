@@ -139,7 +139,9 @@
 <script src="/polish.js?v=20260419" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script>
-const db=initFirebase();
+let db = null;
+function tryInitFirebase(){ try { if (typeof firebase !== 'undefined' && typeof initFirebase === 'function') db = initFirebase(); } catch(e){ console.warn('Firebase init deferred', e); } }
+tryInitFirebase();
 let allVehicles=[];let currentTab='cars';
 
 function formatPrice(p){if(!p)return'N/A';if(p>=10000000)return'₹'+(p/10000000).toFixed(2)+' Cr';if(p>=100000)return'₹'+(p/100000).toFixed(1)+' L';if(p>=1000)return'₹'+(p/1000).toFixed(0)+'K';return'₹'+p}
@@ -155,10 +157,13 @@ async function loadVehicles(){
     } catch(e) { console.warn('Static vehicles fetch failed', e); }
     // 2. Firestore as supplement
     let firestoreVehicles = [];
-    try {
-      const snap = await db.collection('vehicles').get();
-      snap.forEach(doc => firestoreVehicles.push({ id: doc.id, ...doc.data() }));
-    } catch(e) { console.warn('Firestore vehicles fetch failed', e); }
+    if (!db) tryInitFirebase();
+    if (db) {
+      try {
+        const snap = await db.collection('vehicles').get();
+        snap.forEach(doc => firestoreVehicles.push({ id: doc.id, ...doc.data() }));
+      } catch(e) { console.warn('Firestore vehicles fetch failed', e); }
+    }
     // 3. Merge — Firestore overrides static on name collision
     const fsNames = new Set(firestoreVehicles.map(v => (v.name || '').toLowerCase().trim()));
     allVehicles = firestoreVehicles.concat(staticVehicles.filter(v => !fsNames.has((v.name || '').toLowerCase().trim())));
@@ -231,7 +236,8 @@ function render(vehicles){
   }).join('');
   if(window.wibInitReveal)window.wibInitReveal();
 }
-loadVehicles();
+if (document.readyState === 'complete') loadVehicles();
+else window.addEventListener('load', loadVehicles);
 </script>
 <script src="/chat-widget.js"></script>
 <script src="/affiliate-autoconvert.js?v=20260421b" defer></script>

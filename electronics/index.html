@@ -146,7 +146,9 @@
 <script src="/cookie-consent.js" defer></script>
 <script src="/seed-data-product-images.js"></script>
 <script>
-const db = initFirebase();
+let db = null;
+function tryInitFirebase(){ try { if (typeof firebase !== 'undefined' && typeof initFirebase === 'function') db = initFirebase(); } catch(e){ console.warn('Firebase init deferred', e); } }
+tryInitFirebase();
 let allProducts = [];
 let currentTab = 'phones';
 
@@ -165,10 +167,13 @@ async function loadProducts(){
     } catch(e) { console.warn('Static electronics fetch failed', e); }
     // 2. Firestore as supplement
     let firestoreProducts = [];
-    try {
-      const snap = await db.collection('electronics').get();
-      snap.forEach(doc => firestoreProducts.push({ id: doc.id, ...doc.data() }));
-    } catch(e) { console.warn('Firestore electronics fetch failed', e); }
+    if (!db) tryInitFirebase();
+    if (db) {
+      try {
+        const snap = await db.collection('electronics').get();
+        snap.forEach(doc => firestoreProducts.push({ id: doc.id, ...doc.data() }));
+      } catch(e) { console.warn('Firestore electronics fetch failed', e); }
+    }
     // 3. Merge — Firestore overrides static on name collision
     const fsNames = new Set(firestoreProducts.map(p => (p.name || '').toLowerCase().trim()));
     allProducts = firestoreProducts.concat(staticProducts.filter(p => !fsNames.has((p.name || '').toLowerCase().trim())));
@@ -301,7 +306,8 @@ function renderProducts(products){
   }).join('');
   if(window.wibInitReveal)window.wibInitReveal();
 }
-loadProducts();
+if (document.readyState === 'complete') loadProducts();
+else window.addEventListener('load', loadProducts);
 </script>
 <script src="/chat-widget.js"></script>
 <script src="/affiliate-autoconvert.js?v=20260421b" defer></script>

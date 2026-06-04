@@ -163,7 +163,9 @@
 <script src="/polish.js?v=20260419" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script>
-const db = initFirebase();
+let db = null;
+function tryInitFirebase(){ try { if (typeof firebase !== 'undefined' && typeof initFirebase === 'function') db = initFirebase(); } catch(e){ console.warn('Firebase init deferred', e); } }
+tryInitFirebase();
 let allSchools = [], currentPage = 1;
 const PAGE_SIZE = 18;
 const CACHE_KEY = 'wib_schools_cache_v2';
@@ -218,10 +220,13 @@ async function loadSchools(){
       } catch(e) { console.warn('Static schools fetch failed', e); }
       // 2. Try Firestore as supplement (newer / admin-added entries)
       let firestoreSchools = [];
-      try {
-        const snap = await db.collection('items').get();
-        snap.forEach(doc => { const d = doc.data(); if (d.category === 'school') firestoreSchools.push({ id: doc.id, ...d }); });
-      } catch(e) { console.warn('Firestore schools fetch failed', e); }
+      if (!db) tryInitFirebase();
+      if (db) {
+        try {
+          const snap = await db.collection('items').get();
+          snap.forEach(doc => { const d = doc.data(); if (d.category === 'school') firestoreSchools.push({ id: doc.id, ...d }); });
+        } catch(e) { console.warn('Firestore schools fetch failed', e); }
+      }
       // 3. Merge — Firestore takes precedence on name collision
       const fsNames = new Set(firestoreSchools.map(s => (s.name || '').toLowerCase().trim()));
       allSchools = firestoreSchools.concat(staticSchools.filter(s => !fsNames.has((s.name || '').toLowerCase().trim())));
@@ -336,7 +341,9 @@ function viewSchool(id,action){
   if(action==='enquire')url+='&enquire=true';
   window.location.href=url;
 }
-loadSchools();
+// Run loader after all deferred scripts (firebase, components) have loaded
+if (document.readyState === 'complete') loadSchools();
+else window.addEventListener('load', loadSchools);
 </script>
 <script src="/chat-widget.js"></script>
 </body>

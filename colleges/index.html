@@ -127,7 +127,9 @@
 <script src="/polish.js?v=20260419" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script>
-const db=initFirebase();let allColleges=[];
+let db = null; let allColleges = [];
+function tryInitFirebase(){ try { if (typeof firebase !== 'undefined' && typeof initFirebase === 'function') db = initFirebase(); } catch(e){ console.warn('Firebase init deferred', e); } }
+tryInitFirebase();
 function formatFees(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1)+'L';if(a>=1000)return(a/1000).toFixed(0)+'K';return a.toString()}
 function formatPkg(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1)+'L';return a.toString()}
 async function loadColleges(){
@@ -140,10 +142,13 @@ async function loadColleges(){
     } catch(e) { console.warn('Static colleges fetch failed', e); }
     // 2. Firestore as supplement
     let firestoreColleges = [];
-    try {
-      const snap2 = await db.collection('items').where('category','==','college').get();
-      snap2.forEach(doc => firestoreColleges.push({ id: doc.id, ...doc.data() }));
-    } catch(e) { console.warn('Firestore colleges fetch failed', e); }
+    if (!db) tryInitFirebase();
+    if (db) {
+      try {
+        const snap2 = await db.collection('items').where('category','==','college').get();
+        snap2.forEach(doc => firestoreColleges.push({ id: doc.id, ...doc.data() }));
+      } catch(e) { console.warn('Firestore colleges fetch failed', e); }
+    }
     // 3. Merge — Firestore overrides static on name collision
     const fsNames = new Set(firestoreColleges.map(c => (c.name || '').toLowerCase().trim()));
     allColleges = firestoreColleges.concat(staticColleges.filter(c => !fsNames.has((c.name || '').toLowerCase().trim())));
@@ -193,7 +198,8 @@ function renderColleges(colleges){
   }).join('');
   if(window.wibInitReveal)window.wibInitReveal();
 }
-loadColleges();
+if (document.readyState === 'complete') loadColleges();
+else window.addEventListener('load', loadColleges);
 </script>
 <script src="/chat-widget.js"></script>
 </body>
