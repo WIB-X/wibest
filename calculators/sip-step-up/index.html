@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step-Up SIP Calculator India 2026 — Annual Top-Up Mutual Fund Returns | WIB</title>
+<meta name="description" content="Free Step-Up SIP calculator for Indian mutual funds. See how a 10% annual increase in SIP can 2-3x your corpus over 20 years. Side-by-side comparison with regular SIP, year-wise contribution growth table.">
+<meta name="news_keywords" content="step up SIP calculator, top up SIP calculator India, annual SIP increase calculator, SIP step up vs regular SIP, mutual fund step up calculator 2026">
+<link rel="canonical" href="https://wibest.in/calculators/sip-step-up/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Step-Up SIP Calculator India 2026">
+<meta property="og:description" content="Project mutual fund returns with annual SIP increase — 10% step-up can 2-3x your 20-year corpus.">
+<meta property="og:url" content="https://wibest.in/calculators/sip-step-up/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="date-reviewed" content="2026-05-06">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:980px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;background:linear-gradient(135deg,#16a34a,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:15.5px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;max-width:780px}
+.calc{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
+.input-group{margin-bottom:18px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.input-group label .val{color:var(--accent);font-weight:700}
+.input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
+.results{padding:24px;background:linear-gradient(135deg,#ecfdf5,#eff6ff);border-radius:12px;display:flex;flex-direction:column;justify-content:center}
+[data-theme="dark"] .results{background:linear-gradient(135deg,#064e3b,#1e293b)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.compare-card{padding:14px;background:rgba(255,255,255,.55);border-radius:8px;text-align:center}
+[data-theme="dark"] .compare-card{background:rgba(0,0,0,.25)}
+.compare-card .ttl{font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--text-muted);margin-bottom:6px}
+.compare-card .num{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--text-primary);letter-spacing:-0.01em;line-height:1.15}
+.compare-card.boost{background:linear-gradient(135deg,#16a34a,#0891b2);color:#fff}
+.compare-card.boost .ttl{color:rgba(255,255,255,.8)}
+.compare-card.boost .num{color:#fff}
+.boost-pct{margin:0 0 18px;text-align:center;padding:10px;background:#16a34a;color:#fff;border-radius:8px;font-family:Outfit,sans-serif;font-weight:800;font-size:15px}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.result-row:last-child{border-bottom:none}
+.result-row .lbl{font-size:13px;color:var(--text-secondary);font-weight:500}
+.result-row .num{font-family:Outfit,sans-serif;font-size:18px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em}
+.yearwise{margin-top:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yearwise h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;padding:18px 22px 12px;margin:0}
+.yearwise p{font-size:13px;color:var(--text-muted);padding:0 22px 14px;margin:0;line-height:1.55}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{background:var(--bg-secondary);color:var(--text-secondary);font-weight:700;padding:10px 14px;text-align:right;font-size:12px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}
+.tbl td:first-child{text-align:left;font-weight:600;color:var(--text-primary)}
+.tbl tr:hover td{background:var(--bg-secondary)}
+.tbl tr:last-child td{border-bottom:none}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 30px}
+.intro-card{padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;font-size:13.5px;line-height:1.55;color:var(--text-secondary)}
+.intro-card strong{display:block;font-family:Outfit,sans-serif;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+.cta-block{margin-top:24px;padding:20px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-left:4px solid #16a34a;border-radius:0 10px 10px 0}
+[data-theme="dark"] .cta-block{background:linear-gradient(135deg,#064e3b,#065f46)}
+.cta-block h3{font-family:Outfit,sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.cta-block a{display:inline-block;padding:9px 18px;background:#16a34a;color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;margin-top:8px}
+.related{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.related a{padding:8px 14px;background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:13px;font-weight:600;text-decoration:none}
+.related a:hover{background:var(--accent);color:#fff}
+@media(max-width:768px){.calc{grid-template-columns:1fr}h1{font-size:24px}.intro-cards{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"Step-Up SIP","item":"https://wibest.in/calculators/sip-step-up/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WIB Step-Up SIP Calculator","url":"https://wibest.in/calculators/sip-step-up/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Project Indian mutual fund SIP corpus with annual step-up. Compare with regular SIP side-by-side and see year-wise contribution growth.","datePublished":"2026-05-06","dateModified":"2026-05-06","inLanguage":"en-IN"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a step-up SIP?","acceptedAnswer":{"@type":"Answer","text":"A step-up SIP (also called top-up SIP) increases your monthly investment by a fixed percentage every year, usually 5-15%, to match your annual salary growth. It compounds your wealth much faster than a flat SIP because each year you contribute more capital that itself compounds over remaining years."}},
+{"@type":"Question","name":"How much can a 10% annual step-up grow my corpus?","acceptedAnswer":{"@type":"Answer","text":"At 12% annual returns over 20 years, a Rs 10,000 monthly SIP grows to about Rs 99 lakh as a flat SIP, but to about Rs 1.95 crore with a 10% annual step-up — nearly double, for the same starting commitment."}},
+{"@type":"Question","name":"Is step-up SIP better than regular SIP?","acceptedAnswer":{"@type":"Answer","text":"For salaried Indians, yes — step-up SIP matches your investing capacity to your salary growth. A 10% step-up roughly tracks typical annual increments in tier-1 Indian jobs. The result is a much larger final corpus without you having to remember to manually increase your SIP each year."}},
+{"@type":"Question","name":"How do I activate step-up SIP in my mutual fund?","acceptedAnswer":{"@type":"Answer","text":"Most direct mutual fund apps (Zerodha Coin, Groww, Paytm Money, Kuvera, ET Money) offer a step-up toggle when you create an SIP. You set the base amount, the step-up percentage, and the step-up frequency (usually annual). The app handles the increment automatically on your chosen day each year."}},
+{"@type":"Question","name":"What step-up percentage should I choose?","acceptedAnswer":{"@type":"Answer","text":"Match your expected annual salary growth. Conservative: 5-7% (matches inflation, safer if your income is variable). Standard: 10% (matches typical Indian salary increments). Aggressive: 15-20% (only if you have high income visibility and strong promotion track). Going higher than your actual salary growth means rising savings rate over time."}},
+{"@type":"Question","name":"Can I pause or modify step-up SIP?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can pause your SIP anytime (1-6 months on most direct platforms), modify the step-up percentage, or convert to a flat SIP. There is no exit load or penalty on changing SIP parameters — only the standard mutual fund exit load applies on actual redemptions."}}
+]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; Step-Up SIP</div>
+  <h1>Step-Up SIP Calculator</h1>
+  <p class="lede">Calculate the corpus your monthly SIP will build when you <strong>increase it by a fixed percentage every year</strong> — matching how your salary actually grows. Step-up SIP can 2-3x your final corpus over 20 years versus a flat SIP, without you needing to remember to manually raise your contribution.</p>
+
+  <div class="intro-cards">
+    <div class="intro-card"><strong>Why step up?</strong>Your salary grows ~8-12% a year in tier-1 India. If your SIP doesn't grow with it, your savings rate <em>falls</em> every year. Step-up SIP fixes this automatically.</div>
+    <div class="intro-card"><strong>Available on direct apps</strong>Zerodha Coin, Groww, Paytm Money, Kuvera, ET Money — all support automated annual step-up on SIPs.</div>
+    <div class="intro-card"><strong>No extra cost</strong>Step-up SIP does not change expense ratio, exit load, or tax treatment. It's a scheduling feature only.</div>
+  </div>
+
+  <div class="calc">
+    <div>
+      <div class="input-group">
+        <label>Starting monthly SIP <span class="val" id="sipLabel">Rs 10,000</span></label>
+        <input type="range" id="sip" min="500" max="200000" step="500" value="10000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Annual step-up <span class="val" id="stepupLabel">10%</span></label>
+        <input type="range" id="stepup" min="0" max="25" step="1" value="10" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Expected return (annual) <span class="val" id="rateLabel">12%</span></label>
+        <input type="range" id="rate" min="4" max="20" step="0.5" value="12" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Investment period <span class="val" id="yearsLabel">20 years</span></label>
+        <input type="range" id="years" min="1" max="40" step="1" value="20" oninput="calc()">
+      </div>
+    </div>
+    <div class="results">
+      <div class="compare">
+        <div class="compare-card">
+          <div class="ttl">Without step-up</div>
+          <div class="num" id="flatOut">Rs 99,91,500</div>
+        </div>
+        <div class="compare-card boost">
+          <div class="ttl">With step-up</div>
+          <div class="num" id="stepOut">Rs 1,94,84,200</div>
+        </div>
+      </div>
+      <div class="boost-pct" id="boostOut">+95% boost from step-up SIP</div>
+      <div class="result-row"><span class="lbl">Total invested (with step-up)</span><span class="num" id="investedOut">Rs 68,73,000</span></div>
+      <div class="result-row"><span class="lbl">Wealth gained</span><span class="num" id="returnsOut">Rs 1,26,11,200</span></div>
+      <div class="result-row"><span class="lbl">Final monthly SIP (year <span id="finalYearSpan">20</span>)</span><span class="num" id="finalSipOut">Rs 61,159</span></div>
+      <div class="result-row"><span class="lbl">Money multiplier</span><span class="num" id="multiplierOut">2.8x</span></div>
+    </div>
+  </div>
+
+  <div class="yearwise">
+    <h3>Year-wise contribution &amp; corpus growth</h3>
+    <p>How your monthly SIP increases each year, the annual contribution that creates, and the running corpus at the end of each year.</p>
+    <table class="tbl">
+      <thead><tr><th>Year</th><th>Monthly SIP</th><th>This year's contribution</th><th>Total invested</th><th>Corpus (end of year)</th></tr></thead>
+      <tbody id="yearTable"></tbody>
+    </table>
+  </div>
+
+  <div class="cta-block">
+    <h3>Where to start a step-up SIP</h3>
+    <p>Direct mutual fund apps charge zero commission, saving you 1-1.5% annually. Over 20 years that 1% gap eats 15-25% of your corpus — bigger than the step-up benefit itself.</p>
+    <a href="/finance/best-mutual-fund-app/">Compare best mutual fund apps &rsaquo;</a>
+  </div>
+
+  <h2>Related calculators &amp; guides</h2>
+  <div class="related">
+    <a href="/calculators/sip/">Regular SIP Calculator</a>
+    <a href="/calculators/emi/">EMI Calculator</a>
+    <a href="/calculators/fd/">FD Calculator</a>
+    <a href="/calculators/tax/">Tax Calculator</a>
+    <a href="/calculators/retirement/">Retirement Calculator</a>
+    <a href="/blog/best-elss-mutual-funds-india-2026/">Best ELSS Mutual Funds 2026</a>
+    <a href="/blog/ppf-vs-elss-vs-nps-india-2026/">PPF vs ELSS vs NPS</a>
+    <a href="/glossary/#sip">SIP in Glossary</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-block">
+    <details class="faq-item"><summary>What is a step-up SIP?</summary><p>A step-up SIP (also called top-up SIP) increases your monthly investment by a fixed percentage every year — usually 5-15% — to match your annual salary growth. It compounds your wealth much faster than a flat SIP because each year you contribute more capital that itself compounds over remaining years.</p></details>
+    <details class="faq-item"><summary>How much can a 10% annual step-up grow my corpus?</summary><p>At 12% annual returns over 20 years, a Rs 10,000 monthly SIP grows to about <strong>Rs 99 lakh</strong> as a flat SIP, but to about <strong>Rs 1.95 crore</strong> with a 10% annual step-up — nearly double, for the same starting commitment. Try the slider above to see your own numbers.</p></details>
+    <details class="faq-item"><summary>Is step-up SIP better than regular SIP?</summary><p>For salaried Indians, yes — step-up SIP matches your investing capacity to your salary growth. A 10% step-up roughly tracks typical annual increments in tier-1 Indian jobs (IT, finance, consulting). The result is a much larger final corpus without you having to remember to manually increase your SIP each year.</p></details>
+    <details class="faq-item"><summary>How do I activate step-up SIP in my mutual fund?</summary><p>Most direct mutual fund apps — Zerodha Coin, Groww, Paytm Money, Kuvera, ET Money — offer a step-up toggle when you create an SIP. You set the base amount, the step-up percentage, and the step-up frequency (usually annual). The app handles the increment automatically on your chosen day each year. No paperwork.</p></details>
+    <details class="faq-item"><summary>What step-up percentage should I choose?</summary><p>Match your expected annual salary growth. <strong>Conservative (5-7%):</strong> matches inflation, safer if your income is variable. <strong>Standard (10%):</strong> matches typical Indian salary increments. <strong>Aggressive (15-20%):</strong> only if you have high income visibility and strong promotion track. Going higher than your actual salary growth means a rising savings rate over time — good in theory, harder in practice.</p></details>
+    <details class="faq-item"><summary>Can I pause or modify step-up SIP?</summary><p>Yes. You can pause your SIP anytime (1-6 months on most direct platforms), modify the step-up percentage, or convert to a flat SIP. There is no exit load or penalty on changing SIP parameters — only the standard mutual fund exit load applies on actual redemptions.</p></details>
+    <details class="faq-item"><summary>How is step-up SIP corpus calculated?</summary><p>For each year y from 1 to n: monthly SIP = base × (1 + step-up)^(y-1). For each month within that year, corpus is updated as corpus = (corpus + monthly SIP) × (1 + monthly rate), where monthly rate = annual rate / 12. The calculator iterates month-by-month for accuracy rather than using the closed-form approximation, so the numbers match what mutual fund apps actually show.</p></details>
+    <details class="faq-item"><summary>How are step-up SIP returns taxed in India?</summary><p>Step-up SIP is taxed identically to regular SIP. Equity mutual funds: 12.5% LTCG tax on gains above Rs 1.25 lakh per year (after 1-year holding). Debt funds: taxed at slab rate from FY24 onwards. ELSS step-up SIP: 3-year lock-in applies to each instalment separately, including the stepped-up portions.</p></details>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> &middot; <a href="/methodology/" style="color:var(--accent);text-decoration:none">Methodology</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function fmt(n){return 'Rs '+Math.round(n).toLocaleString('en-IN')}
+function fmtCompact(n){
+  if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(2) + ' Cr';
+  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(2) + ' L';
+  return fmt(n);
+}
+function calc(){
+  var sip = parseFloat(document.getElementById('sip').value);
+  var rate = parseFloat(document.getElementById('rate').value);
+  var years = parseFloat(document.getElementById('years').value);
+  var stepup = parseFloat(document.getElementById('stepup').value);
+  document.getElementById('sipLabel').textContent = fmt(sip);
+  document.getElementById('rateLabel').textContent = rate + '%';
+  document.getElementById('yearsLabel').textContent = years + (years === 1 ? ' year' : ' years');
+  document.getElementById('stepupLabel').textContent = stepup + '%';
+  document.getElementById('finalYearSpan').textContent = years;
+
+  var monthlyRate = rate / 12 / 100;
+
+  // With step-up
+  var stepCorpus = 0, stepInvested = 0, currentSIP = sip;
+  var rows = [];
+  for (var y = 0; y < years; y++) {
+    var yearStartCorpus = stepCorpus;
+    var yearContribution = 0;
+    for (var m = 0; m < 12; m++) {
+      stepCorpus = (stepCorpus + currentSIP) * (1 + monthlyRate);
+      stepInvested += currentSIP;
+      yearContribution += currentSIP;
+    }
+    rows.push({year: y+1, monthly: currentSIP, contribution: yearContribution, totalInvested: stepInvested, corpus: stepCorpus});
+    currentSIP = currentSIP * (1 + stepup/100);
+  }
+  var finalSIP = sip * Math.pow(1 + stepup/100, years - 1);
+
+  // Without step-up (flat baseline)
+  var flatCorpus = 0;
+  var flatSIP = sip;
+  for (var y2 = 0; y2 < years; y2++) {
+    for (var m2 = 0; m2 < 12; m2++) {
+      flatCorpus = (flatCorpus + flatSIP) * (1 + monthlyRate);
+    }
+  }
+
+  var boostPct = flatCorpus > 0 ? ((stepCorpus / flatCorpus) - 1) * 100 : 0;
+  var multiplier = stepInvested > 0 ? stepCorpus / stepInvested : 0;
+
+  document.getElementById('flatOut').textContent = fmtCompact(flatCorpus);
+  document.getElementById('stepOut').textContent = fmtCompact(stepCorpus);
+  document.getElementById('investedOut').textContent = fmtCompact(stepInvested);
+  document.getElementById('returnsOut').textContent = fmtCompact(stepCorpus - stepInvested);
+  document.getElementById('finalSipOut').textContent = fmt(finalSIP);
+  document.getElementById('multiplierOut').textContent = multiplier.toFixed(1) + 'x';
+  if (stepup === 0) {
+    document.getElementById('boostOut').textContent = 'Set step-up > 0% to see the boost';
+    document.getElementById('boostOut').style.background = '#94a3b8';
+  } else {
+    document.getElementById('boostOut').textContent = '+' + boostPct.toFixed(0) + '% boost from step-up SIP';
+    document.getElementById('boostOut').style.background = '#16a34a';
+  }
+
+  // Year-wise table (cap at 25 rows max for readability — show first 5, last 5 for longer)
+  var tbody = document.getElementById('yearTable');
+  var displayRows = rows.length <= 25 ? rows : rows.slice(0, 12).concat([{ellipsis: true}]).concat(rows.slice(-8));
+  tbody.innerHTML = displayRows.map(function(r){
+    if (r.ellipsis) return '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);font-style:italic;font-weight:400">&hellip; intermediate years collapsed &hellip;</td></tr>';
+    return '<tr><td>Year ' + r.year + '</td><td>' + fmt(r.monthly) + '</td><td>' + fmt(r.contribution) + '</td><td>' + fmt(r.totalInvested) + '</td><td>' + fmtCompact(r.corpus) + '</td></tr>';
+  }).join('');
+
+  if (typeof gtag === 'function') gtag('event', 'sip_stepup_calc', {sip: sip, stepup: stepup, years: years});
+}
+calc();
+</script>
+</body>
+</html>

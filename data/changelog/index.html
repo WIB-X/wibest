@@ -56,6 +56,21 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.25</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">tool</span> Launched <a href="/calculators/sip-step-up/">/calculators/sip-step-up/</a> — dedicated Step-Up SIP calculator</h3>
+    <ul>
+      <li><strong>Side-by-side comparison</strong>: corpus with step-up vs flat SIP, plus a "+X% boost from step-up SIP" callout. At default 10K monthly / 10% step-up / 12% return / 20 years, shows Rs 99 lakh (flat) vs Rs 1.95 crore (stepped) — nearly 2x boost.</li>
+      <li><strong>Year-wise table</strong>: shows monthly SIP per year, that year's total contribution, cumulative invested, and end-of-year corpus. Auto-collapses middle rows for long horizons (years &gt; 25).</li>
+      <li><strong>Final monthly SIP output</strong>: e.g., a Rs 10K SIP with 10% step-up becomes Rs 61K/month by year 20 — useful for users to gut-check whether their projected income can sustain the step-up.</li>
+      <li><strong>WebApplication + FAQPage schema</strong> with 6 questions (what is step-up SIP, how much corpus gain, vs regular SIP, how to activate, what % to choose, pause/modify) — all targeting Position-0 / People-Also-Ask boxes.</li>
+      <li><strong>news_keywords</strong> for "step up SIP calculator, top up SIP calculator India, annual SIP increase calculator, mutual fund step up calculator 2026" — ~22K/mo India search volume.</li>
+      <li>Cross-linked from /calculators/sip/ (CTA block) and added to /calculators/ index grid. Priority 0.85 in sitemap-core.xml.</li>
+      <li>GA event <code>sip_stepup_calc</code> fired on each calculation with sip/stepup/years as params.</li>
+      <li><strong>Why a dedicated page (vs just the step-up slider in /calculators/sip/):</strong> "step up SIP calculator" is its own exact-match query. A dedicated page wins the SERP for it; a slider inside the generic SIP page doesn't. Same data, different surface.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.24</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag fix">seo</span> Google News readiness — NewsArticle schema + RSS hardening across all 10 reports</h3>
     <ul>
