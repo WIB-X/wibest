@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Are You Financially Fit? — Free India Financial Health Assessment 2026 | WIB</title>
+<meta name="description" content="Free comprehensive financial fitness assessment for India. Enter income, expenses, savings, assets, debts — get a personalized score, big-ticket purchase readiness (bike/car/home), retirement adequacy, monthly/daily safe spend, and step-by-step action plan.">
+<meta name="news_keywords" content="financial fitness calculator India, financial health score India, am I financially ready, financial planning calculator India 2026, retirement readiness India, net worth calculator India">
+<link rel="canonical" href="https://wibest.in/financial-fitness/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Are You Financially Fit? — Free India Assessment 2026">
+<meta property="og:description" content="Comprehensive financial health score + big-ticket purchase readiness + step-by-step action plan.">
+<meta property="og:url" content="https://wibest.in/financial-fitness/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="date-reviewed" content="2026-05-06">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:1140px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:42px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px;background:linear-gradient(135deg,#16a34a,#0891b2,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.65;margin-bottom:30px;max-width:850px}
+
+/* Layout */
+.layout{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+
+/* Input sections */
+.section{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-bottom:18px}
+.section h2{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+.section h2 .ic{font-size:22px}
+.section .desc{font-size:13px;color:var(--text-muted);margin:0 0 18px;line-height:1.55}
+.input-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.input-grid.cols-2{grid-template-columns:1fr 1fr}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.field input,.field select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text-primary);font-family:inherit;font-size:14.5px;font-variant-numeric:tabular-nums}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent)}
+.field .hint{font-size:11px;color:var(--text-muted);margin-top:3px}
+.asset-row{display:grid;grid-template-columns:1fr 130px;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);align-items:center}
+.asset-row:last-child{border-bottom:none}
+.asset-row .label{font-size:14px;color:var(--text-primary)}
+.asset-row .label .sub{font-size:11.5px;color:var(--text-muted);display:block;margin-top:2px}
+.asset-row input{padding:8px 10px;font-size:13.5px;text-align:right}
+
+/* Sidebar score card */
+.sidebar{position:sticky;top:90px}
+.score-card{padding:24px;background:linear-gradient(135deg,#ecfdf5,#eff6ff,#faf5ff);border:1px solid var(--border);border-radius:14px;text-align:center}
+[data-theme="dark"] .score-card{background:linear-gradient(135deg,#064e3b,#1e293b,#312e81)}
+.score-card .ttl{font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+.score-card .score{font-family:Outfit,sans-serif;font-size:64px;font-weight:900;letter-spacing:-0.03em;line-height:1;margin:8px 0}
+.score-card .score.A{color:#16a34a}.score-card .score.B{color:#0891b2}.score-card .score.C{color:#d97706}.score-card .score.D{color:#dc2626}
+.score-card .verdict{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:4px 0 14px}
+.score-card .grade-band{font-size:12px;color:var(--text-muted);padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--border)}
+.mini-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;font-size:13px}
+.mini-row .lbl{color:var(--text-secondary)}
+.mini-row .num{font-weight:800;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.mini-row.good .num{color:#16a34a}.mini-row.bad .num{color:#dc2626}.mini-row.warn .num{color:#d97706}
+
+/* Results below */
+.results-wrap{margin-top:36px}
+.results-wrap > h2{font-family:Outfit,sans-serif;font-size:28px;font-weight:900;letter-spacing:-0.02em;margin:0 0 8px}
+.results-wrap > p.intro{font-size:14.5px;color:var(--text-muted);margin:0 0 24px;line-height:1.6}
+
+/* Strengths/weaknesses */
+.sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
+@media(max-width:768px){.sw-grid{grid-template-columns:1fr}}
+.sw-card{padding:22px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.sw-card h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.sw-card.good h3{color:#15803d}.sw-card.bad h3{color:#991b1b}
+[data-theme="dark"] .sw-card.good h3{color:#86efac}
+[data-theme="dark"] .sw-card.bad h3{color:#fca5a5}
+.sw-card ul{margin:0;padding:0;list-style:none}
+.sw-card li{padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;line-height:1.55;color:var(--text-secondary)}
+.sw-card li:last-child{border-bottom:none}
+.sw-card li strong{color:var(--text-primary);display:block;font-family:Outfit,sans-serif;margin-bottom:2px}
+
+/* Readiness cards */
+.readiness-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:30px}
+.r-card{padding:20px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;border-left:5px solid #94a3b8}
+.r-card.ready{border-left-color:#16a34a}.r-card.soon{border-left-color:#d97706}.r-card.notyet{border-left-color:#dc2626}
+.r-card .head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.r-card h3{font-family:Outfit,sans-serif;font-size:16px;font-weight:800;margin:0;display:flex;align-items:center;gap:8px}
+.r-card .status{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:6px}
+.r-card.ready .status{background:#dcfce7;color:#15803d}
+.r-card.soon .status{background:#fef3c7;color:#92400e}
+.r-card.notyet .status{background:#fee2e2;color:#991b1b}
+[data-theme="dark"] .r-card.ready .status{background:#14532d;color:#bbf7d0}
+[data-theme="dark"] .r-card.soon .status{background:#78350f;color:#fde68a}
+[data-theme="dark"] .r-card.notyet .status{background:#7f1d1d;color:#fecaca}
+.r-card p{font-size:13px;line-height:1.55;color:var(--text-secondary);margin:0 0 8px}
+.r-card .when{font-family:Outfit,sans-serif;font-weight:800;color:var(--text-primary);font-size:14px;margin-top:4px}
+
+/* Allowances */
+.allowances{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+@media(max-width:640px){.allowances{grid-template-columns:1fr}}
+.a-card{padding:22px;background:linear-gradient(135deg,var(--bg-card),var(--bg));border:1px solid var(--border);border-radius:12px;text-align:center}
+.a-card .lbl{font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.a-card .big{font-family:Outfit,sans-serif;font-size:24px;font-weight:900;color:var(--accent);letter-spacing:-0.02em}
+.a-card .sub{font-size:12px;color:var(--text-secondary);margin-top:4px;line-height:1.5}
+
+/* Asset allocation */
+.alloc{padding:22px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:24px}
+.alloc h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin:0 0 4px}
+.alloc > p{font-size:13px;color:var(--text-muted);margin:0 0 16px;line-height:1.55}
+.alloc-row{display:grid;grid-template-columns:130px 1fr 80px 80px;gap:10px;padding:6px 0;font-size:13px;align-items:center}
+.alloc-row .name{font-weight:700;color:var(--text-primary)}
+.alloc-row .bar{height:10px;background:var(--bg-secondary);border-radius:5px;overflow:hidden;display:flex}
+.alloc-row .bar-fill{height:100%}
+.alloc-row .bar-actual{background:#0891b2}
+.alloc-row .bar-target{background:repeating-linear-gradient(90deg,rgba(150,150,150,.3),rgba(150,150,150,.3) 4px,transparent 4px,transparent 8px)}
+.alloc-row .pct{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.alloc-row .delta{text-align:right;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.alloc-row .delta.up{color:#dc2626}.alloc-row .delta.down{color:#16a34a}.alloc-row .delta.ok{color:#16a34a}
+@media(max-width:640px){.alloc-row{grid-template-columns:90px 1fr 60px}}
+
+/* Action plan */
+.plan{padding:24px 26px;background:linear-gradient(to right,#ecfdf5,transparent 80%);border:1px solid var(--border);border-radius:12px;border-left:5px solid #16a34a;margin-bottom:24px}
+[data-theme="dark"] .plan{background:linear-gradient(to right,#064e3b,transparent 80%)}
+.plan h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 4px}
+.plan > p{font-size:13.5px;color:var(--text-muted);margin:0 0 16px;line-height:1.55}
+.plan-step{display:grid;grid-template-columns:32px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+.plan-step:last-child{border-bottom:none}
+.plan-step .num{font-family:Outfit,sans-serif;font-size:18px;font-weight:900;color:#16a34a;line-height:1.2}
+.plan-step .body strong{display:block;font-family:Outfit,sans-serif;font-size:15px;color:var(--text-primary);margin-bottom:4px}
+.plan-step .body p{margin:0;font-size:13.5px;color:var(--text-secondary);line-height:1.6}
+
+/* Books / motivation */
+.books{padding:24px 26px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:24px}
+.books h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin:0 0 4px}
+.books > p{font-size:13px;color:var(--text-muted);margin:0 0 18px;line-height:1.55}
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.book{padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;gap:8px}
+.book h4{font-family:Outfit,sans-serif;font-size:14px;font-weight:800;margin:0;line-height:1.3}
+.book .auth{font-size:11.5px;color:var(--text-muted);font-weight:600}
+.book p{font-size:12.5px;line-height:1.5;color:var(--text-secondary);margin:0;flex:1}
+.book a{display:inline-block;padding:6px 12px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:6px;text-decoration:none;font-size:12px;font-weight:800;align-self:flex-start;text-align:center}
+
+/* Compounding motivator */
+.motivate{padding:22px 26px;background:linear-gradient(135deg,#312e81,#1e3a8a);color:#fff;border-radius:12px;margin-bottom:24px}
+.motivate h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 8px;color:#fff}
+.motivate p{margin:0 0 8px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.92)}
+.motivate .stat{display:inline-block;padding:6px 12px;background:rgba(255,255,255,.15);border-radius:6px;font-family:Outfit,sans-serif;font-weight:800;margin:4px 4px 0 0;font-size:13.5px}
+
+/* Misc */
+.disclaimer{margin-top:18px;padding:14px 18px;background:#eff6ff;border-left:4px solid #2563eb;border-radius:0 8px 8px 0;font-size:13px;color:#1e3a8a;line-height:1.55}
+[data-theme="dark"] .disclaimer{background:#1e3a8a;color:#bfdbfe;border-left-color:#60a5fa}
+.related{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.related a{padding:8px 14px;background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:13px;font-weight:600;text-decoration:none}
+h2.sec{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+@media(max-width:640px){h1{font-size:30px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Financial Fitness","item":"https://wibest.in/financial-fitness/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WIB Financial Fitness Assessment","url":"https://wibest.in/financial-fitness/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Comprehensive financial fitness score for Indian households — net worth, emergency fund, savings rate, asset allocation, big-ticket purchase readiness (bike/car/home), and retirement adequacy.","datePublished":"2026-05-06","dateModified":"2026-05-06","inLanguage":"en-IN"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is the financial fitness score calculated?","acceptedAnswer":{"@type":"Answer","text":"Five pillars, each worth 20 points: (1) Emergency fund — 6 months expenses in liquid form. (2) Savings rate — at least 30% of income invested. (3) Insurance adequacy — health cover at least 10x monthly income, term cover at least 10x annual income. (4) Asset diversification — no single category over 60% of net worth. (5) Retirement readiness — current corpus on track to hit 30x annual expenses by retirement age. Total: 0-100 score."}},
+{"@type":"Question","name":"When can I afford to buy a car or home?","acceptedAnswer":{"@type":"Answer","text":"Two checks: (1) Down payment — 20% for home, 30% for car must come from savings without touching emergency fund. (2) Affordability — EMI must not exceed 30% of monthly income, combined with existing EMIs not above 40%. The tool calculates how many months you need to save to meet both thresholds at your current savings rate."}},
+{"@type":"Question","name":"What is a healthy savings rate in India?","acceptedAnswer":{"@type":"Answer","text":"Minimum: 20% of post-tax income (ideal foundation). Target: 30-40% for tier-1 salaried in 30s wanting comfortable retirement. Aggressive: 50%+ if pursuing FIRE (early retirement). Indian average is ~15% — most salaried earners underinvest because lifestyle inflation eats raises."}},
+{"@type":"Question","name":"How much should I have in emergency fund?","acceptedAnswer":{"@type":"Answer","text":"6 months of expenses for stable salaried jobs. 9-12 months for variable income (consultants, business owners, sole earners with dependents). Keep in: 1 month in savings account, 2-3 months in liquid mutual fund or short-term FD, rest in slightly higher-yield debt funds. Never in equity."}},
+{"@type":"Question","name":"What asset allocation should I target?","acceptedAnswer":{"@type":"Answer","text":"Rule of thumb: equity % = 100 minus your age. So at 30: 70% equity, 30% debt/gold. At 50: 50-50. Tweaks for India: keep 10-15% in gold (inflation hedge), 5-10% in international (US stocks), don't count house you live in as investment (it's consumption). The tool suggests deltas from your current allocation."}},
+{"@type":"Question","name":"Is this assessment accurate?","acceptedAnswer":{"@type":"Answer","text":"The fitness score is a high-quality directional indicator using standard personal finance benchmarks (emergency-fund 6 months, savings rate 30%, term cover 10x annual income, 30x retirement corpus). For exact tax planning, retirement modelling, or specific investment advice consult a SEBI-registered financial advisor. The tool is education, not a personalised plan."}}
+]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; Financial Fitness</div>
+  <h1>Are You Financially Fit?</h1>
+  <p class="lede">A complete India financial health check-up in 8 minutes. Enter your income, expenses, savings, assets and debts — get a <strong>0-100 fitness score</strong>, identify exactly where you're strong vs weak, see when you can <strong>afford a bike / car / home</strong>, find out your safe <strong>daily / monthly / yearly spending limit</strong>, and walk away with a <strong>step-by-step action plan</strong> tailored to your numbers. Everything client-side — no signup, nothing saved or sent anywhere.</p>
+
+  <div class="layout">
+    <div>
+      <!-- ============ ABOUT YOU ============ -->
+      <div class="section">
+        <h2><span class="ic">👤</span>About you</h2>
+        <p class="desc">Age and dependents inform every downstream calculation (retirement horizon, insurance needs, savings targets).</p>
+        <div class="input-grid">
+          <div class="field"><label>Current age</label><input type="number" id="age" min="18" max="75" value="30"></div>
+          <div class="field"><label>Retirement age</label><input type="number" id="retAge" min="40" max="80" value="60"></div>
+          <div class="field"><label>Dependents (count)</label><input type="number" id="deps" min="0" max="10" value="0"><div class="hint">Spouse + children + parents you support</div></div>
+          <div class="field"><label>City type</label><select id="cityType"><option value="metro">Metro (Mumbai/Delhi/Bangalore/etc.)</option><option value="tier2">Tier-2 (Pune/Indore/Jaipur/etc.)</option><option value="tier3">Tier-3 (smaller cities)</option></select></div>
+        </div>
+      </div>
+
+      <!-- ============ INCOME & EXPENSES ============ -->
+      <div class="section">
+        <h2><span class="ic">💰</span>Income &amp; expenses (monthly)</h2>
+        <p class="desc">Post-tax take-home and your actual monthly spending. Don't include irregular bonuses in income; do include average monthly EMIs in expenses.</p>
+        <div class="input-grid cols-2">
+          <div class="field"><label>Take-home income (post-tax)</label><input type="number" id="income" min="0" step="1000" value="100000"><div class="hint">If unsure: use <a href="/calculators/ctc/" style="color:var(--accent)">CTC Calculator</a></div></div>
+          <div class="field"><label>Monthly expenses (total)</label><input type="number" id="expenses" min="0" step="1000" value="60000"><div class="hint">Rent + groceries + utilities + EMIs + lifestyle</div></div>
+        </div>
+      </div>
+
+      <!-- ============ ASSETS BY CATEGORY ============ -->
+      <div class="section">
+        <h2><span class="ic">📊</span>Your assets (current value)</h2>
+        <p class="desc">Total value of what you own across each category. Rough estimates are fine — orders of magnitude matter more than precision.</p>
+        <div class="asset-row"><div class="label">Cash &amp; savings account<span class="sub">Liquid, immediately accessible</span></div><input type="number" id="a_cash" min="0" step="5000" value="50000"></div>
+        <div class="asset-row"><div class="label">Fixed deposits<span class="sub">Bank FDs, corporate FDs</span></div><input type="number" id="a_fd" min="0" step="10000" value="100000"></div>
+        <div class="asset-row"><div class="label">Liquid &amp; debt mutual funds<span class="sub">Money market, short-term debt MFs</span></div><input type="number" id="a_debtmf" min="0" step="10000" value="0"></div>
+        <div class="asset-row"><div class="label">Equity mutual funds<span class="sub">Diversified equity, large-cap, ELSS, flexi-cap</span></div><input type="number" id="a_eqmf" min="0" step="10000" value="300000"></div>
+        <div class="asset-row"><div class="label">Indian direct stocks<span class="sub">Nifty, BSE-listed</span></div><input type="number" id="a_stocks" min="0" step="10000" value="0"></div>
+        <div class="asset-row"><div class="label">US / international stocks<span class="sub">Vested, INDmoney, Groww International, etc.</span></div><input type="number" id="a_us" min="0" step="10000" value="0"></div>
+        <div class="asset-row"><div class="label">PPF<span class="sub">Public Provident Fund</span></div><input type="number" id="a_ppf" min="0" step="10000" value="200000"></div>
+        <div class="asset-row"><div class="label">EPF + VPF<span class="sub">Employer + voluntary PF</span></div><input type="number" id="a_epf" min="0" step="10000" value="500000"></div>
+        <div class="asset-row"><div class="label">NPS<span class="sub">Tier I + Tier II combined</span></div><input type="number" id="a_nps" min="0" step="10000" value="0"></div>
+        <div class="asset-row"><div class="label">Gold (physical + SGB + ETF)<span class="sub">Combined market value</span></div><input type="number" id="a_gold" min="0" step="10000" value="100000"></div>
+        <div class="asset-row"><div class="label">Real estate investment<span class="sub">EXCLUDING the home you live in</span></div><input type="number" id="a_re" min="0" step="100000" value="0"></div>
+        <div class="asset-row"><div class="label">Bonds &amp; G-Secs<span class="sub">RBI bonds, SDLs, corporate bonds</span></div><input type="number" id="a_bonds" min="0" step="10000" value="0"></div>
+        <div class="asset-row"><div class="label">Other (crypto, art, commodity)<span class="sub">Any other investment assets</span></div><input type="number" id="a_other" min="0" step="10000" value="0"></div>
+      </div>
+
+      <!-- ============ DEBTS ============ -->
+      <div class="section">
+        <h2><span class="ic">🧾</span>Your debts &amp; EMIs</h2>
+        <p class="desc">Outstanding loan balances (principal still owed). EMIs flow into the expense total above; here we capture the outstanding amount.</p>
+        <div class="input-grid">
+          <div class="field"><label>Home loan outstanding</label><input type="number" id="d_home" min="0" step="100000" value="0"></div>
+          <div class="field"><label>Car loan outstanding</label><input type="number" id="d_car" min="0" step="10000" value="0"></div>
+          <div class="field"><label>Personal loan outstanding</label><input type="number" id="d_pers" min="0" step="10000" value="0"></div>
+          <div class="field"><label>Credit card revolving balance</label><input type="number" id="d_cc" min="0" step="5000" value="0"><div class="hint">Only carry-over, not full monthly spend</div></div>
+          <div class="field"><label>Education loan outstanding</label><input type="number" id="d_edu" min="0" step="10000" value="0"></div>
+          <div class="field"><label>Other debt</label><input type="number" id="d_other" min="0" step="10000" value="0"></div>
+        </div>
+      </div>
+
+      <!-- ============ INSURANCE ============ -->
+      <div class="section">
+        <h2><span class="ic">🛡️</span>Insurance cover</h2>
+        <p class="desc">Sum insured (not premium). Family floater + employer combined for health; standalone term for life.</p>
+        <div class="input-grid cols-2">
+          <div class="field"><label>Health insurance sum insured</label><input type="number" id="ins_health" min="0" step="100000" value="500000"><div class="hint">Per-person or family floater limit</div></div>
+          <div class="field"><label>Term life insurance cover</label><input type="number" id="ins_term" min="0" step="500000" value="0"><div class="hint">Term + ULIPs combined sum-assured</div></div>
+        </div>
+      </div>
+
+      <!-- ============ GOALS ============ -->
+      <div class="section">
+        <h2><span class="ic">🎯</span>Big-ticket goals</h2>
+        <p class="desc">Future purchases you want to make. Leave at 0 if not relevant. Tool tells you when you can afford each.</p>
+        <div class="input-grid">
+          <div class="field"><label>Bike target price (today's rupees)</label><input type="number" id="g_bike" min="0" step="10000" value="150000"></div>
+          <div class="field"><label>Car target price (today's rupees)</label><input type="number" id="g_car" min="0" step="50000" value="1000000"></div>
+          <div class="field"><label>Home target price (today's rupees)</label><input type="number" id="g_home" min="0" step="100000" value="8000000"></div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin:24px 0">
+        <button id="assessBtn" style="padding:14px 32px;background:linear-gradient(135deg,#16a34a,#0891b2);color:#fff;border:none;border-radius:10px;font-family:Outfit,sans-serif;font-weight:800;font-size:16px;cursor:pointer">Get my Financial Fitness Score →</button>
+      </div>
+    </div>
+
+    <!-- ============ SIDEBAR SCORE CARD ============ -->
+    <div class="sidebar">
+      <div class="score-card">
+        <div class="ttl">Live Financial Fitness Score</div>
+        <div class="score A" id="scoreNum">—</div>
+        <div class="verdict" id="scoreVerdict">Enter your numbers</div>
+        <div class="grade-band" id="scoreBand">Out of 100. Updates as you type.</div>
+        <div class="mini-row"><span class="lbl">Net worth</span><span class="num" id="mNetWorth">—</span></div>
+        <div class="mini-row"><span class="lbl">Savings rate</span><span class="num" id="mSavingsRate">—</span></div>
+        <div class="mini-row"><span class="lbl">Emergency fund</span><span class="num" id="mEmergency">—</span></div>
+        <div class="mini-row"><span class="lbl">Debt-to-income</span><span class="num" id="mDebtIncome">—</span></div>
+        <div class="mini-row"><span class="lbl">Equity allocation</span><span class="num" id="mEquityAlloc">—</span></div>
+        <div class="mini-row"><span class="lbl">Retirement track</span><span class="num" id="mRetTrack">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RESULTS BELOW ============ -->
+  <div class="results-wrap">
+    <h2>Your detailed assessment</h2>
+    <p class="intro">Tap "Get my Financial Fitness Score" above to populate this section. Below: strengths, weaknesses, big-ticket purchase readiness, safe spending allowances, asset allocation gap, step-by-step action plan, motivational compounding stats, and curated reading.</p>
+
+    <div class="sw-grid">
+      <div class="sw-card good">
+        <h3>✓ Your strengths</h3>
+        <ul id="strengthsList"><li>Click assess to populate.</li></ul>
+      </div>
+      <div class="sw-card bad">
+        <h3>✗ Focus areas</h3>
+        <ul id="weaknessList"><li>Click assess to populate.</li></ul>
+      </div>
+    </div>
+
+    <h2 class="sec">Big-ticket purchase readiness</h2>
+    <p style="font-size:13.5px;color:var(--text-muted);margin:0 0 16px">For each purchase: do you have enough down payment? Will the EMI fit in your budget without overextending? Answer is colour-coded — go (green), wait (amber), don't yet (red).</p>
+    <div class="readiness-grid" id="readinessGrid"></div>
+
+    <h2 class="sec">Your safe spending allowances</h2>
+    <p style="font-size:13.5px;color:var(--text-muted);margin:0 0 16px">After mandatory savings (emergency, investments, insurance), this is what you can spend without harming long-term goals.</p>
+    <div class="allowances" id="allowanceGrid"></div>
+
+    <div class="alloc" id="allocBlock" style="display:none">
+      <h3>Asset allocation — current vs target</h3>
+      <p>Target uses the rule "equity % = 100 − age" with 10-15% gold, 5-10% international, rest debt. The "Gap" column shows what to add (+) or trim (−) in rupees.</p>
+      <div id="allocRows"></div>
+    </div>
+
+    <div class="plan" id="planBlock" style="display:none">
+      <h3>🚀 Your step-by-step action plan</h3>
+      <p>Personalised to your numbers, ordered by impact. Do step 1 first, then step 2, etc.</p>
+      <div id="planSteps"></div>
+    </div>
+
+    <div class="motivate" id="motivateBlock" style="display:none">
+      <h3>💡 The compounding stat that should motivate you</h3>
+      <p id="motivateText">—</p>
+      <div id="motivateStats"></div>
+    </div>
+
+    <div class="books">
+      <h3>📚 Curated reading for your fitness level</h3>
+      <p>These books cover the exact behaviours and frameworks that move you from average to excellent. Affiliate links — they help support WIB at no cost to you.</p>
+      <div class="book-grid">
+        <div class="book"><h4>The Psychology of Money</h4><div class="auth">Morgan Housel</div><p>Wealth is behavior, not knowledge. 19 essays you'll reread for life. The most-recommended money book of the past decade.</p><a href="https://www.amazon.in/dp/9390166268?tag=wib04-21" target="_blank" rel="noopener sponsored">Buy on Amazon →</a></div>
+        <div class="book"><h4>Let's Talk Money</h4><div class="auth">Monika Halan</div><p>Best India-specific personal finance book. SEBI-registered author. Indian salary, Indian instruments, Indian tax. Start here if Indian.</p><a href="https://www.amazon.in/dp/9353026318?tag=wib04-21" target="_blank" rel="noopener sponsored">Buy on Amazon →</a></div>
+        <div class="book"><h4>Atomic Habits</h4><div class="auth">James Clear</div><p>Money problems are behaviour problems. Atomic Habits is the playbook for the discipline side of fitness. 1% better every day.</p><a href="https://www.amazon.in/dp/1847941834?tag=wib04-21" target="_blank" rel="noopener sponsored">Buy on Amazon →</a></div>
+        <div class="book"><h4>The Almanack of Naval Ravikant</h4><div class="auth">Eric Jorgenson</div><p>Build leverage, own equity, get rich. AngelList founder's framework on wealth and decision-making.</p><a href="https://www.amazon.in/dp/1544514212?tag=wib04-21" target="_blank" rel="noopener sponsored">Buy on Amazon →</a></div>
+        <div class="book"><h4>Your Money or Your Life</h4><div class="auth">Vicki Robin</div><p>Original FIRE-movement book. Calculates how many hours of life each rupee actually costs you. Reframes spending.</p><a href="https://www.amazon.in/dp/0143115766?tag=wib04-21" target="_blank" rel="noopener sponsored">Buy on Amazon →</a></div>
+        <div class="book"><h4>Coffee Can Investing</h4><div class="auth">Saurabh Mukherjea</div><p>Indian equity portfolio construction with high-quality compounders. Specific stock-picking framework, Indian case studies.</p><a href="https://www.amazon.in/dp/0143442252?tag=wib04-21" target="_blank" rel="noopener sponsored">Buy on Amazon →</a></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Educational tool, not financial advice.</strong> The score is a directional indicator based on standard personal finance benchmarks. For tax planning, retirement modelling, or investment advice tailored to your situation, consult a SEBI-registered investment advisor. WIB does not store, transmit, or save any number you enter — calculations run entirely in your browser.
+    </div>
+
+    <h2 class="sec">Related calculators &amp; guides</h2>
+    <div class="related">
+      <a href="/calculators/ctc/">CTC → In-Hand</a>
+      <a href="/calculators/retirement-v2/">Retirement Calculator v2</a>
+      <a href="/calculators/sip/">SIP Calculator</a>
+      <a href="/calculators/sip-step-up/">Step-Up SIP</a>
+      <a href="/calculators/emi-vs-sip/">EMI vs SIP</a>
+      <a href="/calculators/emi/">EMI Calculator</a>
+      <a href="/calculators/fd/">FD Calculator</a>
+      <a href="/tax-planner/">Tax Planner — 28 strategies</a>
+      <a href="/best-books/">Best Books for Wealth &amp; Growth</a>
+      <a href="/companies/">Best Companies to Work For</a>
+    </div>
+
+    <h2 class="sec">Frequently asked questions</h2>
+    <div class="faq-block">
+      <details class="faq-item"><summary>How is the financial fitness score calculated?</summary><p>Five pillars, each worth 20 points: (1) <strong>Emergency fund</strong> — 6 months expenses in liquid form. (2) <strong>Savings rate</strong> — at least 30% of income invested. (3) <strong>Insurance adequacy</strong> — health cover at least 10× monthly income, term cover at least 10× annual income. (4) <strong>Asset diversification</strong> — no single category over 60% of net worth. (5) <strong>Retirement readiness</strong> — current corpus on track to hit 30× annual expenses by retirement age. Total: 0-100 score.</p></details>
+      <details class="faq-item"><summary>When can I afford to buy a car or home?</summary><p>Two checks: (1) <strong>Down payment</strong> — 20% for home, 30% for car, must come from savings without touching emergency fund. (2) <strong>Affordability</strong> — EMI must not exceed 30% of monthly income, combined with existing EMIs not above 40%. The tool calculates how many months you need to save to meet both thresholds at your current savings rate.</p></details>
+      <details class="faq-item"><summary>What is a healthy savings rate in India?</summary><p><strong>Minimum:</strong> 20% of post-tax income (ideal foundation). <strong>Target:</strong> 30-40% for tier-1 salaried in 30s wanting comfortable retirement. <strong>Aggressive:</strong> 50%+ if pursuing FIRE (early retirement). Indian average is ~15% — most salaried earners underinvest because lifestyle inflation eats raises.</p></details>
+      <details class="faq-item"><summary>How much should I have in emergency fund?</summary><p>6 months of expenses for stable salaried jobs. 9-12 months for variable income (consultants, business owners, sole earners with dependents). Keep in: 1 month in savings account, 2-3 months in liquid mutual fund or short-term FD, rest in slightly higher-yield debt funds. Never in equity.</p></details>
+      <details class="faq-item"><summary>What asset allocation should I target?</summary><p>Rule of thumb: <strong>equity % = 100 − your age</strong>. So at 30: 70% equity, 30% debt/gold. At 50: 50-50. Tweaks for India: keep 10-15% in gold (inflation hedge), 5-10% in international (US stocks), don't count house you live in as investment (it's consumption). The tool suggests deltas from your current allocation.</p></details>
+      <details class="faq-item"><summary>Is this assessment accurate?</summary><p>The fitness score is a high-quality directional indicator using standard personal finance benchmarks (emergency-fund 6 months, savings rate 30%, term cover 10× annual income, 30× retirement corpus). For exact tax planning, retirement modelling, or specific investment advice consult a SEBI-registered financial advisor. The tool is education, not a personalised plan.</p></details>
+      <details class="faq-item"><summary>Why doesn't the tool count my home as wealth?</summary><p>The home you live in is consumption (you have to live somewhere). It generates no cash flow and selling it doesn't help retirement unless you downsize. Investment property (rented out, second house, plot) does count as wealth. This avoids the trap of feeling rich on paper while being cash-poor in retirement.</p></details>
+    </div>
+
+    <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> &middot; <a href="/methodology/" style="color:var(--accent);text-decoration:none">Methodology</a></div>
+  </div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function $(id){return document.getElementById(id)}
+function fmt(n){return 'Rs ' + Math.round(n).toLocaleString('en-IN')}
+function fmtC(n){if(n>=10000000)return 'Rs ' + (n/10000000).toFixed(2) + ' Cr'; if(n>=100000)return 'Rs ' + (n/100000).toFixed(2) + ' L'; return fmt(n)}
+function fmtM(n){if(n<1)return Math.round(n*30)+' days'; if(n<12)return n.toFixed(1)+' months'; return (n/12).toFixed(1)+' years'}
+
+function emiCalc(p, r, n){var mr=r/12/100; return p*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1)}
+
+function getInputs(){
+  return {
+    age: +$('age').value || 30,
+    retAge: +$('retAge').value || 60,
+    deps: +$('deps').value || 0,
+    cityType: $('cityType').value,
+    income: +$('income').value || 0,
+    expenses: +$('expenses').value || 0,
+    assets: {
+      cash: +$('a_cash').value || 0,
+      fd: +$('a_fd').value || 0,
+      debtmf: +$('a_debtmf').value || 0,
+      eqmf: +$('a_eqmf').value || 0,
+      stocks: +$('a_stocks').value || 0,
+      us: +$('a_us').value || 0,
+      ppf: +$('a_ppf').value || 0,
+      epf: +$('a_epf').value || 0,
+      nps: +$('a_nps').value || 0,
+      gold: +$('a_gold').value || 0,
+      re: +$('a_re').value || 0,
+      bonds: +$('a_bonds').value || 0,
+      other: +$('a_other').value || 0
+    },
+    debts: {
+      home: +$('d_home').value || 0,
+      car: +$('d_car').value || 0,
+      pers: +$('d_pers').value || 0,
+      cc: +$('d_cc').value || 0,
+      edu: +$('d_edu').value || 0,
+      other: +$('d_other').value || 0
+    },
+    insHealth: +$('ins_health').value || 0,
+    insTerm: +$('ins_term').value || 0,
+    gBike: +$('g_bike').value || 0,
+    gCar: +$('g_car').value || 0,
+    gHome: +$('g_home').value || 0
+  };
+}
+
+function compute(i){
+  var totalAssets = Object.values(i.assets).reduce((a,b)=>a+b,0);
+  var totalDebts = Object.values(i.debts).reduce((a,b)=>a+b,0);
+  var netWorth = totalAssets - totalDebts;
+  var liquid = i.assets.cash + i.assets.fd + i.assets.debtmf;
+  var equityHeld = i.assets.eqmf + i.assets.stocks + i.assets.us + i.assets.epf*0.5 + i.assets.nps*0.6; // EPF ~50% equity (EPS+EPF mix), NPS auto ~60% equity for young
+  var debtHeld = i.assets.fd + i.assets.debtmf + i.assets.ppf + i.assets.epf*0.5 + i.assets.nps*0.4 + i.assets.bonds;
+  var goldHeld = i.assets.gold;
+  var realEstateHeld = i.assets.re;
+  var internationalHeld = i.assets.us;
+
+  var monthlySaving = i.income - i.expenses;
+  var savingsRate = i.income > 0 ? (monthlySaving / i.income) : 0;
+  var emergencyMonths = i.expenses > 0 ? liquid / i.expenses : 0;
+  var debtIncome = i.income > 0 ? totalDebts / (i.income*12) : 0;
+  var annualExp = i.expenses * 12;
+  var equityPct = totalAssets > 0 ? equityHeld / totalAssets : 0;
+
+  // Retirement check (simplified — uses 30x rule)
+  var yearsToRet = Math.max(0, i.retAge - i.age);
+  var futureMonthlyExp = i.expenses * Math.pow(1.06, yearsToRet);  // 6% inflation
+  var futureAnnualExp = futureMonthlyExp * 12;
+  var corpusNeeded = futureAnnualExp * 30;  // 30x rule
+  var projectedCorpus = totalAssets * Math.pow(1.10, yearsToRet) + (monthlySaving>0 ? monthlySaving*12 * ((Math.pow(1.10, yearsToRet)-1)/0.10) : 0);
+  var retirementProgress = corpusNeeded > 0 ? Math.min(1, projectedCorpus / corpusNeeded) : 0;
+
+  // Score (5 pillars, 20 each)
+  var pEmergency = Math.min(20, Math.max(0, (emergencyMonths / 6) * 20));
+  var pSavingsRate = Math.min(20, Math.max(0, (savingsRate / 0.30) * 20));
+  var pInsurance = Math.min(20, Math.max(0,
+    (Math.min(1, i.insHealth / (i.income*10)) * 10) +
+    (Math.min(1, i.insTerm / (i.income*12*10)) * 10)
+  ));
+  // Diversification — penalise if any single category over 60%
+  var allocCats = {
+    Liquid: liquid,
+    Equity: equityHeld,
+    Debt: debtHeld - i.assets.fd - i.assets.debtmf,  // exclude liquid from "debt"
+    Gold: goldHeld,
+    RealEstate: realEstateHeld
+  };
+  var maxPct = totalAssets > 0 ? Math.max(...Object.values(allocCats)) / totalAssets : 0;
+  var pDiversification = totalAssets > 0 ? Math.min(20, Math.max(0, 20 - Math.max(0, maxPct - 0.6) * 50)) : 5;
+  var pRetirement = Math.min(20, Math.max(0, retirementProgress * 20));
+
+  var score = Math.round(pEmergency + pSavingsRate + pInsurance + pDiversification + pRetirement);
+
+  return {
+    totalAssets, totalDebts, netWorth, liquid, equityHeld, debtHeld, goldHeld, realEstateHeld, internationalHeld,
+    monthlySaving, savingsRate, emergencyMonths, debtIncome, annualExp, equityPct,
+    yearsToRet, futureMonthlyExp, futureAnnualExp, corpusNeeded, projectedCorpus, retirementProgress,
+    pEmergency, pSavingsRate, pInsurance, pDiversification, pRetirement, score,
+    allocCats
+  };
+}
+
+function gradeAndVerdict(score){
+  if (score >= 80) return {g:'A', label:'Excellent — keep going', band:'A grade (80-100): You are on a strong financial path. Optimise from here.'};
+  if (score >= 60) return {g:'B', label:'Good — fix 1-2 gaps', band:'B grade (60-79): Solid foundation. 1-2 targeted fixes will move you to A.'};
+  if (score >= 40) return {g:'C', label:'Fair — needs attention', band:'C grade (40-59): Critical gaps exist. Do not make big purchases until score climbs.'};
+  return {g:'D', label:'Needs urgent work', band:'D grade (<40): High financial risk. Focus on emergency fund + insurance before anything else.'};
+}
+
+function updateLive(){
+  var i = getInputs();
+  var r = compute(i);
+  var gv = gradeAndVerdict(r.score);
+  $('scoreNum').textContent = r.score;
+  $('scoreNum').className = 'score ' + gv.g;
+  $('scoreVerdict').textContent = gv.label;
+  $('scoreBand').textContent = gv.band;
+  $('mNetWorth').textContent = fmtC(r.netWorth);
+  $('mNetWorth').parentElement.className = 'mini-row ' + (r.netWorth>0?'good':'bad');
+  $('mSavingsRate').textContent = (r.savingsRate*100).toFixed(0) + '%';
+  $('mSavingsRate').parentElement.className = 'mini-row ' + (r.savingsRate>=0.3?'good':r.savingsRate>=0.15?'warn':'bad');
+  $('mEmergency').textContent = r.emergencyMonths.toFixed(1) + ' mo';
+  $('mEmergency').parentElement.className = 'mini-row ' + (r.emergencyMonths>=6?'good':r.emergencyMonths>=3?'warn':'bad');
+  $('mDebtIncome').textContent = (r.debtIncome*100).toFixed(0) + '%';
+  $('mDebtIncome').parentElement.className = 'mini-row ' + (r.debtIncome<=0.3?'good':r.debtIncome<=0.5?'warn':'bad');
+  $('mEquityAlloc').textContent = (r.equityPct*100).toFixed(0) + '%';
+  var targetEq = Math.max(0, 100 - i.age) / 100;
+  $('mEquityAlloc').parentElement.className = 'mini-row ' + (Math.abs(r.equityPct - targetEq)<0.10?'good':Math.abs(r.equityPct - targetEq)<0.20?'warn':'bad');
+  $('mRetTrack').textContent = (r.retirementProgress*100).toFixed(0) + '%';
+  $('mRetTrack').parentElement.className = 'mini-row ' + (r.retirementProgress>=0.8?'good':r.retirementProgress>=0.5?'warn':'bad');
+}
+
+function renderResults(){
+  var i = getInputs();
+  var r = compute(i);
+  var gv = gradeAndVerdict(r.score);
+
+  // STRENGTHS
+  var strengths = [];
+  if (r.emergencyMonths >= 6) strengths.push({t:'Strong emergency fund', d:'You have ' + r.emergencyMonths.toFixed(1) + ' months of expenses in liquid form. This is the bedrock of financial resilience.'});
+  if (r.savingsRate >= 0.30) strengths.push({t:'Healthy savings rate', d:'Saving ' + (r.savingsRate*100).toFixed(0) + '% of income — well above the Indian average of ~15%.'});
+  if (r.savingsRate >= 0.20 && r.savingsRate < 0.30) strengths.push({t:'Above-average savings rate', d:'Saving ' + (r.savingsRate*100).toFixed(0) + '% beats most peers. Push to 30%+ for tier-1 retirement.'});
+  if (i.insHealth >= i.income*10) strengths.push({t:'Health insurance adequate', d:'Cover of ' + fmtC(i.insHealth) + ' is at or above the 10× monthly income guideline.'});
+  if (i.insTerm >= i.income*12*10) strengths.push({t:'Term life cover adequate', d:'Cover of ' + fmtC(i.insTerm) + ' is at or above the 10× annual income guideline.'});
+  if (r.debtIncome <= 0.30 && r.debtIncome > 0) strengths.push({t:'Low debt burden', d:'Total debts at ' + (r.debtIncome*100).toFixed(0) + '% of annual income — well within safe range (under 30%).'});
+  if (r.debtIncome === 0 && r.totalDebts === 0) strengths.push({t:'Debt-free', d:'No outstanding loans. Every rupee you earn is yours to deploy.'});
+  if (r.netWorth > i.income*12*2) strengths.push({t:'Net worth above 2× annual income', d:'Net worth of ' + fmtC(r.netWorth) + ' is solid for your stage.'});
+  if (r.equityPct >= 0.4 && r.equityPct <= 0.8 && i.age < 50) strengths.push({t:'Equity allocation in right band', d:'At ' + (r.equityPct*100).toFixed(0) + '% equity, you\'re capturing long-term wealth creation appropriately for your age.'});
+  if (r.retirementProgress >= 0.7) strengths.push({t:'Retirement on track', d:'Projected corpus covers ' + (r.retirementProgress*100).toFixed(0) + '% of needed — you can compound from here.'});
+  if (i.assets.ppf + i.assets.epf > 100000 || i.assets.nps > 50000) strengths.push({t:'Sovereign-backed retirement instruments active', d:'PPF/EPF/NPS combined giving you tax-free or tax-advantaged compounding.'});
+  if (strengths.length === 0) strengths.push({t:'You\'re here, taking stock', d:'Most people never run this assessment. Self-awareness is the first compound win.'});
+  $('strengthsList').innerHTML = strengths.map(s => '<li><strong>' + s.t + '</strong>' + s.d + '</li>').join('');
+
+  // WEAKNESSES
+  var weaknesses = [];
+  if (r.emergencyMonths < 6) {
+    var need = (6 - r.emergencyMonths) * i.expenses;
+    weaknesses.push({t:'Build emergency fund', d:'You have ' + r.emergencyMonths.toFixed(1) + ' months but need 6. Add ' + fmtC(need) + ' to liquid savings (savings account + liquid mutual fund). At current saving rate, this takes about ' + (r.monthlySaving > 0 ? Math.ceil(need / r.monthlySaving) : '∞') + ' months if you redirect all monthly savings to this first.'});
+  }
+  if (r.savingsRate < 0.20 && i.income > 0) {
+    var need20 = i.income * 0.20 - r.monthlySaving;
+    weaknesses.push({t:'Lift savings rate to 20%+', d:'Current rate ' + (r.savingsRate*100).toFixed(0) + '% is below the minimum 20%. Cut expenses by ' + fmtC(need20) + '/month or earn more — either way, this is the single highest-impact lever for your future.'});
+  }
+  if (i.insHealth < i.income*10 && i.income > 0) {
+    var needHealth = i.income*10 - i.insHealth;
+    weaknesses.push({t:'Increase health insurance', d:'Current cover ' + fmtC(i.insHealth) + ' is below the 10× monthly income (' + fmtC(i.income*10) + ') guideline. A single ICU stay can be Rs 5-15 lakh. Add ' + fmtC(needHealth) + ' of cover via family floater top-up.'});
+  }
+  if (i.insTerm < i.income*12*10 && i.income > 0 && (i.deps > 0 || i.age < 50)) {
+    var needTerm = i.income*12*10 - i.insTerm;
+    weaknesses.push({t:'Add term life insurance', d:'You have ' + fmtC(i.insTerm) + '; need ' + fmtC(i.income*12*10) + ' (10× annual income, especially with ' + i.deps + ' dependents). Pure term insurance costs Rs 12-20k/year for Rs 1 Cr cover at age ' + i.age + '. Avoid ULIPs and endowment plans.'});
+  }
+  if (r.debtIncome > 0.40) weaknesses.push({t:'Debt burden too high', d:'Total debt at ' + (r.debtIncome*100).toFixed(0) + '% of annual income is dangerous. Prioritise high-interest debt first (credit cards at 36-42% → personal loans at 12-18% → others). No new SIPs until this drops below 40%.'});
+  if (r.netWorth < 0) weaknesses.push({t:'Negative net worth', d:'Your debts exceed your assets by ' + fmtC(-r.netWorth) + '. Focus on aggressive debt payoff — even hold off retirement saving briefly. Once net worth turns positive, the compounding flips in your favour.'});
+  if (r.totalAssets > 0 && r.equityPct < 0.3 && i.age < 45) weaknesses.push({t:'Under-invested in equity', d:'Only ' + (r.equityPct*100).toFixed(0) + '% in equity at age ' + i.age + '. Long horizon + low equity = under-compounding. Target ' + (100 - i.age) + '% via index funds (Nifty 50 + Nifty Next 50) for low-cost, diversified growth.'});
+  if (r.totalAssets > 0 && r.equityPct > 0.80 && i.age >= 50) weaknesses.push({t:'Too much equity for your age', d:(r.equityPct*100).toFixed(0) + '% in equity at age ' + i.age + ' is risky for someone close to retirement. A 30-40% drop (which happens) would derail your plan. Gradually shift to 50-60% by retirement.'});
+  if (i.assets.us === 0 && r.totalAssets > 500000) weaknesses.push({t:'No international diversification', d:'All assets in India means full exposure to INR depreciation and India risk. Add 5-10% to US/global equity via Vested, INDmoney, Groww International, or NSE-listed Nasdaq 100 funds.'});
+  if (i.assets.gold === 0 && r.totalAssets > 200000) weaknesses.push({t:'No gold allocation', d:'Gold hedges inflation and INR depreciation. Add 5-10% via Sovereign Gold Bonds (govt-backed, 2.5% interest + price appreciation, tax-free at maturity).'});
+  if (r.retirementProgress < 0.5 && i.age > 35) {
+    var corpusGap = r.corpusNeeded - r.projectedCorpus;
+    var extraSip = corpusGap > 0 ? corpusGap / ((Math.pow(1.10, r.yearsToRet)-1)/0.10) / 12 : 0;
+    weaknesses.push({t:'Retirement gap', d:'Projected corpus covers only ' + (r.retirementProgress*100).toFixed(0) + '% of need. Increase monthly SIP by approximately ' + fmtC(Math.max(0, extraSip)) + ' to bridge the gap. Use our <a href="/calculators/retirement-v2/" style="color:var(--accent);font-weight:600">Retirement v2 Calculator</a> for the full model.'});
+  }
+  if (i.assets.ppf < 50000 && i.assets.nps < 50000) weaknesses.push({t:'Not using tax-advantaged retirement instruments', d:'PPF (sovereign, EEE), NPS Tier I (extra Rs 50k 80CCD(1B) deduction) — both compound tax-free or tax-deferred. Even small monthly contributions add up to 5-10% of retirement corpus over 30 years.'});
+  if (weaknesses.length === 0) weaknesses.push({t:'No critical gaps', d:'Your fundamentals are in order. Now optimise — refine asset allocation, automate SIPs, lock in the right tax regime, and stay the course.'});
+  $('weaknessList').innerHTML = weaknesses.map(w => '<li><strong>' + w.t + '</strong>' + w.d + '</li>').join('');
+
+  // READINESS CARDS
+  function readinessCard(name, ic, price, downPct, tenure, loanRate) {
+    if (price <= 0) return '';
+    var dp = price * downPct;
+    var loanAmt = price - dp;
+    var emi = emiCalc(loanAmt, loanRate, tenure*12);
+    var maxEmi = i.income * 0.30;  // 30% of income max
+    var totalCurrentEMIs = 0; // we don't track current EMIs separately; ok
+    var existingLiquid = r.liquid;
+    var emergencyReserve = i.expenses * 6;
+    var availableForDP = Math.max(0, existingLiquid - emergencyReserve);
+    var dpReady = availableForDP >= dp;
+    var emiOk = emi <= maxEmi && r.monthlySaving > emi*0.5; // EMI fits in saving capacity
+    var status, statusLabel, narrative, when;
+    var monthsToReady = r.monthlySaving > 0 ? Math.max(0, (dp + emergencyReserve - existingLiquid) / r.monthlySaving) : Infinity;
+    if (dpReady && emiOk) {
+      status = 'ready'; statusLabel = '✓ Ready';
+      narrative = 'You can buy this <strong>now</strong>. Down payment ' + fmtC(dp) + ' available from liquid (without breaking emergency fund), EMI ' + fmt(emi) + ' fits within 30% of income.';
+      when = 'Ready today';
+    } else if (!dpReady && emiOk) {
+      status = monthsToReady < 12 ? 'soon' : 'notyet';
+      statusLabel = monthsToReady < 12 ? '⌛ Wait a few months' : '✗ Wait longer';
+      narrative = 'EMI fits your budget, but down payment of ' + fmtC(dp) + ' would dip into emergency fund. Save ' + fmtC(dp - availableForDP) + ' more first.';
+      when = isFinite(monthsToReady) ? 'Ready in ' + fmtM(monthsToReady) + ' if you keep current saving rate' : 'Increase savings first';
+    } else if (dpReady && !emiOk) {
+      status = 'notyet'; statusLabel = '✗ Not yet';
+      narrative = 'You have the down payment, but EMI ' + fmt(emi) + ' exceeds your safe monthly limit of ' + fmt(maxEmi) + ' (30% of income). Either pick a cheaper option or grow your income.';
+      when = 'Lower price target OR boost income';
+    } else {
+      status = monthsToReady < 24 ? 'soon' : 'notyet';
+      statusLabel = monthsToReady < 24 ? '⌛ Plan ahead' : '✗ Not yet';
+      narrative = 'Both gaps: need ' + fmtC(dp - availableForDP) + ' more down payment AND EMI ' + fmt(emi) + ' is over your safe limit. Consider a cheaper option or delay.';
+      when = isFinite(monthsToReady) ? 'Down payment ready in ' + fmtM(monthsToReady) : 'Increase income/savings first';
+    }
+    return '<div class="r-card ' + status + '">' +
+      '<div class="head"><h3>' + ic + ' ' + name + '</h3><span class="status">' + statusLabel + '</span></div>' +
+      '<p>' + narrative + '</p>' +
+      '<p style="font-size:12px;color:var(--text-muted);margin:8px 0 0">Price: ' + fmtC(price) + ' · Down payment ' + (downPct*100) + '%: ' + fmtC(dp) + ' · EMI for ' + tenure + ' yrs @ ' + loanRate + '%: ' + fmt(emi) + '/mo</p>' +
+      '<div class="when">' + when + '</div>' +
+    '</div>';
+  }
+  var rGrid = '';
+  rGrid += readinessCard('Bike', '🏍️', i.gBike, 0.20, 3, 12);
+  rGrid += readinessCard('Car', '🚗', i.gCar, 0.30, 5, 9.5);
+  rGrid += readinessCard('Home', '🏠', i.gHome, 0.20, 20, 8.75);
+  if (!rGrid) rGrid = '<div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-style:italic">Add target prices above to see readiness for big-ticket purchases.</div>';
+  $('readinessGrid').innerHTML = rGrid;
+
+  // ALLOWANCES
+  var requiredEmergency = Math.max(0, (i.expenses*6 - r.liquid)/12); // build over 12 months
+  var requiredRetSIP = Math.max(0, (r.corpusNeeded - r.totalAssets * Math.pow(1.10, r.yearsToRet)) / ((Math.pow(1.10, r.yearsToRet)-1)/0.10) / 12);
+  var mandatorySavings = Math.max(0, i.income * 0.20);  // floor 20% savings
+  var insuranceMonthly = Math.max(0, (i.income*10 - i.insHealth) > 0 ? 1500 : 500) + (i.insTerm < i.income*12*10 ? 2000 : 500);  // approx premium hit
+  var safeMonthly = Math.max(0, i.income - mandatorySavings - insuranceMonthly);  // after savings + insurance
+  var safeDaily = safeMonthly / 30;
+  var safeYearly = safeMonthly * 12;
+  $('allowanceGrid').innerHTML =
+    '<div class="a-card"><div class="lbl">Safe daily spend</div><div class="big">' + fmt(safeDaily) + '</div><div class="sub">After 20% mandatory savings + insurance premium reserve</div></div>' +
+    '<div class="a-card"><div class="lbl">Safe monthly spend</div><div class="big">' + fmt(safeMonthly) + '</div><div class="sub">Includes rent, food, lifestyle, EMI but not new savings</div></div>' +
+    '<div class="a-card"><div class="lbl">Safe yearly spend</div><div class="big">' + fmtC(safeYearly) + '</div><div class="sub">Plan vacations, gadgets, festivals within this</div></div>';
+
+  // ALLOCATION
+  if (r.totalAssets > 0) {
+    $('allocBlock').style.display = 'block';
+    var targetEq = Math.max(0, 100 - i.age);
+    var targetDebt = Math.max(0, 100 - targetEq - 15);  // 15% gold + international
+    var targetGold = 10;
+    var targetIntl = 5;
+    var totalAss = r.totalAssets;
+    var current = {
+      Liquid: r.liquid,
+      Equity: r.equityHeld,
+      Debt: r.debtHeld - i.assets.fd - i.assets.debtmf,
+      Gold: r.goldHeld,
+      International: r.internationalHeld,
+      'Real Estate': r.realEstateHeld
+    };
+    var targets = {
+      Liquid: i.expenses * 6,
+      Equity: totalAss * targetEq/100,
+      Debt: totalAss * targetDebt/100,
+      Gold: totalAss * targetGold/100,
+      International: totalAss * targetIntl/100,
+      'Real Estate': 0  // we don't force RE
+    };
+    var rows = '';
+    for (var k in current) {
+      var c = current[k];
+      var t = targets[k];
+      var cp = (c / totalAss * 100);
+      var tp = (t / totalAss * 100);
+      var delta = c - t;
+      var deltaCls = k === 'Real Estate' ? 'ok' : (Math.abs(delta) < totalAss * 0.05 ? 'ok' : (delta > 0 ? 'up' : 'down'));
+      var deltaText = k === 'Real Estate' ? 'flex' : (Math.abs(delta) < totalAss * 0.05 ? 'on target' : (delta > 0 ? '−' + fmtC(Math.abs(delta)) : '+' + fmtC(Math.abs(delta))));
+      rows += '<div class="alloc-row">' +
+        '<div class="name">' + k + '</div>' +
+        '<div class="bar"><div class="bar-fill bar-actual" style="width:' + Math.min(100, cp).toFixed(0) + '%"></div></div>' +
+        '<div class="pct">' + cp.toFixed(0) + '% / ' + tp.toFixed(0) + '%</div>' +
+        '<div class="delta ' + deltaCls + '">' + deltaText + '</div>' +
+      '</div>';
+    }
+    $('allocRows').innerHTML = rows;
+  }
+
+  // ACTION PLAN
+  var steps = [];
+  if (r.emergencyMonths < 6) {
+    steps.push({t:'Build 6-month emergency fund', d:'Open a high-yield savings account or liquid mutual fund (Aditya Birla, Quant, ICICI Liquid). Set auto-transfer of ' + fmt((6*i.expenses - r.liquid)/12) + '/month for 12 months until you hit ' + fmtC(6*i.expenses) + '.'});
+  }
+  if (i.insHealth < i.income*10 && i.income > 0) {
+    steps.push({t:'Buy / increase health insurance', d:'Get a family floater of at least ' + fmtC(i.income*10) + ' from Star Health, HDFC Ergo, or Niva Bupa. Annual premium ~Rs 15-25k for Rs 10L cover at age ' + i.age + '. Cheaper than one ICU stay.'});
+  }
+  if (i.insTerm < i.income*12*10 && i.income > 0 && (i.deps > 0 || i.age < 50)) {
+    steps.push({t:'Buy term life insurance', d:'Pure term plan (not ULIP, not endowment) of ' + fmtC(i.income*12*10) + ' from LIC, HDFC, Max, ICICI Pru. Annual premium ~Rs 12-20k for Rs 1 Cr cover at age ' + i.age + '.'});
+  }
+  if (r.totalDebts > 0 && (i.debts.cc > 0 || i.debts.pers > 0)) {
+    steps.push({t:'Kill high-interest debt first', d:'Credit cards (36-42%) and personal loans (12-18%) destroy compounding. Prepay these BEFORE starting new SIPs. Snowball method: smallest balance first if you need motivation; avalanche (highest rate first) is mathematically faster.'});
+  }
+  if (r.savingsRate < 0.30 && i.income > 0) {
+    steps.push({t:'Lift savings rate to 30%', d:'Track expenses for 2 months (use ET Money or simple sheet). Cut bottom-3 wasteful categories. Automate the additional savings — money you never see can\'t be spent. Even Rs 5k/month more compounds to Rs 17 lakh in 20 years at 12%.'});
+  }
+  if (r.totalAssets > 0 && r.equityPct < 0.4 && i.age < 50) {
+    steps.push({t:'Increase equity allocation', d:'Start or step up SIP in 2-3 low-cost funds: UTI Nifty 50 Index, Parag Parikh Flexi Cap, Nippon Small Cap. Target ' + (100 - i.age) + '% equity over 12-18 months. Use our <a href="/calculators/sip-step-up/" style="color:var(--accent);font-weight:600">Step-Up SIP Calculator</a>.'});
+  }
+  if (i.assets.us === 0 && r.totalAssets > 500000) {
+    steps.push({t:'Add international diversification', d:'5-10% of portfolio in US stocks via Vested, INDmoney, Groww. Or buy NSE-listed Motilal Oswal Nasdaq 100 ETF (no LRS hassle). Hedges INR depreciation and India-specific risk.'});
+  }
+  if (i.assets.gold < r.totalAssets * 0.05 && r.totalAssets > 200000) {
+    steps.push({t:'Add 5-10% gold allocation', d:'Sovereign Gold Bonds: govt-backed, 2.5% annual interest + price appreciation, fully tax-free at maturity. Best gold instrument in India. Don\'t buy physical gold (making charges + storage).'});
+  }
+  if (i.assets.ppf === 0 && i.income > 50000) {
+    steps.push({t:'Open PPF account', d:'Public Provident Fund — 7.1% sovereign tax-free return, 15-year lock-in, qualifies for 80C deduction. Open at SBI/HDFC/ICICI or Post Office. Start with Rs 5,000/month auto-debit.'});
+  }
+  if (i.assets.nps < 50000 && i.income > 0) {
+    steps.push({t:'Contribute to NPS Tier I (Rs 50k)', d:'Section 80CCD(1B) gives extra Rs 50,000 deduction — over and above 80C. Lock-in till 60 but the lowest-fee (0.09%) retirement instrument in India. At 30% slab, saves Rs 15,600 tax annually.'});
+  }
+  if (steps.length === 0) {
+    steps.push({t:'You\'re fundamentals-strong — optimise', d:'Refine asset allocation, automate everything, lock in optimal tax regime, monitor (don\'t fiddle), and consider building real estate or business equity for the next leg.'});
+  }
+  if (steps.length > 0) {
+    $('planBlock').style.display = 'block';
+    $('planSteps').innerHTML = steps.slice(0,7).map((s,idx) => '<div class="plan-step"><div class="num">' + (idx+1) + '</div><div class="body"><strong>' + s.t + '</strong><p>' + s.d + '</p></div></div>').join('');
+  }
+
+  // MOTIVATION (compounding)
+  $('motivateBlock').style.display = 'block';
+  var ageYears = i.retAge - i.age;
+  var rs1000 = 1000 * 12 * ((Math.pow(1.12, ageYears) - 1)/0.12);
+  var rs5000 = rs1000 * 5;
+  var rs10000 = rs1000 * 10;
+  $('motivateText').textContent = 'At your age (' + i.age + ') with ' + ageYears + ' years to retirement at 60, every rupee you invest in equity compounds for that full window. Small amounts become life-changing sums:';
+  $('motivateStats').innerHTML =
+    '<span class="stat">Rs 1,000/mo SIP → ' + fmtC(rs1000) + '</span>' +
+    '<span class="stat">Rs 5,000/mo SIP → ' + fmtC(rs5000) + '</span>' +
+    '<span class="stat">Rs 10,000/mo SIP → ' + fmtC(rs10000) + '</span>' +
+    '<p style="margin:14px 0 0;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.88)">— Assumes 12% CAGR (Indian large-cap historical average). 1% return drop reduces these by 15-25%. Choose low-cost index funds.</p>';
+
+  if (typeof gtag === 'function') gtag('event', 'financial_fitness_assess', {score: r.score, age: i.age});
+  document.getElementById('strengthsList').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Wire up live update
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', updateLive));
+$('assessBtn').addEventListener('click', renderResults);
+updateLive();
+</script>
+</body>
+</html>

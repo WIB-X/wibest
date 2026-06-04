@@ -165,6 +165,7 @@
       '<a href="/tax-planner">Tax Planner</a>',
       '<a href="/best-books">Best Books</a>',
       '<a href="/companies">Best Companies</a>',
+      '<a href="/financial-fitness">Financial Fitness</a>',
       '<a href="/press">Press Kit</a><a href="/press-coverage">Press Coverage</a>',
       '<a href="/connect">Connect</a><a href="/blog">Blog</a>',
       '</div>',

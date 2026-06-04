@@ -56,6 +56,45 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.31</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">tool</span> Launched <a href="/financial-fitness/">/financial-fitness/</a> — the all-in-one India financial health assessment</h3>
+    <ul>
+      <li><strong>Input model</strong> covers everything a personal CA would ask:
+        <ul>
+          <li>About you: age, retirement age, dependents, city type (metro/tier-2/tier-3).</li>
+          <li>Cash flow: monthly take-home income, monthly expenses.</li>
+          <li>Assets across <strong>13 categories</strong>: cash/savings, FD, debt MFs, equity MFs, Indian stocks, US/international, PPF, EPF+VPF, NPS, gold (physical/SGB/ETF), investment real estate, bonds, other (crypto/art).</li>
+          <li>Debts across <strong>6 categories</strong>: home, car, personal, credit card revolving, education, other.</li>
+          <li>Insurance: health cover, term life cover.</li>
+          <li>Goals: bike, car, home target prices.</li>
+        </ul>
+      </li>
+      <li><strong>0-100 Fitness Score</strong> on 5 pillars (20 points each):
+        <ul>
+          <li>Emergency fund (6 months expenses in liquid form)</li>
+          <li>Savings rate (target 30%+)</li>
+          <li>Insurance adequacy (health 10× monthly income, term 10× annual)</li>
+          <li>Asset diversification (no single category &gt; 60%)</li>
+          <li>Retirement readiness (30× rule projection)</li>
+        </ul>
+        Grade bands A (80+), B (60-79), C (40-59), D (&lt;40) with verdict.
+      </li>
+      <li><strong>Live sidebar</strong> updates as user types: net worth, savings rate, emergency fund coverage, debt-to-income, equity allocation, retirement progress — each colour-coded green/amber/red.</li>
+      <li><strong>Strengths + Focus Areas</strong> personalised lists — rupee-specific call-outs like "add Rs X of cover", "save Rs Y/month".</li>
+      <li><strong>Big-ticket readiness cards</strong> for bike, car, home: green ("Ready today") / amber ("Wait X months") / red ("Not yet — here's why"). Computed from down payment availability (without breaking emergency fund) + EMI affordability (under 30% of income).</li>
+      <li><strong>Safe spending allowances</strong> — daily / monthly / yearly limits after mandatory savings + insurance reserve.</li>
+      <li><strong>Asset allocation gap analysis</strong> — current vs target (rule: equity % = 100 − age, plus 10-15% gold, 5-10% international). Shows rupee deltas to add or trim.</li>
+      <li><strong>Step-by-step action plan</strong> — up to 7 personalised actions ranked by impact: build emergency fund, buy term insurance, kill high-interest debt, lift savings rate, increase equity, add international + gold, open PPF/NPS.</li>
+      <li><strong>Compounding motivator</strong> — shows what Rs 1k/5k/10k monthly SIP becomes at the user's specific years-to-retirement window at 12% returns.</li>
+      <li><strong>Curated reading section</strong> with 6 books (Psychology of Money, Let's Talk Money, Atomic Habits, Almanack of Naval, Your Money or Your Life, Coffee Can Investing) — direct Amazon India affiliate links with tag wib04-21.</li>
+      <li><strong>Privacy:</strong> all computation client-side. No numbers saved, transmitted, or sent anywhere.</li>
+      <li>Schema: WebApplication + BreadcrumbList + FAQPage with 6 Q&amp;As. news_keywords meta for "financial fitness calculator India", "am I financially ready", "net worth calculator India", "retirement readiness India".</li>
+      <li>Promoted on homepage trending chip (tri-colour gradient with 💪 marker), added to global footer Open Data column, sitemap-core.xml at priority 0.95.</li>
+      <li><strong>Why this matters:</strong> Every other India personal-finance site offers single-purpose calculators. Most users don't know which one they need. This is the "diagnose-then-prescribe" tool — input everything once, see exactly where you stand on every dimension, get prioritised actions, including the hardest ones (when can you afford that car / home — quantified, not just "save more").</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.30</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag fix">data</span> Fixed blank schools / colleges / cars / bikes / electronics pages — static JSON fallback</h3>
     <ul>
