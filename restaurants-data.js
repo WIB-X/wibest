@@ -496,7 +496,7 @@ window.WIB_RESTAURANTS = [
 {n:"Tiki Bar and Kitchen",c:"Visakhapatnam",cu:["Asian","Continental","Bar"],r:4.3,b:3,a:"Beach Road",v:1,z:"tiki-bar-kitchen-beach-road-visakhapatnam"},
 {n:"Nautica Welcomhotel",c:"Visakhapatnam",cu:["Continental","Asian","Fine Dining"],r:4.2,b:3,a:"Welcomhotel, Beach Road",v:1,z:"nautica-welcomhotel-beach-road-visakhapatnam"},
 {n:"Ulavacharu Vizag",c:"Visakhapatnam",cu:["Andhra","Biryani"],r:4.3,b:2,a:"Siripuram",v:1,z:"ulavacharu-siripuram-visakhapatnam"},
-{n:"Ginger Cafe",c:"Visakhapatnam",cu:["Cafe","Continental"],r:4.1,b:2,a:"Asilmetta",v:1,z:"ginger-cafe-asilmetta-visakhapatnam"}
+{n:"Ginger Cafe",c:"Visakhapatnam",cu:["Cafe","Continental"],r:4.1,b:2,a:"Asilmetta",v:1,z:"ginger-cafe-asilmetta-visakhapatnam"},
 {n:"Wind & Waves",c:"Bhopal",cu:["Multi-Cuisine","Lakeside","Indian"],r:4.5,b:2,a:"Boat Club Road, Shyamla Hills",v:1,z:"wind-and-waves-shyamla-hills-bhopal"},
 {n:"Under The Mango Tree",c:"Bhopal",cu:["North Indian","Mughlai","Continental"],r:4.4,b:2,a:"Jehan Numa Palace Hotel, Shamla Hills",v:1,z:"under-the-mango-tree-jehan-numa-bhopal"},
 {n:"La Kuchina",c:"Bhopal",cu:["Italian","Pizza","Pasta"],r:4.3,b:2,a:"Plot 30, Press Complex, MP Nagar",v:0,z:"la-kuchina-mp-nagar-bhopal"},
