@@ -56,6 +56,46 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.29</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">page</span> Launched <a href="/companies/">/companies/</a> + <a href="/calculators/retirement-v2/">/calculators/retirement-v2/</a></h3>
+    <ul>
+      <li><strong>/companies/</strong>: searchable, filterable, sortable database of <strong>50+ top India employers</strong> across 7 sectors:
+        <ul>
+          <li><strong>IT Services</strong> (10): TCS, Infosys, Wipro, HCL Tech, Tech Mahindra, LTIMindtree, Cognizant India, Accenture India, Capgemini, Mphasis.</li>
+          <li><strong>Product MNCs</strong> (11): Google, Microsoft, Amazon, Meta, Adobe, SAP Labs, Atlassian, Salesforce, Oracle, Apple, Goldman Sachs, JP Morgan.</li>
+          <li><strong>Indian Product/Startup</strong> (12): Flipkart, Swiggy, Zomato, Razorpay, CRED, Zerodha, Freshworks, Zoho, Paytm, PhonePe, Postman, Nykaa, Meesho, Dream11.</li>
+          <li><strong>Banking/NBFC</strong> (7): HDFC, ICICI, Kotak, Axis, SBI, Bajaj Finserv, Bajaj Finance.</li>
+          <li><strong>Consulting</strong> (7): McKinsey, BCG, Bain, Deloitte, PwC, EY, KPMG.</li>
+          <li><strong>Pharma</strong> (4): Sun Pharma, Dr Reddy's, Cipla, Biocon.</li>
+          <li><strong>Manufacturing</strong> (6): Tata Motors, Mahindra, L&amp;T, Reliance, Maruti Suzuki, Tata Steel.</li>
+        </ul>
+      </li>
+      <li>Each company card has: sector, 2-line description, salary bands (Entry 0-2 yrs / Mid 3-7 yrs / Senior 8+ yrs LPA), benefits pills, work-life balance score (1-5 colour-coded), India employee count, hiring outlook, direct careers-page link.</li>
+      <li>Client-side search (real-time filter on name/sector/desc) + 8-tab sector filter + 5-option sort (WLB / senior pay / entry pay / employees / A-Z).</li>
+      <li>Article + BreadcrumbList + FAQPage schema with 6 high-volume Q&amp;As. news_keywords meta targeting "best companies to work for India 2026", "Google India salary", "TCS salary".</li>
+      <li>Promoted on homepage trending chip (cyan-purple gradient with 🏢 marker), added to global footer Open Data column, sitemap-core.xml priority 0.95.</li>
+      <li>Data sources transparency block: indicative ranges from Glassdoor + AmbitionBox + LinkedIn Salary Insights + levels.fyi for tech, late-2025 baseline. No paid placements.</li>
+      <li><br></li>
+      <li><strong>/calculators/retirement-v2/</strong>: deeper retirement modelling than the original /calculators/retirement/:
+        <ul>
+          <li><strong>Two-phase modelling</strong> — accumulation (SIP grows till retirement) AND withdrawal (corpus depletes with inflation-adjusted spending).</li>
+          <li><strong>Bisection-based corpus solver</strong> — finds the corpus that exactly depletes by life expectancy, month-by-month accuracy.</li>
+          <li><strong>Inflation modelling</strong> separately for accumulation and withdrawal phases (default 6% India-realistic).</li>
+          <li><strong>Pre vs post-retirement return split</strong> (default 12% pre / 8% post — reflecting glide path from equity-heavy to debt-heavy).</li>
+          <li><strong>Real-time adequacy verdict</strong> — colour-coded green/amber/red badge: feasibility ratio (required SIP vs current expense) tells user whether the plan is realistic.</li>
+          <li><strong>Longevity stress test</strong> — three scenarios (live to 75 / 85 / 95) show how many years the corpus actually lasts via independent simulation.</li>
+          <li><strong>Existing-corpus credit</strong> — money already saved shown growing separately, gap-to-fill displayed.</li>
+          <li><strong>30x FIRE multiple</strong> output for the FIRE community.</li>
+          <li>Tips section explains why each default differs from popular calculators (6% inflation vs CPI 5%, 80% post-retirement expense vs popular 70%, 3.3% safe withdrawal rate for India vs Trinity 4%).</li>
+        </ul>
+      </li>
+      <li>WebApplication + BreadcrumbList + FAQPage schema with 7 Q&amp;As. Cross-linked from original /calculators/retirement/ (lede now mentions v2).</li>
+      <li>Promoted on homepage trending chip (green-purple gradient with 🏖️), /calculators/ index grid, sitemap-core.xml priority 0.9.</li>
+      <li><strong>Why this matters:</strong> Most India retirement calculators stop at "corpus needed = 30x annual expenses" and don't show whether the corpus actually lasts under realistic withdrawal patterns. Users get a green light from naive calculators and then run out of money at 78. v2 models the depletion dynamics honestly.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.28</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">page</span> Launched <a href="/tax-planner/">/tax-planner/</a> &amp; <a href="/best-books/">/best-books/</a> — comprehensive tax-saving hub + curated reading list</h3>
     <ul>
