@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI vs SIP Opportunity Cost Calculator — Should You Take That Loan? | WIB</title>
+<meta name="description" content="See the real opportunity cost of any EMI — car, bike, home, personal, education. If you SIP'd that EMI amount instead at 12% returns, here's the wealth you'd build. Side-by-side comparison.">
+<meta name="news_keywords" content="EMI vs SIP calculator, EMI opportunity cost calculator India, car loan vs SIP, personal loan vs SIP, home loan vs SIP, should I take a loan India">
+<link rel="canonical" href="https://wibest.in/calculators/emi-vs-sip/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EMI vs SIP Opportunity Cost Calculator">
+<meta property="og:description" content="The real cost of any EMI — what you'd have if you'd SIP'd the same monthly amount instead.">
+<meta property="og:url" content="https://wibest.in/calculators/emi-vs-sip/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="date-reviewed" content="2026-05-06">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:1080px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:34px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;background:linear-gradient(135deg,#dc2626,#16a34a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:15.5px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;max-width:820px}
+.loan-tabs{display:flex;gap:6px;margin-bottom:18px;border-bottom:2px solid var(--border);overflow-x:auto;padding-bottom:1px}
+.loan-tab{padding:10px 16px;font-size:14px;font-weight:700;color:var(--text-muted);background:transparent;border:none;border-bottom:3px solid transparent;cursor:pointer;font-family:inherit;white-space:nowrap;margin-bottom:-2px;display:flex;align-items:center;gap:6px}
+.loan-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.loan-tab .ic{font-size:16px}
+.calc{display:grid;grid-template-columns:1fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px}
+.inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding-bottom:22px;border-bottom:1px solid var(--border)}
+.input-group{margin:0}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.input-group label .val{color:var(--accent);font-weight:700}
+.input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.side{padding:22px;border-radius:12px}
+.side.loan{background:linear-gradient(135deg,#fef2f2,#fef9f3);border:1px solid #fecaca}
+.side.sip{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0}
+[data-theme="dark"] .side.loan{background:linear-gradient(135deg,#450a0a,#78350f);border-color:#7f1d1d}
+[data-theme="dark"] .side.sip{background:linear-gradient(135deg,#064e3b,#1e3a8a);border-color:#065f46}
+.side h2{font-family:Outfit,sans-serif;font-size:16px;font-weight:800;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.side .sub{font-size:12.5px;color:var(--text-muted);margin-bottom:18px;line-height:1.45}
+.side .headline{font-family:Outfit,sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin-bottom:4px}
+.side.loan .headline{color:#dc2626}
+.side.sip .headline{color:#16a34a}
+.side .headline-sub{font-size:13px;color:var(--text-secondary);margin-bottom:18px}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:13.5px;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:none}
+.row .lbl{color:var(--text-secondary)}
+.row .num{font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.verdict{margin-top:26px;padding:22px 26px;border-radius:12px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:5px solid #d97706}
+[data-theme="dark"] .verdict{background:linear-gradient(135deg,#78350f,#92400e);border-left-color:#fbbf24}
+.verdict h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin:0 0 8px;color:#78350f}
+[data-theme="dark"] .verdict h3{color:#fef3c7}
+.verdict p{font-size:14.5px;line-height:1.65;color:#78350f;margin:0}
+[data-theme="dark"] .verdict p{color:#fef3c7}
+.verdict .big-num{font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:#dc2626}
+[data-theme="dark"] .verdict .big-num{color:#fca5a5}
+.guidance{margin-top:30px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.guidance h2{font-family:Outfit,sans-serif;font-size:20px;font-weight:800;margin:0 0 8px}
+.guidance > p{font-size:14px;color:var(--text-muted);margin:0 0 18px;line-height:1.6}
+.guidance .nuance{padding:14px 18px;background:var(--bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:10px;font-size:13.5px;line-height:1.6;color:var(--text-secondary)}
+.guidance .nuance strong{color:var(--text-primary);display:block;margin-bottom:4px;font-family:Outfit,sans-serif;font-size:14px}
+h2.sec{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:14.5px;list-style:none;padding-right:24px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
+.related{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.related a{padding:8px 14px;background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:13px;font-weight:600;text-decoration:none}
+.related a:hover{background:var(--accent);color:#fff}
+.disclaimer{margin-top:18px;padding:14px 18px;background:#eff6ff;border-left:4px solid #2563eb;border-radius:0 8px 8px 0;font-size:13px;color:#1e3a8a;line-height:1.55}
+[data-theme="dark"] .disclaimer{background:#1e3a8a;color:#bfdbfe;border-left-color:#60a5fa}
+@media(max-width:768px){.compare-grid{grid-template-columns:1fr}h1{font-size:24px}.side .headline{font-size:22px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"EMI vs SIP","item":"https://wibest.in/calculators/emi-vs-sip/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WIB EMI vs SIP Opportunity Cost Calculator","url":"https://wibest.in/calculators/emi-vs-sip/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Compare the cost of any EMI against the wealth you'd build by SIPing the same monthly amount. Car, bike, home, personal, and education loans supported.","datePublished":"2026-05-06","dateModified":"2026-05-06","inLanguage":"en-IN"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the opportunity cost of taking an EMI?","acceptedAnswer":{"@type":"Answer","text":"The opportunity cost of an EMI is the wealth you forgo by spending that monthly amount on loan repayment instead of investing it. If you SIP Rs 25,000 monthly at 12% for 5 years instead of paying a car EMI, you'd build Rs 20.5 lakh. That Rs 20.5 lakh is the real cost of the car beyond just the principal and interest paid."}},
+{"@type":"Question","name":"Is taking a car loan worth it if SIP gives 12% returns?","acceptedAnswer":{"@type":"Answer","text":"Mathematically, no — but practically, sometimes yes. SIP returns are not guaranteed; equity can drop 30-40% in any single year. A car loan defers the joy of ownership for 4-5 years. The honest framing: every consumption loan trades future wealth for current utility. Calculate the exact tradeoff above and decide whether the asset's daily utility justifies it."}},
+{"@type":"Question","name":"Should I prepay my home loan or invest in SIP?","acceptedAnswer":{"@type":"Answer","text":"Compare your home loan interest rate (typically 8.5-9.5%) against expected SIP returns (12% long-term equity average). If you're confident in the equity premium and have a 10+ year horizon, SIP wins mathematically. But pre-paying gives risk-free, guaranteed return equal to your loan rate and reduces stress. Most Indian financial planners suggest a 60-40 split — 60% to SIP, 40% to prepayment — for psychological balance plus mathematical efficiency."}},
+{"@type":"Question","name":"Why is SIP better than personal loan repayment in this calculator?","acceptedAnswer":{"@type":"Answer","text":"Personal loans carry 11-18% interest, far above the 12% long-term SIP average. Taking a personal loan means paying interest that exceeds typical investment returns. The mathematical answer is almost always: don't take a personal loan unless it's a true emergency, and if you have an existing one, prepay it before starting new SIPs."}},
+{"@type":"Question","name":"Does this calculator account for tax benefits of home loans?","acceptedAnswer":{"@type":"Answer","text":"The base calculation does not. Home loans in India give Rs 1.5 lakh principal deduction under 80C and Rs 2 lakh interest deduction under section 24(b) for self-occupied property (old regime only). For someone in the 30% slab, this adds Rs 1,05,000 effective annual tax saving — reducing the effective home loan rate by ~1-1.5%. The verdict block above mentions this nuance for home loans specifically."}}
+]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; EMI vs SIP</div>
+  <h1>EMI vs SIP — Opportunity Cost Calculator</h1>
+  <p class="lede">Every EMI has a hidden cost: the <strong>wealth you would have built by investing that same monthly amount instead</strong>. This calculator shows both sides — what the loan really costs you (principal + interest), and what you'd have if you SIP'd the EMI amount at 12% equity returns for the same period. The gap is the real opportunity cost of borrowing.</p>
+
+  <div class="loan-tabs">
+    <button class="loan-tab active" data-loan="home" onclick="setLoan('home')"><span class="ic">🏠</span>Home Loan</button>
+    <button class="loan-tab" data-loan="car" onclick="setLoan('car')"><span class="ic">🚗</span>Car Loan</button>
+    <button class="loan-tab" data-loan="bike" onclick="setLoan('bike')"><span class="ic">🏍️</span>Bike Loan</button>
+    <button class="loan-tab" data-loan="personal" onclick="setLoan('personal')"><span class="ic">💸</span>Personal Loan</button>
+    <button class="loan-tab" data-loan="education" onclick="setLoan('education')"><span class="ic">🎓</span>Education Loan</button>
+  </div>
+
+  <div class="calc">
+    <div class="inputs">
+      <div class="input-group">
+        <label>Loan amount <span class="val" id="amtLabel">Rs 50,00,000</span></label>
+        <input type="range" id="amt" min="50000" max="10000000" step="10000" value="5000000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Interest rate <span class="val" id="rateLabel">8.75%</span></label>
+        <input type="range" id="rate" min="6" max="20" step="0.25" value="8.75" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Tenure <span class="val" id="tenLabel">20 years</span></label>
+        <input type="range" id="tenure" min="1" max="30" step="1" value="20" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>SIP return assumption <span class="val" id="sipLabel">12%</span></label>
+        <input type="range" id="sip" min="4" max="18" step="0.5" value="12" oninput="calc()">
+      </div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="side loan">
+        <h2>💰 Loan Path</h2>
+        <div class="sub">You take the loan, buy the asset now, pay EMI for the full tenure.</div>
+        <div class="headline" id="emiOut">Rs 44,186/mo</div>
+        <div class="headline-sub">Monthly EMI</div>
+        <div class="row"><span class="lbl">Principal repaid</span><span class="num" id="principalOut">Rs 50,00,000</span></div>
+        <div class="row"><span class="lbl">Total interest paid</span><span class="num" id="interestOut">Rs 56,04,569</span></div>
+        <div class="row"><span class="lbl">Total amount paid</span><span class="num" id="totalOut">Rs 1,06,04,569</span></div>
+        <div class="row"><span class="lbl">Interest as % of principal</span><span class="num" id="intPctOut">112%</span></div>
+      </div>
+
+      <div class="side sip">
+        <h2>📈 SIP Alternative</h2>
+        <div class="sub">You SIP the same EMI amount monthly for the same tenure instead.</div>
+        <div class="headline" id="corpusOut">Rs 4,41,03,000</div>
+        <div class="headline-sub">SIP corpus at end of tenure</div>
+        <div class="row"><span class="lbl">Total invested</span><span class="num" id="investedOut">Rs 1,06,04,569</span></div>
+        <div class="row"><span class="lbl">Wealth gained</span><span class="num" id="gainedOut">Rs 3,34,98,431</span></div>
+        <div class="row"><span class="lbl">Money multiplier</span><span class="num" id="multOut">4.2x</span></div>
+        <div class="row"><span class="lbl">vs Loan: net surplus</span><span class="num" id="surplusOut">+Rs 3,35,00,000</span></div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <h3 id="verdictTitle">The honest tradeoff</h3>
+      <p id="verdictBody">A Rs 50 L home loan costs you <span class="big-num">Rs 56 L in interest</span>. Investing the same EMI in SIP at 12% would have built <span class="big-num">Rs 4.4 Cr</span>. <strong>But</strong> — home loans get a Rs 2L/yr interest deduction under section 24(b) and the property typically appreciates 5-8% annually. The real-world tradeoff is closer than these raw numbers suggest. See guidance below.</p>
+    </div>
+  </div>
+
+  <div class="guidance">
+    <h2 id="guidanceTitle">Specific guidance — Home Loan</h2>
+    <p id="guidanceLede">Home loans are India's "good debt" exception. Here's what's different versus a pure SIP comparison.</p>
+    <div id="guidanceItems"></div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Note on assumptions:</strong> SIP at 12% assumes long-term Indian equity average (Nifty 50 ~30-year CAGR). Actual returns can be 0% in any 1-year window and have averaged 11-13% over 15+ year windows. The calculator does not account for tax on long-term capital gains on SIP redemption (12.5% above Rs 1.25L/year exemption), inflation on EMI (which fixed-rate loans benefit from), or asset appreciation on the loan-purchased asset. Treat outputs as a thinking tool, not financial advice.
+  </div>
+
+  <h2 class="sec">Related calculators &amp; guides</h2>
+  <div class="related">
+    <a href="/calculators/emi/">Plain EMI Calculator</a>
+    <a href="/calculators/sip/">SIP Calculator</a>
+    <a href="/calculators/sip-step-up/">Step-Up SIP Calculator</a>
+    <a href="/calculators/ctc/">CTC to In-Hand</a>
+    <a href="/calculators/tax/">Tax Calculator</a>
+    <a href="/calculators/retirement/">Retirement Calculator</a>
+    <a href="/blog/best-home-loan-bank-india/">Best Home Loan Banks</a>
+    <a href="/blog/best-car-under-10-lakh-india/">Best Car Under Rs 10 Lakh</a>
+    <a href="/blog/best-personal-loan-india/">Best Personal Loan Options</a>
+    <a href="/blog/best-education-loan-india/">Best Education Loans</a>
+    <a href="/blog/best-elss-mutual-funds-india-2026/">Best ELSS Mutual Funds</a>
+  </div>
+
+  <h2 class="sec">Frequently asked questions</h2>
+  <div class="faq-block">
+    <details class="faq-item"><summary>What is the opportunity cost of taking an EMI?</summary><p>The opportunity cost of an EMI is the wealth you forgo by spending that monthly amount on loan repayment instead of investing it. If you SIP Rs 25,000 monthly at 12% for 5 years instead of paying a car EMI, you'd build Rs 20.5 lakh. That Rs 20.5 lakh is the real cost of the car beyond just the principal and interest paid.</p></details>
+    <details class="faq-item"><summary>Is taking a car loan worth it if SIP gives 12% returns?</summary><p>Mathematically, no — but practically, sometimes yes. SIP returns are not guaranteed; equity can drop 30-40% in any single year. A car loan defers the joy of ownership for 4-5 years. The honest framing: every consumption loan trades future wealth for current utility. Calculate the exact tradeoff above and decide whether the asset's daily utility justifies it.</p></details>
+    <details class="faq-item"><summary>Should I prepay my home loan or invest in SIP?</summary><p>Compare your home loan interest rate (typically 8.5-9.5%) against expected SIP returns (12% long-term equity average). If you're confident in the equity premium and have a 10+ year horizon, SIP wins mathematically. But pre-paying gives risk-free, guaranteed return equal to your loan rate and reduces stress. Most Indian financial planners suggest a 60-40 split — 60% to SIP, 40% to prepayment — for psychological balance plus mathematical efficiency.</p></details>
+    <details class="faq-item"><summary>Why is SIP better than personal loan repayment in this calculator?</summary><p>Personal loans carry 11-18% interest, far above the 12% long-term SIP average. Taking a personal loan means paying interest that exceeds typical investment returns. The mathematical answer is almost always: don't take a personal loan unless it's a true emergency, and if you have an existing one, prepay it before starting new SIPs.</p></details>
+    <details class="faq-item"><summary>Does this calculator account for tax benefits of home loans?</summary><p>The base calculation does not. Home loans in India give Rs 1.5 lakh principal deduction under 80C and Rs 2 lakh interest deduction under section 24(b) for self-occupied property (old regime only). For someone in the 30% slab, this adds Rs 1,05,000 effective annual tax saving — reducing the effective home loan rate by ~1-1.5%. The guidance block above mentions this nuance for home loans specifically.</p></details>
+    <details class="faq-item"><summary>What about asset appreciation on the loan-purchased item?</summary><p>This matters most for home loans, where Indian real estate has averaged 5-8% appreciation over 20-year windows (location-dependent). For cars and bikes, the asset depreciates 50-70% over the loan tenure — so SIP almost always wins on raw math. The home loan calculator section above includes appreciation guidance.</p></details>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> &middot; <a href="/methodology/" style="color:var(--accent);text-decoration:none">Methodology</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/config.js"></script>
+<script src="/components.js?v=20260505a"></script>
+<script src="/polish.js?v=20260419" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script>
+function fmtINR(n){return 'Rs ' + Math.round(n).toLocaleString('en-IN')}
+function fmtCompact(n){
+  if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(2) + ' Cr';
+  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(2) + ' L';
+  return fmtINR(n);
+}
+function $(id){return document.getElementById(id)}
+
+// Loan presets
+var presets = {
+  home:     {amt: 5000000,  rate: 8.75,  tenure: 20, label: 'Home Loan',     ic: '🏠'},
+  car:      {amt: 800000,   rate: 9.5,   tenure: 5,  label: 'Car Loan',      ic: '🚗'},
+  bike:     {amt: 150000,   rate: 12,    tenure: 3,  label: 'Bike Loan',     ic: '🏍️'},
+  personal: {amt: 500000,   rate: 14,    tenure: 4,  label: 'Personal Loan', ic: '💸'},
+  education:{amt: 1500000,  rate: 10,    tenure: 10, label: 'Education Loan',ic: '🎓'}
+};
+
+var currentLoan = 'home';
+
+function setLoan(type){
+  currentLoan = type;
+  document.querySelectorAll('.loan-tab').forEach(t => t.classList.toggle('active', t.dataset.loan === type));
+  var p = presets[type];
+  $('amt').value = p.amt;
+  $('rate').value = p.rate;
+  $('tenure').value = p.tenure;
+  $('guidanceTitle').textContent = 'Specific guidance — ' + p.label;
+  calc();
+  if (typeof gtag === 'function') gtag('event', 'emi_vs_sip_tab', {loan: type});
+}
+
+function calc(){
+  var amt = +$('amt').value;
+  var rate = +$('rate').value;
+  var tenure = +$('tenure').value;
+  var sipRate = +$('sip').value;
+  $('amtLabel').textContent = fmtINR(amt);
+  $('rateLabel').textContent = rate + '%';
+  $('tenLabel').textContent = tenure + (tenure === 1 ? ' year' : ' years');
+  $('sipLabel').textContent = sipRate + '%';
+
+  // EMI calc
+  var n = tenure * 12;
+  var r = rate / 12 / 100;
+  var emi = amt * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
+  var totalPaid = emi * n;
+  var totalInterest = totalPaid - amt;
+
+  $('emiOut').textContent = fmtINR(emi) + '/mo';
+  $('principalOut').textContent = fmtCompact(amt);
+  $('interestOut').textContent = fmtCompact(totalInterest);
+  $('totalOut').textContent = fmtCompact(totalPaid);
+  $('intPctOut').textContent = ((totalInterest/amt)*100).toFixed(0) + '%';
+
+  // SIP corpus if EMI amount invested instead
+  var sipMR = sipRate / 12 / 100;
+  var corpus = 0;
+  for (var m = 0; m < n; m++){ corpus = (corpus + emi) * (1 + sipMR); }
+  var invested = emi * n;
+  var gained = corpus - invested;
+  var mult = invested > 0 ? corpus / invested : 0;
+  // Net surplus: SIP corpus - what you would have paid in interest (since principal returns either way as asset retained)
+  // Better framing: SIP corpus - total loan cost (since the loan path gives you the asset, SIP path gives you cash)
+  var surplus = corpus - totalPaid;
+
+  $('corpusOut').textContent = fmtCompact(corpus);
+  $('investedOut').textContent = fmtCompact(invested);
+  $('gainedOut').textContent = fmtCompact(gained);
+  $('multOut').textContent = mult.toFixed(1) + 'x';
+  $('surplusOut').textContent = (surplus >= 0 ? '+' : '') + fmtCompact(surplus);
+
+  renderVerdict(amt, totalInterest, corpus, surplus);
+  renderGuidance(currentLoan, amt, emi, totalInterest, corpus);
+
+  if (typeof gtag === 'function') gtag('event', 'emi_vs_sip_calc', {loan: currentLoan, amt: amt, rate: rate, tenure: tenure});
+}
+
+function renderVerdict(amt, totalInterest, corpus, surplus){
+  var loan = currentLoan;
+  var html = '';
+  if (loan === 'home'){
+    html = 'Your home loan of ' + fmtCompact(amt) + ' costs <span class="big-num">' + fmtCompact(totalInterest) + ' in interest</span>. Investing the same EMI in SIP would have built <span class="big-num">' + fmtCompact(corpus) + '</span> over the tenure. <strong>BUT</strong> — home loans get Rs 1.5L (80C) + Rs 2L (24b) annual deductions in old regime, AND your home likely appreciates 5-8%/yr. After tax benefits + appreciation, the real-world gap closes significantly. See guidance below.';
+    $('verdictTitle').textContent = 'Home loan: closer to even than the raw numbers suggest';
+  } else if (loan === 'car') {
+    html = 'Your car loan of ' + fmtCompact(amt) + ' costs <span class="big-num">' + fmtCompact(totalInterest) + ' in interest</span>. Investing the same EMI in SIP would have built <span class="big-num">' + fmtCompact(corpus) + '</span>. Cars depreciate 50-70% over the loan tenure, so unlike home you don\'t retain asset value. The honest framing: every car loan trades approximately <span class="big-num">' + fmtCompact(surplus) + '</span> of future wealth for ' + (+$('tenure').value) + ' years of driving the car now.';
+    $('verdictTitle').textContent = 'Car loan: clear opportunity cost';
+  } else if (loan === 'bike') {
+    html = 'Your bike loan of ' + fmtCompact(amt) + ' costs <span class="big-num">' + fmtCompact(totalInterest) + ' in interest</span>. Investing the same EMI in SIP would have built <span class="big-num">' + fmtCompact(corpus) + '</span>. Bikes are usually a smaller absolute amount but the interest rates (11-13%) exceed SIP returns. Best move: save for 12-18 months, buy bike outright. The mental gap from "having to wait" is usually smaller than the math suggests.';
+    $('verdictTitle').textContent = 'Bike loan: better to save and buy outright';
+  } else if (loan === 'personal') {
+    html = 'Your personal loan of ' + fmtCompact(amt) + ' costs <span class="big-num">' + fmtCompact(totalInterest) + ' in interest</span> at ' + (+$('rate').value) + '% — which <strong>exceeds typical SIP returns</strong>. Investing the EMI in SIP instead would have built <span class="big-num">' + fmtCompact(corpus) + '</span>. <strong>Hard truth:</strong> personal loans at >12% are a wealth-destroyer. If you have one, prepay aggressively before starting any SIPs. If you\'re considering one, the answer is almost always: don\'t.';
+    $('verdictTitle').textContent = 'Personal loan: prepay before SIPing';
+  } else if (loan === 'education') {
+    html = 'Your education loan of ' + fmtCompact(amt) + ' costs <span class="big-num">' + fmtCompact(totalInterest) + ' in interest</span>. SIP alternative builds <span class="big-num">' + fmtCompact(corpus) + '</span>. <strong>But:</strong> education loan interest is 100% deductible under section 80E for 8 years (old + new regime — yes, both). The loan also enables income that would not otherwise exist. Best framing: education loan ROI is judged by salary uplift the degree generates, not opportunity cost vs SIP.';
+    $('verdictTitle').textContent = 'Education loan: judge by salary uplift, not raw math';
+  }
+  $('verdictBody').innerHTML = html;
+}
+
+function renderGuidance(loan, amt, emi, totalInterest, corpus){
+  var html = '';
+  if (loan === 'home') {
+    html = [
+      '<div class="nuance"><strong>Tax break: ~Rs 1,05,000/yr in 30% slab</strong>Section 80C gives Rs 1.5L deduction on principal repayment; section 24(b) gives Rs 2L on interest (self-occupied, old regime). At 30% slab, that\'s Rs 1,05,000 annual tax saving, reducing your effective home loan rate by ~1-1.5%.</div>',
+      '<div class="nuance"><strong>Asset retention vs SIP cash-out</strong>The home is yours after 20 years and likely appreciated 3-5x. The SIP path gives you cash — but you still need to live somewhere. Subtract 20 years of rent from the SIP corpus to compare like-for-like.</div>',
+      '<div class="nuance"><strong>Use SIP to pre-pay strategically</strong>Most Indian financial planners suggest 60-40: SIP for long-term wealth, partial home-loan prepayment to reduce stress. The hybrid path captures most of the SIP upside while reducing interest outgo.</div>',
+      '<div class="nuance"><strong>Lock in rate when low</strong>Home loan rates fluctuate with RBI repo. If rates drop, refinance / negotiate downward. A 1% rate drop on a Rs 50L 20-yr loan saves Rs 7-8 lakh in interest.</div>'
+    ].join('');
+  } else if (loan === 'car') {
+    html = [
+      '<div class="nuance"><strong>No tax benefit (unlike home)</strong>Car loan interest is not deductible for salaried individuals. The full interest cost is borne post-tax.</div>',
+      '<div class="nuance"><strong>Depreciation: 50-70% over 5 years</strong>A Rs 8L car is worth Rs 2.5-4L in 5 years. The asset side of the trade-off shrinks dramatically.</div>',
+      '<div class="nuance"><strong>Car lease as alternative</strong>Some employers offer car lease where ~Rs 30K/mo of CTC is fenced for the lease — fully tax-free since it\'s a fringe benefit. Effective cost is 30-40% lower than buying with loan. Ask HR if your company has a car-lease scheme (TVS, ALD, ARVAL, LeasePlan are typical providers).</div>',
+      '<div class="nuance"><strong>Used car alternative</strong>2-3 year-old cars are 30-50% cheaper with most depreciation already absorbed by the first owner. Cuts the EMI roughly in half. Pair with a small SIP for the saved EMI delta.</div>'
+    ].join('');
+  } else if (loan === 'bike') {
+    html = [
+      '<div class="nuance"><strong>Interest rates highest of any secured loan</strong>Two-wheeler rates run 11-13% in India — close to personal loan territory and well above SIP returns.</div>',
+      '<div class="nuance"><strong>Save for 12-18 months and buy outright</strong>For a Rs 1.5L bike, a Rs 10K monthly SIP for 15 months buys it outright. You forgo only 15 months of riding it vs paying interest for 3 years.</div>',
+      '<div class="nuance"><strong>EV scooters: PM E-DRIVE subsidy</strong>EV scooters get up to Rs 10K subsidy under PM E-DRIVE 2024 scheme (subject to state additions). Effective price drops; loan amount shrinks; opportunity cost matters less.</div>'
+    ].join('');
+  } else if (loan === 'personal') {
+    html = [
+      '<div class="nuance"><strong>Highest-cost retail debt</strong>Personal loan rates (11-18%) exceed any reasonable expected investment return after-tax. Mathematically negative-EV in nearly all cases.</div>',
+      '<div class="nuance"><strong>Cheaper alternatives</strong>For most "personal loan needs" — wedding, renovation, medical — cheaper paths exist: gold loan (8-12%), loan against FD/securities (1-2% above FD rate), loan against PPF (1% above PPF rate), employer salary advance (often zero interest).</div>',
+      '<div class="nuance"><strong>If you already have one: prepay first</strong>Any new SIP started while you carry a >12% personal loan is mathematically dominated by paying down that loan. SIPs come after personal-loan repayment, not in parallel.</div>',
+      '<div class="nuance"><strong>Emergency fund prevents personal loans</strong>The reason most personal loans get taken is the absence of an emergency fund (6 months\' expenses in a liquid debt fund). Build that first; you\'ll never need a personal loan.</div>'
+    ].join('');
+  } else if (loan === 'education') {
+    html = [
+      '<div class="nuance"><strong>Section 80E: interest fully deductible for 8 years</strong>Unlike home loan, education loan interest has NO upper limit on deduction. Available in BOTH old and new regimes (one of the few). At 30% slab, this can reduce effective rate by 3-3.5%.</div>',
+      '<div class="nuance"><strong>ROI is salary uplift, not opportunity cost</strong>A Rs 15L education loan that enables a Rs 8-12 LPA job versus Rs 4-6 LPA without the degree pays back in 3-5 years of salary differential. SIP comparison is the wrong framing.</div>',
+      '<div class="nuance"><strong>Moratorium + step-up repayment</strong>Most education loans have a 6-12 month post-graduation moratorium (interest accrues but no EMI). Start repaying with smaller EMIs during first job, step up as salary grows. Lowers stress without changing math.</div>',
+      '<div class="nuance"><strong>Government schemes</strong>Vidya Lakshmi portal, Padho Pardesh, Dr Ambedkar Central Sector Scheme — interest subsidies for OBC, SC, ST, minority students under various income thresholds. Reduces effective cost materially.</div>'
+    ].join('');
+  }
+  $('guidanceItems').innerHTML = html;
+  $('guidanceLede').textContent = ({
+    home: 'Home loans are India\'s "good debt" exception. Here\'s what\'s different versus a pure SIP comparison.',
+    car: 'Cars depreciate and get no tax break — the cost picture is harsher than home loans.',
+    bike: 'Two-wheeler loans carry the highest secured-loan rates. Saving up usually wins.',
+    personal: 'Personal loans are nearly always mathematically negative. Cheaper alternatives almost always exist.',
+    education: 'Education loans get unique tax treatment and the ROI question is about salary uplift, not SIP comparison.'
+  })[loan];
+}
+
+calc();
+</script>
+</body>
+</html>

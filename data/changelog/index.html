@@ -56,6 +56,33 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.27</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">tool</span> Launched <a href="/calculators/emi-vs-sip/">/calculators/emi-vs-sip/</a> — opportunity-cost calculator no Indian competitor has</h3>
+    <ul>
+      <li><strong>5 loan types in one tool</strong>: Home, Car, Bike, Personal, Education — each with its own preset (loan amount, typical interest rate, tenure). Click a tab and inputs reset to realistic India defaults.</li>
+      <li><strong>Side-by-side comparison</strong>:
+        <ul>
+          <li>Left (red): Loan path — EMI, total principal, total interest, total paid, interest as % of principal.</li>
+          <li>Right (green): SIP path — invest the same EMI monthly at 12% returns for the same tenure; shows corpus, wealth gained, money multiplier, net surplus vs loan.</li>
+        </ul>
+      </li>
+      <li><strong>Per-loan-type verdict block</strong> — different framing for each:
+        <ul>
+          <li><strong>Home loan</strong>: "Closer to even than raw numbers suggest" — explains 80C + 24(b) tax deductions, 5-8% real-estate appreciation, you still need to live somewhere.</li>
+          <li><strong>Car loan</strong>: "Clear opportunity cost" — depreciation 50-70%, suggests car-lease via employer, used-car alternative.</li>
+          <li><strong>Bike loan</strong>: "Save and buy outright" — interest rates 11-13% exceed SIP returns, PM E-DRIVE subsidy mention.</li>
+          <li><strong>Personal loan</strong>: "Prepay before SIPing" — hard truth that 11-18% rates make this negative-EV; gold loan / FD-backed loan / employer advance alternatives.</li>
+          <li><strong>Education loan</strong>: "Judge by salary uplift" — 80E unlimited interest deduction (BOTH regimes), Vidya Lakshmi portal, ROI is degree-enabled income.</li>
+        </ul>
+      </li>
+      <li><strong>Specific guidance section</strong> with 3-4 nuance cards per loan type — actionable items a personal CA would mention but most calculators omit.</li>
+      <li><strong>Schema stack</strong>: WebApplication + BreadcrumbList + FAQPage with 6 Q&amp;As targeting "EMI opportunity cost", "should I take a car loan", "prepay home loan or SIP", "personal loan vs SIP" — all high-intent India finance queries.</li>
+      <li><strong>Cross-linked</strong> from /calculators/emi/ (CTA block with "What if you SIP'd this EMI instead?" pointing here), homepage trending chip (red-green gradient with ⚖️), and /calculators/ index grid. Priority 0.9 in sitemap-core.xml.</li>
+      <li><strong>Why this is novel</strong>: Bankbazaar, ClearTax, Groww, Paisabazaar all have EMI calculators. None show opportunity cost vs SIP. This is a behavior-change tool — many Indians take car/personal loans without considering they're trading future wealth for current utility. The calculator makes the tradeoff explicit and per-loan-type honest (home loan tax breaks; car depreciation; personal loan negative-EV; education loan salary-uplift framing).</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.26</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">tool</span> Launched <a href="/calculators/ctc/">/calculators/ctc/</a> — CTC to in-hand calculator for India + 5 countries</h3>
     <ul>
