@@ -146,8 +146,22 @@ function formatPrice(p){if(!p)return'N/A';if(p>=10000000)return'₹'+(p/10000000
 
 async function loadVehicles(){
   try{
-    const snap=await db.collection('vehicles').get();
-    allVehicles=[];snap.forEach(doc=>{allVehicles.push({id:doc.id,...doc.data()})});
+    // 1. Static JSON cars + bikes (200+ vehicles baked in)
+    let staticVehicles = [];
+    try {
+      const [rc, rb] = await Promise.all([fetch('/data/json/cars.json'), fetch('/data/json/bikes.json')]);
+      if (rc.ok) { const j = await rc.json(); staticVehicles = staticVehicles.concat((j.data || []).map((d,i)=>({id:'static-car-'+i, ...d}))); }
+      if (rb.ok) { const j = await rb.json(); staticVehicles = staticVehicles.concat((j.data || []).map((d,i)=>({id:'static-bike-'+i, ...d}))); }
+    } catch(e) { console.warn('Static vehicles fetch failed', e); }
+    // 2. Firestore as supplement
+    let firestoreVehicles = [];
+    try {
+      const snap = await db.collection('vehicles').get();
+      snap.forEach(doc => firestoreVehicles.push({ id: doc.id, ...doc.data() }));
+    } catch(e) { console.warn('Firestore vehicles fetch failed', e); }
+    // 3. Merge — Firestore overrides static on name collision
+    const fsNames = new Set(firestoreVehicles.map(v => (v.name || '').toLowerCase().trim()));
+    allVehicles = firestoreVehicles.concat(staticVehicles.filter(v => !fsNames.has((v.name || '').toLowerCase().trim())));
     const brands=[...new Set(allVehicles.map(v=>v.brand).filter(Boolean))].sort();
     const brandEl=document.getElementById('brandFilter');brands.forEach(b=>{const o=document.createElement('option');o.value=b;o.textContent=b;brandEl.appendChild(o)});
     const types=[...new Set(allVehicles.map(v=>v.vehicle_type).filter(Boolean))].sort();

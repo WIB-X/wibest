@@ -157,9 +157,21 @@ function brandUrl(brand){var m={"Samsung":"https://www.samsung.com/in/","Apple":
 
 async function loadProducts(){
   try{
-    const snap=await db.collection('electronics').get();
-    allProducts=[];
-    snap.forEach(doc=>{allProducts.push({id:doc.id,...doc.data()})});
+    // 1. Static JSON (187 electronics baked in)
+    let staticProducts = [];
+    try {
+      const r = await fetch('/data/json/electronics.json');
+      if (r.ok) { const j = await r.json(); staticProducts = (j.data || []).map((d,i)=>({id:'static-elec-'+i, ...d})); }
+    } catch(e) { console.warn('Static electronics fetch failed', e); }
+    // 2. Firestore as supplement
+    let firestoreProducts = [];
+    try {
+      const snap = await db.collection('electronics').get();
+      snap.forEach(doc => firestoreProducts.push({ id: doc.id, ...doc.data() }));
+    } catch(e) { console.warn('Firestore electronics fetch failed', e); }
+    // 3. Merge — Firestore overrides static on name collision
+    const fsNames = new Set(firestoreProducts.map(p => (p.name || '').toLowerCase().trim()));
+    allProducts = firestoreProducts.concat(staticProducts.filter(p => !fsNames.has((p.name || '').toLowerCase().trim())));
     // Populate brand filter
     const brands=[...new Set(allProducts.map(p=>p.brand).filter(Boolean))].sort();
     const brandEl=document.getElementById('brandFilter');

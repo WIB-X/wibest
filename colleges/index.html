@@ -132,12 +132,21 @@ function formatFees(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1
 function formatPkg(a){if(!a)return'N/A';if(a>=100000)return(a/100000).toFixed(1)+'L';return a.toString()}
 async function loadColleges(){
   try{
-    // Strict: only items collection where category==='college'.
-    // The legacy 'colleges' collection is intentionally not queried — it
-    // accumulated dupes and stale data from earlier seeders.
-    allColleges = [];
-    const snap2 = await db.collection('items').where('category','==','college').get();
-    snap2.forEach(doc => allColleges.push({id:doc.id, ...doc.data()}));
+    // 1. Static JSON (575 colleges baked in)
+    let staticColleges = [];
+    try {
+      const r = await fetch('/data/json/colleges.json');
+      if (r.ok) { const j = await r.json(); staticColleges = (j.data || []).map((d,i)=>({id:'static-col-'+i, ...d})); }
+    } catch(e) { console.warn('Static colleges fetch failed', e); }
+    // 2. Firestore as supplement
+    let firestoreColleges = [];
+    try {
+      const snap2 = await db.collection('items').where('category','==','college').get();
+      snap2.forEach(doc => firestoreColleges.push({ id: doc.id, ...doc.data() }));
+    } catch(e) { console.warn('Firestore colleges fetch failed', e); }
+    // 3. Merge — Firestore overrides static on name collision
+    const fsNames = new Set(firestoreColleges.map(c => (c.name || '').toLowerCase().trim()));
+    allColleges = firestoreColleges.concat(staticColleges.filter(c => !fsNames.has((c.name || '').toLowerCase().trim())));
     const cities=[...new Set(allColleges.map(c=>c.city).filter(Boolean))].sort();
     const cityEl=document.getElementById('cityFilter');cities.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cityEl.appendChild(o)});
     const streams=[...new Set(allColleges.map(c=>c.stream).filter(Boolean))].sort();

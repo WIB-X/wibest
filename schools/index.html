@@ -166,7 +166,7 @@
 const db = initFirebase();
 let allSchools = [], currentPage = 1;
 const PAGE_SIZE = 18;
-const CACHE_KEY = 'wib_schools_cache';
+const CACHE_KEY = 'wib_schools_cache_v2';
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const BOARD_NAMES = ['CBSE','ICSE','IB','IGCSE','Cambridge','State Board','NIOS'];
 
@@ -207,9 +207,24 @@ async function loadSchools(){
     if(cached){
       allSchools=cached;
     }else{
-      const snap=await db.collection('items').get();
-      allSchools=[];
-      snap.forEach(doc=>{const d=doc.data();if(d.category!=='school')return;allSchools.push({id:doc.id,...d})});
+      // 1. Load static JSON (always works, 420+ schools baked in)
+      let staticSchools = [];
+      try {
+        const r = await fetch('/data/json/schools.json');
+        if (r.ok) {
+          const j = await r.json();
+          staticSchools = (j.data || []).map((d, i) => ({ id: 'static-school-' + i, ...d }));
+        }
+      } catch(e) { console.warn('Static schools fetch failed', e); }
+      // 2. Try Firestore as supplement (newer / admin-added entries)
+      let firestoreSchools = [];
+      try {
+        const snap = await db.collection('items').get();
+        snap.forEach(doc => { const d = doc.data(); if (d.category === 'school') firestoreSchools.push({ id: doc.id, ...d }); });
+      } catch(e) { console.warn('Firestore schools fetch failed', e); }
+      // 3. Merge — Firestore takes precedence on name collision
+      const fsNames = new Set(firestoreSchools.map(s => (s.name || '').toLowerCase().trim()));
+      allSchools = firestoreSchools.concat(staticSchools.filter(s => !fsNames.has((s.name || '').toLowerCase().trim())));
       setCache(allSchools);
     }
     const cities=[...new Set(allSchools.map(s=>s.city).filter(Boolean))].sort();

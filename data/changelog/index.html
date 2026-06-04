@@ -56,6 +56,33 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.30</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag fix">data</span> Fixed blank schools / colleges / cars / bikes / electronics pages — static JSON fallback</h3>
+    <ul>
+      <li><strong>Root cause:</strong> /schools/, /colleges/, /cars/, /electronics/ index pages load data from Firestore (collections <code>items</code>, <code>vehicles</code>, <code>electronics</code>). The seed-data-*.js files containing the actual data were never executed against the live Firestore project — they were authored to be run as admin via the seed UI pages, but the run never happened. Result: Firestore returned empty arrays; pages rendered with zero items.</li>
+      <li><strong>Fix:</strong> Extracted seed data from the JS files into static JSON files at <code>/data/json/</code>:
+        <ul>
+          <li><code>schools.json</code> — 420 schools across 25+ cities (CBSE, ICSE, State Board)</li>
+          <li><code>colleges.json</code> — 575 colleges across 25+ cities (Engineering, Medical, Arts, Commerce)</li>
+          <li><code>cars.json</code> — 117 cars (Maruti, Hyundai, Tata, Mahindra, Toyota, Honda, Kia, MG, etc.)</li>
+          <li><code>bikes.json</code> — 102 two-wheelers (Hero, Honda, TVS, Bajaj, Royal Enfield, KTM, Yamaha, Suzuki, EVs)</li>
+          <li><code>electronics.json</code> — 187 electronics (phones, laptops, TVs, accessories across Apple, Samsung, OnePlus, Xiaomi, Asus, Lenovo, HP, Dell)</li>
+          <li>Total: <strong>1,401 records baked into the deployed bundle</strong>.</li>
+        </ul>
+      </li>
+      <li><strong>Loader change</strong> in each index page:
+        <ul>
+          <li>Loads static JSON first (always works, no network auth, fast CDN cache).</li>
+          <li>Then queries Firestore as a supplement (newer admin-added entries override the static baseline on name collision).</li>
+          <li>Both fetches wrapped in try/catch so neither failure blocks the other.</li>
+        </ul>
+      </li>
+      <li><strong>Cache busted</strong> — schools page sessionStorage key bumped <code>wib_schools_cache</code> → <code>wib_schools_cache_v2</code> so users with stale empty caches get fresh data.</li>
+      <li><strong>Why this approach:</strong> Static JSON is the simplest, most reliable serving path on GitHub Pages. Firestore stays as a future-extension point for admin-added items. Avoids the bootstrap problem where the site shows blank until someone manually runs admin seeders.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.29</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">page</span> Launched <a href="/companies/">/companies/</a> + <a href="/calculators/retirement-v2/">/calculators/retirement-v2/</a></h3>
     <ul>
