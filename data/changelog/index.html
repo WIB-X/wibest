@@ -56,6 +56,36 @@ h1{font-family:Outfit,sans-serif;font-size:38px;font-weight:900;letter-spacing:-
   <p class="lede">Versioned change log for WIB's open datasets. Useful if you cached a CSV/JSON and want to know what's changed before re-pulling. Versions follow <code>YYYY-MM-DD</code>; the JSON files include this version in their header.</p>
 
   <div class="entry">
+    <div class="v"><span class="ver">v2026-05-06.26</span><span class="date">May 6, 2026 (late night)</span></div>
+    <h3><span class="tag add">tool</span> Launched <a href="/calculators/ctc/">/calculators/ctc/</a> — CTC to in-hand calculator for India + 5 countries</h3>
+    <ul>
+      <li><strong>India (primary, detailed)</strong>:
+        <ul>
+          <li>Old vs New tax regime toggle (FY 2026-27 slabs from Budget 2025, with full 87A rebate up to Rs 12L on new regime).</li>
+          <li>Full CTC breakup: Basic, HRA, Special, Employer PF, Gratuity.</li>
+          <li>Old regime takes 80C, 80D, monthly rent (HRA exemption auto-calculated), home loan interest as live inputs.</li>
+          <li>Standard deduction Rs 75K (new) / Rs 50K (old), cess 4%, surcharge slabs.</li>
+          <li>Metro vs non-metro HRA toggle (50% vs 40% of basic).</li>
+          <li>Outputs: monthly in-hand, annual in-hand, % of CTC, plus full deduction breakdown.</li>
+        </ul>
+      </li>
+      <li><strong>5 international countries (simplified estimates)</strong>:
+        <ul>
+          <li>🇺🇸 <strong>US</strong>: 2025 federal brackets (single/MFJ), FICA 7.65% + Medicare surcharge, state tax rate slider, 401(k) pre-tax.</li>
+          <li>🇬🇧 <strong>UK</strong>: 2025-26 England/Wales/NI bands, NI at 8%/2%, pension pre-tax, Plan 2/Plan 4 student loan.</li>
+          <li>🇸🇬 <strong>Singapore</strong>: 2026 IRAS resident slabs, CPF 20% for citizens/PRs only (EP holders pay 0).</li>
+          <li>🇦🇪 <strong>UAE</strong>: zero personal income tax, 5% GPSSA for nationals.</li>
+          <li>🇨🇦 <strong>Canada</strong>: 2025 federal brackets + 5 provinces (ON/BC/AB/QC/NS), CPP 5.95%, EI 1.66%, RRSP pre-tax.</li>
+        </ul>
+      </li>
+      <li><strong>"10 ways to legally increase your India in-hand"</strong> section — each with specific rupee savings estimate. Top moves: pick correct regime (up to Rs 1L/yr), max 80C (Rs 46,800/yr), NPS 80CCD(1B) (Rs 15,600/yr), HRA optimization (Rs 60K/yr), food coupons (Rs 7,920/yr), salary restructure toward higher HRA (Rs 40K/yr), 80D health insurance with parents (Rs 31,200/yr).</li>
+      <li><strong>Schema stack</strong>: WebApplication + BreadcrumbList + FAQPage with 6 Q&amp;As targeting "CTC vs in-hand salary", "old vs new regime", "tax on 10L CTC", "how to increase take-home", "gratuity part of CTC". news_keywords meta for ~450K/mo India + global searches.</li>
+      <li>Cross-linked from /calculators/ index grid, homepage trending chip (amber-green gradient with 💼 marker), sitemap-core.xml at priority 0.9.</li>
+      <li><strong>Why this matters:</strong> "In hand salary calculator" and variants is one of the highest-volume India search categories (~450K/mo combined). Existing competitors (ClearTax, Groww, AmbitionBox) all show India-only. The multi-country format targets diaspora/expat queries (NRI returning, India professional moving to US/UK/UAE) that aren't well-served. Plus the "how to increase" section is genuine reader value, not just a calculator with ads.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
     <div class="v"><span class="ver">v2026-05-06.25</span><span class="date">May 6, 2026 (late night)</span></div>
     <h3><span class="tag add">tool</span> Launched <a href="/calculators/sip-step-up/">/calculators/sip-step-up/</a> — dedicated Step-Up SIP calculator</h3>
     <ul>
