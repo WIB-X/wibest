@@ -5,19 +5,195 @@
   <link>https://wibest.in/</link>
   <description>India's independent comparison platform for phones, laptops, cars, schools, colleges, hospitals, travel and more.</description>
   <language>en-in</language>
+  <managingEditor>hello@wibest.in (WIB Editorial)</managingEditor>
+  <webMaster>hello@wibest.in (WIB)</webMaster>
+  <lastBuildDate>Fri, 06 Jun 2026 00:00:00 +0530</lastBuildDate>
   <atom:link href="https://wibest.in/rss.xml" rel="self" type="application/rss+xml"/>
   <image>
     <url>https://wibest.in/og-default.jpg</url>
     <title>WIB — Best-in-India Comparison Guides</title>
     <link>https://wibest.in/</link>
   </image>
-  <!-- Items are rendered dynamically; clients that support JS will see the full list.
-       For static clients, /blog/index.html is the canonical listing. -->
+
   <item>
-    <title>Browse all guides at wibest.in/blog</title>
-    <link>https://wibest.in/blog/</link>
-    <description>WIB publishes new comparison guides every week. Visit /blog for the full index.</description>
-    <guid isPermaLink="true">https://wibest.in/blog/</guid>
+    <title>Old vs New Tax Regime in India 2026: Which Saves More for You?</title>
+    <link>https://wibest.in/blog/old-vs-new-tax-regime-india-2026/</link>
+    <description>Detailed comparison of India's Old vs New Tax Regime for FY 2025-26 — slab rates, deductions, breakeven income levels, and calculator for salaried and self-employed taxpayers.</description>
+    <pubDate>Mon, 06 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/old-vs-new-tax-regime-india-2026/</guid>
+    <category>Finance</category>
   </item>
+
+  <item>
+    <title>PPF vs ELSS vs NPS in India 2026: Which Saves More Tax?</title>
+    <link>https://wibest.in/blog/ppf-vs-elss-vs-nps-india-2026/</link>
+    <description>PPF vs ELSS vs NPS compared for 2025-26 tax filing — lock-in, returns, taxability, risk. Detailed math on how to maximise 80C + 80CCD(1B) + 80CCD(2) for salaried employees.</description>
+    <pubDate>Mon, 06 Apr 2026 09:30:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/ppf-vs-elss-vs-nps-india-2026/</guid>
+    <category>Finance</category>
+  </item>
+
+  <item>
+    <title>Best Colleges After 12th Science (PCM) in India 2026</title>
+    <link>https://wibest.in/blog/best-colleges-after-12th-science-pcm-india-2026/</link>
+    <description>Top engineering, architecture, and applied sciences colleges for PCM students after Class 12 — IITs, NITs, BITS, and emerging private colleges ranked for 2026 admissions.</description>
+    <pubDate>Tue, 07 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-colleges-after-12th-science-pcm-india-2026/</guid>
+    <category>Education</category>
+  </item>
+
+  <item>
+    <title>Best Colleges After 12th Science (PCB) in India 2026</title>
+    <link>https://wibest.in/blog/best-colleges-after-12th-science-pcb-india-2026/</link>
+    <description>Top medical, dental, pharmacy, and life science colleges for PCB students — AIIMS, top private medical colleges, and paramedical courses ranked for 2026 admissions.</description>
+    <pubDate>Tue, 07 Apr 2026 09:30:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-colleges-after-12th-science-pcb-india-2026/</guid>
+    <category>Education</category>
+  </item>
+
+  <item>
+    <title>What to Do if You Fail Board Exam in India 2026</title>
+    <link>https://wibest.in/blog/what-to-do-if-you-fail-board-exam-india-2026/</link>
+    <description>Failed 10th or 12th boards? Complete guide to re-exams (CBSE compartment, supplementary), NIOS re-enrollment, alternate routes, career paths without formal 12th, and emotional recovery.</description>
+    <pubDate>Wed, 08 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/what-to-do-if-you-fail-board-exam-india-2026/</guid>
+    <category>Education</category>
+  </item>
+
+  <item>
+    <title>Split AC vs Window AC in India 2026: Which Should You Buy?</title>
+    <link>https://wibest.in/blog/split-ac-vs-window-ac-india-2026/</link>
+    <description>Split vs window AC compared on price, cooling, noise, installation, maintenance, and electricity cost — which makes sense for apartments, rentals, and low-budget homes in 2026.</description>
+    <pubDate>Thu, 09 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/split-ac-vs-window-ac-india-2026/</guid>
+    <category>Electronics</category>
+  </item>
+
+  <item>
+    <title>Best AC Under 30000 in India 2026 — Top Inverter ACs</title>
+    <link>https://wibest.in/blog/best-ac-under-30000-india-2026/</link>
+    <description>Top 1-ton and 1.5-ton inverter ACs under Rs 30,000 for Indian homes — energy star ratings, cooling performance, brand reliability, and buying guide for summer 2026.</description>
+    <pubDate>Fri, 10 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-ac-under-30000-india-2026/</guid>
+    <category>Electronics</category>
+  </item>
+
+  <item>
+    <title>Best Hill Stations from Bangalore for Summer 2026</title>
+    <link>https://wibest.in/blog/best-hill-stations-from-bangalore-summer-2026/</link>
+    <description>Top hill station getaways from Bangalore for summer 2026 — Coorg, Ooty, Munnar, Chikmagalur, Wayanad, Kodaikanal — with distances, travel times, and stay recommendations.</description>
+    <pubDate>Sat, 11 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-hill-stations-from-bangalore-summer-2026/</guid>
+    <category>Travel</category>
+  </item>
+
+  <item>
+    <title>Best Hill Stations from Mumbai for Summer 2026</title>
+    <link>https://wibest.in/blog/best-hill-stations-from-mumbai-summer-2026/</link>
+    <description>Top hill station escapes from Mumbai — Lonavala, Mahabaleshwar, Panchgani, Matheran, Bhimashankar — perfect for weekend and 3-day summer getaways in 2026.</description>
+    <pubDate>Sat, 11 Apr 2026 10:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-hill-stations-from-mumbai-summer-2026/</guid>
+    <category>Travel</category>
+  </item>
+
+  <item>
+    <title>Best NEET Coaching for Droppers in India 2026</title>
+    <link>https://wibest.in/blog/best-neet-coaching-for-droppers-india-2026/</link>
+    <description>Best NEET drop-year coaching institutes in India 2026 — Allen, Aakash, Resonance, Vedantu, and online options compared on results, fee, batch size, and study environment.</description>
+    <pubDate>Sun, 12 Apr 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-neet-coaching-for-droppers-india-2026/</guid>
+    <category>Education</category>
+  </item>
+
+  <item>
+    <title>Best Phone Under 15000 in India 2026 — Top Picks</title>
+    <link>https://wibest.in/blog/best-phone-under-15000-india/</link>
+    <description>Best smartphones under Rs 15,000 in India for 2026 — cameras, battery, display, and performance compared. Includes Redmi, Realme, Poco, and Samsung options.</description>
+    <pubDate>Mon, 01 Mar 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-phone-under-15000-india/</guid>
+    <category>Electronics</category>
+  </item>
+
+  <item>
+    <title>Best Laptop Under 50000 in India 2026</title>
+    <link>https://wibest.in/blog/best-laptop-under-50000-india/</link>
+    <description>Best laptops under Rs 50,000 for students and professionals in India 2026 — performance, display, battery, and build quality compared across Lenovo, HP, Dell, and Asus.</description>
+    <pubDate>Mon, 01 Mar 2026 10:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-laptop-under-50000-india/</guid>
+    <category>Electronics</category>
+  </item>
+
+  <item>
+    <title>iPhone 16 vs Samsung Galaxy S25 — 2026 Comparison</title>
+    <link>https://wibest.in/blog/iphone-16-vs-samsung-s25/</link>
+    <description>iPhone 16 vs Samsung Galaxy S25 compared on display, camera, performance, battery, AI features, and price in India — full 2026 buying guide.</description>
+    <pubDate>Fri, 15 Feb 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/iphone-16-vs-samsung-s25/</guid>
+    <category>Electronics</category>
+  </item>
+
+  <item>
+    <title>Best Hospitals in Bangalore 2026 — Top Rated</title>
+    <link>https://wibest.in/blog/best-hospitals-bangalore/</link>
+    <description>Top hospitals in Bangalore ranked by specialty, patient outcomes, NABH accreditation, and facilities — Manipal, Apollo, Fortis, Narayana, and more.</description>
+    <pubDate>Mon, 10 Feb 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-hospitals-bangalore/</guid>
+    <category>Health</category>
+  </item>
+
+  <item>
+    <title>Best Car Under 10 Lakh in India 2026</title>
+    <link>https://wibest.in/blog/best-car-under-10-lakh-india/</link>
+    <description>Best cars under Rs 10 lakh in India for 2026 — hatchbacks, sedans, and compact SUVs compared on mileage, features, safety, and resale value.</description>
+    <pubDate>Tue, 03 Feb 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-car-under-10-lakh-india/</guid>
+    <category>Cars</category>
+  </item>
+
+  <item>
+    <title>Goa Travel Guide 2026 — Complete Planning Guide</title>
+    <link>https://wibest.in/blog/goa-travel-guide/</link>
+    <description>Complete Goa travel guide for 2026 — best beaches, hotels, restaurants, nightlife, water sports, and when to visit. Budget breakdown for solo, couple, and family trips.</description>
+    <pubDate>Mon, 27 Jan 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/goa-travel-guide/</guid>
+    <category>Travel</category>
+  </item>
+
+  <item>
+    <title>Best Weekend Trips from Bangalore 2026</title>
+    <link>https://wibest.in/blog/weekend-trips-from-bangalore/</link>
+    <description>Top weekend getaways from Bangalore within 300 km — beaches, hill stations, heritage towns, and waterfalls perfect for a 2-3 day road trip.</description>
+    <pubDate>Fri, 20 Feb 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/weekend-trips-from-bangalore/</guid>
+    <category>Travel</category>
+  </item>
+
+  <item>
+    <title>Best Schools in Bangalore 2026 — Board-wise Rankings</title>
+    <link>https://wibest.in/schools/bangalore/</link>
+    <description>Top CBSE, ICSE, IB, and IGCSE schools in Bangalore ranked by academics, infrastructure, faculty, and fees — complete guide for 2026 admissions.</description>
+    <pubDate>Mon, 15 Jan 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/schools/bangalore/</guid>
+    <category>Education</category>
+  </item>
+
+  <item>
+    <title>Best Hospitals in Delhi 2026 — Top Speciality Hospitals</title>
+    <link>https://wibest.in/hospitals/delhi/</link>
+    <description>Best hospitals in Delhi ranked by specialty, accreditation, and patient outcomes — AIIMS, Apollo, Max, Fortis, BLK, and more compared for 2026.</description>
+    <pubDate>Mon, 12 Jan 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/hospitals/delhi/</guid>
+    <category>Health</category>
+  </item>
+
+  <item>
+    <title>Best Electric Scooter in India 2026 — Top Picks</title>
+    <link>https://wibest.in/blog/best-electric-scooter-india/</link>
+    <description>Best electric scooters in India for 2026 — range, charging time, top speed, after-sales service, and total ownership cost compared across Ola, Ather, TVS, Bajaj, and Hero.</description>
+    <pubDate>Wed, 05 Feb 2026 09:00:00 +0530</pubDate>
+    <guid isPermaLink="true">https://wibest.in/blog/best-electric-scooter-india/</guid>
+    <category>Cars</category>
+  </item>
+
 </channel>
 </rss>

@@ -712,4 +712,27 @@
   <url><loc>https://wibest.in/blog/best-hill-stations-from-hyderabad-summer-2026/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/blog/best-budget-hill-stations-india-under-10000-2026/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <!-- Phone comparison pages (added 2026-06-06) -->
+  <url><loc>https://wibest.in/phones/comparison/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/phones/comparison/oneplus-13-vs-samsung-s25/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/phones/comparison/samsung-s25-vs-google-pixel-9/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/phones/comparison/redmi-note-14-pro-vs-poco-x7-pro/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://wibest.in/phones/comparison/realme-14-pro-vs-oneplus-nord-4/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- Tools, calculators, and hub pages (added 2026-06-06) -->
+  <url><loc>https://wibest.in/guides/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wibest.in/best-books/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/companies/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/quick-answers/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/financial-fitness/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/tax-planner/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/calculators/ctc/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/calculators/sip-step-up/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/calculators/emi-vs-sip/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/calculators/retirement-v2/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/bikes/comparison/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/cars/comparison/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wibest.in/data/api/explorer/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://wibest.in/changelog/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
 </urlset>

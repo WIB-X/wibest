@@ -73,6 +73,26 @@
         "destination": "/electronics/index.html"
       },
       {
+        "source": "/phones/comparison/oneplus-13-vs-samsung-s25",
+        "destination": "/phones/comparison/oneplus-13-vs-samsung-s25/index.html"
+      },
+      {
+        "source": "/phones/comparison/redmi-note-14-pro-vs-poco-x7-pro",
+        "destination": "/phones/comparison/redmi-note-14-pro-vs-poco-x7-pro/index.html"
+      },
+      {
+        "source": "/phones/comparison/samsung-s25-vs-google-pixel-9",
+        "destination": "/phones/comparison/samsung-s25-vs-google-pixel-9/index.html"
+      },
+      {
+        "source": "/phones/comparison/realme-14-pro-vs-oneplus-nord-4",
+        "destination": "/phones/comparison/realme-14-pro-vs-oneplus-nord-4/index.html"
+      },
+      {
+        "source": "/phones/comparison",
+        "destination": "/phones/comparison/index.html"
+      },
+      {
         "source": "/cars/**",
         "destination": "/cars/index.html"
       },
