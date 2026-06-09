@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>School Admission Planner — Find the Right School for Your Child | WIB</title>
+  <meta name="description" content="Free school admission planner: enter your monthly income, education budget, distance, amenities preference, language and board preference to find the perfect school for your child in India.">
+  <link rel="canonical" href="https://wibest.in/schools/admission-planner/">
+  <link rel="stylesheet" href="/styles/main.css?v=3.9">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"School Admission Planner","description":"Help parents find the right school based on budget, distance, amenities, and preferences.","url":"https://wibest.in/schools/admission-planner/","applicationCategory":"EducationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Schools","item":"https://wibest.in/schools/"},{"@type":"ListItem","position":3,"name":"Admission Planner","item":"https://wibest.in/schools/admission-planner/"}]}</script>
+  <style>
+    :root {
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --accent-bg: rgba(99,102,241,0.08);
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg-primary: #0f0f13;
+      --bg-secondary: #16161c;
+      --bg-card: #1c1c24;
+      --border: rgba(255,255,255,0.08);
+      --text-primary: #f1f1f5;
+      --text-secondary: #a1a1b3;
+      --text-muted: #6b6b7e;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;padding-top:72px}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:780px;margin:0 auto;padding:32px 20px 80px}
+    .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:28px}
+    .breadcrumb a{color:var(--accent)}
+    .page-header{margin-bottom:36px}
+    .page-header h1{font-size:clamp(22px,4vw,32px);font-weight:800;line-height:1.2;margin-bottom:10px}
+    .page-header p{color:var(--text-secondary);font-size:15px;line-height:1.6}
+
+    /* Stepper */
+    .stepper{display:flex;align-items:center;gap:0;margin-bottom:36px;overflow-x:auto;padding-bottom:4px}
+    .step-item{display:flex;align-items:center;gap:0;flex-shrink:0}
+    .step-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);background:var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-muted);transition:all 0.3s}
+    .step-dot.active{border-color:var(--accent);background:var(--accent);color:#fff}
+    .step-dot.done{border-color:var(--success);background:var(--success);color:#fff}
+    .step-line{width:28px;height:2px;background:var(--border);flex-shrink:0}
+    .step-line.done{background:var(--success)}
+
+    /* Cards */
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;margin-bottom:20px}
+    .card-title{font-size:17px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+    .card-title .icon{font-size:20px}
+    .card-sub{color:var(--text-secondary);font-size:13.5px;margin-bottom:22px;line-height:1.5}
+
+    /* Form elements */
+    label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+    input[type=number],input[type=range],select{width:100%;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-size:15px;padding:10px 14px;outline:none;transition:border-color 0.2s}
+    input[type=number]:focus,select:focus{border-color:var(--accent)}
+    input[type=range]{padding:6px 0;cursor:pointer;accent-color:var(--accent)}
+    .range-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+    @media(max-width:540px){.row{grid-template-columns:1fr}}
+    .field{margin-bottom:18px}
+    .field-hint{font-size:12px;color:var(--text-muted);margin-top:4px}
+
+    /* Inline value display */
+    .val-display{font-size:14px;font-weight:700;color:var(--accent);margin-left:8px}
+
+    /* Toggle chips */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .chip{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:var(--bg-secondary);font-size:13px;cursor:pointer;transition:all 0.2s;user-select:none}
+    .chip:hover{border-color:var(--accent-light)}
+    .chip.selected{border-color:var(--accent);background:var(--accent-bg);color:var(--accent-light);font-weight:600}
+
+    /* Budget breakdown */
+    .budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
+    @media(max-width:540px){.budget-grid{grid-template-columns:1fr}}
+    .budget-item label{font-size:12px;color:var(--text-muted);margin-bottom:4px}
+    .budget-total{margin-top:14px;padding:12px 16px;background:var(--bg-secondary);border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+    .budget-total span:last-child{font-weight:700;color:var(--accent)}
+
+    /* Nav buttons */
+    .nav-buttons{display:flex;gap:12px;margin-top:28px}
+    .btn{padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.2s}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-light)}
+    .btn-secondary{background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)}
+    .btn-secondary:hover{border-color:var(--accent)}
+    .btn:disabled{opacity:0.4;cursor:not-allowed}
+
+    /* Step panels */
+    .step-panel{display:none}
+    .step-panel.active{display:block}
+
+    /* Progress bar */
+    .progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:28px;overflow:hidden}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px;transition:width 0.4s ease}
+
+    /* Results */
+    .result-hero{text-align:center;padding:28px 20px 20px;background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(129,140,248,0.05));border:1px solid rgba(99,102,241,0.2);border-radius:var(--radius);margin-bottom:24px}
+    .result-score{font-size:64px;font-weight:900;line-height:1}
+    .result-label{font-size:14px;color:var(--text-secondary);margin-top:8px}
+    .result-tier{display:inline-block;margin-top:14px;padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700}
+    .tier-premium{background:rgba(99,102,241,0.15);color:#818cf8;border:1px solid rgba(99,102,241,0.3)}
+    .tier-mid{background:rgba(245,158,11,0.12);color:#fbbf24;border:1px solid rgba(245,158,11,0.25)}
+    .tier-budget{background:rgba(34,197,94,0.1);color:#4ade80;border:1px solid rgba(34,197,94,0.2)}
+    .tier-govt{background:rgba(255,255,255,0.05);color:#a1a1b3;border:1px solid var(--border)}
+
+    .result-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+    @media(max-width:540px){.result-cards{grid-template-columns:1fr}}
+    .result-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px}
+    .result-card .rc-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+    .result-card .rc-value{font-size:18px;font-weight:700}
+
+    .recommendation{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:16px}
+    .rec-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .rec-rank{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .rec-name{font-size:16px;font-weight:700}
+    .rec-meta{font-size:13px;color:var(--text-secondary)}
+    .rec-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+    .badge-green{background:rgba(34,197,94,0.12);color:#4ade80}
+    .badge-yellow{background:rgba(245,158,11,0.12);color:#fbbf24}
+    .badge-red{background:rgba(239,68,68,0.12);color:#f87171}
+    .badge-blue{background:rgba(99,102,241,0.12);color:#818cf8}
+
+    .match-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:10px}
+    .match-fill{height:100%;border-radius:3px;transition:width 0.5s ease}
+
+    .budget-breakdown-summary{background:var(--bg-secondary);border-radius:10px;padding:16px 18px;margin-top:16px}
+    .bbs-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--border)}
+    .bbs-row:last-child{border-bottom:none;font-weight:700;font-size:14px;padding-top:8px}
+
+    .action-bar{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .share-hint{margin-top:16px;text-align:center;font-size:12px;color:var(--text-muted)}
+
+    /* Tooltip / callout */
+    .tip-box{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.15);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text-secondary);margin-bottom:18px;line-height:1.5}
+    .tip-box strong{color:var(--accent-light)}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/schools/">Schools</a> › School Admission Planner</div>
+
+  <div class="page-header">
+    <h1>🏫 School Admission Planner</h1>
+    <p>Answer a few questions about your finances, location, and priorities — we'll show you which school tier fits your family best, with a detailed budget breakdown.</p>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:14%"></div></div>
+
+  <!-- Stepper -->
+  <div class="stepper" id="stepper"></div>
+
+  <!-- ─────────────── STEP 1: Income ─────────────── -->
+  <div class="step-panel active" id="step1">
+    <div class="card">
+      <div class="card-title"><span class="icon">💰</span> Monthly Income &amp; Education Budget</div>
+      <div class="card-sub">We use post-tax income to calculate what's realistically affordable for your child's education.</div>
+
+      <div class="tip-box">💡 <strong>Rule of thumb:</strong> Most families can comfortably spend 10–20% of post-tax income on school fees. Going beyond 25% can strain your household budget.</div>
+
+      <div class="row">
+        <div class="field">
+          <label>Post-tax monthly income (₹)</label>
+          <input type="number" id="income" placeholder="e.g. 75000" min="10000" max="10000000" step="1000" value="">
+          <div class="field-hint">Take-home salary after TDS / ITR</div>
+        </div>
+        <div class="field">
+          <label>Spouse income (₹) <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+          <input type="number" id="spouseIncome" placeholder="e.g. 40000" min="0" max="10000000" step="1000" value="0">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Child's standard / class</label>
+        <select id="standard">
+          <option value="">— Select —</option>
+          <option value="lkg">LKG / UKG (age 3–5)</option>
+          <option value="1-5">Class 1 – 5 (Primary)</option>
+          <option value="6-8">Class 6 – 8 (Middle)</option>
+          <option value="9-10">Class 9 – 10 (Secondary)</option>
+          <option value="11-12">Class 11 – 12 (Senior Secondary)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Number of school-going children</label>
+        <input type="number" id="numChildren" value="1" min="1" max="5">
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-primary" onclick="goNext(1)">Next: Education Budget →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── STEP 2: Budget Breakdown ─────────────── -->
+  <div class="step-panel" id="step2">
+    <div class="card">
+      <div class="card-title"><span class="icon">📊</span> Monthly Education Budget Breakdown</div>
+      <div class="card-sub">How much can you allocate <em>per child per month</em> for each expense? (We'll show annual totals.)</div>
+
+      <div class="tip-box">💡 <strong>Tip:</strong> Donation / capitation fee is typically a one-time amount paid at admission. Divide it by 12 to budget monthly. Many government schools have zero donation.</div>
+
+      <div class="budget-grid">
+        <div class="budget-item">
+          <label>Tuition fee (₹/month)</label>
+          <input type="number" id="tuition" placeholder="e.g. 4000" min="0" step="100">
+        </div>
+        <div class="budget-item">
+          <label>Donation / capitation (one-time ÷ 12)</label>
+          <input type="number" id="donation" placeholder="e.g. 833" min="0" step="100">
+        </div>
+        <div class="budget-item">
+          <label>Uniform (₹/month avg)</label>
+          <input type="number" id="uniform" placeholder="e.g. 300" min="0" step="50" value="300">
+        </div>
+        <div class="budget-item">
+          <label>Shoes &amp; socks (₹/month avg)</label>
+          <input type="number" id="shoes" placeholder="e.g. 150" min="0" step="50" value="150">
+        </div>
+        <div class="budget-item">
+          <label>Books &amp; stationery (₹/month)</label>
+          <input type="number" id="books" placeholder="e.g. 500" min="0" step="100" value="500">
+        </div>
+        <div class="budget-item">
+          <label>Transport (₹/month)</label>
+          <input type="number" id="transport" placeholder="e.g. 1200" min="0" step="100" value="0">
+        </div>
+        <div class="budget-item">
+          <label>Tuitions / extra classes (₹/month)</label>
+          <input type="number" id="tuitions" placeholder="e.g. 2000" min="0" step="100" value="0">
+        </div>
+        <div class="budget-item">
+          <label>Other school expenses (₹/month)</label>
+          <input type="number" id="other" placeholder="e.g. 500" min="0" step="100" value="0">
+        </div>
+      </div>
+
+      <div class="budget-total">
+        <span>Total monthly education spend</span>
+        <span id="totalBudgetDisplay">₹ 0</span>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="goPrev(2)">← Back</button>
+      <button class="btn btn-primary" onclick="goNext(2)">Next: Distance &amp; Transport →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── STEP 3: Distance & Transport ─────────────── -->
+  <div class="step-panel" id="step3">
+    <div class="card">
+      <div class="card-title"><span class="icon">📍</span> Distance &amp; Transport Preference</div>
+      <div class="card-sub">Help us understand how far you're willing to send your child and how they'll get there.</div>
+
+      <div class="field">
+        <label>Maximum acceptable school distance <span class="val-display" id="distLabel">5 km</span></label>
+        <input type="range" id="distance" min="1" max="30" value="5" step="1" oninput="document.getElementById('distLabel').textContent=this.value+' km'">
+        <div class="range-labels"><span>1 km</span><span>10 km</span><span>20 km</span><span>30 km</span></div>
+      </div>
+
+      <div class="field">
+        <label>Transport arrangement</label>
+        <div class="chips" id="transportChips">
+          <div class="chip" data-value="school_bus" onclick="toggleChip(this,'transportChips',true)">🚌 School bus</div>
+          <div class="chip" data-value="private_van" onclick="toggleChip(this,'transportChips',true)">🚐 Private auto/van</div>
+          <div class="chip" data-value="self_drop" onclick="toggleChip(this,'transportChips',true)">🚗 Self drop/pickup</div>
+          <div class="chip" data-value="walking" onclick="toggleChip(this,'transportChips',true)">🚶 Walking / cycling</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Can you do school pickup (afternoon)?</label>
+        <div class="chips" id="pickupChips">
+          <div class="chip selected" data-value="yes" onclick="selectChip(this,'pickupChips')">✅ Yes, at least 3 days/week</div>
+          <div class="chip" data-value="sometimes" onclick="selectChip(this,'pickupChips')">🔄 Sometimes</div>
+          <div class="chip" data-value="no" onclick="selectChip(this,'pickupChips')">❌ No — need school transport</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="goPrev(3)">← Back</button>
+      <button class="btn btn-primary" onclick="goNext(3)">Next: Amenities →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── STEP 4: Amenities ─────────────── -->
+  <div class="step-panel" id="step4">
+    <div class="card">
+      <div class="card-title"><span class="icon">🏊</span> Amenities &amp; Facilities</div>
+      <div class="card-sub">Select facilities that matter to you. Schools with more infrastructure typically cost more.</div>
+
+      <div class="field">
+        <label>Sports &amp; physical education</label>
+        <div class="chips" id="sportsChips">
+          <div class="chip" data-value="swimming" onclick="toggleChip(this,'sportsChips')">🏊 Swimming pool</div>
+          <div class="chip" data-value="cricket" onclick="toggleChip(this,'sportsChips')">🏏 Cricket ground</div>
+          <div class="chip" data-value="football" onclick="toggleChip(this,'sportsChips')">⚽ Football field</div>
+          <div class="chip" data-value="basketball" onclick="toggleChip(this,'sportsChips')">🏀 Basketball court</div>
+          <div class="chip" data-value="indoor_sports" onclick="toggleChip(this,'sportsChips')">🏸 Indoor sports hall</div>
+          <div class="chip" data-value="yoga" onclick="toggleChip(this,'sportsChips')">🧘 Yoga / meditation</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Academic &amp; tech facilities</label>
+        <div class="chips" id="techChips">
+          <div class="chip" data-value="computer_lab" onclick="toggleChip(this,'techChips')">💻 Computer lab</div>
+          <div class="chip" data-value="smart_class" onclick="toggleChip(this,'techChips')">📺 Smart classrooms</div>
+          <div class="chip" data-value="library" onclick="toggleChip(this,'techChips')">📚 Library</div>
+          <div class="chip" data-value="science_lab" onclick="toggleChip(this,'techChips')">🔬 Science lab</div>
+          <div class="chip" data-value="robotics" onclick="toggleChip(this,'techChips')">🤖 Robotics / STEM lab</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Pastoral &amp; other facilities</label>
+        <div class="chips" id="otherFacChips">
+          <div class="chip" data-value="canteen" onclick="toggleChip(this,'otherFacChips')">🍱 Canteen / mid-day meal</div>
+          <div class="chip" data-value="medical" onclick="toggleChip(this,'otherFacChips')">🏥 School nurse / medical room</div>
+          <div class="chip" data-value="counsellor" onclick="toggleChip(this,'otherFacChips')">🧠 Counsellor / psychologist</div>
+          <div class="chip" data-value="ac_class" onclick="toggleChip(this,'otherFacChips')">❄️ AC classrooms</div>
+          <div class="chip" data-value="hostel" onclick="toggleChip(this,'otherFacChips')">🏠 Hostel / boarding</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="goPrev(4)">← Back</button>
+      <button class="btn btn-primary" onclick="goNext(4)">Next: Extracurriculars →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── STEP 5: Extracurriculars ─────────────── -->
+  <div class="step-panel" id="step5">
+    <div class="card">
+      <div class="card-title"><span class="icon">🎨</span> Extracurricular Activities</div>
+      <div class="card-sub">Choose activities important for your child's holistic development.</div>
+
+      <div class="chips" id="ecaChips">
+        <div class="chip" data-value="music" onclick="toggleChip(this,'ecaChips')">🎵 Music (vocal/instrumental)</div>
+        <div class="chip" data-value="dance" onclick="toggleChip(this,'ecaChips')">💃 Dance</div>
+        <div class="chip" data-value="drama" onclick="toggleChip(this,'ecaChips')">🎭 Drama / theatre</div>
+        <div class="chip" data-value="art" onclick="toggleChip(this,'ecaChips')">🎨 Art &amp; craft</div>
+        <div class="chip" data-value="debate" onclick="toggleChip(this,'ecaChips')">🗣️ Debate / public speaking</div>
+        <div class="chip" data-value="coding" onclick="toggleChip(this,'ecaChips')">💻 Coding club</div>
+        <div class="chip" data-value="ncc_scouts" onclick="toggleChip(this,'ecaChips')">🎖️ NCC / Scouts &amp; Guides</div>
+        <div class="chip" data-value="chess" onclick="toggleChip(this,'ecaChips')">♟️ Chess</div>
+        <div class="chip" data-value="karate" onclick="toggleChip(this,'ecaChips')">🥋 Karate / martial arts</div>
+        <div class="chip" data-value="quiz" onclick="toggleChip(this,'ecaChips')">🧠 Quiz &amp; Olympiad</div>
+        <div class="chip" data-value="community" onclick="toggleChip(this,'ecaChips')">🌱 Community service / NSS</div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="goPrev(5)">← Back</button>
+      <button class="btn btn-primary" onclick="goNext(5)">Next: Language &amp; Board →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── STEP 6: Language & Board ─────────────── -->
+  <div class="step-panel" id="step6">
+    <div class="card">
+      <div class="card-title"><span class="icon">📖</span> Language &amp; Board Preference</div>
+      <div class="card-sub">These are often the most important criteria for families, especially for future competitive exams.</div>
+
+      <div class="field">
+        <label>Medium of instruction</label>
+        <div class="chips" id="mediumChips">
+          <div class="chip" data-value="english" onclick="selectChip(this,'mediumChips')">🇬🇧 English medium</div>
+          <div class="chip" data-value="telugu" onclick="selectChip(this,'mediumChips')">Telugu medium</div>
+          <div class="chip" data-value="hindi" onclick="selectChip(this,'mediumChips')">Hindi medium</div>
+          <div class="chip" data-value="tamil" onclick="selectChip(this,'mediumChips')">Tamil medium</div>
+          <div class="chip" data-value="kannada" onclick="selectChip(this,'mediumChips')">Kannada medium</div>
+          <div class="chip" data-value="bilingual" onclick="selectChip(this,'mediumChips')">🔄 Bilingual (any)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Second / third language preference</label>
+        <div class="chips" id="langChips">
+          <div class="chip" data-value="hindi" onclick="toggleChip(this,'langChips')">Hindi</div>
+          <div class="chip" data-value="telugu" onclick="toggleChip(this,'langChips')">Telugu</div>
+          <div class="chip" data-value="tamil" onclick="toggleChip(this,'langChips')">Tamil</div>
+          <div class="chip" data-value="kannada" onclick="toggleChip(this,'langChips')">Kannada</div>
+          <div class="chip" data-value="french" onclick="toggleChip(this,'langChips')">French</div>
+          <div class="chip" data-value="sanskrit" onclick="toggleChip(this,'langChips')">Sanskrit</div>
+          <div class="chip" data-value="german" onclick="toggleChip(this,'langChips')">German</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Board preference</label>
+        <div class="chips" id="boardChips">
+          <div class="chip" data-value="cbse" onclick="toggleChip(this,'boardChips')">CBSE <span style="font-size:11px;color:var(--text-muted)">(national transfers)</span></div>
+          <div class="chip" data-value="icse" onclick="toggleChip(this,'boardChips')">ICSE / ISC <span style="font-size:11px;color:var(--text-muted)">(rigorous)</span></div>
+          <div class="chip" data-value="state" onclick="toggleChip(this,'boardChips')">State board <span style="font-size:11px;color:var(--text-muted)">(affordable)</span></div>
+          <div class="chip" data-value="ib" onclick="toggleChip(this,'boardChips')">IB <span style="font-size:11px;color:var(--text-muted)">(international)</span></div>
+          <div class="chip" data-value="no_pref" onclick="selectChip(this,'boardChips')">No preference</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="card-title"><span class="icon">📍</span> Location</div>
+      <div class="card-sub">Helps us tailor fee range estimates to your city.</div>
+      <div class="row">
+        <div class="field" style="margin-bottom:0">
+          <label>City / district</label>
+          <select id="city">
+            <option value="">— Select city —</option>
+            <option value="hyderabad">Hyderabad</option>
+            <option value="bangalore">Bengaluru</option>
+            <option value="chennai">Chennai</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="delhi">Delhi / NCR</option>
+            <option value="pune">Pune</option>
+            <option value="kolkata">Kolkata</option>
+            <option value="ahmedabad">Ahmedabad</option>
+            <option value="other_metro">Other Metro</option>
+            <option value="tier2">Tier 2 city</option>
+            <option value="small_town">Small town / rural</option>
+          </select>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label>Priority: what matters most?</label>
+          <select id="priority">
+            <option value="cost">🔑 Keeping cost low</option>
+            <option value="quality">⭐ Academic quality</option>
+            <option value="holistic">🌿 Holistic / activity-based</option>
+            <option value="board_exam">📝 Board exam scores</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="goPrev(6)">← Back</button>
+      <button class="btn btn-primary" onclick="calculate()">🔍 See My Results</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── STEP 7: Results ─────────────── -->
+  <div class="step-panel" id="step7">
+    <div id="resultsContent"></div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ─── State ────────────────────────────────────────────────────────────────────
+const STEPS = 7;
+let currentStep = 1;
+
+// ─── Stepper init ─────────────────────────────────────────────────────────────
+function buildStepper() {
+  const labels = ['Income','Budget','Transport','Amenities','Activities','Board','Results'];
+  const s = document.getElementById('stepper');
+  s.innerHTML = labels.map((l,i) => {
+    const n = i+1;
+    const dotHtml = `<div class="step-dot ${n===1?'active':''}" id="sdot${n}">${n}</div>`;
+    const lineHtml = n < labels.length ? `<div class="step-line" id="sline${n}"></div>` : '';
+    return `<div class="step-item">${dotHtml}${lineHtml}</div>`;
+  }).join('');
+}
+buildStepper();
+
+// ─── Navigation ───────────────────────────────────────────────────────────────
+function showStep(n) {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.querySelectorAll('.step-dot').forEach((d,i) => {
+    d.classList.remove('active','done');
+    if(i+1 < n) { d.classList.add('done'); d.textContent = '✓'; }
+    else if(i+1 === n) d.classList.add('active');
+    else d.textContent = i+1;
+  });
+  document.querySelectorAll('.step-line').forEach((l,i) => {
+    l.classList.toggle('done', i+1 < n);
+  });
+  const pct = Math.round(((n-1)/(STEPS-1))*100);
+  document.getElementById('progressFill').style.width = pct+'%';
+  currentStep = n;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goNext(from) {
+  if(!validateStep(from)) return;
+  showStep(from+1);
+}
+function goPrev(from) { showStep(from-1); }
+
+// ─── Validation ───────────────────────────────────────────────────────────────
+function validateStep(n) {
+  if(n===1) {
+    const inc = +document.getElementById('income').value;
+    if(!inc || inc < 10000) { alert('Please enter a valid post-tax monthly income (minimum ₹10,000).'); return false; }
+    const std = document.getElementById('standard').value;
+    if(!std) { alert('Please select the child\'s standard / class.'); return false; }
+  }
+  if(n===2) {
+    const tut = +document.getElementById('tuition').value;
+    if(!tut) { alert('Please enter at least the monthly tuition fee you can afford.'); return false; }
+  }
+  return true;
+}
+
+// ─── Chip helpers ─────────────────────────────────────────────────────────────
+function toggleChip(el, groupId, single) {
+  if(single) { document.querySelectorAll('#'+groupId+' .chip').forEach(c=>c.classList.remove('selected')); }
+  el.classList.toggle('selected');
+}
+function selectChip(el, groupId) {
+  document.querySelectorAll('#'+groupId+' .chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function getChips(groupId) {
+  return [...document.querySelectorAll('#'+groupId+' .chip.selected')].map(c=>c.dataset.value);
+}
+
+// ─── Budget total live update ─────────────────────────────────────────────────
+['tuition','donation','uniform','shoes','books','transport','tuitions','other'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', updateBudgetTotal);
+});
+function updateBudgetTotal() {
+  const total = ['tuition','donation','uniform','shoes','books','transport','tuitions','other']
+    .reduce((s,id)=>s+(+document.getElementById(id).value||0),0);
+  document.getElementById('totalBudgetDisplay').textContent = '₹ '+total.toLocaleString('en-IN');
+}
+
+// ─── City fee multipliers ─────────────────────────────────────────────────────
+const CITY_MULT = {
+  hyderabad:1.0, bangalore:1.15, chennai:0.95, mumbai:1.3, delhi:1.2,
+  pune:1.05, kolkata:0.85, ahmedabad:0.9, other_metro:1.0, tier2:0.65, small_town:0.4
+};
+
+// ─── School tier definitions ──────────────────────────────────────────────────
+const TIERS = [
+  {
+    id:'govt', name:'Government / Municipal School', emoji:'🏛️',
+    tuitionRange:[0,500], annualTotal:[2000,8000],
+    boards:['state'],
+    amenities:['computer_lab','library'],
+    eca:['ncc_scouts','community','quiz'],
+    transport:'walking',
+    desc:'Free or near-free education with state board syllabus. Best for families prioritising affordability. Mid-day meals often provided.',
+    pros:['Zero or minimal tuition','Government scholarship eligibility','Near home (walkable)'],
+    cons:['Limited infrastructure','Large class sizes','Limited ECA options','May not have English medium'],
+    color:'#6b7280',
+    tierClass:'tier-govt'
+  },
+  {
+    id:'budget_private', name:'Budget Private / Low-Cost Private', emoji:'🏫',
+    tuitionRange:[800,3500], annualTotal:[15000,50000],
+    boards:['state','cbse'],
+    amenities:['computer_lab','library','smart_class'],
+    eca:['music','art','ncc_scouts','chess','quiz'],
+    transport:'school_bus',
+    desc:'Affordable private schools with English medium and basic infrastructure. CBSE or State board. Common in Tier 2 cities.',
+    pros:['English medium','CBSE option','Small to medium class sizes'],
+    cons:['Limited sports infrastructure','Variable quality','Some demand high donation'],
+    color:'#22c55e',
+    tierClass:'tier-budget'
+  },
+  {
+    id:'mid_private', name:'Mid-Range Private School', emoji:'🎓',
+    tuitionRange:[3000,10000], annualTotal:[50000,150000],
+    boards:['cbse','icse','state'],
+    amenities:['computer_lab','smart_class','library','science_lab','indoor_sports','canteen','medical'],
+    eca:['music','dance','drama','art','coding','chess','karate','ncc_scouts','debate','quiz'],
+    transport:'school_bus',
+    desc:'Well-rounded schools with good infrastructure, CBSE/ICSE boards, multiple sports and activity options.',
+    pros:['Strong academics','Multiple ECA options','School bus','Science labs'],
+    cons:['Higher tuition','Donation fees possible','Some focus on marks over holistic'],
+    color:'#f59e0b',
+    tierClass:'tier-mid'
+  },
+  {
+    id:'premium', name:'Premium / International School', emoji:'🌟',
+    tuitionRange:[8000,50000], annualTotal:[150000,600000],
+    boards:['cbse','icse','ib'],
+    amenities:['computer_lab','smart_class','library','science_lab','indoor_sports','canteen','medical','swimming','robotics','counsellor','ac_class'],
+    eca:['music','dance','drama','art','coding','chess','karate','ncc_scouts','debate','quiz','community'],
+    transport:'school_bus',
+    desc:'Top-tier schools with world-class facilities, IB / ICSE / CBSE, swimming pools, robotics labs, counsellors.',
+    pros:['World-class facilities','IB option','Low student–teacher ratio','Global exposure'],
+    cons:['Very high fees','High donation','Long commute possible','Competitive environment'],
+    color:'#6366f1',
+    tierClass:'tier-premium'
+  }
+];
+
+// ─── Calculate ────────────────────────────────────────────────────────────────
+function calculate() {
+  if(!validateStep(6)) return;
+
+  // Gather inputs
+  const income      = +document.getElementById('income').value || 0;
+  const spouse      = +document.getElementById('spouseIncome').value || 0;
+  const totalIncome = income + spouse;
+  const standard    = document.getElementById('standard').value;
+  const numKids     = +document.getElementById('numChildren').value || 1;
+
+  const tuition   = +document.getElementById('tuition').value || 0;
+  const donation  = +document.getElementById('donation').value || 0;
+  const uniform   = +document.getElementById('uniform').value || 300;
+  const shoes     = +document.getElementById('shoes').value || 150;
+  const books     = +document.getElementById('books').value || 500;
+  const transport_cost = +document.getElementById('transport').value || 0;
+  const tuitions_cost  = +document.getElementById('tuitions').value || 0;
+  const other     = +document.getElementById('other').value || 0;
+
+  const totalMonthly = tuition+donation+uniform+shoes+books+transport_cost+tuitions_cost+other;
+  const totalAnnual  = totalMonthly * 12;
+  const incomePercent = totalIncome > 0 ? (totalMonthly/totalIncome)*100 : 0;
+
+  const distance    = +document.getElementById('distance').value || 5;
+  const pickupAns   = getChips('pickupChips')[0] || 'sometimes';
+  const transportArr = getChips('transportChips');
+
+  const sportsWants = getChips('sportsChips');
+  const techWants   = getChips('techChips');
+  const otherFacWants = getChips('otherFacChips');
+  const allAmenityWants = [...sportsWants,...techWants,...otherFacWants];
+
+  const ecaWants    = getChips('ecaChips');
+  const mediums     = getChips('mediumChips');
+  const langWants   = getChips('langChips');
+  const boards      = getChips('boardChips').filter(b=>b!=='no_pref');
+  const city        = document.getElementById('city').value || 'other_metro';
+  const priority    = document.getElementById('priority').value;
+
+  const mult = CITY_MULT[city] || 1.0;
+
+  // Score each tier
+  const scored = TIERS.map(tier => {
+    let score = 0;
+    let reasons = [];
+
+    // 1. Budget fit (40 points max)
+    const minFee = tier.tuitionRange[0] * mult;
+    const maxFee = tier.tuitionRange[1] * mult;
+    const minAnn = tier.annualTotal[0] * mult;
+    const maxAnn = tier.annualTotal[1] * mult;
+    if(tuition >= minFee && tuition <= maxFee) { score += 40; reasons.push({t:'Budget fits perfectly',c:'green'}); }
+    else if(tuition < minFee && minFee - tuition < minFee*0.3) { score += 25; reasons.push({t:'Budget slightly below range',c:'yellow'}); }
+    else if(tuition > maxFee) { score += 5; reasons.push({t:'Budget exceeds typical range',c:'red'}); }
+    else if(tuition < minFee) { score += 10; reasons.push({t:'Budget below typical minimum',c:'red'}); }
+
+    // 2. Income ratio (10 points)
+    if(incomePercent <= 15) { score += 10; }
+    else if(incomePercent <= 25) { score += 6; }
+    else { score += 2; }
+
+    // 3. Board match (15 points)
+    if(boards.length === 0) { score += 10; }
+    else {
+      const boardMatch = boards.some(b => tier.boards.includes(b));
+      if(boardMatch) { score += 15; reasons.push({t:'Board preference matched',c:'green'}); }
+      else { score -= 5; reasons.push({t:'Board not typically offered',c:'yellow'}); }
+    }
+
+    // 4. Amenities (20 points)
+    if(allAmenityWants.length > 0) {
+      const matched = allAmenityWants.filter(a => tier.amenities.includes(a)).length;
+      const amenityScore = Math.round((matched / allAmenityWants.length) * 20);
+      score += amenityScore;
+      if(amenityScore >= 16) reasons.push({t:'Most amenities available',c:'green'});
+      else if(amenityScore >= 8) reasons.push({t:'Some amenities available',c:'yellow'});
+      else reasons.push({t:'Limited amenities match',c:'red'});
+    } else {
+      score += 12;
+    }
+
+    // 5. ECA match (10 points)
+    if(ecaWants.length > 0) {
+      const matched = ecaWants.filter(e => tier.eca.includes(e)).length;
+      score += Math.round((matched / ecaWants.length) * 10);
+    } else {
+      score += 7;
+    }
+
+    // 6. Transport need (5 points)
+    const needsBus = pickupAns === 'no' || transportArr.includes('school_bus');
+    if(needsBus && tier.transport === 'school_bus') { score += 5; reasons.push({t:'School bus available',c:'green'}); }
+    else if(!needsBus) { score += 5; }
+    else { score -= 3; reasons.push({t:'Bus availability limited',c:'yellow'}); }
+
+    // Priority boost
+    if(priority === 'cost' && (tier.id==='govt'||tier.id==='budget_private')) score += 8;
+    if(priority === 'quality' && (tier.id==='premium'||tier.id==='mid_private')) score += 8;
+    if(priority === 'holistic' && tier.id==='premium') score += 6;
+    if(priority === 'holistic' && tier.id==='mid_private') score += 4;
+    if(priority === 'board_exam' && (tier.id==='mid_private'||tier.id==='budget_private')) score += 4;
+
+    const normalised = Math.min(100, Math.max(0, Math.round(score)));
+    return { ...tier, score: normalised, reasons, minFee, maxFee, minAnn, maxAnn };
+  });
+
+  scored.sort((a,b) => b.score - a.score);
+  const topTier = scored[0];
+
+  // Affordability verdict
+  let affordVerdict, affordColor;
+  if(incomePercent <= 10) { affordVerdict = 'Highly affordable'; affordColor = '#22c55e'; }
+  else if(incomePercent <= 20) { affordVerdict = 'Comfortably affordable'; affordColor = '#4ade80'; }
+  else if(incomePercent <= 30) { affordVerdict = 'Manageable'; affordColor = '#fbbf24'; }
+  else if(incomePercent <= 40) { affordVerdict = 'Stretching your budget'; affordColor = '#fb923c'; }
+  else { affordVerdict = 'Financially stressful'; affordColor = '#f87171'; }
+
+  // ── Render results ────────────────────────────────────────────────────────
+  const fmtINR = n => '₹'+Math.round(n).toLocaleString('en-IN');
+
+  let html = `
+  <div class="result-hero">
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Your best-fit school tier</div>
+    <div style="font-size:40px;margin-bottom:4px">${topTier.emoji}</div>
+    <div style="font-size:24px;font-weight:800">${topTier.name}</div>
+    <div class="result-tier ${topTier.tierClass}">${topTier.score}% match</div>
+    <div class="result-label">${topTier.desc}</div>
+  </div>
+
+  <div class="result-cards">
+    <div class="result-card">
+      <div class="rc-label">Total household income</div>
+      <div class="rc-value">${fmtINR(totalIncome)}<span style="font-size:13px;color:var(--text-muted)">/mo</span></div>
+    </div>
+    <div class="result-card">
+      <div class="rc-label">Education spend</div>
+      <div class="rc-value" style="color:${affordColor}">${fmtINR(totalMonthly)}<span style="font-size:13px;color:var(--text-muted)">/mo</span></div>
+    </div>
+    <div class="result-card">
+      <div class="rc-label">% of income on education</div>
+      <div class="rc-value" style="color:${affordColor}">${incomePercent.toFixed(1)}%</div>
+    </div>
+    <div class="result-card">
+      <div class="rc-label">Affordability verdict</div>
+      <div class="rc-value" style="color:${affordColor};font-size:15px">${affordVerdict}</div>
+    </div>
+  </div>
+
+  <div class="budget-breakdown-summary">
+    <div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text-secondary)">📊 Monthly Budget Breakdown (per child)</div>
+    ${[
+      ['Tuition fee', tuition],
+      ['Donation (monthly)', donation],
+      ['Uniform', uniform],
+      ['Shoes & socks', shoes],
+      ['Books & stationery', books],
+      ['Transport', transport_cost],
+      ['Extra tuitions', tuitions_cost],
+      ['Other expenses', other],
+    ].filter(r=>r[1]>0).map(r=>`
+    <div class="bbs-row"><span>${r[0]}</span><span>${fmtINR(r[1])}/mo</span></div>`).join('')}
+    <div class="bbs-row"><span>Annual total × ${numKids} child${numKids>1?'ren':''}</span><span>${fmtINR(totalAnnual*numKids)}/year</span></div>
+  </div>
+
+  <h2 style="font-size:18px;font-weight:800;margin:28px 0 16px">All school tiers — ranked for you</h2>
+  ${scored.map((t,i) => `
+  <div class="recommendation">
+    <div class="rec-header">
+      <div class="rec-rank" style="background:${i===0?'var(--accent)':i===1?'#6b7280':'#374151'}">${i+1}</div>
+      <div>
+        <div class="rec-name">${t.emoji} ${t.name}</div>
+        <div class="rec-meta">Typical fees: ${fmtINR(t.minFee)}–${fmtINR(t.maxFee)}/mo &nbsp;|&nbsp; Annual: ${fmtINR(t.minAnn)}–${fmtINR(t.maxAnn)}</div>
+      </div>
+    </div>
+    <div class="match-bar"><div class="match-fill" style="width:${t.score}%;background:${t.color}"></div></div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;margin-bottom:8px">${t.score}% match to your profile</div>
+    <div class="rec-badges">
+      ${t.pros.map(p=>`<span class="badge badge-green">✓ ${p}</span>`).join('')}
+      ${t.cons.slice(0,2).map(c=>`<span class="badge badge-red">⚠ ${c}</span>`).join('')}
+    </div>
+    ${t.reasons.slice(0,4).map(r=>`<div style="font-size:12px;margin-top:6px;color:${r.c==='green'?'#4ade80':r.c==='yellow'?'#fbbf24':'#f87171'}">• ${r.t}</div>`).join('')}
+  </div>
+  `).join('')}
+
+  <div class="card" style="margin-top:24px;background:rgba(99,102,241,0.06);border-color:rgba(99,102,241,0.2)">
+    <div class="card-title" style="font-size:15px">💡 Personalised Tips</div>
+    ${getTips(incomePercent, totalIncome, tuition, topTier, priority, boards, distance, pickupAns, allAmenityWants, standard)}
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-secondary" onclick="resetCalc()">🔄 Start Over</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <a href="/schools/" class="btn btn-secondary">Browse Schools →</a>
+  </div>
+  <div class="share-hint">Tip: Press <kbd style="background:var(--bg-secondary);padding:2px 6px;border-radius:4px;font-size:11px">Ctrl+P</kbd> and choose "Save as PDF" to keep this report.</div>
+  `;
+
+  document.getElementById('resultsContent').innerHTML = html;
+  showStep(7);
+}
+
+// ─── Tips generator ───────────────────────────────────────────────────────────
+function getTips(pct, income, tuition, topTier, priority, boards, distance, pickup, amenityWants, standard) {
+  const tips = [];
+
+  if(pct > 30) tips.push('⚠️ <strong>Budget strain alert:</strong> You\'re allocating over 30% of income to education. Consider reducing donation pressure by looking for schools with no capitation fees, or opting for state board which is more affordable.');
+  if(pct < 5 && topTier.id !== 'govt') tips.push('✅ <strong>Room to upgrade:</strong> You\'re spending less than 5% of income on education — you may be able to afford a better school with stronger infrastructure.');
+  if(boards.includes('ib')) tips.push('🌍 <strong>IB board:</strong> IB schools are typically ₹8,000–₹50,000/month. Verify your budget covers the full annual fee including activity fees, trips, and materials before applying.');
+  if(boards.includes('cbse')) tips.push('📋 <strong>CBSE advantage:</strong> Great choice if you might relocate — CBSE is accepted across India. Also aligns with JEE/NEET preparation for Class 11-12.');
+  if(pickup === 'no') tips.push('🚌 <strong>Transport essential:</strong> Since you need school transport, confirm the school operates a bus on your route before shortlisting. Bus fees range ₹800–₹3,000/month depending on distance.');
+  if(distance <= 3) tips.push('📍 <strong>Nearby schools:</strong> Limiting to 3 km narrows your options significantly in most cities. Consider expanding to 5–7 km to find schools that match your board and budget.');
+  if(amenityWants.includes('swimming') && topTier.id !== 'premium') tips.push('🏊 <strong>Swimming pool:</strong> Only premium schools (₹8,000+/month) typically have pools. Consider if this is a must-have or nice-to-have.');
+  if(standard === '11-12') tips.push('📚 <strong>Class 11-12:</strong> Board results critically affect college admissions. Prioritise schools with strong results in your stream (Science/Commerce/Arts) over infrastructure amenities.');
+  if(standard === 'lkg') tips.push('👶 <strong>Pre-primary:</strong> For LKG/UKG, focus on play-based learning, teacher warmth, safety, and proximity over academic rigour. Activity space and teacher ratio matter most.');
+
+  if(tips.length === 0) tips.push('✅ <strong>Well-balanced profile:</strong> Your income, budget, and preferences are aligned. Focus your shortlisting on board preference and distance, then visit 2–3 shortlisted schools before making a final decision.');
+
+  return tips.map(t=>`<p style="font-size:13.5px;line-height:1.6;color:var(--text-secondary);margin-bottom:10px">${t}</p>`).join('');
+}
+
+function resetCalc() {
+  document.querySelectorAll('input[type=number]').forEach(i=>{ if(i.id!=='numChildren') i.value=''; else i.value=1; });
+  document.getElementById('spouseIncome').value=0;
+  document.getElementById('uniform').value=300;
+  document.getElementById('shoes').value=150;
+  document.getElementById('books').value=500;
+  document.querySelectorAll('.chip.selected').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('pickupChips').querySelector('[data-value="yes"]').classList.add('selected');
+  updateBudgetTotal();
+  showStep(1);
+}
+</script>
+</body>
+</html>

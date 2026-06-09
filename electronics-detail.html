@@ -112,6 +112,9 @@ async function load(){
     const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
     const bcScript=document.createElement('script');bcScript.type='application/ld+json';bcScript.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://wibest.in'},{'@type':'ListItem','position':2,'name':'Electronics','item':'https://wibest.in/electronics/'},{'@type':'ListItem','position':3,'name':name,'item':canonicalUrl}]});document.head.appendChild(bcScript);
     render(id,p);
+    // Fix compare link with real id (static HTML has no JS template literal support)
+    const cl=document.getElementById('compareLink');
+    if(cl) cl.href='/compare?type=electronics&id='+encodeURIComponent(id);
   }catch(err){console.error(err);document.getElementById('pageContent').innerHTML='<div class="loading">Error loading product. Please refresh.</div>'}
 }
 
@@ -189,7 +192,7 @@ function render(id,p){
     <div class="sidebar-card">
       <div class="sidebar-title">Quick Actions</div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <a href="/compare?type=electronics&id=${id}" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Compare with other products</a>
+        <a id="compareLink" href="/compare/" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Compare with other products</a>
         <a href="/electronics" style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-secondary);border-radius:8px;font-size:13px;font-weight:500">Back to all electronics</a>
       </div>
     </div>

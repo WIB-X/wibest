@@ -93,6 +93,10 @@
         "destination": "/phones/comparison/index.html"
       },
       {
+        "source": "/schools/admission-planner",
+        "destination": "/schools/admission-planner/index.html"
+      },
+      {
         "source": "/cars/**",
         "destination": "/cars/index.html"
       },
