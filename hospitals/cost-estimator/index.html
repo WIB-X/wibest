@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hospital Cost Estimator India — Government vs Private Cost Calculator | WIB</title>
+<meta name="description" content="Free hospital cost estimator for India. Select your procedure, city, insurance coverage and ward type to get a realistic cost range at government and private hospitals.">
+<link rel="canonical" href="https://wibest.in/hospitals/cost-estimator/">
+<link rel="stylesheet" href="/styles/main.css?v=3.9">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hospital Cost Estimator India","description":"Estimate hospital costs for 40+ procedures at government and private hospitals across Indian cities.","url":"https://wibest.in/hospitals/cost-estimator/","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script src="/ads.js" async></script>
+<style>
+:root{--acc:#6366f1;--acc2:#818cf8;--suc:#22c55e;--war:#f59e0b;--dan:#ef4444;--bg0:#0f0f13;--bg1:#16161c;--bg2:#1c1c24;--bdr:rgba(255,255,255,0.08);--t1:#f1f1f5;--t2:#a1a1b3;--t3:#6b6b7e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;padding-top:72px}
+.wrap{max-width:860px;margin:0 auto;padding:32px 20px 80px}
+.bc{font-size:13px;color:var(--t3);margin-bottom:24px}.bc a{color:var(--acc)}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--t2);font-size:15px;line-height:1.6;margin-bottom:28px}
+.warn{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:12px 16px;font-size:13px;color:#fca5a5;margin-bottom:24px;line-height:1.5}
+.card{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:24px 20px;margin-bottom:18px}
+label{display:block;font-size:13px;font-weight:600;color:var(--t2);margin-bottom:6px}
+select,input[type=number]{width:100%;background:var(--bg1);border:1px solid var(--bdr);border-radius:8px;color:var(--t1);font-size:15px;padding:10px 14px;outline:none;transition:border-color .2s}
+select:focus,input:focus{border-color:var(--acc)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:600px){.row2,.row3{grid-template-columns:1fr}}
+.field{margin-bottom:18px}
+.hint{font-size:12px;color:var(--t3);margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{padding:6px 14px;border-radius:20px;border:1px solid var(--bdr);background:var(--bg1);font-size:13px;cursor:pointer;transition:all .2s;user-select:none}
+.chip:hover{border-color:var(--acc2)}
+.chip.sel{border-color:var(--acc);background:rgba(99,102,241,.1);color:var(--acc2);font-weight:600}
+.btn{padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;background:var(--acc);color:#fff;transition:all .2s;margin-top:8px}
+.btn:hover{background:var(--acc2)}
+.btn2{background:var(--bg1);color:var(--t1);border:1px solid var(--bdr);margin-left:10px}
+/* Results */
+.res{display:none}
+.colrow{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:600px){.colrow{grid-template-columns:1fr}}
+.hosp-card{border-radius:var(--r);padding:22px;border:2px solid}
+.gov-card{background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.2)}
+.pvt-card{background:rgba(99,102,241,.05);border-color:rgba(99,102,241,.2)}
+.hc-title{font-size:16px;font-weight:800;margin-bottom:4px}
+.hc-sub{font-size:13px;color:var(--t2);margin-bottom:14px}
+.cost-big{font-size:32px;font-weight:900;line-height:1.1;margin-bottom:4px}
+.cost-range{font-size:13px;color:var(--t2);margin-bottom:14px}
+.items{font-size:13px;color:var(--t2);line-height:2}
+.note{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:12px 16px;font-size:13px;color:#fcd34d;margin-top:16px;line-height:1.5}
+.saving-bar{background:var(--bg1);border:1px solid var(--bdr);border-radius:var(--r);padding:18px 20px;margin-bottom:18px}
+.saving-amt{font-size:28px;font-weight:900;color:var(--suc)}
+.ins-section{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:var(--r);padding:18px 20px;margin-bottom:18px}
+.checklist{margin-top:14px}
+.ci{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:13.5px;color:var(--t2);border-bottom:1px solid var(--bdr)}
+.ci:last-child{border-bottom:none}
+.ci span:first-child{color:var(--suc);flex-shrink:0;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bc"><a href="/">Home</a> › <a href="/hospitals/">Hospitals</a> › Cost Estimator</div>
+<h1>🏥 Hospital Cost Estimator India</h1>
+<p class="sub">Get a realistic cost range for 40+ medical procedures at government and private hospitals across Indian cities — including insurance coverage impact and Ayushman Bharat eligibility.</p>
+<div class="warn">⚠️ <strong>Disclaimer:</strong> These are estimated ranges based on published data. Actual costs vary by hospital, surgeon, complications, and individual patient factors. Always get a written estimate from the hospital before proceeding.</div>
+
+<div class="card">
+  <div style="font-size:16px;font-weight:700;margin-bottom:18px">Procedure & Location</div>
+  <div class="row2">
+    <div class="field" style="margin:0">
+      <label>Medical procedure category</label>
+      <select id="category" onchange="updateProcs()">
+        <option value="cardiac">❤️ Cardiac (Heart)</option>
+        <option value="ortho">🦴 Orthopaedics (Bone/Joint)</option>
+        <option value="cancer">🎗️ Oncology (Cancer)</option>
+        <option value="maternity">🤱 Maternity & Gynaecology</option>
+        <option value="gastro">🫀 Gastroenterology (Digestive)</option>
+        <option value="neuro">🧠 Neurology / Neurosurgery</option>
+        <option value="urology">💧 Urology / Kidney</option>
+        <option value="eye">👁️ Ophthalmology (Eye)</option>
+        <option value="dental">🦷 Dental</option>
+        <option value="ent">👂 ENT</option>
+        <option value="general">🏥 General Surgery</option>
+        <option value="diagnostic">🔬 Diagnostic & Tests</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Specific procedure</label>
+      <select id="procedure"></select>
+    </div>
+  </div>
+  <div class="row2" style="margin-top:16px">
+    <div class="field" style="margin:0">
+      <label>City / tier</label>
+      <select id="city">
+        <option value="metro_premium">Mumbai / Delhi (premium)</option>
+        <option value="metro_std" selected>Hyderabad / Bengaluru / Chennai / Pune</option>
+        <option value="metro_budget">Kolkata / Ahmedabad</option>
+        <option value="tier2">Tier 2 city (Jaipur / Lucknow / Indore)</option>
+        <option value="tier3">Tier 3 / small town</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Ward / room type</label>
+      <select id="ward">
+        <option value="general">General ward</option>
+        <option value="semi" selected>Semi-private (2-bed)</option>
+        <option value="private">Private room</option>
+        <option value="suite">Premium / suite</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div style="font-size:16px;font-weight:700;margin-bottom:18px">Insurance & Coverage</div>
+  <div class="row2">
+    <div class="field" style="margin:0">
+      <label>Health insurance</label>
+      <select id="insurance">
+        <option value="none">No insurance</option>
+        <option value="employer">Employer / group health insurance</option>
+        <option value="individual_3">Individual policy — ₹3 lakh cover</option>
+        <option value="individual_5">Individual policy — ₹5 lakh cover</option>
+        <option value="individual_10">Individual policy — ₹10+ lakh cover</option>
+        <option value="pmjay">Ayushman Bharat (PM-JAY)</option>
+        <option value="cghs">CGHS / ECHS (Government employee)</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Ayushman Bharat eligibility check</label>
+      <select id="pmjay_status">
+        <option value="unknown">Not sure</option>
+        <option value="eligible">Eligible (annual income &lt; ₹1.80 lakh)</option>
+        <option value="not_eligible">Not eligible</option>
+      </select>
+      <div class="hint">PM-JAY covers ₹5 lakh/year for 50 crore beneficiaries</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div style="font-size:16px;font-weight:700;margin-bottom:16px">Additional Factors</div>
+  <div class="row3">
+    <div class="field" style="margin:0">
+      <label>Urgency</label>
+      <select id="urgency">
+        <option value="planned">Planned / elective</option>
+        <option value="semi_urgent">Semi-urgent (within 2 weeks)</option>
+        <option value="emergency">Emergency</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Patient age group</label>
+      <select id="age">
+        <option value="child">Child (0–18)</option>
+        <option value="adult" selected>Adult (19–59)</option>
+        <option value="senior">Senior (60+)</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Known complications / comorbidities</label>
+      <select id="comorbid">
+        <option value="none">None</option>
+        <option value="diabetes">Diabetes</option>
+        <option value="bp">Hypertension</option>
+        <option value="multiple">Multiple conditions</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<button class="btn" onclick="estimate()">💰 Estimate Hospital Cost</button>
+
+<!-- Results -->
+<div class="res" id="resArea">
+  <div style="margin-top:32px"></div>
+  <h2 style="font-size:20px;font-weight:800;margin-bottom:18px" id="procTitle"></h2>
+  <div class="colrow" id="costCols"></div>
+  <div id="savingDiv"></div>
+  <div id="insDiv"></div>
+  <div id="checklistDiv"></div>
+  <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+    <button class="btn" onclick="window.print()">🖨️ Save as PDF</button>
+    <button class="btn btn2" onclick="document.getElementById('resArea').style.display='none'">↑ Change inputs</button>
+    <a href="/hospitals/" class="btn btn2" style="text-decoration:none">Browse Hospitals →</a>
+  </div>
+</div>
+
+<div style="margin-top:40px;padding:24px;background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r)">
+  <div style="font-size:16px;font-weight:700;margin-bottom:12px">📋 About these estimates</div>
+  <p style="font-size:13.5px;color:var(--t2);line-height:1.8">Cost data sourced from: Central Government Health Scheme (CGHS) rate lists, NHA (National Health Authority) package rates, and published hospital tariff cards. Metropolitan costs are 20–35% higher than Tier 2 cities. Emergency admissions add 20–40% to planned procedure costs due to ICU charges and extended stays. Senior patients (60+) typically have 15–25% higher costs due to longer recovery and additional monitoring. Comorbidities add 10–30% to base procedure costs.</p>
+</div>
+</div>
+
+<script>
+const PROCS={
+  cardiac:[
+    {name:'Coronary Angiography (Cath)',gov:[5000,15000],pvt:[20000,45000],stay:1,ico:'🫀'},
+    {name:'PTCA / Angioplasty (1 stent)',gov:[25000,60000],pvt:[120000,280000],stay:3,ico:'🫀'},
+    {name:'CABG (Bypass surgery)',gov:[25000,100000],pvt:[300000,600000],stay:10,ico:'🫀'},
+    {name:'Pacemaker implant (single chamber)',gov:[40000,120000],pvt:[200000,450000],stay:5,ico:'🫀'},
+    {name:'Echocardiography',gov:[300,1000],pvt:[2000,5000],stay:0,ico:'🫀'},
+  ],
+  ortho:[
+    {name:'Knee Replacement (Total)',gov:[20000,60000],pvt:[180000,380000],stay:7,ico:'🦴'},
+    {name:'Hip Replacement (Total)',gov:[25000,70000],pvt:[200000,420000],stay:7,ico:'🦴'},
+    {name:'ACL Reconstruction',gov:[15000,40000],pvt:[80000,180000],stay:3,ico:'🦴'},
+    {name:'Spinal Fusion (single level)',gov:[30000,80000],pvt:[200000,450000],stay:7,ico:'🦴'},
+    {name:'Fracture Fixation (ORIF)',gov:[10000,35000],pvt:[60000,160000],stay:3,ico:'🦴'},
+  ],
+  cancer:[
+    {name:'Mastectomy (Breast cancer)',gov:[15000,50000],pvt:[150000,350000],stay:7,ico:'🎗️'},
+    {name:'Chemotherapy (per cycle)',gov:[3000,15000],pvt:[30000,120000],stay:2,ico:'🎗️'},
+    {name:'Radiation therapy (full course)',gov:[10000,40000],pvt:[150000,450000],stay:0,ico:'🎗️'},
+    {name:'Prostatectomy',gov:[20000,60000],pvt:[200000,500000],stay:7,ico:'🎗️'},
+    {name:'Colectomy (Colon cancer)',gov:[20000,70000],pvt:[180000,400000],stay:9,ico:'🎗️'},
+  ],
+  maternity:[
+    {name:'Normal delivery',gov:[0,2000],pvt:[25000,80000],stay:2,ico:'🤱'},
+    {name:'C-Section delivery',gov:[0,5000],pvt:[60000,180000],stay:4,ico:'🤱'},
+    {name:'High-risk pregnancy management',gov:[5000,20000],pvt:[100000,300000],stay:10,ico:'🤱'},
+    {name:'Hysterectomy (laparoscopic)',gov:[10000,35000],pvt:[80000,200000],stay:3,ico:'🤱'},
+    {name:'IVF (single cycle)',gov:[25000,50000],pvt:[120000,250000],stay:0,ico:'🤱'},
+  ],
+  gastro:[
+    {name:'Appendicectomy (laparoscopic)',gov:[5000,15000],pvt:[40000,90000],stay:2,ico:'🫀'},
+    {name:'Cholecystectomy (gall bladder)',gov:[5000,20000],pvt:[50000,120000],stay:2,ico:'🫀'},
+    {name:'Colonoscopy',gov:[500,2000],pvt:[6000,18000],stay:0,ico:'🫀'},
+    {name:'Upper GI Endoscopy',gov:[200,800],pvt:[3000,8000],stay:0,ico:'🫀'},
+    {name:'Liver transplant',gov:[100000,300000],pvt:[1500000,3000000],stay:30,ico:'🫀'},
+  ],
+  neuro:[
+    {name:'CT Scan (Brain)',gov:[500,2000],pvt:[3000,7000],stay:0,ico:'🧠'},
+    {name:'MRI Brain',gov:[1000,3000],pvt:[6000,14000],stay:0,ico:'🧠'},
+    {name:'Craniotomy (brain tumour)',gov:[30000,80000],pvt:[300000,700000],stay:14,ico:'🧠'},
+    {name:'Spine surgery (disc prolapse)',gov:[20000,60000],pvt:[150000,350000],stay:5,ico:'🧠'},
+    {name:'Stroke thrombolysis + stay',gov:[10000,30000],pvt:[100000,300000],stay:7,ico:'🧠'},
+  ],
+  urology:[
+    {name:'Kidney transplant',gov:[30000,150000],pvt:[600000,1500000],stay:21,ico:'💧'},
+    {name:'Nephrectomy (laparoscopic)',gov:[15000,50000],pvt:[150000,350000],stay:5,ico:'💧'},
+    {name:'PCNL (kidney stones)',gov:[10000,30000],pvt:[80000,200000],stay:3,ico:'💧'},
+    {name:'Haemodialysis (per session)',gov:[500,1500],pvt:[2500,6000],stay:0,ico:'💧'},
+    {name:'TURP (prostate)',gov:[10000,30000],pvt:[70000,180000],stay:4,ico:'💧'},
+  ],
+  eye:[
+    {name:'Cataract surgery (phaco)',gov:[0,3000],pvt:[15000,60000],stay:0,ico:'👁️'},
+    {name:'LASIK (both eyes)',gov:[15000,30000],pvt:[40000,90000],stay:0,ico:'👁️'},
+    {name:'Retinal detachment repair',gov:[10000,30000],pvt:[80000,200000],stay:3,ico:'👁️'},
+    {name:'Glaucoma surgery',gov:[5000,15000],pvt:[40000,100000],stay:1,ico:'👁️'},
+  ],
+  dental:[
+    {name:'Root Canal Treatment (RCT)',gov:[500,1500],pvt:[3000,8000],stay:0,ico:'🦷'},
+    {name:'Dental Implant (single)',gov:[5000,15000],pvt:[25000,60000],stay:0,ico:'🦷'},
+    {name:'Orthodontic braces (full treatment)',gov:[10000,25000],pvt:[40000,100000],stay:0,ico:'🦷'},
+    {name:'Wisdom tooth extraction',gov:[200,500],pvt:[2000,6000],stay:0,ico:'🦷'},
+  ],
+  ent:[
+    {name:'Tonsillectomy',gov:[2000,6000],pvt:[25000,60000],stay:1,ico:'👂'},
+    {name:'Septoplasty (deviated septum)',gov:[5000,15000],pvt:[40000,90000],stay:2,ico:'👂'},
+    {name:'Cochlear implant',gov:[80000,200000],pvt:[800000,1500000],stay:7,ico:'👂'},
+    {name:'Adenoidectomy',gov:[2000,8000],pvt:[20000,50000],stay:1,ico:'👂'},
+  ],
+  general:[
+    {name:'Hernia repair (laparoscopic)',gov:[5000,15000],pvt:[50000,120000],stay:2,ico:'🏥'},
+    {name:'Varicose veins (EVLT)',gov:[8000,20000],pvt:[50000,130000],stay:0,ico:'🏥'},
+    {name:'Thyroidectomy',gov:[10000,25000],pvt:[80000,180000],stay:3,ico:'🏥'},
+    {name:'Liposuction',gov:null,pvt:[80000,200000],stay:0,ico:'🏥'},
+    {name:'ICU stay (per day)',gov:[1000,5000],pvt:[15000,50000],stay:0,ico:'🏥'},
+  ],
+  diagnostic:[
+    {name:'Complete Blood Count (CBC)',gov:[50,200],pvt:[300,800],stay:0,ico:'🔬'},
+    {name:'HbA1c (Diabetes test)',gov:[100,300],pvt:[400,900],stay:0,ico:'🔬'},
+    {name:'Full body health checkup',gov:[500,2000],pvt:[5000,20000],stay:0,ico:'🔬'},
+    {name:'PET-CT scan',gov:[8000,20000],pvt:[25000,55000],stay:0,ico:'🔬'},
+    {name:'2D Echo (heart)',gov:[300,1000],pvt:[2000,5000],stay:0,ico:'🔬'},
+  ],
+};
+
+const CITY_MULT={metro_premium:1.35,metro_std:1.0,metro_budget:0.85,tier2:0.70,tier3:0.55};
+const WARD_MULT={general:1.0,semi:1.3,private:1.6,suite:2.2};
+const AGE_MULT={child:1.0,adult:1.0,senior:1.2};
+const COMORBID_MULT={none:1.0,diabetes:1.15,bp:1.10,multiple:1.30};
+const URGENCY_MULT={planned:1.0,semi_urgent:1.15,emergency:1.40};
+
+function updateProcs(){
+  const cat=document.getElementById('category').value;
+  const sel=document.getElementById('procedure');
+  sel.innerHTML=PROCS[cat].map((p,i)=>`<option value="${i}">${p.ico} ${p.name}</option>`).join('');
+}
+updateProcs();
+
+function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN');}
+
+function estimate(){
+  const cat=document.getElementById('category').value;
+  const pi=+document.getElementById('procedure').value;
+  const p=PROCS[cat][pi];
+  const city=document.getElementById('city').value;
+  const ward=document.getElementById('ward').value;
+  const ins=document.getElementById('insurance').value;
+  const pmjay=document.getElementById('pmjay_status').value;
+  const urgency=document.getElementById('urgency').value;
+  const age=document.getElementById('age').value;
+  const comorbid=document.getElementById('comorbid').value;
+
+  const cm=CITY_MULT[city];const wm=WARD_MULT[ward];
+  const um=URGENCY_MULT[urgency];const am=AGE_MULT[age];const rm=COMORBID_MULT[comorbid];
+  const mul=cm*wm*um*am*rm;
+
+  const govMin=p.gov?Math.round(p.gov[0]*cm*um*am*rm):null;
+  const govMax=p.gov?Math.round(p.gov[1]*cm*um*am*rm):null;
+  const pvtMin=Math.round(p.pvt[0]*mul);
+  const pvtMax=Math.round(p.pvt[1]*mul);
+
+  // Stay cost
+  const stayDays=p.stay||0;
+  const pvtStayMin=Math.round(stayDays*(ward==='general'?3000:ward==='semi'?6000:ward==='private'?10000:18000)*cm*um);
+  const govStayMin=p.gov?Math.round(stayDays*(ward==='general'?200:400)*cm*um):0;
+
+  const pvtTotal=[pvtMin+pvtStayMin,pvtMax+pvtStayMin*1.5];
+  const govTotal=p.gov?[govMin+govStayMin,govMax+govStayMin*1.5]:null;
+
+  // Insurance calculation
+  let insCover=0;
+  if(ins==='individual_3')insCover=300000;
+  else if(ins==='individual_5')insCover=500000;
+  else if(ins==='individual_10')insCover=1500000;
+  else if(ins==='employer')insCover=300000;
+  else if(ins==='pmjay'||pmjay==='eligible')insCover=500000;
+  else if(ins==='cghs')insCover=600000;
+
+  const pvtAfterIns=[Math.max(0,pvtTotal[0]-insCover),Math.max(0,pvtTotal[1]-insCover)];
+  const saving=pvtTotal[0]-pvtAfterIns[0];
+
+  document.getElementById('procTitle').textContent=p.ico+' '+p.name+' — Cost Estimate';
+
+  let cols=`
+    ${govTotal?`<div class="hosp-card gov-card">
+      <div class="hc-title" style="color:#4ade80">🏛️ Government Hospital</div>
+      <div class="hc-sub">AIIMS / State Medical College / CGHS empanelled</div>
+      <div class="cost-big" style="color:#4ade80">${fmt(govTotal[0])} – ${fmt(govTotal[1])}</div>
+      <div class="cost-range">Typical range (all inclusive)</div>
+      <div class="items">
+        📋 Procedure: ${fmt(govMin)} – ${fmt(govMax)}<br>
+        🛏️ Stay (${stayDays>0?stayDays+'d':'outpatient'}): ${govStayMin>0?fmt(govStayMin):'—'}<br>
+        💉 Medicines: Usually subsidised / free<br>
+        📄 Waiting: ${urgency==='emergency'?'Immediate':'2–12 weeks (elective)'}
+      </div>
+    </div>`:'<div class="hosp-card gov-card"><div class="hc-title" style="color:#4ade80">🏛️ Government Hospital</div><div class="hc-sub">Not typically performed at government hospitals or data unavailable</div></div>'}
+    <div class="hosp-card pvt-card">
+      <div class="hc-title" style="color:#818cf8">🏢 Private Hospital</div>
+      <div class="hc-sub">Apollo / Fortis / Manipal / Max / regional private</div>
+      <div class="cost-big" style="color:#818cf8">${fmt(pvtTotal[0])} – ${fmt(pvtTotal[1])}</div>
+      <div class="cost-range">Typical range (all inclusive)</div>
+      <div class="items">
+        📋 Procedure: ${fmt(pvtMin)} – ${fmt(pvtMax)}<br>
+        🛏️ Stay (${stayDays>0?stayDays+'d':'outpatient'}): ${pvtStayMin>0?fmt(pvtStayMin)+' – '+fmt(pvtStayMin*1.5):'—'}<br>
+        💊 Medicines: ₹5,000 – ₹30,000 extra (typical)<br>
+        📅 Waiting: ${urgency==='emergency'?'Immediate':'Same week'}
+      </div>
+    </div>`;
+  document.getElementById('costCols').innerHTML=cols;
+
+  // Savings from insurance
+  if(insCover>0){
+    document.getElementById('savingDiv').innerHTML=`
+      <div class="saving-bar">
+        <div style="font-size:13px;color:var(--t2);margin-bottom:4px">Your insurance saves (at private hospital):</div>
+        <div class="saving-amt">${fmt(Math.min(saving,pvtTotal[0]))}</div>
+        <div style="font-size:13px;color:var(--t2);margin-top:4px">Out-of-pocket after insurance: <strong style="color:var(--t1)">${fmt(pvtAfterIns[0])} – ${fmt(pvtAfterIns[1])}</strong></div>
+      </div>`;
+  } else document.getElementById('savingDiv').innerHTML='';
+
+  // Ayushman Bharat info
+  if(pmjay==='eligible'||ins==='pmjay'){
+    document.getElementById('insDiv').innerHTML=`
+      <div class="ins-section">
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#818cf8">✅ Ayushman Bharat (PM-JAY) Coverage</div>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:8px">You may be eligible for <strong>free treatment up to ₹5 lakh/year</strong> at 25,000+ empanelled hospitals including private ones. ${pvtTotal[0]<=500000?'This procedure is likely fully covered.':'This procedure may exceed the ₹5 lakh annual limit.'}</p>
+        <p style="font-size:13px;color:var(--t2)">Check eligibility: <a href="https://pmjay.gov.in" target="_blank" rel="noopener" style="color:var(--acc)">pmjay.gov.in</a> using Aadhaar or ration card.</p>
+      </div>`;
+  } else if(ins==='none'&&pmjay==='unknown'){
+    document.getElementById('insDiv').innerHTML=`
+      <div class="note">💡 <strong>Did you know?</strong> If your family income is below ₹1.80 lakh/year, you may qualify for Ayushman Bharat PM-JAY — free hospital treatment up to ₹5 lakh/year. Check at <a href="https://pmjay.gov.in" target="_blank" rel="noopener" style="color:#fcd34d">pmjay.gov.in</a></div>`;
+  } else document.getElementById('insDiv').innerHTML='';
+
+  // Pre-hospitalisation checklist
+  document.getElementById('checklistDiv').innerHTML=`
+    <div class="card" style="margin-top:0">
+      <div style="font-size:15px;font-weight:700;margin-bottom:4px">📋 Before You Go — Checklist</div>
+      <div class="checklist">
+        <div class="ci"><span>✓</span><span>Get a written cost estimate from the hospital's billing department before admission</span></div>
+        <div class="ci"><span>✓</span><span>Ask about "package rates" — most hospitals offer all-inclusive package prices cheaper than itemised billing</span></div>
+        <div class="ci"><span>✓</span><span>Confirm surgeon's fee is included in the hospital quote (it often isn't)</span></div>
+        <div class="ci"><span>✓</span><span>Pre-authorise your insurance claim before admission for cashless treatment</span></div>
+        ${stayDays>0?'<div class="ci"><span>✓</span><span>Bring original ID proof (Aadhaar) for registration; keep copies of all previous investigations</span></div>':''}
+        <div class="ci"><span>✓</span><span>Ask about generic medicines — they cost 40–80% less than branded versions with identical efficacy</span></div>
+        <div class="ci"><span>✓</span><span>Government hospitals (AIIMS, state medical colleges) offer the same clinical quality at 10–20% of private costs for most procedures</span></div>
+      </div>
+    </div>`;
+
+  const r=document.getElementById('resArea');
+  r.style.display='block';
+  r.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body></html>

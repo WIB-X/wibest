@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>College Admission Planner India — Find Your Best College Match | WIB</title>
+<meta name="description" content="Free college admission planner for India. Enter your JEE/NEET rank or percentage, budget, stream, city preference and hostel need — get matched to the right college tier with fee estimates.">
+<link rel="canonical" href="https://wibest.in/colleges/admission-planner/">
+<link rel="stylesheet" href="/styles/main.css?v=3.9">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"College Admission Planner India","description":"Match students to the right college tier based on exam rank, budget, stream and preferences.","url":"https://wibest.in/colleges/admission-planner/","applicationCategory":"EducationApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Colleges","item":"https://wibest.in/colleges/"},{"@type":"ListItem","position":3,"name":"Admission Planner","item":"https://wibest.in/colleges/admission-planner/"}]}</script>
+<script src="/ads.js" async></script>
+<style>
+:root{--acc:#6366f1;--acc2:#818cf8;--suc:#22c55e;--war:#f59e0b;--dan:#ef4444;--bg0:#0f0f13;--bg1:#16161c;--bg2:#1c1c24;--bdr:rgba(255,255,255,0.08);--t1:#f1f1f5;--t2:#a1a1b3;--t3:#6b6b7e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;padding-top:72px}
+.wrap{max-width:780px;margin:0 auto;padding:32px 20px 80px}
+.bc{font-size:13px;color:var(--t3);margin-bottom:28px}.bc a{color:var(--acc)}
+h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin-bottom:10px}
+.sub{color:var(--t2);font-size:15px;line-height:1.6;margin-bottom:32px}
+.prog{height:4px;background:var(--bdr);border-radius:2px;margin-bottom:28px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:2px;transition:width .4s}
+.stepper{display:flex;gap:0;margin-bottom:28px;overflow-x:auto}
+.si{display:flex;align-items:center;flex-shrink:0}
+.sd{width:26px;height:26px;border-radius:50%;border:2px solid var(--bdr);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--t3);transition:all .3s}
+.sd.a{border-color:var(--acc);background:var(--acc);color:#fff}
+.sd.d{border-color:var(--suc);background:var(--suc);color:#fff}
+.sl{width:24px;height:2px;background:var(--bdr)}
+.sl.d{background:var(--suc)}
+.card{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:26px 22px;margin-bottom:18px}
+.ct{font-size:17px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.cs{color:var(--t2);font-size:13.5px;margin-bottom:20px;line-height:1.5}
+label{display:block;font-size:13px;font-weight:600;color:var(--t2);margin-bottom:6px}
+input[type=number],select{width:100%;background:var(--bg1);border:1px solid var(--bdr);border-radius:8px;color:var(--t1);font-size:15px;padding:10px 14px;outline:none;transition:border-color .2s}
+input:focus,select:focus{border-color:var(--acc)}
+.hint{font-size:12px;color:var(--t3);margin-top:4px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.field{margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{padding:7px 14px;border-radius:20px;border:1px solid var(--bdr);background:var(--bg1);font-size:13px;cursor:pointer;transition:all .2s;user-select:none}
+.chip:hover{border-color:var(--acc2)}
+.chip.sel{border-color:var(--acc);background:rgba(99,102,241,.1);color:var(--acc2);font-weight:600}
+.navb{display:flex;gap:12px;margin-top:24px}
+.btn{padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btnp{background:var(--acc);color:#fff}.btnp:hover{background:var(--acc2)}
+.btns{background:var(--bg1);color:var(--t1);border:1px solid var(--bdr)}.btns:hover{border-color:var(--acc)}
+.panel{display:none}.panel.active{display:block}
+.tip{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.15);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--t2);margin-bottom:18px;line-height:1.5}
+/* Results */
+.rhero{text-align:center;padding:28px 20px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(129,140,248,.05));border:1px solid rgba(99,102,241,.2);border-radius:var(--r);margin-bottom:22px}
+.rscore{font-size:52px;font-weight:900;line-height:1}
+.rtier{display:inline-block;margin-top:12px;padding:5px 16px;border-radius:20px;font-size:13px;font-weight:700}
+.t-tier1{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3)}
+.t-tier2{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
+.t-tier3{background:rgba(34,197,94,.1);color:#4ade80;border:1px solid rgba(34,197,94,.2)}
+.t-tier4{background:rgba(255,255,255,.05);color:#a1a1b3;border:1px solid var(--bdr)}
+.rcards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+@media(max-width:520px){.rcards{grid-template-columns:1fr}}
+.rc{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:14px}
+.rcl{font-size:11px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.rcv{font-size:17px;font-weight:700}
+.rec{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:18px 20px;margin-bottom:14px}
+.rech{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.recn{font-size:15px;font-weight:700}.recm{font-size:13px;color:var(--t2)}
+.rank{width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bar{height:6px;background:var(--bdr);border-radius:3px;overflow:hidden;margin-top:8px}
+.barf{height:100%;border-radius:3px;transition:width .5s}
+.bgs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.bg{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.bg-g{background:rgba(34,197,94,.12);color:#4ade80}
+.bg-y{background:rgba(245,158,11,.12);color:#fbbf24}
+.bg-r{background:rgba(239,68,68,.12);color:#f87171}
+.bg-b{background:rgba(99,102,241,.12);color:#818cf8}
+.actb{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bc"><a href="/">Home</a> › <a href="/colleges/">Colleges</a> › Admission Planner</div>
+<h1>🎓 College Admission Planner</h1>
+<p class="sub">Tell us your exam score, budget, stream, and preferences — we'll match you to the right college tier in India with realistic fee and placement data.</p>
+<div class="prog"><div class="prog-fill" id="pf" style="width:16%"></div></div>
+<div class="stepper" id="stepper"></div>
+
+<!-- Step 1: Stream & Exam -->
+<div class="panel active" id="s1">
+  <div class="card">
+    <div class="ct">📚 Stream & Entrance Exam</div>
+    <div class="cs">What are you applying for, and what was your exam result?</div>
+    <div class="field">
+      <label>Choose your stream</label>
+      <div class="chips" id="streamChips">
+        <div class="chip sel" data-v="engg" onclick="pick(this,'streamChips')">⚙️ Engineering (B.Tech/BE)</div>
+        <div class="chip" data-v="medical" onclick="pick(this,'streamChips')">🏥 Medical (MBBS/BDS)</div>
+        <div class="chip" data-v="mba" onclick="pick(this,'streamChips')">💼 MBA / Management</div>
+        <div class="chip" data-v="law" onclick="pick(this,'streamChips')">⚖️ Law (LLB/LLM)</div>
+        <div class="chip" data-v="arts" onclick="pick(this,'streamChips')">🎨 Arts / Humanities / Commerce</div>
+        <div class="chip" data-v="science" onclick="pick(this,'streamChips')">🔬 Pure Science (BSc/MSc)</div>
+        <div class="chip" data-v="design" onclick="pick(this,'streamChips')">✏️ Design / Architecture</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field" style="margin:0">
+        <label>Entrance exam</label>
+        <select id="exam">
+          <option value="jee_main">JEE Main</option>
+          <option value="jee_adv">JEE Advanced</option>
+          <option value="neet">NEET-UG</option>
+          <option value="cat">CAT</option>
+          <option value="clat">CLAT</option>
+          <option value="cuet">CUET</option>
+          <option value="cet">State CET</option>
+          <option value="board">12th Board %</option>
+          <option value="none">No entrance</option>
+        </select>
+      </div>
+      <div class="field" style="margin:0">
+        <label id="scoreLabel">Score / Rank</label>
+        <input type="number" id="score" placeholder="e.g. 85000 (rank) or 87 (%)" min="1">
+        <div class="hint" id="scoreHint">Enter rank for JEE/NEET/CAT, percentile/% for others</div>
+      </div>
+    </div>
+  </div>
+  <div class="navb"><button class="btn btnp" onclick="nxt(1)">Next: Budget →</button></div>
+</div>
+
+<!-- Step 2: Budget -->
+<div class="panel" id="s2">
+  <div class="card">
+    <div class="ct">💰 Budget & Financial Capacity</div>
+    <div class="cs">Total annual budget you can allocate for college fees (tuition + hostel + misc).</div>
+    <div class="tip">💡 <strong>Annual budget tip:</strong> Include tuition, hostel, food, books, and personal expenses. A ₹2 lakh/year budget is realistic for government colleges; ₹5–8 lakh/year for mid-range private; ₹10–25 lakh/year for premium private.</div>
+    <div class="row">
+      <div class="field" style="margin:0">
+        <label>Annual budget (₹)</label>
+        <input type="number" id="budget" placeholder="e.g. 500000" min="0" step="10000">
+      </div>
+      <div class="field" style="margin:0">
+        <label>Course duration (years)</label>
+        <select id="duration">
+          <option value="3">3 years (BA/BSc/BCom)</option>
+          <option value="4" selected>4 years (B.Tech/BE)</option>
+          <option value="5">5 years (Integrated/LLB)</option>
+          <option value="2">2 years (MBA/MTech)</option>
+          <option value="1">1 year (Executive MBA)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Education loan willingness</label>
+      <div class="chips" id="loanChips">
+        <div class="chip sel" data-v="no" onclick="pick(this,'loanChips')">No loan — full self-funding</div>
+        <div class="chip" data-v="partial" onclick="pick(this,'loanChips')">Partial loan (up to ₹5L)</div>
+        <div class="chip" data-v="full" onclick="pick(this,'loanChips')">Open to full loan for premium college</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Scholarship eligibility (if any)</label>
+      <div class="chips" id="scholChips">
+        <div class="chip sel" data-v="none" onclick="pick(this,'scholChips')">None / Not sure</div>
+        <div class="chip" data-v="merit" onclick="pick(this,'scholChips')">Merit scholarship eligible</div>
+        <div class="chip" data-v="sc_st" onclick="pick(this,'scholChips')">SC/ST/OBC reservation</div>
+        <div class="chip" data-v="ews" onclick="pick(this,'scholChips')">EWS category</div>
+      </div>
+    </div>
+  </div>
+  <div class="navb"><button class="btn btns" onclick="prv(2)">← Back</button><button class="btn btnp" onclick="nxt(2)">Next: Location →</button></div>
+</div>
+
+<!-- Step 3: Location & Hostel -->
+<div class="panel" id="s3">
+  <div class="card">
+    <div class="ct">📍 Location & Accommodation</div>
+    <div class="cs">Where you study affects living costs significantly. Hostel vs paying guest vs home changes the budget equation.</div>
+    <div class="row">
+      <div class="field" style="margin:0">
+        <label>Preferred city / state</label>
+        <select id="prefcity">
+          <option value="home_city">Same city as home</option>
+          <option value="anywhere">Anywhere in India (best college)</option>
+          <option value="metro">Major metro (Delhi/Mumbai/Bengaluru/Hyderabad/Chennai)</option>
+          <option value="home_state">Home state only</option>
+          <option value="abroad">Open to studying abroad</option>
+        </select>
+      </div>
+      <div class="field" style="margin:0">
+        <label>Accommodation type</label>
+        <select id="accom">
+          <option value="hostel">College hostel</option>
+          <option value="pg">Paying guest / shared flat</option>
+          <option value="home">Day scholar (living at home)</option>
+          <option value="open">Open to anything</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Priority for location</label>
+      <div class="chips" id="locPriChips">
+        <div class="chip sel" data-v="quality" onclick="pick(this,'locPriChips')">Best academic quality</div>
+        <div class="chip" data-v="placement" onclick="pick(this,'locPriChips')">Best placements / salary</div>
+        <div class="chip" data-v="cost" onclick="pick(this,'locPriChips')">Lowest total cost</div>
+        <div class="chip" data-v="proximity" onclick="pick(this,'locPriChips')">Closest to home</div>
+      </div>
+    </div>
+  </div>
+  <div class="navb"><button class="btn btns" onclick="prv(3)">← Back</button><button class="btn btnp" onclick="nxt(3)">Next: Priorities →</button></div>
+</div>
+
+<!-- Step 4: Career Priorities -->
+<div class="panel" id="s4">
+  <div class="card">
+    <div class="ct">🎯 Career Goals & Priorities</div>
+    <div class="cs">What do you value most from your college education?</div>
+    <div class="field">
+      <label>Primary career goal</label>
+      <div class="chips" id="goalChips">
+        <div class="chip sel" data-v="placement" onclick="pick(this,'goalChips')">💼 High-paying job / campus placement</div>
+        <div class="chip" data-v="higher_studies" onclick="pick(this,'goalChips')">📖 Higher studies (MS/PhD abroad)</div>
+        <div class="chip" data-v="govt" onclick="pick(this,'goalChips')">🏛️ Government job / UPSC / PSU</div>
+        <div class="chip" data-v="startup" onclick="pick(this,'goalChips')">🚀 Entrepreneurship / startup</div>
+        <div class="chip" data-v="research" onclick="pick(this,'goalChips')">🔬 Research / academia</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>What matters most in a college? (pick up to 2)</label>
+      <div class="chips" id="mattersChips">
+        <div class="chip" data-v="brand" onclick="tog(this,'mattersChips')">🏆 Brand / NIRF rank</div>
+        <div class="chip" data-v="faculty" onclick="tog(this,'mattersChips')">👨‍🏫 Faculty quality</div>
+        <div class="chip" data-v="placement_pkg" onclick="tog(this,'mattersChips')">💰 Placement package</div>
+        <div class="chip" data-v="campus" onclick="tog(this,'mattersChips')">🏟️ Campus life / culture</div>
+        <div class="chip" data-v="research_opp" onclick="tog(this,'mattersChips')">🔬 Research opportunities</div>
+        <div class="chip" data-v="fees_low" onclick="tog(this,'mattersChips')">💸 Low fees</div>
+        <div class="chip" data-v="industry" onclick="tog(this,'mattersChips')">🤝 Industry connections</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Expected first-year salary after graduation (₹ LPA)</label>
+      <input type="number" id="expSalary" placeholder="e.g. 8" min="1" max="200">
+      <div class="hint">Your realistic expectation — helps us calculate ROI</div>
+    </div>
+  </div>
+  <div class="navb"><button class="btn btns" onclick="prv(4)">← Back</button><button class="btn btnp" onclick="calc()">🔍 Find My College Match</button></div>
+</div>
+
+<!-- Step 5: Results -->
+<div class="panel" id="s5"><div id="res"></div></div>
+</div>
+
+<script>
+const STEPS=5;
+let cur=1;
+const sLabels=['Stream','Budget','Location','Goals','Results'];
+
+function buildStepper(){
+  const s=document.getElementById('stepper');
+  s.innerHTML=sLabels.map((l,i)=>{
+    const n=i+1;
+    return`<div class="si"><div class="sd ${n===1?'a':''}" id="sd${n}">${n}</div>${n<STEPS?'<div class="sl" id="sl'+n+'"></div>':''}</div>`;
+  }).join('');
+}
+buildStepper();
+
+function showStep(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+  document.querySelectorAll('.sd').forEach((d,i)=>{
+    d.classList.remove('a','d');
+    if(i+1<n){d.classList.add('d');d.textContent='✓';}
+    else if(i+1===n)d.classList.add('a');
+    else d.textContent=i+1;
+  });
+  document.querySelectorAll('.sl').forEach((l,i)=>l.classList.toggle('d',i+1<n));
+  document.getElementById('pf').style.width=Math.round(((n-1)/(STEPS-1))*100)+'%';
+  cur=n; window.scrollTo({top:0,behavior:'smooth'});
+}
+function nxt(from){if(!val(from))return;showStep(from+1);}
+function prv(from){showStep(from-1);}
+function pick(el,g){document.querySelectorAll('#'+g+' .chip').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');}
+function tog(el,g){
+  const sels=document.querySelectorAll('#'+g+' .chip.sel').length;
+  if(!el.classList.contains('sel')&&sels>=2){alert('Pick up to 2.');return;}
+  el.classList.toggle('sel');
+}
+function getVal(g){const c=document.querySelector('#'+g+' .chip.sel');return c?c.dataset.v:'';}
+function getVals(g){return[...document.querySelectorAll('#'+g+' .chip.sel')].map(c=>c.dataset.v);}
+
+function val(step){
+  if(step===1){
+    if(!document.getElementById('score').value){alert('Please enter your score or rank.');return false;}
+  }
+  if(step===2){
+    if(!document.getElementById('budget').value){alert('Please enter your annual budget.');return false;}
+  }
+  return true;
+}
+
+// College tiers data
+const TIERS=[
+  {id:'iit_nit',name:'IIT / NIT / AIIMS / IIM',emoji:'🏆',
+   streams:['engg','medical','mba','science'],
+   jeeAdv:[0,5000],jeeMains:[0,15000],neet:[650,720],cat:[99,100],
+   feeRange:[50000,250000],hostelRange:[80000,150000],
+   avgPkg:{engg:18,medical:0,mba:25,science:8},
+   placement:95,nirf:'Top 25',
+   pros:['Best brand globally','Highest average packages','Alumni network','Research funding'],
+   cons:['Extremely competitive','Limited seats','Premium hostel cost'],
+   color:'#6366f1',cls:'t-tier1'},
+  {id:'nit_iiit',name:'NIT / IIIT / Top State Universities',emoji:'⭐',
+   streams:['engg','science','mba'],
+   jeeAdv:[5000,30000],jeeMains:[15000,80000],neet:[600,650],cat:[95,99],
+   feeRange:[100000,400000],hostelRange:[60000,120000],
+   avgPkg:{engg:12,medical:0,mba:18,science:6},
+   placement:88,nirf:'26–100',
+   pros:['Strong brand','Good placements','Research opportunities','Central govt fees'],
+   cons:['Moderate competition','Some NITs have location challenges'],
+   color:'#f59e0b',cls:'t-tier2'},
+  {id:'private_top',name:'Top Private Universities (BITS/VIT/SRM/Manipal)',emoji:'🎓',
+   streams:['engg','medical','mba','law','design'],
+   jeeAdv:[0,50000],jeeMains:[0,200000],neet:[500,600],cat:[80,95],
+   feeRange:[200000,600000],hostelRange:[100000,180000],
+   avgPkg:{engg:10,medical:8,mba:15,law:7,design:9},
+   placement:82,nirf:'Top 100 private',
+   pros:['Good infrastructure','Industry connections','Multiple campuses','Active placement cell'],
+   cons:['High fees','Variable quality across branches','Location sometimes remote'],
+   color:'#22c55e',cls:'t-tier3'},
+  {id:'state_pvt',name:'State Government + Mid Private Colleges',emoji:'🏫',
+   streams:['engg','medical','mba','law','arts','science'],
+   jeeAdv:[0,100000],jeeMains:[0,500000],neet:[400,500],cat:[60,80],
+   feeRange:[30000,200000],hostelRange:[40000,100000],
+   avgPkg:{engg:6,medical:5,mba:8,law:4,arts:3,science:4},
+   placement:65,nirf:'100–500',
+   pros:['Affordable','Near home option','Wide availability','State-quota reservations'],
+   cons:['Variable faculty quality','Weaker placement cell','Infrastructure varies'],
+   color:'#94a3b8',cls:'t-tier4'},
+];
+
+function calc(){
+  if(!val(4))return;
+  const stream=getVal('streamChips');
+  const exam=document.getElementById('exam').value;
+  const score=+document.getElementById('score').value||0;
+  const budget=+document.getElementById('budget').value||0;
+  const dur=+document.getElementById('duration').value||4;
+  const loan=getVal('loanChips');
+  const schol=getVal('scholChips');
+  const locPri=getVal('locPriChips');
+  const goal=getVal('goalChips');
+  const matters=getVals('mattersChips');
+  const expSalary=+document.getElementById('expSalary').value||0;
+
+  // Effective budget considering loan
+  let effBudget=budget;
+  if(loan==='partial')effBudget+=125000;
+  if(loan==='full')effBudget+=500000;
+  if(schol==='sc_st'||schol==='ews')effBudget+=100000;
+  if(schol==='merit')effBudget+=50000;
+
+  const totalBudget=effBudget*dur;
+
+  const scored=TIERS.map(t=>{
+    let sc=0;
+    // Stream match
+    if(!t.streams.includes(stream)){sc-=30;}
+
+    // Score/rank fit
+    let rankSc=0;
+    if(exam==='jee_adv'&&t.jeeAdv){
+      if(score>=t.jeeAdv[0]&&score<=t.jeeAdv[1])rankSc=40;
+      else if(score<t.jeeAdv[0])rankSc=5;
+      else rankSc=20;
+    } else if(exam==='jee_main'&&t.jeeMains){
+      if(score>=t.jeeMains[0]&&score<=t.jeeMains[1])rankSc=40;
+      else if(score<t.jeeMains[0])rankSc=5;
+      else rankSc=20;
+    } else if(exam==='neet'&&t.neet){
+      if(score>=t.neet[0]&&score<=t.neet[1])rankSc=40;
+      else if(score>t.neet[1])rankSc=5;
+      else rankSc=20;
+    } else if(exam==='cat'&&t.cat){
+      const pct=score>100?score/1000*100:score;
+      if(pct>=t.cat[0]&&pct<=t.cat[1])rankSc=40;
+      else if(pct>t.cat[1])rankSc=5;
+      else rankSc=20;
+    } else { rankSc=20; }
+    sc+=rankSc;
+
+    // Budget fit
+    const tierMinTotal=t.feeRange[0]*dur;
+    const tierMaxTotal=(t.feeRange[1]+t.hostelRange[1])*dur;
+    if(totalBudget>=tierMinTotal&&totalBudget<=tierMaxTotal)sc+=30;
+    else if(totalBudget<tierMinTotal)sc+=5;
+    else sc+=15;
+
+    // Goal alignment
+    if(goal==='placement'&&(t.id==='iit_nit'||t.id==='nit_iiit'))sc+=10;
+    if(goal==='higher_studies'&&t.id==='iit_nit')sc+=12;
+    if(goal==='research'&&t.id==='iit_nit')sc+=12;
+    if(goal==='startup'&&t.id==='private_top')sc+=8;
+    if(goal==='govt'&&(t.id==='state_pvt'))sc+=6;
+    if(locPri==='cost'&&t.id==='state_pvt')sc+=8;
+    if(locPri==='placement'&&t.id==='iit_nit')sc+=8;
+    if(matters.includes('fees_low')&&t.id==='state_pvt')sc+=8;
+    if(matters.includes('brand')&&t.id==='iit_nit')sc+=8;
+    if(matters.includes('placement_pkg')&&t.id==='iit_nit')sc+=8;
+
+    const pkg=t.avgPkg[stream]||6;
+    const totalFees=(t.feeRange[0]+t.feeRange[1])/2*dur;
+    const roi=pkg>0?(pkg*100000-totalFees/dur)/totalFees*100:0;
+
+    return{...t,sc:Math.min(100,Math.max(0,Math.round(sc))),pkg,totalFees,roi};
+  }).sort((a,b)=>b.sc-a.sc);
+
+  const top=scored[0];
+  const fmtINR=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+
+  let html=`
+  <div class="rhero">
+    <div style="font-size:36px;margin-bottom:6px">${top.emoji}</div>
+    <div style="font-size:22px;font-weight:800">${top.name}</div>
+    <div class="rtier ${top.cls}">${top.sc}% match</div>
+    <div style="font-size:13px;color:var(--t2);margin-top:10px">Best-fit college tier for your profile</div>
+  </div>
+
+  <div class="rcards">
+    <div class="rc"><div class="rcl">Annual budget</div><div class="rcv">${fmtINR(budget)}</div></div>
+    <div class="rc"><div class="rcl">Effective budget (with loan/schol)</div><div class="rcv">${fmtINR(effBudget)}</div></div>
+    <div class="rc"><div class="rcl">Total course cost</div><div class="rcv">${fmtINR(effBudget*dur)}</div></div>
+    <div class="rc"><div class="rcl">Expected avg package</div><div class="rcv" style="color:var(--suc)">${top.pkg} LPA</div></div>
+  </div>
+
+  <h2 style="font-size:18px;font-weight:800;margin:24px 0 14px">All tiers — ranked for your profile</h2>
+  ${scored.map((t,i)=>`
+  <div class="rec">
+    <div class="rech">
+      <div class="rank" style="background:${i===0?'var(--acc)':i===1?'#6b7280':'#374151'}">${i+1}</div>
+      <div>
+        <div class="recn">${t.emoji} ${t.name}</div>
+        <div class="recm">Fees: ${fmtINR(t.feeRange[0])}–${fmtINR(t.feeRange[1])}/yr · Avg pkg: ${t.pkg} LPA · Placement: ${t.placement}%</div>
+      </div>
+    </div>
+    <div class="bar"><div class="barf" style="width:${t.sc}%;background:${t.color}"></div></div>
+    <div style="font-size:12px;color:var(--t3);margin-top:4px;margin-bottom:6px">${t.sc}% match</div>
+    <div class="bgs">
+      ${t.pros.map(p=>`<span class="bg bg-g">✓ ${p}</span>`).join('')}
+      ${t.cons.slice(0,2).map(c=>`<span class="bg bg-r">⚠ ${c}</span>`).join('')}
+    </div>
+  </div>`).join('')}
+
+  ${expSalary>0?`<div class="card" style="margin-top:8px;background:rgba(99,102,241,.06);border-color:rgba(99,102,241,.2)">
+    <div class="ct" style="font-size:15px">📊 ROI Analysis for ${top.name}</div>
+    <div style="color:var(--t2);font-size:13.5px;margin-top:10px;line-height:1.7">
+      <strong>Total course cost:</strong> ${fmtINR((top.feeRange[0]+top.feeRange[1])/2*dur)}<br>
+      <strong>Your expected salary:</strong> ₹${expSalary} LPA (₹${Math.round(expSalary*100000).toLocaleString('en-IN')}/yr)<br>
+      <strong>Fee payback period:</strong> ~${(((top.feeRange[0]+top.feeRange[1])/2*dur)/(expSalary*100000)).toFixed(1)} years of salary<br>
+      <strong>10-year career earnings:</strong> ${fmtINR(expSalary*100000*10)} (assuming flat salary for simplicity)
+    </div>
+  </div>`:''}
+
+  <div class="actb">
+    <button class="btn btns" onclick="showStep(1);document.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));document.querySelectorAll('#streamChips .chip')[0].classList.add('sel');">🔄 Start Over</button>
+    <a href="/colleges/" class="btn btns">Browse Colleges →</a>
+    <button class="btn btnp" onclick="window.print()">🖨️ Save as PDF</button>
+  </div>`;
+
+  document.getElementById('res').innerHTML=html;
+  showStep(5);
+}
+</script>
+</body></html>

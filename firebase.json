@@ -97,6 +97,26 @@
         "destination": "/schools/admission-planner/index.html"
       },
       {
+        "source": "/colleges/admission-planner",
+        "destination": "/colleges/admission-planner/index.html"
+      },
+      {
+        "source": "/hospitals/cost-estimator",
+        "destination": "/hospitals/cost-estimator/index.html"
+      },
+      {
+        "source": "/calculators/car-vs-bike",
+        "destination": "/calculators/car-vs-bike/index.html"
+      },
+      {
+        "source": "/calculators/phone-upgrade",
+        "destination": "/calculators/phone-upgrade/index.html"
+      },
+      {
+        "source": "/calculators/education-roi",
+        "destination": "/calculators/education-roi/index.html"
+      },
+      {
         "source": "/cars/**",
         "destination": "/cars/index.html"
       },

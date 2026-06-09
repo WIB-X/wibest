@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Education ROI Calculator India (2025) — Is Your Degree Worth It? | WIB</title>
+<meta name="description" content="Calculate the return on investment of any degree or course in India. Enter fees, current salary, expected post-degree salary, and duration — get payback period, IRR, and 20-year wealth projection.">
+<link rel="canonical" href="https://wibest.in/calculators/education-roi/">
+<link rel="stylesheet" href="/styles/main.css?v=3.9">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Education ROI Calculator India","description":"Calculate the true return on investment of a degree or course: payback period, IRR, and lifetime earnings comparison.","url":"https://wibest.in/calculators/education-roi/","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script src="/ads.js" async></script>
+<style>
+:root{--acc:#6366f1;--acc2:#818cf8;--suc:#22c55e;--war:#f59e0b;--dan:#ef4444;--bg0:#0f0f13;--bg1:#16161c;--bg2:#1c1c24;--bdr:rgba(255,255,255,0.08);--t1:#f1f1f5;--t2:#a1a1b3;--t3:#6b6b7e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;padding-top:72px}
+.wrap{max-width:820px;margin:0 auto;padding:32px 20px 80px}
+.bc{font-size:13px;color:var(--t3);margin-bottom:24px}.bc a{color:var(--acc)}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--t2);font-size:15px;line-height:1.6;margin-bottom:28px}
+.card{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:22px 20px;margin-bottom:18px}
+.ct{font-size:16px;font-weight:700;margin-bottom:16px}
+label{display:block;font-size:12.5px;font-weight:600;color:var(--t2);margin-bottom:5px}
+input[type=number],select{width:100%;background:var(--bg1);border:1px solid var(--bdr);border-radius:7px;color:var(--t1);font-size:14px;padding:9px 12px;outline:none;transition:border-color .2s}
+input:focus,select:focus{border-color:var(--acc)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:560px){.row2,.row3{grid-template-columns:1fr}}
+.field{margin-bottom:16px}
+.hint{font-size:11px;color:var(--t3);margin-top:3px}
+.tip{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.15);border-radius:8px;padding:10px 14px;font-size:12.5px;color:var(--t2);margin-bottom:16px;line-height:1.5}
+.calcbtn{display:block;width:100%;margin-top:8px;padding:13px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;border:none;background:var(--acc);color:#fff;transition:background .2s}
+.calcbtn:hover{background:var(--acc2)}
+/* Results */
+.res{display:none;margin-top:28px}
+.verdict{padding:26px 22px;border-radius:var(--r);margin-bottom:20px;text-align:center}
+.v-excellent{background:rgba(34,197,94,.07);border:2px solid rgba(34,197,94,.25)}
+.v-good{background:rgba(99,102,241,.07);border:2px solid rgba(99,102,241,.25)}
+.v-moderate{background:rgba(245,158,11,.07);border:2px solid rgba(245,158,11,.25)}
+.v-poor{background:rgba(239,68,68,.07);border:2px solid rgba(239,68,68,.25)}
+.vbig{font-size:42px;font-weight:900;line-height:1}
+.vtag{display:inline-block;padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-top:8px}
+.tg-exc{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+.tg-good{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3)}
+.tg-mod{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.3)}
+.tg-poor{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+@media(max-width:560px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:14px;text-align:center}
+.stl{font-size:10.5px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.stv{font-size:20px;font-weight:800}
+/* Chart */
+.chartbox{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:20px;margin-bottom:18px;overflow-x:auto}
+.ct2{font-size:15px;font-weight:700;margin-bottom:16px}
+.chart{position:relative;height:200px;display:flex;align-items:flex-end;gap:2px}
+.bar-col{display:flex;flex-direction:column;align-items:center;flex:1;min-width:12px}
+.bar-seg{width:100%;border-radius:3px 3px 0 0}
+.xl{display:flex;justify-content:space-between;font-size:10px;color:var(--t3);margin-top:6px}
+.legend{display:flex;gap:16px;font-size:11px;margin-top:10px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px}
+.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:9px 12px;background:var(--bg1);color:var(--t3);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--t2)}
+td:first-child{color:var(--t1);font-weight:600}
+td.green{color:var(--suc);font-weight:700}
+tr:last-child td{border-bottom:none}
+tr.highlight td{background:rgba(99,102,241,.06);color:var(--t1) !important}
+.insight-box{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
+.ibt{font-size:14px;font-weight:700;color:#fcd34d;margin-bottom:10px}
+.ibi{font-size:13.5px;color:var(--t2);line-height:1.7;padding:3px 0}
+.actb{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn2{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--bdr);background:var(--bg1);color:var(--t1);text-decoration:none;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bc"><a href="/">Home</a> › <a href="/calculators/">Calculators</a> › Education ROI</div>
+<h1>🎓 Education ROI Calculator</h1>
+<p class="sub">Is that MBA, B.Tech, or online course worth the money? Calculate your real return on investment — payback period, internal rate of return (IRR), and 20-year wealth comparison with and without the degree.</p>
+
+<div class="card">
+  <div class="ct">📚 Course & Fees</div>
+  <div class="tip">💡 Include all costs: tuition, hostel, food, travel, books, laptop, and lost income during study. This gives you the true investment amount.</div>
+  <div class="row2">
+    <div class="field" style="margin:0">
+      <label>Course type</label>
+      <select id="courseType">
+        <option value="btech">B.Tech / BE (Engineering)</option>
+        <option value="mbbs">MBBS (Medical)</option>
+        <option value="mba">MBA (Full-time, 2yr)</option>
+        <option value="mba_exec">MBA (Executive / Part-time)</option>
+        <option value="mca">MCA / M.Tech</option>
+        <option value="ba_bsc">BA / BSc / BCom (3yr)</option>
+        <option value="llb">LLB / LLM</option>
+        <option value="ca">CA (Chartered Accountant)</option>
+        <option value="online">Online certification / Bootcamp</option>
+        <option value="pg_diploma">PG Diploma / Short course</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Course duration (years)</label>
+      <input type="number" id="duration" placeholder="e.g. 4" value="4" min="0.25" max="10" step="0.25">
+    </div>
+  </div>
+  <div class="row3" style="margin-top:14px">
+    <div class="field" style="margin:0">
+      <label>Total tuition fees (₹)</label>
+      <input type="number" id="tuition" placeholder="e.g. 800000" value="800000" step="10000">
+      <div class="hint">All 4 years combined</div>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Living costs/yr (₹)</label>
+      <input type="number" id="living" placeholder="e.g. 150000" value="150000" step="5000">
+      <div class="hint">Hostel + food + misc</div>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Other one-time costs (₹)</label>
+      <input type="number" id="other" placeholder="e.g. 50000" value="50000" step="5000">
+      <div class="hint">Laptop, books, travel</div>
+    </div>
+  </div>
+  <div class="row2" style="margin-top:14px">
+    <div class="field" style="margin:0">
+      <label>Education loan amount (₹)</label>
+      <input type="number" id="loanAmt" placeholder="0 if self-funded" value="400000" step="10000">
+    </div>
+    <div class="field" style="margin:0">
+      <label>Loan interest rate (% p.a.)</label>
+      <input type="number" id="loanRate" placeholder="e.g. 8.5" value="8.5" step="0.1">
+      <div class="hint">SBI Ed Loan: 8.55% · Axis: 13.7%</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">💼 Salary — Before & After</div>
+  <div class="row3">
+    <div class="field" style="margin:0">
+      <label>Current salary (₹ LPA)</label>
+      <input type="number" id="salBefore" placeholder="0 if fresher" value="0" step="0.5">
+      <div class="hint">What you'd earn without the degree</div>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Expected salary after degree (₹ LPA)</label>
+      <input type="number" id="salAfter" placeholder="e.g. 10" value="10" step="0.5">
+      <div class="hint">Starting salary post-graduation</div>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Expected annual salary growth (%)</label>
+      <input type="number" id="growth" placeholder="e.g. 10" value="10" step="1">
+      <div class="hint">India avg: 8–12% for IT; 6–8% for others</div>
+    </div>
+  </div>
+  <div class="row2" style="margin-top:14px">
+    <div class="field" style="margin:0">
+      <label>Inflation rate assumption (% p.a.)</label>
+      <input type="number" id="inflation" placeholder="e.g. 6" value="6" step="0.5">
+    </div>
+    <div class="field" style="margin:0">
+      <label>Discount rate / opportunity cost (% p.a.)</label>
+      <input type="number" id="discRate" placeholder="e.g. 8" value="8" step="0.5">
+      <div class="hint">What the money could earn in MF/FD instead</div>
+    </div>
+  </div>
+</div>
+
+<button class="calcbtn" onclick="calcROI()">📈 Calculate Education ROI</button>
+
+<div class="res" id="results">
+  <div id="verdictDiv"></div>
+  <div class="stats" id="statsDiv"></div>
+  <div class="chartbox" id="chartDiv"></div>
+  <div class="card" id="tableDiv"></div>
+  <div class="insight-box" id="insightDiv"></div>
+  <div class="actb">
+    <button class="calcbtn btn2" onclick="window.print()">🖨️ Save as PDF</button>
+    <button class="btn2" onclick="document.getElementById('results').style.display='none'">↑ Edit Inputs</button>
+    <a href="/colleges/" class="btn2">Browse Colleges →</a>
+  </div>
+</div>
+</div>
+
+<script>
+function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN');}
+function fmtL(n){return'₹'+((n/100000).toFixed(1))+'L';}
+function fmtCr(n){return n>=10000000?'₹'+(n/10000000).toFixed(1)+'Cr':n>=100000?'₹'+(n/100000).toFixed(1)+'L':'₹'+Math.round(n).toLocaleString('en-IN');}
+
+function calcROI(){
+  const duration=+document.getElementById('duration').value||4;
+  const tuition=+document.getElementById('tuition').value||0;
+  const living=+document.getElementById('living').value||0;
+  const other=+document.getElementById('other').value||0;
+  const loanAmt=+document.getElementById('loanAmt').value||0;
+  const loanRate=+document.getElementById('loanRate').value||8.5;
+  const salBefore=(+document.getElementById('salBefore').value||0)*100000;
+  const salAfter=(+document.getElementById('salAfter').value||0)*100000;
+  const growth=+document.getElementById('growth').value||10;
+  const inflation=+document.getElementById('inflation').value||6;
+  const discRate=+document.getElementById('discRate').value||8;
+
+  // Total investment
+  const totalInvestment=tuition+living*duration+other;
+  const loanInterest=loanAmt>0?loanAmt*(loanRate/100)*duration*0.5:0; // simplified
+  const opportunityCost=totalInvestment*(discRate/100)*duration*0.5; // approx
+  const totalTrueCost=totalInvestment+loanInterest+opportunityCost;
+  const incomeLoss=salBefore*duration; // income foregone while studying
+
+  // Annual salary boost
+  const annualBoost=Math.max(0,salAfter-salBefore);
+
+  // Payback period (simple)
+  const simplePayback=annualBoost>0?(totalInvestment+incomeLoss)/annualBoost:Infinity;
+
+  // 20-year cumulative earnings comparison
+  const YEARS=20;
+  let withDegree=0,withoutDegree=0;
+  let withArr=[],withoutArr=[];
+  let cumWith=0,cumWithout=0;
+
+  for(let y=1;y<=YEARS;y++){
+    // Without degree: earning salBefore from year 1, growing at growth%/2
+    const woEarn=salBefore*Math.pow(1+(growth*0.5/100),y-1);
+    cumWithout+=woEarn;
+    withoutArr.push(cumWithout);
+
+    if(y<=Math.ceil(duration)){
+      // During study: paying fees, no income or reduced income
+      cumWith-=tuition/duration+living+(y===1?other:0);
+      withArr.push(cumWith);
+    } else {
+      const studyYrsDone=Math.ceil(duration);
+      const workYr=y-studyYrsDone;
+      const earn=salAfter*Math.pow(1+(growth/100),workYr-1);
+      cumWith+=earn;
+      withArr.push(cumWith);
+    }
+  }
+
+  // NPV calculation (simplified)
+  let npv=-totalInvestment-incomeLoss;
+  for(let y=1;y<=YEARS;y++){
+    const disc=Math.pow(1+discRate/100,y+duration);
+    const yr=y<=YEARS?annualBoost*Math.pow(1+growth/100,y-1):0;
+    npv+=yr/disc;
+  }
+
+  // IRR (Newton-Raphson approx)
+  function npvAtRate(r){
+    let n=-totalInvestment-incomeLoss;
+    for(let y=1;y<=YEARS;y++){
+      n+=(annualBoost*Math.pow(1+growth/100,y-1))/Math.pow(1+r,y+duration);
+    }
+    return n;
+  }
+  let irrGuess=0.1;
+  for(let i=0;i<50;i++){
+    const v=npvAtRate(irrGuess);
+    const dv=(npvAtRate(irrGuess+0.001)-npvAtRate(irrGuess-0.001))/0.002;
+    if(Math.abs(dv)<1e-10)break;
+    irrGuess-=v/dv;
+    if(irrGuess<-0.99)irrGuess=0.01;
+  }
+  const irr=Math.round(irrGuess*100);
+
+  // Verdict
+  let vclass,vtag,tgcls,emoji,vtext;
+  if(irr>=25){vclass='v-excellent';vtag='Excellent ROI';tgcls='tg-exc';emoji='🚀';vtext='Outstanding investment. Your degree is projected to deliver exceptional returns, well above market alternatives.';}
+  else if(irr>=15){vclass='v-good';vtag='Good ROI';tgcls='tg-good';emoji='✅';vtext='Strong investment. Your degree should deliver solid returns over a 10–15 year career horizon.';}
+  else if(irr>=8){vclass='v-moderate';vtag='Moderate ROI';tgcls='tg-mod';emoji='⚠️';vtext='Returns are modest. The degree may be worth it for non-financial reasons (growth, network, stability) but financially, it\'s marginal.';}
+  else{vclass='v-poor';vtag='Low ROI';tgcls='tg-poor';emoji='🔴';vtext='Financial returns are below market alternatives. Consider if the degree is essential or if there are cheaper/faster paths to your goal.';}
+
+  const netGain20=withArr[19]-withoutArr[19];
+
+  document.getElementById('verdictDiv').innerHTML=`
+    <div class="verdict ${vclass}">
+      <div class="vbig" style="color:${irr>=25?'#4ade80':irr>=15?'#818cf8':irr>=8?'#fbbf24':'#f87171'}">${irr}%</div>
+      <div style="font-size:14px;color:var(--t2);margin-top:4px">Internal Rate of Return (IRR)</div>
+      <div class="vtag ${tgcls}">${emoji} ${vtag}</div>
+      <div style="font-size:13px;color:var(--t2);margin-top:10px;max-width:500px;margin-left:auto;margin-right:auto">${vtext}</div>
+    </div>`;
+
+  document.getElementById('statsDiv').innerHTML=`
+    <div class="stat"><div class="stl">Total investment</div><div class="stv">${fmtCr(totalInvestment)}</div></div>
+    <div class="stat"><div class="stl">Income foregone</div><div class="stv">${fmtCr(incomeLoss)}</div></div>
+    <div class="stat"><div class="stl">True total cost</div><div class="stv">${fmtCr(totalTrueCost)}</div></div>
+    <div class="stat"><div class="stl">Payback period</div><div class="stv">${simplePayback===Infinity?'N/A':simplePayback.toFixed(1)+' yrs'}</div></div>
+    <div class="stat"><div class="stl">NPV (20yr)</div><div class="stv" style="color:${npv>=0?'var(--suc)':'var(--dan)'}">${fmtCr(Math.abs(npv))}${npv>=0?' gain':' loss'}</div></div>
+    <div class="stat"><div class="stl">Net gain vs no-degree</div><div class="stv" style="color:${netGain20>=0?'var(--suc)':'var(--dan)'}">${fmtCr(Math.abs(netGain20))}</div></div>`;
+
+  // Chart: bar chart of cumulative earnings
+  const maxVal=Math.max(...withArr.map(Math.abs),...withoutArr.map(Math.abs),1);
+  const chartH=160;
+  const showYears=[1,2,3,4,5,6,7,8,9,10,12,14,16,18,20].filter(y=>y<=YEARS);
+  document.getElementById('chartDiv').innerHTML=`
+    <div class="ct2">📊 20-Year Cumulative Earnings: With vs Without Degree</div>
+    <div style="overflow-x:auto">
+    <div style="min-width:500px">
+    <div style="display:flex;align-items:flex-end;gap:4px;height:${chartH+20}px;padding-bottom:20px;position:relative">
+      ${showYears.map(y=>{
+        const wi=withArr[y-1];const wo=withoutArr[y-1];
+        const maxA=Math.max(Math.abs(wi),Math.abs(wo),1);
+        const wiH=Math.round(Math.abs(wi)/maxVal*chartH);
+        const woH=Math.round(Math.abs(wo)/maxVal*chartH);
+        const wiColor=wi>=0?'rgba(99,102,241,.7)':'rgba(239,68,68,.5)';
+        return`<div style="flex:1;display:flex;gap:2px;align-items:flex-end;position:relative">
+          <div style="flex:1;height:${wiH}px;background:${wiColor};border-radius:3px 3px 0 0;min-height:2px" title="With degree yr${y}: ${fmtCr(wi)}"></div>
+          <div style="flex:1;height:${woH}px;background:rgba(245,158,11,.5);border-radius:3px 3px 0 0;min-height:2px" title="Without degree yr${y}: ${fmtCr(wo)}"></div>
+          <div style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--t3)">Y${y}</div>
+        </div>`;
+      }).join('')}
+    </div>
+    </div></div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(99,102,241,.7)"></div><span>With degree</span></div>
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(245,158,11,.5)"></div><span>Without degree</span></div>
+    </div>`;
+
+  // Year-by-year table (key years)
+  const keyYears=[1,2,3,4,5,7,10,15,20].filter(y=>y<=YEARS);
+  document.getElementById('tableDiv').innerHTML=`
+    <div class="ct" style="font-size:15px">📋 Year-by-Year Snapshot</div>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>Year</th><th>With degree (cumulative)</th><th>Without degree (cumulative)</th><th>Difference</th></tr></thead>
+      <tbody>
+      ${keyYears.map(y=>{
+        const wi=withArr[y-1];const wo=withoutArr[y-1];const diff=wi-wo;
+        const hlClass=diff>=0&&(y===keyYears.find(yr=>withArr[yr-1]>=withoutArr[yr-1]))?'highlight':'';
+        return`<tr class="${hlClass}"><td>Year ${y}</td><td>${fmtCr(wi)}</td><td>${fmtCr(wo)}</td><td class="${diff>=0?'green':''}">${diff>=0?'+':''}${fmtCr(diff)}</td></tr>`;
+      }).join('')}
+      </tbody>
+    </table></div>`;
+
+  // Insights
+  const breakEvenYear=keyYears.find(y=>withArr[y-1]>=withoutArr[y-1])||null;
+  const insights=[];
+  if(simplePayback!==Infinity) insights.push(`📅 At your projected salary boost of ${fmt(annualBoost)}/yr, you'll fully recover the investment in <strong>${simplePayback.toFixed(1)} years</strong> of working.`);
+  if(breakEvenYear) insights.push(`⚖️ By Year ${breakEvenYear}, your total lifetime earnings with the degree overtake what you'd have earned without it.`);
+  if(loanAmt>0) insights.push(`🏦 Your ₹${(loanAmt/100000).toFixed(1)}L loan at ${loanRate}% adds approx. ${fmt(loanInterest)} in interest over the study period. Consider prepaying after your first increment.`);
+  if(irr<discRate) insights.push(`⚠️ Your IRR (${irr}%) is <strong>below the discount rate (${discRate}%)</strong> — meaning you'd have made more money investing the fees in mutual funds. Consider whether non-financial career benefits justify the cost.`);
+  if(irr>=20) insights.push(`🚀 An IRR of ${irr}% beats most investment options (Nifty avg ~12%). This degree has strong financial justification.`);
+  insights.push(`💡 <strong>Benchmark IRRs:</strong> IIT/NIT B.Tech ≈ 25–40% · IIM MBA ≈ 30–50% · Private engineering ≈ 8–15% · Government MBBS ≈ 20–30% · Online bootcamp ≈ 15–40%.`);
+
+  document.getElementById('insightDiv').innerHTML=`
+    <div class="ibt">💡 Key Insights</div>
+    ${insights.map(i=>`<div class="ibi">• ${i}</div>`).join('')}`;
+
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phone Upgrade Calculator India (2025) — Should I Upgrade My Phone? | WIB</title>
+<meta name="description" content="Should you upgrade your smartphone? Enter your current phone's age, specs, and usage habits — get a personalised upgrade score, resale value estimate, and top upgrade picks for your budget.">
+<link rel="canonical" href="https://wibest.in/calculators/phone-upgrade/">
+<link rel="stylesheet" href="/styles/main.css?v=3.9">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Phone Upgrade Calculator India","description":"Personalised recommendation on whether to upgrade your smartphone based on age, specs, usage, and budget.","url":"https://wibest.in/calculators/phone-upgrade/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script src="/ads.js" async></script>
+<style>
+:root{--acc:#6366f1;--acc2:#818cf8;--suc:#22c55e;--war:#f59e0b;--dan:#ef4444;--bg0:#0f0f13;--bg1:#16161c;--bg2:#1c1c24;--bdr:rgba(255,255,255,0.08);--t1:#f1f1f5;--t2:#a1a1b3;--t3:#6b6b7e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;padding-top:72px}
+.wrap{max-width:780px;margin:0 auto;padding:32px 20px 80px}
+.bc{font-size:13px;color:var(--t3);margin-bottom:24px}.bc a{color:var(--acc)}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--t2);font-size:15px;line-height:1.6;margin-bottom:28px}
+.card{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:22px 20px;margin-bottom:18px}
+.ct{font-size:16px;font-weight:700;margin-bottom:16px}
+label{display:block;font-size:12.5px;font-weight:600;color:var(--t2);margin-bottom:5px}
+select,input[type=number]{width:100%;background:var(--bg1);border:1px solid var(--bdr);border-radius:7px;color:var(--t1);font-size:14px;padding:9px 12px;outline:none;transition:border-color .2s}
+select:focus,input:focus{border-color:var(--acc)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.row2{grid-template-columns:1fr}}
+.field{margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{padding:6px 13px;border-radius:20px;border:1px solid var(--bdr);background:var(--bg1);font-size:12.5px;cursor:pointer;transition:all .2s;user-select:none}
+.chip:hover{border-color:var(--acc2)}
+.chip.sel{border-color:var(--acc);background:rgba(99,102,241,.1);color:var(--acc2);font-weight:600}
+.hint{font-size:11px;color:var(--t3);margin-top:3px}
+.range-wrap{display:flex;align-items:center;gap:12px}
+input[type=range]{flex:1;accent-color:var(--acc);height:4px}
+.rv{font-size:14px;font-weight:700;color:var(--acc2);min-width:30px}
+.calcbtn{display:block;width:100%;margin-top:8px;padding:13px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;border:none;background:var(--acc);color:#fff;transition:background .2s}
+.calcbtn:hover{background:var(--acc2)}
+/* Results */
+.res{display:none;margin-top:28px}
+.gauge-wrap{text-align:center;padding:28px 20px;background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:18px}
+.gauge-num{font-size:64px;font-weight:900;line-height:1}
+.gauge-label{font-size:15px;font-weight:700;margin-top:6px}
+.gauge-sub{font-size:13px;color:var(--t2);margin-top:6px}
+.verdict{display:inline-block;padding:6px 20px;border-radius:20px;font-size:13px;font-weight:700;margin-top:10px}
+.v-upgrade{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+.v-maybe{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.3)}
+.v-wait{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+.scorerow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+@media(max-width:500px){.scorerow{grid-template-columns:1fr}}
+.sc{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:14px}
+.scl{font-size:11px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.scv{font-size:20px;font-weight:800}
+.bar{height:5px;background:var(--bg1);border-radius:3px;overflow:hidden;margin-top:6px}
+.bf{height:100%;border-radius:3px}
+.phones-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+@media(max-width:500px){.phones-grid{grid-template-columns:1fr}}
+.ph{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:16px}
+.ph.top{border-color:rgba(99,102,241,.35);background:rgba(99,102,241,.05)}
+.ph-label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--acc2);margin-bottom:6px}
+.ph-name{font-size:15px;font-weight:800;margin-bottom:4px}
+.ph-price{font-size:14px;color:var(--suc);font-weight:700;margin-bottom:8px}
+.ph-specs{font-size:12px;color:var(--t2);line-height:1.7}
+.ph-tag{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;margin-top:6px;background:rgba(99,102,241,.12);color:#818cf8}
+.tips{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
+.tips-title{font-size:14px;font-weight:700;margin-bottom:10px;color:#fcd34d}
+.tip-item{font-size:13.5px;color:var(--t2);line-height:1.7;padding:3px 0}
+.actb{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn2{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:var(--bg1);color:var(--t1);border:1px solid var(--bdr);text-decoration:none;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bc"><a href="/">Home</a> › <a href="/calculators/">Calculators</a> › Phone Upgrade</div>
+<h1>📱 Phone Upgrade Calculator</h1>
+<p class="sub">Tell us about your current phone and how you use it — we'll give you a personalised upgrade score, explain exactly why or why not, and suggest the best phones for your budget in India.</p>
+
+<div class="card">
+  <div class="ct">📅 Your Current Phone</div>
+  <div class="row2">
+    <div class="field" style="margin:0">
+      <label>Phone brand</label>
+      <select id="brand">
+        <option value="samsung">Samsung</option>
+        <option value="apple">Apple (iPhone)</option>
+        <option value="oneplus">OnePlus</option>
+        <option value="xiaomi">Xiaomi / Redmi / POCO</option>
+        <option value="realme">Realme / Narzo</option>
+        <option value="vivo">Vivo / iQOO</option>
+        <option value="oppo">OPPO / OnePlus</option>
+        <option value="motorola">Motorola</option>
+        <option value="nokia">Nokia</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>Phone segment (price at launch)</label>
+      <select id="segment">
+        <option value="budget">Budget (under ₹15,000)</option>
+        <option value="mid" selected>Mid-range (₹15,000–₹35,000)</option>
+        <option value="upper_mid">Upper mid (₹35,000–₹60,000)</option>
+        <option value="flagship">Flagship (₹60,000+)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field" style="margin-top:14px">
+    <label>How old is your phone? (years)</label>
+    <div class="range-wrap">
+      <input type="range" id="age" min="0.5" max="8" step="0.5" value="2" oninput="document.getElementById('ageVal').textContent=this.value+' yr'">
+      <span class="rv" id="ageVal">2 yr</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">🔋 Phone Condition & Issues</div>
+  <div class="field">
+    <label>Battery health / backup</label>
+    <div class="chips" id="battChips">
+      <div class="chip" data-v="great" onclick="pick(this,'battChips')">💚 Great (full day easily)</div>
+      <div class="chip sel" data-v="ok" onclick="pick(this,'battChips')">🟡 OK (need charge by evening)</div>
+      <div class="chip" data-v="poor" onclick="pick(this,'battChips')">🔴 Poor (half day or less)</div>
+      <div class="chip" data-v="critical" onclick="pick(this,'battChips')">💀 Critical (under 4 hours)</div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Performance (speed & smoothness)</label>
+    <div class="chips" id="perfChips">
+      <div class="chip" data-v="fast" onclick="pick(this,'perfChips')">⚡ Still fast, no issues</div>
+      <div class="chip sel" data-v="ok" onclick="pick(this,'perfChips')">🐢 Occasional lag</div>
+      <div class="chip" data-v="slow" onclick="pick(this,'perfChips')">🐌 Frequently slow/laggy</div>
+      <div class="chip" data-v="unusable" onclick="pick(this,'perfChips')">💥 Often freezes/crashes</div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Camera quality (vs your expectations)</label>
+    <div class="chips" id="camChips">
+      <div class="chip" data-v="great" onclick="pick(this,'camChips')">📸 Happy with it</div>
+      <div class="chip sel" data-v="ok" onclick="pick(this,'camChips')">😐 Acceptable</div>
+      <div class="chip" data-v="poor" onclick="pick(this,'camChips')">😞 Disappointing</div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Software updates status</label>
+    <div class="chips" id="swChips">
+      <div class="chip" data-v="current" onclick="pick(this,'swChips')">✅ Getting latest OS updates</div>
+      <div class="chip sel" data-v="delayed" onclick="pick(this,'swChips')">⏳ Updates are delayed</div>
+      <div class="chip" data-v="none" onclick="pick(this,'swChips')">🚫 No more OS updates</div>
+    </div>
+  </div>
+  <div class="field" style="margin-bottom:0">
+    <label>Physical condition</label>
+    <div class="chips" id="physChips">
+      <div class="chip" data-v="mint" onclick="pick(this,'physChips')">✨ Mint / no damage</div>
+      <div class="chip sel" data-v="good" onclick="pick(this,'physChips')">👍 Good (minor scratches)</div>
+      <div class="chip" data-v="cracked" onclick="pick(this,'physChips')">💔 Cracked screen</div>
+      <div class="chip" data-v="broken" onclick="pick(this,'physChips')">🪦 Multiple issues</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ct">🎯 Your Usage & Budget</div>
+  <div class="field">
+    <label>Primary use cases (pick all that apply)</label>
+    <div class="chips" id="useChips">
+      <div class="chip" data-v="social" onclick="tog(this,'useChips')">📱 Social media / reels</div>
+      <div class="chip" data-v="camera" onclick="tog(this,'useChips')">📷 Photography / video</div>
+      <div class="chip" data-v="gaming" onclick="tog(this,'useChips')">🎮 Gaming</div>
+      <div class="chip" data-v="work" onclick="tog(this,'useChips')">💼 Work / productivity</div>
+      <div class="chip" data-v="calls" onclick="tog(this,'useChips')">📞 Calls & messaging only</div>
+      <div class="chip" data-v="content" onclick="tog(this,'useChips')">🎬 Content creation</div>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field" style="margin:0">
+      <label>Upgrade budget (₹)</label>
+      <select id="upgBudget">
+        <option value="10000">Under ₹10,000</option>
+        <option value="15000">₹10,000 – ₹15,000</option>
+        <option value="20000" selected>₹15,000 – ₹20,000</option>
+        <option value="30000">₹20,000 – ₹30,000</option>
+        <option value="40000">₹30,000 – ₹40,000</option>
+        <option value="60000">₹40,000 – ₹60,000</option>
+        <option value="100000">₹60,000 – ₹1 lakh</option>
+        <option value="999999">₹1 lakh+</option>
+      </select>
+    </div>
+    <div class="field" style="margin:0">
+      <label>How long do you keep a phone?</label>
+      <select id="holdYrs">
+        <option value="1">1 year</option>
+        <option value="2">2 years</option>
+        <option value="3" selected>3 years</option>
+        <option value="4">4+ years</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<button class="calcbtn" onclick="calcUpgrade()">📊 Get My Upgrade Score</button>
+
+<div class="res" id="results">
+  <div id="gaugeDiv"></div>
+  <div class="scorerow" id="scorerow"></div>
+  <div id="phonesDiv"></div>
+  <div id="resaleDiv"></div>
+  <div id="tipsDiv"></div>
+  <div class="actb">
+    <button class="calcbtn btn2" onclick="window.print()">🖨️ Save as PDF</button>
+    <button class="btn2" onclick="document.getElementById('results').style.display='none'">↑ Edit Inputs</button>
+    <a href="/electronics/" class="btn2">Browse Phones →</a>
+  </div>
+</div>
+</div>
+
+<script>
+function pick(el,g){document.querySelectorAll('#'+g+' .chip').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');}
+function tog(el,g){el.classList.toggle('sel');}
+function getVal(g){const c=document.querySelector('#'+g+' .chip.sel');return c?c.dataset.v:'';}
+function getVals(g){return[...document.querySelectorAll('#'+g+' .chip.sel')].map(c=>c.dataset.v);}
+function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN');}
+
+const PHONES=[
+  // budget
+  {name:'Redmi 13C',price:8999,seg:'budget',cat:'value',specs:'6.74" HD+, Helio G85, 50MP, 5000mAh, 18W'},
+  {name:'Realme C65',price:9999,seg:'budget',cat:'value',specs:'6.67" FHD+, Helio G85, 50MP, 5000mAh'},
+  {name:'Moto G04',price:7999,seg:'budget',cat:'value',specs:'6.56" HD+, Helio G85, 16MP, 5000mAh'},
+  // mid
+  {name:'Redmi Note 13',price:16999,seg:'mid',cat:'all-rounder',specs:'6.67" AMOLED 120Hz, Snapdragon 685, 108MP, 5000mAh, 33W'},
+  {name:'Realme 12 5G',price:17999,seg:'mid',cat:'5g-value',specs:'6.72" FHD+ 120Hz, Dimensity 6100+, 50MP, 5000mAh, 45W'},
+  {name:'Samsung Galaxy M35 5G',price:19999,seg:'mid',cat:'camera',specs:'6.6" AMOLED 120Hz, Exynos 1380, 50MP OIS, 6000mAh, 25W'},
+  {name:'POCO X6 5G',price:21999,seg:'mid',cat:'performance',specs:'6.67" AMOLED 144Hz, Snapdragon 695, 64MP, 5100mAh, 67W'},
+  {name:'OnePlus Nord CE4 Lite',price:19999,seg:'mid',cat:'all-rounder',specs:'6.67" AMOLED 120Hz, Snapdragon 695, 50MP, 5110mAh, 80W'},
+  // upper mid
+  {name:'Samsung Galaxy A55 5G',price:34999,seg:'upper_mid',cat:'camera',specs:'6.6" Super AMOLED 120Hz, Exynos 1480, 50MP OIS, 5000mAh, 25W'},
+  {name:'OnePlus Nord 4 5G',price:29999,seg:'upper_mid',cat:'performance',specs:'6.74" AMOLED 120Hz, Snapdragon 7s Gen 3, 50MP, 5500mAh, 100W'},
+  {name:'Motorola Edge 50 Pro',price:31999,seg:'upper_mid',cat:'camera',specs:'6.67" pOLED 144Hz, Snapdragon 7 Gen 3, 50MP OIS, 4500mAh, 125W'},
+  {name:'Nothing Phone (2a)',price:27999,seg:'upper_mid',cat:'all-rounder',specs:'6.7" AMOLED 120Hz, Dimensity 7200 Pro, 50MP, 5000mAh, 45W'},
+  // flagship
+  {name:'Samsung Galaxy S24',price:79999,seg:'flagship',cat:'flagship',specs:'6.2" Dynamic AMOLED 120Hz, Snapdragon 8 Gen 3, 50MP, 4000mAh, Galaxy AI'},
+  {name:'OnePlus 12R',price:39999,seg:'flagship',cat:'gaming',specs:'6.78" AMOLED 120Hz, Snapdragon 8 Gen 2, 50MP, 5500mAh, 100W'},
+  {name:'iPhone 15',price:79900,seg:'flagship',cat:'apple',specs:'6.1" Super Retina XDR, A16 Bionic, 48MP, USB-C, 6yr software support'},
+  {name:'Google Pixel 8a',price:52999,seg:'flagship',cat:'camera',specs:'6.1" OLED 120Hz, Tensor G3, 64MP, 4492mAh, 7yr updates'},
+];
+
+// Resale estimates by brand and age
+function resaleEst(seg,brand,age){
+  const base={budget:8000,mid:18000,upper_mid:38000,flagship:70000}[seg]||15000;
+  const brandMult={apple:0.7,samsung:0.55,oneplus:0.5,xiaomi:0.4,realme:0.35,vivo:0.4,oppo:0.4,motorola:0.45,nokia:0.5,other:0.35}[brand]||0.4;
+  const ageMult=age<=1?0.85:age<=2?0.65:age<=3?0.45:age<=4?0.30:age<=5?0.20:0.12;
+  return Math.round(base*brandMult/0.55*ageMult/0.65*brandMult);
+}
+
+function calcUpgrade(){
+  const brand=document.getElementById('brand').value;
+  const seg=document.getElementById('segment').value;
+  const age=+document.getElementById('age').value;
+  const batt=getVal('battChips');
+  const perf=getVal('perfChips');
+  const cam=getVal('camChips');
+  const sw=getVal('swChips');
+  const phys=getVal('physChips');
+  const uses=getVals('useChips');
+  const budget=+document.getElementById('upgBudget').value;
+  const holdYrs=+document.getElementById('holdYrs').value;
+
+  // Scoring
+  let ageSc=0,battSc=0,perfSc=0,camSc=0,swSc=0,physSc=0;
+
+  // Age score (0–25)
+  ageSc=age<=1?2:age<=2?8:age<=3?14:age<=4?20:age<=5?23:25;
+
+  // Battery (0–25)
+  battSc={great:0,ok:8,poor:18,critical:25}[batt]||0;
+
+  // Performance (0–20)
+  perfSc={fast:0,ok:8,slow:15,unusable:20}[perf]||0;
+
+  // Camera (0–10)
+  if(uses.includes('camera')||uses.includes('content')){
+    camSc={great:0,ok:5,poor:10}[cam]||0;
+  } else {
+    camSc={great:0,ok:2,poor:5}[cam]||0;
+  }
+
+  // Software (0–10)
+  swSc={current:0,delayed:4,none:10}[sw]||0;
+
+  // Physical (0–10)
+  physSc={mint:0,good:2,cracked:6,broken:10}[phys]||0;
+
+  const total=Math.min(100,ageSc+battSc+perfSc+camSc+swSc+physSc);
+
+  let verdict,vclass,emoji,rec;
+  if(total>=70){verdict='Upgrade now';vclass='v-upgrade';emoji='🔴';rec='Your phone is showing significant age. Upgrading will noticeably improve your daily experience.';}
+  else if(total>=45){verdict='Consider upgrading';vclass='v-maybe';emoji='🟡';rec='Your phone is ageing but still functional. Worth upgrading if a great deal comes along — especially during sales.';}
+  else{verdict='Wait & save';vclass='v-wait';emoji='🟢';rec='Your phone is still performing well. Hold off for another 6–12 months and save more for a better upgrade.';}
+
+  document.getElementById('gaugeDiv').innerHTML=`
+    <div class="gauge-wrap">
+      <div class="gauge-num" style="color:${total>=70?'#f87171':total>=45?'#fbbf24':'#4ade80'}">${total}</div>
+      <div class="gauge-label">${emoji} Upgrade Score</div>
+      <div class="verdict ${vclass}">${verdict}</div>
+      <div class="gauge-sub">${rec}</div>
+    </div>`;
+
+  // Score breakdown
+  const factors=[
+    {label:'Age factor',sc:ageSc,max:25,color:'#818cf8'},
+    {label:'Battery health',sc:battSc,max:25,color:'#f87171'},
+    {label:'Performance',sc:perfSc,max:20,color:'#fbbf24'},
+    {label:'Camera satisfaction',sc:camSc,max:10,color:'#4ade80'},
+    {label:'Software support',sc:swSc,max:10,color:'#60a5fa'},
+    {label:'Physical condition',sc:physSc,max:10,color:'#c084fc'},
+  ];
+  document.getElementById('scorerow').innerHTML=factors.map(f=>`
+    <div class="sc">
+      <div class="scl">${f.label}</div>
+      <div class="scv">${f.sc}/${f.max}</div>
+      <div class="bar"><div class="bf" style="width:${Math.round(f.sc/f.max*100)}%;background:${f.color}"></div></div>
+    </div>`).join('');
+
+  // Phone recommendations
+  const budgetMap={10000:10000,15000:15000,20000:20000,30000:30000,40000:40000,60000:60000,100000:100000,999999:999999};
+  const maxB=budget;
+  const useSeg=maxB<=12000?'budget':maxB<=25000?'mid':maxB<=50000?'upper_mid':'flagship';
+  const recs=PHONES.filter(p=>p.price<=maxB).sort((a,b)=>b.price-a.price).slice(0,4);
+  const top=recs[0];
+
+  document.getElementById('phonesDiv').innerHTML=`
+    <h2 style="font-size:17px;font-weight:800;margin:0 0 14px">📱 Top picks for your budget (under ${fmt(maxB)})</h2>
+    <div class="phones-grid">
+    ${recs.map((p,i)=>`<div class="ph${i===0?' top':''}">
+      ${i===0?'<div class="ph-label">⭐ Best pick</div>':''}
+      <div class="ph-name">${p.name}</div>
+      <div class="ph-price">${fmt(p.price)}</div>
+      <div class="ph-specs">${p.specs}</div>
+      <span class="ph-tag">${p.cat}</span>
+    </div>`).join('')}
+    </div>`;
+
+  // Resale value
+  const rv=resaleEst(seg,brand,age);
+  const rvFmt=fmt(rv);
+  const netUpgrade=top?Math.max(0,top.price-rv):0;
+  document.getElementById('resaleDiv').innerHTML=`
+    <div class="card" style="background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.2)">
+      <div class="ct" style="font-size:15px">💰 Resale Value Estimate</div>
+      <div style="color:var(--t2);font-size:13.5px;line-height:1.8">
+        <strong>Estimated resale of your current phone:</strong> <span style="color:var(--suc);font-weight:700">${rvFmt}</span><br>
+        ${top?`<strong>Net cost to upgrade to ${top.name}:</strong> <span style="font-weight:700;color:var(--t1)">${fmt(netUpgrade)}</span> (after resale)<br>`:''}
+        <strong>Best platforms to sell:</strong> OLX, Cashify, Servify, Amazon Exchange<br>
+        <strong>Tip:</strong> Clean your phone, factory reset, and include all original accessories for 10–15% higher price.
+      </div>
+    </div>`;
+
+  // Tips based on issues
+  const tips=[];
+  if(batt==='poor'||batt==='critical') tips.push('🔋 Battery degradation is your biggest pain point. If upgrading isn\'t feasible right now, ₹1,500–₹3,000 battery replacement at a service centre may extend life by 1–2 years.');
+  if(perf==='slow'||perf==='unusable') tips.push('⚡ Performance issues worsen over time. A factory reset + cache clearance (without restoring WhatsApp backup) can recover 20–30% speed temporarily.');
+  if(sw==='none') tips.push('🔒 No security updates is a real risk — especially for banking/UPI apps. This alone justifies upgrading even if performance is OK.');
+  if(phys==='cracked') tips.push('💔 A cracked screen costs ₹2,000–₹6,000 to fix depending on phone. Weigh repair cost against upgrade cost before deciding.');
+  if(uses.includes('gaming')) tips.push('🎮 For serious gaming: look for Snapdragon 7 Gen 3 or Dimensity 9300. Avoid Helio G chips for high-end gaming in 2025.');
+  if(uses.includes('camera')) tips.push('📷 For photography, OIS (Optical Image Stabilisation) is the single most important spec upgrade you can make — look for it specifically.');
+  tips.push(`💡 Buy during sale events (Flipkart BBD, Amazon Great Indian Festival, Jio Days) to save 8–15% off launch prices on mid-range phones.`);
+  tips.push(`📦 For the best price-to-performance: buy 1-generation-old flagships. Last year's OnePlus/Samsung flagship at ${fmt(Math.round(maxB*0.7))} often beats this year's mid-range.`);
+
+  document.getElementById('tipsDiv').innerHTML=`
+    <div class="tips">
+      <div class="tips-title">💡 Personalised Tips</div>
+      ${tips.slice(0,5).map(t=>`<div class="tip-item">• ${t}</div>`).join('')}
+    </div>`;
+
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body></html>

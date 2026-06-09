@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Car vs Bike Cost Calculator India (2025) — True Monthly Cost Compared | WIB</title>
+<meta name="description" content="Calculate the true monthly cost of owning a car vs bike in India — EMI, fuel, insurance, parking, maintenance, depreciation. Find out which vehicle is cheaper for your commute.">
+<link rel="canonical" href="https://wibest.in/calculators/car-vs-bike/">
+<link rel="stylesheet" href="/styles/main.css?v=3.9">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Car vs Bike Cost Calculator India","description":"Compare true monthly ownership cost of car vs bike including EMI, fuel, insurance, parking, and maintenance.","url":"https://wibest.in/calculators/car-vs-bike/","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script src="/ads.js" async></script>
+<style>
+:root{--acc:#6366f1;--acc2:#818cf8;--suc:#22c55e;--war:#f59e0b;--bg0:#0f0f13;--bg1:#16161c;--bg2:#1c1c24;--bdr:rgba(255,255,255,0.08);--t1:#f1f1f5;--t2:#a1a1b3;--t3:#6b6b7e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;padding-top:72px}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+.bc{font-size:13px;color:var(--t3);margin-bottom:24px}.bc a{color:var(--acc)}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--t2);font-size:15px;line-height:1.6;margin-bottom:28px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+.col{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:22px 18px}
+.col-car{border-top:3px solid #6366f1}
+.col-bike{border-top:3px solid #f59e0b}
+.col-head{font-size:17px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+label{display:block;font-size:12px;font-weight:600;color:var(--t2);margin-bottom:5px;margin-top:14px}
+label:first-of-type{margin-top:0}
+input[type=number]{width:100%;background:var(--bg1);border:1px solid var(--bdr);border-radius:7px;color:var(--t1);font-size:14px;padding:9px 12px;outline:none;transition:border-color .2s}
+input:focus{border-color:var(--acc)}
+.hint{font-size:11px;color:var(--t3);margin-top:3px}
+.calcbtn{display:block;width:100%;margin:24px 0 0;padding:13px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;border:none;background:var(--acc);color:#fff;transition:background .2s}
+.calcbtn:hover{background:var(--acc2)}
+/* Results */
+.res{display:none;margin-top:32px}
+.winner{text-align:center;padding:28px 20px;border-radius:var(--r);margin-bottom:22px}
+.winner-car{background:rgba(99,102,241,.08);border:2px solid rgba(99,102,241,.25)}
+.winner-bike{background:rgba(245,158,11,.08);border:2px solid rgba(245,158,11,.25)}
+.winner-tie{background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.25)}
+.wbig{font-size:44px;font-weight:900;line-height:1}
+.wsub{font-size:14px;color:var(--t2);margin-top:8px}
+.rcols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+@media(max-width:620px){.rcols{grid-template-columns:1fr}}
+.rcol{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:18px}
+.rcol-head{font-size:14px;font-weight:800;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
+.rrow{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.rrow:last-child{border-bottom:none;font-weight:700;padding-top:10px;font-size:14px}
+.rrow span:last-child{font-weight:600;color:var(--t1)}
+.bar-wrap{margin-bottom:20px;background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:18px}
+.bw-title{font-size:14px;font-weight:700;margin-bottom:14px}
+.bitem{margin-bottom:12px}
+.bname{display:flex;justify-content:space-between;font-size:12px;color:var(--t2);margin-bottom:5px}
+.btrack{height:10px;background:var(--bg1);border-radius:5px;overflow:hidden}
+.bfill{height:100%;border-radius:5px;transition:width .6s}
+.bcar{background:var(--acc)}
+.bbike{background:var(--war)}
+.insight{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
+.insight-title{font-size:15px;font-weight:700;margin-bottom:10px}
+.irow{font-size:13.5px;color:var(--t2);line-height:1.7;padding:4px 0}
+.actb{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btnx{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btnpri{background:var(--acc);color:#fff}.btnpri:hover{background:var(--acc2)}
+.btnsec{background:var(--bg1);color:var(--t1);border:1px solid var(--bdr)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bc"><a href="/">Home</a> › <a href="/calculators/">Calculators</a> › Car vs Bike Cost</div>
+<h1>🚗 vs 🏍️ Car vs Bike Cost Calculator</h1>
+<p class="sub">Enter your vehicle details and get a true monthly cost comparison — including EMI, fuel, insurance, parking, maintenance, and depreciation. See the real cost difference over 5 years.</p>
+
+<div class="grid2">
+  <!-- Car column -->
+  <div class="col col-car">
+    <div class="col-head">🚗 Your Car</div>
+    <label>On-road price (₹)</label>
+    <input type="number" id="carPrice" placeholder="e.g. 900000" value="900000">
+    <div class="hint">Maruti Swift ≈ ₹8.5L | Tata Nexon ≈ ₹13L | Honda City ≈ ₹17L</div>
+
+    <label>Down payment (₹)</label>
+    <input type="number" id="carDown" placeholder="e.g. 200000" value="200000">
+
+    <label>Loan tenure (months)</label>
+    <input type="number" id="carTenure" placeholder="e.g. 60" value="60" min="12" max="84">
+
+    <label>Loan interest rate (% p.a.)</label>
+    <input type="number" id="carRate" placeholder="e.g. 9" value="9" step="0.1">
+
+    <label>Fuel type & mileage (km/l or km/kg)</label>
+    <input type="number" id="carMileage" placeholder="e.g. 18" value="18">
+    <div class="hint">Petrol car avg: 15–18 km/l | CNG: 25–30 km/kg | Diesel: 20–25 km/l</div>
+
+    <label>Fuel cost (₹/litre or ₹/kg)</label>
+    <input type="number" id="carFuelCost" placeholder="e.g. 103" value="103">
+
+    <label>Monthly km driven</label>
+    <input type="number" id="carKm" placeholder="e.g. 1500" value="1500">
+
+    <label>Monthly parking cost (₹)</label>
+    <input type="number" id="carParking" placeholder="e.g. 2000" value="2000">
+    <div class="hint">Office parking + residential: ₹500–₹4,000/month in cities</div>
+
+    <label>Annual insurance premium (₹)</label>
+    <input type="number" id="carInsurance" placeholder="e.g. 18000" value="18000">
+    <div class="hint">Comprehensive cover for 1yr-old car ≈ ₹12,000–₹25,000</div>
+
+    <label>Annual maintenance cost (₹)</label>
+    <input type="number" id="carMaint" placeholder="e.g. 15000" value="15000">
+    <div class="hint">Service + tyres + repairs avg ≈ ₹12,000–₹25,000/year</div>
+  </div>
+
+  <!-- Bike column -->
+  <div class="col col-bike">
+    <div class="col-head">🏍️ Your Bike</div>
+    <label>On-road price (₹)</label>
+    <input type="number" id="bikePrice" placeholder="e.g. 130000" value="130000">
+    <div class="hint">Hero Splendor ≈ ₹80K | Honda SP 125 ≈ ₹90K | Bajaj Pulsar ≈ ₹1.3L</div>
+
+    <label>Down payment (₹)</label>
+    <input type="number" id="bikeDown" placeholder="e.g. 50000" value="50000">
+
+    <label>Loan tenure (months)</label>
+    <input type="number" id="bikeTenure" placeholder="e.g. 24" value="24" min="6" max="60">
+
+    <label>Loan interest rate (% p.a.)</label>
+    <input type="number" id="bikeRate" placeholder="e.g. 10" value="10" step="0.1">
+
+    <label>Fuel mileage (km/l)</label>
+    <input type="number" id="bikeMileage" placeholder="e.g. 55" value="55">
+    <div class="hint">Commuter bikes: 50–70 km/l | Sports bikes: 25–35 km/l</div>
+
+    <label>Fuel cost (₹/litre)</label>
+    <input type="number" id="bikeFuelCost" placeholder="e.g. 103" value="103">
+
+    <label>Monthly km driven</label>
+    <input type="number" id="bikeKm" placeholder="e.g. 1500" value="1500">
+
+    <label>Monthly parking cost (₹)</label>
+    <input type="number" id="bikeParking" placeholder="e.g. 200" value="200">
+
+    <label>Annual insurance premium (₹)</label>
+    <input type="number" id="bikeInsurance" placeholder="e.g. 4500" value="4500">
+    <div class="hint">Comprehensive cover ≈ ₹3,000–₹8,000/year for commuter bikes</div>
+
+    <label>Annual maintenance cost (₹)</label>
+    <input type="number" id="bikeMaint" placeholder="e.g. 5000" value="5000">
+    <div class="hint">Service + tyres + repairs avg ≈ ₹4,000–₹8,000/year</div>
+  </div>
+</div>
+
+<button class="calcbtn" onclick="calcCost()">⚡ Compare Monthly Costs</button>
+
+<div class="res" id="results">
+  <div id="winnerDiv"></div>
+  <div class="rcols" id="rcols"></div>
+  <div class="bar-wrap" id="barDiv"></div>
+  <div class="insight" id="insightDiv"></div>
+  <div id="fiveyrDiv"></div>
+  <div class="actb">
+    <button class="btnx btnpri" onclick="window.print()">🖨️ Save as PDF</button>
+    <button class="btnx btnsec" onclick="document.getElementById('results').style.display='none'">↑ Edit Inputs</button>
+    <a href="/cars/" class="btnx btnsec" style="text-decoration:none">Browse Cars →</a>
+    <a href="/bikes/" class="btnx btnsec" style="text-decoration:none">Browse Bikes →</a>
+  </div>
+</div>
+</div>
+
+<script>
+function emi(principal,rate,months){
+  if(rate===0)return principal/months;
+  const r=rate/12/100;
+  return Math.round(principal*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1));
+}
+function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN');}
+function dep(price,years,rate){return price*Math.pow(1-rate,years);}
+
+function calcCost(){
+  // Car inputs
+  const cPrice=+document.getElementById('carPrice').value||0;
+  const cDown=+document.getElementById('carDown').value||0;
+  const cTenure=+document.getElementById('carTenure').value||60;
+  const cRate=+document.getElementById('carRate').value||9;
+  const cMileage=+document.getElementById('carMileage').value||18;
+  const cFuel=+document.getElementById('carFuelCost').value||103;
+  const cKm=+document.getElementById('carKm').value||1500;
+  const cPark=+document.getElementById('carParking').value||2000;
+  const cIns=+document.getElementById('carInsurance').value||18000;
+  const cMaint=+document.getElementById('carMaint').value||15000;
+
+  // Bike inputs
+  const bPrice=+document.getElementById('bikePrice').value||0;
+  const bDown=+document.getElementById('bikeDown').value||0;
+  const bTenure=+document.getElementById('bikeTenure').value||24;
+  const bRate=+document.getElementById('bikeRate').value||10;
+  const bMileage=+document.getElementById('bikeMileage').value||55;
+  const bFuel=+document.getElementById('bikeFuelCost').value||103;
+  const bKm=+document.getElementById('bikeKm').value||1500;
+  const bPark=+document.getElementById('bikeParking').value||200;
+  const bIns=+document.getElementById('bikeInsurance').value||4500;
+  const bMaint=+document.getElementById('bikeMaint').value||5000;
+
+  // Monthly calculations
+  const cEMI=emi(cPrice-cDown,cRate,cTenure);
+  const bEMI=emi(bPrice-bDown,bRate,bTenure);
+  const cFuelMo=Math.round((cKm/cMileage)*cFuel);
+  const bFuelMo=Math.round((bKm/bMileage)*bFuel);
+  const cInsMo=Math.round(cIns/12);
+  const bInsMo=Math.round(bIns/12);
+  const cMaintMo=Math.round(cMaint/12);
+  const bMaintMo=Math.round(bMaint/12);
+  // Depreciation (car ~15%/yr, bike ~20%/yr)
+  const cDepMo=Math.round((cPrice-dep(cPrice,1,0.15))/12);
+  const bDepMo=Math.round((bPrice-dep(bPrice,1,0.20))/12);
+
+  const cTotal=cEMI+cFuelMo+cPark+cInsMo+cMaintMo+cDepMo;
+  const bTotal=bEMI+bFuelMo+bPark+bInsMo+bMaintMo+bDepMo;
+
+  const diff=Math.abs(cTotal-bTotal);
+  const pct=Math.round(diff/Math.min(cTotal,bTotal)*100);
+
+  // Winner
+  let wHtml='';
+  if(Math.abs(cTotal-bTotal)<500){
+    wHtml=`<div class="winner winner-tie"><div class="wbig">🤝</div><div style="font-size:20px;font-weight:800;margin-top:8px">Nearly equal cost</div><div class="wsub">Difference is less than ₹500/month — other factors should decide</div></div>`;
+  } else if(cTotal<bTotal){
+    wHtml=`<div class="winner winner-car"><div style="font-size:13px;color:var(--t2);margin-bottom:4px">Lower monthly cost</div><div class="wbig" style="color:#818cf8">🚗 Car</div><div style="font-size:18px;font-weight:800;margin-top:6px">${fmt(diff)}/month cheaper</div><div class="wsub">${pct}% less than the bike in this scenario</div></div>`;
+  } else {
+    wHtml=`<div class="winner winner-bike"><div style="font-size:13px;color:var(--t2);margin-bottom:4px">Lower monthly cost</div><div class="wbig" style="color:#fbbf24">🏍️ Bike</div><div style="font-size:18px;font-weight:800;margin-top:6px">${fmt(diff)}/month cheaper</div><div class="wsub">${pct}% less than the car in this scenario</div></div>`;
+  }
+  document.getElementById('winnerDiv').innerHTML=wHtml;
+
+  // Breakdown columns
+  const rows=[
+    ['EMI (loan)',cEMI,bEMI],
+    ['Fuel',cFuelMo,bFuelMo],
+    ['Parking',cPark,bPark],
+    ['Insurance',cInsMo,bInsMo],
+    ['Maintenance',cMaintMo,bMaintMo],
+    ['Depreciation',cDepMo,bDepMo],
+    ['Total monthly',cTotal,bTotal],
+  ];
+  document.getElementById('rcols').innerHTML=`
+    <div class="rcol">
+      <div class="rcol-head" style="color:#818cf8">🚗 Car — Monthly Breakdown</div>
+      ${rows.map(r=>`<div class="rrow"><span>${r[0]}</span><span>${fmt(r[1])}</span></div>`).join('')}
+    </div>
+    <div class="rcol">
+      <div class="rcol-head" style="color:#fbbf24">🏍️ Bike — Monthly Breakdown</div>
+      ${rows.map(r=>`<div class="rrow"><span>${r[0]}</span><span>${fmt(r[2])}</span></div>`).join('')}
+    </div>`;
+
+  // Bar comparison
+  const max=Math.max(cTotal,bTotal);
+  const items=[
+    ['EMI',cEMI,bEMI],['Fuel',cFuelMo,bFuelMo],['Parking',cPark,bPark],
+    ['Insurance',cInsMo,bInsMo],['Maintenance',cMaintMo,bMaintMo],['Depreciation',cDepMo,bDepMo]
+  ];
+  document.getElementById('barDiv').innerHTML=`
+    <div class="bw-title">Cost breakdown comparison</div>
+    ${items.map(item=>`
+    <div class="bitem">
+      <div class="bname"><span>${item[0]}</span><span>Car ${fmt(item[1])} | Bike ${fmt(item[2])}</span></div>
+      <div style="position:relative;height:20px">
+        <div class="btrack" style="position:absolute;top:0;left:0;right:0;height:10px;background:var(--bg1);border-radius:5px"></div>
+        <div class="bfill bcar" style="position:absolute;top:0;left:0;width:${Math.round(item[1]/max*100)}%;height:10px;border-radius:5px;opacity:.7"></div>
+        <div class="bfill bbike" style="position:absolute;top:10px;left:0;width:${Math.round(item[2]/max*100)}%;height:10px;border-radius:5px;opacity:.7"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--t3);margin-top:4px"><span style="color:#818cf8">■ Car</span><span style="color:#fbbf24">■ Bike</span></div>
+    </div>`).join('')}`;
+
+  // 5-year comparison
+  const c5yr=cTotal*60+cDown;
+  const b5yr=bTotal*60+bDown;
+  const cDepVal=Math.round(dep(cPrice,5,0.15));
+  const bDepVal=Math.round(dep(bPrice,5,0.20));
+  const cNet=c5yr-cDepVal;
+  const bNet=b5yr-bDepVal;
+
+  document.getElementById('fiveyrDiv').innerHTML=`
+    <div class="col" style="background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);padding:20px;margin-bottom:18px">
+      <div style="font-size:15px;font-weight:800;margin-bottom:14px">📅 5-Year Total Cost of Ownership</div>
+      <div class="rcols" style="gap:14px">
+        <div><div style="font-size:13px;color:var(--t2);margin-bottom:8px;font-weight:700;color:#818cf8">🚗 Car (5 years)</div>
+          <div class="rrow"><span>Total paid out</span><span>${fmt(c5yr)}</span></div>
+          <div class="rrow"><span>Resale value (est.)</span><span style="color:var(--suc)">+${fmt(cDepVal)}</span></div>
+          <div class="rrow"><span>Net cost (5yr)</span><span>${fmt(cNet)}</span></div>
+        </div>
+        <div><div style="font-size:13px;color:var(--t2);margin-bottom:8px;font-weight:700;color:#fbbf24">🏍️ Bike (5 years)</div>
+          <div class="rrow"><span>Total paid out</span><span>${fmt(b5yr)}</span></div>
+          <div class="rrow"><span>Resale value (est.)</span><span style="color:var(--suc)">+${fmt(bDepVal)}</span></div>
+          <div class="rrow"><span>Net cost (5yr)</span><span>${fmt(bNet)}</span></div>
+        </div>
+      </div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--bdr);font-size:13.5px;color:var(--t2)">
+        5-year net cost difference: <strong style="color:var(--t1)">${fmt(Math.abs(cNet-bNet))}</strong> in favour of ${cNet<bNet?'🚗 Car':'🏍️ Bike'}
+      </div>
+    </div>`;
+
+  // Insights
+  const perKmCar=(cTotal/cKm).toFixed(2);
+  const perKmBike=(bTotal/bKm).toFixed(2);
+  document.getElementById('insightDiv').innerHTML=`
+    <div class="insight-title">💡 Key Insights</div>
+    <div class="irow">📏 <strong>Cost per km:</strong> Car ₹${perKmCar}/km vs Bike ₹${perKmBike}/km</div>
+    <div class="irow">⛽ <strong>Monthly fuel difference:</strong> ${fmt(Math.abs(cFuelMo-bFuelMo))} ${cFuelMo>bFuelMo?'more for car':'more for bike'}</div>
+    <div class="irow">🏦 <strong>Break-even point:</strong> If monthly km increases to ${Math.round(diff/(cTotal/cKm-bTotal/bKm))} km, costs equalise</div>
+    <div class="irow">🌧️ <strong>Weather impact:</strong> Bikes lose 20–30 working days/year in Indian monsoon — factor in alternatives on rainy days</div>
+    <div class="irow">💼 <strong>Practical note:</strong> Car enables family travel, AC comfort, and safe transport for children — benefits not captured in this calculator</div>`;
+
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body></html>
