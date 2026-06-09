@@ -22,6 +22,10 @@ my @seed_files = (
     'seed-data-batch5b-missing.js',
     'seed-data-batch5c-missing.js',
     'seed-data-batch5d-missing.js',
+    'seed-data-batch6a-colleges.js',
+    'seed-data-batch6b-schools.js',
+    'seed-data-batch6c-hospitals.js',
+    'seed-data-batch6d-restaurants-travel.js',
 );
 
 # ── Parse seed files ──────────────────────────────────────────────────────────
