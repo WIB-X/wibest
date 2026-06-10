@@ -4,6 +4,9 @@ Allow: /
 # Block search URLs and query params from indexing
 Disallow: /search
 Disallow: /*?q=
+Disallow: /*?q
+Disallow: /compare?
+Disallow: /*-detail.html?
 
 # Block admin and migration tools from indexing
 Disallow: /admin-dashboard/
@@ -32,6 +35,22 @@ Disallow: /seed-catalog.html
 Disallow: /verify-batch4.html
 Disallow: /verify-vernacular.html
 Disallow: /admin-auth-gate.js
+
+# Block JS-only template detail files (Soft 404 — no real content)
+Disallow: /cars-detail.html
+Disallow: /college-detail.html
+Disallow: /electronics-detail.html
+Disallow: /hospital-detail.html
+Disallow: /school-detail.html
+
+# Block vernacular language roots and blog mirrors (noindex already set in HTML)
+# These are JS shells with no translated content — Google treats them as duplicates
+Disallow: /te/
+Disallow: /ta/
+Disallow: /kn/
+Disallow: /ml/
+Disallow: /hi/
+Disallow: /bn/
 
 Sitemap: https://wibest.in/sitemap-index.xml
 Sitemap: https://wibest.in/sitemap.xml

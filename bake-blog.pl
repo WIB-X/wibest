@@ -26,6 +26,7 @@ my @seed_files = (
     'seed-data-batch6b-schools.js',
     'seed-data-batch6c-hospitals.js',
     'seed-data-batch6d-restaurants-travel.js',
+    'seed-data-batch7-unique.js',
 );
 
 # ── Parse seed files ──────────────────────────────────────────────────────────

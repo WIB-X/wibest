@@ -30,3 +30,12 @@ secrets.*
 *.pem
 service-account*.json
 firebase-adminsdk*.json
+
+# Firebase local artifacts
+.firebase/
+firebase.exe
+.firebaserc
+
+# Local data exports (regenerable)
+colleges-export.json
+schools-export.json
