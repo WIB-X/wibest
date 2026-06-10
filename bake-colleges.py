@@ -22,15 +22,47 @@ for row in raw:
     c["id"] = doc["name"].rsplit("/", 1)[-1]
     colleges.append(c)
 
-print(f"Loaded {len(colleges)} colleges")
+# Firestore has duplicate (name, city) docs — keep the most complete one
+def completeness(c):
+    return sum(1 for v in c.values() if v not in (None, "", 0))
+
+deduped = {}
+for c in colleges:
+    key = (str(c.get("name", "")).lower(), str(c.get("city", "")).lower())
+    if key not in deduped or completeness(c) > completeness(deduped[key]):
+        deduped[key] = c
+colleges = list(deduped.values())
+
+print(f"Loaded {len(colleges)} colleges (after dedupe)")
 
 def esc(s):
     return html.escape(str(s or ""), quote=True)
+
+def reset_grid(page, grid_id):
+    """Replace a possibly-filled grid div with an empty one (div-balanced)."""
+    start_tag = f'<div class="grid" id="{grid_id}">'
+    start = page.find(start_tag)
+    if start < 0:
+        return page
+    i, depth = start, 0
+    while i < len(page):
+        if page.startswith("<div", i):
+            depth += 1
+            i += 4
+        elif page.startswith("</div>", i):
+            depth -= 1
+            i += 6
+            if depth == 0:
+                return page[:start] + start_tag + "</div>" + page[i:]
+        else:
+            i += 1
+    return page
 
 baked = skipped = 0
 for path in glob.glob("colleges/*/best-*/index.html"):
     with open(path, encoding="utf-8") as f:
         page = f.read()
+    page = reset_grid(page, "collGrid")
     if '<div class="grid" id="collGrid"></div>' not in page:
         skipped += 1
         continue
