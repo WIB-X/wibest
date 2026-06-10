@@ -265,7 +265,7 @@ STATIC_HTML
         my $ctx = 'https://schema.org';
         my $atype = 'Article';
         my $otype = 'Organization';
-        my $jsonld = "<script type=\"application/ld+json\">{\"\\x40context\":\"$ctx\",\"\\x40type\":\"$atype\",\"headline\":\"$title_j\",\"description\":\"$desc_j\",\"author\":{\"\\x40type\":\"$otype\",\"name\":\"WIB Editorial\"},\"publisher\":{\"\\x40type\":\"$otype\",\"name\":\"WIB\",\"url\":\"https://wibest.in\"},\"datePublished\":\"$date_j\",\"dateModified\":\"2026-06-06\",\"url\":\"https://wibest.in/blog/$slug/\"}</script>";
+        my $jsonld = "<script type=\"application/ld+json\">{\"\\@context\":\"$ctx\",\"\\@type\":\"$atype\",\"headline\":\"$title_j\",\"description\":\"$desc_j\",\"author\":{\"\\@type\":\"$otype\",\"name\":\"WIB Editorial\"},\"publisher\":{\"\\@type\":\"$otype\",\"name\":\"WIB\",\"url\":\"https://wibest.in\"},\"datePublished\":\"$date_j\",\"dateModified\":\"2026-06-06\",\"url\":\"https://wibest.in/blog/$slug/\"}</script>";
         $html =~ s{</head>}{$jsonld\n</head>};
     }
 
@@ -277,11 +277,11 @@ STATIC_HTML
         for my $f (@{$p->{faq}}) {
             (my $q = $f->{q}) =~ s/"/\\"/g;
             (my $a = $f->{a}) =~ s/"/\\"/g;
-            push @faq_items, "{\"\\x40type\":\"$qtype\",\"name\":\"$q\",\"acceptedAnswer\":{\"\\x40type\":\"$atype2\",\"text\":\"$a\"}}";
+            push @faq_items, "{\"\\@type\":\"$qtype\",\"name\":\"$q\",\"acceptedAnswer\":{\"\\@type\":\"$atype2\",\"text\":\"$a\"}}";
         }
         my $ctx = 'https://schema.org';
         my $ftype = 'FAQPage';
-        my $faq_jsonld = '<script type="application/ld+json">{"\\x40context":"' . $ctx . '","\\x40type":"' . $ftype . '","mainEntity":[' . join(',', @faq_items) . ']}</script>';
+        my $faq_jsonld = '<script type="application/ld+json">{"\\@context":"' . $ctx . '","\\@type":"' . $ftype . '","mainEntity":[' . join(',', @faq_items) . ']}</script>';
         $html =~ s{</head>}{$faq_jsonld\n</head>};
     }
 
