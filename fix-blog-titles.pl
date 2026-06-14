@@ -15,6 +15,7 @@ my @seed_files = (
     'seed-data-batch6c-hospitals.js',
     'seed-data-batch6d-restaurants-travel.js',
     'seed-data-batch7-unique.js',
+    'seed-data-batch8-international.js',
 );
 
 sub esc_attr { my $s = shift // ''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&gt;/g; $s =~ s/"/&quot;/g; $s }

@@ -12,19 +12,10 @@ sub read_file  { open my $fh,'<:utf8',$_[0] or die "$_[0]: $!"; local $/; my $c=
 sub write_file { my ($f,$c)=@_; open my $fh,'>:utf8',$f or die "$f: $!"; print $fh $c; close $fh }
 
 my @slugs = qw(
-    best-engineering-colleges-india-2025 best-medical-colleges-india-2025
-    best-mba-colleges-india-2025 best-law-colleges-india-2025
-    best-arts-colleges-india-2025 college-admission-tips-india-2025
-    best-design-colleges-india-2025 best-cbse-schools-india-2025
-    cbse-vs-icse-vs-ib-which-board-better school-admission-guide-india-2025
-    kendriya-vidyalaya-admission-guide-2025 best-boarding-schools-india-2025
-    best-hospitals-india-2025 health-insurance-india-guide-2025
-    cancer-treatment-india-cost-guide-2025 ayushman-bharat-pmjay-eligibility-guide
-    diabetes-management-india-guide-2025 best-street-food-india-city-guide
-    best-places-visit-india-june-july best-budget-restaurants-india-cities
-    india-solo-travel-guide-2025 best-fine-dining-restaurants-india-2025
-    best-mutual-funds-india-2025 best-cities-to-live-india-2025
-    best-restaurants-bangalore-2025
+    best-study-abroad-destinations-indian-students-2026
+    best-travel-esim-international-indians-2026
+    best-forex-card-international-travel-india-2026
+    nri-investment-guide-india-2026
 );
 
 my $fixed = 0;
