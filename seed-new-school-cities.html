@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add New-City Schools — WIB Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#0b0f17;color:#e5e7eb}
+h1{color:#60a5fa}
+button{background:#2563eb;color:#fff;border:0;padding:12px 24px;font-size:16px;border-radius:8px;cursor:pointer;margin:6px 4px}
+button:hover{background:#1d4ed8}
+button:disabled{background:#374151;cursor:not-allowed}
+#log{background:#111827;border:1px solid #1f2937;border-radius:8px;padding:16px;margin-top:20px;max-height:600px;overflow:auto;font-family:ui-monospace,monospace;font-size:12px;white-space:pre-wrap}
+.ok{color:#10b981}.err{color:#ef4444}.info{color:#60a5fa}
+.warn{background:#7c2d12;color:#fed7aa;padding:12px;border-radius:8px;margin:16px 0}
+.stat{display:inline-block;background:#1f2937;padding:8px 14px;border-radius:8px;margin:4px;font-family:ui-monospace,monospace}
+table{border-collapse:collapse;margin-top:14px;font-size:12px;width:100%}
+th,td{border:1px solid #1f2937;padding:5px 8px;text-align:left}
+th{color:#60a5fa}
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js" defer></script>
+<script src="/config.js"></script>
+<script src="/admin-auth-gate.js"></script>
+</head>
+<body>
+<h1>Add Schools for 11 New Cities</h1>
+<p>Adds real schools for the 11 cities that had no school data (their listing pages were noindexed for Soft 404):
+<strong>Ahmedabad, Bhopal, Chandigarh, Kanpur, Mangalore, Nagpur, Nashik, Patna, Surat, Vadodara, Visakhapatnam</strong>.</p>
+
+<div class="warn">⚠️ <strong>Review first.</strong> Names, boards, cities, localities and established years are real/public. <strong>Fees, results% and student:teacher ratios are APPROXIMATE</strong> — edit <code>/seed-data-schools-new-cities.js</code> to correct any before importing. Ratings are intentionally blank (no fabricated ratings).</div>
+
+<div class="warn">This is <strong>ADDITIVE</strong> — it writes new docs only, does not wipe or touch existing schools. Run it <strong>once</strong> (running twice creates duplicates). If you need admin write access, ensure you are logged in via the admin gate.</div>
+
+<div id="counts"></div>
+<button id="previewBtn" onclick="preview()">👁 Preview data (no write)</button>
+<button id="addBtn" onclick="addSchools()">➕ Add new-city schools to Firestore</button>
+
+<div id="preview"></div>
+<div id="log"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+<script src="/seed-data-schools-new-cities.js"></script>
+<script>
+function l(msg, cls){ const d=document.getElementById('log'); const s=document.createElement('div'); if(cls)s.className=cls; s.textContent=msg; d.appendChild(s); d.scrollTop=d.scrollHeight; }
+
+function normalize(rec){
+  return {
+    name: rec.name,
+    category: 'school',
+    city: rec.city,
+    state: rec.state || '',
+    board: rec.board || '',
+    type: rec.type || 'Co-ed',
+    stream: '',
+    speciality: '',
+    fees: rec.fees || 0,
+    rating: rec.rating || 0,              // intentionally 0 — not fabricated
+    established: rec.established || 0,
+    student_count: rec.studentCount || 0,
+    results: rec.results || 0,
+    board_results: rec.results || 0,
+    student_teacher_ratio: rec.studentTeacherRatio || '',
+    contact: rec.contact || '',
+    address: rec.address || '',
+    website: rec.website || '',
+    highlights: rec.highlights || '',
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+}
+
+function countByCity(){
+  const c={}; NEW_SCHOOLS.forEach(s=>{c[s.city]=(c[s.city]||0)+1;});
+  return c;
+}
+
+function showCounts(){
+  const c=countByCity();
+  const total=NEW_SCHOOLS.length;
+  document.getElementById('counts').innerHTML =
+    '<div class="stat">Total: '+total+' schools</div>' +
+    Object.keys(c).sort().map(k=>'<div class="stat">'+k+': '+c[k]+'</div>').join('');
+}
+
+function preview(){
+  showCounts();
+  const rows = NEW_SCHOOLS.map(s=>
+    '<tr><td>'+s.name+'</td><td>'+s.city+'</td><td>'+s.board+'</td><td>'+s.type+'</td><td>'+(s.fees?('₹'+s.fees.toLocaleString('en-IN')):'—')+'</td><td>'+(s.results||'—')+'</td><td>'+(s.address||'')+'</td></tr>'
+  ).join('');
+  document.getElementById('preview').innerHTML =
+    '<table><thead><tr><th>Name</th><th>City</th><th>Board</th><th>Type</th><th>Fees (approx)</th><th>Results%</th><th>Locality</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  l('Preview rendered — '+NEW_SCHOOLS.length+' schools. Nothing written yet.', 'info');
+}
+
+async function addSchools(){
+  if(typeof firebase==='undefined' || !firebase.firestore){ l('Firebase not ready — wait a moment and retry.', 'err'); return; }
+  if(!confirm('Add '+NEW_SCHOOLS.length+' schools to Firestore? This is additive. Run only once.')) return;
+  document.getElementById('addBtn').disabled = true;
+  const db = firebase.firestore();
+  showCounts();
+  l('--- Adding '+NEW_SCHOOLS.length+' schools (additive) ---', 'info');
+  let ok=0, err=0;
+  for(let i=0; i<NEW_SCHOOLS.length; i+=400){
+    const batch = db.batch();
+    const slice = NEW_SCHOOLS.slice(i, i+400);
+    slice.forEach(r => { batch.set(db.collection('items').doc(), normalize(r)); });
+    try{ await batch.commit(); ok+=slice.length; l('✓ Wrote '+slice.length+' schools', 'ok'); }
+    catch(e){ err+=slice.length; l('✗ Batch failed: '+e.message, 'err'); }
+  }
+  l('=== Done: '+ok+' added, '+err+' failed ===', err?'err':'ok');
+  if(ok>0){
+    l('Next: tell Claude "school data is imported" — it will remove the noindex tags,', 'info');
+    l('bake static cards, and re-add the 11 cities to the sitemap.', 'info');
+  }
+  document.getElementById('addBtn').disabled = false;
+}
+
+window.addEventListener('load', ()=>{ setTimeout(showCounts, 500); });
+</script>
+</body>
+</html>
