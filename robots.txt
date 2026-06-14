@@ -28,7 +28,6 @@ Disallow: /seed-blogs-batch3.html
 Disallow: /seed-blogs-hindi.html
 Disallow: /seed-categories.html
 Disallow: /seed-institutions.html
-Disallow: /seed-schools-batch2.html
 Disallow: /update-product-images.html
 Disallow: /seed-blogs-batch4.html
 Disallow: /seed-blogs-vernacular.html

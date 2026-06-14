@@ -92,6 +92,16 @@
 
   <!-- Category listing pages -->
   <url><loc>https://wibest.in/schools/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/schools/dehradun/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/dehradun/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/dehradun/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/gurugram/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/gurugram/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/gurugram/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/gurugram/best-international/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/noida/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/noida/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/noida/best-international/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/schools/kolkata/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/schools/kolkata/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/schools/kolkata/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
