@@ -92,6 +92,16 @@
 
   <!-- Category listing pages -->
   <url><loc>https://wibest.in/schools/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/schools/bhubaneswar/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/bhubaneswar/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/bhubaneswar/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/guwahati/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/guwahati/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/guwahati/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/trivandrum/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/trivandrum/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/trivandrum/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/schools/trivandrum/best-international/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/schools/dehradun/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/schools/dehradun/best-cbse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/schools/dehradun/best-icse/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
@@ -128,6 +138,12 @@
   <url><loc>https://wibest.in/schools/trichy/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/affiliate-disclosure/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://wibest.in/colleges/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wibest.in/colleges/kolkata/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/colleges/kolkata/best-engineering/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/colleges/kolkata/best-medical/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/colleges/kolkata/best-mba/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/colleges/kolkata/best-arts/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://wibest.in/colleges/kolkata/best-commerce/</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://wibest.in/colleges/jaipur/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/colleges/lucknow/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wibest.in/colleges/chandigarh/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
