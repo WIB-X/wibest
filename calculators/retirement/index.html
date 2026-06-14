@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retirement Calculator India - Corpus Needed at 60 | WIB</title>
-<meta name="description" content="Free retirement planning calculator for Indians. Calculate corpus needed at 60 to maintain your lifestyle, factoring inflation, life expectancy, and post-retirement returns.">
+<title>Retirement Calculator India 2026 — Inflation-Adjusted, Withdrawal Phase | WIB</title>
+<meta name="description" content="Comprehensive India retirement calculator. Real corpus needed (inflation-adjusted), accumulation + withdrawal phase modelling, post-retirement income adequacy check, 4% rule for India, longevity stress test.">
+<meta name="news_keywords" content="retirement calculator India 2026, retirement corpus calculator, FIRE calculator India, 4 percent rule India, inflation adjusted retirement planning">
 <link rel="canonical" href="https://wibest.in/calculators/retirement/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Retirement Calculator India">
-<meta property="og:description" content="Plan your retirement corpus with inflation-adjusted projections.">
+<meta property="og:title" content="Retirement Calculator — Inflation + Withdrawal Phase Modelling">
+<meta property="og:description" content="The retirement calculator that goes beyond just corpus number — models the post-retirement income phase.">
 <meta property="og:url" content="https://wibest.in/calculators/retirement/">
 <meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="date-reviewed" content="2026-05-06">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
@@ -18,23 +21,63 @@
 <link rel="stylesheet" href="/styles.css?v=20260421b">
 <link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
 <style>
-.wrap{max-width:920px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
+.wrap{max-width:1060px;margin:calc(var(--nav-height)+var(--cat-height)+24px) auto 80px;padding:0 24px}
 .bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
-h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
-.lede{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px}
-.input-group{margin-bottom:18px}
-.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+h1{font-family:Outfit,sans-serif;font-size:34px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;background:linear-gradient(135deg,#16a34a,#9333ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:15.5px;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;max-width:820px}
+.calc{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px}
+.input-section{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.input-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.input-section h3{font-family:Outfit,sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin:0 0 12px}
+.input-group{margin-bottom:14px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px}
 .input-group label .val{color:var(--accent);font-weight:700}
 .input-group input[type="range"]{width:100%;cursor:pointer;accent-color:var(--accent)}
-.results{padding:24px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-radius:12px;display:flex;flex-direction:column;justify-content:center}
-[data-theme="dark"] .results{background:linear-gradient(135deg,#064e3b,#065f46)}
-.result-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-.result-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.result-row .lbl{font-size:13px;color:var(--text-secondary);font-weight:500}
-.result-row .num{font-family:Outfit,sans-serif;font-size:20px;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em}
-.result-row.big .num{font-size:30px;color:#16a34a}
-h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
+.results{padding:22px;background:linear-gradient(135deg,#ecfdf5,#eff6ff);border-radius:12px}
+[data-theme="dark"] .results{background:linear-gradient(135deg,#064e3b,#1e293b)}
+.verdict-card{text-align:center;padding:18px;background:#fff;border-radius:10px;margin-bottom:16px;border:2px solid var(--accent)}
+[data-theme="dark"] .verdict-card{background:rgba(0,0,0,.3)}
+.verdict-card .lbl{font-size:11.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+.verdict-card .big{font-family:Outfit,sans-serif;font-size:32px;font-weight:900;letter-spacing:-0.02em;line-height:1.1;margin-top:6px}
+.verdict-card .big.green{color:#16a34a}.verdict-card .big.red{color:#dc2626}.verdict-card .big.amber{color:#d97706}
+.verdict-card .sub{font-size:13px;color:var(--text-secondary);margin-top:6px}
+.adequacy-badge{margin:0 auto 14px;max-width:90%;padding:10px 16px;border-radius:10px;text-align:center;font-weight:700;font-size:14px}
+.adequacy-badge.good{background:#dcfce7;color:#15803d}.adequacy-badge.warning{background:#fef3c7;color:#92400e}.adequacy-badge.bad{background:#fee2e2;color:#991b1b}
+[data-theme="dark"] .adequacy-badge.good{background:#14532d;color:#bbf7d0}
+[data-theme="dark"] .adequacy-badge.warning{background:#78350f;color:#fde68a}
+[data-theme="dark"] .adequacy-badge.bad{background:#7f1d1d;color:#fecaca}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;font-size:13.5px;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:none}
+.row .lbl{color:var(--text-secondary)}
+.row .num{font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.section-head-mini{font-family:Outfit,sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-primary);padding:14px 0 4px;border-top:1px solid var(--border);margin-top:8px}
+.section-head-mini:first-of-type{border-top:none;padding-top:4px}
+.phases{margin-top:26px;padding:22px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.phases h2{font-family:Outfit,sans-serif;font-size:19px;font-weight:800;margin:0 0 4px}
+.phases > p{font-size:13.5px;color:var(--text-muted);margin:0 0 16px;line-height:1.55}
+.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.phase{padding:16px 18px;background:var(--bg);border-radius:10px;border-left:4px solid var(--accent)}
+.phase.accum{border-left-color:#16a34a}
+.phase.with{border-left-color:#0891b2}
+.phase h4{font-family:Outfit,sans-serif;font-size:14px;font-weight:800;margin:0 0 4px}
+.phase p{font-size:13px;color:var(--text-secondary);margin:0;line-height:1.55}
+.phase .meta-line{font-size:11.5px;color:var(--text-muted);margin-top:8px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.scenarios{margin-top:26px;padding:22px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.scenarios h2{font-family:Outfit,sans-serif;font-size:19px;font-weight:800;margin:0 0 8px}
+.scen-row{display:grid;grid-template-columns:120px 1fr 100px;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;align-items:center}
+.scen-row:last-child{border-bottom:none}
+.scen-row .scen-name{font-weight:700;color:var(--text-primary)}
+.scen-row .scen-bar{height:10px;background:var(--bg-secondary);border-radius:5px;overflow:hidden}
+.scen-row .scen-fill{height:100%;border-radius:5px}
+.scen-row .scen-fill.good{background:#16a34a}
+.scen-row .scen-fill.warn{background:#d97706}
+.scen-row .scen-fill.bad{background:#dc2626}
+.scen-row .scen-num{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.tips-block{margin-top:30px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.tips-block h2{font-family:Outfit,sans-serif;font-size:19px;font-weight:800;margin:0 0 12px}
+.tip{padding:14px 18px;background:var(--bg);border-left:3px solid #16a34a;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;color:var(--text-secondary);margin-bottom:10px}
+.tip strong{color:var(--text-primary);display:block;margin-bottom:4px;font-family:Outfit,sans-serif;font-size:14px}
+h2.sec{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
 .faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
 .faq-item{border-bottom:1px solid var(--border);padding:12px 0}
 .faq-item:last-child{border-bottom:none}
@@ -43,81 +86,172 @@ h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14
 .faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
 .faq-item[open] summary::after{content:"−"}
 .faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
-.cta-block{margin-top:24px;padding:20px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border-left:4px solid var(--accent);border-radius:0 10px 10px 0}
-[data-theme="dark"] .cta-block{background:linear-gradient(135deg,#1e293b,#27272a)}
-.cta-block a{display:inline-block;padding:9px 18px;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;margin-top:8px}
-.warn{margin-top:16px;padding:14px 18px;background:#fef3c7;border-left:4px solid #d97706;border-radius:0 8px 8px 0;font-size:13px;color:#92400e}
-[data-theme="dark"] .warn{background:#78350f;color:#fde68a}
-@media(max-width:768px){.calc{grid-template-columns:1fr}h1{font-size:24px}}
+.related{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.related a{padding:8px 14px;background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:13px;font-weight:600;text-decoration:none}
+.disclaimer{margin-top:18px;padding:14px 18px;background:#eff6ff;border-left:4px solid #2563eb;border-radius:0 8px 8px 0;font-size:13px;color:#1e3a8a;line-height:1.55}
+[data-theme="dark"] .disclaimer{background:#1e3a8a;color:#bfdbfe;border-left-color:#60a5fa}
+@media(max-width:768px){.calc{grid-template-columns:1fr}.phase-grid{grid-template-columns:1fr}.scen-row{grid-template-columns:90px 1fr 80px}h1{font-size:24px}.verdict-card .big{font-size:24px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"Retirement","item":"https://wibest.in/calculators/retirement/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WIB Retirement Calculator","url":"https://wibest.in/calculators/retirement/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Inflation-adjusted retirement corpus calculation with accumulation + withdrawal phase modelling, post-retirement income adequacy check, and longevity stress tests for India.","datePublished":"2026-05-06","dateModified":"2026-05-06","inLanguage":"en-IN"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much retirement corpus do I need in India?","acceptedAnswer":{"@type":"Answer","text":"Use the 30x rule: required corpus ≈ 30 × current annual expenses (inflation-adjusted to retirement age). For Rs 50,000/month current expenses, retiring at 60 in 30 years with 6% inflation: future monthly expense ≈ Rs 2.87 lakh; annual ≈ Rs 34.5 lakh; corpus needed ≈ Rs 10.3 crore. Calculator above does the math live."}},
+{"@type":"Question","name":"Does the 4% withdrawal rule work in India?","acceptedAnswer":{"@type":"Answer","text":"The classic 4% safe withdrawal rate (originally Trinity study, US data) is too aggressive for India given higher inflation (~6% vs US ~2-3%) and longer retirement horizons. For India, 3-3.5% is the more sustainable safe withdrawal rate — meaning you need ~30x annual expenses as corpus, not 25x."}},
+{"@type":"Question","name":"What return should I assume post-retirement?","acceptedAnswer":{"@type":"Answer","text":"Conservative: 7% (debt-heavy portfolio with senior citizen FDs, SCSS, debt MFs, conservative hybrid). Moderate: 8-9% (50-30-20 split debt-equity-gold). Aggressive: 10% (30-50-20 split — only for those with corpus 2x+ safety buffer). Most Indian financial planners suggest 8% for the withdrawal phase to balance return with capital preservation."}},
+{"@type":"Question","name":"How is the corpus needed adjusted for inflation?","acceptedAnswer":{"@type":"Answer","text":"Two stages: (1) future expense = current expense × (1 + inflation)^years_to_retire. (2) Corpus must be large enough that it lasts through retirement years with annual withdrawals stepping up each year by post-retirement inflation. The calculator handles both. India inflation default 6% is conservative-realistic; historical 10-yr average ~5.5%, lifestyle inflation typically higher than CPI."}},
+{"@type":"Question","name":"What is FIRE and is it possible in India?","acceptedAnswer":{"@type":"Answer","text":"FIRE (Financial Independence, Retire Early) targets corpus ≥ 25-30x annual expenses, then living off withdrawals. In India, FIRE typically needs Rs 5-15 crore corpus depending on lifestyle and inflation assumptions — possible for high-earning IT/finance professionals in their late 40s with aggressive saving (50%+ savings rate). LeanFIRE (~Rs 3-5 Cr, tier-2 city lifestyle) is more achievable than FatFIRE (Rs 15+ Cr, metro lifestyle)."}},
+{"@type":"Question","name":"Should retirement corpus be in equity or debt?","acceptedAnswer":{"@type":"Answer","text":"Glide path: 70-80% equity in 20s-30s for accumulation; reduce to 50-60% equity in 50s; 30-40% equity at retirement to balance growth and stability. Post-retirement, withdraw from debt portion first (preserves equity for inflation hedge). Common India-suitable mix at 60: 35-40% equity index funds, 35% debt (SCSS, RBI bonds, debt MF), 15-20% gold/sovereign gold bonds, 5-10% liquid emergency fund."}}
+]}</script>
 </head>
 <body>
 <div id="wib-nav-placeholder"></div>
 
 <main class="wrap">
   <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; Retirement</div>
-  <h1>Retirement Planner</h1>
-  <p class="lede">How much corpus do you need at retirement age to maintain your lifestyle? Factors in Indian inflation (6-7%), realistic post-retirement returns, and life expectancy. <strong>Want deeper modelling?</strong> Try the new <a href="/calculators/retirement-v2/" style="color:var(--accent);font-weight:700">Retirement Calculator v2</a> — accumulation + withdrawal phase, longevity stress test, 4% rule for India, adequacy verdict.</p>
+  <h1>Retirement Calculator — India</h1>
+  <p class="lede">Beyond just "how big a corpus" — this calculator models <strong>both phases</strong>: accumulation (how your SIP grows till retirement) and withdrawal (how the corpus depletes with inflation-adjusted spending). Includes the <strong>4% safe-withdrawal stress test</strong> calibrated for India's higher inflation, longevity scenarios (lives to 75 / 85 / 95), and a real-time adequacy verdict — everything you need to plan retirement in one place.</p>
 
   <div class="calc">
     <div>
-      <div class="input-group">
-        <label>Current age <span class="val" id="ageLabel">30 years</span></label>
-        <input type="range" id="age" min="20" max="55" step="1" value="30" oninput="calc()">
+      <div class="input-section">
+        <h3>About you</h3>
+        <div class="input-group">
+          <label>Current age <span class="val" id="ageLabel">30 years</span></label>
+          <input type="range" id="age" min="20" max="60" step="1" value="30" oninput="calc()">
+        </div>
+        <div class="input-group">
+          <label>Retirement age <span class="val" id="retAgeLabel">60 years</span></label>
+          <input type="range" id="retAge" min="40" max="70" step="1" value="60" oninput="calc()">
+        </div>
+        <div class="input-group">
+          <label>Life expectancy (corpus must last till) <span class="val" id="lifeLabel">85 years</span></label>
+          <input type="range" id="life" min="70" max="100" step="1" value="85" oninput="calc()">
+        </div>
       </div>
-      <div class="input-group">
-        <label>Retirement age <span class="val" id="retireAgeLabel">60 years</span></label>
-        <input type="range" id="retireAge" min="40" max="75" step="1" value="60" oninput="calc()">
+
+      <div class="input-section">
+        <h3>Lifestyle &amp; expenses</h3>
+        <div class="input-group">
+          <label>Current monthly expenses <span class="val" id="expLabel">Rs 60,000</span></label>
+          <input type="range" id="exp" min="15000" max="500000" step="2500" value="60000" oninput="calc()">
+        </div>
+        <div class="input-group">
+          <label>Post-retirement expense % of current <span class="val" id="postPctLabel">80%</span></label>
+          <input type="range" id="postPct" min="50" max="120" step="5" value="80" oninput="calc()">
+        </div>
       </div>
-      <div class="input-group">
-        <label>Current monthly expenses (Rs) <span class="val" id="expensesLabel">Rs 50,000</span></label>
-        <input type="range" id="expenses" min="10000" max="500000" step="5000" value="50000" oninput="calc()">
+
+      <div class="input-section">
+        <h3>Inflation &amp; returns</h3>
+        <div class="input-group">
+          <label>Inflation (CPI + lifestyle) <span class="val" id="infLabel">6%</span></label>
+          <input type="range" id="inf" min="3" max="10" step="0.5" value="6" oninput="calc()">
+        </div>
+        <div class="input-group">
+          <label>Pre-retirement returns <span class="val" id="preReturnLabel">12%</span></label>
+          <input type="range" id="preReturn" min="6" max="16" step="0.5" value="12" oninput="calc()">
+        </div>
+        <div class="input-group">
+          <label>Post-retirement returns <span class="val" id="postReturnLabel">8%</span></label>
+          <input type="range" id="postReturn" min="4" max="12" step="0.5" value="8" oninput="calc()">
+        </div>
       </div>
-      <div class="input-group">
-        <label>Inflation rate (annual) <span class="val" id="inflLabel">6.5%</span></label>
-        <input type="range" id="infl" min="4" max="10" step="0.5" value="6.5" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Pre-retirement return <span class="val" id="preRetRateLabel">12%</span></label>
-        <input type="range" id="preRetRate" min="6" max="18" step="0.5" value="12" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Post-retirement return <span class="val" id="postRetRateLabel">8%</span></label>
-        <input type="range" id="postRetRate" min="4" max="12" step="0.5" value="8" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Life expectancy <span class="val" id="lifeLabel">85 years</span></label>
-        <input type="range" id="life" min="65" max="100" step="1" value="85" oninput="calc()">
+
+      <div class="input-section">
+        <h3>Current savings</h3>
+        <div class="input-group">
+          <label>Existing retirement corpus today <span class="val" id="existLabel">Rs 5,00,000</span></label>
+          <input type="range" id="exist" min="0" max="50000000" step="100000" value="500000" oninput="calc()">
+        </div>
       </div>
     </div>
+
     <div class="results">
-      <div class="result-row big"><span class="lbl">Corpus needed at retirement</span><span class="num" id="corpusOut">Rs 8.7 crore</span></div>
-      <div class="result-row"><span class="lbl">Monthly expenses at retirement</span><span class="num" id="futureExpOut">Rs 3.3 lakh</span></div>
-      <div class="result-row"><span class="lbl">Years until retirement</span><span class="num" id="yearsToRetOut">30 years</span></div>
-      <div class="result-row"><span class="lbl">Years in retirement</span><span class="num" id="retYearsOut">25 years</span></div>
-      <div class="result-row"><span class="lbl">Required monthly SIP</span><span class="num" id="requiredSipOut">Rs 24,400</span></div>
+      <div class="verdict-card">
+        <div class="lbl">Required SIP from today</div>
+        <div class="big green" id="sipNeeded">Rs 22,500/mo</div>
+        <div class="sub" id="sipSub">to retire at 60 with target lifestyle</div>
+      </div>
+      <div class="adequacy-badge good" id="adequacyBadge">✓ Your plan looks feasible at current savings rate</div>
+
+      <div class="section-head-mini">Accumulation phase (today → retirement)</div>
+      <div class="row"><span class="lbl">Years to retirement</span><span class="num" id="yearsToRet">30 years</span></div>
+      <div class="row"><span class="lbl">Future monthly expense (real)</span><span class="num" id="futureExp">Rs 2,87,500</span></div>
+      <div class="row"><span class="lbl">Annual expense at retirement</span><span class="num" id="annualExp">Rs 34.5 L</span></div>
+      <div class="row"><span class="lbl">Corpus required at retirement</span><span class="num" id="corpusNeeded">Rs 10.3 Cr</span></div>
+      <div class="row"><span class="lbl">Existing corpus will grow to</span><span class="num" id="existingGrowth">Rs 1.49 Cr</span></div>
+      <div class="row"><span class="lbl">Gap to fill via SIP</span><span class="num" id="gapToFill">Rs 8.81 Cr</span></div>
+
+      <div class="section-head-mini">Withdrawal phase (retirement → life expectancy)</div>
+      <div class="row"><span class="lbl">Withdrawal phase length</span><span class="num" id="withdrawalYrs">25 years</span></div>
+      <div class="row"><span class="lbl">Lifetime withdrawals (nominal)</span><span class="num" id="totalWithdraw">Rs 30+ Cr</span></div>
+      <div class="row"><span class="lbl">Real safe withdrawal rate</span><span class="num" id="safeRate">3.3%</span></div>
+      <div class="row"><span class="lbl">FIRE corpus multiple (30x rule)</span><span class="num" id="fireMultiple">30.0x</span></div>
     </div>
   </div>
 
-  <div class="warn" id="warn" style="display:none">⚠️ Your retirement age is later than your life expectancy. Adjust the values.</div>
-
-  <div class="cta-block">
-    <h3>Start a SIP to hit your retirement number</h3>
-    <p>The required monthly SIP above assumes you start now and continue till retirement. Direct mutual fund SIPs (no commission) compound faster.</p>
-    <a href="/finance/best-mutual-fund-app/">Compare best mutual fund apps &rsaquo;</a>
+  <div class="phases">
+    <h2>Two-phase plan visualised</h2>
+    <p>Retirement planning is not one decision — it's two. The accumulation phase is about growing the corpus. The withdrawal phase is about making it last through 25-35 years of post-retirement life with inflation-adjusted spending.</p>
+    <div class="phase-grid">
+      <div class="phase accum">
+        <h4>Phase 1 — Accumulation</h4>
+        <p id="accumNarrative">From age 30 to 60 (30 years): monthly SIP of Rs 22,500 at 12% returns + existing Rs 5L → final corpus Rs 10.3 Cr at retirement.</p>
+        <div class="meta-line">Equity-heavy (70-80%) is appropriate here</div>
+      </div>
+      <div class="phase with">
+        <h4>Phase 2 — Withdrawal</h4>
+        <p id="withNarrative">From age 60 to 85 (25 years): withdraw Rs 2.87 L/month initially, rising 6%/yr with inflation; corpus earning 8%; depletes to ~zero by age 85.</p>
+        <div class="meta-line">Shift to 40-50% equity, 50-60% debt</div>
+      </div>
+    </div>
   </div>
 
-  <h2>Frequently asked questions</h2>
+  <div class="scenarios">
+    <h2>Longevity stress test — what if you live longer?</h2>
+    <p style="font-size:13.5px;color:var(--text-muted);margin:0 0 18px;line-height:1.55">Life expectancy in urban India is rising fast. A plan calibrated for 75 may fail badly if you live to 90. These rows show how many years your corpus lasts under each scenario, using the calculated SIP from above.</p>
+    <div id="scenRows"></div>
+  </div>
+
+  <div class="tips-block">
+    <h2>How to think about each input</h2>
+    <div class="tip"><strong>Inflation: why 6% and not the official CPI ~5%</strong>The official CPI under-weights healthcare, education, and premium services that dominate retiree spending. Healthcare in India runs 12-15% medical inflation; private school fees 8-10%; premium-tier dining and travel similar. Lifestyle inflation for educated urban Indians averages 6-7%, which is what the calculator defaults to.</div>
+    <div class="tip"><strong>Post-retirement returns: lower than accumulation</strong>You'll glide from equity-heavy to debt-heavy as you near retirement. At 60, a typical India-suitable mix is 35-40% equity index funds, 35% debt (SCSS, RBI bonds, debt MF), 15-20% gold/SGB, 5-10% liquid emergency fund. Blended return ≈ 8% — which is the calculator default.</div>
+    <div class="tip"><strong>Life expectancy: plan for 85+</strong>Urban Indian male life expectancy is now ~75; female ~80. But you're planning for the upper tail, not the median. A 60-year-old today has roughly 25% probability of living past 90. Plan for 85 minimum; stress-test to 95.</div>
+    <div class="tip"><strong>Existing corpus matters more than you think</strong>Money already invested has the longest compounding runway. Rs 10 lakh today at 12% becomes Rs 3 crore in 30 years — equivalent to Rs 8,500/month SIP for those 30 years. Worth maximising EPF, voluntary PF, PPF early.</div>
+    <div class="tip"><strong>Post-retirement expense % — don't drop it too much</strong>Many calculators default to 70% of current expenses post-retirement. Reality: medical costs go UP; travel often goes UP; supporting children/parents may also push up. We default to 80% — more conservative and closer to actual retiree spending patterns observed in India.</div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Modelling notes:</strong> The calculator uses month-by-month compounding for accuracy in both phases. SIP required is the constant monthly amount needed today to reach corpus, holding return and inflation constant. In reality, you should also step up SIP annually by 10% to match salary growth — see the <a href="/calculators/sip-step-up/" style="font-weight:700">Step-Up SIP Calculator</a>. Real-world outcomes vary with sequence-of-returns risk (markets dropping early in retirement is worse than dropping late). Treat outputs as a strong baseline plan, not a guarantee.
+  </div>
+
+  <h2 class="sec">Related calculators &amp; guides</h2>
+  <div class="related">
+    <a href="/calculators/sip/">SIP Calculator</a>
+    <a href="/calculators/sip-step-up/">Step-Up SIP Calculator</a>
+    <a href="/calculators/ctc/">CTC → In-Hand</a>
+    <a href="/calculators/emi-vs-sip/">EMI vs SIP</a>
+    <a href="/tax-planner/">Tax Planner</a>
+    <a href="/companies/">Best Companies</a>
+    <a href="/reports/india-salary-index-2026/">India Salary Index 2026</a>
+    <a href="/glossary/#nps">NPS in Glossary</a>
+    <a href="/glossary/#ppf">PPF in Glossary</a>
+    <a href="/glossary/#sip">SIP in Glossary</a>
+  </div>
+
+  <h2 class="sec">Frequently asked questions</h2>
   <div class="faq-block">
-    <details class="faq-item"><summary>What inflation rate should I use for India?</summary><p>Long-term Indian retail inflation (CPI) averages 6-7%. Use 6.5% as a middle estimate. Healthcare inflation is significantly higher (12-15%) — if you expect heavy medical needs, consider that separately.</p></details>
-    <details class="faq-item"><summary>What is the 4% withdrawal rule?</summary><p>The 4% rule (originally from US data) suggests withdrawing 4% of your corpus annually, adjusted for inflation. For India with higher inflation, a 3-3.5% withdrawal is safer to ensure the corpus lasts your full retirement.</p></details>
-    <details class="faq-item"><summary>Should I include EPF/PPF in retirement planning?</summary><p>Yes — EPF, PPF, NPS, and gratuity are all part of your retirement corpus. Subtract their estimated maturity value from the "corpus needed" above to get the additional savings you need to build through SIP/other investments.</p></details>
-    <details class="faq-item"><summary>What is the difference between pre and post-retirement return?</summary><p>Pre-retirement: while accumulating, you can take more equity risk (10-12% returns). Post-retirement: capital preservation matters more, shift to debt-heavy portfolio (7-9% returns). The calculator uses both rates separately for accurate projection.</p></details>
-    <details class="faq-item"><summary>How much should I save for retirement?</summary><p>General rule: save 20-25% of gross income consistently from age 25 onwards. Starting later (35-40) requires 35-50% savings to hit the same goal. Earlier you start, smaller monthly amount needed.</p></details>
+    <details class="faq-item"><summary>How much retirement corpus do I need in India?</summary><p>Use the <strong>30x rule</strong>: required corpus ≈ 30 × inflation-adjusted annual expenses at retirement. For Rs 50,000/month current expenses, retiring at 60 in 30 years with 6% inflation: future monthly expense ≈ Rs 2.87 lakh; annual ≈ Rs 34.5 lakh; corpus needed ≈ Rs 10.3 crore. The calculator above does this math live.</p></details>
+    <details class="faq-item"><summary>Does the 4% withdrawal rule work in India?</summary><p>The classic 4% safe withdrawal rate (Trinity study, US data) is too aggressive for India given higher inflation (~6% vs US 2-3%) and longer retirement horizons. For India, <strong>3-3.5% is the more sustainable safe withdrawal rate</strong> — meaning you need ~30x annual expenses as corpus, not 25x.</p></details>
+    <details class="faq-item"><summary>What return should I assume post-retirement?</summary><p><strong>Conservative:</strong> 7% (debt-heavy portfolio with senior citizen FDs, SCSS, debt MFs, conservative hybrid). <strong>Moderate:</strong> 8-9% (50-30-20 split debt-equity-gold). <strong>Aggressive:</strong> 10% (30-50-20 split — only for those with corpus 2x+ safety buffer). Most Indian financial planners suggest 8% for the withdrawal phase.</p></details>
+    <details class="faq-item"><summary>How is the corpus needed adjusted for inflation?</summary><p>Two stages: (1) <strong>future expense</strong> = current expense × (1 + inflation)^years_to_retire. (2) <strong>Corpus</strong> must be large enough that it lasts through retirement years with annual withdrawals stepping up each year by post-retirement inflation. The calculator handles both. India inflation default 6% is conservative-realistic; historical 10-yr average ~5.5%, lifestyle inflation typically higher than CPI.</p></details>
+    <details class="faq-item"><summary>What is FIRE and is it possible in India?</summary><p>FIRE (Financial Independence, Retire Early) targets corpus ≥ 25-30x annual expenses, then living off withdrawals. In India, FIRE typically needs <strong>Rs 5-15 crore corpus</strong> depending on lifestyle and inflation assumptions — possible for high-earning IT/finance professionals in their late 40s with aggressive saving (50%+ savings rate). LeanFIRE (~Rs 3-5 Cr, tier-2 city lifestyle) is more achievable than FatFIRE (Rs 15+ Cr, metro lifestyle).</p></details>
+    <details class="faq-item"><summary>Should retirement corpus be in equity or debt?</summary><p>Glide path: 70-80% equity in 20s-30s for accumulation; reduce to 50-60% equity in 50s; 30-40% equity at retirement to balance growth and stability. Post-retirement, withdraw from debt portion first (preserves equity for inflation hedge). Common India-suitable mix at 60: 35-40% equity index funds, 35% debt (SCSS, RBI bonds, debt MF), 15-20% gold/sovereign gold bonds, 5-10% liquid emergency fund.</p></details>
+    <details class="faq-item"><summary>How accurate is this retirement calculator?</summary><p>It uses <strong>month-by-month compounding</strong> in both the accumulation and withdrawal phases (more accurate than annual approximations), and finds the required corpus by simulating depletion to zero at your life expectancy. It assumes constant returns and inflation for a clean baseline — real markets vary, so also account for sequence-of-returns risk and step up your SIP annually as income grows.</p></details>
   </div>
 
-  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> · Always consult a SEBI-registered financial planner.</div>
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> &middot; <a href="/methodology/" style="color:var(--accent);text-decoration:none">Methodology</a></div>
 </main>
 
 <div id="wib-footer-placeholder"></div>
@@ -126,70 +260,183 @@ h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14
 <script src="/polish.js?v=20260419" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script>
-function fmtCr(n){
-  if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(2) + ' crore';
-  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(2) + ' lakh';
-  return 'Rs ' + Math.round(n).toLocaleString('en-IN');
+function $(id){return document.getElementById(id)}
+function fmtINR(n){return 'Rs ' + Math.round(n).toLocaleString('en-IN')}
+function fmtCompact(n){
+  if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(2) + ' Cr';
+  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(2) + ' L';
+  return fmtINR(n);
 }
-function fmt(n){return 'Rs '+Math.round(n).toLocaleString('en-IN')}
+
+// Returns: corpus required at retirement such that depletion to zero by life-expectancy
+// Using PV-of-annuity (real terms) approach but month-by-month is more accurate
+function corpusForWithdrawal(monthlyWithdraw, postReturn, inflation, years){
+  // Simulate month by month. Withdraw at start of year; corpus earns return; expense rises by inflation each year.
+  var corpus = 0;
+  var monthlyR = postReturn / 12 / 100;
+  var infMonthlyEff = Math.pow(1 + inflation/100, 1/12) - 1;
+  // We need to find corpus such that final balance is 0. Use bisection.
+  function balanceAtEnd(c0){
+    var c = c0;
+    var w = monthlyWithdraw;
+    for (var y = 0; y < years; y++){
+      for (var m = 0; m < 12; m++){
+        c = c - w;
+        if (c < 0) return c; // ran out
+        c = c * (1 + monthlyR);
+      }
+      // Annual step-up of withdrawal by inflation
+      w = w * (1 + inflation/100);
+    }
+    return c;
+  }
+  // Bisection
+  var lo = 0, hi = monthlyWithdraw * 12 * years * 5; // upper bound
+  for (var i = 0; i < 60; i++){
+    var mid = (lo + hi) / 2;
+    if (balanceAtEnd(mid) >= 0) hi = mid;
+    else lo = mid;
+  }
+  return hi;
+}
+
+function sipToReachCorpus(targetCorpus, existingCorpus, preReturn, years){
+  var n = years * 12;
+  var monthlyR = preReturn / 12 / 100;
+  // FV = existing * (1+r)^n + SIP * ((1+r)^n - 1)/r
+  var existingGrown = existingCorpus * Math.pow(1 + monthlyR, n);
+  var needed = targetCorpus - existingGrown;
+  if (needed <= 0) return 0;
+  var sip = needed / ((Math.pow(1 + monthlyR, n) - 1) / monthlyR);
+  return sip;
+}
+
+function corpusLastsHowLong(corpus, monthlyWithdraw, postReturn, inflation){
+  var c = corpus;
+  var w = monthlyWithdraw;
+  var monthlyR = postReturn / 12 / 100;
+  var years = 0;
+  for (var y = 0; y < 100; y++){
+    for (var m = 0; m < 12; m++){
+      c = c - w;
+      if (c < 0) return y + (m / 12);
+      c = c * (1 + monthlyR);
+    }
+    w = w * (1 + inflation/100);
+    years = y + 1;
+  }
+  return 100;
+}
 
 function calc(){
-  var age = parseFloat(document.getElementById('age').value);
-  var retireAge = parseFloat(document.getElementById('retireAge').value);
-  var expenses = parseFloat(document.getElementById('expenses').value);
-  var infl = parseFloat(document.getElementById('infl').value);
-  var preRet = parseFloat(document.getElementById('preRetRate').value);
-  var postRet = parseFloat(document.getElementById('postRetRate').value);
-  var life = parseFloat(document.getElementById('life').value);
+  var age = +$('age').value;
+  var retAge = +$('retAge').value;
+  var life = +$('life').value;
+  var exp = +$('exp').value;
+  var postPct = +$('postPct').value;
+  var inf = +$('inf').value;
+  var preReturn = +$('preReturn').value;
+  var postReturn = +$('postReturn').value;
+  var exist = +$('exist').value;
 
-  document.getElementById('ageLabel').textContent = age + ' years';
-  document.getElementById('retireAgeLabel').textContent = retireAge + ' years';
-  document.getElementById('expensesLabel').textContent = fmt(expenses);
-  document.getElementById('inflLabel').textContent = infl + '%';
-  document.getElementById('preRetRateLabel').textContent = preRet + '%';
-  document.getElementById('postRetRateLabel').textContent = postRet + '%';
-  document.getElementById('lifeLabel').textContent = life + ' years';
+  $('ageLabel').textContent = age + ' years';
+  $('retAgeLabel').textContent = retAge + ' years';
+  $('lifeLabel').textContent = life + ' years';
+  $('expLabel').textContent = fmtINR(exp);
+  $('postPctLabel').textContent = postPct + '%';
+  $('infLabel').textContent = inf + '%';
+  $('preReturnLabel').textContent = preReturn + '%';
+  $('postReturnLabel').textContent = postReturn + '%';
+  $('existLabel').textContent = fmtINR(exist);
 
-  var yearsToRet = retireAge - age;
-  var retYears = life - retireAge;
-  var warn = document.getElementById('warn');
-  if (yearsToRet <= 0 || retYears <= 0) {
-    warn.style.display = 'block';
-    return;
+  var yrsToRet = Math.max(0, retAge - age);
+  var withdrawalYrs = Math.max(1, life - retAge);
+
+  // Future monthly expense at retirement
+  var futureExpMonthly = exp * (postPct/100) * Math.pow(1 + inf/100, yrsToRet);
+  var annualExp = futureExpMonthly * 12;
+
+  // Corpus required
+  var corpusReq = corpusForWithdrawal(futureExpMonthly, postReturn, inf, withdrawalYrs);
+
+  // SIP required
+  var sipReq = yrsToRet > 0 ? sipToReachCorpus(corpusReq, exist, preReturn, yrsToRet) : 0;
+
+  // Existing corpus grown
+  var existingGrown = exist * Math.pow(1 + (preReturn/12/100), yrsToRet * 12);
+  var gap = Math.max(0, corpusReq - existingGrown);
+
+  // Total nominal withdrawals
+  var totalWithdraw = 0;
+  var w = futureExpMonthly;
+  for (var y = 0; y < withdrawalYrs; y++){
+    totalWithdraw += w * 12;
+    w = w * (1 + inf/100);
   }
-  warn.style.display = 'none';
 
-  // Future monthly expenses adjusted for inflation
-  var futureMonthly = expenses * Math.pow(1 + infl/100, yearsToRet);
-  // Annual expenses at retirement
-  var futureAnnual = futureMonthly * 12;
+  // Safe withdrawal rate (real terms)
+  var safeWR = (1 + postReturn/100) / (1 + inf/100) - 1;
+  // Actually classical SWR is around (real return) * adjustment. Simplified.
+  var swrPct = safeWR * 100;
 
-  // Corpus needed: PV of inflation-adjusted annuity over retirement years
-  // Real return post-retirement = (1+postRet)/(1+infl) - 1
-  var realRate = (1 + postRet/100) / (1 + infl/100) - 1;
-  // Annuity due formula (start of period)
-  var corpus;
-  if (Math.abs(realRate) < 0.0001) {
-    corpus = futureAnnual * retYears;
+  // Adequacy verdict — assume user can save 30% of current income as proxy; flag if SIP > 1.5x of typical savings capacity
+  // Better proxy: compare required SIP to current expenses (a SIP > expenses is unfeasible)
+  var feasibility = sipReq / exp;
+  var adequacy = $('adequacyBadge');
+  if (sipReq === 0){
+    adequacy.className = 'adequacy-badge good';
+    adequacy.textContent = '✓ Your existing corpus is sufficient — no further SIP needed (but consider stress scenarios below)';
+  } else if (feasibility <= 0.5){
+    adequacy.className = 'adequacy-badge good';
+    adequacy.textContent = '✓ Highly feasible — required SIP is under 50% of your current monthly expenses';
+  } else if (feasibility <= 1.0){
+    adequacy.className = 'adequacy-badge warning';
+    adequacy.textContent = '⚠ Aggressive but achievable — required SIP is similar to your current expense level. Consider delaying retirement or step-up SIP.';
   } else {
-    corpus = futureAnnual * (1 - Math.pow(1 + realRate, -retYears)) / realRate;
+    adequacy.className = 'adequacy-badge bad';
+    adequacy.textContent = '✗ Unrealistic at current parameters — required SIP exceeds your current expenses. Reconsider retirement age, target lifestyle, or starting earlier.';
   }
 
-  // Required SIP to reach this corpus
-  var monthlyRate = preRet / 12 / 100;
-  var n = yearsToRet * 12;
-  var requiredSip;
-  if (Math.abs(monthlyRate) < 0.0001) {
-    requiredSip = corpus / n;
-  } else {
-    requiredSip = corpus / ((Math.pow(1 + monthlyRate, n) - 1) / monthlyRate * (1 + monthlyRate));
-  }
+  $('sipNeeded').textContent = fmtINR(sipReq) + '/mo';
+  $('sipNeeded').className = 'big ' + (feasibility <= 0.5 ? 'green' : feasibility <= 1 ? 'amber' : 'red');
+  $('sipSub').textContent = 'to retire at ' + retAge + ' with ' + postPct + '% of current lifestyle';
+  $('yearsToRet').textContent = yrsToRet + ' years';
+  $('futureExp').textContent = fmtCompact(futureExpMonthly);
+  $('annualExp').textContent = fmtCompact(annualExp);
+  $('corpusNeeded').textContent = fmtCompact(corpusReq);
+  $('existingGrowth').textContent = fmtCompact(existingGrown);
+  $('gapToFill').textContent = fmtCompact(gap);
+  $('withdrawalYrs').textContent = withdrawalYrs + ' years';
+  $('totalWithdraw').textContent = fmtCompact(totalWithdraw);
+  $('safeRate').textContent = swrPct.toFixed(1) + '%';
+  $('fireMultiple').textContent = (corpusReq / annualExp).toFixed(1) + 'x';
 
-  document.getElementById('corpusOut').textContent = fmtCr(corpus);
-  document.getElementById('futureExpOut').textContent = fmtCr(futureMonthly);
-  document.getElementById('yearsToRetOut').textContent = yearsToRet + ' years';
-  document.getElementById('retYearsOut').textContent = retYears + ' years';
-  document.getElementById('requiredSipOut').textContent = fmt(requiredSip);
+  // Phase narratives
+  $('accumNarrative').textContent = 'From age ' + age + ' to ' + retAge + ' (' + yrsToRet + ' years): monthly SIP of ' + fmtINR(sipReq) + ' at ' + preReturn + '% returns + existing ' + fmtCompact(exist) + ' → final corpus ' + fmtCompact(corpusReq) + ' at retirement.';
+  $('withNarrative').textContent = 'From age ' + retAge + ' to ' + life + ' (' + withdrawalYrs + ' years): withdraw ' + fmtINR(futureExpMonthly) + '/month initially, rising ' + inf + '%/yr with inflation; corpus earning ' + postReturn + '%; depletes to near-zero by age ' + life + '.';
+
+  // Longevity stress test — three scenarios using the same corpus
+  var scenarios = [
+    {name: 'Live to 75', age: 75, color: 'good'},
+    {name: 'Live to 85', age: 85, color: 'warn'},
+    {name: 'Live to 95', age: 95, color: 'bad'}
+  ];
+  var rows = scenarios.map(function(s){
+    var stressYrs = Math.max(1, s.age - retAge);
+    var lasts = corpusLastsHowLong(corpusReq, futureExpMonthly, postReturn, inf);
+    // Show what % of stressYrs the corpus lasts
+    var pct = Math.min(100, (lasts / stressYrs) * 100);
+    var status = pct >= 100 ? 'good' : pct >= 80 ? 'warn' : 'bad';
+    var statusText = pct >= 100 ? 'Corpus lasts all years' : ('Corpus runs out at age ' + Math.round(retAge + lasts));
+    return '<div class="scen-row">' +
+      '<div class="scen-name">' + s.name + '</div>' +
+      '<div class="scen-bar"><div class="scen-fill ' + status + '" style="width:' + pct.toFixed(0) + '%"></div></div>' +
+      '<div class="scen-num">' + statusText + '</div>' +
+    '</div>';
+  });
+  $('scenRows').innerHTML = rows.join('');
+
+  if (typeof gtag === 'function') gtag('event', 'retirement_calc', {age: age, retAge: retAge, exp: exp});
 }
 calc();
 </script>

@@ -343,7 +343,7 @@ h2.sec{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 
     <h2 class="sec">Related calculators &amp; guides</h2>
     <div class="related">
       <a href="/calculators/ctc/">CTC → In-Hand</a>
-      <a href="/calculators/retirement-v2/">Retirement Calculator v2</a>
+      <a href="/calculators/retirement/">Retirement Calculator v2</a>
       <a href="/calculators/sip/">SIP Calculator</a>
       <a href="/calculators/sip-step-up/">Step-Up SIP</a>
       <a href="/calculators/emi-vs-sip/">EMI vs SIP</a>
@@ -555,7 +555,7 @@ function renderResults(){
   if (r.retirementProgress < 0.5 && i.age > 35) {
     var corpusGap = r.corpusNeeded - r.projectedCorpus;
     var extraSip = corpusGap > 0 ? corpusGap / ((Math.pow(1.10, r.yearsToRet)-1)/0.10) / 12 : 0;
-    weaknesses.push({t:'Retirement gap', d:'Projected corpus covers only ' + (r.retirementProgress*100).toFixed(0) + '% of need. Increase monthly SIP by approximately ' + fmtC(Math.max(0, extraSip)) + ' to bridge the gap. Use our <a href="/calculators/retirement-v2/" style="color:var(--accent);font-weight:600">Retirement v2 Calculator</a> for the full model.'});
+    weaknesses.push({t:'Retirement gap', d:'Projected corpus covers only ' + (r.retirementProgress*100).toFixed(0) + '% of need. Increase monthly SIP by approximately ' + fmtC(Math.max(0, extraSip)) + ' to bridge the gap. Use our <a href="/calculators/retirement/" style="color:var(--accent);font-weight:600">Retirement v2 Calculator</a> for the full model.'});
   }
   if (i.assets.ppf < 50000 && i.assets.nps < 50000) weaknesses.push({t:'Not using tax-advantaged retirement instruments', d:'PPF (sovereign, EEE), NPS Tier I (extra Rs 50k 80CCD(1B) deduction) — both compound tax-free or tax-deferred. Even small monthly contributions add up to 5-10% of retirement corpus over 30 years.'});
   if (weaknesses.length === 0) weaknesses.push({t:'No critical gaps', d:'Your fundamentals are in order. Now optimise — refine asset allocation, automate SIPs, lock in the right tax regime, and stay the course.'});
