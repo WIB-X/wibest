@@ -90,7 +90,7 @@
       var maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(r.n + ', ' + r.a + ', ' + r.c);
       var cuisines = (r.cu||[]).slice(0,3).map(function(c){return '<span class="cu-tag">'+esc(c)+'</span>'}).join('');
       return '<div class="rcard">'+
-        '<div class="rcard-top"><div class="rcard-name">'+esc(r.n)+'</div><div class="rcard-rating">★ '+r.r+'</div></div>'+
+        '<div class="rcard-top"><div class="rcard-name">'+esc(r.n)+'</div>'+(r.r?'<div class="rcard-rating">★ '+r.r+'</div>':'')+'</div>'+
         '<div class="rcard-meta">'+esc(r.a)+' · '+budget+'</div>'+
         '<div class="rcard-cuisines">'+cuisines+'</div>'+
         '<div class="rcard-actions">'+

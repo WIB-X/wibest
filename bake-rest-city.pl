@@ -44,7 +44,7 @@ for my $path (glob("restaurants/*/index.html")) {
         @cu = @cu[0..3] if @cu > 4;
         my $cuh = join '', map { '<span class="cu-tag">'.esc($_).'</span>' } @cu;
         '<div class="rcard">'
-        . '<div class="rcard-top"><div class="rcard-name">'.esc($r->{n}).'</div><div class="rcard-rating">&#9733; '.($r->{r}//'').'</div></div>'
+        . '<div class="rcard-top"><div class="rcard-name">'.esc($r->{n}).'</div>'.($r->{r} ? '<div class="rcard-rating">&#9733; '.$r->{r}.'</div>' : '').'</div>'
         . '<div class="rcard-meta">'.$bud.' &middot; '.esc($r->{a}//'').'</div>'
         . '<div class="rcard-cuisines">'.$cuh.'</div>'
         . '</div>'

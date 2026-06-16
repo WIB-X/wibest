@@ -48,7 +48,7 @@ for my $path (glob("hospitals/*/index.html")) {
         my $phone = $h->{phone} ? '<a href="tel:'.esc($h->{phone}).'" class="btn-phone">Call</a>' : '';
         '<div class="hcard">'
         . '<div class="hcard-name">'.esc($h->{n}).'</div>'
-        . '<div class="hcard-rating">&#9733; '.($h->{r}//'').'</div>'
+        . ($h->{r} ? '<div class="hcard-rating">&#9733; '.$h->{r}.'</div>' : '')
         . '<div class="hcard-meta">'.esc($h->{t}//'').($h->{b} ? ' &middot; '.$h->{b}.' beds' : '').'</div>'
         . '<div class="hcard-addr">'.esc($h->{addr}//'').'</div>'
         . '<div class="hcard-specs">'.$specs.'</div>'
