@@ -28,6 +28,7 @@ Disallow: /seed-blogs-batch3.html
 Disallow: /seed-blogs-hindi.html
 Disallow: /seed-categories.html
 Disallow: /seed-institutions.html
+Disallow: /seed-colleges-northeast.html
 Disallow: /seed-colleges-batch3.html
 Disallow: /seed-schools-northeast.html
 Disallow: /update-product-images.html
