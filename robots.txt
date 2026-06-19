@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 
+# Block raw data CSVs from crawling (downloads, not indexable pages — saves crawl budget)
+Disallow: /data/csv/
+
 # Block search URLs and query params from indexing
 Disallow: /search
 Disallow: /*?q=
