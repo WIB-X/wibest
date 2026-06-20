@@ -30,17 +30,15 @@
   function emitItemList(){
     if (!rows.length) return;
     var list = rows.slice(0,30).map(function(r,i){
-      return {
-        '@type':'ListItem','position': i+1,
-        'item':{
-          '@type':'Restaurant',
-          'name': r.n,
-          'address': {'@type':'PostalAddress','addressLocality': r.c, 'streetAddress': r.a, 'addressCountry':'IN'},
-          'servesCuisine': r.cu,
-          'priceRange': r.b===1?'$':r.b===2?'$$':'$$$',
-          'aggregateRating': {'@type':'AggregateRating','ratingValue': r.r, 'bestRating':5, 'ratingCount':1}
-        }
+      var item = {
+        '@type':'Restaurant',
+        'name': r.n,
+        'address': {'@type':'PostalAddress','addressLocality': r.c, 'streetAddress': r.a, 'addressCountry':'IN'},
+        'servesCuisine': r.cu,
+        'priceRange': r.b===1?'$':r.b===2?'$$':'$$$'
       };
+      if (r.r) item.aggregateRating = {'@type':'AggregateRating','ratingValue': r.r, 'bestRating':5, 'ratingCount':1};
+      return {'@type':'ListItem','position': i+1, 'item': item};
     });
     var s = document.createElement('script');
     s.type = 'application/ld+json';
