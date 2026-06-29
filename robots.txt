@@ -46,14 +46,11 @@ Disallow: /electronics-detail.html
 Disallow: /hospital-detail.html
 Disallow: /school-detail.html
 
-# Block vernacular language roots and blog mirrors (noindex already set in HTML)
-# These are JS shells with no translated content — Google treats them as duplicates
-Disallow: /te/
-Disallow: /ta/
-Disallow: /kn/
-Disallow: /ml/
-Disallow: /hi/
-Disallow: /bn/
+# Vernacular mirrors (/te/ /ta/ /kn/ /ml/ /hi/ /bn/) are untranslated JS shells that
+# carry <meta name="robots" content="noindex"> in their HTML head.
+# We intentionally DO NOT Disallow them: blocking the crawl stops Google from ever
+# SEEING the noindex, which traps them in the index as "Duplicate, Google chose
+# different canonical". Allowing the crawl lets Google read noindex and drop them cleanly.
 
 Sitemap: https://wibest.in/sitemap-index.xml
 Sitemap: https://wibest.in/sitemap.xml
