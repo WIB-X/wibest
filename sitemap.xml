@@ -675,24 +675,8 @@
   <url><loc>https://wibest.in/health-checkups/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/senior-care/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <!-- Hindi pages -->
-  <url><loc>https://wibest.in/hi/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-phone-under-15000-india-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-phone-under-30000-india-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-laptop-under-50000-india-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-earbuds-under-2000-india-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/iphone-16-vs-samsung-s25-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-car-under-10-lakh-india-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-electric-scooter-india-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/goa-travel-guide-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-places-visit-india-april-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wibest.in/hi/blog/best-hospitals-bangalore-hi/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- v3 expansion + Tamil + Telugu (Apr 2026) -->
-  <url><loc>https://wibest.in/ta/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wibest.in/te/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wibest.in/kn/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wibest.in/ml/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wibest.in/bn/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://wibest.in/blog/best-term-insurance-india/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/blog/best-health-insurance-family-india/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/blog/best-car-insurance-india/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -723,58 +707,8 @@
   <url><loc>https://wibest.in/blog/best-vacuum-cleaner-india/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/blog/best-mattress-india/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wibest.in/blog/best-water-bottle-stainless-steel/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-phone-under-15000-india-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-phone-under-30000-india-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-laptop-under-50000-india-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-earbuds-under-2000-india-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/iphone-16-vs-samsung-s25-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-car-under-10-lakh-india-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-electric-scooter-india-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/goa-travel-guide-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-places-visit-india-april-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ta/blog/best-hospitals-bangalore-ta/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-phone-under-15000-india-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-phone-under-30000-india-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-laptop-under-50000-india-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-earbuds-under-2000-india-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/iphone-16-vs-samsung-s25-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-car-under-10-lakh-india-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-electric-scooter-india-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/goa-travel-guide-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-places-visit-india-april-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/te/blog/best-hospitals-bangalore-te/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Vernacular expansion: Kannada (kn), Malayalam (ml), Bengali (bn) -->
-  <url><loc>https://wibest.in/kn/blog/best-phone-under-15000-india-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-phone-under-30000-india-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-laptop-under-50000-india-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-earbuds-under-2000-india-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/iphone-16-vs-samsung-s25-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-car-under-10-lakh-india-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-electric-scooter-india-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/goa-travel-guide-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-places-visit-india-april-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/kn/blog/best-hospitals-bangalore-kn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-phone-under-15000-india-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-phone-under-30000-india-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-laptop-under-50000-india-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-earbuds-under-2000-india-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/iphone-16-vs-samsung-s25-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-car-under-10-lakh-india-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-electric-scooter-india-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/goa-travel-guide-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-places-visit-india-april-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/ml/blog/best-hospitals-bangalore-ml/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-phone-under-15000-india-bn/</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-phone-under-30000-india-bn/</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-laptop-under-50000-india-bn/</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-earbuds-under-2000-india-bn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/iphone-16-vs-samsung-s25-bn/</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-car-under-10-lakh-india-bn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-electric-scooter-india-bn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/goa-travel-guide-bn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-places-visit-india-april-bn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://wibest.in/bn/blog/best-hospitals-bangalore-bn/</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Batch 4 seasonal posts (April 2026) — summer appliances, board results, tax-saving, hill stations -->
   <url><loc>https://wibest.in/blog/best-ac-under-30000-india-2026/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
