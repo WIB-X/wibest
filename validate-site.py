@@ -48,6 +48,13 @@ for p in files:
     pp = p.replace("\\", "/")
     head = html.split("<body")[0] if "<body" in html else html
     is_noindex = bool(re.search(r'<meta[^>]+name="robots"[^>]*noindex', head, re.I))
+    # skeleton-loader grids count as empty too (never-baked pages slip through otherwise)
+    if re.search(r'id="(schoolGrid|collegeGrid|hospGrid|restGrid|schGrid|collGrid)"><div class="skeleton', html) and not is_noindex:
+        body = html.split("<body", 1)[-1]
+        text = re.sub(r"<script[^>]*>.*?</script>", " ", body, flags=re.DOTALL)
+        words = len(re.sub(r"<[^>]+>", " ", text).split())
+        if words < 250:
+            errors.append(f"{pp}: SKELETON grid + not noindexed + thin ({words} words) — never-baked Soft-404 risk")
     has_empty_grid = any(g in html for g in [
         '<div class="school-grid" id="schoolGrid"></div>',
         '<div class="college-grid" id="collegeGrid"></div>',
