@@ -24,6 +24,8 @@ Disallow: /seed-vehicles/
 Disallow: /update-ratings/
 Disallow: /update-schools/
 Disallow: /admin-auth-gate.js
+Disallow: /seed-colleges-gapcities.html
+Disallow: /seed-data-colleges-gapcities.js
 
 # Block JS-only template detail files (Soft 404 — no real content; used by the SPA via JS)
 Disallow: /cars-detail.html
