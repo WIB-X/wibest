@@ -475,3 +475,5 @@ h1,h2,h3,h4,.nav-logo,.section-h{font-feature-settings:"ss01"}
 .de-tile-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;color:var(--text-primary);margin-bottom:4px}
 .de-tile-sub{font-size:13px;color:var(--text-secondary);line-height:1.5}
 .de-tile-meta{font-size:11px;color:var(--text-muted);margin-top:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+
+.wib-trending-sub{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.12em;margin:26px 0 12px}
