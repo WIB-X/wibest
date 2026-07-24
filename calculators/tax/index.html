@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Income Tax Calculator India 2026 - Old vs New Regime | WIB</title>
-<meta name="description" content="Income tax calculator for India FY 2025-26. Compare old vs new tax regime side by side with all deductions (80C, 80D, HRA, home loan, NPS).">
+<title>Income Tax Calculator India 2026 — CTC, Take-Home, Old vs New Regime | WIB</title>
+<meta name="description" content="Enter your CTC and deductions in plain English — see income tax, take-home salary (monthly & yearly), and whether the old or new regime saves you more. FY 2025-26 (AY 2026-27).">
 <link rel="canonical" href="https://wibest.in/calculators/tax/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Income Tax Calculator India 2026">
-<meta property="og:description" content="Old vs New regime tax comparison for FY 2025-26.">
+<meta property="og:title" content="Income Tax Calculator India 2026 — CTC & Take-Home">
+<meta property="og:description" content="CTC in, take-home out. Old vs new regime compared, deductions in plain English. FY 2025-26.">
 <meta property="og:url" content="https://wibest.in/calculators/tax/">
 <meta property="og:image" content="https://wibest.in/og-default.jpg">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -22,21 +22,29 @@
 .bc{font-size:12px;color:var(--text-muted);margin-bottom:18px}.bc a{color:var(--accent);text-decoration:none}
 h1{font-family:Outfit,sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
 .lede{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px}
-.calc{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px}
-.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:14px}
-.input-group label{display:block;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px}
+.calc{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:20px}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
+.input-group label{display:block;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:5px}
+.input-group .hint{display:block;font-size:11.5px;font-weight:400;color:var(--text-muted);margin-top:2px}
 .input-group input,.input-group select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit}
-.section-h{font-family:Outfit,sans-serif;font-size:14px;font-weight:700;color:var(--text-primary);margin:18px 0 10px;padding-top:12px;border-top:1px solid var(--border)}
+.section-h{font-family:Outfit,sans-serif;font-size:14px;font-weight:700;color:var(--text-primary);margin:22px 0 4px;padding-top:16px;border-top:1px solid var(--border)}
+.section-sub{font-size:12px;color:var(--text-muted);margin:0 0 12px}
+.ded-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ded label{display:block;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:5px;line-height:1.35}
+.ded label .code{font-weight:500;color:var(--text-muted);font-size:11.5px}
+.ded input{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg-secondary);color:var(--text-primary);font-family:inherit}
 .results{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.regime{padding:24px;border-radius:12px}
-.regime.new{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #3b82f6}
-.regime.old{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #d97706}
-[data-theme="dark"] .regime.new{background:linear-gradient(135deg,#1e3a5f,#1e40af)}
-[data-theme="dark"] .regime.old{background:linear-gradient(135deg,#78350f,#92400e)}
-.regime h3{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;margin-bottom:12px;color:var(--text-primary)}
-.regime .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;color:var(--text-secondary)}
-.regime .row.total{font-family:Outfit,sans-serif;font-size:20px;font-weight:800;color:var(--text-primary);padding-top:10px;border-top:1px solid var(--border);margin-top:10px}
-.winner{margin-top:16px;padding:18px 22px;border-radius:10px;background:#16a34a;color:#fff;font-weight:700;font-size:15px;text-align:center}
+.regime{padding:22px;border-radius:12px;border:2px solid var(--border);background:var(--bg-card);position:relative}
+.regime.win{border-color:#16a34a;box-shadow:0 6px 20px rgba(22,163,74,.12)}
+.regime h3{font-family:Outfit,sans-serif;font-size:17px;font-weight:800;margin-bottom:14px;color:var(--text-primary);display:flex;justify-content:space-between;align-items:center}
+.regime .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:99px;background:var(--bg-secondary);color:var(--text-muted)}
+.regime.win .tag{background:#16a34a;color:#fff}
+.regime .row{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:9px;color:var(--text-secondary)}
+.regime .row span:last-child{font-weight:600;color:var(--text-primary)}
+.regime .row.total{font-family:Outfit,sans-serif;font-size:19px;font-weight:800;color:var(--text-primary);padding-top:11px;border-top:1px solid var(--border);margin-top:11px}
+.regime .row.take{font-family:Outfit,sans-serif;font-size:16px;font-weight:700;color:#16a34a;padding-top:11px;border-top:1px dashed var(--border);margin-top:11px}
+.regime .row.small{font-size:12px;color:var(--text-muted)}
+.winner{margin-top:16px;padding:18px 22px;border-radius:10px;background:#16a34a;color:#fff;font-weight:700;font-size:15.5px;text-align:center;font-family:Outfit,sans-serif}
 h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14px}
 .faq-block{padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
 .faq-item{border-bottom:1px solid var(--border);padding:12px 0}
@@ -46,72 +54,90 @@ h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14
 .faq-item summary::after{content:"+";position:absolute;right:0;top:0;font-size:18px;color:var(--accent)}
 .faq-item[open] summary::after{content:"−"}
 .faq-item p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;line-height:1.65}
-@media(max-width:768px){.calc-row,.results{grid-template-columns:1fr}h1{font-size:24px}}
+@media(max-width:768px){.calc-row,.results,.ded-grid{grid-template-columns:1fr}h1{font-size:24px}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"Tax","item":"https://wibest.in/calculators/tax/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wibest.in"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://wibest.in/calculators/"},{"@type":"ListItem","position":3,"name":"Income Tax","item":"https://wibest.in/calculators/tax/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is CTC the same as taxable salary?","acceptedAnswer":{"@type":"Answer","text":"No. CTC includes employer contributions like the employer's share of PF and gratuity, which are not part of your taxable salary. Subtract the employer PF portion of your CTC to get your gross taxable salary — this calculator has an optional field for that."}},{"@type":"Question","name":"Which tax regime should I choose in 2026?","acceptedAnswer":{"@type":"Answer","text":"Use the new regime if your total deductions are low; use the old regime if you claim large deductions (80C, 80D, HRA, home loan interest). For a typical salary, old regime wins once your deductions exceed roughly 3.75 to 4.25 lakh. This calculator shows the winner for your exact numbers."}},{"@type":"Question","name":"How is take-home salary calculated?","acceptedAnswer":{"@type":"Answer","text":"Approximate take-home equals gross taxable salary minus income tax minus professional tax. It does not subtract your own PF or voluntary salary deductions, which are your savings rather than a cost."}}]}</script>
 </head>
 <body>
 <div id="wib-nav-placeholder"></div>
 
 <main class="wrap">
   <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; Income Tax</div>
-  <h1>Income Tax Calculator (FY 2025-26)</h1>
-  <p class="lede">Compare old vs new tax regime side-by-side with all standard deductions. Updated for AY 2026-27 slabs.</p>
+  <h1>Income Tax &amp; Take-Home Calculator (FY 2025-26)</h1>
+  <p class="lede">Enter your CTC and any deductions — in plain English, no jargon. See your income tax, monthly take-home, and whether the <strong>old</strong> or <strong>new</strong> regime saves you more. Everything is calculated in your browser; nothing is stored.</p>
 
   <div class="calc">
+    <div class="section-h" style="border-top:none;padding-top:0;margin-top:0">Your income</div>
     <div class="calc-row">
       <div class="input-group">
-        <label>Annual gross salary (Rs)</label>
-        <input type="number" id="salary" value="1500000" min="0" max="100000000" oninput="calc()">
+        <label>Annual CTC (₹)<span class="hint">Your total cost-to-company, as on your offer letter</span></label>
+        <input type="number" id="ctc" value="1500000" min="0" max="1000000000" oninput="calc()">
       </div>
       <div class="input-group">
-        <label>Age</label>
+        <label>Age group<span class="hint">Affects the old-regime exemption limit</span></label>
         <select id="age" onchange="calc()">
           <option value="below60">Below 60</option>
-          <option value="60to80">60 to 80 (Senior citizen)</option>
-          <option value="above80">Above 80 (Super senior)</option>
+          <option value="60to80">60–80 (senior citizen)</option>
+          <option value="above80">Above 80 (super senior)</option>
         </select>
       </div>
     </div>
+    <div class="calc-row">
+      <div class="input-group">
+        <label>Employer's PF inside your CTC (₹)<span class="hint">Optional. This part of CTC isn't taxed — leave 0 if unsure</span></label>
+        <input type="number" id="employerPF" value="0" min="0" max="10000000" oninput="calc()">
+      </div>
+      <div class="input-group">
+        <label>Employer's NPS contribution (₹)<span class="hint">Optional — 80CCD(2). Deductible in BOTH regimes</span></label>
+        <input type="number" id="npsEmp" value="0" min="0" max="10000000" oninput="calc()">
+      </div>
+    </div>
 
-    <div class="section-h">Deductions (only used in OLD regime)</div>
-    <div class="calc-row">
-      <div class="input-group"><label>80C investments (PF, ELSS, PPF, life insurance) — max Rs 1.5L</label><input type="number" id="d80c" value="150000" min="0" max="150000" oninput="calc()"></div>
-      <div class="input-group"><label>80D health insurance premium</label><input type="number" id="d80d" value="25000" min="0" max="100000" oninput="calc()"></div>
-    </div>
-    <div class="calc-row">
-      <div class="input-group"><label>HRA exemption</label><input type="number" id="hra" value="0" min="0" max="2000000" oninput="calc()"></div>
-      <div class="input-group"><label>Home loan interest (24b) — max Rs 2L for self-occupied</label><input type="number" id="loanInt" value="0" min="0" max="200000" oninput="calc()"></div>
-    </div>
-    <div class="calc-row">
-      <div class="input-group"><label>NPS contribution (80CCD-1B) — max Rs 50K</label><input type="number" id="nps" value="50000" min="0" max="50000" oninput="calc()"></div>
-      <div class="input-group"><label>Other deductions (80E, 80G, etc.)</label><input type="number" id="other" value="0" min="0" max="500000" oninput="calc()"></div>
+    <div class="section-h">Deductions &amp; exemptions</div>
+    <p class="section-sub">These lower your tax in the <strong>old regime</strong> (the new regime ignores them, apart from the two employer items above). Enter what applies to you — most people only fill a few.</p>
+    <div class="ded-grid">
+      <div class="ded"><label>💰 Investments &amp; savings <span class="code">— EPF, PPF, ELSS, life insurance, kids' school fees (80C, max ₹1.5L)</span></label><input type="number" id="d80c" value="150000" min="0" max="150000" oninput="calc()"></div>
+      <div class="ded"><label>🏥 Health insurance premiums <span class="code">— you, family &amp; parents (80D)</span></label><input type="number" id="d80d" value="25000" min="0" max="100000" oninput="calc()"></div>
+      <div class="ded"><label>🏠 House rent — HRA exemption <span class="code">— if you pay rent (enter the exempt amount)</span></label><input type="number" id="hra" value="0" min="0" max="5000000" oninput="calc()"></div>
+      <div class="ded"><label>🏦 Home loan interest paid <span class="code">— this year, on a self-occupied home (Sec 24b, max ₹2L)</span></label><input type="number" id="loanInt" value="0" min="0" max="200000" oninput="calc()"></div>
+      <div class="ded"><label>📈 Extra NPS you invested <span class="code">— over and above 80C (80CCD-1B, max ₹50k)</span></label><input type="number" id="nps" value="0" min="0" max="50000" oninput="calc()"></div>
+      <div class="ded"><label>❤️ Donations to charity / relief funds <span class="code">— (80G)</span></label><input type="number" id="d80g" value="0" min="0" max="10000000" oninput="calc()"></div>
+      <div class="ded"><label>🎓 Education loan interest paid <span class="code">— (80E)</span></label><input type="number" id="d80e" value="0" min="0" max="10000000" oninput="calc()"></div>
+      <div class="ded"><label>🐷 Interest earned on savings account <span class="code">— (80TTA, max ₹10k)</span></label><input type="number" id="d80tta" value="0" min="0" max="10000" oninput="calc()"></div>
+      <div class="ded"><label>➕ Any other deductions <span class="code">— 80DD, 80DDB, 80U, etc.</span></label><input type="number" id="other" value="0" min="0" max="10000000" oninput="calc()"></div>
     </div>
   </div>
 
   <div class="results">
-    <div class="regime new">
-      <h3>New Regime (default)</h3>
-      <div class="row"><span>Gross income</span><span id="newGross">Rs 15,00,000</span></div>
-      <div class="row"><span>Standard deduction</span><span id="newStd">- Rs 75,000</span></div>
-      <div class="row"><span>Taxable income</span><span id="newTaxable">Rs 14,25,000</span></div>
-      <div class="row"><span>Income tax</span><span id="newIncomeTax">Rs 1,32,500</span></div>
-      <div class="row"><span>+ Cess (4%)</span><span id="newCess">Rs 5,300</span></div>
-      <div class="row total"><span>Total tax</span><span id="newTotal">Rs 1,37,800</span></div>
+    <div class="regime new" id="cardNew">
+      <h3>New Regime <span class="tag" id="tagNew">default</span></h3>
+      <div class="row"><span>Gross taxable salary</span><span id="newGross">—</span></div>
+      <div class="row"><span>Deductions applied</span><span id="newDed">—</span></div>
+      <div class="row"><span>Taxable income</span><span id="newTaxable">—</span></div>
+      <div class="row"><span>Income tax</span><span id="newIncomeTax">—</span></div>
+      <div class="row"><span>+ Health &amp; education cess (4%)</span><span id="newCess">—</span></div>
+      <div class="row total"><span>Total tax</span><span id="newTotal">—</span></div>
+      <div class="row take"><span>Take-home / year</span><span id="newTakeY">—</span></div>
+      <div class="row small"><span>Take-home / month</span><span id="newTakeM">—</span></div>
+      <div class="row small"><span>Effective tax rate</span><span id="newRate">—</span></div>
     </div>
-    <div class="regime old">
-      <h3>Old Regime</h3>
-      <div class="row"><span>Gross income</span><span id="oldGross">Rs 15,00,000</span></div>
-      <div class="row"><span>Standard deduction</span><span>- Rs 50,000</span></div>
-      <div class="row"><span>Total deductions</span><span id="oldDeductions">- Rs 2,75,000</span></div>
-      <div class="row"><span>Taxable income</span><span id="oldTaxable">Rs 11,75,000</span></div>
-      <div class="row"><span>Income tax</span><span id="oldIncomeTax">Rs 1,72,500</span></div>
-      <div class="row"><span>+ Cess (4%)</span><span id="oldCess">Rs 6,900</span></div>
-      <div class="row total"><span>Total tax</span><span id="oldTotal">Rs 1,79,400</span></div>
+    <div class="regime old" id="cardOld">
+      <h3>Old Regime <span class="tag" id="tagOld">with deductions</span></h3>
+      <div class="row"><span>Gross taxable salary</span><span id="oldGross">—</span></div>
+      <div class="row"><span>Deductions applied</span><span id="oldDed">—</span></div>
+      <div class="row"><span>Taxable income</span><span id="oldTaxable">—</span></div>
+      <div class="row"><span>Income tax</span><span id="oldIncomeTax">—</span></div>
+      <div class="row"><span>+ Health &amp; education cess (4%)</span><span id="oldCess">—</span></div>
+      <div class="row total"><span>Total tax</span><span id="oldTotal">—</span></div>
+      <div class="row take"><span>Take-home / year</span><span id="oldTakeY">—</span></div>
+      <div class="row small"><span>Take-home / month</span><span id="oldTakeM">—</span></div>
+      <div class="row small"><span>Effective tax rate</span><span id="oldRate">—</span></div>
     </div>
   </div>
 
-  <div class="winner" id="winner">New regime saves you Rs 41,600</div>
+  <div class="winner" id="winner">—</div>
+  <p style="font-size:12px;color:var(--text-muted);margin-top:10px">Take-home is approximate: gross taxable salary − total tax − professional tax (₹2,400/yr). It doesn't subtract your own PF or voluntary savings, since those are money you keep. Employer PF and employer NPS are treated as non-taxable parts of CTC.</p>
 
   <h2>FY 2025-26 tax slabs (for reference)</h2>
   <div class="calc">
@@ -119,37 +145,39 @@ h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14
       <div>
         <h3 style="font-family:Outfit,sans-serif;font-size:14px;font-weight:700;margin-bottom:10px">New Regime (default)</h3>
         <table style="width:100%;font-size:13px;color:var(--text-secondary)">
-          <tr><td style="padding:4px 0">Up to Rs 4 lakh</td><td style="text-align:right;font-weight:600">0%</td></tr>
-          <tr><td style="padding:4px 0">Rs 4 - 8 lakh</td><td style="text-align:right;font-weight:600">5%</td></tr>
-          <tr><td style="padding:4px 0">Rs 8 - 12 lakh</td><td style="text-align:right;font-weight:600">10%</td></tr>
-          <tr><td style="padding:4px 0">Rs 12 - 16 lakh</td><td style="text-align:right;font-weight:600">15%</td></tr>
-          <tr><td style="padding:4px 0">Rs 16 - 20 lakh</td><td style="text-align:right;font-weight:600">20%</td></tr>
-          <tr><td style="padding:4px 0">Rs 20 - 24 lakh</td><td style="text-align:right;font-weight:600">25%</td></tr>
-          <tr><td style="padding:4px 0">Above Rs 24 lakh</td><td style="text-align:right;font-weight:600">30%</td></tr>
+          <tr><td style="padding:4px 0">Up to ₹4 lakh</td><td style="text-align:right;font-weight:600">0%</td></tr>
+          <tr><td style="padding:4px 0">₹4–8 lakh</td><td style="text-align:right;font-weight:600">5%</td></tr>
+          <tr><td style="padding:4px 0">₹8–12 lakh</td><td style="text-align:right;font-weight:600">10%</td></tr>
+          <tr><td style="padding:4px 0">₹12–16 lakh</td><td style="text-align:right;font-weight:600">15%</td></tr>
+          <tr><td style="padding:4px 0">₹16–20 lakh</td><td style="text-align:right;font-weight:600">20%</td></tr>
+          <tr><td style="padding:4px 0">₹20–24 lakh</td><td style="text-align:right;font-weight:600">25%</td></tr>
+          <tr><td style="padding:4px 0">Above ₹24 lakh</td><td style="text-align:right;font-weight:600">30%</td></tr>
         </table>
+        <p style="font-size:11.5px;color:var(--text-muted);margin-top:8px">₹75,000 standard deduction + full rebate up to ₹12L taxable income (no tax up to ₹12.75L salary).</p>
       </div>
       <div>
         <h3 style="font-family:Outfit,sans-serif;font-size:14px;font-weight:700;margin-bottom:10px">Old Regime</h3>
         <table style="width:100%;font-size:13px;color:var(--text-secondary)">
-          <tr><td style="padding:4px 0">Up to Rs 2.5 lakh</td><td style="text-align:right;font-weight:600">0%</td></tr>
-          <tr><td style="padding:4px 0">Rs 2.5 - 5 lakh</td><td style="text-align:right;font-weight:600">5%</td></tr>
-          <tr><td style="padding:4px 0">Rs 5 - 10 lakh</td><td style="text-align:right;font-weight:600">20%</td></tr>
-          <tr><td style="padding:4px 0">Above Rs 10 lakh</td><td style="text-align:right;font-weight:600">30%</td></tr>
+          <tr><td style="padding:4px 0">Up to ₹2.5 lakh</td><td style="text-align:right;font-weight:600">0%</td></tr>
+          <tr><td style="padding:4px 0">₹2.5–5 lakh</td><td style="text-align:right;font-weight:600">5%</td></tr>
+          <tr><td style="padding:4px 0">₹5–10 lakh</td><td style="text-align:right;font-weight:600">20%</td></tr>
+          <tr><td style="padding:4px 0">Above ₹10 lakh</td><td style="text-align:right;font-weight:600">30%</td></tr>
         </table>
+        <p style="font-size:11.5px;color:var(--text-muted);margin-top:8px">₹50,000 standard deduction + all deductions above + rebate up to ₹5L taxable income.</p>
       </div>
     </div>
   </div>
 
   <h2>Frequently asked questions</h2>
   <div class="faq-block">
-    <details class="faq-item"><summary>Which regime should I choose - old or new?</summary><p>Use new regime if you have low deductions (less than Rs 2.5 lakh including 80C, 80D, HRA, home loan). Use old regime if you maximise deductions — typical breakeven is around Rs 4 lakh in deductions for an Rs 15 lakh salary. The calculator above shows the cleaner pick for your specific income/deductions.</p></details>
-    <details class="faq-item"><summary>Is standard deduction available in both regimes?</summary><p>Yes — standard deduction of Rs 75,000 (new regime, FY 2025-26) and Rs 50,000 (old regime). It is auto-applied to salary income; no documentation needed.</p></details>
-    <details class="faq-item"><summary>What is included in 80C deduction?</summary><p>EPF, PPF, ELSS mutual funds, life insurance premium, NSC, tax-saving FDs (5-year), Sukanya Samriddhi (girl child), tuition fees for 2 children, home loan principal repayment. Combined cap of Rs 1.5 lakh per year.</p></details>
-    <details class="faq-item"><summary>Can I switch between old and new regime every year?</summary><p>Salaried employees: yes, switch every year while filing ITR. Business / professional income: switch is one-way (back to old requires losing the option permanently for new). Choose carefully if self-employed.</p></details>
-    <details class="faq-item"><summary>Are LTA, food coupons, telephone bills tax-free in new regime?</summary><p>No — most exemptions like LTA, food vouchers, professional tax, child education allowance are only available in old regime. New regime trades these for lower flat tax slabs.</p></details>
+    <details class="faq-item"><summary>Is my CTC the same as my taxable salary?</summary><p>No. CTC includes employer contributions — the employer's share of PF and gratuity — which aren't part of your taxable salary. Subtract the employer-PF portion of your CTC (there's an optional field for it above) to get your gross taxable salary. If you don't know it, leaving it at 0 gives a slightly conservative (higher) tax estimate.</p></details>
+    <details class="faq-item"><summary>Which regime should I choose — old or new?</summary><p>Use the new regime if you have low deductions; use the old regime if you claim large ones (80C, 80D, HRA, home loan interest). The breakeven for a typical salary is roughly ₹3.75–4.25 lakh of total deductions. The calculator picks the cleaner winner for your exact numbers.</p></details>
+    <details class="faq-item"><summary>Do my deductions (80C, 80D, HRA…) help in the new regime?</summary><p>Mostly no. The new regime allows only the ₹75,000 standard deduction and the employer's NPS contribution (80CCD-2). Everything else — 80C, 80D, HRA, home loan interest, donations — only reduces tax in the old regime.</p></details>
+    <details class="faq-item"><summary>How is take-home calculated here?</summary><p>Approximate take-home = gross taxable salary − total income tax − professional tax (₹2,400/year). It doesn't subtract your own PF or voluntary investments, because those are savings you keep, not a tax cost.</p></details>
+    <details class="faq-item"><summary>Can I switch regimes every year?</summary><p>Salaried employees can switch every year while filing their ITR. Those with business/professional income have a one-time switch back to old, so choose carefully if self-employed.</p></details>
   </div>
 
-  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: May 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> · Always confirm with a CA for filing decisions.</div>
+  <div style="text-align:center;padding:24px 0 0;font-size:12px;color:var(--text-muted)">Last reviewed: July 2026 &middot; <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">Editorial process</a> · Estimates only — always confirm with a qualified CA before filing.</div>
 </main>
 
 <div id="wib-footer-placeholder"></div>
@@ -158,100 +186,89 @@ h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:36px 0 14
 <script src="/polish.js?v=20260419" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script>
-function fmt(n){return 'Rs '+Math.max(0,Math.round(n)).toLocaleString('en-IN')}
+function fmt(n){return '₹' + Math.max(0, Math.round(n)).toLocaleString('en-IN')}
+function num(id, cap){var v = parseFloat(document.getElementById(id).value) || 0; v = Math.max(0, v); return cap ? Math.min(v, cap) : v;}
+var PROF_TAX = 2400;
 
-// FY 2025-26 (AY 2026-27) New Regime slabs
-function newRegimeTax(taxable, age){
-  // Same slabs apply across age groups in new regime
-  if (taxable <= 400000) return 0;
-  var slabs = [
-    [400000, 800000, 0.05],
-    [800000, 1200000, 0.10],
-    [1200000, 1600000, 0.15],
-    [1600000, 2000000, 0.20],
-    [2000000, 2400000, 0.25],
-    [2400000, Infinity, 0.30],
-  ];
+// New regime tax (FY2025-26) with 87A rebate + marginal relief
+function newRegimeTax(taxable){
+  var slabs = [[400000,800000,.05],[800000,1200000,.10],[1200000,1600000,.15],[1600000,2000000,.20],[2000000,2400000,.25],[2400000,Infinity,.30]];
   var tax = 0;
-  for (var i=0; i<slabs.length; i++) {
-    var [lo, hi, r] = slabs[i];
-    if (taxable > lo) tax += (Math.min(taxable, hi) - lo) * r;
-  }
-  // Section 87A rebate: full rebate if taxable income up to Rs 12L
-  if (taxable <= 1200000) tax = Math.max(0, tax - 60000);
-  return tax;
+  for (var i=0;i<slabs.length;i++){var s=slabs[i]; if(taxable>s[0]) tax += (Math.min(taxable,s[1])-s[0])*s[2];}
+  if (taxable <= 1200000) return 0;                 // full 87A rebate
+  return Math.min(tax, taxable - 1200000);          // marginal relief just above 12L
 }
-// Old regime slabs (age-based)
+// Old regime tax (age-based basic exemption) with 87A rebate
 function oldRegimeTax(taxable, age){
-  var basicExemption = age === 'above80' ? 500000 : age === '60to80' ? 300000 : 250000;
-  if (taxable <= basicExemption) return 0;
-  var slabs;
-  if (age === 'above80') {
-    slabs = [[500000, 1000000, 0.20], [1000000, Infinity, 0.30]];
-  } else {
-    slabs = [
-      [basicExemption, 500000, 0.05],
-      [500000, 1000000, 0.20],
-      [1000000, Infinity, 0.30],
-    ];
-  }
+  var be = age==='above80' ? 500000 : age==='60to80' ? 300000 : 250000;
+  var slabs = age==='above80'
+    ? [[500000,1000000,.20],[1000000,Infinity,.30]]
+    : [[be,500000,.05],[500000,1000000,.20],[1000000,Infinity,.30]];
   var tax = 0;
-  for (var i=0; i<slabs.length; i++) {
-    var [lo, hi, r] = slabs[i];
-    if (taxable > lo) tax += (Math.min(taxable, hi) - lo) * r;
-  }
-  // 87A rebate up to Rs 5L taxable income
+  for (var i=0;i<slabs.length;i++){var s=slabs[i]; if(taxable>s[0]) tax += (Math.min(taxable,s[1])-s[0])*s[2];}
   if (taxable <= 500000) tax = Math.max(0, tax - 12500);
   return tax;
 }
 
 function calc(){
-  var salary = parseFloat(document.getElementById('salary').value) || 0;
+  var ctc = num('ctc');
   var age = document.getElementById('age').value;
-  var d80c = Math.min(parseFloat(document.getElementById('d80c').value) || 0, 150000);
-  var d80d = Math.min(parseFloat(document.getElementById('d80d').value) || 0, 100000);
-  var hra = parseFloat(document.getElementById('hra').value) || 0;
-  var loanInt = Math.min(parseFloat(document.getElementById('loanInt').value) || 0, 200000);
-  var nps = Math.min(parseFloat(document.getElementById('nps').value) || 0, 50000);
-  var other = parseFloat(document.getElementById('other').value) || 0;
+  var employerPF = num('employerPF');
+  var npsEmp = num('npsEmp');            // 80CCD(2) — both regimes
+  var d80c = num('d80c', 150000);
+  var d80d = num('d80d', 100000);
+  var hra = num('hra');
+  var loanInt = num('loanInt', 200000);
+  var nps = num('nps', 50000);          // 80CCD(1B)
+  var d80g = num('d80g');
+  var d80e = num('d80e');
+  var d80tta = num('d80tta', 10000);
+  var other = num('other');
 
-  // NEW regime
-  var newStdDed = 75000;
-  var newTaxable = Math.max(0, salary - newStdDed);
-  var newTax = newRegimeTax(newTaxable, age);
-  var newCess = newTax * 0.04;
-  var newTotal = newTax + newCess;
+  // Employer PF is not taxable salary -> gross taxable salary
+  var gross = Math.max(0, ctc - employerPF);
 
-  // OLD regime
-  var oldStdDed = 50000;
-  var oldDeductions = oldStdDed + d80c + d80d + hra + loanInt + nps + other;
-  var oldTaxable = Math.max(0, salary - oldDeductions);
+  // NEW regime: std deduction 75k + employer NPS only
+  var newDed = 75000 + npsEmp;
+  var newTaxable = Math.max(0, gross - newDed);
+  var newTax = newRegimeTax(newTaxable);
+  var newTotal = newTax * 1.04;
+  var newTake = Math.max(0, gross - newTotal - PROF_TAX);
+
+  // OLD regime: std 50k + everything
+  var oldDedItems = d80c + d80d + hra + loanInt + nps + npsEmp + d80g + d80e + d80tta + other;
+  var oldDed = 50000 + oldDedItems;
+  var oldTaxable = Math.max(0, gross - oldDed);
   var oldTax = oldRegimeTax(oldTaxable, age);
-  var oldCess = oldTax * 0.04;
-  var oldTotal = oldTax + oldCess;
+  var oldTotal = oldTax * 1.04;
+  var oldTake = Math.max(0, gross - oldTotal - PROF_TAX);
 
-  document.getElementById('newGross').textContent = fmt(salary);
-  document.getElementById('newStd').textContent = '- ' + fmt(newStdDed);
-  document.getElementById('newTaxable').textContent = fmt(newTaxable);
-  document.getElementById('newIncomeTax').textContent = fmt(newTax);
-  document.getElementById('newCess').textContent = fmt(newCess);
-  document.getElementById('newTotal').textContent = fmt(newTotal);
+  function set(id,v){document.getElementById(id).textContent = v;}
+  set('newGross', fmt(gross)); set('newDed', '− '+fmt(newDed)); set('newTaxable', fmt(newTaxable));
+  set('newIncomeTax', fmt(newTax)); set('newCess', fmt(newTotal-newTax)); set('newTotal', fmt(newTotal));
+  set('newTakeY', fmt(newTake)); set('newTakeM', fmt(newTake/12));
+  set('newRate', gross>0 ? (100*newTotal/gross).toFixed(1)+'%' : '0%');
 
-  document.getElementById('oldGross').textContent = fmt(salary);
-  document.getElementById('oldDeductions').textContent = '- ' + fmt(oldDeductions - oldStdDed);
-  document.getElementById('oldTaxable').textContent = fmt(oldTaxable);
-  document.getElementById('oldIncomeTax').textContent = fmt(oldTax);
-  document.getElementById('oldCess').textContent = fmt(oldCess);
-  document.getElementById('oldTotal').textContent = fmt(oldTotal);
+  set('oldGross', fmt(gross)); set('oldDed', '− '+fmt(oldDed)); set('oldTaxable', fmt(oldTaxable));
+  set('oldIncomeTax', fmt(oldTax)); set('oldCess', fmt(oldTotal-oldTax)); set('oldTotal', fmt(oldTotal));
+  set('oldTakeY', fmt(oldTake)); set('oldTakeM', fmt(oldTake/12));
+  set('oldRate', gross>0 ? (100*oldTotal/gross).toFixed(1)+'%' : '0%');
 
+  // Winner
   var diff = oldTotal - newTotal;
   var w = document.getElementById('winner');
-  if (Math.abs(diff) < 100) {
-    w.textContent = 'Both regimes are nearly equal for you'; w.style.background = '#64748b';
-  } else if (diff > 0) {
-    w.textContent = 'New regime saves you ' + fmt(diff); w.style.background = '#16a34a';
+  var cN = document.getElementById('cardNew'), cO = document.getElementById('cardOld');
+  var tN = document.getElementById('tagNew'), tO = document.getElementById('tagOld');
+  cN.classList.remove('win'); cO.classList.remove('win');
+  tN.textContent = 'default'; tO.textContent = 'with deductions';
+  if (Math.abs(diff) < 100){
+    w.textContent = 'Both regimes cost you about the same'; w.style.background = '#64748b';
+  } else if (diff > 0){
+    w.innerHTML = '✅ New regime is better — you save ' + fmt(diff) + ' a year';
+    w.style.background = '#16a34a'; cN.classList.add('win'); tN.textContent = 'best for you';
   } else {
-    w.textContent = 'Old regime saves you ' + fmt(-diff); w.style.background = '#d97706';
+    w.innerHTML = '✅ Old regime is better — you save ' + fmt(-diff) + ' a year';
+    w.style.background = '#16a34a'; cO.classList.add('win'); tO.textContent = 'best for you';
   }
 }
 calc();
