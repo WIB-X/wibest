@@ -269,10 +269,15 @@ exports.sendWeeklyDigest = functions.pubsub
 
     // Pull subscribers (skip unsubscribed — guard against missing field too)
     const subsSnap = await db.collection('newsletter_subscribers').limit(5000).get();
+    // Skip unsubscribed, malformed, and known test/placeholder addresses so the
+    // weekly send can't bounce on junk (e.g. a leftover test@wibest.in signup).
+    const BLOCKLIST = new Set(['test@wibest.in', 'test@test.com', 'admin@wibest.in', 'example@example.com']);
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const emails = [];
     subsSnap.forEach(d => {
       const s = d.data();
-      if (s.email && s.unsubscribed !== true) emails.push(s.email);
+      const e = (s.email || '').trim().toLowerCase();
+      if (e && s.unsubscribed !== true && emailRe.test(e) && !BLOCKLIST.has(e)) emails.push(e);
     });
     if (emails.length === 0) { console.log('No active subscribers; skipping digest.'); return null; }
 
