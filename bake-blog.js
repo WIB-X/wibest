@@ -22,6 +22,7 @@ const seedFiles = [
   'seed-data-batch4c-tax.js',
   'seed-data-batch4d-hillstations.js',
   'seed-blog/data-blogs-expansion.js',
+  'seed-data-blog-neet.js', // override best-coaching-neet-india with refreshed content (must load last)
 ];
 
 for (const file of seedFiles) {
