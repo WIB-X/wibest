@@ -23,6 +23,7 @@ const seedFiles = [
   'seed-data-batch4d-hillstations.js',
   'seed-blog/data-blogs-expansion.js',
   'seed-data-blog-neet.js', // override best-coaching-neet-india with refreshed content (must load last)
+  'seed-data-blog-iitjee.js', // override best-coaching-iit-jee-india with refreshed content
 ];
 
 for (const file of seedFiles) {

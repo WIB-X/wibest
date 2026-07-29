@@ -28,6 +28,8 @@ Disallow: /seed-colleges-gapcities.html
 Disallow: /seed-data-colleges-gapcities.js
 Disallow: /seed-blog-neet.html
 Disallow: /seed-data-blog-neet.js
+Disallow: /seed-blog-iitjee.html
+Disallow: /seed-data-blog-iitjee.js
 
 # Block JS-only template detail files (Soft 404 — no real content; used by the SPA via JS)
 Disallow: /cars-detail.html
