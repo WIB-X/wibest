@@ -172,6 +172,7 @@
       '<div class="footer-col"><h4>Legal</h4>',
       '<a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>',
       '<a href="/affiliate-disclosure">Affiliate Disclosure</a>',
+      '<a href="/how-we-make-money">How We Make Money</a>',
       '</div>',
       '</div>',
       '<div class="footer-nl" style="grid-column:1/-1;margin-top:24px;padding:24px;background:var(--accent);border-radius:10px;text-align:center">',

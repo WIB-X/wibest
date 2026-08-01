@@ -30,6 +30,7 @@ Disallow: /seed-blog-neet.html
 Disallow: /seed-data-blog-neet.js
 Disallow: /seed-blog-iitjee.html
 Disallow: /seed-data-blog-iitjee.js
+Disallow: /sponsor-box-template.html
 
 # Block JS-only template detail files (Soft 404 — no real content; used by the SPA via JS)
 Disallow: /cars-detail.html
