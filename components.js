@@ -44,6 +44,7 @@
       { href: '/price-finder',  label: 'Price Finder' }
     ]},
     { title: 'Money', items: [
+      { href: '/finance/best-card-to-use/', label: 'Which Card to Use 🆕' },
       { href: '/insurance/',    label: 'Insurance' },
       { href: '/loans/',        label: 'Loans' }
     ]},
