@@ -24,6 +24,7 @@ const seedFiles = [
   'seed-blog/data-blogs-expansion.js',
   'seed-data-blog-neet.js', // override best-coaching-neet-india with refreshed content (must load last)
   'seed-data-blog-iitjee.js', // override best-coaching-iit-jee-india with refreshed content
+  'seed-data-blog-ooty.js', // override ooty-vs-kodaikanal-which-is-better (CTR retitle + data table)
 ];
 
 for (const file of seedFiles) {
