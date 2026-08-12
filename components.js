@@ -36,6 +36,7 @@
   // Avoids the unbounded scrolling list problem.
   var MORE_GROUPS = [
     { title: 'Tools', items: [
+      { href: '/festival-sales-guide/', label: 'Festival Sales 🔥' },
       { href: '/decide/',       label: 'Decide for me 🆕' },
       { href: '/admissions/',   label: 'Admissions Tracker 🆕' },
       { href: '/compare/ai/',   label: 'AI Compare' },
