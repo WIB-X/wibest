@@ -61,11 +61,6 @@
       { href: '/real-estate',  label: 'Real Estate' },
       { href: '/jobs',         label: 'Jobs' }
     ]},
-    { title: 'Languages', items: [
-      { href: '/hi/',           label: '\u0939\u093F\u0902\u0926\u0940 (Hindi)' },
-      { href: '/ta/',           label: '\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD (Tamil)' },
-      { href: '/te/',           label: '\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41 (Telugu)' }
-    ]},
     { title: 'About', items: [
       { href: '/about',              label: 'About WIB' },
       { href: '/editorial-process',  label: 'Editorial Process' },
