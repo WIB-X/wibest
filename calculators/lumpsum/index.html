@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumpsum Investment Calculator India — Mutual Fund Returns (2026) | WIB</title>
+<meta name="description" content="Calculate the future value of a one-time (lumpsum) mutual fund investment in India. Enter amount, expected return and years to see maturity value and estimated gains — with how it compares to a SIP.">
+<link rel="canonical" href="https://wibest.in/calculators/lumpsum/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lumpsum Investment Calculator — Mutual Fund Returns (India)">
+<meta property="og:description" content="One-time investment + expected return + years → future value and estimated gains.">
+<meta property="og:url" content="https://wibest.in/calculators/lumpsum/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:820px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:16px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:31px;font-weight:800;letter-spacing:-0.02em;line-height:1.14;margin-bottom:12px}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:22px}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:38px 0 12px;color:var(--text-primary)}
+p{font-size:15.5px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px}
+ul{color:var(--text-secondary);line-height:1.85;font-size:15px;margin:0 0 14px 20px}
+.calc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:22px 24px}
+.row{display:flex;flex-wrap:wrap;gap:16px}
+.fld{flex:1;min-width:200px;margin-bottom:12px}
+.fld label{display:block;font-size:13.5px;font-weight:600;color:var(--text-primary);margin-bottom:5px}
+.fld .hint{font-weight:400;color:var(--text-muted);font-size:12px}
+.fld input{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--border);border-radius:9px;background:var(--bg-secondary);color:var(--text-primary);font-size:15px;font-family:inherit}
+.result{margin-top:20px;border-top:1px solid var(--border);padding-top:20px}
+.headline{background:var(--accent-light);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.headline .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}
+.headline .big{font-family:Outfit,sans-serif;font-size:30px;font-weight:900;color:var(--text-primary);line-height:1.1;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.stat{background:var(--bg-secondary);border-radius:10px;padding:13px 15px}
+.stat .k{font-size:12px;color:var(--text-muted);font-weight:600}
+.stat .v{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;color:var(--text-primary);margin-top:3px}
+.note{background:var(--tag-bg,#fef9c3);border:1px solid var(--border);border-radius:10px;padding:12px 15px;margin:14px 0;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.related{margin-top:30px;padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.related a{display:inline-block;padding:8px 14px;margin:4px 6px 4px 0;background:var(--tag-bg);border:1px solid var(--border);border-radius:8px;font-size:13px;text-decoration:none;color:var(--text-primary)}
+.faq details{border-bottom:1px solid var(--border);padding:13px 0}
+.faq summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:15px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";float:right;color:var(--accent);font-size:20px}
+.faq details[open] summary::after{content:"\2212"}.faq p{margin:9px 0 0;font-size:14px}
+@media(max-width:560px){h1{font-size:24px}.grid{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is lumpsum mutual fund return calculated?","acceptedAnswer":{"@type":"Answer","text":"A one-time (lumpsum) investment grows by compounding: future value = amount × (1 + annual return)^years. For example, ₹1,00,000 invested for 10 years at an assumed 12% grows to about ₹3,10,585 — roughly ₹2,10,585 of estimated gains. Actual returns are not guaranteed and vary with the market."}},{"@type":"Question","name":"Is lumpsum or SIP better?","acceptedAnswer":{"@type":"Answer","text":"Lumpsum can earn more if markets rise steadily after you invest, since the full amount compounds from day one. SIP spreads the entry over time, averaging your cost and reducing the risk of investing everything at a market peak. If you have a large sum and a long horizon, many investors split the difference — deploy part as lumpsum and stagger the rest."}},{"@type":"Question","name":"What return rate should I assume?","acceptedAnswer":{"@type":"Answer","text":"Returns are never guaranteed. For illustration, equity mutual funds are often modelled at 10-12% long-term, debt funds lower at 6-8%. Use a conservative figure and remember past performance doesn't predict the future."}}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; Lumpsum</div>
+  <h1>Lumpsum Investment Calculator</h1>
+  <p class="lede">Got a one-time amount to invest — a bonus, maturity payout or savings? See what it could grow to. Enter the amount, an expected annual return and your time horizon, and this shows the projected <strong>future value</strong> and estimated gains from compounding.</p>
+
+  <div class="calc">
+    <div class="row">
+      <div class="fld"><label>Investment amount <span class="hint">(one-time)</span></label><input type="number" id="amount" min="0" step="10000" placeholder="e.g. 100000"></div>
+      <div class="fld"><label>Expected annual return <span class="hint">(%, e.g. ~12% equity)</span></label><input type="number" id="rate" min="0" step="0.5" value="12"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label>Investment period <span class="hint">(years)</span></label><input type="number" id="years" min="1" max="40" step="1" value="10"></div>
+      <div class="fld" style="display:flex;align-items:flex-end"><button id="go" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">Calculate future value</button></div>
+    </div>
+    <div class="result" id="result" style="display:none">
+      <div class="headline"><div class="lbl">Projected value</div><div class="big" id="rFv">—</div></div>
+      <div class="grid">
+        <div class="stat"><div class="k">Amount invested</div><div class="v" id="rInvested">—</div></div>
+        <div class="stat"><div class="k">Estimated gains</div><div class="v" id="rGain">—</div></div>
+      </div>
+      <div class="note" id="rNote"></div>
+    </div>
+  </div>
+
+  <h2>Lumpsum vs SIP — which for you?</h2>
+  <ul>
+    <li><strong>Lumpsum</strong> puts the whole amount to work immediately, so it can earn more when markets rise steadily after you invest — but you carry the risk of buying at a peak.</li>
+    <li><strong>SIP</strong> spreads your entry across months, averaging your cost and smoothing out market swings — better if you're investing from monthly income or worried about timing.</li>
+    <li><strong>The middle path:</strong> with a large sum, many investors deploy part as lumpsum and stagger the rest over a few months (an STP) to balance both.</li>
+  </ul>
+
+  <div class="note">Projection only — mutual fund returns are <strong>not guaranteed</strong> and vary with the market; the assumed rate is for illustration, not a promise. This is general information, not investment advice. Equity investments carry risk.</div>
+
+  <div class="related">
+    <div style="font-family:Outfit,sans-serif;font-size:15px;font-weight:700;margin-bottom:10px">Related tools &amp; guides</div>
+    <a href="/calculators/sip/">SIP calculator &rsaquo;</a>
+    <a href="/calculators/emi-vs-sip/">EMI vs SIP &rsaquo;</a>
+    <a href="/calculators/ppf/">PPF calculator &rsaquo;</a>
+    <a href="/finance/best-mutual-fund-app/">Best mutual fund apps &rsaquo;</a>
+    <a href="/calculators/tax/">Tax calculator &rsaquo;</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq">
+    <details><summary>How is lumpsum return calculated?</summary><p>Future value = amount × (1 + annual return)^years. E.g. ₹1,00,000 at 12% for 10 years ≈ ₹3,10,585 (about ₹2,10,585 of estimated gains). Returns aren't guaranteed.</p></details>
+    <details><summary>Lumpsum or SIP — which is better?</summary><p>Lumpsum can earn more if markets rise after you invest; SIP averages your cost and lowers timing risk. With a big sum, splitting between the two (or staggering via an STP) is a common balance.</p></details>
+    <details><summary>What return should I assume?</summary><p>Nothing is guaranteed. Equity funds are often modelled at 10–12% long-term, debt at 6–8%. Use a conservative figure — past performance doesn't predict the future.</p></details>
+  </div>
+
+  <div style="margin-top:26px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)">Indicative calculator for general guidance, not investment advice. Mutual funds are subject to market risk. &middot; By <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">WIB Editorial</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/components.js?v=20260505a" defer></script>
+<script>
+(function(){
+  function fmt(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
+  function fmtL(n){ if(n>=100000) return fmt(n)+' (≈ ₹'+(n/100000).toFixed(2)+' lakh)'; return fmt(n); }
+  function calc(){
+    var P=parseFloat(document.getElementById('amount').value)||0;
+    var rate=parseFloat(document.getElementById('rate').value)||0;
+    var n=parseFloat(document.getElementById('years').value)||0;
+    var res=document.getElementById('result');
+    if(P<=0||n<=0){res.style.display='none';return;}
+    var fv=P*Math.pow(1+rate/100, n);
+    var gain=fv-P;
+    document.getElementById('rFv').textContent=fmtL(fv);
+    document.getElementById('rInvested').textContent=fmt(P);
+    document.getElementById('rGain').textContent=fmt(gain);
+    var mult=(fv/P).toFixed(1);
+    document.getElementById('rNote').textContent='At an assumed '+rate+'% a year, '+fmt(P)+' could grow to '+fmt(fv)+' in '+n+' years — about '+mult+'× your money. This is illustrative; real returns will be higher or lower and aren’t guaranteed.';
+    res.style.display='block';
+  }
+  document.getElementById('go').addEventListener('click',calc);
+  ['amount','rate','years'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',function(){ if(document.getElementById('result').style.display==='block') calc(); });
+  });
+})();
+</script>
+</body>
+</html>
