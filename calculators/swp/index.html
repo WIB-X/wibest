@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWP Calculator India — Systematic Withdrawal Plan: Monthly Income & Balance (2026) | WIB</title>
+<meta name="description" content="Plan a Systematic Withdrawal Plan (SWP) from your mutual fund corpus. Enter your investment, expected return and monthly withdrawal to see total withdrawn, remaining balance, and how long the corpus lasts.">
+<link rel="canonical" href="https://wibest.in/calculators/swp/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SWP Calculator — Systematic Withdrawal Plan (India)">
+<meta property="og:description" content="Corpus + return + monthly withdrawal → total withdrawn, remaining balance, and how long it lasts.">
+<meta property="og:url" content="https://wibest.in/calculators/swp/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:820px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:16px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:31px;font-weight:800;letter-spacing:-0.02em;line-height:1.14;margin-bottom:12px}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:22px}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:38px 0 12px;color:var(--text-primary)}
+p{font-size:15.5px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px}
+ul{color:var(--text-secondary);line-height:1.85;font-size:15px;margin:0 0 14px 20px}
+.calc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:22px 24px}
+.row{display:flex;flex-wrap:wrap;gap:16px}
+.fld{flex:1;min-width:200px;margin-bottom:12px}
+.fld label{display:block;font-size:13.5px;font-weight:600;color:var(--text-primary);margin-bottom:5px}
+.fld .hint{font-weight:400;color:var(--text-muted);font-size:12px}
+.fld input{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--border);border-radius:9px;background:var(--bg-secondary);color:var(--text-primary);font-size:15px;font-family:inherit}
+.result{margin-top:20px;border-top:1px solid var(--border);padding-top:20px}
+.headline{background:var(--accent-light);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.headline .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}
+.headline .big{font-family:Outfit,sans-serif;font-size:30px;font-weight:900;color:var(--text-primary);line-height:1.1;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.stat{background:var(--bg-secondary);border-radius:10px;padding:13px 15px}
+.stat .k{font-size:12px;color:var(--text-muted);font-weight:600}
+.stat .v{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;color:var(--text-primary);margin-top:3px}
+.note{background:var(--tag-bg,#fef9c3);border:1px solid var(--border);border-radius:10px;padding:12px 15px;margin:14px 0;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.warn{background:#fef2f2;border-color:#fecaca}
+[data-theme="dark"] .warn{background:#3f1d1d}
+.related{margin-top:30px;padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.related a{display:inline-block;padding:8px 14px;margin:4px 6px 4px 0;background:var(--tag-bg);border:1px solid var(--border);border-radius:8px;font-size:13px;text-decoration:none;color:var(--text-primary)}
+.faq details{border-bottom:1px solid var(--border);padding:13px 0}
+.faq summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:15px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";float:right;color:var(--accent);font-size:20px}
+.faq details[open] summary::after{content:"\2212"}.faq p{margin:9px 0 0;font-size:14px}
+@media(max-width:560px){h1{font-size:24px}.grid{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does an SWP (Systematic Withdrawal Plan) work?","acceptedAnswer":{"@type":"Answer","text":"You invest a lump sum in a mutual fund and withdraw a fixed amount every month. The money you haven't withdrawn stays invested and keeps growing. If your withdrawals are smaller than the returns, the corpus can last indefinitely; if larger, it depletes over time. This calculator simulates it month by month."}},{"@type":"Question","name":"How long will my SWP corpus last?","acceptedAnswer":{"@type":"Answer","text":"It depends on your corpus size, the return it earns, and how much you withdraw. As a rough guide, if your annual withdrawal is below the annual return the corpus earns, it can last decades or indefinitely. Withdraw more than it earns and it runs down. Enter your numbers to see how long it lasts and the balance left."}},{"@type":"Question","name":"Is SWP better than a fixed deposit for regular income?","acceptedAnswer":{"@type":"Answer","text":"An SWP from a debt or hybrid fund can be more tax-efficient than an FD, because only the gain portion of each withdrawal is taxed (and long-term capital gains rules may apply), whereas FD interest is fully taxed at your slab. But an SWP carries market risk, unlike an FD. Match the fund choice to how much risk you can take."}}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; SWP</div>
+  <h1>SWP Calculator</h1>
+  <p class="lede">Planning a regular monthly income from your investments? A Systematic Withdrawal Plan lets you draw a fixed amount each month while the rest stays invested. Enter your corpus, expected return and monthly withdrawal to see <strong>how long it lasts</strong>, the total you'll draw, and the balance left.</p>
+
+  <div class="calc">
+    <div class="row">
+      <div class="fld"><label>Total investment <span class="hint">(corpus)</span></label><input type="number" id="corpus" min="0" step="50000" placeholder="e.g. 1000000"></div>
+      <div class="fld"><label>Expected return <span class="hint">(% / yr)</span></label><input type="number" id="rate" min="0" step="0.5" value="8"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label>Monthly withdrawal</label><input type="number" id="wd" min="0" step="1000" placeholder="e.g. 10000"></div>
+      <div class="fld"><label>Period <span class="hint">(years)</span></label><input type="number" id="years" min="1" max="40" step="1" value="10"></div>
+      <div class="fld" style="display:flex;align-items:flex-end"><button id="go" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">Calculate</button></div>
+    </div>
+    <div class="result" id="result" style="display:none">
+      <div class="headline"><div class="lbl" id="rLbl">Balance after the period</div><div class="big" id="rBalance">—</div></div>
+      <div class="grid">
+        <div class="stat"><div class="k">Total withdrawn</div><div class="v" id="rWithdrawn">—</div></div>
+        <div class="stat"><div class="k">Monthly withdrawal</div><div class="v" id="rMonthly">—</div></div>
+      </div>
+      <div class="note" id="rNote"></div>
+    </div>
+  </div>
+
+  <h2>How an SWP works</h2>
+  <ul>
+    <li><strong>Fixed monthly income</strong> — you withdraw a set amount each month, useful for retirement or a second income.</li>
+    <li><strong>The rest keeps growing</strong> — only what you withdraw leaves; the balance stays invested and compounds.</li>
+    <li><strong>Sustainable vs. draining</strong> — if you withdraw less than the corpus earns each year, it can last indefinitely; withdraw more and it slowly runs down.</li>
+    <li><strong>Tax-efficient</strong> — often only the gain part of each withdrawal is taxed, which can beat an FD where all interest is taxed at your slab.</li>
+  </ul>
+
+  <div class="note">Simplified projection assuming a steady return. Real mutual fund returns fluctuate month to month, so the actual balance and duration will differ — a market dip early on can shorten how long the corpus lasts. This is general information, not investment advice; funds carry market risk.</div>
+
+  <div class="related">
+    <div style="font-family:Outfit,sans-serif;font-size:15px;font-weight:700;margin-bottom:10px">Related tools &amp; guides</div>
+    <a href="/calculators/lumpsum/">Lumpsum calculator &rsaquo;</a>
+    <a href="/calculators/sip/">SIP calculator &rsaquo;</a>
+    <a href="/calculators/retirement/">Retirement calculator &rsaquo;</a>
+    <a href="/calculators/fd/">FD calculator &rsaquo;</a>
+    <a href="/finance/best-mutual-fund-app/">Best mutual fund apps &rsaquo;</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq">
+    <details><summary>How does an SWP work?</summary><p>You invest a lump sum and withdraw a fixed amount monthly; the rest stays invested and grows. If withdrawals are below the returns, the corpus can last indefinitely; if above, it depletes. This tool simulates it month by month.</p></details>
+    <details><summary>How long will my corpus last?</summary><p>Depends on corpus, return and withdrawal. Roughly, if your yearly withdrawal is under the yearly return, it can last decades; withdraw more and it runs down. Enter your numbers to see the exact duration and balance.</p></details>
+    <details><summary>Is SWP better than an FD for income?</summary><p>An SWP from a debt/hybrid fund can be more tax-efficient (only the gain portion is taxed), but it carries market risk unlike an FD. Match the fund to your risk appetite.</p></details>
+  </div>
+
+  <div style="margin-top:26px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)">Indicative calculator for general guidance, not investment advice. Mutual funds are subject to market risk. &middot; By <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">WIB Editorial</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/components.js?v=20260505a" defer></script>
+<script>
+(function(){
+  function fmt(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
+  function fmtL(n){ if(n>=100000) return fmt(n)+' (≈ ₹'+(n/100000).toFixed(2)+' lakh)'; return fmt(n); }
+  function calc(){
+    var corpus=parseFloat(document.getElementById('corpus').value)||0;
+    var rate=parseFloat(document.getElementById('rate').value)||0;
+    var wd=parseFloat(document.getElementById('wd').value)||0;
+    var years=parseFloat(document.getElementById('years').value)||0;
+    var res=document.getElementById('result');
+    if(corpus<=0||wd<=0||years<=0){res.style.display='none';return;}
+    var i=rate/1200, months=years*12;
+    var bal=corpus, withdrawn=0, exhaustedMonth=0;
+    for(var m=1;m<=months;m++){
+      bal=bal*(1+i);
+      if(bal<=wd){ withdrawn+=bal; bal=0; exhaustedMonth=m; break; }
+      bal-=wd; withdrawn+=wd;
+    }
+    var noteEl=document.getElementById('rNote'); noteEl.classList.remove('warn');
+    document.getElementById('rWithdrawn').textContent=fmt(withdrawn);
+    document.getElementById('rMonthly').textContent=fmt(wd)+'/mo';
+    if(exhaustedMonth){
+      var yrs=Math.floor(exhaustedMonth/12), mo=exhaustedMonth%12;
+      document.getElementById('rLbl').textContent='Corpus runs out in';
+      document.getElementById('rBalance').textContent=yrs+' yr '+mo+' mo';
+      document.getElementById('rBalance').style.color='#dc2626';
+      noteEl.classList.add('warn');
+      noteEl.textContent='At '+fmt(wd)+'/month, this corpus is exhausted in about '+yrs+' years '+mo+' months — before your '+years+'-year target. Lower the withdrawal, raise the corpus, or aim for a higher-return fund to make it last.';
+    } else {
+      document.getElementById('rLbl').textContent='Balance left after '+years+' years';
+      document.getElementById('rBalance').textContent=fmtL(bal);
+      document.getElementById('rBalance').style.color='';
+      var sustain = bal>=corpus ? ' — and it actually grew, so at this rate the withdrawals are fully sustainable.' : ', with the corpus partly drawn down.';
+      noteEl.textContent='Over '+years+' years you withdraw '+fmt(withdrawn)+' in total and still have '+fmt(bal)+' left'+sustain+' (Assumes a steady '+rate+'% return; real returns vary.)';
+    }
+    res.style.display='block';
+  }
+  document.getElementById('go').addEventListener('click',calc);
+  ['corpus','rate','wd','years'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',function(){ if(document.getElementById('result').style.display==='block') calc(); });
+  });
+})();
+</script>
+</body>
+</html>

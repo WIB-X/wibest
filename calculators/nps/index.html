@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPS Calculator India — Pension Corpus, Lump Sum & Monthly Pension (2026) | WIB</title>
+<meta name="description" content="Calculate your National Pension System (NPS) corpus at retirement, the tax-free lump sum, and your estimated monthly pension. Enter contribution, age and expected return — annuity split explained.">
+<link rel="canonical" href="https://wibest.in/calculators/nps/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NPS Calculator — Pension Corpus & Monthly Pension (India)">
+<meta property="og:description" content="Monthly contribution + age + return → NPS corpus at 60, tax-free lump sum, and estimated monthly pension.">
+<meta property="og:url" content="https://wibest.in/calculators/nps/">
+<meta property="og:image" content="https://wibest.in/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wibest_in">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBXR43H9PE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JBXR43H9PE');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260421b">
+<link rel="stylesheet" href="/polish.css?v=20260421" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/polish.css?v=20260421"></noscript>
+<style>
+.wrap{max-width:820px;margin:calc(var(--nav-height)+var(--cat-height)+32px) auto 80px;padding:0 24px}
+.bc{font-size:12px;color:var(--text-muted);margin-bottom:16px}.bc a{color:var(--accent);text-decoration:none}
+h1{font-family:Outfit,sans-serif;font-size:31px;font-weight:800;letter-spacing:-0.02em;line-height:1.14;margin-bottom:12px}
+.lede{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:22px}
+h2{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;margin:38px 0 12px;color:var(--text-primary)}
+p{font-size:15.5px;line-height:1.75;color:var(--text-secondary);margin-bottom:14px}
+ul{color:var(--text-secondary);line-height:1.85;font-size:15px;margin:0 0 14px 20px}
+.calc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:22px 24px}
+.row{display:flex;flex-wrap:wrap;gap:16px}
+.fld{flex:1;min-width:170px;margin-bottom:12px}
+.fld label{display:block;font-size:13.5px;font-weight:600;color:var(--text-primary);margin-bottom:5px}
+.fld .hint{font-weight:400;color:var(--text-muted);font-size:12px}
+.fld input{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--border);border-radius:9px;background:var(--bg-secondary);color:var(--text-primary);font-size:15px;font-family:inherit}
+.result{margin-top:20px;border-top:1px solid var(--border);padding-top:20px}
+.headline{background:var(--accent-light);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.headline .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}
+.headline .big{font-family:Outfit,sans-serif;font-size:30px;font-weight:900;color:var(--text-primary);line-height:1.1;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.stat{background:var(--bg-secondary);border-radius:10px;padding:13px 15px}
+.stat .k{font-size:12px;color:var(--text-muted);font-weight:600}
+.stat .v{font-family:Outfit,sans-serif;font-size:18px;font-weight:800;color:var(--text-primary);margin-top:3px}
+.note{background:var(--tag-bg,#fef9c3);border:1px solid var(--border);border-radius:10px;padding:12px 15px;margin:14px 0;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.related{margin-top:30px;padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+.related a{display:inline-block;padding:8px 14px;margin:4px 6px 4px 0;background:var(--tag-bg);border:1px solid var(--border);border-radius:8px;font-size:13px;text-decoration:none;color:var(--text-primary)}
+.faq details{border-bottom:1px solid var(--border);padding:13px 0}
+.faq summary{font-weight:600;cursor:pointer;color:var(--text-primary);font-size:15px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";float:right;color:var(--accent);font-size:20px}
+.faq details[open] summary::after{content:"\2212"}.faq p{margin:9px 0 0;font-size:14px}
+@media(max-width:560px){h1{font-size:24px}.grid{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the NPS pension corpus calculated?","acceptedAnswer":{"@type":"Answer","text":"Your monthly NPS contributions are invested and compound until retirement (usually age 60). At 60, at least 40% of the corpus must be used to buy an annuity that pays your monthly pension, and up to 60% can be withdrawn as a tax-free lump sum. This calculator projects the corpus from your contribution, age and expected return, then splits it into lump sum and pension."}},{"@type":"Question","name":"How much of NPS can I withdraw at 60?","acceptedAnswer":{"@type":"Answer","text":"Up to 60% of the corpus can be taken as a tax-free lump sum at 60. The remaining minimum 40% must be used to purchase an annuity (pension), and the pension income is taxable as per your slab."}},{"@type":"Question","name":"What return does NPS give?","acceptedAnswer":{"@type":"Answer","text":"NPS returns are market-linked and depend on your equity/debt mix. Historically blended NPS returns have often been in the 9-11% range, but they are not guaranteed. Use a conservative assumption; the annuity that funds your pension typically yields around 6%."}}]}</script>
+</head>
+<body>
+<div id="wib-nav-placeholder"></div>
+
+<main class="wrap">
+  <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/calculators/">Calculators</a> &rsaquo; NPS</div>
+  <h1>NPS Calculator</h1>
+  <p class="lede">See what the National Pension System could build for your retirement. Enter your monthly contribution, age and expected return, and this projects your <strong>corpus at 60</strong>, the tax-free lump sum you can withdraw, and the <strong>monthly pension</strong> the rest could buy.</p>
+
+  <div class="calc">
+    <div class="row">
+      <div class="fld"><label>Monthly contribution</label><input type="number" id="contrib" min="500" step="500" placeholder="e.g. 5000"></div>
+      <div class="fld"><label>Current age</label><input type="number" id="age" min="18" max="59" step="1" placeholder="e.g. 30"></div>
+      <div class="fld"><label>Retirement age</label><input type="number" id="retage" min="60" max="75" step="1" value="60"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label>Expected return <span class="hint">(% / yr)</span></label><input type="number" id="rate" min="0" step="0.5" value="10"></div>
+      <div class="fld"><label>% used for pension <span class="hint">(annuity, min 40%)</span></label><input type="number" id="annuity" min="40" max="100" step="5" value="40"></div>
+      <div class="fld" style="display:flex;align-items:flex-end"><button id="go" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">Calculate</button></div>
+    </div>
+    <div class="result" id="result" style="display:none">
+      <div class="headline"><div class="lbl">Corpus at retirement</div><div class="big" id="rCorpus">—</div></div>
+      <div class="grid">
+        <div class="stat"><div class="k">Tax-free lump sum</div><div class="v" id="rLump">—</div></div>
+        <div class="stat"><div class="k">Estimated monthly pension</div><div class="v" id="rPension">—</div></div>
+        <div class="stat"><div class="k">Total you invest</div><div class="v" id="rInvested">—</div></div>
+        <div class="stat"><div class="k">Goes to annuity (pension)</div><div class="v" id="rAnnuity">—</div></div>
+      </div>
+      <div class="note" id="rNote"></div>
+    </div>
+  </div>
+
+  <h2>How NPS works at retirement</h2>
+  <ul>
+    <li><strong>Lump sum:</strong> up to <strong>60% of the corpus</strong> can be withdrawn tax-free at 60.</li>
+    <li><strong>Pension:</strong> at least <strong>40%</strong> must buy an annuity, which pays a monthly pension (taxable as per your slab). A higher annuity share means a bigger pension but a smaller lump sum.</li>
+    <li><strong>Tax perks while investing:</strong> deductions under 80CCD(1) within 80C, an extra ₹50,000 under 80CCD(1B), and employer contributions under 80CCD(2).</li>
+    <li><strong>Returns are market-linked</strong> (equity/debt mix you choose), not guaranteed.</li>
+  </ul>
+  <p>This calculator assumes the annuity yields about 6% a year for the pension estimate. Your actual pension depends on the annuity plan and rates at the time you retire.</p>
+
+  <div class="note">Indicative projection only. NPS returns and annuity rates are market-linked and not guaranteed; the monthly pension is a simplified estimate. This is general information, not investment advice — confirm details on the official NPS/PFRDA resources.</div>
+
+  <div class="related">
+    <div style="font-family:Outfit,sans-serif;font-size:15px;font-weight:700;margin-bottom:10px">Related tools &amp; guides</div>
+    <a href="/calculators/retirement/">Retirement calculator &rsaquo;</a>
+    <a href="/calculators/ppf/">PPF calculator &rsaquo;</a>
+    <a href="/calculators/sip/">SIP calculator &rsaquo;</a>
+    <a href="/calculators/tax/">Tax calculator (80CCD) &rsaquo;</a>
+    <a href="/finance/best-mutual-fund-app/">Best mutual fund apps &rsaquo;</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq">
+    <details><summary>How is the NPS corpus calculated?</summary><p>Your monthly contributions compound until 60. At 60, ≥40% buys an annuity (pension) and ≤60% is a tax-free lump sum. This tool projects the corpus from your inputs and splits it.</p></details>
+    <details><summary>How much can I withdraw at 60?</summary><p>Up to 60% as a tax-free lump sum; the minimum 40% funds the annuity, whose pension is taxable at your slab.</p></details>
+    <details><summary>What return does NPS give?</summary><p>Market-linked, historically often ~9–11% blended, not guaranteed. The annuity that pays your pension typically yields around 6%.</p></details>
+  </div>
+
+  <div style="margin-top:26px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)">Indicative calculator for general guidance, not investment advice. Market-linked returns are not guaranteed. &middot; By <a href="/editorial-process/" style="color:var(--accent);text-decoration:none">WIB Editorial</a></div>
+</main>
+
+<div id="wib-footer-placeholder"></div>
+<script src="/components.js?v=20260505a" defer></script>
+<script>
+(function(){
+  var ANNUITY_YIELD=0.06;
+  function fmt(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
+  function fmtL(n){ if(n>=10000000) return fmt(n)+' (≈ ₹'+(n/10000000).toFixed(2)+' crore)'; if(n>=100000) return fmt(n)+' (≈ ₹'+(n/100000).toFixed(2)+' lakh)'; return fmt(n); }
+  function calc(){
+    var P=parseFloat(document.getElementById('contrib').value)||0;
+    var age=parseFloat(document.getElementById('age').value)||0;
+    var ret=parseFloat(document.getElementById('retage').value)||60;
+    var rate=parseFloat(document.getElementById('rate').value)||0;
+    var ann=parseFloat(document.getElementById('annuity').value)||40;
+    var res=document.getElementById('result');
+    if(P<=0||age<=0||ret<=age){res.style.display='none';return;}
+    if(ann<40) ann=40;
+    var n=(ret-age)*12, i=rate/1200;
+    var corpus=(i===0)? P*n : P*((Math.pow(1+i,n)-1)/i)*(1+i);
+    var invested=P*n;
+    var annuityCorpus=corpus*(ann/100);
+    var lump=corpus-annuityCorpus;
+    var pension=annuityCorpus*ANNUITY_YIELD/12;
+    document.getElementById('rCorpus').textContent=fmtL(corpus);
+    document.getElementById('rLump').textContent=fmt(lump);
+    document.getElementById('rPension').textContent=fmt(pension)+'/mo';
+    document.getElementById('rInvested').textContent=fmt(invested);
+    document.getElementById('rAnnuity').textContent=fmt(annuityCorpus);
+    document.getElementById('rNote').textContent='By age '+ret+', your '+fmt(invested)+' of contributions could grow to '+fmt(corpus)+'. Taking '+(100-ann)+'% as a tax-free lump sum leaves '+fmt(annuityCorpus)+' for a pension of about '+fmt(pension)+'/month (at a ~6% annuity). Assumes a steady '+rate+'% return — market-linked, so actual results will vary.';
+    res.style.display='block';
+  }
+  document.getElementById('go').addEventListener('click',calc);
+  ['contrib','age','retage','rate','annuity'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',function(){ if(document.getElementById('result').style.display==='block') calc(); });
+  });
+})();
+</script>
+</body>
+</html>
