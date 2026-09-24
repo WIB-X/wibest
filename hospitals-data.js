@@ -300,7 +300,7 @@ window.WIB_HOSPITALS = [
 {n:"Ojas Super Speciality Hospital",c:"Chandigarh",t:"Private",r:4.2,b:150,e:2012,s:["Cardiac Sciences","Neurology","Orthopedics","Oncology"],i:["Most TPA"],a:"NABH",er:1,w:"https://ojashospitals.com",addr:"Phase 7, Mohali 160061",phone:"+91-172-5018888"},
 {n:"Grecian Super Speciality Hospital",c:"Chandigarh",t:"Private",r:4.3,b:140,e:2008,s:["Orthopedics","Cardiac Sciences","General Medicine","Gynaecology"],i:["Most TPA"],a:"NABH",er:1,w:"https://grecianhospital.com",addr:"Sector 69, Mohali 160062",phone:"+91-172-5097200"},
 
-// COIMBATORE (10)
+// COIMBATORE (11)
 {n:"Kovai Medical Center and Hospital (KMCH)",c:"Coimbatore",t:"Private",r:4.6,b:1100,e:1990,s:["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.kmchhospitals.com",addr:"Avanashi Road, Coimbatore 641014",phone:"+91-422-4323800"},
 {n:"PSG Hospitals",c:"Coimbatore",t:"Trust",r:4.5,b:900,e:1985,s:["Cardiac Sciences","Neurology","Oncology","Orthopedics","Paediatrics"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://www.psghospitals.com",addr:"Peelamedu, Coimbatore 641004",phone:"+91-422-2570170"},
 {n:"Ganga Hospital",c:"Coimbatore",t:"Private",r:4.7,b:300,e:1991,s:["Orthopedics","Trauma","Plastic Surgery","Joint Replacement"],i:["Most TPA","CGHS"],a:"NABH, JCI",er:1,w:"https://www.gangahospital.com",addr:"313, Mettupalayam Road, Coimbatore 641043",phone:"+91-422-2485000"},
@@ -311,6 +311,7 @@ window.WIB_HOSPITALS = [
 {n:"Sri Kuppuswamy Naidu Memorial Hospital (KMH)",c:"Coimbatore",t:"Trust",r:4.4,b:350,e:1952,s:["Cardiac Sciences","Orthopedics","General Medicine","Paediatrics"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://kmchospital.com",addr:"Pappanaickenpalayam, Coimbatore 641037",phone:"+91-422-2245000"},
 {n:"Aravind Eye Hospital Coimbatore",c:"Coimbatore",t:"Trust",r:4.7,b:250,e:1988,s:["Eye Care","Cataract","Retina"],i:["Most TPA"],a:"NABH",er:0,w:"https://aravind.org",addr:"Avinashi Road, Civil Aerodrome Post, Coimbatore 641014",phone:"+91-422-4360400"},
 {n:"Lotus Eye Hospital Coimbatore",c:"Coimbatore",t:"Private",r:4.5,b:120,e:1991,s:["Eye Care","Cataract","Retina","Cornea"],i:["Most TPA"],a:"NABH",er:0,w:"https://lotuseye.org",addr:"77, R T O Road, Avinashi Road, Coimbatore 641014",phone:"+91-422-4344455"},
+{n:"KG Hospital",c:"Coimbatore",t:"Private",r:4.3,b:350,e:1974,s:["Cardiac Sciences","Neurology","Transplant","Robotic Surgery","General Medicine"],i:["Most TPA","CGHS"],a:"NABH, NABL",er:1,w:"https://www.kghospital.com",addr:"No.5, Government Arts College Road, Coimbatore 641018",phone:"+91-422-2201201"},
 
 // INDORE (10)
 {n:"Bombay Hospital Indore",c:"Indore",t:"Private",r:4.4,b:600,e:2009,s:["Cardiac Sciences","Neurology","Oncology","Orthopedics","Transplant"],i:["Most TPA","CGHS"],a:"NABH",er:1,w:"https://bombayhospitalindore.com",addr:"Eastern Ring Road, Vijay Nagar, Indore 452010",phone:"+91-731-4077000"},
