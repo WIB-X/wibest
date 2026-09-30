@@ -120,7 +120,7 @@
   <div class="filters">
     <div class="filter-group"><select id="brandFilter" onchange="applyFilters()"><option value="">All Brands</option></select></div>
     <div class="filter-group"><select id="priceFilter" onchange="applyFilters()"><option value="">All Prices</option><option value="0-15000">Under 15K</option><option value="15000-30000">15K - 30K</option><option value="30000-50000">30K - 50K</option><option value="50000-80000">50K - 80K</option><option value="80000-999999">Above 80K</option></select></div>
-    <div class="filter-group"><select id="sortSelect" onchange="applyFilters()"><option value="">Sort</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="rating-high">Rating: Best First</option><option value="name-az">Name A-Z</option></select></div>
+    <div class="filter-group"><select id="sortSelect" onchange="applyFilters()"><option value="">Sort</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="name-az">Name A-Z</option></select></div>
     <div class="search-group">
       <svg class="search-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" class="search-input" id="searchInput" placeholder="Search electronics..." oninput="applyFilters()">
@@ -314,9 +314,7 @@ function renderProducts(products){
       </div>
       <div class="pcard-body">
         <div class="pcard-top"><div class="pcard-name">${p.name||'Product'}</div></div>
-        <div class="pcard-meta"><span class="meta-tag" style="background:var(--accent-light);color:var(--accent)">${p.brand||''}</span>${p.year?`<span class="meta-tag">${p.year}</span>`:''}</div>
-        ${p.rating?`<div class="pcard-rating"><span class="stars">★ ${p.rating.toFixed(1)}</span><span class="count">(${p.reviews_count||0} reviews)</span></div>`:''}
-        <div class="pcard-specs">${specs.map(s=>`<div class="spec-item"><div class="spec-label">${s.l}</div><div class="spec-val">${s.v}</div></div>`).join('')}</div>
+        <div class="pcard-meta"><span class="meta-tag" style="background:var(--accent-light);color:var(--accent)">${p.brand||''}</span>${p.year?`<span class="meta-tag">${p.year}</span>`:''}</div>        <div class="pcard-specs">${specs.map(s=>`<div class="spec-item"><div class="spec-label">${s.l}</div><div class="spec-val">${s.v}</div></div>`).join('')}</div>
         <div class="pcard-actions">
           <a class="btn-view" href="/electronics-detail.html?id=${p.id}" style="text-decoration:none;display:inline-block;text-align:center">View Details</a>
           <a href="https://www.amazon.in/s?k=${encodeURIComponent(p.name)}&tag=wib04-21" target="_blank" rel="noopener" class="btn-amazon">Amazon</a>

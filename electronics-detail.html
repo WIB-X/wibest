@@ -99,9 +99,15 @@ async function load(){
   const id=new URLSearchParams(window.location.search).get('id');
   if(!id){document.getElementById('pageContent').innerHTML='<div class="loading">Product not found. <a href="/electronics" style="color:var(--accent)">Browse all electronics</a></div>';return}
   try{
-    const doc=await db.collection('electronics').doc(id).get();
-    if(!doc.exists){document.getElementById('pageContent').innerHTML='<div class="loading">Product not found. <a href="/electronics" style="color:var(--accent)">Browse all electronics</a></div>';return}
-    const p=doc.data();
+    let p=null;
+    // Firestore products use their doc id; baked-in products use ids like "static-elec-<index>"
+    if(!/^static-elec-/.test(id)){
+      try{const doc=await db.collection('electronics').doc(id).get();if(doc.exists)p=doc.data();}catch(e){console.warn('Firestore lookup failed',e)}
+    }
+    if(!p){
+      try{const r=await fetch('/data/json/electronics.json');if(r.ok){const j=await r.json();const arr=j.data||[];const m=/^static-elec-(\d+)$/.exec(id);if(m)p=arr[parseInt(m[1],10)];}}catch(e){console.warn('Static fallback failed',e)}
+    }
+    if(!p){document.getElementById('pageContent').innerHTML='<div class="loading">Product not found. <a href="/electronics" style="color:var(--accent)">Browse all electronics</a></div>';return}
     const name=p.name||'Product Details';
     document.title=name+' — WIB';
     document.querySelector('meta[name="description"]').setAttribute('content','Compare specs, price, and reviews for '+name+' on WIB.');
@@ -144,9 +150,7 @@ function render(id,p){
       <div class="badges">
         <span class="badge brand">${p.brand||''}</span>
         <span class="badge">${isPhone?'Phone':'Laptop'}</span>
-        ${p.year?`<span class="badge">${p.year}</span>`:''}
-        ${p.rating?`<span class="badge rating">★ ${p.rating.toFixed(1)}</span>`:''}
-      </div>
+        ${p.year?`<span class="badge">${p.year}</span>`:''}      </div>
       ${p.description?`<p class="desc">${p.description}</p>`:''}
     </div>
 
