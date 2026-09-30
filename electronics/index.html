@@ -185,20 +185,38 @@ async function loadProducts(){
     document.getElementById('statProducts').textContent=allProducts.length;
     document.getElementById('statBrands').textContent=[...new Set(allProducts.map(p=>p.brand).filter(Boolean))].length;
     applyFilters();
-    // Emit ItemList schema for SEO with per-item Product + AggregateRating
+    // Emit ItemList schema for SEO. Product markup requires a real image, so we
+    // only include products we actually have an image for. Description is built
+    // from real spec fields. No aggregateRating is emitted: our rating/review
+    // numbers are editorial estimates, not verified review aggregates, so marking
+    // them up would be inaccurate structured data.
     (function emitItemList(items){
       if(!items||!items.length)return;
-      var list=items.slice(0,25).map(function(it,i){
+      var list=[];
+      items.forEach(function(it){
+        var img=imageForProduct(it);
+        if(!img)return; // skip products with no genuine image — image is required
+        var detailUrl='https://wibest.in/electronics-detail.html?id='+encodeURIComponent(it.id||'');
         var p={
           '@type':'Product',
           'name':it.name||'',
-          'url':'https://wibest.in/electronics-detail.html?id='+encodeURIComponent(it.id||''),
+          'image':img,
+          'url':detailUrl,
           'brand':{'@type':'Brand','name':it.brand||''}
         };
-        if(it.price)p.offers={'@type':'Offer','price':it.price,'priceCurrency':'INR','availability':'https://schema.org/InStock'};
-        if(it.rating)p.aggregateRating={'@type':'AggregateRating','ratingValue':it.rating,'bestRating':5,'ratingCount':it.reviews_count||1};
-        return {'@type':'ListItem','position':i+1,'item':p};
+        var specs=[];
+        if(it.display)specs.push(it.display+' display');
+        if(it.processor)specs.push(it.processor);
+        if(it.ram)specs.push(it.ram+' RAM');
+        if(it.storage)specs.push(it.storage+' storage');
+        if(it.camera)specs.push(it.camera+' camera');
+        if(it.battery)specs.push(it.battery+' battery');
+        p.description=(it.name||'')+(specs.length?' — '+specs.join(', ')+'.':'.')+' Compare specs, price and features on WIB.';
+        if(it.price)p.offers={'@type':'Offer','price':it.price,'priceCurrency':'INR','availability':'https://schema.org/InStock','url':detailUrl};
+        list.push({'@type':'ListItem','position':list.length+1,'item':p});
       });
+      list=list.slice(0,25);
+      if(!list.length)return;
       var s=document.createElement('script');s.type='application/ld+json';
       s.text=JSON.stringify({'@context':'https://schema.org','@type':'ItemList','itemListElement':list});
       document.head.appendChild(s);
@@ -256,13 +274,17 @@ function imageForProduct(p) {
   if (!p.name) return '';
   // Direct key match
   if (PRODUCT_IMAGES[p.name]) return PRODUCT_IMAGES[p.name];
-  // Fuzzy: try matching by significant tokens (brand + model number)
+  // Fuzzy: match by significant tokens, preferring the LONGEST (most specific)
+  // matching key so "Apple iPhone 16 Pro Max" gets the Pro Max image, not "iPhone 16".
   var target = p.name.toLowerCase();
+  var best = '', bestLen = 0;
   for (var key in PRODUCT_IMAGES) {
     var k = key.toLowerCase();
-    if (target.indexOf(k) !== -1 || k.indexOf(target) !== -1) return PRODUCT_IMAGES[key];
+    if (target.indexOf(k) !== -1 || k.indexOf(target) !== -1) {
+      if (k.length > bestLen) { bestLen = k.length; best = PRODUCT_IMAGES[key]; }
+    }
   }
-  return '';
+  return best;
 }
 
 function renderProducts(products){

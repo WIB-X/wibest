@@ -90,6 +90,7 @@
 <script src="/cookie-consent.js" defer></script>
 <script src="/widgets.js" defer></script>
 <script src="/sanitize.js"></script>
+<script src="/seed-data-product-images.js"></script>
 <script>
 const db=initFirebase();
 let selectedRating=0;
@@ -106,10 +107,14 @@ async function load(){
     document.querySelector('meta[name="description"]').setAttribute('content','Compare specs, price, and reviews for '+name+' on WIB.');
     const canonicalUrl='https://wibest.in/electronics-detail.html?id='+id;
     document.querySelector('link[rel="canonical"]').setAttribute('href',canonicalUrl);
-    // JSON-LD Product schema
+    // JSON-LD Product schema. Resolve a genuine product image (longest/most-specific
+    // match) so the markup is valid. aggregateRating is intentionally omitted: our
+    // rating/review numbers are editorial estimates, not verified review aggregates
+    // (this page displays no actual reviews), so marking them up would be inaccurate.
+    const prodImg=(function(nm){nm=(nm||'').toLowerCase();var best='',bl=0,M=window.PRODUCT_IMAGES||{};for(var k in M){var kk=k.toLowerCase();if((nm.indexOf(kk)!==-1||kk.indexOf(nm)!==-1)&&kk.length>bl){bl=kk.length;best=M[k];}}return p.image||p.img||p.imageUrl||best||'';})(name);
     const jsonLd={'@context':'https://schema.org','@type':'Product','name':name,'description':p.description||name,'brand':{'@type':'Brand','name':p.brand||''}};
-    if(p.price) jsonLd['offers']={'@type':'Offer','price':p.price,'priceCurrency':'INR','availability':'https://schema.org/InStock'};
-    if(p.rating) jsonLd['aggregateRating']={'@type':'AggregateRating','ratingValue':p.rating,'bestRating':5,'ratingCount':p.reviews_count||1};
+    if(prodImg) jsonLd['image']=prodImg;
+    if(p.price) jsonLd['offers']={'@type':'Offer','price':p.price,'priceCurrency':'INR','availability':'https://schema.org/InStock','url':canonicalUrl};
     const ldScript=document.createElement('script');ldScript.type='application/ld+json';ldScript.text=JSON.stringify(jsonLd);document.head.appendChild(ldScript);
     const bcScript=document.createElement('script');bcScript.type='application/ld+json';bcScript.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://wibest.in'},{'@type':'ListItem','position':2,'name':'Electronics','item':'https://wibest.in/electronics/'},{'@type':'ListItem','position':3,'name':name,'item':canonicalUrl}]});document.head.appendChild(bcScript);
     render(id,p);
