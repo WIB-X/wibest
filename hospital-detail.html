@@ -150,7 +150,7 @@ if(!hospName){
       <h1 class="hosp-name">${h.n}</h1>
       <div class="hosp-meta">${h.c} | ${hType} | Est. ${hEst||'N/A'} | ${hBeds?hBeds+' beds':''}${hAccr?' | '+hAccr:''}</div>
     </div>
-    ${hRating?`<div class="hosp-rating">${hRating.toFixed(1)}<small>Rating</small></div>`:''}
+    
   </div>
   
   <div class="info-grid">
@@ -246,7 +246,7 @@ if(!hospName){
   if (hAddr) _jld.address.streetAddress = hAddr;
   if (hPhone) _jld.telephone = hPhone;
   if (hWeb) _jld.sameAs = [hWeb];
-  if (hRating > 0) _jld.aggregateRating = {'@type':'AggregateRating','ratingValue': hRating,'bestRating':5,'ratingCount':10};
+  
   if (hSpecs.length) _jld.medicalSpecialty = hSpecs;
   var _ls = document.createElement('script');_ls.type='application/ld+json';_ls.text=JSON.stringify(_jld);document.head.appendChild(_ls);
 

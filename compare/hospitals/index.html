@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compare 2 Indian Hospitals Side-by-Side · WIB</title>
-<meta name="description" content="Pick any 2 of 463 verified Indian hospitals and see them side-by-side: NABH/JCI accreditation, bed count, specialties, type, ratings, and address. Free, no signup. Built on WIB's 36-city dataset.">
+<meta name="description" content="Pick any 2 of 463 verified Indian hospitals and see them side-by-side: NABH/JCI accreditation, bed count, specialties, type, and address. Free, no signup. Built on WIB's 36-city dataset.">
 <link rel="canonical" href="https://wibest.in/compare/hospitals/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Compare 2 Indian Hospitals Side-by-Side · WIB">
@@ -85,7 +85,7 @@ h1{font-family:Outfit,sans-serif;font-size:36px;font-weight:900;letter-spacing:-
 <main class="wrap">
   <div class="bc"><a href="/">Home</a> &rsaquo; <a href="/compare/">Compare</a> &rsaquo; Hospitals</div>
   <h1>Compare 2 Indian hospitals</h1>
-  <p class="lede">Pick any 2 of 463 verified hospitals across 36 Indian cities and see them side-by-side: NABH/JCI accreditation, bed count, specialties, type (private/government/trust), ratings, address. Built on WIB's open hospital dataset — same data behind every hospital page on the site.</p>
+  <p class="lede">Pick any 2 of 463 verified hospitals across 36 Indian cities and see them side-by-side: NABH/JCI accreditation, bed count, specialties, type (private/government/trust), address. Built on WIB's open hospital dataset — same data behind every hospital page on the site.</p>
 
   <div class="picker">
     <div class="filter-row">
@@ -119,8 +119,8 @@ h1{font-family:Outfit,sans-serif;font-size:36px;font-weight:900;letter-spacing:-
 
   <div class="result" id="resultBox">
     <div class="result-head">
-      <div class="h" id="headA"><h2></h2><div class="city"></div><div class="rating"></div></div>
-      <div class="h" id="headB"><h2></h2><div class="city"></div><div class="rating"></div></div>
+      <div class="h" id="headA"><h2></h2><div class="city"></div></div>
+      <div class="h" id="headB"><h2></h2><div class="city"></div></div>
     </div>
     <div id="rows"></div>
   </div>
@@ -228,16 +228,13 @@ function render() {
 
   document.querySelector('#headA h2').textContent = a.name;
   document.querySelector('#headA .city').textContent = a.city;
-  document.querySelector('#headA .rating').textContent = '★ ' + (a.rating || '—');
   document.querySelector('#headB h2').textContent = b.name;
   document.querySelector('#headB .city').textContent = b.city;
-  document.querySelector('#headB .rating').textContent = '★ ' + (b.rating || '—');
 
   const rows = [
     ['City', a.city, b.city, false],
     ['Type', a.type || '—', b.type || '—', false],
     ['Beds', a.beds != null ? a.beds : '—', b.beds != null ? b.beds : '—', true],
-    ['Rating', a.rating != null ? (a.rating + '/5') : '—', b.rating != null ? (b.rating + '/5') : '—', true],
     ['NABH accredited', a.nabh ? '<span class="yes">✓ Yes</span>' : '<span class="no">No</span>', b.nabh ? '<span class="yes">✓ Yes</span>' : '<span class="no">No</span>', false],
     ['Specialties', '<div class="specs">' + specialties(a) + '</div>', '<div class="specs">' + specialties(b) + '</div>', false],
     ['Address', escapeHtml(a.address || '—'), escapeHtml(b.address || '—'), false],

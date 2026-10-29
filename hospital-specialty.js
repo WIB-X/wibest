@@ -20,7 +20,7 @@
   var rows = ALL
     .filter(function(h){ return h.c === CITY; })
     .filter(matchSpec)
-    .sort(function(a,b){ return (b.r||0) - (a.r||0); });
+    .sort(function(a,b){ return (b.b||0) - (a.b||0); });
 
   function esc(s){return String(s||'').replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 
@@ -47,7 +47,7 @@
       return '<div class="hcard">'+
         '<div class="hcard-rank">#'+(i+1)+'</div>'+
         '<button class="hcard-add" title="Add to compare list" data-compare-add=\''+compareData.replace(/'/g, '&#39;')+'\' style="position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .15s">+</button>'+
-        '<div class="hcard-top" style="padding-right:36px"><div class="hcard-name">'+esc(h.n)+'</div><div class="hcard-rating">★ '+h.r+'</div></div>'+
+        '<div class="hcard-top" style="padding-right:36px"><div class="hcard-name">'+esc(h.n)+'</div></div>'+
         '<div class="hcard-meta">'+esc(h.t)+' · '+(h.b||0)+' beds · est. '+(h.e||'')+' · '+esc(h.a||'')+' '+emer+'</div>'+
         '<div class="hcard-addr">'+esc(h.addr||'')+'</div>'+
         '<div class="hcard-specs">'+specs+'</div>'+
